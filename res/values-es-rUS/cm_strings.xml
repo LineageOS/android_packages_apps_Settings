@@ -29,16 +29,16 @@
   <!-- Launch Dev Tools -->
   <string name="development_tools_title">Herramientas de desarrollo</string>
   <!-- Setting checkbox title for root access -->
-  <string name="root_access">Acceso de Superusuario (root)</string>
-  <string name="root_access_warning_title">¿Permitir acceso de Superusuario?</string>
-  <string name="root_access_warning_message">¡Permitir a las aplicaciones solicitar acceso de Superusuario es muy peligroso y puede comprometer la seguridad del sistema!</string>
+  <string name="root_access">Acceso de superusuario (root)</string>
+  <string name="root_access_warning_title">¿Permitir acceso de superusuario?</string>
+  <string name="root_access_warning_message">¡Permitir a las aplicaciones solicitar acceso de superusuario es muy peligroso y puede comprometer la seguridad del sistema!</string>
   <string name="root_access_none">Desactivado</string>
   <string name="root_access_apps">Sólo aplicaciones</string>
   <string name="root_access_adb">Sólo ADB</string>
   <string name="root_access_all">Aplicaciones y ADB</string>
   <!-- Preference link for root appops -->
-  <string name="root_appops_title">Gestionar acceso de Superusuario (root)</string>
-  <string name="root_appops_summary">Ver y controlar las reglas de Superusuario</string>
+  <string name="root_appops_title">Gestionar acceso de superusuario (root)</string>
+  <string name="root_appops_summary">Ver y controlar las reglas de superusuario</string>
   <!-- About phone screen, LineageOS version -->
   <string name="mod_version">Versión de LineageOS</string>
   <string name="mod_version_default">Desconocido</string>
@@ -61,7 +61,7 @@
   <string name="app_ops_categories_device">Dispositivo</string>
   <string name="app_ops_categories_background">Fondo de pantalla</string>
   <string name="app_ops_categories_bootup">Arranque</string>
-  <string name="app_ops_categories_su">Acceso de Superusuario (root)</string>
+  <string name="app_ops_categories_su">Acceso de superusuario</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">ubicación aproximada</string>
   <string name="app_ops_summaries_fine_location">ubicación precisa</string>
@@ -132,7 +132,7 @@
   <string name="app_ops_summaries_start_at_boot">iniciar en el arranque</string>
   <string name="app_ops_summaries_toggle_nfc">alternar NFC</string>
   <string name="app_ops_summaries_toggle_mobile_data">alternar datos móviles</string>
-  <string name="app_ops_summaries_superuser">acceso de Superusuario (root)</string>
+  <string name="app_ops_summaries_superuser">acceso de superusuario</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">Ubicación aproximada</string>
   <string name="app_ops_labels_fine_location">Ubicación precisa</string>
@@ -158,7 +158,7 @@
   <string name="app_ops_labels_read_icc_sms">Leer mensajes ICC</string>
   <string name="app_ops_labels_write_icc_sms">Editar mensajes ICC</string>
   <string name="app_ops_labels_modify_settings">Modificar ajustes</string>
-  <string name="app_ops_labels_draw_on_top">Dibujar sobre</string>
+  <string name="app_ops_labels_draw_on_top">Mostrar encima</string>
   <string name="app_ops_labels_access_notifications">Acceso a notificaciones</string>
   <string name="app_ops_labels_camera">Cámara</string>
   <string name="app_ops_labels_record_audio">Grabar sonido</string>
@@ -203,7 +203,7 @@
   <string name="app_ops_labels_start_at_boot">Iniciar en el arranque</string>
   <string name="app_ops_labels_toggle_nfc">Alternar NFC</string>
   <string name="app_ops_labels_toggle_mobile_data">Alternar datos móviles</string>
-  <string name="app_ops_labels_superuser">Acceso de Superusuario (root)</string>
+  <string name="app_ops_labels_superuser">Acceso de superusuario (root)</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">Permitir</string>
   <string name="app_ops_permissions_ignored">Ignorado</string>
@@ -253,9 +253,13 @@
   <string name="unlock_scramble_pin_layout_summary">Cambiar la disposición de los números del PIN para desbloquear el dispositivo</string>
   <!-- lock screen visualizer -->
   <string name="lockscreen_visualizer_title">Mostrar visualizador musical</string>
+  <!-- Lock screen cover art -->
+  <string name="lockscreen_media_art_title">Mostrar portada del álbum</string>
+  <!-- Double tap to sleep on keyguard -->
+  <string name="double_tap_sleep_anywhere_title">Doble pulsación en cualquier lugar para suspender</string>
   <!-- Protected apps lockpattern reset button -->
   <string name="lockpattern_reset_button">Restablecer patrón</string>
-  <string name="lockpattern_settings_reset_summary">Introducir la cuenta de correo principal y su contraseña asociada para restablecer el patrón de bloqueo</string>
+  <string name="lockpattern_settings_reset_summary">Ingresa la cuenta de correo principal y la contraseña asociada, para restablecer el patrón de bloqueo</string>
   <!-- Protected Apps -->
   <string name="menu_hidden_apps_delete">Restablecer</string>
   <string name="menu_hidden_apps_reset_lock">Restablecer patrón de bloqueo</string>
@@ -268,7 +272,7 @@
   <string name="pa_login_submit_button">Iniciar sesión</string>
   <string name="pa_login_checking_password">Comprobando cuenta\u2026</string>
   <string name="pa_login_incorrect_login">El inicio de sesión fue incorrecto</string>
-  <string name="pa_pattern_or_fingerprint_header">Se debe dibujar el patrón o usar huellas dactilares para desbloquear</string>
+  <string name="pa_pattern_or_fingerprint_header">Debes dibujar el patrón o utilizar huellas digitales para desbloquear</string>
   <!-- title for lock screen weather preference -->
   <string name="lockscreen_weather_enabled_title">Mostrar clima</string>
   <!-- title for lock screen blur preference -->
