@@ -119,7 +119,9 @@
     <ListPreference
         android:key="root_access"
         android:title="@string/root_access"
-        android:persistent="false" />
+        android:persistent="false"
+        android:entries="@array/root_access_entries"
+        android:entryValues="@array/root_access_values" />
 
     <Preference
         android:key="root_appops"
