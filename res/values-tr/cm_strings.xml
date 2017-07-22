@@ -29,23 +29,23 @@
   <!-- Launch Dev Tools -->
   <string name="development_tools_title">Geliştirme araçları</string>
   <!-- Setting checkbox title for root access -->
-  <string name="root_access">Root erişimi</string>
-  <string name="root_access_warning_title">Root erişimine izin ver?</string>
-  <string name="root_access_warning_message">Root erişimine izin vermek çok tehlikelidir ve sisteminizin güvenliğini tehlikeye atabilir!</string>
+  <string name="root_access">Kök erişimi</string>
+  <string name="root_access_warning_title">Kök erişimine izin ver?</string>
+  <string name="root_access_warning_message">Kök erişimine izin vermek çok tehlikelidir ve sisteminizin güvenliğini tehlikeye atabilir!</string>
   <string name="root_access_none">Devre dışı</string>
   <string name="root_access_apps">Sadece uygulamalar</string>
   <string name="root_access_adb">Sadece ADB</string>
   <string name="root_access_all">Uygulamalar ve ADB</string>
   <!-- Preference link for root appops -->
-  <string name="root_appops_title">Root erişimini yönet</string>
-  <string name="root_appops_summary">Root kurallarını görüntüle ve kontrol et</string>
+  <string name="root_appops_title">Kök erişimini yönet</string>
+  <string name="root_appops_summary">Kök erişimi kurallarını görüntüle ve kontrol et</string>
   <!-- About phone screen, LineageOS version -->
   <string name="mod_version">LineageOS sürümü</string>
   <string name="mod_version_default">Bilinmeyen</string>
   <!-- About phone screen, Device model -->
   <string name="device_model">Cihaz modeli</string>
   <!-- About phone screen, Device name -->
-  <string name="device_name">Cihaz ismi</string>
+  <string name="device_name">Cihaz adı</string>
   <!-- About phone screen, LineageOS Api Level -->
   <string name="mod_api_level">LineageOS API düzeyi</string>
   <string name="mod_api_level_default">Bilinmeyen</string>
@@ -61,7 +61,7 @@
   <string name="app_ops_categories_device">Cihaz</string>
   <string name="app_ops_categories_background">Arka plan</string>
   <string name="app_ops_categories_bootup">Açılış</string>
-  <string name="app_ops_categories_su">Root erişimi</string>
+  <string name="app_ops_categories_su">Kök erişimi</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">kaba konum</string>
   <string name="app_ops_summaries_fine_location">kesin konum</string>
@@ -132,7 +132,7 @@
   <string name="app_ops_summaries_start_at_boot">açılışta başlat</string>
   <string name="app_ops_summaries_toggle_nfc">NFC\'yi aç/kapa</string>
   <string name="app_ops_summaries_toggle_mobile_data">hücresel veriye geçiş</string>
-  <string name="app_ops_summaries_superuser">root erişimi</string>
+  <string name="app_ops_summaries_superuser">kök erişimi</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">Yaklaşık konum</string>
   <string name="app_ops_labels_fine_location">Kesin konum</string>
@@ -203,7 +203,7 @@
   <string name="app_ops_labels_start_at_boot">Açılışta başlat</string>
   <string name="app_ops_labels_toggle_nfc">NFC\'yi aç/kapa</string>
   <string name="app_ops_labels_toggle_mobile_data">Hücresel veriye geçiş</string>
-  <string name="app_ops_labels_superuser">Root erişimi</string>
+  <string name="app_ops_labels_superuser">Kök erişimi</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">İzin verildi</string>
   <string name="app_ops_permissions_ignored">Görmezden gelindi</string>
@@ -247,7 +247,7 @@
   <string name="memory_startup_apps_title">Açılışta başlatılan uygulamalar</string>
   <!-- Advanced restart options -->
   <string name="advanced_reboot_title">Gelişmiş yeniden başlatma</string>
-  <string name="advanced_reboot_summary">Kilitli değilken; kapatma menüsüne, kurtarma kipi, ön yükleyici ve yazılımsal yeniden başlatma seçeneklerini dahil et</string>
+  <string name="advanced_reboot_summary">Kilitli değilken; güç menüsünde ki yeniden başlatma menüsüne, kurtarma modu, ön yükleyici ve yazılımsal yeniden başlatma seçeneklerini dahil et</string>
   <!-- PIN scramble -->
   <string name="unlock_scramble_pin_layout_title">Düzeni karıştır</string>
   <string name="unlock_scramble_pin_layout_summary">Cihaz kilidini açarken PIN düzenini karıştırır</string>
@@ -316,7 +316,7 @@
   <!-- Allow vibration in zen mode -->
   <string name="zen_mode_vibration">Titreşim</string>
   <string name="zen_mode_vibration_never">Titreşim yok</string>
-  <string name="zen_mode_vibration_calls_only">Sadece çağrılarda titret</string>
+  <string name="zen_mode_vibration_calls_only">Sadece aramalarda titret</string>
   <string name="zen_mode_vibration_calls_and_notifications">Arama ve bildirimlerde titret</string>
   <!-- Zen mode allowed event setting summary items -->
   <!-- [CHAR LIMIT=50] Like zen_mode_reminders, but part of a list, so lower case if needed-->
@@ -372,7 +372,7 @@
   <string name="wake_when_plugged_or_unplugged_title">Takıp çıkarmada uyan</string>
   <string name="wake_when_plugged_or_unplugged_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken ekranı aç</string>
   <!-- Heads-up -->
-  <string name="heads_up_notifications_enabled_title">Üst bildirim</string>
+  <string name="heads_up_notifications_enabled_title">Bildirim pencereleri</string>
   <string name="heads_up_notifications_enabled_summary">Küçük bir yüzen pencerede öncelikli bildirimleri görüntüle</string>
   <!-- Tethering & portable hotspot other category -->
   <string name="tethering_other_category_text">Diğer</string>
@@ -396,7 +396,7 @@
   <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
   <string name="data_usage_app_restrict_all_wifi_summary">Herhangi bir Wi\u2011Fi veri erişiminden kaçın</string>
   <!-- Volume link notification -->
-  <string name="volume_link_notification_title">Zil sesi ile bildirim sesi düzeyini bağla</string>
+  <string name="volume_link_notification_title">Zil ve bildirim sesi düzeyini bağla</string>
   <!-- Launch music player when headset is connected -->
   <string name="headset_connect_player_title">Müzik uygulamasını başlat</string>
   <string name="headset_connect_player_summary">Kulaklık takıldığında varsayılan müzik uygulamasını başlat</string>
