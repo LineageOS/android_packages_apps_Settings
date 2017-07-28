@@ -43,16 +43,16 @@
   <string name="development_shortcut_title">Geliştirme kısayolu</string>
   <string name="development_shortcut_summary">Son uygulamalar listesinde uygulama yönetimi kısayollarını etkinleştir</string>
   <!-- Setting checkbox title for root access -->
-  <string name="root_access">Root erişimi</string>
-  <string name="root_access_warning_title">Root erişimine izin ver?</string>
-  <string name="root_access_warning_message">Root erişimine izin vermek çok tehlikelidir ve sisteminizin güvenliğini tehlikeye atabilir!</string>
+  <string name="root_access">Kök erişimi</string>
+  <string name="root_access_warning_title">Kök erişimine izin ver?</string>
+  <string name="root_access_warning_message">Kök erişimine izin vermek çok tehlikelidir ve sisteminizin güvenliğini tehlikeye atabilir!</string>
   <string name="root_access_none">Devre dışı</string>
   <string name="root_access_apps">Sadece uygulamalar</string>
   <string name="root_access_adb">Sadece ADB</string>
   <string name="root_access_all">Uygulamalar ve ADB</string>
   <!-- Preference link for root appops -->
-  <string name="root_appops_title">Root erişimini yönet</string>
-  <string name="root_appops_summary">Root kurallarını görüntüle ve kontrol et</string>
+  <string name="root_appops_title">Kök erişimini yönet</string>
+  <string name="root_appops_summary">Kök erişimi kurallarını görüntüle ve kontrol et</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, LineageOS version -->
@@ -61,7 +61,7 @@
   <!-- About phone screen, Device model -->
   <string name="device_model">Cihaz modeli</string>
   <!-- About phone screen, Device name -->
-  <string name="device_name">Cihaz ismi</string>
+  <string name="device_name">Cihaz adı</string>
   <!-- About phone screen, LineageOS Api Level -->
   <string name="mod_api_level">LineageOS API düzeyi</string>
   <string name="mod_api_level_default">Bilinmeyen</string>
@@ -226,7 +226,7 @@
   <string name="profile_appgroup_name_title">İsim</string>
   <string name="duplicate_appgroup_name">Tekrarlayan uygulama grup ismi!</string>
   <string name="profile_app_delete_confirm">Uygulama silinsin mi?</string>
-  <string name="no_bluetooth_triggers">Eşleştirilmiş bluetooth aygıtı yok.\nTetikleyicileri yapılandırmadan önce Bluetooth cihazı ile eşleştirmek için dokunun.</string>
+  <string name="no_bluetooth_triggers">Eşleştirilmiş bluetooth cihazı yok.\nTetikleyicileri yapılandırmadan önce Bluetooth cihazı ile eşleştirmek için dokunun.</string>
   <string name="no_wifi_triggers">Hiç  Wi\u2011Fi erişim noktası yapılandırılmadı.\nTetikleyicileri yapılandırmadan önce  Wi\u2011Fi ağına bağlanmak için dokunun.</string>
   <string name="no_triggers_configured">Hiç tetikleyici ayarlanmadı. Eklemek için dokunun.</string>
   <string name="no_triggers_configured_nfc">Yeni bir NFC tetikleyicisi kurmak için dokunun.</string>
@@ -243,7 +243,7 @@
   <string name="navigation_save_button_text">Kaydet</string>
   <string name="navigation_bar_reset_message">Geçerli ayarlar silinip varsayılan düzene dönülsün mü?</string>
   <string name="navigation_bar_arrow_keys_title">Yazı yazarken yön tuşlarını göster</string>
-  <string name="navigation_bar_arrow_keys_summary">Yazı yazarken sağ ve sol imleç tuşlarını göster. IME değiştiriciyi gösterme.</string>
+  <string name="navigation_bar_arrow_keys_summary">Yazı yazarken sağ ve sol imleç tuşlarını göster. Klavye değiştiriciyi gösterme.</string>
   <string name="navigation_bar_recents_title">Son uygulamalar düğmesi uzun basma eylemi</string>
   <!-- Notification light dialogs -->
   <string name="edit_light_settings">Işık ayarlarını düzenle</string>
@@ -265,7 +265,7 @@
   <string name="pulse_speed_slow">Yavaş</string>
   <string name="pulse_speed_very_slow">Çok yavaş</string>
   <!-- Battery light settings -->
-  <string name="battery_light_title">Pil Işığı</string>
+  <string name="battery_light_title">Pil ışığı</string>
   <string name="battery_low_pulse_title">Pil zayıfsa yanıp sön</string>
   <string name="battery_light_list_title">Renkler</string>
   <string name="battery_light_low_color_title">Pil zayıf</string>
@@ -308,7 +308,7 @@
   <string name="app_ops_categories_media">Ortam</string>
   <string name="app_ops_categories_device">Cihaz</string>
   <string name="app_ops_categories_bootup">Açılış</string>
-  <string name="app_ops_categories_su">Root erişimi</string>
+  <string name="app_ops_categories_su">Kök erişimi</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_coarse_location">kaba konum</string>
   <string name="app_ops_summaries_fine_location">kesin konum</string>
@@ -378,7 +378,7 @@
   <string name="app_ops_summaries_start_at_boot">açılışta başlat</string>
   <string name="app_ops_summaries_toggle_nfc">NFC\'yi aç/kapa</string>
   <string name="app_ops_summaries_toggle_mobile_data">hücresel veriye geçiş</string>
-  <string name="app_ops_summaries_superuser">root erişimi</string>
+  <string name="app_ops_summaries_superuser">kök erişimi</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_coarse_location">Yaklaşık konum</string>
   <string name="app_ops_labels_fine_location">Kesin konum</string>
@@ -448,7 +448,7 @@
   <string name="app_ops_labels_start_at_boot">Açılışta başlat</string>
   <string name="app_ops_labels_toggle_nfc">NFC\'yi aç/kapa</string>
   <string name="app_ops_labels_toggle_mobile_data">Hücresel veriye geçiş</string>
-  <string name="app_ops_labels_superuser">Root erişimi</string>
+  <string name="app_ops_labels_superuser">Kök erişimi</string>
   <!-- App ops permissions -->
   <string name="app_ops_permissions_allowed">İzin verildi</string>
   <string name="app_ops_permissions_ignored">Görmezden gelindi</string>
@@ -501,13 +501,13 @@
   <string name="volbtn_cursor_control_off">Devre dışı</string>
   <string name="volbtn_cursor_control_on">Ses yukarı/aşağı imleci sola/sağa kaydırır</string>
   <string name="volbtn_cursor_control_on_reverse">Ses yukarı/aşağı imleci sağ/sola kaydırır</string>
-  <string name="power_end_call_title">Çağrıyı sonlandır</string>
-  <string name="power_end_call_summary">Güç tuşuna basmak mevcut çağrıyı sonlandıracak</string>
+  <string name="power_end_call_title">Aramayı sonlandır</string>
+  <string name="power_end_call_summary">Güç tuşuna basmak mevcut aramayı sonlandıracak</string>
   <string name="swap_volume_buttons_title">Yeniden ata</string>
   <string name="swap_volume_buttons_summary">Ekran döndürüldüğünde ses tuşlarını yer değiştir</string>
   <string name="button_wake_title">Cihazı uyandır</string>
-  <string name="home_answer_call_title">Çağrıya cevap ver</string>
-  <string name="home_answer_call_summary">Ana ekran tuşuna basılması mevcut gelen çağrıyı cevaplandırır</string>
+  <string name="home_answer_call_title">Aramaya cevap ver</string>
+  <string name="home_answer_call_summary">Ana ekran tuşuna basmak mevcut gelen aramayı cevaplayacak</string>
   <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Uyum sağlayan arka ışık</string>
   <string name="adaptive_backlight_summary">Kullanılabilirliği koruyarak pil ömrünü en üst düzeye çıkarmak için ekranın arka ışık parlaklığını dinamik olarak ayarla</string>
@@ -543,8 +543,8 @@
   <string name="power_menu_sound_title">Ses paneli</string>
   <string name="power_menu_bug_report_disabled">Hata raporlama geliştirici ayarlarında devre dışı bırakıldı</string>
   <!-- Buttons - Enable navbar -->
-  <string name="disable_navkeys_title">Ekrandaki dolaşım çubuğunu etkinleştir</string>
-  <string name="disable_navkeys_summary">Ekran üstü dolaşım çubuğunu etkinleştir ve donanımsal butonları devre dışı bırak</string>
+  <string name="disable_navkeys_title">Gezinme çubuğunu etkinleştir</string>
+  <string name="disable_navkeys_summary">Ekranda gezinme çubuğunu etkinleştirin ve donanım düğmelerini devre dışı bırakın</string>
   <!-- tap-to-wake -->
   <string name="double_tap_to_wake_title">Uyanmak için çift dokun</string>
   <string name="double_tap_to_wake_summary">Ekranı açmak için ekrana iki defa dokunun</string>
@@ -588,7 +588,7 @@
   <string name="display_rotation_180_title">180 derece</string>
   <string name="display_rotation_270_title">270 derece</string>
   <!-- LiveDisplay -->
-  <string name="live_display_summary">Okunabilirliği artırmak ve göz yorgunluğu azaltmak için gün ve ortam koşulları zamanına bağlı olarak ekranı iyileştirir</string>
+  <string name="live_display_summary">Ekranınızı, okunabilirliği artırmak ve göz yorgunluğunu azaltmak için günün saatine ve ortam koşullarına göre optimize edin</string>
   <string name="live_display_mode">Görüntü modu</string>
   <string name="live_display_color_temperature_title">Renk sıcaklığı</string>
   <string name="live_display_color_temperature_summary">Gündüz: <xliff:g id="day_temperature">%1$d</xliff:g>K Gece: <xliff:g id="night_temperature">%2$d</xliff:g>K</string>
@@ -629,7 +629,7 @@
   <string name="ime_switcher_notify">Seçici simgesi</string>
   <string name="ime_switcher_notify_summary">Giriş yöntemi seçici simgesini görüntüle</string>
   <!-- Heads up -->
-  <string name="heads_up_notifications">Bildirim Pencereleri</string>
+  <string name="heads_up_notifications">Bildirim pencereleri</string>
   <string name="summary_heads_up_enabled">Açılır bildirimler etkinleştirildi</string>
   <string name="summary_heads_up_disabled">Açılır bildirimler devre dışı bırakıldı</string>
   <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
@@ -788,7 +788,7 @@
   <string name="notification_ringtone_title_cm">Bildirim sesi</string>
   <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Gelişmiş yeniden başlatma</string>
-  <string name="advanced_reboot_summary">Kilitli değilken; kapatma menüsüne, kurtarma kipi, ön yükleyici ve yazılımsal yeniden başlatma seçeneklerini dahil et</string>
+  <string name="advanced_reboot_summary">Kilitli değilken; kapatma menüsüne, kurtarma modu, ön yükleyici ve yazılımsal yeniden başlatma seçeneklerini dahil et</string>
   <string name="category_interface">Arayüz</string>
   <!-- Expanded desktop -->
   <string name="power_menu_expanded_desktop">Genişletilmiş Masaüstü</string>
@@ -824,20 +824,20 @@
   <string name="blacklist_empty_text">Hiç engellenmiş numara yok. Ekle (+) tuşuna dokunarak yeni bir numara ekleyin.</string>
   <string name="blacklist_disabled_empty_text">Telefon numaralarının sizi aramasını ya da size mesaj atmasını engellemek için, engelli arayan listesini etkinleştirin.</string>
   <string name="blacklist_summary_disabled">Devre dışı</string>
-  <string name="blacklist_summary">Engelli arayan listesindeki numaralardan gelen çağrıları ya da mesajları almayacaksınız</string>
+  <string name="blacklist_summary">Engelli arayan listesindeki numaralardan gelen aramaları ya da mesajları almayacaksınız</string>
   <string name="blacklist_notify">Bildirim göster</string>
   <string name="blacklist_private_numbers_title">Özel numaralar</string>
-  <string name="blacklist_private_numbers_summary_disabled">Özel numaralardan gelen çağrıları engelleme</string>
+  <string name="blacklist_private_numbers_summary_disabled">Özel numaralardan gelen aramaları engelleme</string>
   <string name="blacklist_private_numbers_summary">Özel numaralardan gelen <xliff:g id="type">%s</xliff:g> engelle</string>
   <string name="blacklist_unknown_numbers_title">Bilinmeyen numaralar</string>
-  <string name="blacklist_unknown_numbers_summary_disabled">Kişi listesinde olmayan numaralardan gelen çağrıları engelleme</string>
+  <string name="blacklist_unknown_numbers_summary_disabled">Kişi listesinde olmayan numaralardan gelen aramaları engelleme</string>
   <string name="blacklist_unknown_numbers_summary">Kişi listesinde olmayan numalardan gelen <xliff:g id="type">%s</xliff:g> engelle</string>
-  <string name="blacklist_summary_type_calls_only">çağrılar</string>
+  <string name="blacklist_summary_type_calls_only">aramalar</string>
   <string name="blacklist_summary_type_messages_only">mesajlar</string>
-  <string name="blacklist_summary_type_calls_and_messages">çağrı ve mesajlar</string>
+  <string name="blacklist_summary_type_calls_and_messages">arama ve mesajlar</string>
   <string name="blacklist_regex_title">Joker karakter kullan</string>
   <string name="blacklist_regex_summary">Herhangi bir karakter için . ve tekrarlama için * kullanın. Örneğin 123.* 123 ile başlayan tüm numaraları engellerken .*123.* 123 içeren tüm numaraları engeller.</string>
-  <string name="blacklist_policy_block_calls">Gelen çağrıları engelle</string>
+  <string name="blacklist_policy_block_calls">Gelen aramaları engelle</string>
   <string name="blacklist_policy_block_messages">Gelen mesajları engelle</string>
   <string name="blacklist_bad_number_add">Geçersiz telefon numaraları engellenen arayan listesine eklenemez</string>
   <!-- Blacklist management -->
@@ -912,7 +912,7 @@
   <string name="category_misc">Çeşitli</string>
   <string name="title_general">Genel</string>
   <string name="advanced">Gelişmiş</string>
-  <string name="link_volume_option_title">Zil sesi ile bildirim sesi düzeyini bağla</string>
+  <string name="link_volume_option_title">Zil ve bildirim sesi düzeyini bağla</string>
   <string name="lcd_density_prompt_message">Bazı uygulamalar standart dışı DPI\'lerde çalışmayabilir.\n\nBu telefonunuzu yeniden başlatacaktır.</string>
   <!-- Edit access point labels: PPP number -->
   <string name="apn_ppp_number">APN PPP telefon numarası</string>
@@ -954,7 +954,7 @@
   <!-- Allow vibration in zen mode -->
   <string name="zen_mode_vibration">Titreşim</string>
   <string name="zen_mode_vibration_never">Titreşim yok</string>
-  <string name="zen_mode_vibration_calls_only">Sadece çağrılarda titret</string>
+  <string name="zen_mode_vibration_calls_only">Sadece aramalarda titret</string>
   <string name="zen_mode_vibration_calls_and_notifications">Arama ve bildirimlerde titret</string>
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->

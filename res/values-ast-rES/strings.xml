@@ -85,6 +85,7 @@
   <!-- Do not translate. label for font size preview.  Does not need to be translated. -->
   <string name="font_size_preview_text">Servez à ce monsieur une bière et des kiwis.</string>
   <!-- Button. Chosen when they want to save the chosen text size. -->
+  <string name="font_size_save">Aceutar</string>
   <!-- Title for a notification shown. [CHAR LIMIT=25] -->
   <!-- Title for a notification shown. -->
   <!-- Battery Info screen. Value for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
@@ -162,6 +163,7 @@
   <!-- The title of the activity to pick a time zone. -->
   <!-- Label of preview text when tweaking font size -->
   <!-- Label for chosen font size -->
+  <string name="display_font_size_label">Tamañu de fonte:</string>
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
@@ -418,6 +420,7 @@
   <!-- Title shown in fingerprint enrollment dialog once enrollment is completed [CHAR LIMIT=29] -->
   <!-- Message shown in fingerprint enrollment dialog once enrollment is completed -->
   <!-- Message shown when fingerprint enrollment is completed during setup wizard [CHAR LIMIT=NONE] -->
+  <string name="setup_fingerprint_enroll_finish_message">Namái toca\'l sensor de buelgues pa esconsoñar y desbloquiar el to preséu.</string>
   <!-- Message shown when fingerprint enrollment is completed, telling user about the fingerprint icon that will be shown whenever they can use their fingerprint [CHAR LIMIT=NONE] -->
   <!-- Title of the dialog shown when the user tries to skip fingerprint setup, asking them to confirm the action [CHAR LIMIT=40] -->
   <!-- Content of the dialog shown when the user tries to skip fingerprint setup, asking them to confirm the action [CHAR LIMIT=NONE] -->
@@ -608,6 +611,11 @@
   <!-- Message to describe "BLE scan always available feature" when Bluetooth is off. The
       place-holders "LINK_BEGIN" and "LINK_END" must NOT be translated. They mark a link to bring
       the user to "scanning settings" screen. -->
+  <string name="ble_scan_notify_text">P\'ameyorar la precisión del allugamientu, les aplicaciones
+      del sistema entá puen deteutar preseos Bluetooth. Pues
+      camudar esto nos <xliff:g id="link_begin">LINK_BEGIN
+      </xliff:g>axustes d\'escanéu<xliff:g id="link_end">
+      LINK_END</xliff:g>.</string>
   <!-- Bluetooth settings.  The title of the screen to pick which profiles to connect to on the device.  For example, headphones may have both A2DP and headset, this allows the user to choose which one he wants to connect to. -->
   <!-- Bluetooth settings.  Message for disconnecting from the A2DP profile. [CHAR LIMIT=80] -->
   <!-- Bluetooth settings.  Message for disconnecting from the headset profile. [CHAR LIMIT=80] -->
@@ -709,6 +717,11 @@
   <!-- Message to describe "Wi-Fi scan always available feature" when Wi-Fi is off. The
       place-holders "LINK_BEGIN" and "LINK_END" must NOT be translated. They mark a link to bring
       the user to "scanning settings" screen. -->
+  <string name="wifi_scan_notify_text">P\'ameyorar la precisión del allugamientu, les aplicaciones
+        del sistema entá puen escaniar redes Wi\u2011Fi. Pues
+        camudar esto nos <xliff:g
+        id="link_begin">LINK_BEGIN</xliff:g>axustes d\'escanéu<xliff:g
+        id="link_end">LINK_END</xliff:g>.</string>
   <!-- Wifi scan always mode checkbox text -->
   <string name="wifi_scan_notify_remember_choice">Nun amosar de nueves</string>
   <!-- Setting title for setting the wifi sleep policy. Do we keep Wi-Fi active when the screen turns off? -->
@@ -798,6 +811,7 @@
          string is listed after a wifi_secured_* string-->
   <string name="wifi_wps_available_second_item">\u0020(WPS disponible)</string>
   <!-- Message in WriteWifiConfigToNfcDialog when prompted to enter network password [CHAR_LIMIT=40] -->
+  <string name="wifi_scan_always_turnon_message">P\'ameyorar la precisión del allugamientu y otros fines, <xliff:g id="app_name">%1$s</xliff:g> quier activar l\'escanéu de redes, magar que\'l Wi-Fi tea apagáu.\n\n¿Permitilo pa toles aplicaciones que quieran escaniar?</string>
   <!-- Message informing the user how to turn off  [CHAR LIMIT=200] -->
   <!-- Dialog label to sign in to a Hotspot. [CHAR LIMIT=50]-->
   <!-- Dialog message to sign in to a Hotspot. [CHAR LIMIT=50]-->
@@ -1059,8 +1073,10 @@
   <!-- [CHAR LIMIT=30] Display settings screen, setting option name to change whether the ambient display feature is enabled. -->
   <!-- [CHAR LIMIT=NONE] Display settings screen, setting description for the ambient display feature. -->
   <!-- [CHAR LIMIT=30] Sound & display settings screen, setting option name to change font size -->
+  <string name="title_font_size">Tamañu de fonte</string>
   <!-- Sound & display settings screen, setting option summary displaying the currently selected font size -->
   <!-- [CHAR LIMIT=40] Sound & display settings screen, title of dialog for picking font size -->
+  <string name="dialog_title_font_size">Tamañu de fonte</string>
   <!-- SIM lock settings title  [CHAR LIMIT=40] -->
   <!-- Security & location settings screen, setting option name  [CHAR LIMIT=40] -->
   <!-- Security & location settings screen, section heading for settings related to sim card locking  [CHAR LIMIT=40] -->
@@ -1576,9 +1592,11 @@
   <!-- Applications settings summary, on main settings screen. The summary for the "Applications" item on the main settings screen. Describes what settings are accessible from the "Applications" screen. -->
   <!-- Applications settings screen heading. The header for the Application settings screen. -->
   <!-- Applications settings screen, setting check box title. If checked, the system allows installation of applications that are downloaded from random places, such as web sites.  -->
+  <string name="install_applications">Fontes desconocíes</string>
   <!-- Applications settings screen, setting check box title. If checked, the system allows installation of applications that are downloaded from random places, such as web sites.  [CHAR LIMIT=30] -->
   <!-- Applications settings screen, setting check box summary.  This is the summary for "Unknown sources" checkbox  [CHAR LIMIT=65] -->
   <!-- Applications settings screen, setting check box summary.  This is the summary for "Unknown sources" checkbox  -->
+  <string name="install_unknown_applications">Permitir la instalación d\'aplicaciones d\'orixe desconocíu</string>
   <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
   <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
   <!-- Applications settings screen, setting check box title. If checked, applications show more settings options. -->
@@ -1787,6 +1805,7 @@
   <!-- On Text & language settings screen, category for physical keyboard text entry options. -->
   <!-- On Text & language settings screen, setting summary for the Auto-punctuate setting. -->
   <!-- On Security & location settings screen, setting check box name. Title of the checkbox to set whether password edit fields will show the most recent character typed and then hide it, or just hide it right away.  By hide, I mean mask it out. -->
+  <string name="show_password">Visibilizar contraseñes</string>
   <!-- Warning message about security implications of enabling an input method, displayed as a dialog
          message when the user selects to enable an IME. -->
   <!-- Warning message about security implications of enabling a spell checker, displayed as a dialog
@@ -1879,9 +1898,11 @@
   <!-- Setting Checkbox title whether to enable bluetooth HCI snoop log -->
   <!-- setting Checkbox summary whether to capture all bluetooth HCI packets in a file -->
   <!-- setting Checkbox title whether to enable OEM unlock [CHAR_LIMIT=35] -->
+  <string name="oem_unlock_enable">Desbloquéu d\'OEM</string>
   <!-- setting Checkbox summary whether to enable OEM unlock [CHAR_LIMIT=50] -->
   <string name="oem_unlock_enable_summary">Permite desbloquiar el cargador d\'arranque</string>
   <!-- Confirmation dialog title to ensure user wishes to enable OEM unlock and disable theft protection features -->
+  <string name="confirm_enable_oem_unlock_title">¿Permitir desbloquéu d\'OEM?</string>
   <!-- Warning dialog message to confirm user wishes to enable OEM unlock and disable theft protection features -->
   <!-- UI debug setting: limit size of Android logger buffers -->
   <!-- UI debug setting: limit size of Android logger buffers [CHAR LIMIT=59] -->
@@ -2015,6 +2036,7 @@
   <!-- Sample characters for previewing video caption preferences. [CHAR LIMIT=2] -->
   <!-- Label for the default device locale. [CHAR LIMIT=35] -->
   <!-- Label for color selection title in sim settings [CHAR LIMIT=35] -->
+  <string name="color_title">Color</string>
   <!-- Label for default color. This lets the app pick the color. [CHAR LIMIT=35] -->
   <!-- Label for no color (transparent). [CHAR LIMIT=35] -->
   <!-- Label for the color white. [CHAR LIMIT=35] -->
@@ -2418,6 +2440,7 @@
   <!-- Summary text of the "local backup password" setting when the user has already supplied a password -->
   <!-- Toast message shown when the user successfully sets a new local backup password [CHAR LIMIT=80] -->
   <!-- Toast message shown when setting a new local backup password fails due to the user not correctly typing the password again for confirmation [CHAR LIMIT=80] -->
+  <string name="local_backup_password_toast_confirmation_mismatch">La contraseña nueva y la de confirmación nun concasen</string>
   <!-- Toast message shown when setting a new local backup password fails due to the user not supplying the correct existing password. The phrasing here is deliberately quite general. [CHAR LIMIT=80] -->
   <!-- Dialog title for confirmation to erase backup data from server -->
   <!-- Dialog title for confirmation to erase backup data from server -->
@@ -2578,10 +2601,15 @@
   <!-- Informational text on the pin entry screen prompting the user for their pin -->
   <!-- Informational text on the pattern entry screen prompting the user for their pattern -->
   <!-- Message shown when user enters wrong pattern -->
+  <string name="cryptkeeper_wrong_pattern">Patrón incorreutu</string>
   <!-- Message shown when user enters wrong password -->
+  <string name="cryptkeeper_wrong_password">Contraseña incorreuta</string>
   <!-- Message shown when user enters wrong PIN -->
+  <string name="cryptkeeper_wrong_pin">PIN incorreutu</string>
   <!-- Shown when a password has been entered, and we're checking it -->
+  <string name="checking_decryption">Comprobando\u2026</string>
   <!-- Shown when password is correct, and we're starting Android -->
+  <string name="starting_android">Aniciando Android</string>
   <!-- the following are for Settings Storage screen -->
   <!-- Menu item/button 'delete' -->
   <!-- Misc files [CHAR LIMIT=25] -->
@@ -2971,6 +2999,7 @@
   <!-- Amber alerts summary.  [CHAR LIMIT=60] -->
   <!-- repeat title.  Allows the user to set how oftem to repeat alert reminders.
          For example, they may have alerts just once or every 2 or 15 minutes.  [CHAR LIMIT=30] -->
+  <string name="repeat_title">Repitir</string>
   <!-- Call Manager enable settings title.  [CHAR LIMIT=50] -->
   <!-- Call Manager enable settings summary.  [CHAR LIMIT=80] -->
   <!-- Call Manager settings title.  [CHAR LIMIT=50] -->

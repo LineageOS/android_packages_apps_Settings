@@ -271,7 +271,7 @@
   <string name="notification_light_missed_call_title">Thirrje e humbur</string>
   <string name="notification_light_voicemail_title">Mesazh zanor</string>
   <string name="notification_light_screen_on">Dritat me ekranin e ndezur</string>
-  <string name="notification_light_zen_mode">Dritat në modalitetin \"Mos më shqetëso\"</string>
+  <string name="notification_light_zen_mode">Dritat në profilin \"Mos më shqetëso\"</string>
   <string name="notification_light_use_multiple_leds">LED të shumëfishta</string>
   <string name="keywords_lights_brightness_level">zbut ndriçimin e dritave LED</string>
   <string name="notification_light_automagic">Zgjidhi ngjyrat automatikisht</string>
@@ -291,6 +291,7 @@
   <string name="adb_notify">Njoftim i debugimit</string>
   <string name="adb_notify_summary">Shfaq një njoftim kur debugimi i USB-së apo rrjetit është i aktivizuar</string>
   <!-- Names of categories of app ops tabs - extension of AOSP -->
+  <string name="app_ops_categories_location">Vendndodhja</string>
   <string name="app_ops_categories_messaging">Mesazhet</string>
   <string name="app_ops_categories_media">Media</string>
   <string name="app_ops_categories_device">Pajisja</string>
@@ -388,6 +389,7 @@
   <string name="app_ops_labels_read_external_storage">Lexo memorien e jashtme</string>
   <string name="app_ops_labels_write_external_storage">Shkruaj në memorien e jashtme</string>
   <string name="app_ops_labels_turn_screen_on">Ndiz ekranin</string>
+  <string name="app_ops_labels_toggle_wifi">Aktivizo/çaktivizo Wi-Fi</string>
   <string name="app_ops_labels_toggle_bluetooth">Ndiz/fik bluetoothin</string>
   <string name="app_ops_labels_toggle_nfc">Ndiz/fik NFC</string>
   <string name="app_ops_labels_toggle_mobile_data">Aktivizo/çaktivizo internetin e celularit</string>
@@ -583,6 +585,9 @@
   <string name="stylus_app_not_installed">%s nuk është instaluar</string>
   <!-- Touchscreen hovering -->
   <!-- Increasing ring tone volume -->
+  <string name="increasing_ring_volume_option_title">Volum me rritje graduale</string>
+  <string name="increasing_ring_min_volume_title">Volumi fillestar</string>
+  <string name="increasing_ring_ramp_up_time_title">Kohëzgjatja e rritjes</string>
   <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only_on">Me çdo rrjet</string>
   <string name="lto_download_data_wifi_only_off">Vetëm me rrjetet Wi\u2011Fi</string>
@@ -600,7 +605,7 @@
   <!-- Sound settings, Charging sounds ringtone selection, preference label -->
   <string name="power_notifications_ringtone_title">Zilja e njoftimeve</string>
   <!-- Sound settings, charging sounds label for ringtone == none -->
-  <string name="power_notifications_ringtone_silent">Pa zhurmë</string>
+  <string name="power_notifications_ringtone_silent">Pa zë</string>
   <!-- Status bar -->
   <string name="status_bar_title">Shiriti i statusit</string>
   <string name="status_bar_toggle_brightness">Kontrolli i ndriçimit</string>
@@ -717,6 +722,7 @@
   <string name="remove_blacklist_number_title">Hiq numrin</string>
   <string name="select_contact">Zgjidh kontaktin</string>
   <!-- Sms security limit -->
+  <string name="sms_security_check_limit_title">Kufiri i mesazheve SMS</string>
   <string name="sms_security_check_limit_none">Asnjë</string>
   <!-- Notification spamfilter -->
   <!-- Anonymous Statistics #CM -->
@@ -763,6 +769,7 @@
   <string name="category_misc">Të ndryshme</string>
   <string name="title_general">Të përgjithshme</string>
   <string name="advanced">Të përparuara</string>
+  <string name="link_volume_option_title">Lidh volumin e ziles me atë të njoftimeve</string>
   <!-- Edit access point labels: PPP number -->
   <!-- APNs screen message indicating new APN user is adding is a duplicate -->
   <string name="sim_disabled">e çaktivizuar</string>
@@ -837,11 +844,12 @@
   <string name="privacy_guard_internet_category">Interneti</string>
   <!-- Weather -->
   <string name="weather_settings_title">Moti</string>
-  <string name="weather_settings_no_services_prompt">Nuk është instaluar asnjë furnizues i shërbimit meteorologjik</string>
-  <string name="weather_settings_button">Parametrat e furnizuesit</string>
-  <string name="weather_settings_activity_not_found">Menuja e parametrave të këtij furnizuesi nuk mund të hapet</string>
-  <string name="weather_settings_add_weather_provider">Shto një furnizues moti</string>
+  <string name="weather_settings_no_services_prompt">Nuk është instaluar asnjë ofrues i shërbimit meteorologjik</string>
+  <string name="weather_settings_button">Parametrat e ofruesit</string>
+  <string name="weather_settings_activity_not_found">Menuja e parametrave të këtij ofruesi nuk mund të hapet</string>
+  <string name="weather_settings_add_weather_provider">Shto një ofrues moti</string>
   <string name="weather_settings_general_settings_title">Të përgjithshme</string>
+  <string name="weather_settings_providers_title">Ofruesit</string>
   <string name="weather_settings_temp_units_title">Njësia e temperaturës</string>
   <string name="weather_settings_temp_celsius">Celsius</string>
   <string name="weather_settings_temp_fahrenheit">Fahrenheit</string>
@@ -882,6 +890,7 @@
   <string name="cm_radio_info_wfc_avail_ovr_off_label">Aktivizo debugimin e WFC</string>
   <!-- Lock screen wallpaper -->
   <string name="lockscreen_wallpaper_title">Sfondi</string>
+  <string name="not_available_with_app">E padisponueshme me %1$s</string>
   <!-- Format string for fingerprint location message -->
   <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Lokalizo sensorin e shenjave të gishtave në <xliff:g id="sensor_location">%1$s</xliff:g> të telefonit tuaj.</string>
   <!-- Fingerprint sensor locations -->
