@@ -134,6 +134,7 @@ Teníemos un Palaciu…\n
 …y dexánonnos ensin nada.
     </string>
   <!-- Button. Chosen when they want to save the chosen text size. -->
+  <string name="font_size_save">Aceutar</string>
   <!-- Title for a notification shown. [CHAR LIMIT=25] -->
   <!-- Title for a notification shown. -->
   <!-- Used as setting title (for checkbox) on second screen after selecting Bluetooth settings -->
@@ -203,6 +204,7 @@ Teníemos un Palaciu…\n
   <!-- The title of the activity to pick a time zone. -->
   <!-- Label of preview text when tweaking font size -->
   <!-- Label for chosen font size -->
+  <string name="display_font_size_label">Tamañu de fonte:</string>
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
@@ -474,6 +476,7 @@ Teníemos un Palaciu…\n
   <!-- Title shown in fingerprint enrollment dialog once enrollment is completed [CHAR LIMIT=29] -->
   <!-- Message shown in fingerprint enrollment dialog once enrollment is completed -->
   <!-- Message shown when fingerprint enrollment is completed during setup wizard [CHAR LIMIT=NONE] -->
+  <string name="setup_fingerprint_enroll_finish_message">Namái toca\'l sensor de buelgues pa esconsoñar y desbloquiar el to preséu.</string>
   <!-- Message shown when fingerprint enrollment is completed, telling user about the fingerprint icon that will be shown whenever they can use their fingerprint [CHAR LIMIT=NONE] -->
   <!-- Title of the dialog shown when the user tries to skip fingerprint setup, asking them to confirm the action [CHAR LIMIT=40] -->
   <!-- Content of the dialog shown when the user tries to skip fingerprint setup, asking them to confirm the action [CHAR LIMIT=NONE] -->
@@ -703,6 +706,11 @@ Teníemos un Palaciu…\n
   <!-- Message to describe "BLE scan always available feature" when Bluetooth is off. The
       place-holders "LINK_BEGIN" and "LINK_END" must NOT be translated. They mark a link to bring
       the user to "scanning settings" screen. -->
+  <string name="ble_scan_notify_text">P\'ameyorar la precisión del allugamientu, les aplicaciones
+      del sistema entá puen deteutar preseos Bluetooth. Pues
+      camudar esto nos <xliff:g id="link_begin">LINK_BEGIN
+      </xliff:g>axustes d\'escanéu<xliff:g id="link_end">
+      LINK_END</xliff:g>.</string>
   <!-- Bluetooth settings.  The title of the screen to pick which profiles to connect to on the device.  For example, headphones may have both A2DP and headset, this allows the user to choose which one he wants to connect to. -->
   <!-- Bluetooth settings.  Message for disconnecting from the A2DP profile. [CHAR LIMIT=80] -->
   <!-- Bluetooth settings.  Message for disconnecting from the headset profile. [CHAR LIMIT=80] -->
@@ -802,6 +810,10 @@ Teníemos un Palaciu…\n
   <!-- Message to describe "Wi-Fi scan always available feature" when Wi-Fi is off. The
       place-holders "LINK_BEGIN" and "LINK_END" must NOT be translated. They mark a link to bring
       the user to "scanning settings" screen. -->
+  <string name="wifi_scan_notify_text">P\'ameyorar la precisión del allugamientu, les aplicaciones
+        del sistema entá puen escaniar redes Wi\u2011Fi. Pues
+        camudar esto nos <xliff:g id="link_begin">LINK_BEGIN</xliff:g>axustes d\'escanéu<xliff:g
+        id="link_end">LINK_END</xliff:g>.</string>
   <!-- Wifi scan always mode checkbox text -->
   <string name="wifi_scan_notify_remember_choice">Nun amosar de nueves</string>
   <!-- Setting title for setting the wifi sleep policy. Do we keep Wi-Fi active when the screen turns off? -->
@@ -907,6 +919,7 @@ Teníemos un Palaciu…\n
          string is listed after a wifi_secured_* string-->
   <string name="wifi_wps_available_second_item">\u0020(WPS disponible)</string>
   <!-- Message in WriteWifiConfigToNfcDialog when prompted to enter network password [CHAR_LIMIT=40] -->
+  <string name="wifi_scan_always_turnon_message">P\'ameyorar la precisión del allugamientu y otros fines, <xliff:g id="app_name">%1$s</xliff:g> quier activar l\'escanéu de redes, magar que\'l Wi-Fi tea apagáu.\n\n¿Permitilo pa toles aplicaciones que quieran escaniar?</string>
   <!-- Message informing the user how to turn off  [CHAR LIMIT=200] -->
   <!-- Dialog label to sign in to a Hotspot. [CHAR LIMIT=50]-->
   <!-- Dialog message to sign in to a Hotspot. [CHAR LIMIT=50]-->
@@ -1052,7 +1065,9 @@ Teníemos un Palaciu…\n
   <!-- Wireless networks, item title to go into the WFC settings [CHAR LIMIT=30] -->
   <string name="wifi_calling_settings_title">Llamaes Wi-Fi</string>
   <!-- Title of suggestion to turn on wifi calling [CHAR LIMIT=30] -->
+  <string name="wifi_calling_suggestion_title">Desactivar llamaes Wi-Fi</string>
   <!-- Summary of suggestion to turn on wifi calling [CHAR LIMIT=60] -->
+  <string name="wifi_calling_suggestion_summary">Usa la rede Wi-Fi en cuentes de la móvil</string>
   <!-- Title of WFC preference item [CHAR LIMIT=30] -->
   <!-- Title of WFC preference selection dialog [CHAR LIMIT=30] -->
   <!-- Title of WFC roaming preference item [CHAR LIMIT=45] -->
@@ -1167,7 +1182,9 @@ Teníemos un Palaciu…\n
   <!-- Sound & display settings screen, setting option summary to change screen timeout -->
   <!-- Wallpaper settings title [CHAR LIMIT=30] -->
   <!-- Wallpaper suggestion title [CHAR LIMIT=30] -->
+  <string name="wallpaper_suggestion_title">Camudar fondu de pantalla</string>
   <!-- Wallpaper suggestion title [CHAR LIMIT=60] -->
+  <string name="wallpaper_suggestion_summary">Personaliza la to pantalla</string>
   <!-- Wallpaper settings fragment title [CHAR LIMIT=30] -->
   <!-- Display settings screen, trigger for screen saver options -->
   <string name="screensaver_settings_title">Curiapantalles</string>
@@ -1187,6 +1204,7 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=30] Display settings screen, setting option name to change whether the ambient display feature is enabled. -->
   <!-- [CHAR LIMIT=NONE] Display settings screen, setting description for the ambient display feature. -->
   <!-- [CHAR LIMIT=30] Sound & display settings screen, setting option name to change font size -->
+  <string name="title_font_size">Tamañu de fonte</string>
   <!-- Summary for Font size. Lets the user know that this will make text larger or smaller. Appears in the accessibility portion of setup wizard. [CHAR LIMIT=NONE] -->
   <!-- Sound & display settings screen, setting option summary displaying the currently selected font size -->
   <!-- SIM lock settings title  [CHAR LIMIT=40] -->
@@ -1738,9 +1756,11 @@ Teníemos un Palaciu…\n
   <!-- Applications settings summary, on main settings screen. The summary for the "Applications" item on the main settings screen. Describes what settings are accessible from the "Applications" screen. -->
   <!-- Applications settings screen heading. The header for the Application settings screen. -->
   <!-- Applications settings screen, setting check box title. If checked, the system allows installation of applications that are downloaded from random places, such as web sites.  -->
+  <string name="install_applications">Fontes desconocíes</string>
   <!-- Applications settings screen, setting check box title. If checked, the system allows installation of applications that are downloaded from random places, such as web sites.  [CHAR LIMIT=30] -->
   <!-- Applications settings screen, setting check box summary.  This is the summary for "Unknown sources" checkbox  [CHAR LIMIT=65] -->
   <!-- Applications settings screen, setting check box summary.  This is the summary for "Unknown sources" checkbox  -->
+  <string name="install_unknown_applications">Permitir la instalación d\'aplicaciones d\'orixe desconocíu</string>
   <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
   <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
   <!-- Applications settings screen, setting check box title. If checked, applications show more settings options. -->
@@ -1956,6 +1976,7 @@ Teníemos un Palaciu…\n
   <!-- On Text & language settings screen, category for physical keyboard text entry options. -->
   <!-- On Text & language settings screen, setting summary for the Auto-punctuate setting. -->
   <!-- On Security & location settings screen, setting check box name. Title of the checkbox to set whether password edit fields will show the most recent character typed and then hide it, or just hide it right away.  By hide, I mean mask it out. -->
+  <string name="show_password">Visibilizar contraseñes</string>
   <!-- Warning message about security implications of enabling an input method, displayed as a dialog
          message when the user selects to enable an IME. -->
   <!-- Warning message about security implications of enabling a spell checker, displayed as a dialog
@@ -2142,6 +2163,7 @@ Teníemos un Palaciu…\n
   <!-- Sample characters for previewing video caption preferences. [CHAR LIMIT=2] -->
   <!-- Label for the default device locale. [CHAR LIMIT=35] -->
   <!-- Label for color selection title in sim settings [CHAR LIMIT=35] -->
+  <string name="color_title">Color</string>
   <!-- Label for default color. This lets the app pick the color. [CHAR LIMIT=35] -->
   <!-- Label for no color (transparent). [CHAR LIMIT=35] -->
   <!-- Label for the color white. [CHAR LIMIT=35] -->
@@ -2635,9 +2657,13 @@ Teníemos un Palaciu…\n
   <!-- Informational text on the pin entry screen prompting the user for their pin -->
   <!-- Informational text on the pattern entry screen prompting the user for their pattern -->
   <!-- Message shown when user enters wrong pattern -->
+  <string name="cryptkeeper_wrong_pattern">Patrón incorreutu</string>
   <!-- Message shown when user enters wrong password -->
+  <string name="cryptkeeper_wrong_password">Contraseña incorreuta</string>
   <!-- Message shown when user enters wrong PIN -->
+  <string name="cryptkeeper_wrong_pin">PIN incorreutu</string>
   <!-- Shown when a password has been entered, and we're checking it -->
+  <string name="checking_decryption">Comprobando\u2026</string>
   <!-- Shown when password is correct, and we're starting Android -->
   <!-- the following are for Settings Storage screen -->
   <!-- Menu item/button 'delete' -->
@@ -2991,6 +3017,7 @@ Teníemos un Palaciu…\n
   <!-- Amber alerts summary.  [CHAR LIMIT=60] -->
   <!-- repeat title.  Allows the user to set how oftem to repeat alert reminders.
          For example, they may have alerts just once or every 2 or 15 minutes.  [CHAR LIMIT=30] -->
+  <string name="repeat_title">Repitir</string>
   <!-- Call Manager enable settings title.  [CHAR LIMIT=50] -->
   <!-- Call Manager enable settings summary.  [CHAR LIMIT=80] -->
   <!-- Call Manager settings title.  [CHAR LIMIT=50] -->
@@ -3148,7 +3175,9 @@ Teníemos un Palaciu…\n
   <!--  Do not disturb: Title for the zen mode automation option and associated settings page. [CHAR LIMIT=30] -->
   <string name="zen_mode_automation_settings_title">Regles automátiques</string>
   <!--  Do not disturb: Title for the zen mode automation option Suggestion. [CHAR LIMIT=30] -->
+  <string name="zen_mode_automation_suggestion_title">Afitar plan de Nun molestar</string>
   <!--  Do not disturb: Summary for the zen mode automation option Suggestion. [CHAR LIMIT=30] -->
+  <string name="zen_mode_automation_suggestion_summary">Silencia\'l to preséu cada ciertu tiempu</string>
   <!--  Do not disturb: Zen mode option: Important interruptions [CHAR LIMIT=60] -->
   <!--  Do not disturb: Zen mode option: Alarms only [CHAR LIMIT=60] -->
   <!--  Do not disturb: Zen mode option: No interruptions [CHAR LIMIT=60] -->
@@ -3772,7 +3801,9 @@ Teníemos un Palaciu…\n
      [CHAR_LIMIT=none] -->
   <!-- Toast message shown when "Reset ShortcutManager rate-limiting" has been performed. [CHAR_LIMIT=none] -->
   <!-- Title of notification suggestion during optional steps of setup. [CHAR_LIMIT=60] -->
+  <string name="notification_suggestion_title">Controlar avisos de pantalla de bloquéu</string>
   <!-- Summary of notification suggestion during optional steps of setup. [CHAR_LIMIT=80] -->
+  <string name="notification_suggestion_summary">Amuesa o anubre\'l conteníu de los avisos</string>
   <!-- Setting tab title for all setting options. [CHAR LIMIT=20] -->
   <!-- Setting tab title for support setting options. [CHAR LIMIT=20] -->
   <!-- Summary of developer options to set the smallest width of the screen [CHAR LIMIT=60]-->
@@ -3809,13 +3840,19 @@ Teníemos un Palaciu…\n
   <!-- Button label that redirects user who needs help for signin to help screen [CHAR LIMIT=NONE]-->
   <!-- Dialog title displayed before initiating real time support [CHAR LIMIT=80]-->
   <!-- Checkbox text, when checked dialog will not show again [CHAR LIMIT=80] -->
+  <string name="support_disclaimer_do_not_show">Nun amosar de nueves</string>
   <!-- [CHAR LIMIT=60] Title of work profile setting page -->
   <!-- [CHAR LIMIT=60] The preference title for enabling cross-profile remote contact search -->
   <!-- [CHAR LIMIT=NONE] The preference summary for enabling cross-profile remote contact search -->
   <!-- Time in hours -->
   <!-- Time in minutes -->
+  <plurals name="minutes">
+    <item quantity="one">1 minutu</item>
+    <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> minutos</item>
+  </plurals>
   <!-- Time in seconds -->
   <!-- Estimated wait time range for real time supports -->
+  <string name="support_estimated_wait_time">~<xliff:g id="ESTIMATE" example="2 minutes">%1$s</xliff:g> d\'espera</string>
   <!-- Message for telling the user the kind of BT device being displayed in list. -->
   <!-- Message for telling the user the kind of BT device being displayed in list. -->
   <!-- Message for telling the user the kind of BT device being displayed in list. -->
