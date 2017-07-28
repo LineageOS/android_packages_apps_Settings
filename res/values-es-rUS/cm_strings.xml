@@ -47,8 +47,8 @@
   <string name="root_access_warning_title">¿Permitir acceso de superusuario?</string>
   <string name="root_access_warning_message">¡Permitir a las aplicaciones solicitar acceso de superusuario es muy peligroso y puede comprometer la seguridad del sistema!</string>
   <string name="root_access_none">Desactivado</string>
-  <string name="root_access_apps">Solo aplicaciones</string>
-  <string name="root_access_adb">Solo ADB</string>
+  <string name="root_access_apps">Sólo aplicaciones</string>
+  <string name="root_access_adb">Sólo ADB</string>
   <string name="root_access_all">Aplicaciones y ADB</string>
   <!-- Preference link for root appops -->
   <string name="root_appops_title">Gestionar acceso de superusuario (root)</string>
@@ -140,7 +140,7 @@
   <string name="profile_appgroups_manage">Grupo de aplicaciones</string>
   <string name="profile_appgroup_manage">Gestionar grupo de aplicaciones</string>
   <!-- Profile settings screen, section header for settings related to notification profiles -->
-  <string name="profile_settings">Ajustes de perfil</string>
+  <string name="profile_settings">Ajustes del perfil</string>
   <string name="profile_trigger_connect">Al conectar</string>
   <string name="profile_trigger_disconnect">Al desconectar</string>
   <string name="profile_trigger_notrigger">Sin evento</string>
@@ -281,13 +281,13 @@
   <string name="notification_light_missed_call_title">Llamada perdida</string>
   <string name="notification_light_voicemail_title">Correo de voz</string>
   <string name="notification_light_screen_on">Luces con la pantalla encendida</string>
-  <string name="notification_light_zen_mode">Luces en modo no molestar</string>
+  <string name="notification_light_zen_mode">Luces en modo «No molestar»</string>
   <string name="notification_light_use_multiple_leds">Múltiples LED</string>
   <string name="keywords_lights_brightness_level">atenuar el brillo de los led</string>
   <string name="notification_light_automagic">Elegir colores automáticamente</string>
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Ajustes de luz de notificación</string>
-  <string name="led_notification_text">Luz LED activada por ajustes</string>
+  <string name="led_notification_text">Luz LED activada por los ajustes</string>
   <string name="notification_light_no_apps_summary">Para añadir el control por aplicación, activar \'%1$s\' y pulsar \'\u002b\' en la barra de menús</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Depuración en Android</string>
@@ -403,7 +403,7 @@
   <string name="app_ops_labels_send_sms">Enviar SMS</string>
   <string name="app_ops_labels_read_icc_sms">Leer mensajes ICC</string>
   <string name="app_ops_labels_write_icc_sms">Editar mensajes ICC</string>
-  <string name="app_ops_labels_modify_settings">Modificar ajustes</string>
+  <string name="app_ops_labels_modify_settings">Modificar los ajustes</string>
   <string name="app_ops_labels_draw_on_top">Mostrar encima</string>
   <string name="app_ops_labels_access_notifications">Acceso a notificaciones</string>
   <string name="app_ops_labels_camera">Cámara</string>
@@ -541,7 +541,7 @@
   <string name="power_menu_lockdown_title">Bloqueo de dispositivo</string>
   <string name="power_menu_bug_report_title">Informe de errores</string>
   <string name="power_menu_sound_title">Panel de sonido</string>
-  <string name="power_menu_bug_report_disabled">Los informes de error están desactivados en las ajustes de desarrollo</string>
+  <string name="power_menu_bug_report_disabled">Los informes de error están desactivados en los ajustes de desarrollo</string>
   <!-- Buttons - Enable navbar -->
   <string name="disable_navkeys_title">Activar barra de navegación en pantalla</string>
   <string name="disable_navkeys_summary">Activar la barra de navegación en pantalla y desactivar los botones físicos</string>
@@ -678,7 +678,7 @@
   <!-- LTO download data over wi-fi only -->
   <string name="lto_download_data_wifi_only">Descarga de datos por GPS</string>
   <string name="lto_download_data_wifi_only_on">En cualquier red</string>
-  <string name="lto_download_data_wifi_only_off">Solo en redes Wi\u2011Fi</string>
+  <string name="lto_download_data_wifi_only_off">Sólo en redes Wi\u2011Fi</string>
   <string name="volume_keys_control_ring_stream_title">Controlar el volumen del tono de llamada</string>
   <string name="volume_keys_control_ring_stream_summary_on">Las teclas de volumen controlan el volumen del tono de llamada</string>
   <string name="volume_keys_control_ring_stream_summary_off">Las teclas de volumen controlan el volumen de archivos multimedia</string>
@@ -836,7 +836,7 @@
   <string name="blacklist_summary_type_messages_only">mensajes</string>
   <string name="blacklist_summary_type_calls_and_messages">llamadas y mensajes</string>
   <string name="blacklist_regex_title">Permitir comodines</string>
-  <string name="blacklist_regex_summary">Usar \u00AB.\u00BB como comodín y \u00AB*\u00BB para repetición. Por ejemplo, \u00AB123.*\u00BB bloqueará números que comiencen con 123 y \u00AB.*123.*\u00BB bloqueará números que contengan 123</string>
+  <string name="blacklist_regex_summary">Usar . como comodín y * para repetición. Por ejemplo, 123.* bloqueará números que comiencen con 123 y .*123.* bloqueará números que contengan 123</string>
   <string name="blacklist_policy_block_calls">Bloquear llamadas entrantes</string>
   <string name="blacklist_policy_block_messages">Bloquear mensajes entrantes</string>
   <string name="blacklist_bad_number_add">No se puede añadir un número no válido a la lista de personas bloqueadas</string>
@@ -861,7 +861,7 @@
   <string name="anonymous_statistics_title">Estadísticas de LineageOS</string>
   <string name="anonymous_statistics_summary">Ayude a mejorar LineageOS mediante el envío anónimo de estadísticas</string>
   <string name="anonymous_statistics_warning_title">Acerca de</string>
-  <string name="anonymous_statistics_warning">Al permitir la recopilación y el envío de estadísticas de LineageOS, autorizas el envío de información de carácter no personal a los desarrolladores de LineageOS para hacer un seguimiento de las instalaciones que realices en los dispositivos. La información enviada incluye un identificador único que no compromete tu privacidad ni tu información personal. Esta información es enviada durante el arranque.\n\nPara ver un ejemplo de la información enviada, pulsa en \u00ABPrevisualizar datos\u00BB.</string>
+  <string name="anonymous_statistics_warning">Al permitir la recopilación y el envío de estadísticas de LineageOS, autorizas el envío de información de carácter no personal a los desarrolladores de LineageOS para hacer un seguimiento de las instalaciones que realices en los dispositivos. La información enviada incluye un identificador único que no compromete tu privacidad ni tu información personal. Esta información es enviada durante el arranque.\n\nPara ver un ejemplo de la información enviada, pulsa en «Previsualizar datos».</string>
   <string name="enable_reporting_title">Activar envío de estadísticas</string>
   <string name="preview_data_title">Previsualizar datos</string>
   <string name="view_stats_title">Ver estadísticas</string>
@@ -976,7 +976,7 @@
   <string name="master_clear_desc_cm" product="default">Esto borrará todos los datos del <b>almacenamiento interno</b> del teléfono, a saber:\n\n<li>Tus cuentas del dispositivo</li>\n<li>Ajustes del sistema y datos de las aplicaciones</li>\n<li>Aplicaciones descargadas</li></string>
   <!-- Factory reset strings -->
   <string name="factory_reset_instructions_title">Aplicaciones y datos personales</string>
-  <string name="factory_reset_instructions_summary">Esto borrará del dispositivo todas tus cuentas, aplicaciones, datos de aplicaciones y ajustes de sistema</string>
+  <string name="factory_reset_instructions_summary">Esto borrará del dispositivo todas tus cuentas, aplicaciones, datos de aplicaciones y ajustes del sistema</string>
   <string name="factory_reset_personal_content">Contenido personal</string>
   <string name="factory_reset_erase_stored_content">Eliminar contenido almacenado</string>
   <string name="factory_reset_erase_stored_content_summary">Eliminar música, fotos, videos y otros datos de usuario almacenados en este dispositivo</string>
@@ -1037,7 +1037,7 @@
   <string name="weather_settings_keyword">clima</string>
   <string name="background_data_access">Acceso a datos en segundo plano</string>
   <string name="allow_background_both">Sobre datos móviles y Wi\u2011Fi</string>
-  <string name="allow_background_wlan">Solo por Wi-Fi</string>
+  <string name="allow_background_wlan">Sólo por Wi-Fi</string>
   <string name="allow_background_none">Sin acceso</string>
   <string name="mobile_data_alert">Alerta de uso de datos móviles</string>
   <string name="mobile_data_alert_summary">Notificar cuando la aplicación utilice una cantidad significativa de datos</string>
@@ -1049,7 +1049,7 @@
   <string name="restrict_cellular_access_title">Restringir el acceso de datos móviles</string>
   <string name="restrict_cellular_access_summary">Desactivar el acceso de datos en redes móviles</string>
   <string name="restrict_cellular_access_dialog_title">¿Restringir el acceso de datos móviles?</string>
-  <string name="restrict_cellular_access_dialog_summary">Esta función puede causar que una aplicación que depende del acceso a la red deje de funcionar cuando haya solo redes móviles disponibles.\n\nPuede encontrar los controles de uso de datos más adecuados en los ajustes disponibles dentro de la aplicación.</string>
+  <string name="restrict_cellular_access_dialog_summary">Esta función puede causar que una aplicación que depende del acceso a la red deje de funcionar cuando haya sólo redes móviles disponibles.\n\nPuede encontrar los controles de uso de datos más adecuados en los ajustes disponibles dentro de la aplicación.</string>
   <!-- Label for settings shortcut: carrier selection -->
   <string name="shortcut_carrier_title">Operadores de red</string>
   <!-- title for lock screen blur preference -->
