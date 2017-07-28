@@ -24,8 +24,27 @@
          strings. -->
   <!-- The time zone picker screen has two levels.  The first level allows the user to choose a region. -->
   <!-- Display settings.  The delay in inactivity before the screen is turned off. These are shown in a list dialog. -->
+  <string-array name="screen_timeout_entries">
+    <item>15 seconds</item>
+    <item>30 seconds</item>
+    <item>1 minutu</item>
+    <item>2 minutos</item>
+    <item>5 minutos</item>
+    <item>10 minutos</item>
+    <item>30 minutos</item>
+  </string-array>
   <!-- Do not translate. -->
   <!-- Display settings.  The delay in inactivity before the dream is shown. These are shown in a list dialog. -->
+  <string-array name="dream_timeout_entries">
+    <item>Never</item>
+    <item>15 seconds</item>
+    <item>30 seconds</item>
+    <item>1 minutu</item>
+    <item>2 minutos</item>
+    <item>5 minutos</item>
+    <item>10 minutos</item>
+    <item>30 minutos</item>
+  </string-array>
   <!-- Do not translate. -->
   <!-- Security settings.  The delay after screen is turned off until device locks.
          These are shown in a list dialog. -->
@@ -170,6 +189,12 @@
   <!-- Wi-Fi p2p settings device status message -->
   <!-- Bluetooth Settings -->
   <!-- Discoverable mode timeout options -->
+  <string-array name="bluetooth_visibility_timeout_entries">
+    <item>2 minutos</item>
+    <item>5 minutos</item>
+    <item>1 hour</item>
+    <item>Never time out</item>
+  </string-array>
   <!-- Match this with drawable.wifi_signal. -->
   <!-- Wi-Fi settings. The signal strength a Wi-Fi network has. -->
   <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi sleep policy. -->
