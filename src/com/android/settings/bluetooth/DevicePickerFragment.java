@@ -117,13 +117,13 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         /* Check if any device was selected, if no device selected
          * send  ACTION_DEVICE_NOT_SELECTED intent, otherwise
          * don;t do anything */
-        if (!mDeviceSelected) {
-            Intent intent = new Intent(BluetoothDevicePicker.ACTION_DEVICE_NOT_SELECTED);
-            if (mLaunchPackage != null && mLaunchClass != null) {
-                intent.setClassName(mLaunchPackage, mLaunchClass);
-            }
-            getActivity().sendBroadcast(intent);
-        }
+        // if (!mDeviceSelected) {
+        //     Intent intent = new Intent(BluetoothDevicePicker.ACTION_DEVICE_NOT_SELECTED);
+        //     if (mLaunchPackage != null && mLaunchClass != null) {
+        //         intent.setClassName(mLaunchPackage, mLaunchClass);
+        //     }
+        //     getActivity().sendBroadcast(intent);
+        // }
     }
 
     @Override
