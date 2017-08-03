@@ -28,27 +28,23 @@ import android.content.pm.PermissionInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v7.preference.PreferenceScreen;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
 
-import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.Utils;
 
 import java.util.List;
 
-public class AppOpsDetails extends InstrumentedFragment {
+public class AppOpsDetails extends PreferenceFragment {
     static final String TAG = "AppOpsDetails";
 
     public static final String ARG_PACKAGE_NAME = "package";
@@ -59,11 +55,17 @@ public class AppOpsDetails extends InstrumentedFragment {
     private PackageInfo mPackageInfo;
     private LayoutInflater mInflater;
     private View mRootView;
-    private LinearLayout mOperationsSection;
+    private PreferenceScreen mPreferenceScreen;
 
     private final int MODE_ALLOWED = 0;
     private final int MODE_IGNORED = 1;
     private final int MODE_ASK     = 2;
+
+    private final String[] MODE_ENTRIES = {
+            String.valueOf(MODE_ALLOWED),
+            String.valueOf(MODE_IGNORED),
+            String.valueOf(MODE_ASK)
+    };
 
     private int modeToPosition (int mode) {
         switch(mode) {
@@ -132,11 +134,11 @@ public class AppOpsDetails extends InstrumentedFragment {
             return false;
         }
 
-        setAppLabelAndIcon(mPackageInfo);
+//        setAppLabelAndIcon(mPackageInfo);
 
-        Resources res = getActivity().getResources();
+        final Resources res = getActivity().getResources();
 
-        mOperationsSection.removeAllViews();
+        mPreferenceScreen.removeAll();
         String lastPermGroup = "";
         boolean isPlatformSigned = isPlatformSigned();
         for (AppOpsState.OpsTemplate tpl : AppOpsState.ALL_TEMPLATES) {
@@ -151,10 +153,8 @@ public class AppOpsDetails extends InstrumentedFragment {
                     mPackageInfo.applicationInfo.uid, mPackageInfo.packageName);
             for (final AppOpsState.AppOpEntry entry : entries) {
                 final AppOpsManager.OpEntry firstOp = entry.getOpEntry(0);
-                final View view = mInflater.inflate(R.layout.app_ops_details_item,
-                        mOperationsSection, false);
-                mOperationsSection.addView(view);
                 String perm = AppOpsManager.opToPermission(firstOp.getOp());
+                Drawable icon = null;
                 if (perm != null) {
                     try {
                         PermissionInfo pi = mPm.getPermissionInfo(perm, 0);
@@ -162,70 +162,89 @@ public class AppOpsDetails extends InstrumentedFragment {
                             lastPermGroup = pi.group;
                             PermissionGroupInfo pgi = mPm.getPermissionGroupInfo(pi.group, 0);
                             if (pgi.icon != 0) {
-                                ((ImageView)view.findViewById(R.id.op_icon)).setImageDrawable(
-                                        pgi.loadIcon(mPm));
+                                icon = pgi.loadIcon(mPm);
                             }
                         }
                     } catch (NameNotFoundException e) {
                     }
                 }
-                ((TextView)view.findViewById(R.id.op_name)).setText(
-                        entry.getSwitchText(mState));
-                ((TextView)view.findViewById(R.id.op_counts)).setText(
-                        entry.getCountsText(res));
-                ((TextView)view.findViewById(R.id.op_time)).setText(
-                        entry.getTimeText(res, true));
-
-                Spinner sp = (Spinner) view.findViewById(R.id.spinnerWidget);
-                sp.setVisibility(View.GONE);
-                Switch sw = (Switch) view.findViewById(R.id.switchWidget);
-                sw.setVisibility(View.GONE);
 
                 final int switchOp = AppOpsManager.opToSwitch(firstOp.getOp());
                 int mode = mAppOps.checkOpNoThrow(switchOp, entry.getPackageOps().getUid(),
                         entry.getPackageOps().getPackageName());
-                sp.setSelection(modeToPosition(mode));
-                sp.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
-                    boolean firstMode = true;
 
-                    @Override
-                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
-                            int position, long id) {
-                        if (firstMode) {
-                            firstMode = false;
-                            return;
-                        }
-                        mAppOps.setMode(switchOp, entry.getPackageOps().getUid(),
-                                entry.getPackageOps().getPackageName(), positionToMode(position));
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parentView) {
-                        // Do nothing
-                    }
-                });
-
-                sw.setChecked(mAppOps.checkOpNoThrow(switchOp, entry.getPackageOps()
-                        .getUid(), entry.getPackageOps().getPackageName()) == AppOpsManager.MODE_ALLOWED);
-                sw.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
-                    public void onCheckedChanged(CompoundButton buttonView,
-                            boolean isChecked) {
-                        mAppOps.setMode(switchOp, entry.getPackageOps()
-                                .getUid(), entry.getPackageOps()
-                                .getPackageName(),
-                                isChecked ? AppOpsManager.MODE_ALLOWED
-                                        : AppOpsManager.MODE_IGNORED);
-                    }
-                });
+                // ListPreference
                 if (AppOpsManager.isStrictOp(switchOp)) {
-                    sp.setVisibility(View.VISIBLE);
+                    ListPreference listPref = new ListPreference(getActivity());
+                    if (icon != null) {
+                        listPref.setIcon(icon);
+                    }
+                    listPref.setKey(entry.getSwitchText(mState).toString());
+                    listPref.setTitle(entry.getSwitchText(mState));
+                    listPref.setEntries(R.array.app_ops_permissions);
+                    listPref.setEntryValues(MODE_ENTRIES);
+                    listPref.setValue(String.valueOf(modeToPosition(mode)));
+                    String summary = getSummary(new CharSequence[] {listPref.getEntry(),
+                            entry.getCountsText(res), entry.getTimeText(res, true)});
+                    listPref.setSummary(summary);
+                    listPref.setEnabled(true);
+                    listPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference, Object newValue) {
+                            ListPreference listPref = (ListPreference) preference;
+                            String value = newValue.toString();
+                            mAppOps.setMode(switchOp, entry.getPackageOps().getUid(),
+                                    entry.getPackageOps().getPackageName(),
+                                    positionToMode(Integer.parseInt(value)));
+                            String summary = getSummary(new CharSequence[] {
+                                    listPref.getEntries()[listPref.findIndexOfValue(value)],
+                                    entry.getCountsText(res), entry.getTimeText(res, true)});
+                            listPref.setSummary(summary);
+                            return true;
+                        }
+                    });
+                    mPreferenceScreen.addPreference(listPref);
                 } else {
-                    sw.setVisibility(View.VISIBLE);
+                    SwitchPreference switchPref = new SwitchPreference(getActivity());
+                    if (icon != null) {
+                        switchPref.setIcon(icon);
+                    }
+                    switchPref.setTitle(entry.getSwitchText(mState));
+                    String summary = getSummary(new CharSequence[] {entry.getCountsText(res),
+                            entry.getTimeText(res, true)});
+                    switchPref.setSummary(summary);
+                    switchPref.setChecked(mode == AppOpsManager.MODE_ALLOWED);
+                    switchPref.setEnabled(true);
+                    switchPref.setOnPreferenceChangeListener(
+                            new Preference.OnPreferenceChangeListener() {
+                                @Override
+                                public boolean onPreferenceChange(Preference preference,
+                                                                  Object newValue) {
+                                    Boolean isChecked = (Boolean) newValue;
+                                    mAppOps.setMode(switchOp, entry.getPackageOps().getUid(),
+                                            entry.getPackageOps().getPackageName(),
+                                            isChecked ? AppOpsManager.MODE_ALLOWED
+                                                    : AppOpsManager.MODE_IGNORED);
+                                    return true;
+                                }
+                            });
+                    mPreferenceScreen.addPreference(switchPref);
                 }
             }
         }
 
         return true;
+    }
+
+    private String getSummary(CharSequence[] lines) {
+        StringBuilder sb = new StringBuilder();
+        for (CharSequence line: lines) {
+            if (line != null) {
+                sb.append("\n");
+                sb.append(line);
+            }
+        }
+        return sb.toString().replaceFirst("\n", "");
     }
 
     private void setIntentAndFinish(boolean finish, boolean appChanged) {
@@ -245,25 +264,11 @@ public class AppOpsDetails extends InstrumentedFragment {
         mInflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mAppOps = (AppOpsManager)getActivity().getSystemService(Context.APP_OPS_SERVICE);
 
+        mPreferenceScreen = getPreferenceManager().createPreferenceScreen(getActivity());
         retrieveAppEntry();
 
+        setPreferenceScreen(mPreferenceScreen);
         setHasOptionsMenu(true);
-    }
-
-    @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.app_ops_details, container, false);
-        Utils.prepareCustomPreferencesList(container, view, view, false);
-
-        mRootView = view;
-        mOperationsSection = (LinearLayout)view.findViewById(R.id.operations_section);
-        return view;
-    }
-
-    @Override
-    protected int getMetricsCategory() {
-        return MetricsEvent.APP_OPS_DETAILS;
     }
 
     @Override
@@ -273,4 +278,7 @@ public class AppOpsDetails extends InstrumentedFragment {
             setIntentAndFinish(true, true);
         }
     }
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) { }
 }
