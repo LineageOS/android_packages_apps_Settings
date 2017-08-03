@@ -39,6 +39,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.InstrumentedFragment;
@@ -169,8 +170,15 @@ public class AppOpsDetails extends InstrumentedFragment {
                     } catch (NameNotFoundException e) {
                     }
                 }
-                ((TextView)view.findViewById(R.id.op_name)).setText(
-                        entry.getSwitchText(mState));
+                TextView opName = (TextView) view.findViewById(R.id.op_name);
+                opName.setText(entry.getSwitchText(mState));
+                opName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        TextView t = (TextView) view;
+                        Toast.makeText(t.getContext(), t.getText(), Toast.LENGTH_SHORT).show();
+                    }
+                });
                 ((TextView)view.findViewById(R.id.op_counts)).setText(
                         entry.getCountsText(res));
                 ((TextView)view.findViewById(R.id.op_time)).setText(
