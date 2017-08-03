@@ -23,8 +23,6 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.PermissionGroupInfo;
-import android.content.pm.PermissionInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -34,7 +32,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -154,25 +151,22 @@ public class AppOpsDetails extends InstrumentedFragment {
                 final View view = mInflater.inflate(R.layout.app_ops_details_item,
                         mOperationsSection, false);
                 mOperationsSection.addView(view);
-                String perm = AppOpsManager.opToPermission(firstOp.getOp());
-                if (perm != null) {
-                    try {
-                        PermissionInfo pi = mPm.getPermissionInfo(perm, 0);
-                        if (pi.group != null && !lastPermGroup.equals(pi.group)) {
-                            lastPermGroup = pi.group;
-                            PermissionGroupInfo pgi = mPm.getPermissionGroupInfo(pi.group, 0);
-                            if (pgi.icon != 0) {
-                                ((ImageView)view.findViewById(R.id.op_icon)).setImageDrawable(
-                                        pgi.loadIcon(mPm));
-                            }
-                        }
-                    } catch (NameNotFoundException e) {
-                    }
+                if (mOperationsSection.getChildCount() == 1) {
+                    view.findViewById(R.id.list_divider).setVisibility(View.GONE);
                 }
-                ((TextView)view.findViewById(R.id.op_name)).setText(
-                        entry.getSwitchText(mState));
-                ((TextView)view.findViewById(R.id.op_counts)).setText(
-                        entry.getCountsText(res));
+
+                TextView opName = (TextView) view.findViewById(R.id.op_name);
+                opName.setText(entry.getSwitchText(mState));
+                opName.setSelected(true);
+
+                TextView countTextView = (TextView) view.findViewById(R.id.op_counts);
+                CharSequence count = entry.getCountsText(res);
+                if (count != null) {
+                    countTextView.setText(count);
+                } else {
+                    countTextView.setVisibility(View.GONE);
+                }
+
                 ((TextView)view.findViewById(R.id.op_time)).setText(
                         entry.getTimeText(res, true));
 
