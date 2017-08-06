@@ -148,7 +148,7 @@ public class AppOpsDetails extends InstrumentedFragment {
                  continue;
             }
             List<AppOpsState.AppOpEntry> entries = mState.buildState(tpl,
-                    mPackageInfo.applicationInfo.uid, mPackageInfo.packageName);
+                    mPackageInfo.applicationInfo.uid, mPackageInfo.packageName, true);
             for (final AppOpsState.AppOpEntry entry : entries) {
                 final AppOpsManager.OpEntry firstOp = entry.getOpEntry(0);
                 final View view = mInflater.inflate(R.layout.app_ops_details_item,
