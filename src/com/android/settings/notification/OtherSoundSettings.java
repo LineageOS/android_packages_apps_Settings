@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.ContentObserver;
+import android.hardware.fingerprint.FingerprintManager;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -217,6 +218,12 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             mBootSounds.setChecked(SystemProperties.getBoolean(PROPERTY_BOOT_SOUNDS, true));
         } else {
             removePreference(KEY_BOOT_SOUNDS);
+        }
+
+        final FingerprintManager fpManager = (FingerprintManager) mContext.getSystemService(
+                Context.FINGERPRINT_SERVICE);
+        if (!fpManager.isHardwareDetected()) {
+            removePreference(CMSettings.Secure.VIBRATE_ON_FP);
         }
 
         final CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
