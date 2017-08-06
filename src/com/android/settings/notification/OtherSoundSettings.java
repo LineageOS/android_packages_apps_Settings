@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.ContentObserver;
+import android.hardware.fingerprint.FingerprintManager;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -48,6 +49,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.content.pm.PackageManager.FEATURE_FINGERPRINT;
 import static com.android.settings.notification.SettingPref.TYPE_GLOBAL;
 import static com.android.settings.notification.SettingPref.TYPE_SYSTEM;
 
@@ -217,6 +219,10 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             mBootSounds.setChecked(SystemProperties.getBoolean(PROPERTY_BOOT_SOUNDS, true));
         } else {
             removePreference(KEY_BOOT_SOUNDS);
+        }
+
+        if (!mContext.getPackageManager().hasSystemFeature(FEATURE_FINGERPRINT)) {
+            removePreference(CMSettings.Secure.VIBRATE_ON_FP);
         }
 
         final CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
