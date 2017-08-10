@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "233f1d6f_959b3783",
+        "filename": "src/com/android/settings/applications/AppOpsDetails.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2017-08-10T13:42:44Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to move this after positionToMode() to keep modeToPosition() and positionToMode() close to the above definitions. If you are changing any of them, you likely need to change the others, so it makes sense to have them one after the other.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 46
+      },
+      "revId": "f90b2fdee305e2b00fdc4b366c39e66fea3646c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ca820e3_07edbe59",
+        "filename": "src/com/android/settings/applications/AppOpsDetails.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2017-08-10T13:42:44Z",
+      "side": 1,
+      "message": "Even though I think resource IDs are never negative, the documentation only says that 0/null is invalid, so I\u0027d use 0.",
+      "range": {
+        "startLine": 204,
+        "startChar": 36,
+        "endLine": 204,
+        "endChar": 44
+      },
+      "revId": "f90b2fdee305e2b00fdc4b366c39e66fea3646c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ba4de9f_1f99554c",
+        "filename": "src/com/android/settings/applications/AppOpsDetails.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2017-08-10T13:42:44Z",
+      "side": 1,
+      "message": "Preferences are persistent by default, but if the key is null, they are not saved even without calling setPersistent(false). We don\u0027t want this to be persistent since it causes the wrong value to be selected by default and it just pollutes the SharedPreferences with something we don\u0027t use, so don\u0027t set any key.",
+      "range": {
+        "startLine": 220,
+        "startChar": 20,
+        "endLine": 220,
+        "endChar": 55
+      },
+      "revId": "f90b2fdee305e2b00fdc4b366c39e66fea3646c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93cd0b58_9e7fa9e9",
+        "filename": "src/com/android/settings/applications/AppOpsDetails.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2017-08-10T13:42:44Z",
+      "side": 1,
+      "message": "It doesn\u0027t hurt to have this here, but I just wanted to say that preferences are enabled by default.",
+      "range": {
+        "startLine": 229,
+        "startChar": 20,
+        "endLine": 229,
+        "endChar": 46
+      },
+      "revId": "f90b2fdee305e2b00fdc4b366c39e66fea3646c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2c53919_249b33a3",
+        "filename": "src/com/android/settings/applications/AppOpsDetails.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2017-08-10T13:42:44Z",
+      "side": 1,
+      "message": "selectedIndex",
+      "range": {
+        "startLine": 237,
+        "startChar": 51,
+        "endLine": 237,
+        "endChar": 74
+      },
+      "revId": "f90b2fdee305e2b00fdc4b366c39e66fea3646c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c29a9e50_d08dc6b3",
+        "filename": "src/com/android/settings/applications/AppOpsDetails.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2017-08-10T13:42:44Z",
+      "side": 1,
+      "message": "Highlighting this one in case you decide to remove the one above.",
+      "range": {
+        "startLine": 254,
+        "startChar": 20,
+        "endLine": 254,
+        "endChar": 48
+      },
+      "revId": "f90b2fdee305e2b00fdc4b366c39e66fea3646c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
