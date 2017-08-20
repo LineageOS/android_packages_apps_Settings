@@ -32,6 +32,7 @@ LOCAL_SRC_FILES := \
         src/com/android/settings/EventLogTags.logtags
 
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res \
+    $(LOCAL_PATH)/../../resources/devicesettings/res \
     frameworks/support/v7/preference/res \
     frameworks/support/v14/preference/res \
     frameworks/support/v7/appcompat/res \
