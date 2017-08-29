@@ -623,12 +623,12 @@ public class UserSettings extends SettingsPreferenceFragment
     }
 
     private static boolean emergencyInfoActivityPresent(Context context) {
-        Intent intent = new Intent(ACTION_EDIT_EMERGENCY_INFO).setPackage("com.android.emergency");
-        List<ResolveInfo> infos = context.getPackageManager().queryIntentActivities(intent, 0);
-        if (infos == null || infos.isEmpty()) {
+//        Intent intent = new Intent(ACTION_EDIT_EMERGENCY_INFO).setPackage("com.android.emergency");
+//        List<ResolveInfo> infos = context.getPackageManager().queryIntentActivities(intent, 0);
+//        if (infos == null || infos.isEmpty()) {
             return false;
-        }
-        return true;
+//        }
+//        return true;
     }
 
     private void removeUserNow() {
