@@ -16,7 +16,14 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
+			<PreferenceCategory android:layout="@layout/jactivelteam" android:key="logo" android:title="" />
 
+		<!-- JactiveLTeam -->
+        <PreferenceScreen android:key="jactivelteam"
+                android:title="JactiveLTEam"
+                android:summary="Ivan Cristina (IvanCristina)\nBruno Negovec (zagi988)\nVladyslav Tsvietkov (tsvetkov_vlad)\nVishwa Kumar">
+        </PreferenceScreen>
+		
         <!-- System update settings - launches activity -->
         <Preference android:key="additional_system_update_settings"
                     android:title="@string/additional_system_update_settings_list_item_title">
