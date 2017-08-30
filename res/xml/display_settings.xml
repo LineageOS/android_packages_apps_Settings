@@ -83,6 +83,13 @@
         android:fragment="com.android.settings.accessibility.ToggleFontSizePreferenceFragment"
         settings:keywords="@string/keywords_display_font_size" />
 
+    <org.lineageos.internal.lineageparts.LineagePartsPreference
+        android:key="systemui_burnin_protection"
+        android:title="@string/burnin_protection_title"
+        android:summary="@string/burnin_protection_summary"
+        android:defaultValue="false"
+        lineage:requiresConfig="@*android:bool/config_enableBurnInProtection"/>
+
     <com.android.settings.display.ScreenZoomPreference
         android:key="screen_zoom"
         android:title="@string/screen_zoom_title"
