@@ -139,6 +139,13 @@
                 android:title="@string/screen_zoom_title"
                 settings:keywords="@string/screen_zoom_keywords" />
 
+        <cyanogenmod.preference.CMSystemSettingSwitchPreference
+                android:key="systemui_burnin_protection"
+                android:title="@string/burnin_protection_title"
+                android:summary="@string/burnin_protection_summary"
+                android:defaultValue="false"
+                cm:requiresConfig="@*cyanogenmod.platform:bool/config_enableBurnInProtection"/>
+
         <!-- Disable on CM
         <DropDownPreference
                 android:key="auto_rotate"
