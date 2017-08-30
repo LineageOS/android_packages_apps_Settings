@@ -116,6 +116,12 @@
         <intent android:action="com.android.settings.action.DEMO_MODE" />
     </PreferenceScreen>
 
+    <cyanogenmod.preference.CMSystemSettingSwitchPreference
+        android:key="systemui_burnin_protection"
+        android:title="@string/burnin_protection_title"
+        android:defaultValue="false"
+        cm:requiresConfig="@*cyanogenmod.platform:bool/config_enableBurnInProtection"/>
+
     <ListPreference
         android:key="root_access"
         android:title="@string/root_access"
