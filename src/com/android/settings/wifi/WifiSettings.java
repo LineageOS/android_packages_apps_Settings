@@ -481,6 +481,12 @@ public class WifiSettings extends RestrictedSettingsFragment
                         menu.add(Menu.NONE, MENU_ID_WRITE_NFC, 0, R.string.wifi_menu_write_to_nfc);
                     }
                 }
+                if (mSelectedAccessPoint.isSaved() && !mSelectedAccessPoint.isPasspoint()) {
+                    MenuItem item = menu.add(
+                        Menu.NONE, MENU_ID_AUTO_CONNECT, 0, R.string.wifi_menu_auto_connect);
+                    item.setCheckable(true);
+                    item.setChecked(config.autoConnect != WifiConfiguration.AUTOCONNECT_DISABLED);
+                }
             }
     }
 
@@ -517,6 +523,14 @@ public class WifiSettings extends RestrictedSettingsFragment
             // Wifi extension requirement
             case MENU_ID_DISCONNECT: {
                 mWifiManager.disconnect();
+                return true;
+            }
+            case MENU_ID_AUTO_CONNECT: {
+                WifiConfiguration newConfig = new WifiConfiguration();
+                newConfig.networkId = mSelectedAccessPoint.getConfig().networkId;
+                newConfig.autoConnect = item.isChecked() ? 0 : 1;
+                mWifiManager.save(newConfig, mSaveListener);
+                mWifiTracker.resumeScanning();
                 return true;
             }
         }
