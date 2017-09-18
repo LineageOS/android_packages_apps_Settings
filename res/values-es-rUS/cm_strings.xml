@@ -19,8 +19,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
-    <item quantity="one">Ahora estás a <xliff:g id="step_count">%1$d </xliff:g> paso de activar las configuraciones de desarrollo.</item>
-    <item quantity="other">Estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de activar las configuraciones de desarrollo.</item>
+    <item quantity="one">Estás a <xliff:g id="step_count">%1$d</xliff:g> paso de activar los ajustes de desarrollo.</item>
+    <item quantity="other">Estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de activar los ajustes de desarrollo.</item>
   </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">¡Has activado los ajustes de desarrollo!</string>
@@ -59,7 +59,7 @@
   <string name="app_ops_categories_messaging">Mensajes</string>
   <string name="app_ops_categories_media">Multimedia</string>
   <string name="app_ops_categories_device">Dispositivo</string>
-  <string name="app_ops_categories_background">Fondo de pantalla</string>
+  <string name="app_ops_categories_background">Segundo plano</string>
   <string name="app_ops_categories_bootup">Arranque</string>
   <string name="app_ops_categories_su">Acceso de superusuario</string>
   <!-- User display names for app ops codes - extension of AOSP -->
@@ -73,7 +73,7 @@
   <string name="app_ops_summaries_modify_call_log">modificar registro de llamadas</string>
   <string name="app_ops_summaries_read_calendar">leer el calendario</string>
   <string name="app_ops_summaries_modify_calendar">modificar el calendario</string>
-  <string name="app_ops_summaries_wifi_scan">escanear Wi-Fi</string>
+  <string name="app_ops_summaries_wifi_scan">Escanear Wi-Fi</string>
   <string name="app_ops_summaries_notification">notificación/mensaje</string>
   <string name="app_ops_summaries_cell_scan">escanear red móvil</string>
   <string name="app_ops_summaries_call_phone">realizar llamada</string>
@@ -144,10 +144,10 @@
   <string name="app_ops_labels_modify_call_log">Modificar registro de llamadas</string>
   <string name="app_ops_labels_read_calendar">Leer calendario</string>
   <string name="app_ops_labels_modify_calendar">Modificar calendario</string>
-  <string name="app_ops_labels_wifi_scan">Exploración de conexiones Wi-Fi</string>
+  <string name="app_ops_labels_wifi_scan">Escanear Wi-Fi</string>
   <string name="app_ops_labels_notification">Notificación/Mensaje</string>
-  <string name="app_ops_labels_cell_scan">Escaneo de red móvil</string>
-  <string name="app_ops_labels_call_phone">Llamar</string>
+  <string name="app_ops_labels_cell_scan">Escanear red móvil</string>
+  <string name="app_ops_labels_call_phone">Realizar llamada</string>
   <string name="app_ops_labels_read_sms">Leer SMS</string>
   <string name="app_ops_labels_write_sms">Escribir SMS</string>
   <string name="app_ops_labels_receive_sms">Recibir SMS</string>
@@ -161,12 +161,12 @@
   <string name="app_ops_labels_draw_on_top">Mostrar encima</string>
   <string name="app_ops_labels_access_notifications">Acceso a notificaciones</string>
   <string name="app_ops_labels_camera">Cámara</string>
-  <string name="app_ops_labels_record_audio">Grabar sonido</string>
-  <string name="app_ops_labels_play_audio">Reproducir sonido</string>
+  <string name="app_ops_labels_record_audio">Grabar audio</string>
+  <string name="app_ops_labels_play_audio">Reproducir audio</string>
   <string name="app_ops_labels_read_clipboard">Leer el portapapeles</string>
   <string name="app_ops_labels_modify_clipboard">Modificar el portapapeles</string>
   <string name="app_ops_labels_media_buttons">Botones multimedia</string>
-  <string name="app_ops_labels_audio_focus">Sonido</string>
+  <string name="app_ops_labels_audio_focus">Enfoque del audio</string>
   <string name="app_ops_labels_master_volume">Volumen</string>
   <string name="app_ops_labels_voice_volume">Volumen de voz</string>
   <string name="app_ops_labels_ring_volume">Volumen de llamada</string>
@@ -205,7 +205,7 @@
   <string name="app_ops_labels_toggle_mobile_data">Alternar datos móviles</string>
   <string name="app_ops_labels_superuser">Acceso de superusuario (root)</string>
   <!-- App ops permissions -->
-  <string name="app_ops_permissions_allowed">Permitir</string>
+  <string name="app_ops_permissions_allowed">Permitido</string>
   <string name="app_ops_permissions_ignored">Ignorado</string>
   <string name="app_ops_permissions_always_ask">Preguntar siempre</string>
   <!-- App ops detail -->
@@ -335,7 +335,7 @@
   <string name="zen_mode_summary_selected_messages">mensajes seleccionados</string>
   <!-- Notification sound timeout -->
   <string name="app_notification_sound_timeout_title">Tiempo mínimo entre los sonidos de notificación</string>
-  <string name="app_notification_sound_timeout_summary_template">Permitir sonidos o vibraciones no más de una vez cada <xliff:g id="duration">%1$s </xliff:g></string>
+  <string name="app_notification_sound_timeout_summary_template">Permitir sonidos o vibraciones no más de una vez cada <xliff:g id="duration">%1$s</xliff:g></string>
   <string name="app_notification_sound_timeout_value_none">Sin restricción</string>
   <string name="app_notification_sound_timeout_value_10_seconds">10 segundos</string>
   <string name="app_notification_sound_timeout_value_30_seconds">30 segundos</string>
@@ -356,7 +356,7 @@
   <!-- CM Legal -->
   <string name="cmlicense_title">Licencia de LineageOS</string>
   <!-- Format string for fingerprint location message -->
-  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Ubique el sensor de huella digital en el <xliff:g id="sensor_location">%1$s </xliff:g> de su teléfono.</string>
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Ubique el sensor de huella digital en el <xliff:g id="sensor_location">%1$s</xliff:g> del teléfono.</string>
   <!-- Fingerprint sensor locations -->
   <string name="security_settings_fingerprint_sensor_location_back">lado trasero</string>
   <string name="security_settings_fingerprint_sensor_location_front">lado frontal</string>
@@ -388,11 +388,11 @@
   <string name="data_usage_app_restrict_data_category_title">Acceso a los datos móviles</string>
   <string name="data_usage_app_restrict_wifi_category_title">Acceso a los datos Wi\u2011Fi</string>
   <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
-  <string name="data_usage_app_restrict_all_data_title">Desactivar acceso de datos móviles</string>
+  <string name="data_usage_app_restrict_all_data_title">Desactivar acceso a los datos móviles</string>
   <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
   <string name="data_usage_app_restrict_all_data_summary">Evitar cualquier uso de datos a través de redes móviles</string>
   <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
-  <string name="data_usage_app_restrict_all_wifi_title">Desactivar el acceso a todos los datos Wi\u2011Fi</string>
+  <string name="data_usage_app_restrict_all_wifi_title">Desactivar acceso a los datos Wi\u2011Fi</string>
   <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
   <string name="data_usage_app_restrict_all_wifi_summary">Impedir cualquier utilización del acceso a datos mediante redes de Wi\u2011Fi</string>
   <!-- Volume link notification -->
@@ -408,7 +408,7 @@
   <!-- Status bar - double tap to sleep -->
   <string name="status_bar_double_tap_to_sleep_title">Doble pulsación para suspender</string>
   <string name="status_bar_double_tap_to_sleep_summary">Pulsa dos veces la barra de estado para apagar la pantalla</string>
-  <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s </xliff:g> es <xliff:g id="status" example="disabled">%2$s </xliff:g></string>
+  <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> es <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
   <string name="sim_enabled">activada</string>
   <string name="sim_disabled">desactivada</string>
   <string name="sim_missing">ausente o defectuosa</string>
