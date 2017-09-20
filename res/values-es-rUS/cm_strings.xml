@@ -23,15 +23,15 @@
     <item quantity="other">Estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de obtener el ID del dispositivo.</item>
   </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
-  <string name="show_device_id_copied_cm">ID del dispositivo: [<xliff:g id="device_id">%1$s </xliff:g>] copiado al portapapeles</string>
+  <string name="show_device_id_copied_cm">ID del dispositivo: [<xliff:g id="device_id">%1$s</xliff:g>] copiado al portapapeles</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
   <string name="show_device_id_failed_cm">El ID del dispositivo no está disponible en esta versión</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
   <string name="show_device_id_clipboard_label">ID del dispositivo</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
-    <item quantity="one">Ahora estás a <xliff:g id="step_count">%1$d </xliff:g> paso de activar las configuraciones de desarrollo.</item>
-    <item quantity="other">Estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de activar las configuraciones de desarrollo.</item>
+    <item quantity="one">Estás a <xliff:g id="step_count">%1$d</xliff:g> paso de activar los ajustes de desarrollo.</item>
+    <item quantity="other">Estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de activar los ajustes de desarrollo.</item>
   </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">¡Has activado los ajustes de desarrollo!</string>
@@ -78,7 +78,7 @@
   <!-- Settings main menu entry -->
   <string name="themes_settings_title">Temas</string>
   <!-- Sound settings screen -->
-  <string name="ring_mode_title">Modo de sonido</string>
+  <string name="ring_mode_title">Modo de llamadas</string>
   <string name="ring_mode_normal">Normal</string>
   <string name="ring_mode_vibrate">Vibrar</string>
   <string name="ring_mode_mute">Silencio</string>
@@ -146,7 +146,7 @@
   <string name="profile_trigger_notrigger">Sin evento</string>
   <!-- Profile Settings sound modes labels -->
   <string name="sound_mode">Modo de notificación</string>
-  <string name="ringer_mode">Modo de sonido</string>
+  <string name="ringer_mode">Modo de llamadas</string>
   <string name="lights_mode">Brillo</string>
   <string name="vibrate_mode">Vibración</string>
   <string name="choose_soundtone">Escoger tono de notificación</string>
@@ -237,7 +237,7 @@
   <string name="navigation_bar_left_title">Modo para zurdos</string>
   <string name="navigation_bar_left_summary">Colocar la barra de navegación a la izquierda de la pantalla en modo horizontal</string>
   <string name="navigation_bar_title">Botones y disposición</string>
-  <string name="navigation_bar_help_text">Para empezar, pulsa el icono editar para abrir la barra de navegación en modo de edición.\n\nPuedes pulsar el icono para cambiar su acceso directo, o bien mantener pulsado un icono para volver a organizar su disposición.\n\nPulsa sobre \'Guardar\' para guardar los cambios o restaurar para volver a la disposición predefinida.</string>
+  <string name="navigation_bar_help_text">Para empezar, pulsa el icono editar para abrir la barra de navegación en modo de edición.\n\nPuedes pulsar el icono para cambiar su acceso directo, o bien mantener pulsado un icono para volver a organizar su disposición.\n\nPulsa sobre «Guardar» para guardar los cambios o restaurar para volver a la disposición predefinida.</string>
   <string name="navigation_restore_button_text">Restaurar\n valores predefinidos</string>
   <string name="navigation_edit_button_text">Editar</string>
   <string name="navigation_save_button_text">Guardar</string>
@@ -288,7 +288,7 @@
   <!-- Lights settings, LED notification -->
   <string name="led_notification_title">Ajustes de luz de notificación</string>
   <string name="led_notification_text">Luz LED activada por los ajustes</string>
-  <string name="notification_light_no_apps_summary">Para añadir el control por aplicación, activar \'%1$s\' y pulsar \'\u002b\' en la barra de menús</string>
+  <string name="notification_light_no_apps_summary">Para añadir el control por aplicación, activa «%1$s» y pulsa «\u002b» en la barra de menú</string>
   <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
   <string name="enable_adb_cm">Depuración en Android</string>
   <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
@@ -320,7 +320,7 @@
   <string name="app_ops_summaries_modify_call_log">modificar registro de llamadas</string>
   <string name="app_ops_summaries_read_calendar">leer el calendario</string>
   <string name="app_ops_summaries_modify_calendar">modificar el calendario</string>
-  <string name="app_ops_summaries_wifi_scan">escanear Wi-Fi</string>
+  <string name="app_ops_summaries_wifi_scan">Escanear Wi-Fi</string>
   <string name="app_ops_summaries_notification">notificación/mensaje</string>
   <string name="app_ops_summaries_cell_scan">escanear red móvil</string>
   <string name="app_ops_summaries_call_phone">realizar llamada</string>
@@ -390,10 +390,10 @@
   <string name="app_ops_labels_modify_call_log">Modificar registro de llamadas</string>
   <string name="app_ops_labels_read_calendar">Leer calendario</string>
   <string name="app_ops_labels_modify_calendar">Modificar calendario</string>
-  <string name="app_ops_labels_wifi_scan">Exploración de conexiones Wi-Fi</string>
+  <string name="app_ops_labels_wifi_scan">Escanear Wi-Fi</string>
   <string name="app_ops_labels_notification">Notificación/Mensaje</string>
-  <string name="app_ops_labels_cell_scan">Escaneo de red móvil</string>
-  <string name="app_ops_labels_call_phone">Llamar</string>
+  <string name="app_ops_labels_cell_scan">Escanear red móvil</string>
+  <string name="app_ops_labels_call_phone">Realizar llamada</string>
   <string name="app_ops_labels_read_sms">Leer SMS</string>
   <string name="app_ops_labels_write_sms">Escribir SMS</string>
   <string name="app_ops_labels_receive_sms">Recibir SMS</string>
@@ -407,12 +407,12 @@
   <string name="app_ops_labels_draw_on_top">Mostrar encima</string>
   <string name="app_ops_labels_access_notifications">Acceso a notificaciones</string>
   <string name="app_ops_labels_camera">Cámara</string>
-  <string name="app_ops_labels_record_audio">Grabar sonido</string>
-  <string name="app_ops_labels_play_audio">Reproducir sonido</string>
+  <string name="app_ops_labels_record_audio">Grabar audio</string>
+  <string name="app_ops_labels_play_audio">Reproducir audio</string>
   <string name="app_ops_labels_read_clipboard">Leer el portapapeles</string>
   <string name="app_ops_labels_modify_clipboard">Modificar el portapapeles</string>
   <string name="app_ops_labels_media_buttons">Botones multimedia</string>
-  <string name="app_ops_labels_audio_focus">Sonido</string>
+  <string name="app_ops_labels_audio_focus">Enfoque del audio</string>
   <string name="app_ops_labels_master_volume">Volumen</string>
   <string name="app_ops_labels_voice_volume">Volumen de voz</string>
   <string name="app_ops_labels_ring_volume">Volumen de llamada</string>
@@ -450,7 +450,7 @@
   <string name="app_ops_labels_toggle_mobile_data">Alternar datos móviles</string>
   <string name="app_ops_labels_superuser">Acceso de superusuario (root)</string>
   <!-- App ops permissions -->
-  <string name="app_ops_permissions_allowed">Permitir</string>
+  <string name="app_ops_permissions_allowed">Permitido</string>
   <string name="app_ops_permissions_ignored">Ignorado</string>
   <string name="app_ops_permissions_always_ask">Preguntar siempre</string>
   <!-- App ops detail -->
@@ -477,7 +477,7 @@
   <string name="hardware_keys_menu_key_title">Botón de menú</string>
   <string name="hardware_keys_assist_key_title">Botón de búsqueda</string>
   <string name="hardware_keys_appswitch_key_title">Botón recientes</string>
-  <string name="hardware_keys_camera_key_title">Botón cámara</string>
+  <string name="hardware_keys_camera_key_title">Botón de la cámara</string>
   <string name="hardware_keys_volume_keys_title">Botones de volumen</string>
   <string name="hardware_keys_short_press_title">Acción de pulsación corta</string>
   <string name="hardware_keys_long_press_title">Acción de pulsación larga</string>
@@ -595,7 +595,7 @@
   <string name="live_display_color_temperature_label"><xliff:g id="degrees">%1$d</xliff:g>K</string>
   <string name="live_display_day">Día</string>
   <string name="live_display_night">Noche</string>
-  <string name="live_display_outdoor_mode_title">Modo automático al aire libre</string>
+  <string name="live_display_outdoor_mode_title">Modo exterior automático</string>
   <string name="live_display_outdoor_mode_summary">Aumentar automáticamente el brillo y la saturación con la luz del sol</string>
   <string name="live_display_low_power_title">Reducir el consumo de energía</string>
   <string name="live_display_low_power_summary">Ajustar la pantalla al mínimo consumo de energía sin degradación</string>
@@ -651,7 +651,7 @@
   <string name="category_spen_title">Gestos del lápiz</string>
   <string name="enable_subcat_title">Lápiz</string>
   <string name="enable_spen_title_head">Activar gestos</string>
-  <string name="enable_spen_summary_head">Usar gestos con el botón del lápiz pulsado</string>
+  <string name="enable_spen_summary_head">Usar gestos de deslizamiento al pulsar el botón de «Stylus»</string>
   <string name="gestures_subcat_title">Gestos</string>
   <string name="gestures_left_spen_title_head">Deslizar a la izquierda</string>
   <string name="gestures_right_spen_title_head">Deslizar a la derecha</string>
@@ -747,13 +747,13 @@
   <!-- Privacy Guard -->
   <string name="privacy_guard_default_title">Activada de forma predefinida</string>
   <string name="privacy_guard_default_summary">Activar de forma predefinida para nuevas aplicaciones</string>
-  <string name="privacy_guard_manager_title">Guardián de Privacidad</string>
+  <string name="privacy_guard_manager_title">Guardián de privacidad</string>
   <string name="privacy_guard_manager_summary">Gestionar las aplicaciones que podrán acceder a los datos personales</string>
   <string name="privacy_guard_no_user_apps">Sin aplicaciones instaladas</string>
   <string name="privacy_guard_help_title">Ayuda</string>
   <string name="privacy_guard_reset_title">Restablecer</string>
   <string name="privacy_guard_reset_text">¿Restablecer permisos?</string>
-  <string name="privacy_guard_help_text">En esta pantalla puedes elegir las aplicaciones para las que se activará Privacy Guard pulsando sobre ellas. Las aplicaciones seleccionadas no podrán acceder a tu información personal, como contactos, mensajes o registro de llamadas. Realiza una pulsación larga para ver la pantalla de detalles de la aplicación.\n\nLas aplicaciones del sistema no se muestran de forma predefinida pero pueden mostrarse seleccionando la opción de menú correspondiente.</string>
+  <string name="privacy_guard_help_text">En esta pantalla puedes elegir las aplicaciones para las que se activará «Guardián de privacidad» pulsando sobre ellas. Las aplicaciones seleccionadas no podrán acceder a tu información personal, como contactos, mensajes o registro de llamadas. Realiza una pulsación larga para ver la pantalla de detalles de la aplicación.\n\nLas aplicaciones del sistema no se muestran de forma predefinida pero pueden mostrarse seleccionando la opción de menú correspondiente.</string>
   <string name="privacy_guard_manager_show_system_apps">Mostrar aplicaciones del sistema</string>
   <string name="privacy_guard_advanced_settings_title">Avanzado</string>
   <string name="privacy_guard_notification_title">Mostrar notificación</string>
@@ -796,7 +796,7 @@
   <string name="expanded_hide_status">Ocultar barra de estado</string>
   <string name="expanded_hide_navigation">Ocultar la barra de navegación</string>
   <string name="expanded_hide_both">Ocultar ambas</string>
-  <string name="expanded_nothing_to_show">Para añadir un ajuste personalizado por aplicación para el estado ampliado, establece \"Activado para todos\" en la posición de apagado</string>
+  <string name="expanded_nothing_to_show">Para añadir un ajuste personalizado por aplicación para el estado ampliado, establece «Activado para todos» en la posición de apagado</string>
   <string name="expanded_enabled_for_all">Activado para todos</string>
   <string name="expanded_desktop_style">Estilo de escritorio ampliado</string>
   <string name="expanded_desktop_style_description">Elige un valor predefinido para el estilo del escritorio ampliado</string>
@@ -839,7 +839,7 @@
   <string name="blacklist_regex_summary">Usar . como comodín y * para repetición. Por ejemplo, 123.* bloqueará números que comiencen con 123 y .*123.* bloqueará números que contengan 123</string>
   <string name="blacklist_policy_block_calls">Bloquear llamadas entrantes</string>
   <string name="blacklist_policy_block_messages">Bloquear mensajes entrantes</string>
-  <string name="blacklist_bad_number_add">No se puede añadir un número no válido a la lista de personas bloqueadas</string>
+  <string name="blacklist_bad_number_add">No se puede añadir un número inválido a la lista de personas bloqueadas</string>
   <!-- Blacklist management -->
   <string name="remove_blacklist_number_title">Quitar número</string>
   <string name="remove_blacklist_entry">¿Quieres quitar este número de teléfono bloqueado?</string>
@@ -919,7 +919,7 @@
   <!-- APNs screen message indicating new APN user is adding is a duplicate -->
   <string name="duplicate_apn_error_title">APN Duplicado</string>
   <string name="duplicate_apn_error_message">Ya existe esta APN. Deseche o cambie los parámetros.</string>
-  <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s </xliff:g> es <xliff:g id="status" example="disabled">%2$s </xliff:g></string>
+  <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> es <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
   <string name="sim_disabled">desactivada</string>
   <string name="sim_missing">ausente o defectuosa</string>
   <string name="sim_enabler_need_disable_sim">La tarjeta SIM se desactivará. ¿Quieres continuar?</string>
@@ -1047,7 +1047,7 @@
   <string name="reset_data_stats_msg">Esto borrará todos los datos información de seguimiento</string>
   <string name="reset_stats_confirm">Confirmar</string>
   <string name="restrict_cellular_access_title">Restringir el acceso de datos móviles</string>
-  <string name="restrict_cellular_access_summary">Desactivar el acceso de datos en redes móviles</string>
+  <string name="restrict_cellular_access_summary">Desactivar acceso de datos en redes móviles</string>
   <string name="restrict_cellular_access_dialog_title">¿Restringir el acceso de datos móviles?</string>
   <string name="restrict_cellular_access_dialog_summary">Esta función puede causar que una aplicación que depende del acceso a la red deje de funcionar cuando haya sólo redes móviles disponibles.\n\nPuede encontrar los controles de uso de datos más adecuados en los ajustes disponibles dentro de la aplicación.</string>
   <!-- Label for settings shortcut: carrier selection -->
@@ -1063,7 +1063,7 @@
   <string name="app_notification_no_ongoing_on_keyguard_summary">No mostrar nunca notificaciones persistentes de esta aplicación en la pantalla bloqueada</string>
   <!-- Notification sound timeout -->
   <string name="app_notification_sound_timeout_title">Tiempo mínimo entre los sonidos de notificación</string>
-  <string name="app_notification_sound_timeout_summary_template">Permitir sonidos o vibraciones no más de una vez cada <xliff:g id="duration">%1$s </xliff:g></string>
+  <string name="app_notification_sound_timeout_summary_template">Permitir sonidos o vibraciones no más de una vez cada <xliff:g id="duration">%1$s</xliff:g></string>
   <string name="app_notification_sound_timeout_value_none">Sin restricción</string>
   <string name="app_notification_sound_timeout_value_10_seconds">10 segundos</string>
   <string name="app_notification_sound_timeout_value_30_seconds">30 segundos</string>
@@ -1090,7 +1090,7 @@
   <string name="lockscreen_wallpaper_title">Fondo de pantalla</string>
   <string name="not_available_with_app">No disponible con %1$s</string>
   <!-- Format string for fingerprint location message -->
-  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Ubique el sensor de huella digital en el <xliff:g id="sensor_location">%1$s </xliff:g> de su teléfono.</string>
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Ubique el sensor de huella digital en el <xliff:g id="sensor_location">%1$s</xliff:g> del teléfono.</string>
   <!-- Fingerprint sensor locations -->
   <string name="security_settings_fingerprint_sensor_location_back">lado trasero</string>
   <string name="security_settings_fingerprint_sensor_location_front">lado frontal</string>

@@ -91,6 +91,7 @@
   <string name="rename_dialog_hint">Introduz el nome del perfil</string>
   <!-- Reset Profiles -->
   <!-- Delete confimation messages -->
+  <string name="profile_app_delete_confirm">¿Desaniciar esta aplicación?</string>
   <!-- Profile network mode -->
   <string name="profile_networkmode_2g">2G</string>
   <string name="profile_networkmode_3g">3G</string>
@@ -100,20 +101,33 @@
   <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volume_override_checkbox_label">Anular volume</string>
   <!-- Menu item for managing profiles -->
+  <string name="profile_profiles_manage">Perfiles</string>
+  <string name="profile_profile_manage">Xestionar perfil</string>
   <string name="profile_appgroups_manage">Grupos d\'aplicaciones</string>
   <!-- Profile settings screen, section header for settings related to notification profiles -->
+  <string name="profile_settings">Axustes de perfil</string>
+  <string name="profile_trigger_connect">Al coneutar</string>
+  <string name="profile_trigger_disconnect">Al desconeutar</string>
+  <string name="profile_trigger_notrigger">Ensin aicionador</string>
   <!-- Profile Settings sound modes labels -->
+  <string name="sound_mode">Mou d\'avisu</string>
   <string name="choose_ringtone">Escoyer timbre</string>
   <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
   <string name="soundtone_title">Tonu d\'avisu</string>
   <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">Grupos d\'aplicaciones</string>
+  <string name="profile_applist_title">Aplicaciones</string>
   <string name="profile_delete_appgroup">¿Desaniciar esti grupu d\'aplicaciones?</string>
   <!-- Add application dialog box title -->
   <!-- Profiles - system settings -->
+  <string name="profile_system_settings_title">Axustes del sistema</string>
+  <string name="profile_lockmode_insecure_summary">Nun pide PIN o contraseña</string>
+  <string name="profile_airplanemode_title">Mou avión</string>
   <string name="profile_brightness_title">Brilléu de pantalla</string>
   <string name="profile_brightness_override_checkbox_label">Anular brilléu</string>
   <!-- Connection override toggles (not all are used at this time ) -->
+  <string name="toggleWifi">Wi\u2011Fi</string>
+  <string name="toggleWifiAp">Puntu d\'accesu Wi\u2011Fi</string>
   <string name="toggleBluetooth">Bluetooth</string>
   <string name="toggleGPS">GPS</string>
   <string name="toggleData">Conexón de datos</string>
@@ -139,18 +153,26 @@
   <string name="wifi_countrycode_in">India</string>
   <!-- Profiles -->
   <string name="profile_menu_delete_title">Desaniciar</string>
+  <string name="profile_trigger_a2dp_connect">Al coneutar A2DP</string>
+  <string name="profile_trigger_a2dp_disconnect">Al desconeutar A2DP</string>
+  <string name="profile_tabs_wifi">Wi\u2011Fi</string>
   <string name="profile_tabs_bluetooth">Bluetooth</string>
   <string name="profile_tabs_nfc">NFC</string>
+  <string name="profile_triggers_header">Los disparadores qu\'activarán esti perfil</string>
   <string name="profile_setup_setup_triggers_title">Pasu 1: Amestar aicionadores</string>
   <string name="profile_setup_setup_triggers_title_config">Modificar aicionadores: <xliff:g id="profile_name">%1$s</xliff:g></string>
   <string name="profile_appgroups_manage">Grupos d\'aplicaciones</string>
   <!-- Title for application group setting screen -->
   <string name="profile_appgroups_title">Grupos d\'aplicaciones</string>
   <string name="profile_delete_appgroup">¿Desaniciar esti grupu d\'aplicaciones?</string>
+  <string name="profile_app_delete_confirm">¿Desaniciar esta aplicación?</string>
+  <string name="no_bluetooth_triggers">Nun hai preseos Bluetooth empareyaos.\nCalca pa empareyar el preséu Bluetooth enantes de configurar los aicionadores.</string>
   <string name="no_triggers_configured_nfc">Calca pa configurar un aicionador NFC nuevu.</string>
   <string name="profile_setup_actions_description">Agora configura qué asocede cuando s\'active\'l perfil</string>
   <!-- Navigation Bar -->
   <string name="navigation_bar_left_title">Mou pa maniegos</string>
+  <string name="navigation_edit_button_text">Editar</string>
+  <string name="navigation_save_button_text">Guardar</string>
   <!-- Notification light dialogs -->
   <string name="default_time">Normal</string>
   <!-- Values for the notification light pulse spinners -->
@@ -179,6 +201,7 @@
   <string name="app_ops_categories_personal">Personal</string>
   <string name="app_ops_categories_messaging">Mensaxería</string>
   <string name="app_ops_categories_device">Preséu</string>
+  <string name="app_ops_categories_bootup">Arranque</string>
   <string name="app_ops_categories_su">Accesu root</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_summaries_gps">GPS</string>
@@ -215,6 +238,7 @@
   <string name="app_ops_summaries_get_usage_stats">consiguir estadístiques d\'usu</string>
   <string name="app_ops_summaries_mute_unmute_microphone">de/silenciar micrófonu</string>
   <string name="app_ops_summaries_activate_vpn">activar VPN</string>
+  <string name="app_ops_summaries_mock_location">allugamientu falsu</string>
   <string name="app_ops_summaries_toggle_nfc">alternar NFC</string>
   <!-- User display names for app ops codes - extension of AOSP -->
   <string name="app_ops_labels_gps">GPS</string>
@@ -246,6 +270,7 @@
   <string name="app_ops_labels_use_sip">Usar SIP</string>
   <string name="app_ops_labels_use_fingerprint">Usar buelga</string>
   <string name="app_ops_labels_use_body_sensors">Usar sensores corporales</string>
+  <string name="app_ops_labels_mock_location">Allugamientu falsu</string>
   <string name="app_ops_labels_read_external_storage">Lleer almacenamientu esternu</string>
   <string name="app_ops_labels_write_external_storage">Escribir nel almacenamientu esternu</string>
   <string name="app_ops_labels_turn_screen_on">Prender pantalla</string>
@@ -260,6 +285,7 @@
   <string name="app_ops_permissions_always_ask">Entrugar siempre</string>
   <!-- App ops detail -->
   <!-- App ops menu options -->
+  <string name="app_ops_show_user_apps">Amosar aplicaciones d\'usuariu</string>
   <string name="app_ops_reset_confirm_mesg">¿De xuru que quies reafitar los contadores?</string>
   <string name="ok">Aceutar</string>
   <!-- Hostname setting -->
@@ -271,6 +297,7 @@
   <string name="hardware_keys_action_launch_camera">Llanzar cámara</string>
   <string name="camera_launch_title">Llanzar cámara</string>
   <string name="camera_launch_summary">Un primíu llargu pa llanzar la cámara</string>
+  <string name="swap_volume_buttons_summary">Intercambea los botones de volume al voltiar la pantalla</string>
   <!-- Backlight brightness settings screen -->
   <string name="adaptive_backlight_title">Brilléu adautativo</string>
   <string name="adaptive_backlight_summary">Axusta dinámicamente\'l brilléu de la pantalla al tar al belume pa maximizar la vida de la batería entrín se mantién la usabilidá</string>
@@ -283,11 +310,15 @@
   <string name="button_backlight_seekbar_title">Brilléu de los botones</string>
   <string name="keyboard_backlight_seekbar_title">Brilléu del tecláu</string>
   <string name="backlight_timeout_title">Escosa de tiempu d\'illuminación</string>
+  <string name="backlight_timeout_unlimited">Nun apagar</string>
   <!-- Gesture Settings -->
   <!-- Settings main menu entry -->
   <string name="gesture_settings_title">Xestos</string>
   <!-- Power menu -->
   <string name="power_menu_reboot_title">Menú de reaniciu</string>
+  <string name="power_menu_users_title">Seleutor d\'usuarios</string>
+  <string name="power_menu_bug_report_title">Informe de fallos</string>
+  <string name="power_menu_bug_report_disabled">Los informes de fallu tán desactivaos nes opciones de desendolcu</string>
   <!-- Buttons - Enable navbar -->
   <!-- tap-to-wake -->
   <string name="double_tap_to_wake_title">Calcu doblu pa esconsoñar</string>
@@ -309,6 +340,7 @@
   <string name="vibrator_warning">Nun s\'aconseyen valores superiores al %1$d%%</string>
   <!-- Hardware tunables - Color calibration -->
   <string name="color_calibration_title">Calibración de color</string>
+  <string name="color_calibration_summary">Calibra los colores de la pantalla</string>
   <string name="color_red_title">Bermeyu</string>
   <string name="color_green_title">Verde</string>
   <string name="color_blue_title">Azul</string>
@@ -386,10 +418,13 @@
   <string name="status_bar_battery_percentage_text_next">Al llau l\'iconu</string>
   <!-- Status bar - icon blacklist -->
   <!-- EdgeGesture service -->
+  <string name="edge_gesture_service_summary">Nun unvia eventos táutiles de la barra de navegación y d\'estáu a les aplicaciones</string>
   <!-- Keep screen on strings -->
   <!-- Privacy Settings Header item -->
   <!-- Privacy Guard -->
+  <string name="privacy_guard_manager_summary">Xestiona les aplicaciones que tienen accesu a los tos datos personales</string>
   <string name="privacy_guard_help_title">Ayuda</string>
+  <string name="privacy_guard_manager_show_system_apps">Amosar aplicaciones integraes</string>
   <string name="privacy_guard_notification_title">Amosar avisu</string>
   <!-- Sizes for pattern lockscreen -->
   <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
@@ -414,14 +449,22 @@
   <!-- Show/Hide Search Bar -->
   <!-- Voice Wakeup -->
   <!-- Blacklist preferences -->
+  <string name="blacklist_private_numbers_summary_disabled">Nun bloquia les llamaes de númberos privaos</string>
   <string name="blacklist_unknown_numbers_title">Númberos desconocíos</string>
+  <string name="blacklist_unknown_numbers_summary_disabled">Nun bloquia les llamaes o mensaxes de númberos desconocíos</string>
+  <string name="blacklist_summary_type_calls_only">llamaes</string>
+  <string name="blacklist_summary_type_messages_only">mensaxes</string>
+  <string name="blacklist_summary_type_calls_and_messages">llamaes y mensaxes</string>
   <!-- Blacklist management -->
   <!-- Sms security limit -->
+  <string name="sms_security_check_limit_summary">Les aplicaciones puen unviar %d mensaxes nun minutu enantes de riquir confirmación</string>
+  <string name="sms_security_check_limit_summary_none">A les aplicaciones nun se-yos permite unviar mensaxes ensin confirmación</string>
   <!-- Notification spamfilter -->
   <string name="block_notifications_title">Peñerar avisos</string>
   <string name="block_notifications_summary">Xestiona los avisos y peñeres inoraos</string>
   <!-- Anonymous Statistics #CM -->
   <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+  <string name="anonymous_statistics_summary">Ayuda a ameyorar LineageOS dando laude al unviu anónimu d\'estadístiques</string>
   <string name="anonymous_statistics_warning">Dar laude a les estadístiques de LineageOS permitirá l\'unviu de datos non personales a
         los desendolcadores pa facer un siguimientu d\'instalaciones úniques nos preseos. La información unviada inclúi un identificador únicu,
         que nun compromete la to privacidá o datos personales. Los datos únviense en cada arranque.\n\nPa un exemplu de los datos que s\'unvien, calca en Previsualizar datos.</string>
@@ -438,11 +481,15 @@
   <!-- Edit access point labels: PPP number -->
   <!-- APNs screen message indicating new APN user is adding is a duplicate -->
   <!-- MSIM SIM status -->
+  <string name="sim_card_summary_empty">Nun s\'inxertó la SIM</string>
   <!-- Zen mode allowed event setting summary items -->
   <!-- [CHAR LIMIT=50] Like zen_mode_reminders, but part of a list, so lower case if needed-->
+  <string name="zen_mode_summary_reminders">recordatorios</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_events, but part of a list, so lower case if needed -->
+  <string name="zen_mode_summary_events">eventos</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_callers, but part of a list, so lower case if needed -->
   <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
+  <string name="zen_mode_summary_selected_messages">mensaxes esbillaos</string>
   <!-- Allow vibration in zen mode -->
   <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
   <!-- SAR information -->
