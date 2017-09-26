@@ -102,6 +102,13 @@
         android:title="@string/ambient_display_title"
         android:fragment="com.android.settings.gestures.DoubleTapScreenSettings" />
 
+    <!-- Double tap to sleep -->
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/status_bar_double_tap_to_sleep_title"
+        android:summary="@string/status_bar_double_tap_to_sleep_summary"
+        android:defaultValue="true" />
+
     <Preference
         android:key="gesture_pick_up_display_summary"
         android:title="@string/ambient_display_pickup_title"
