@@ -25,6 +25,12 @@
                     android:targetClass="@string/additional_system_update_menu" />
         </Preference>
 
+        <!-- LineageOS updates -->
+        <org.lineageos.internal.preference.deviceinfo.LineageUpdatesPreference
+                android:key="lineage_updates"
+                lineage:requiresOwner="true"
+                lineage:requiresPackage="org.lineageos.updater" />
+
         <!-- Device status - launches activity -->
         <Preference android:key="status_info"
                 android:title="@string/device_status"
