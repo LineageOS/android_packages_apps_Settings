@@ -25,6 +25,13 @@
                     android:targetClass="@string/additional_system_update_menu" />
         </Preference>
 
+        <Preference android:key="lineage_update_settings"
+                    android:title="@string/lineage_update_settings_title">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="@string/lineage_update_package"
+                    android:targetClass="@string/lineage_update_activity" />
+        </Preference>
+
         <!-- Device status - launches activity -->
         <Preference android:key="status_info"
                 android:title="@string/device_status"
