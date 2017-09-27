@@ -22,6 +22,12 @@
     android:key="my_device_info_pref_screen"
     android:title="@string/about_settings">
 
+    <!-- LineageOS updates -->
+    <org.lineageos.internal.preference.deviceinfo.LineageUpdatesPreference
+        android:key="lineage_updates"
+        lineage:requiresOwner="true"
+        lineage:requiresPackage="org.lineageos.updater"/>
+
     <!-- Contributors cloud -->
     <org.lineageos.internal.lineageparts.LineagePartsPreference
         android:key="contributors"/>
