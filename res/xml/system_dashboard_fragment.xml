@@ -48,6 +48,16 @@
     </Preference>
 
     <Preference
+        android:key="lineageos_update_settings"
+        android:title="@string/cmupdate_settings_title"
+        android:icon="@drawable/ic_system_update"
+        android:order="-31">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="@string/lineage_update_package"
+                android:targetClass="@string/lineage_update_activity" />
+    </Preference>
+
+    <Preference
         android:key="reset_dashboard"
         android:title="@string/reset_dashboard_title"
         android:icon="@drawable/ic_restore"
