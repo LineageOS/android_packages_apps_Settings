@@ -52,6 +52,24 @@
       "revId": "15a5389ec47b48af50fa9dcea5f1738acb1ebb00",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ce66518_09a2c803",
+        "filename": "src/com/android/settings/deviceinfo/SystemUpdatePreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2017-09-28T07:57:21Z",
+      "side": 1,
+      "message": "That\u0027s not a crutch I like to depend on for change visibility.  It\u0027s only readily visible if you do git log on the file or git blame AND the change hasn\u0027t been squashed into something else or moved between files and original commit info potentially lost.  Personally, I find it much more useful to document a change within the code itself.\n\nie\npublic boolean isAvailable() {\n    // This is LineageOS, forcibly disable google system update settings.\n    return false;  // was mUm.isAdminUser();\n}",
+      "parentUuid": "2c4b2261_c4b1537c",
+      "revId": "15a5389ec47b48af50fa9dcea5f1738acb1ebb00",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
