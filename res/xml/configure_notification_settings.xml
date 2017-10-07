@@ -196,5 +196,10 @@
             android:summary="@string/notification_assistant_summary"
             settings:controller="com.android.settings.notification.NotificationAssistantPreferenceController"/>
 
+        <!-- Notification lights -->
+        <lineageos.preference.LineagePartsPreference
+            android:key="notification_lights"
+            settings:requiresConfig="@*android:bool/config_intrusiveNotificationLed"
+            settings:replacesKey="notification_pulse" />
     </PreferenceCategory>
 </PreferenceScreen>
