@@ -46,6 +46,12 @@
         android:title="@string/smart_battery_manager_title"
         settings:controller="com.android.settings.fuelgauge.batterytip.BatteryManagerPreferenceController" />
 
+    <!-- Battery light -->
+    <org.lineageos.internal.lineageparts.LineagePartsPreference
+        android:key="battery_lights"
+        lineage:requiresConfig="@*lineageos.platform:integer/config_deviceLightCapabilities"
+        lineage:requiresConfigMask="64" />
+
     <!-- Custom perf profiles settings -->
     <org.lineageos.internal.lineageparts.LineagePartsPreference
         android:key="perf_profile_settings"
