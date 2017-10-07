@@ -58,6 +58,12 @@
         settings:controller="com.android.settings.fuelgauge.batterytip.BatteryManagerPreferenceController"
         settings:keywords="@string/keywords_battery_adaptive_preferences" />
 
+    <!-- Battery light -->
+    <lineageos.preference.LineagePartsPreference
+        android:key="battery_lights"
+        settings:requiresConfig="@*lineageos.platform:integer/config_deviceLightCapabilities"
+        settings:requiresConfigMask="64" />
+
     <SwitchPreference
         android:key="battery_percentage"
         android:title="@string/battery_percentage"
