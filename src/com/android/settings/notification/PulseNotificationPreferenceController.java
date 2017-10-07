@@ -49,6 +49,11 @@ public class PulseNotificationPreferenceController extends PreferenceController 
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         Preference preference = screen.findPreference(KEY_NOTIFICATION_PULSE);
+
+        // Lineage: Remove this preference, we have our own in LineageParts.
+        screen.removePreference(preference);
+        preference = null;
+
         if (preference != null) {
             mSettingObserver = new SettingObserver(preference);
         }
