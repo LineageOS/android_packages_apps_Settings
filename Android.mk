@@ -35,6 +35,7 @@ LOCAL_JAVA_LIBRARIES := \
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     jsr305 \
+    org.lineageos.platform.sdk \
     settings-logtags
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
