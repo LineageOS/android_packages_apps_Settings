@@ -335,6 +335,16 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // Append the rest of the settings
         addPreferencesFromResource(R.xml.security_settings_misc);
 
+        // Set Summary for  encryption
+        final Preference encryptionPreference = root.findPreference(KEY_ENCRYPTION_AND_CREDENTIALS);
+            if (LockPatternUtils.isDeviceEncryptionEnabled()) {
+            encryptionPreference.setSummary(getResources().getString(
+                     R.string.encryption_and_credential_settings_summary));
+            } else {
+            encryptionPreference.setSummary(getResources().getString(
+                     R.string.encryption_and_credential_settings_summary_disabled));
+            }
+
         // Do not display SIM lock for devices without an Icc card
         TelephonyManager tm = TelephonyManager.getDefault();
         CarrierConfigManager cfgMgr = (CarrierConfigManager)
