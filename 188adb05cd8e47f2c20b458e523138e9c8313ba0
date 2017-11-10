@@ -22,6 +22,29 @@
       "revId": "188adb05cd8e47f2c20b458e523138e9c8313ba0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de0e72fd_6337963b",
+        "filename": "src/com/android/settings/sim/SimSelectNotification.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-11-10T21:52:28Z",
+      "side": 1,
+      "message": "checking for null is useless\nThe broadcast will be created once and then destroyed after it served its purpose, so mNotificationChannel will always be null",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 43
+      },
+      "revId": "188adb05cd8e47f2c20b458e523138e9c8313ba0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
