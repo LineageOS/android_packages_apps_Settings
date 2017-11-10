@@ -16,6 +16,7 @@
 
 package com.android.settings.sim;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -40,6 +41,12 @@ public class SimSelectNotification extends BroadcastReceiver {
     private static final String TAG = "SimSelectNotification";
     private static final int NOTIFICATION_ID = 1;
 
+    private static final String SIM_SELECT_NOTIFICATION_CHANNEL =
+            "sim_select_notification_channel";
+
+    private NotificationChannel mNotificationChannel = null;
+    private NotificationManager mNotificationManager;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         final TelephonyManager telephonyManager = (TelephonyManager)
@@ -47,13 +54,15 @@ public class SimSelectNotification extends BroadcastReceiver {
         final SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
         final int numSlots = telephonyManager.getSimCount();
 
+        mNotificationManager = context.getSystemService(NotificationManager.class);
+
         // Do not create notifications on single SIM devices or when provisioning i.e. Setup Wizard.
         if (numSlots < 2 || !Utils.isDeviceProvisioned(context)) {
             return;
         }
 
         // Cancel any previous notifications
-        cancelNotification(context);
+        cancelNotification();
 
         // If sim state is not ABSENT or LOADED then ignore
         String simStatus = intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE);
@@ -96,6 +105,9 @@ public class SimSelectNotification extends BroadcastReceiver {
             return;
         }
 
+        // Ensure that there's already a notification channel
+        createNotificationChannel(context);
+
         // Create a notification to tell the user that some defaults are missing
         createNotification(context);
 
@@ -115,10 +127,19 @@ public class SimSelectNotification extends BroadcastReceiver {
         }
     }
 
+    private void createNotificationChannel(Context context){
+        if (mNotificationChannel == null) {
+            mNotificationChannel = new NotificationChannel(SIM_SELECT_NOTIFICATION_CHANNEL,
+                    context.getResources().getString(R.string.sim_selection_channel_title),
+                    NotificationManager.IMPORTANCE_HIGH);
+            mNotificationManager.createNotificationChannel(mNotificationChannel);
+        }
+    }
+
     private void createNotification(Context context){
         final Resources resources = context.getResources();
         NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(context)
+                new NotificationCompat.Builder(context, SIM_SELECT_NOTIFICATION_CHANNEL)
                 .setSmallIcon(R.drawable.ic_sim_card_alert_white_48dp)
                 .setColor(context.getColor(R.color.sim_noitification))
                 .setContentTitle(resources.getString(R.string.sim_notification_title))
@@ -128,14 +149,10 @@ public class SimSelectNotification extends BroadcastReceiver {
         PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent,
                 PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentIntent(resultPendingIntent);
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFICATION_ID, builder.build());
+        mNotificationManager.notify(NOTIFICATION_ID, builder.build());
     }
 
-    public static void cancelNotification(Context context) {
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(NOTIFICATION_ID);
+    public static void cancelNotification() {
+        mNotificationManager.cancel(NOTIFICATION_ID);
     }
 }
