@@ -266,6 +266,15 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
                     mPreferenceScreen.addPreference(switchPref);
                 }
             }
+
+            if (mPreferenceScreen.getPreferenceCount() == 0) {
+                Preference emptyPref = new Preference(getActivity());
+                emptyPref.setTitle(R.string.app_ops_no_permissions_requested);
+                emptyPref.setSelectable(false);
+                emptyPref.setEnabled(false);
+
+                mPreferenceScreen.addPreference(emptyPref);
+            }
         }
 
         return true;
