@@ -115,6 +115,7 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
         OP_ICONS.put(AppOpsManager.OP_WRITE_CLIPBOARD, R.drawable.ic_perm_clipboard);
         OP_ICONS.put(AppOpsManager.OP_WRITE_SETTINGS, R.drawable.ic_perm_settings);
         OP_ICONS.put(AppOpsManager.OP_WRITE_SMS , R.drawable.ic_perm_sms);
+        OP_ICONS.put(AppOpsManager.OP_DATA_CONNECT_CHANGE, R.drawable.ic_perm_data);
     }
 
     private boolean isPlatformSigned() {
