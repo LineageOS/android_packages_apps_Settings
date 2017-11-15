@@ -69,10 +69,7 @@ import com.android.settings.search.SearchIndexableRaw;
 
 import cyanogenmod.hardware.CMHardwareManager;
 
-import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -94,12 +91,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
     private int mDefaultInputMethodSelectorVisibility = 0;
     private ListPreference mShowInputMethodSelectorPref;
-    private PreferenceCategory mKeyboardSettingsCategory;
-    private PreferenceCategory mHardKeyboardCategory;
     private PreferenceCategory mGameControllerCategory;
     private Preference mLanguagePref;
-    private final ArrayList<InputMethodPreference> mInputMethodPreferenceList = new ArrayList<>();
-    private final ArrayList<PreferenceScreen> mHardKeyboardPreferenceList = new ArrayList<>();
     private InputManager mIm;
     private InputMethodManager mImm;
     private boolean mShowsOnlyFullImeAndKeyboardList;
@@ -107,7 +100,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private SettingsObserver mSettingsObserver;
     private Intent mIntentWaitingForResult;
     private InputMethodSettingValuesWrapper mInputMethodSettingValues;
-    private DevicePolicyManager mDpm;
 
     @Override
     protected int getMetricsCategory() {
@@ -147,9 +139,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         new VoiceInputOutputSettings(this).onCreate();
 
         // Get references to dynamically constructed categories.
-        mHardKeyboardCategory = (PreferenceCategory)findPreference("hard_keyboard");
-        mKeyboardSettingsCategory = (PreferenceCategory)findPreference(
-                "keyboard_settings_category");
         mGameControllerCategory = (PreferenceCategory)findPreference(
                 "game_controller_settings_category");
 
@@ -159,21 +148,14 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 startingIntent.getAction());
         if (mShowsOnlyFullImeAndKeyboardList) {
             getPreferenceScreen().removeAll();
-            if (mHardKeyboardCategory != null) {
-                getPreferenceScreen().addPreference(mHardKeyboardCategory);
-            }
             if (SHOW_INPUT_METHOD_SWITCHER_SETTINGS) {
                 getPreferenceScreen().addPreference(mShowInputMethodSelectorPref);
             }
-            if (mKeyboardSettingsCategory != null) {
-                mKeyboardSettingsCategory.removeAll();
-                getPreferenceScreen().addPreference(mKeyboardSettingsCategory);
-            }
         }
 
-        // Build hard keyboard and game controller preference categories.
+        // Build game controller preference categories.
         mIm = (InputManager)activity.getSystemService(Context.INPUT_SERVICE);
-        updateInputDevices();
+        updateGameControllers();
 
         // Spell Checker
         final Preference spellChecker = findPreference(KEY_SPELL_CHECKERS);
@@ -191,8 +173,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, activity);
-        mDpm = (DevicePolicyManager) (getActivity().
-                getSystemService(Context.DEVICE_POLICY_SERVICE));
 
         // If we've launched from the keyboard layout notification, go ahead and just show the
         // keyboard layout dialog.
@@ -291,12 +271,11 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             }
         }
 
-        updateInputDevices();
+        updateGameControllers();
 
         // Refresh internal states in mInputMethodSettingValues to keep the latest
         // "InputMethodInfo"s and "InputMethodSubtype"s
         mInputMethodSettingValues.refreshAllInputMethodAndSubtypes();
-        updateInputMethodPreferenceViews();
     }
 
     @Override
@@ -311,23 +290,22 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         }
         // TODO: Consolidate the logic to InputMethodSettingsWrapper
         InputMethodAndSubtypeUtil.saveInputMethodSubtypeList(
-                this, getContentResolver(), mInputMethodSettingValues.getInputMethodList(),
-                !mHardKeyboardPreferenceList.isEmpty());
+                this, getContentResolver(), mInputMethodSettingValues.getInputMethodList(), false);
     }
 
     @Override
     public void onInputDeviceAdded(int deviceId) {
-        updateInputDevices();
+        updateGameControllers();
     }
 
     @Override
     public void onInputDeviceChanged(int deviceId) {
-        updateInputDevices();
+        updateGameControllers();
     }
 
     @Override
     public void onInputDeviceRemoved(int deviceId) {
-        updateInputDevices();
+        updateGameControllers();
     }
 
     @Override
@@ -392,56 +370,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         return false;
     }
 
-    private void updateInputMethodPreferenceViews() {
-        if (mKeyboardSettingsCategory == null) {
-            return;
-        }
-
-        synchronized (mInputMethodPreferenceList) {
-            // Clear existing "InputMethodPreference"s
-            for (final InputMethodPreference pref : mInputMethodPreferenceList) {
-                mKeyboardSettingsCategory.removePreference(pref);
-            }
-            mInputMethodPreferenceList.clear();
-            List<String> permittedList = mDpm.getPermittedInputMethodsForCurrentUser();
-            final Context context = getPrefContext();
-            final List<InputMethodInfo> imis = mShowsOnlyFullImeAndKeyboardList
-                    ? mInputMethodSettingValues.getInputMethodList()
-                    : mImm.getEnabledInputMethodList();
-            final int N = (imis == null ? 0 : imis.size());
-            for (int i = 0; i < N; ++i) {
-                final InputMethodInfo imi = imis.get(i);
-                final boolean isAllowedByOrganization = permittedList == null
-                        || permittedList.contains(imi.getPackageName());
-                final InputMethodPreference pref = new InputMethodPreference(
-                        context, imi, mShowsOnlyFullImeAndKeyboardList /* hasSwitch */,
-                        isAllowedByOrganization, this);
-                mInputMethodPreferenceList.add(pref);
-            }
-            final Collator collator = Collator.getInstance();
-            Collections.sort(mInputMethodPreferenceList, new Comparator<InputMethodPreference>() {
-                @Override
-                public int compare(InputMethodPreference lhs, InputMethodPreference rhs) {
-                    return lhs.compareTo(rhs, collator);
-                }
-            });
-            for (int i = 0; i < N; ++i) {
-                final InputMethodPreference pref = mInputMethodPreferenceList.get(i);
-                mKeyboardSettingsCategory.addPreference(pref);
-                InputMethodAndSubtypeUtil.removeUnnecessaryNonPersistentPreference(pref);
-                pref.updatePreferenceViews();
-            }
-        }
-        updateCurrentImeName();
-        // TODO: Consolidate the logic with InputMethodSettingsWrapper
-        // CAVEAT: The preference class here does not know about the default value - that is
-        // managed by the Input Method Manager Service, so in this case it could save the wrong
-        // value. Hence we must update the checkboxes here.
-        InputMethodAndSubtypeUtil.loadInputMethodSubtypeList(
-                this, getContentResolver(),
-                mInputMethodSettingValues.getInputMethodList(), null);
-    }
-
     @Override
     public void onSaveInputMethodPreference(final InputMethodPreference pref) {
         final InputMethodInfo imi = pref.getInputMethodInfo();
@@ -460,9 +388,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             // An IME is being enabled. Load the previously enabled subtypes from shared preference
             // and enable these subtypes.
             restorePreviouslyEnabledSubtypesOf(imi);
-        }
-        for (final InputMethodPreference p : mInputMethodPreferenceList) {
-            p.updatePreferenceViews();
         }
     }
 
@@ -522,69 +447,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                     curPref.setSummary(curIme);
                 }
             }
-        }
-    }
-
-    private void updateInputDevices() {
-        updateHardKeyboards();
-        updateGameControllers();
-    }
-
-    private void updateHardKeyboards() {
-        if (mHardKeyboardCategory == null) {
-            return;
-        }
-
-        mHardKeyboardPreferenceList.clear();
-        final int[] devices = InputDevice.getDeviceIds();
-        for (int i = 0; i < devices.length; i++) {
-            InputDevice device = InputDevice.getDevice(devices[i]);
-            if (device != null
-                    && !device.isVirtual()
-                    && device.isFullKeyboard()) {
-                final InputDeviceIdentifier identifier = device.getIdentifier();
-                final String keyboardLayoutDescriptor =
-                    mIm.getCurrentKeyboardLayoutForInputDevice(identifier);
-                final KeyboardLayout keyboardLayout = keyboardLayoutDescriptor != null ?
-                    mIm.getKeyboardLayout(keyboardLayoutDescriptor) : null;
-
-                final PreferenceScreen pref = new PreferenceScreen(getPrefContext(), null);
-                pref.setTitle(device.getName());
-                if (keyboardLayout != null) {
-                    pref.setSummary(keyboardLayout.toString());
-                } else {
-                    pref.setSummary(R.string.keyboard_layout_default_label);
-                }
-                pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        showKeyboardLayoutDialog(identifier);
-                        return true;
-                    }
-                });
-                mHardKeyboardPreferenceList.add(pref);
-            }
-        }
-
-        if (!mHardKeyboardPreferenceList.isEmpty()) {
-            for (int i = mHardKeyboardCategory.getPreferenceCount(); i-- > 0; ) {
-                final Preference pref = mHardKeyboardCategory.getPreference(i);
-                if (pref.getOrder() < 1000) {
-                    mHardKeyboardCategory.removePreference(pref);
-                }
-            }
-
-            Collections.sort(mHardKeyboardPreferenceList);
-            final int count = mHardKeyboardPreferenceList.size();
-            for (int i = 0; i < count; i++) {
-                final Preference pref = mHardKeyboardPreferenceList.get(i);
-                pref.setOrder(i);
-                mHardKeyboardCategory.addPreference(pref);
-            }
-
-            getPreferenceScreen().addPreference(mHardKeyboardCategory);
-        } else {
-            getPreferenceScreen().removePreference(mHardKeyboardCategory);
         }
     }
 
@@ -733,14 +595,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 indexable.screenTitle = screenTitle;
                 indexables.add(indexable);
             }
-
-            // Keyboard settings.
-            indexable = new SearchIndexableRaw(context);
-            indexable.key = "keyboard_settings";
-            indexable.title = context.getString(R.string.keyboard_settings_category);
-            indexable.screenTitle = screenTitle;
-            indexable.keywords = context.getString(R.string.keywords_keyboard_and_ime);
-            indexables.add(indexable);
 
             InputMethodSettingValuesWrapper immValues = InputMethodSettingValuesWrapper
                     .getInstance(context);
