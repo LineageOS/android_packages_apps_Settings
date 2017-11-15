@@ -86,6 +86,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_INPUT_METHOD_SELECTOR = "input_method_selector";
     private static final String KEY_USER_DICTIONARY_SETTINGS = "key_user_dictionary_settings";
     private static final String KEY_PREVIOUSLY_ENABLED_SUBTYPES = "previously_enabled_subtypes";
+    private static final String KEY_PHYSICAL_KEYBOARD = "physical_keyboard";
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
 
@@ -100,6 +101,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private SettingsObserver mSettingsObserver;
     private Intent mIntentWaitingForResult;
     private InputMethodSettingValuesWrapper mInputMethodSettingValues;
+
+    private PreferenceScreen mPhysicalKeyboard;
 
     @Override
     protected int getMetricsCategory() {
@@ -182,6 +185,15 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             showKeyboardLayoutDialog(identifier);
         }
         updateCurrentImeName();
+
+        mPhysicalKeyboard = (PreferenceScreen) findPreference(KEY_PHYSICAL_KEYBOARD);
+        if (mPhysicalKeyboard != null) {
+            mPhysicalKeyboard.setVisible(hasHardwareKeyboard());
+        }
+    }
+
+    private boolean hasHardwareKeyboard() {
+        return getResources().getConfiguration().keyboard != Configuration.KEYBOARD_NOKEYS;
     }
 
     private void updateInputMethodSelectorSummary(int value) {
@@ -504,6 +516,15 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             }
         }
         return false;
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig)
+    {
+        if (mPhysicalKeyboard != null) {
+            boolean visible = newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO;
+            mPhysicalKeyboard.setVisible(visible);
+        }
     }
 
     private class SettingsObserver extends ContentObserver {
