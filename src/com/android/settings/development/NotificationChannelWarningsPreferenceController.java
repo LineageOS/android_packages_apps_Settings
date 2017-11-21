@@ -63,7 +63,8 @@ public class NotificationChannelWarningsPreferenceController extends
 
     @Override
     public void updateState(Preference preference) {
-        final int defaultWarningEnabled = isDebuggable() ? DEBUGGING_ENABLED : DEBUGGING_DISABLED;
+        final int defaultWarningEnabled =
+                Build.TYPE.equals("eng") ? DEBUGGING_ENABLED : DEBUGGING_DISABLED;
         final int mode = Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.SHOW_NOTIFICATION_CHANNEL_WARNINGS, defaultWarningEnabled);
         ((SwitchPreference) mPreference).setChecked(mode != SETTING_VALUE_OFF);
