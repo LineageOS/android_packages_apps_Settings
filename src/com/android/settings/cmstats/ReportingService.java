@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The CyanogenMod Project
+ * Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,12 +31,13 @@ import com.android.settings.Settings;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -103,19 +105,26 @@ public class ReportingService extends Service {
 
             // report to the cmstats service
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("https://stats.cyanogenmod.org/submit");
+            HttpPost httpPost = new HttpPost("https://stats.lineageos.org/api/v1/stats");
+            httpPost.setHeader("Content-Type", "application/json; charset=UTF-8");
             boolean success = false;
 
-            try {
-                List<NameValuePair> kv = new ArrayList<NameValuePair>(5);
-                kv.add(new BasicNameValuePair("device_hash", deviceId));
-                kv.add(new BasicNameValuePair("device_name", deviceName));
-                kv.add(new BasicNameValuePair("device_version", deviceVersion));
-                kv.add(new BasicNameValuePair("device_country", deviceCountry));
-                kv.add(new BasicNameValuePair("device_carrier", deviceCarrier));
-                kv.add(new BasicNameValuePair("device_carrier_id", deviceCarrierId));
+            JSONObject json = new JSONObject();
 
-                httpPost.setEntity(new UrlEncodedFormEntity(kv));
+            try {
+                json.put("device_hash", deviceId);
+                json.put("device_name", deviceName);
+                json.put("device_version", deviceVersion);
+                json.put("device_country", deviceCountry);
+                json.put("device_carrier", deviceCarrier);
+                json.put("device_carrier_id", deviceCarrierId);
+            } catch (JSONException e) {
+                Log.e(TAG, "Could not encode JSON for stats", e);
+                return success;
+            }
+
+            try {
+                httpPost.setEntity(new StringEntity(json.toString()));
                 httpClient.execute(httpPost);
 
                 success = true;
