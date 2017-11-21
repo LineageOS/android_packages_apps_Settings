@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The CyanogenMod Project
+ * Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,7 +81,6 @@ public class AnonymousStats extends SettingsPreferenceFragment implements
                         .setTitle(R.string.anonymous_statistics_warning_title)
                         .setIconAttribute(android.R.attr.alertDialogIcon)
                         .setPositiveButton(android.R.string.yes, this)
-                        .setNeutralButton(R.string.anonymous_learn_more, this)
                         .setNegativeButton(android.R.string.no, this)
                         .show();
                 mOkDialog.setOnDismissListener(this);
@@ -90,7 +90,7 @@ public class AnonymousStats extends SettingsPreferenceFragment implements
             }
         } else if (preference == mViewStats) {
             // Display the stats page
-            Uri uri = Uri.parse("http://stats.cyanogenmod.org");
+            Uri uri = Uri.parse("https://stats.lineageos.org");
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
         } else {
             // If we didn't handle it, let preferences handle it.
@@ -119,9 +119,6 @@ public class AnonymousStats extends SettingsPreferenceFragment implements
             ReportingServiceManager.launchService(getActivity());
         } else if (which == DialogInterface.BUTTON_NEGATIVE) {
             mEnableReporting.setChecked(false);
-        } else {
-            Uri uri = Uri.parse("http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in");
-            startActivity(new Intent(Intent.ACTION_VIEW, uri));
         }
     }
 }
