@@ -15,18 +15,43 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
                   android:title="@string/zen_mode_visual_interruptions_settings_title"
                   android:key="zen_mode_visual_interruptions_screen">
 
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+                      android:key="allow_lights"
+                      android:title="@string/zen_allow_lights"
+                      android:summary="@string/zen_allow_lights_summary"
+                      android:defaultValue="true" />
+
     <SwitchPreference android:key="screenOn"
                       android:title="@string/zen_mode_screen_on"
-                      android:summary="@string/zen_mode_screen_on_summary" />
+                      android:summary="@string/zen_mode_screen_on_summary"
+                      android:dependency="allow_lights" />
 
     <SwitchPreference android:key="screenOff"
                       android:title="@string/zen_mode_screen_off"
-                      android:summary="@string/zen_mode_screen_off_summary" />
+                      android:summary="@string/zen_mode_screen_off_summary"
+                      android:dependency="allow_lights" />
 
+    <PreferenceCategory
+                      android:title="@string/light_brightness_category"
+                      android:dependency="allow_lights" >
 
+        <!-- Battery light -->
+        <org.lineageos.internal.lineageparts.LineagePartsPreference
+            android:key="battery_lights"
+            lineage:requiresConfig="@*lineageos.platform:integer/config_deviceLightCapabilities"
+            lineage:requiresConfigMask="64" />
+
+        <!-- Notification lights -->
+        <org.lineageos.internal.lineageparts.LineagePartsPreference
+            android:key="notification_lights"
+            lineage:requiresConfig="@*android:bool/config_intrusiveNotificationLed"
+            lineage:replacesKey="notification_pulse" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
