@@ -45,6 +45,7 @@ public class DisplaySettings extends DashboardFragment {
     private static final String TAG = "DisplaySettings";
 
     private static final String KEY_HIGH_TOUCH_SENSITIVITY = "high_touch_sensitivity_enable";
+    private static final String KEY_PROXIMITY_ON_WAKE = "proximity_on_wake";
 
     @Override
     public int getMetricsCategory() {
@@ -104,6 +105,10 @@ public class DisplaySettings extends DashboardFragment {
                     if (!hardware.isSupported(
                             LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
                         keys.add(KEY_HIGH_TOUCH_SENSITIVITY);
+                    }
+                    if (!context.getResources().getBoolean(
+                            org.lineageos.platform.internal.R.bool.config_proximityCheckOnWake)) {
+                        keys.add(KEY_PROXIMITY_ON_WAKE);
                     }
                     return keys;
                 }
