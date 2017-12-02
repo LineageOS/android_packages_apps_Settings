@@ -51,6 +51,7 @@ public class DisplaySettings extends DashboardFragment {
     private static final String TAG = "DisplaySettings";
 
     public static final String KEY_DISPLAY_SIZE = "screen_zoom";
+    public static final String KEY_PROXIMITY_ON_WAKE = "proximity_on_wake";
 
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
@@ -131,6 +132,10 @@ public class DisplaySettings extends DashboardFragment {
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
                     keys.add(KEY_DISPLAY_SIZE);
+                    if (!context.getResources().getBoolean(
+                            org.lineageos.platform.internal.R.bool.config_proximityCheckOnWake)) {
+                        keys.add(KEY_PROXIMITY_ON_WAKE);
+                    }
                     return keys;
                 }
 
