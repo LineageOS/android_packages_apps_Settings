@@ -16,6 +16,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="display_settings_screen"
     android:title="@string/display_settings"
@@ -135,6 +136,14 @@
         android:title="@string/status_bar_double_tap_to_sleep_title"
         android:summary="@string/status_bar_double_tap_to_sleep_summary"
         android:defaultValue="true" />
+
+    <!-- Prevent accidental wake-up -->
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="proximity_on_wake"
+        android:title="@string/proximity_wake_title"
+        android:summary="@string/proximity_wake_summary"
+        android:defaultValue="false"
+        lineage:requiresConfig="@*lineageos.platform:bool/config_proximityCheckOnWake" />
 
     <ListPreference
         android:key="theme"
