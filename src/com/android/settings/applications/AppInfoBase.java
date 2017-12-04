@@ -147,7 +147,8 @@ public abstract class AppInfoBase extends SettingsPreferenceFragment
                         PackageManager.MATCH_DISABLED_COMPONENTS |
                         PackageManager.MATCH_ANY_USER |
                         PackageManager.GET_SIGNATURES |
-                        PackageManager.GET_PERMISSIONS);
+                        PackageManager.GET_PERMISSIONS |
+                        PackageManager.GET_ACTIVITIES);
             } catch (NameNotFoundException e) {
                 Log.e(TAG, "Exception when retrieving package:" + mAppEntry.info.packageName, e);
             }
