@@ -20,6 +20,207 @@
     <string name="advanced_reboot_title">Advanced restart</string>
     <string name="advanced_reboot_summary">When unlocked, include options in the power menu for restarting into recovery or bootloader</string>
 
+    <!-- Names of categories of app ops tabs - extension of AOSP -->
+    <string name="app_ops_categories_location">Location</string>
+    <string name="app_ops_categories_personal">Personal</string>
+    <string name="app_ops_categories_messaging">Messaging</string>
+    <string name="app_ops_categories_media">Media</string>
+    <string name="app_ops_categories_device">Device</string>
+    <string name="app_ops_categories_run_in_background">Run in background</string>
+    <string name="app_ops_categories_bootup">Bootup</string>
+    <string name="app_ops_categories_su">Root access</string>
+    <string name="app_ops_categories_other">Other</string>
+
+    <!-- User display names for app ops codes - extension of AOSP -->
+    <string name="app_ops_summaries_accept_handover">handover of a call from another app</string>
+    <string name="app_ops_summaries_access_camera">access the camera</string>
+    <string name="app_ops_summaries_access_notifications">read your notifications</string>
+    <string name="app_ops_summaries_activate_vpn">activate a VPN</string>
+    <string name="app_ops_summaries_add_voicemail">add a voicemail</string>
+    <string name="app_ops_summaries_app_start_foreground">start instant app in foreground</string>
+    <string name="app_ops_summaries_assist_screenshot">take a screenshot</string>
+    <string name="app_ops_summaries_assist_structure">use assist structure</string>
+    <string name="app_ops_summaries_audio_accessibility_volume">audio accessibility volume</string>
+    <string name="app_ops_summaries_auto_start">start at power up</string>
+    <string name="app_ops_summaries_bind_accessibility_service">bind accessibility service</string>
+    <string name="app_ops_summaries_bluetooth_scan">bluetooth scan</string>
+    <string name="app_ops_summaries_change_wallpaper">change the wallpaper</string>
+    <string name="app_ops_summaries_coarse_location">coarse location</string>
+    <string name="app_ops_summaries_delete_call_log">delete your call log</string>
+    <string name="app_ops_summaries_delete_contacts">delete your contacts</string>
+    <string name="app_ops_summaries_delete_mms">delete your MMS messages</string>
+    <string name="app_ops_summaries_delete_sms">delete your SMS messages</string>
+    <string name="app_ops_summaries_draw_on_top">draw windows on top</string>
+    <string name="app_ops_summaries_fine_location">fine location</string>
+    <string name="app_ops_summaries_get_accounts">get device accounts</string>
+    <string name="app_ops_summaries_get_usage_stats">get app usage stats</string>
+    <string name="app_ops_summaries_gps">GPS</string>
+    <string name="app_ops_summaries_install_packages">install packages</string>
+    <string name="app_ops_summaries_keep_device_awake">keep your device awake</string>
+    <string name="app_ops_summaries_make_phone_call">make a phone call</string>
+    <string name="app_ops_summaries_manage_ipsec_tunnels">manage ipsec tunnels</string>
+    <string name="app_ops_summaries_mock_location">mock your location</string>
+    <string name="app_ops_summaries_modify_calendar">update your calendar</string>
+    <string name="app_ops_summaries_modify_call_log">update the call log</string>
+    <string name="app_ops_summaries_modify_clipboard">modify the clipboard</string>
+    <string name="app_ops_summaries_modify_contacts">update your contacts</string>
+    <string name="app_ops_summaries_modify_settings">update system settings</string>
+    <string name="app_ops_summaries_monitor_high_power_location">monitor high power location</string>
+    <string name="app_ops_summaries_monitor_location">monitor location</string>
+    <string name="app_ops_summaries_mute_unmute_microphone">mute/unmute the microphone</string>
+    <string name="app_ops_summaries_neighboring_cells">neighboring cells</string>
+    <string name="app_ops_summaries_phone_calls">answer phone calls</string>
+    <string name="app_ops_summaries_picture_in_picture">use picture in picture</string>
+    <string name="app_ops_summaries_play_audio">play audio</string>
+    <string name="app_ops_summaries_post_notification">post a notification</string>
+    <string name="app_ops_summaries_project_media">project media</string>
+    <string name="app_ops_summaries_read_calendar">read your calendar</string>
+    <string name="app_ops_summaries_read_call_log">read the call log</string>
+    <string name="app_ops_summaries_read_cell_broadcasts">read cell broadcasts</string>
+    <string name="app_ops_summaries_read_clipboard">read the clipboard</string>
+    <string name="app_ops_summaries_read_contacts">read your contacts</string>
+    <string name="app_ops_summaries_read_external_storage">read external storage</string>
+    <string name="app_ops_summaries_read_mms">read your MMS messages</string>
+    <string name="app_ops_summaries_read_phone_numbers">read phone numbers</string>
+    <string name="app_ops_summaries_read_phone_state">access phone state</string>
+    <string name="app_ops_summaries_read_sms">read your SMS messages</string>
+    <string name="app_ops_summaries_receive_emergency_broadcast">receive an emergency broadcast message</string>
+    <string name="app_ops_summaries_receive_sms">receive an SMS message</string>
+    <string name="app_ops_summaries_record_audio">record audio</string>
+    <string name="app_ops_summaries_request_delete_packages">request delete packages</string>
+    <string name="app_ops_summaries_run_any_in_background">run any in background</string>
+    <string name="app_ops_summaries_run_in_background">run in background</string>
+    <string name="app_ops_summaries_scan_wifi">scan Wi-Fi networks</string>
+    <string name="app_ops_summaries_send_mms">send an MMS message</string>
+    <string name="app_ops_summaries_send_sms">send an SMS message</string>
+    <string name="app_ops_summaries_start_at_bootup">start at power up</string>
+    <string name="app_ops_summaries_start_foreground">start foreground</string>
+    <string name="app_ops_summaries_su">get root access</string>
+    <string name="app_ops_summaries_toast_window">display toast messages</string>
+    <string name="app_ops_summaries_toggle_bluetooth">toggle Bluetooth</string>
+    <string name="app_ops_summaries_toggle_mobile_data">toggle cellular data</string>
+    <string name="app_ops_summaries_toggle_nfc">toggle NFC</string>
+    <string name="app_ops_summaries_toggle_wifi">toggle Wi-Fi</string>
+    <string name="app_ops_summaries_turn_on_screen">turn the screen on</string>
+    <string name="app_ops_summaries_use_alarm_volume">control alarm volume</string>
+    <string name="app_ops_summaries_use_audio_focus">control the audio focus</string>
+    <string name="app_ops_summaries_use_bluetooth_volume">control the Bluetooth volume</string>
+    <string name="app_ops_summaries_use_body_sensors">use body sensors</string>
+    <string name="app_ops_summaries_use_fingerprint">use fingerprint</string>
+    <string name="app_ops_summaries_use_master_volume">control the master volume</string>
+    <string name="app_ops_summaries_use_media_buttons">use the media buttons</string>
+    <string name="app_ops_summaries_use_media_volume">control the media volume</string>
+    <string name="app_ops_summaries_use_notification_volume">control the notification volume</string>
+    <string name="app_ops_summaries_use_ring_volume">control the ringtone volume</string>
+    <string name="app_ops_summaries_use_vibrate">use haptic feedback</string>
+    <string name="app_ops_summaries_use_voice_volume">control the voice call volume</string>
+    <string name="app_ops_summaries_wifi_change">change Wi-Fi state</string>
+    <string name="app_ops_summaries_write_external_storage">write external storage</string>
+    <string name="app_ops_summaries_write_mms">write an MMS message</string>
+    <string name="app_ops_summaries_write_sms">write an SMS message</string>
+
+    <!-- User display names for app ops codes - extension of AOSP -->
+    <string name="app_ops_labels_access_camera">access the camera</string>
+    <string name="app_ops_labels_access_location">access your location</string>
+    <string name="app_ops_labels_access_notifications">read your notifications</string>
+    <string name="app_ops_labels_activate_vpn">activate a VPN</string>
+    <string name="app_ops_labels_add_voicemail">add a voicemail</string>
+    <string name="app_ops_labels_app_start_foreground">start instant app in foreground</string>
+    <string name="app_ops_labels_assist_screenshot">take a screenshot</string>
+    <string name="app_ops_labels_assist_structure">use assist structure</string>
+    <string name="app_ops_labels_audio_accessibility_volume">audio accessibility volume</string>
+    <string name="app_ops_labels_auto_start">start at power up</string>
+    <string name="app_ops_labels_bind_accessibility_service">bind accessibility service</string>
+    <string name="app_ops_labels_bluetooth_scan">bluetooth scan</string>
+    <string name="app_ops_labels_change_wallpaper">change the wallpaper</string>
+    <string name="app_ops_labels_delete_call_log">delete your call log</string>
+    <string name="app_ops_labels_delete_contacts">delete your contacts</string>
+    <string name="app_ops_labels_delete_mms">delete your MMS messages</string>
+    <string name="app_ops_labels_delete_sms">delete your SMS messages</string>
+    <string name="app_ops_labels_draw_on_top">draw windows on top</string>
+    <string name="app_ops_labels_get_accounts">get device accounts</string>
+    <string name="app_ops_labels_get_usage_stats">get app usage stats</string>
+    <string name="app_ops_labels_accept_handover">handover of a call from another app</string>
+    <string name="app_ops_labels_install_packages">install packages</string>
+    <string name="app_ops_labels_keep_device_awake">keep your device awake</string>
+    <string name="app_ops_labels_manage_ipsec_tunnels">manage ipsec tunnels</string>
+    <string name="app_ops_labels_make_phone_call">make a phone call</string>
+    <string name="app_ops_labels_mock_location">mock your location</string>
+    <string name="app_ops_labels_modify_calendar">update your calendar</string>
+    <string name="app_ops_labels_modify_call_log">update the call log</string>
+    <string name="app_ops_labels_modify_clipboard">modify the clipboard</string>
+    <string name="app_ops_labels_modify_contacts">update your contacts</string>
+    <string name="app_ops_labels_modify_settings">update system settings</string>
+    <string name="app_ops_labels_mute_unmute_microphone">mute/unmute the microphone</string>
+    <string name="app_ops_labels_phone_calls">answer phone calls</string>
+    <string name="app_ops_labels_picture_in_picture">use picture in picture</string>
+    <string name="app_ops_labels_play_audio">play audio</string>
+    <string name="app_ops_labels_post_notification">post a notification</string>
+    <string name="app_ops_labels_project_media">project media</string>
+    <string name="app_ops_labels_read_calendar">read your calendar</string>
+    <string name="app_ops_labels_read_call_log">read the call log</string>
+    <string name="app_ops_labels_read_cell_broadcasts">read cell broadcasts</string>
+    <string name="app_ops_labels_read_clipboard">read the clipboard</string>
+    <string name="app_ops_labels_read_contacts">read your contacts</string>
+    <string name="app_ops_labels_read_external_storage">read external storage</string>
+    <string name="app_ops_labels_read_mms">read your MMS messages</string>
+    <string name="app_ops_labels_read_phone_numbers">read phone numbers</string>
+    <string name="app_ops_labels_read_phone_state">access phone state</string>
+    <string name="app_ops_labels_read_sms">read your SMS messages</string>
+    <string name="app_ops_labels_receive_sms">receive an SMS message</string>
+    <string name="app_ops_labels_receive_emergency_broadcast">receive an emergency broadcast message</string>
+    <string name="app_ops_labels_record_audio">record audio</string>
+    <string name="app_ops_labels_request_delete_packages">request delete packages</string>
+    <string name="app_ops_labels_run_in_background">run in background</string>
+    <string name="app_ops_labels_run_any_in_background">run any in background</string>
+    <string name="app_ops_labels_scan_wifi">scan Wi-Fi networks</string>
+    <string name="app_ops_labels_send_mms">send an MMS message</string>
+    <string name="app_ops_labels_send_sms">send an SMS message</string>
+    <string name="app_ops_labels_start_at_bootup">start at power up</string>
+    <string name="app_ops_labels_start_foreground">start foreground</string>
+    <string name="app_ops_labels_su">get root access</string>
+    <string name="app_ops_labels_toast_window">display toast messages</string>
+    <string name="app_ops_labels_toggle_bluetooth">toggle Bluetooth</string>
+    <string name="app_ops_labels_toggle_mobile_data">toggle cellular data</string>
+    <string name="app_ops_labels_toggle_nfc">toggle NFC</string>
+    <string name="app_ops_labels_toggle_wifi">toggle Wi-Fi</string>
+    <string name="app_ops_labels_turn_on_screen">turn the screen on</string>
+    <string name="app_ops_labels_use_alarm_volume">control alarm volume</string>
+    <string name="app_ops_labels_use_audio_focus">control the audio focus</string>
+    <string name="app_ops_labels_use_bluetooth_volume">control the Bluetooth volume</string>
+    <string name="app_ops_labels_use_body_sensors">use body sensors</string>
+    <string name="app_ops_labels_use_fingerprint">use fingerprint</string>
+    <string name="app_ops_labels_use_master_volume">control the master volume</string>
+    <string name="app_ops_labels_use_media_buttons">use the media buttons</string>
+    <string name="app_ops_labels_use_media_volume">control the media volume</string>
+    <string name="app_ops_labels_use_notification_volume">control the notification volume</string>
+    <string name="app_ops_labels_use_ring_volume">control the ringtone volume</string>
+    <string name="app_ops_labels_use_vibrate">use haptic feedback</string>
+    <string name="app_ops_labels_use_voice_volume">control the voice call volume</string>
+    <string name="app_ops_labels_wifi_change">change Wi-Fi state</string>
+    <string name="app_ops_labels_write_external_storage">write external storage</string>
+    <string name="app_ops_labels_write_mms">write an MMS message</string>
+    <string name="app_ops_labels_write_sms">write an SMS message</string>
+
+    <!-- App ops permissions -->
+    <string name="app_ops_permissions_allowed">Allowed</string>
+    <string name="app_ops_permissions_ignored">Ignored</string>
+    <string name="app_ops_permissions_always_ask">Always ask</string>
+
+    <!-- App ops detail -->
+    <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (used <xliff:g id="count">%2$s</xliff:g>)</string>
+    <string name="app_ops_allowed_count">Allowed <xliff:g id="count" example="2 times">%s</xliff:g></string>
+    <string name="app_ops_ignored_count">Denied <xliff:g id="count" example="2 times">%s</xliff:g></string>
+    <string name="app_ops_both_count">Allowed <xliff:g id="count">%1$s</xliff:g>, denied <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_no_blockable_permissions">No permissions available to block</string>
+
+    <!-- App ops menu options -->
+    <string name="app_ops_show_user_apps">Show user apps</string>
+    <string name="app_ops_show_system_apps">Show built-in apps</string>
+    <string name="app_ops_reset_counters">Reset allow/deny counters</string>
+    <string name="app_ops_reset_confirm_title">Confirm counters reset</string>
+    <string name="app_ops_reset_confirm_mesg">Are you sure you wish to reset counters?</string>
+
     <!-- Sizes for pattern lockscreen -->
     <string name="lock_pattern_size_3" translatable="false">3 \u00d7 3</string>
     <string name="lock_pattern_size_4" translatable="false">4 \u00d7 4</string>
@@ -125,6 +326,9 @@
     <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Touchscreen hovering</string>
     <string name="touchscreen_hovering_summary">Allows you to hover the screen like a mouse in web browsers, remote desktops, etc</string>
+
+    <!-- Memory -->
+    <string name="memory_startup_apps_title">Apps started on boot</string>
 
     <!-- Whether the keyguard will directly show the lock entry -->
     <string name="directly_show_lock">Direct unlock</string>
