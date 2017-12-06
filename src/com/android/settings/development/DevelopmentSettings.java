@@ -894,7 +894,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             IWifiManager wifiManager = IWifiManager.Stub.asInterface(
                     ServiceManager.getService(Context.WIFI_SERVICE));
             try {
-                wifiInfo = wifiManager.getConnectionInfo();
+                wifiInfo = wifiManager.getConnectionInfo(getActivity().getOpPackageName());
             } catch (RemoteException e) {
                 Log.e(TAG, "wifiManager, getConnectionInfo()", e);
             }
