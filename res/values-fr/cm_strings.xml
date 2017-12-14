@@ -18,6 +18,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
+  <plurals name="show_device_id_countdown_cm">
+    <item quantity="one">Plus que <xliff:g id="step_count">%1$d</xliff:g> étape pour obtenir l\'ID de l\'appareil.</item>
+    <item quantity="other">Plus que <xliff:g id="step_count">%1$d</xliff:g> étapes pour obtenir l\'ID de l\'appareil.</item>
+  </plurals>
   <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
   <string name="show_device_id_copied_cm">ID de périphérique : [<xliff:g id="device_id">%1$s</xliff:g>] copiée dans le presse-papiers</string>
   <!--  Device Info screen. Confirmation that Device ID is not available -->
