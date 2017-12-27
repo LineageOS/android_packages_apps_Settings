@@ -437,7 +437,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mEnableAdbController = new EnableAdbPreferenceController(getActivity());
         mAdbOverNetwork = findAndInitSwitchPref(ADB_TCPIP);
         mClearAdbKeys = findPreference(CLEAR_ADB_KEYS);
-        if (!SystemProperties.getBoolean("ro.adb.secure", false)) {
+        if (!SystemProperties.getBoolean("ro.adb.secure", false)
+                || android.os.Build.TYPE.equals("user")) {
             if (debugDebuggingCategory != null) {
                 debugDebuggingCategory.removePreference(mClearAdbKeys);
             }
