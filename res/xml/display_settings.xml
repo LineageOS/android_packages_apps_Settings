@@ -71,6 +71,14 @@
         android:key="rotation"
         lineage:requiresFeature="android.hardware.sensor.accelerometer" />
 
+    <lineageos.preference.LineageSystemSettingListPreference
+        android:key="dark_theme"
+        android:title="@string/dark_theme_title"
+        android:summary="%s"
+        android:entries="@array/dark_theme_entries"
+        android:entryValues="@array/dark_theme_values"
+        android:defaultValue="0" />
+
     <Preference
         android:key="color_mode"
         android:title="@string/color_mode_title"
