@@ -98,6 +98,7 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
     private static HashMap<Integer, Integer> OP_ICONS = new HashMap<>();
 
     static {
+        OP_ICONS.put(AppOpsManager.OP_BLUETOOTH_CHANGE, R.drawable.ic_perm_bluetooth);
         OP_ICONS.put(AppOpsManager.OP_BOOT_COMPLETED, R.drawable.ic_perm_boot);
         OP_ICONS.put(AppOpsManager.OP_CHANGE_WIFI_STATE, R.drawable.ic_perm_wifi);
         OP_ICONS.put(AppOpsManager.OP_DATA_CONNECT_CHANGE, R.drawable.ic_perm_data);
