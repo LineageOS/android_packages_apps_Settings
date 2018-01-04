@@ -171,15 +171,8 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
         mPreferenceScreen.removeAll();
         setAppHeader(mPackageInfo);
 
-        boolean isPlatformSigned = isPlatformSigned();
-        for (AppOpsState.OpsTemplate tpl : AppOpsState.ALL_TEMPLATES) {
-            /* If we are platform signed, only show the root switch, this
-             * one is safe to toggle while other permission-based ones could
-             * certainly cause system-wide problems
-             */
-            if (isPlatformSigned && tpl != AppOpsState.SU_TEMPLATE) {
-                 continue;
-            }
+        AppOpsState.OpsTemplate[] allTemplates = getTemplates();
+        for (AppOpsState.OpsTemplate tpl : allTemplates) {
             List<AppOpsState.AppOpEntry> entries = mState.buildState(tpl,
                     mPackageInfo.applicationInfo.uid, mPackageInfo.packageName, true);
             for (final AppOpsState.AppOpEntry entry : entries) {
@@ -215,6 +208,54 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
         }
 
         return true;
+    }
+
+    private AppOpsState.OpsTemplate[] getTemplates() {
+        /* If we are platform signed, only show the root switch, this
+         * one is safe to toggle while other permission-based ones could
+         * certainly cause system-wide problems
+         */
+        if (isPlatformSigned()) {
+            return new AppOpsState.OpsTemplate[]{ AppOpsState.SU_TEMPLATE };
+        }
+
+        AppOpsState.OpsTemplate[] allTemplates =
+                new AppOpsState.OpsTemplate[AppOpsState.ALL_TEMPLATES.length + 1];
+        int tplIdx = 0;
+        int opIdx = 0;
+        int[] tplOps = new int[AppOpsManager._NUM_OP];
+        // Loop all existing templates and store to op to find the missing ones later
+        for (AppOpsState.OpsTemplate tpl : AppOpsState.ALL_TEMPLATES) {
+            allTemplates[tplIdx] = tpl;
+            tplIdx++;
+
+            for (int i = 0; i < tpl.ops.length; i++) {
+                tplOps[opIdx] = tpl.ops[i];
+                tpl.showPerms[i] = true;
+                opIdx++;
+            }
+        }
+
+        // find all missing ops and generate a new template from them
+        int missingIdx = 0;
+        int[] missingOps = new int[AppOpsManager._NUM_OP - opIdx - 1];
+        boolean[] showPerms = new boolean[AppOpsManager._NUM_OP - opIdx - 1];
+        for (int i = 0; i < AppOpsManager._NUM_OP; i++) {
+            boolean missing = true;
+            for (int j = 0; j < opIdx; j++) {
+                if (tplOps[j] == i) {
+                    missing = false;
+                    j = opIdx;
+                }
+            }
+            if (missing) {
+                missingOps[missingIdx] = i;
+                showPerms[missingIdx] = true;
+            }
+        }
+        allTemplates[tplIdx] = new AppOpsState.OpsTemplate(missingOps, showPerms);
+
+        return allTemplates;
     }
 
     private Drawable getIconByPermission(String perm) {
