@@ -1110,7 +1110,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     private static boolean showEnableOemUnlockPreference(Context context) {
-        return context.getSystemService(Context.OEM_LOCK_SERVICE) != null;
+        return context.getSystemService(Context.OEM_LOCK_SERVICE) != null &&
+                SystemProperties.getBoolean("ro.oem_unlock_supported", false);
     }
 
     /**
