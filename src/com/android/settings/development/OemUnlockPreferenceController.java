@@ -65,7 +65,7 @@ public class OemUnlockPreferenceController extends DeveloperOptionsPreferenceCon
 
     @Override
     public boolean isAvailable() {
-        return mOemLockManager != null;
+        return mOemLockManager != null && SystemProperties.getBoolean("ro.oem_unlock_supported", false);
     }
 
     @Override
