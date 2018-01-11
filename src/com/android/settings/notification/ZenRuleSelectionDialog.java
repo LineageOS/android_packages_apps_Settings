@@ -74,7 +74,7 @@ public abstract class ZenRuleSelectionDialog {
             mServiceListing.addZenCallback(mServiceListingCallback);
             mServiceListing.reloadApprovedServices();
         }
-        mDialog = new AlertDialog.Builder(context)
+        mDialog = new AlertDialog.Builder(context, android.R.style.Theme_DeviceDefault_Dialog)
                 .setTitle(R.string.zen_mode_choose_rule_type)
                 .setView(v)
                 .setOnDismissListener(new OnDismissListener() {

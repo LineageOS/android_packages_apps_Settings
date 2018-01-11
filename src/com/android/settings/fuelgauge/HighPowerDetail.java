@@ -87,7 +87,8 @@ public class HighPowerDetail extends InstrumentedDialogFragment implements OnCli
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder b = new AlertDialog.Builder(getContext())
+        AlertDialog.Builder b = new AlertDialog.Builder(getContext(),
+                android.R.style.Theme_DeviceDefault_Dialog)
                 .setTitle(mLabel)
                 .setNegativeButton(R.string.cancel, null)
                 .setView(R.layout.ignore_optimizations_content);
