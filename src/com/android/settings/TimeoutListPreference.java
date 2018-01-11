@@ -45,6 +45,8 @@ public class TimeoutListPreference extends RestrictedListPreference {
     protected void onPrepareDialogBuilder(AlertDialog.Builder builder,
             DialogInterface.OnClickListener listener) {
         super.onPrepareDialogBuilder(builder, listener);
+        builder.getContext().setTheme(android.R.style.Theme_DeviceDefault_Dialog);
+
         if (mAdmin != null) {
             builder.setView(R.layout.admin_disabled_other_options_footer);
         } else {

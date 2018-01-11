@@ -81,6 +81,8 @@ public final class DeviceProfilesSettings extends InstrumentedDialogFragment imp
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getActivity().setTheme(android.R.style.Theme_DeviceDefault_Dialog);
+
         mManager = Utils.getLocalBtManager(getActivity());
         CachedBluetoothDeviceManager deviceManager = mManager.getCachedDeviceManager();
 
