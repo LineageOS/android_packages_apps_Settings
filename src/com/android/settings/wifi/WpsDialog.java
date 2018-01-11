@@ -81,6 +81,8 @@ public class WpsDialog extends AlertDialog {
         mContext = context;
         mWpsSetup = wpsSetup;
 
+        mContext.setTheme(android.R.style.Theme_DeviceDefault_Dialog);
+
         class WpsListener extends WifiManager.WpsCallback {
 
             public void onStarted(String pin) {

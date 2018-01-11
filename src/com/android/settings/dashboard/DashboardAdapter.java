@@ -377,7 +377,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
         }
 
         if (data.hiddenSuggestionCount > 0) {
-            holder.summary.setTextColor(Color.BLACK);
+            //holder.summary.setTextColor(Color.BLACK);
             if (curMode == DashboardData.HEADER_MODE_COLLAPSED) {
                 if (data.conditionCount > 0) {
                     holder.summary.setText(mContext.getResources().getQuantityString(
@@ -387,7 +387,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
                     holder.title.setText(mContext.getResources().getQuantityString(
                             R.plurals.suggestions_collapsed_title,
                             data.hiddenSuggestionCount, data.hiddenSuggestionCount));
-                    holder.title.setTextColor(Color.BLACK);
+                    //holder.title.setTextColor(Color.BLACK);
                     holder.summary.setText(null);
                 }
             } else if (curMode == DashboardData.HEADER_MODE_DEFAULT) {
@@ -397,7 +397,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
                 } else {
                     holder.title.setText(mContext.getString(
                             R.string.suggestions_more_title, data.hiddenSuggestionCount));
-                    holder.title.setTextColor(Color.BLACK);
+                    //holder.title.setTextColor(Color.BLACK);
                     holder.summary.setText(null);
                 }
             }

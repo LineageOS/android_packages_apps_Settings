@@ -47,6 +47,7 @@ public class BugreportPreference extends CustomDialogPreference {
     @Override
     protected void onPrepareDialogBuilder(Builder builder, DialogInterface.OnClickListener listener) {
         super.onPrepareDialogBuilder(builder, listener);
+        builder.getContext().setTheme(android.R.style.Theme_DeviceDefault_Dialog);
 
         final View dialogView = View.inflate(getContext(), R.layout.bugreport_options_dialog, null);
         mInteractiveTitle = (CheckedTextView) dialogView.findViewById(R.id.bugreport_option_interactive_title);
