@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87978552_98a32f37",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2018-01-13T09:17:04Z",
+      "side": 1,
+      "message": "Why not here? \n\n    return !SystemProperties.get(PERSISTENT_DATA_BLOCK_PROP).equals(\"\")\n \u0026\u0026 !SystemProperties.getBoolean(\"ro.oem_unlock_supported\", false);\n\nBy doing so you also hide it from the search results.",
+      "range": {
+        "startLine": 1197,
+        "startChar": 14,
+        "endLine": 1197,
+        "endChar": 76
+      },
+      "revId": "e721c8422bde0d192c41124a853be51efd7df6d1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
