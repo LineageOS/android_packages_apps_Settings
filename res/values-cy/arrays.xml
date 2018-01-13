@@ -72,6 +72,17 @@
   <!-- Authentication Types used in APN editor -->
   <!-- Bearer Info used in APN editor -->
   <!-- MVNO Info used in APN editor -->
+  <string-array name="mvno_type_entries">
+    <item>None</item>
+    <!-- Do not translate. -->
+    <item>SPN</item>
+    <!-- Do not translate. -->
+    <item>IMSI</item>
+    <!-- Do not translate. -->
+    <item>GID</item>
+    <!-- Do not translate. -->
+    <item>ICCID</item>
+  </string-array>
   <!-- Apps on SD installation location options in ApplicationSettings -->
   <!-- Do not translate. -->
   <!-- Names of categories of app ops tabs -->
@@ -108,11 +119,40 @@
   <!-- Process stats memory use details: labels for process -->
   <!-- Array of titles for sim color for multi-sim -->
   <!-- Wifi extension requirement -->
+  <string-array name="cellcular2wifi_entries">
+    <item>Cysylltu\'n awtomatig</item>
+    <item>Manually connect</item>
+    <item>Gofyn pob tro</item>
+  </string-array>
   <!-- Wifi extension requirement -->
   <!-- CT MCC-MNC-->
   <!-- dm plmn that need to be hidden -->
+  <string-array name="hidedm_plmn_list">
+    <item>46000</item>
+    <item>46002</item>
+    <item>46003</item>
+    <item>46007</item>
+  </string-array>
   <!-- supl plmn list that need to be hidden -->
+  <string-array name="hidesupl_plmn_list">
+    <item>46001</item>
+    <item>46003</item>
+    <item>46011</item>
+    <item>46012</item>
+    <item>45502</item>
+    <item>45507</item>
+  </string-array>
   <!-- Defined the hide accounts' type -->
+  <string-array name="plmn_list_for_apn_disable">
+    <item>20404</item>
+    <item>45403</item>
+    <item>45404</item>
+    <item>45502</item>
+    <item>45507</item>
+    <item>46003</item>
+    <item>46011</item>
+    <item>46012</item>
+  </string-array>
   <!-- Automatic storage management settings. The amount of days for the automatic storage manager
          to retain. These are shown in a list dialog. [CHAR LIMIT=70] -->
 </resources>

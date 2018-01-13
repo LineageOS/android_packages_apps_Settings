@@ -47,7 +47,7 @@ import java.util.Set;
 
 public class AppOpsState {
     static final String TAG = "AppOpsState";
-    static final boolean DEBUG = false;
+    static final boolean DEBUG = true;
 
     final Context mContext;
     final AppOpsManager mAppOps;
