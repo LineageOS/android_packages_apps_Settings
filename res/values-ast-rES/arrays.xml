@@ -23,6 +23,22 @@
          These values will be used as search terms for TimeZone displayName
          strings. -->
   <!-- The time zone picker screen has two levels.  The first level allows the user to choose a region. -->
+  <string-array name="timezone_filters">
+    <!-- The next level of the time zoner picker should show time zones from the Americas. -->
+    <item>América</item>
+    <!-- The next level of the time zoner picker should show time zones from Europe. -->
+    <item>Europa</item>
+    <!-- The next level of the time zoner picker should show time zones from Africa. -->
+    <item>África</item>
+    <!-- The next level of the time zoner picker should show time zones from Asia. -->
+    <item>Asia</item>
+    <!-- The next level of the time zoner picker should show time zones from Australia. -->
+    <item>Australia</item>
+    <!-- The next level of the time zoner picker should show time zones from Pacific. -->
+    <item>Pacíficu</item>
+    <!-- The next level of the time zoner picker should show time zones from ALL regions. -->
+    <item>Toes</item>
+  </string-array>
   <!-- Display settings.  The delay in inactivity before the screen is turned off. These are shown in a list dialog. -->
   <string-array name="screen_timeout_entries">
     <item>15 segundos</item>
@@ -36,7 +52,7 @@
   <!-- Do not translate. -->
   <!-- Display settings.  The delay in inactivity before the dream is shown. These are shown in a list dialog. -->
   <string-array name="dream_timeout_entries">
-    <item>Never</item>
+    <item>Enxamás</item>
     <item>15 segundos</item>
     <item>30 segundos</item>
     <item>1 minutu</item>
@@ -60,6 +76,12 @@
     <item>30 minutos</item>
   </string-array>
   <!-- Do not translate. -->
+  <string-array name="entries_font_size">
+    <item msgid="6490061470416867723">Small</item>
+    <item msgid="3579015730662088893">Por defeutu</item>
+    <item msgid="1678068858001018666">Large</item>
+    <item msgid="490158884605093126">Largest</item>
+  </string-array>
   <!-- Wi-Fi settings -->
   <!-- Match this with the order of NetworkInfo.DetailedState. -->
   <!-- Wi-Fi settings. The status messages when the network is unknown. -->
@@ -159,7 +181,7 @@
   <string-array name="bluetooth_visibility_timeout_entries">
     <item>2 minutos</item>
     <item>5 minutos</item>
-    <item>1 hour</item>
+    <item>1 hora</item>
     <item>Never time out</item>
   </string-array>
   <!-- Match this with drawable.wifi_signal. -->
@@ -171,7 +193,7 @@
     <!-- Keep Wi-Fi on when screen turns off and plugged in.  When on battery, go to sleep when screen turns off. -->
     <item>Only when plugged in</item>
     <!-- Do not keep Wi-Fi on when screen turns off.  [CHAR LIMIT=40] -->
-    <item>Never</item>
+    <item>Enxamás</item>
   </string-array>
   <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi sleep policy. Used when
          the device is Wi-Fi-only. [CHAR LIMIT=30] -->
@@ -181,22 +203,35 @@
     <!-- Keep Wi-Fi on when screen turns off and plugged in.  When on battery, go to sleep when screen turns off. -->
     <item>Namái al enchufar</item>
     <!-- Do not keep Wi-Fi on when screen turns off, for Wi-Fi-only devices, no other data connection -->
-    <item>Never</item>
+    <item>Enxamás</item>
   </string-array>
   <!-- Match with wifi_sleep_policy_entries and the values of the settings in Settings class. -->
   <!-- Do not translate. -->
   <!-- Data Usage settings. Range of data usage. -->
   <!-- Display options for UsageStats class -->
   <string-array name="usage_stats_display_order_types">
-    <item>Usage time</item>
+    <item>Tiempu d\'usu</item>
     <item>Last time used</item>
     <item>Nome d\'aplicación</item>
   </string-array>
   <!-- EAP method -->
   <!-- Phase 2 options for PEAP -->
   <!-- Phase 2 options for rest of EAP methods -->
+  <string-array name="wifi_phase2_entries">
+    <item>None</item>
+    <item>PAP</item>
+    <item>MSCHAP</item>
+    <item>MSCHAPV2</item>
+    <item>GTC</item>
+  </string-array>
   <!-- Wi-Fi IP settings. -->
   <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
+  <string-array name="wifi_ip_settings">
+    <!-- Use DHCP (Dynamic Host Configuration Protocol) for obtaining IP settings [CHAR LIMIT=25] -->
+    <item>Protocolu DHCP</item>
+    <!-- Use statically defined IP settings [CHAR LIMIT=25]-->
+    <item>Static</item>
+  </string-array>
   <!-- Wi-Fi proxy settings. -->
   <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
   <string-array name="wifi_proxy_settings">
@@ -208,10 +243,55 @@
     <item>Auto-configuración</item>
   </string-array>
   <!-- Authentication Types used in APN editor -->
+  <string-array name="apn_auth_entries">
+    <item>None</item>
+    <item>PAP</item>
+    <item>CHAP</item>
+    <item>PAP o CHAP</item>
+  </string-array>
   <!-- Authentication Types used in APN editor -->
+  <string-array name="apn_protocol_entries">
+    <item>IPv4</item>
+    <item>IPv6</item>
+    <item>IPv4/IPv6</item>
+  </string-array>
   <!-- Bearer Info used in APN editor -->
+  <string-array name="bearer_entries">
+    <item>Ensin especificar</item>
+    <item>LTE</item>
+    <item>HSPAP</item>
+    <item>HSPA</item>
+    <item>HSUPA</item>
+    <item>HSDPA</item>
+    <item>UMTS</item>
+    <item>EDGE</item>
+    <item>GPRS</item>
+    <item>eHRPD</item>
+    <item>EVDO_B</item>
+    <item>EVDO_A</item>
+    <item>EVDO_0</item>
+    <item>1xRTT</item>
+    <item>IS95B</item>
+    <item>IS95A</item>
+  </string-array>
   <!-- MVNO Info used in APN editor -->
+  <string-array name="mvno_type_entries">
+    <item>None</item>
+    <!-- Do not translate. -->
+    <item>SPN</item>
+    <!-- Do not translate. -->
+    <item>IMSI</item>
+    <!-- Do not translate. -->
+    <item>GID</item>
+    <!-- Do not translate. -->
+    <item>ICCID</item>
+  </string-array>
   <!-- Apps on SD installation location options in ApplicationSettings -->
+  <string-array name="app_install_location_entries">
+    <item>Internal device storage</item>
+    <item>Tarxeta SD extrayible</item>
+    <item>Let the system decide</item>
+  </string-array>
   <!-- Do not translate. -->
   <!-- Names of categories of app ops tabs -->
   <string-array name="app_ops_categories">
@@ -219,7 +299,7 @@
     <item>Personal</item>
     <item>Messaging</item>
     <item>Media</item>
-    <item>Device</item>
+    <item>Preséu</item>
   </string-array>
   <!-- User display names for app ops codes -->
   <string-array name="app_ops_summaries">
@@ -250,7 +330,7 @@
     <item>draw on top</item>
     <item>access notifications</item>
     <item>camera</item>
-    <item>grabar audiu</item>
+    <item>record audio</item>
     <item>play audio</item>
     <item>read clipboard</item>
     <item>modify clipboard</item>
@@ -330,6 +410,17 @@
   <!-- Titles for the list of long press timeout options. -->
   <!-- Values for the list of long press timeout options. -->
   <!-- Titles for captioning typeface preference. [CHAR LIMIT=35] -->
+  <string-array name="captioning_typeface_selector_titles">
+    <item>Por defeutu</item>
+    <item>Sans-serif</item>
+    <item>Sans-serif condensed</item>
+    <item>Sans-serif monospace</item>
+    <item>Serif</item>
+    <item>Serif monospace</item>
+    <item>Casual</item>
+    <item>Cursiva</item>
+    <item>Small capitals</item>
+  </string-array>
   <!-- Values for captioning typeface preference. -->
   <!-- Titles for captioning font size preference. [CHAR LIMIT=35] -->
   <!-- Values for captioning font size preference. -->
@@ -338,6 +429,12 @@
   <!-- Titles for captioning color preference. -->
   <!-- Values for captioning color preference. -->
   <!-- Titles for captioning opacity preference. [CHAR LIMIT=35] -->
+  <string-array name="captioning_opacity_selector_titles">
+    <item>25%</item>
+    <item>50%</item>
+    <item>75%</item>
+    <item>100%</item>
+  </string-array>
   <!-- Values for captioning opacity preference. -->
   <!-- Titles for captioning text style preset preference. [CHAR LIMIT=35] -->
   <!-- Values for captioning text style preset preference. -->
@@ -374,17 +471,35 @@
   <!-- Values for premium SMS permission selector [CHAR LIMIT=30] -->
   <string-array name="security_settings_premium_sms_values">
     <!-- Ask user before sending to premium SMS short code. -->
-    <item>Ask</item>
+    <item>Entrugar</item>
     <!-- Never allow app to send to premium SMS short code. -->
-    <item>Nun permitir enxamás</item>
+    <item>Enxamás permitir</item>
     <!-- Always allow app to send to premium SMS short code. -->
     <item>Permitir siempres</item>
   </string-array>
   <!-- [CHAR LIMIT=40] Labels for memory states -->
+  <string-array name="ram_states">
+    <!-- Normal desired memory state. -->
+    <item>Normal</item>
+    <!-- Moderate memory state, not as good as normal. -->
+    <item>Moderate</item>
+    <!-- Memory is running low. -->
+    <item>Low</item>
+    <!-- Memory is critical. -->
+    <item>Critical</item>
+    <!-- Unknown memory state -->
+    <item>\?</item>
+  </string-array>
   <!-- Display color space adjustment modes for accessibility -->
   <!-- Values for display color space adjustment modes for accessibility -->
   <!-- Battery saver mode: allowable trigger threshold levels. -->
   <!-- Process stats memory use details: labels for memory states -->
+  <string-array name="proc_stats_memory_states">
+    <item>Normal</item>
+    <item>Moderate</item>
+    <item>Low</item>
+    <item>Critical</item>
+  </string-array>
   <!-- Process stats memory use details: labels for process -->
   <!-- Array of titles for sim color for multi-sim -->
   <string-array name="color_picker">
@@ -420,51 +535,6 @@
     <item>45507</item>
   </string-array>
   <!-- Defined the hide accounts' type -->
-  <string-array name="hide_account_list">
-    <item>com.qualcomm.qti.RIDL</item>
-    <item>com.android.localphone</item>
-    <item>com.android.sim</item>
-    <item>com.android.wanadoo</item>
-    <item>com.android.orangemail</item>
-    <item>com.android.correoorange</item>
-    <item>com.android.orangemobile</item>
-    <item>com.android.multibox</item>
-    <item>com.android.belgacom</item>
-    <item>com.android.skynet</item>
-    <item>com.android.telenet</item>
-    <item>com.android.scarlet</item>
-    <item>com.android.euphony</item>
-    <item>com.android.voo</item>
-    <item>com.android.voo</item>
-    <item>com.android.versatel</item>
-    <item>com.android.tiscali</item>
-    <item>com.android.swing</item>
-    <item>com.android.versatelasdl</item>
-    <item>com.android.brutele</item>
-    <item>com.android.teledisnet</item>
-    <item>com.android.tvcablenet</item>
-    <item>com.android.mobistar</item>
-    <item>com.android.vodafone</item>
-    <item>com.android.hotmail</item>
-    <item>com.android.sapo</item>
-    <item>com.android.netcabo</item>
-    <item>com.android.clix</item>
-    <item>com.android.alice</item>
-    <item>com.android.yahoo</item>
-    <item>com.android.outlook</item>
-    <item>com.android.gmail</item>
-    <item>com.android.aol</item>
-    <item>com.android.free</item>
-    <item>com.android.laposte</item>
-    <item>com.android.sfr</item>
-    <item>com.android.orange</item>
-    <item>com.android.noos</item>
-    <item>com.android.vodafone</item>
-    <item>com.android.hotmail</item>
-    <item>com.android.sapo</item>
-    <item>com.android.netcabo</item>
-    <item>com.android.netcabo</item>
-  </string-array>
   <string-array name="plmn_list_for_apn_disable">
     <item>20404</item>
     <item>45403</item>
