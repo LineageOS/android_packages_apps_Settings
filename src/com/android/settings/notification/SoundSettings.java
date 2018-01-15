@@ -31,6 +31,7 @@ import android.text.TextUtils;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.RingtonePreference;
+import com.android.settings.Utils;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -224,6 +225,7 @@ public class SoundSettings extends DashboardFragment {
         controllers.add(
                 new NotificationVolumePreferenceController(context, callback, lifecycle));
         controllers.add(new RingVolumePreferenceController(context, callback, lifecycle));
+        controllers.add(new LinkedVolumesPreferenceController(context));
         controllers.add(new IncreasingRingPreferenceController(context));
         controllers.add(new IncreasingRingVolumePreferenceController(
                     context, incCallback, lifecycle));
@@ -271,6 +273,9 @@ public class SoundSettings extends DashboardFragment {
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
+                    if (!Utils.isVoiceCapable(context)) {
+                        keys.add((new LinkedVolumesPreferenceController(context)).getPreferenceKey());
+                    }
                     // Duplicate results
                     keys.add((new ZenModePreferenceController(context)).getPreferenceKey());
                     keys.add(ZenModeSettings.KEY_VISUAL_SETTINGS);
