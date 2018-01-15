@@ -79,11 +79,19 @@
         android:order="-140"
         settings:controller="com.android.settings.notification.NotificationVolumePreferenceController"/>
 
+    <!-- Link ringtone and notification volumes -->
+    <lineageos.preference.SecureSettingSwitchPreference
+        android:key="volume_link_notification"
+        android:title="@string/volume_link_notification_title"
+        android:defaultValue="true"
+        android:order="-138"
+        settings:controller="com.android.settings.notification.LinkedVolumesPreferenceController"/>
+
     <!-- Increasing ring -->
     <lineageos.preference.LineageSystemSettingSwitchPreference
         android:key="increasing_ring"
         android:title="@string/increasing_ring_volume_option_title"
-        android:order="-138"
+        android:order="-137"
         settings:controller="com.android.settings.notification.IncreasingRingPreferenceController" />
 
     <!-- Increasing ring volume -->
