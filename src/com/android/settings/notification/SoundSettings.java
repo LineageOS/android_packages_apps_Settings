@@ -197,6 +197,7 @@ public class SoundSettings extends DashboardFragment {
         controllers.add(
                 new NotificationVolumePreferenceController(context, callback, lifecycle));
         controllers.add(new RingVolumePreferenceController(context, callback, lifecycle));
+        controllers.add(new LinkedVolumesPreferenceController(context));
 
         // === Phone & notification ringtone ===
         controllers.add(new PhoneRingtonePreferenceController(context));
