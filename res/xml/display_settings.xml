@@ -151,6 +151,7 @@
         android:defaultValue="false"
         lineage:requiresConfig="@*lineageos.platform:bool/config_proximityCheckOnWake" />
 
+    <!-- Use LineageParts for styles
     <ListPreference
         android:key="theme"
         android:title="@string/color_theme"
@@ -162,6 +163,7 @@
         android:entries="@array/systemui_theme_entries"
         android:entryValues="@array/systemui_theme_values"
         settings:controller="com.android.settings.display.SystemUiThemePreferenceController" />
+    -->
 
     <Preference
         android:key="vr_display_pref"
