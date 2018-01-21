@@ -16,12 +16,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for Dialog yes button -->
+  <string name="yes">"Sí"</string>
   <!-- Strings for Dialog no button -->
+  <string name="no">"Non"</string>
   <!-- Strings for Dialog create button -->
+  <string name="create">Crear</string>
   <!-- Strings for Dialog allow button -->
+  <string name="allow">Permitir</string>
   <!-- Strings for Dialog deny button -->
+  <string name="deny">Ñegar</string>
   <!-- Strings for Dialog close button [CHAR LIMIT=20] -->
+  <string name="dlg_close">Zarrar</string>
   <!-- Strings for Dialog switch button [CHAR LIMIT=20] -->
+  <string name="dlg_switch">Camudar</string>
   <!-- Device Info -->
   <!-- Device Info screen. Used for a status item's value when the proper value is not known -->
   <string name="device_info_default">Desconozse</string>
@@ -32,10 +39,14 @@
   <!-- Settings main menu category heading. Wireless and networks (Wi-Fi, Bluetooth, data usage...). [CHAR LIMIT=40] -->
   <string name="header_category_wireless_networks">Conexones y redes</string>
   <!-- Settings main menu category heading. Wireless and networks (Wi-Fi, Bluetooth, data usage...). [CHAR LIMIT=40] -->
+  <string name="header_category_connections">Conexones</string>
   <!-- Settings main menu category heading. Device (Sound, display, battery, applications...). [CHAR LIMIT=40] -->
+  <string name="header_category_device">Preséu</string>
   <!-- Settings main menu category heading. Personal (Accounts, security, language, backup...). [CHAR LIMIT=40] -->
+  <string name="header_category_personal">Personal</string>
   <!-- Settings main menu category heading. Personal (Accounts, security, language, backup...). [CHAR LIMIT=40] -->
   <!-- Settings main menu category heading. System (Updates, data, accessibility, about phone). [CHAR LIMIT=40] -->
+  <string name="header_category_system">Sistema</string>
   <!-- Data Connection Enable. Only shown in diagnostic screen, so precise translation is not needed. -->
   <string name="radio_info_data_connection_enable">Activar conexón de datos</string>
   <!-- Data Connection Disable. Only shown in diagnostic screen, so precise translation is not needed. -->
@@ -76,11 +87,17 @@
   <!-- Used for diagnostic info screens, precise translation isn't needed -->
   <string name="radioInfo_unknown">Desconozse</string>
   <!-- Phone Info screen. Units shown after a value.  Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radioInfo_display_packets">pqts</string>
   <!-- Phone Info screen. Units shown after a value.  Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radioInfo_display_bytes">bytes</string>
   <!-- Phone Info screen. Units shown after a value.  Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radioInfo_display_dbm">dBm</string>
   <!-- Phone Info screen. Units shown after a value.  Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radioInfo_display_asu">asu</string>
   <!-- Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radioInfo_lac">LAC</string>
   <!-- Used for diagnostic info screens, precise translation isn't needed -->
+  <string name="radioInfo_cid">CID</string>
   <!-- Used for diagnostic info screens, precise translation isn't needed. Unmounts the SD card from the phone, meaning it will become available for an attached computer  [CHAR LIMIT=25] -->
   <!-- Used for diagnostic info screens, precise translation isn't needed. Unmounts the SD card from the phone, meaning it will become available for an attached computer  -->
   <!-- Used for diagnostic info screens, precise translation isn't needed. Formats the SD card in the phone, meaning it will be erased and reformatted [CHAR LIMIT=25] -->
@@ -140,6 +157,7 @@ Teníemos un Palaciu…\n
   <!-- Title for a notification shown. [CHAR LIMIT=25] -->
   <!-- Title for a notification shown. -->
   <!-- Used as setting title (for checkbox) on second screen after selecting Bluetooth settings -->
+  <string name="bluetooth">Bluetooth</string>
   <!-- Bluetooth settings screen, summary after selecting Discoverable check box [CHAR LIMIT=50] -->
   <!-- Bluetooth settings screen, summary when Discoverable duration is set to "forever" [CHAR LIMIT=50] -->
   <!-- Bluetooth settings screen, summary text when not discoverable and no paired devices [CHAR LIMIT=50] -->
@@ -149,14 +167,18 @@ Teníemos un Palaciu…\n
         bluetooth voice dialing when lock screen is up-->
   <!-- Bluetooth settings screen, lock voice dialing checkbox summary text -->
   <!-- Bluetooth settings screen, heading above the list of nearby bluetooth devices -->
+  <string name="bluetooth_devices">Preseos Bluetooth</string>
   <!-- Bluetooth settings screen, title for the current bluetooth name setting -->
+  <string name="bluetooth_device_name">Nome del preséu</string>
   <!-- Bluetooth settings screen, image description for device details button. This opens the screen to rename, unpair, etc. a single device. -->
+  <string name="bluetooth_device_details">Axustes del preséu</string>
   <!-- Bluetooth settings screen, image description for profile of a device details button. -->
   <!-- Bluetooth settings screen, summary text when there isn't a name set (for the name setting) -->
   <!-- Bluetooth settings screen, menu item to scan for nearby bluetooth devices -->
   <!-- Bluetooth settings screen, menu item to change this device's Bluetooth name. [CHAR LIMIT=30] -->
   <!-- Bluetooth settings screen, confirmation button for rename device dialog. [CHAR LIMIT=20] -->
   <!-- Bluetooth settings.  Dialog title to confirm disconnecting from all profiles of a device. [CHAR LIMIT=30] -->
+  <string name="bluetooth_disconnect_title">¿Desconeutar?</string>
   <!-- Bluetooth settings.  Message for disconnecting from all profiles of a bluetooth device. [CHAR LIMIT=NONE] -->
   <!-- Bluetooth Settings. text displayed when user has restriction DISALLOW_CONFIG_BLUETOOTH [CHAR LIMIT=NONE]-->
   <!-- Bluetooth Visibility message.  This message informs the user that their device is now visible to other bluetooth devices.  [CHAR LIMIT=NONE] -->
@@ -203,17 +225,21 @@ Teníemos un Palaciu…\n
   <!-- Activity label of BluetoothMessagePermissionActivity for SIM access profile. Also used as Strings in the permission dialog [CHAR LIMIT=none] -->
   <!-- Bluetooth SIM access permission Alert Activity text [CHAR LIMIT=none] -->
   <!-- Date & time settings screen title -->
+  <string name="date_and_time">Data y hora</string>
   <!-- The title of the activity to pick a time zone. -->
   <!-- Label of preview text when tweaking font size -->
   <string name="display_preview_label">Previsualización:</string>
   <!-- Label for chosen font size -->
+  <string name="display_font_size_label">Tamañu de fonte:</string>
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
   <!-- Used for diagnostic screens, precise translation is not necessary -->
+  <string name="intent_sender_account_label">Cuenta: </string>
   <!-- HTTP proxy settings title -->
+  <string name="proxy_settings_title">Proxy</string>
   <!-- HTTP proxy settings. Button to clear the proxy box. -->
   <!-- HTTP proxy settings. The port number label. -->
   <!-- HTTP proxy settings. The exclusion list label. -->
@@ -284,6 +310,7 @@ Teníemos un Palaciu…\n
   <!-- Band mode screen. Statusm essage when successful. -->
   <!-- Instructions after the user changes the mass storage settings -->
   <!-- Enable USB mass storage mode checkbox title -->
+  <string name="sdcard_settings_screen_mass_storage_text">Activar almacenamientu masivu USB</string>
   <!-- The label for total bytes on SD card -->
   <!-- Message when there is no SD card present [CHAR LIMIT=30] -->
   <!-- Message when there is no SD card present -->
@@ -359,6 +386,7 @@ Teníemos un Palaciu…\n
   <string name="settings_shortcut">Atayu d\'Axustes</string>
   <!-- Wireless controls settings screen, setting check box label -->
   <!-- Main Settings screen settings title for things like airplane mode, tethering, NFC, VPN.  This will take you to another screen with those settings.  [CHAR LIMIT=30] -->
+  <string name="radio_controls_title">Más</string>
   <!-- Wireless Settings screen title for things like Wi-Fi, bluetooth, airplane mode. -->
   <string name="wireless_networks_settings_title">Conexones y redes</string>
   <!-- Main Settings screen settings summary text for the "Wireless controls" setting -->
@@ -370,6 +398,7 @@ Teníemos un Palaciu…\n
   <!-- check box cellular data summary [CHAR LIMIT=41] -->
   <!-- check box to allow data usage when roaming [CHAR LIMIT=41] -->
   <!-- mobile network settings screen, setting check box title -->
+  <string name="roaming">Itinerancia de datos</string>
   <!-- mobile network settings screen, setting option summary text when check box is selected -->
   <string name="roaming_enable">Coneuta a los servicios de rede al tar n\'itinerancia</string>
   <!-- mobile network settings screen, setting option summary text when check box is clear -->
@@ -380,12 +409,15 @@ Teníemos un Palaciu…\n
   <!-- mobile network settings screen, message in dialog box that appears when you select the "Data roaming" check box. This is for multiuser tablets [CHAR LIMIT=none] -->
   <!-- mobile network settings screen, message in dialog box that appears when you select the "Data roaming" check box. This is for multiuser phones [CHAR LIMIT=none] -->
   <!-- mobile network settings screen, title of dialog box that appears when you select the "Data roaming" check box -->
+  <string name="roaming_reenable_title">¿Permitir itinerancia de datos?</string>
   <!-- mobile network settings screen, setting option name -->
   <!-- mobile network settings screen, setting option summary text -->
   <string name="sum_carrier_select">Escueyi una operadora de rede</string>
   <!-- Date and time settings -->
   <!-- Main Settings screen setting option name to go into the date and time settings-->
+  <string name="date_and_time_settings_title">Data y hora</string>
   <!-- Title for Date & Time settings screen in SetupWizard [CHAR LIMIT=40] -->
+  <string name="date_and_time_settings_title_setup_wizard">Afitar data y hora</string>
   <!-- Main Settings screen setting option summary text for the item to go into the date and time settings. -->
   <string name="date_and_time_settings_summary">Afita\'l fusu horariu y los formatos de data, hora</string>
   <!-- Date & time setting screen setting check box title if the date and time should be determined automatically [CHAR LIMIT=30] -->
@@ -438,14 +470,17 @@ Teníemos un Palaciu…\n
   <!-- Text shown next to checkbox for showing profile info on LockScreen [CHAR LIMIT=50]-->
   <!-- Text shown for title of profile info setting [CHAR LIMIT=20]-->
   <!-- Main Settings screen setting option title for the item to take you to the Accounts screen [CHAR LIMIT=22] -->
+  <string name="Accounts_settings_title">Cuentes</string>
   <!-- Main Settings screen setting option title for the item to take you to the location screen -->
   <string name="location_settings_title">Allugamientu</string>
   <!-- Main Settings screen setting option title for the item to take you to the accounts screen [CHAR LIMIT=22] -->
+  <string name="account_settings_title">Cuentes</string>
   <!-- Main Settings screen setting option title for the item to take you to the security screen -->
   <string name="security_settings_title">Seguranza</string>
   <!-- Main Settings screen setting option summary text for the item tot ake you to the security and location screen -->
   <!-- Main Settings screen setting option summary text for the item to take you to the CDMA security and location screen -->
   <!-- In the security screen, the header title for settings related to  Passwords-->
+  <string name="security_passwords_title">Contraseñes</string>
   <!-- Summary for settings preference disabled by administrator [CHAR LIMIT=50] -->
   <!-- Fingerprint enrollment and settings -->
   <!-- Title shown for menu item that launches fingerprint settings or enrollment [CHAR LIMIT=22] -->
@@ -498,6 +533,7 @@ Teníemos un Palaciu…\n
   <!-- Button text to exit fingerprint wizard after everything is done [CHAR LIMIT=15] -->
   <string name="security_settings_fingerprint_enroll_done">Fecho</string>
   <!-- Dialog title for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=45] -->
+  <string name="security_settings_fingerprint_enroll_touch_dialog_title">Ups, eso nun ye\u2019l sensor</string>
   <!-- Dialog message for dialog which shows when user touches the icon on the screen, instead of the sensor at the back [CHAR LIMIT=45] -->
   <!-- Dialog message for dialog which shows when finger cannot be enrolled. [CHAR LIMIT=45] -->
   <!-- Dialog message for dialog which shows when finger cannot be enrolled due to being idle too long. -->
@@ -566,6 +602,7 @@ Teníemos un Palaciu…\n
   <!-- Message shown in screen lock picker while setting up the backup/fallback screen lock method for fingerprint. Users can choose to use this method to unlock the screen instead of fingerprint, or when fingerprint is not accepted. [CHAR LIMIT=80] [BACKUP_MESSAGE_ID=2799884038398627882] -->
   <!--  Main Security lock settings -->
   <!--  Title for PreferenceScreen to launch picker for security method when there is none [CHAR LIMIT=22] -->
+  <string name="unlock_set_unlock_launch_picker_title">Bloquéu de pantalla</string>
   <!--  Profile Security lock settings -->
   <!--  Title for PreferenceScreen to launch picker for security method for the managed profile when there is none [CHAR LIMIT=22] -->
   <!--  Title for PreferenceScreen to change security method: None/Pattern/PIN/Password [CHAR LIMIT=22] -->
@@ -605,6 +642,7 @@ Teníemos un Palaciu…\n
          should match settings_label and security_settings_title [CHAR LIMIT=NONE] -->
   <!-- Title for option to turn of password/pin/pattern unlock. [CHAR LIMIT=22] -->
   <!-- Title of the dialog shown when the user removes the device lock [CHAR LIMIT=NONE] -->
+  <string name="unlock_disable_frp_warning_title">¿Desaniciar proteición del preséu?</string>
   <!-- Title of the dialog shown when the user removes the profile lock [CHAR LIMIT=NONE] -->
   <!-- Content of the dialog shown when the user removes the device lock pattern [CHAR LIMIT=NONE] -->
   <!-- Content of the dialog shown when the user removes the device lock pattern and the user has fingerprints enrolled [CHAR LIMIT=NONE] -->
@@ -627,6 +665,7 @@ Teníemos un Palaciu…\n
   <string name="unlock_disable_frp_warning_content_unknown_profile">"Les carauterístiques de proteición de perfiles nun furrlarán ensin una pantalla de bloquéu."</string>
   <!-- Content of the dialog shown when the user removes the profile lock of unknown type and the user has fingerprints enrolled [CHAR LIMIT=NONE] -->
   <!-- Affirmative action of the dialog shown when the user removes the device lock [CHAR LIMIT=25] -->
+  <string name="unlock_disable_frp_warning_ok">Sí, desaniciar</string>
   <!-- Title shown on security settings to allow the user to change their lockscreen pattern [CHAR LIMIT=22] -->
   <!-- Title shown on security settings to allow the user to change their lockscreen PIN [CHAR LIMIT=22] -->
   <!-- Title shown on security settings to allow the user to change their lockscreen password [CHAR LIMIT=22]-->
@@ -669,10 +708,14 @@ Teníemos un Palaciu…\n
   <!-- Label for ChoosePassword/PIN OK button -->
   <string name="lockpassword_ok_label">ACEUTAR</string>
   <!-- Label for ChoosePassword/PIN OK button -->
+  <string name="lockpassword_cancel_label">Encaboxar</string>
   <!-- Label for LockPatternTutorial Cancel button -->
+  <string name="lockpattern_tutorial_cancel_label">Encaboxar</string>
   <!-- Label for LockPatternTutorial Continue button -->
+  <string name="lockpattern_tutorial_continue_label">Siguiente</string>
   <!-- Toast shown when lock pattern or password successfully setup. [CHAR LIMIT=64] -->
   <!-- In the security screen, the header title for settings related to device admins -->
+  <string name="device_admin_title">Xestión del preséu</string>
   <!-- Title of preference to manage device admins -->
   <!-- Summary of preference to manage device policies -->
   <!-- Title of preference to manage trust agents -->
@@ -680,9 +723,12 @@ Teníemos un Palaciu…\n
   <!-- Summary of preference to manage device policies -->
   <!-- Bluetooth settings -->
   <!-- Bluetooth settings check box title on Main Settings screen -->
+  <string name="bluetooth_quick_toggle_title">Axustes de Bluetooth</string>
   <!-- Bluetooth settings check box summary for turning on bluetooth -->
   <!--Used as title on second screen after selecting Bluetooth settings -->
+  <string name="bluetooth_settings">Bluetooth</string>
   <!--Wireless controls screen, settings title for the item to take you to the bluetooth settings screen -->
+  <string name="bluetooth_settings_title">Bluetooth</string>
   <!--Wireless controls screen, settings summary for the item tot ake you to the bluetooth settings screen -->
   <!-- ======================================================================================= -->
   <!-- Note: The opening brackets of HTML style tags are escaped (e.g. "<b>" is "&lt;b>") in   -->
@@ -790,6 +836,7 @@ Teníemos un Palaciu…\n
   <!-- Link speed on Wifi Status screen -->
   <!-- NFC settings -->
   <!-- Used in the 1st-level settings screen to turn on NFC -->
+  <string name="nfc_quick_toggle_title">NFC</string>
   <!-- Description of NFC in the 1st level settings screen, for a tablet. [CHAR LIMIT=NONE] -->
   <string name="nfc_quick_toggle_summary" product="tablet">Permite l\'intercambéu de datos cuando la tableta toca otru preséu</string>
   <!-- Description of NFC in the 1st level settings screen, for a phone. [CHAR LIMIT=NONE] -->
@@ -806,9 +853,11 @@ Teníemos un Palaciu…\n
   <!-- Explanation of the Android Beam feature in the Android Beam settings panel. The use of "beam" here is as a verb and not considered trademarked. [CHAR LIMIT=NONE] -->
   <!-- Wi-Fi Settings -->
   <!-- Used in the 1st-level settings screen to turn on Wi-Fi -->
+  <string name="wifi_quick_toggle_title">Wi-Fi</string>
   <!-- Used in the 1st-level settings screen as the turn-on summary -->
   <!-- Used in the 1st-level settings screen to go to the 2nd-level settings screen  [CHAR LIMIT=20]-->
   <!-- Title of the Wi-fi settings screen -->
+  <string name="wifi_settings_category">Axustes Wi\u2011Fi</string>
   <!-- Title of the Wi-fi settings entry in the left top level menu -->
   <string name="wifi_settings_title">Wi\u2011Fi</string>
   <!-- Summary text of the Wi-fi settings screen -->
@@ -975,12 +1024,15 @@ Teníemos un Palaciu…\n
   <string name="wifi_connect_failed_message" product="default">El teléfonu nun pudo coneutase a esta rede Wi\u2011Fi.</string>
   <!-- Wi-Fi Advanced Settings -->
   <!-- Wi-Fi settings screen, Saved networks, settings section.  This is a header shown above Saved networks wifi settings. [CHAR LIMIT=30] -->
+  <string name="wifi_saved_access_points_titlebar">Redes guardaes</string>
   <!-- Wi-Fi settings screen, advanced, settings section.  This is a header shown above advanced wifi settings. [CHAR LIMIT=30] -->
   <!-- Wi-Fi settings screen, configure, settings section.  This is a header shown above configure wifi settings. [CHAR LIMIT=30] -->
   <string name="wifi_configure_titlebar">Configurar Wi\u2011Fi</string>
   <!-- Wi-Fi settings screen, advanced, title of the item to show the Wi-Fi device's MAC address. -->
+  <string name="wifi_advanced_mac_address_title">Direición MAC</string>
   <!-- Title of the screen to adjust IP settings -->
   <!-- Wi-Fi settings screen, advanced, title of the item to show the Wi-Fi device's current IP address. -->
+  <string name="wifi_advanced_ip_address_title">Direición IP</string>
   <!-- Wifi saved access points.  Used as a label under the shortcut icon that goes to Wifi saved access points. [CHAR LIMIT=20] -->
   <!-- Wifi Advanced settings.  Used as a label under the shortcut icon that goes to Wifi advanced settings. [CHAR LIMIT=20] -->
   <string name="wifi_advanced_settings_label">Axustes d\'IP</string>
@@ -1100,13 +1152,16 @@ Teníemos un Palaciu…\n
   <!-- Sound settings screen heading -->
   <!-- Sound settings screen, setting option summary text -->
   <!-- Sound settings screen, volume title -->
+  <string name="all_volume_title">Volúmenes</string>
   <!-- Sound settings screen, music effects title [CHAR LIMIT=30]-->
+  <string name="musicfx_title">Efeutos musicales</string>
   <!-- Sound settings screen, setting option name -->
   <!-- Sound settings screen, setting option name checkbox -->
   <!-- Sound settings screen, setting option name -->
   <!-- Sound settings screen, the title of the volume bar to adjust the incoming call volume -->
   <string name="incoming_call_volume_title">Timbre</string>
   <!-- Sound settings screen, the title of the volume bar to adjust the notification volume -->
+  <string name="notification_volume_title">Avisu</string>
   <!-- Sound settings screen, the caption of the checkbox for having the notification volume be
          the same as the incoming call volume. -->
   <string name="checkbox_notification_same_as_incoming_call">Usar volume de llamada entrante p\'avisos</string>
@@ -1118,6 +1173,7 @@ Teníemos un Palaciu…\n
   <!-- Sound settings screen, setting option summary text -->
   <string name="media_volume_summary">Afita\'l volume pa la música y vídeos</string>
   <!-- Sound settings screen, alarm volume slider title -->
+  <string name="alarm_volume_title">Alarma</string>
   <!-- Sound settings screen, dock settings summary-->
   <!-- Sound settings screen, setting check box label -->
   <!-- Sound settings screen, setting check box label -->
@@ -1222,8 +1278,10 @@ Teníemos un Palaciu…\n
   <string name="automatic_brightness">Brilléu automático</string>
   <!-- [CHAR LIMIT=40] Display settings screen, setting option name to change whether the device wakes up when a lift gesture is detected. -->
   <!-- [CHAR LIMIT=30] Display settings screen, setting option name to change whether the ambient display feature is enabled. -->
+  <string name="doze_title">Pantalla ambiente</string>
   <!-- [CHAR LIMIT=NONE] Display settings screen, setting description for the ambient display feature. -->
   <!-- [CHAR LIMIT=30] Sound & display settings screen, setting option name to change font size -->
+  <string name="title_font_size">Tamañu de fonte</string>
   <!-- Summary for Font size. Lets the user know that this will make text larger or smaller. Appears in the accessibility portion of setup wizard. [CHAR LIMIT=NONE] -->
   <!-- Sound & display settings screen, setting option summary displaying the currently selected font size -->
   <!-- SIM lock settings title  [CHAR LIMIT=40] -->
@@ -1265,6 +1323,7 @@ Teníemos un Palaciu…\n
   <string name="device_info_settings" product="tablet">Estáu de la tableta</string>
   <!-- Advanced (used for diagnostics) device info activity title [CHAR LIMIT=40] -->
   <!-- About phone screen, list item title.  Takes the user to the screen for seeing and installing system updates. [CHAR LIMIT=40] -->
+  <string name="system_update_settings_list_item_title">Anovamientos del sistema</string>
   <!-- About phone screen, list item summary.  Takes the user to the screen for seeing and installing system updates. [CHAR LIMIT=40] -->
   <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
   <!-- About phone screen, status item label  [CHAR LIMIT=60] -->
@@ -1286,8 +1345,11 @@ Teníemos un Palaciu…\n
   <!-- About phone screen, summary of the item to go into the phone status screen -->
   <string name="device_status_summary" product="default">Númberu teléfónicu, señal... etc</string>
   <!-- Main settings screen item's title to go into the storage settings screen [CHAR LIMIT=25] -->
+  <string name="storage_settings">Almacenamientu</string>
   <!-- Main settings screen item's title to go into the storage & USB settings screen [CHAR LIMIT=25] -->
+  <string name="storage_usb_settings">Almacenamientu</string>
   <!-- Storage settings screen title -->
+  <string name="storage_settings_title">Axustes d\'almacenamientu</string>
   <!-- [CHAR LIMIT=100] Main settings screen item's summary for the SD card and storage settings -->
   <!-- [CHAR LIMIT=100] Main settings screen item's summary for the SD card and storage settings -->
   <!-- Do not translate. About phone, status item title -->
@@ -1363,6 +1425,7 @@ Teníemos un Palaciu…\n
   <!-- SD card eject progress title   -->
   <!-- SD card eject progress text   -->
   <!-- Settings item title when storage is running low [CHAR LIMIT=32] -->
+  <string name="storage_low_title">Ta escosando l\'almacenamientu</string>
   <!-- Settings item summary when storage is running low [CHAR LIMIT=NONE] -->
   <!-- Storage setting.  Menu option for renaming a storage device [CHAR LIMIT=30]-->
   <!-- Storage setting.  Menu option for mounting a storage device [CHAR LIMIT=30]-->
@@ -1417,6 +1480,7 @@ Teníemos un Palaciu…\n
   <string name="storage_detail_cached">Datos na caché</string>
   <!-- Item title describing storage used by other data [CHAR LIMIT=48]-->
   <!-- Item title describing internal storage used by the Android System [CHAR LIMIT=48]-->
+  <string name="storage_detail_system">Sistema</string>
   <!-- Item title that will launch a file explorer [CHAR LIMIT=48]-->
   <!-- Body of dialog informing user about other files on a storage device [CHAR LIMIT=NONE]-->
   <!-- Body of dialog informing user about the storage used by the Android System [CHAR LIMIT=NONE]-->
@@ -1461,6 +1525,7 @@ Teníemos un Palaciu…\n
   <!-- Phone info screen, section titles: -->
   <!-- APN Settings -->
   <!-- APN settings screen title -->
+  <string name="apn_settings">APNs</string>
   <!-- Screen title after user selects APNs setting option -->
   <!-- Edit access point label summary text when no value has been set -->
   <!-- Edit access point labels: A label the user can give to the APN to allow him to differentiate it from the others -->
@@ -1546,6 +1611,7 @@ Teníemos un Palaciu…\n
   <!-- Master clear progress screen title [CHAR LIMIT=30] -->
   <!-- Master clear progress screen text [CHAR LIMIT=75] -->
   <!-- Main settings screen, Call settings title for item to go into the call settings -->
+  <string name="call_settings_title">Axustes de llamaes</string>
   <!-- Main settings screen, Call settings summary for item to go into call settings -->
   <!-- TODO: Remove them once the same entries in SettingsLib is translated. -->
   <!-- Tethering controls, item title to go into the tethering settings -->
@@ -1594,8 +1660,10 @@ Teníemos un Palaciu…\n
   <string name="location_title">El mio allugamientu</string>
   <!-- [CHAR LIMIT=30] Title for managed profile location switch  -->
   <!-- [CHAR LIMIT=30] Location settings screen, setting preference screen box label for location mode -->
+  <string name="location_mode_title">Mou</string>
   <!-- [CHAR LIMIT=30] Location settings screen, high accuracy location mode -->
   <!-- [CHAR LIMIT=30] Location settings screen, battery saving location mode -->
+  <string name="location_mode_battery_saving_title">Aforru de batería</string>
   <!-- [CHAR LIMIT=30] Location settings screen, device only location mode -->
   <string name="location_mode_sensors_only_title">Namái nel preséu</string>
   <!-- [CHAR LIMIT=30] Location settings screen, location off mode -->
@@ -1656,16 +1724,20 @@ Teníemos un Palaciu…\n
   <!-- Main settings screen, setting summary for the user to go into the About phone screen-->
   <!-- About phone settings screen, setting option name to go to dialog that shows legal info -->
   <!-- About phone settings screen, setting option name to see a list of contributors -->
+  <string name="contributors_title">Collaboradores</string>
   <!-- About phone settings screen, setting option name to show Manual [CHAR LIMIT=25] -->
   <!-- About phone settings screen, setting option name to show regulatory labels [CHAR LIMIT=25] -->
   <!-- About phone settings screen, setting option name to show the safety and regulatory manual [CHAR LIMIT=40] -->
   <string name="safety_and_regulatory_info">Manual de seguranza y regulación</string>
   <!-- Note: this may be replaced by a more-specific title of the activity that will get launched -->
   <!-- About phone settings screen, setting option name to see copyright-related info -->
+  <string name="copyright_title">Copyright</string>
   <!-- Note: this may be replaced by a more-specific title of the activity that will get launched -->
   <!-- About phone settings screen, setting option name to see licensing info -->
+  <string name="license_title">Llicencia</string>
   <!-- Note: this may be replaced by a more-specific title of the activity that will get launched -->
   <!-- About phone settings screen, setting option name to see terms and conditions -->
+  <string name="terms_title">Términos y condiciones</string>
   <!-- Note: this may be replaced by a more-specific title of the activity that will get launched -->
   <!-- About phone settings screen, setting option name to see licensing info for WebView component. [CHAR LIMIT=35] -->
   <string name="webview_license_title">Llicencia de WebView del sistema</string>
@@ -1779,6 +1851,7 @@ Teníemos un Palaciu…\n
   <string name="manageapplications_settings_title">Xestionar aplicaciones</string>
   <!-- Applications settings screen, setting option summary for the user to go to the screen to manage installed applications  -->
   <!-- Applications settings title, on main settings screen. If clicked, the user is taken to a settings screen full of application settings-->
+  <string name="applications_settings">Aplicaciones</string>
   <!-- Applications settings summary, on main settings screen. The summary for the "Applications" item on the main settings screen. Describes what settings are accessible from the "Applications" screen. -->
   <!-- Applications settings screen heading. The header for the Application settings screen. -->
   <!-- Applications settings screen, setting check box title. If checked, the system allows installation of applications that are downloaded from random places, such as web sites.  -->
@@ -1790,6 +1863,7 @@ Teníemos un Palaciu…\n
   <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
   <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
   <!-- Applications settings screen, setting check box title. If checked, applications show more settings options. -->
+  <string name="advanced_settings">Axustes avanzaos</string>
   <!-- Applications settings screen, setting check box summary.  This is the summary for "Advanced settings" checkbox  -->
   <!-- Manage applications, individual application info screen title. For example, if they click on "Browser" in "Manage applications", the title of the next screen will be this -->
   <!-- Manage applications, individual application info screen, section heading for stuff relating to an app's storage settings. -->
@@ -2046,6 +2120,7 @@ Teníemos un Palaciu…\n
   <!-- User dictionary settings. The title of the menu item to add a new word to the user dictionary. -->
   <!-- User dictionary settings. The title of the dialog to add a new word to the user dictionary. [CHAR LIMIT=25] -->
   <!-- User dictionary settings. The title of the screen to add/edit a new word to the user dictionary; it describes the phrase that will be added to the user dictionary. [CHAR LIMIT=25] -->
+  <string name="user_dict_settings_add_screen_title">Fras</string>
   <!-- User dictionary settings. Text on the dialog button to pop more options for adding a word. [CHAR LIMIT=16] -->
   <!-- User dictionary settings. Text on the dialog button mask advanced options. [CHAR LIMIT=15] -->
   <!-- User dictionary settings. Text on the dialog button to confirm adding a word. [CHAR LIMIT=15] -->
@@ -2113,7 +2188,9 @@ Teníemos un Palaciu…\n
   <!-- label for usage time -->
   <!-- Accessibility settings -->
   <!-- Settings title in main settings screen for accessibility settings -->
+  <string name="accessibility_settings">Accesibilidá</string>
   <!-- Settings title for accessibility settings screen -->
+  <string name="accessibility_settings_title">Axustes d\'accesibilidá</string>
   <!-- Settings title for a brief version of Vision-Related Accessibility Settings. Displayed in Setup Wizard only. [CHAR LIMIT=35] -->
   <string name="vision_settings_title">Axustes de visión</string>
   <!-- Settings description for a brief version of Vision-Related Accessibility Settings. Tells the user that they can adjust these settings now to help them through the remainder of the Setup Wizard and that they can later be changed in Settings. Displayed in Setup Wizard only. [CHAR LIMIT=none] -->
@@ -2409,6 +2486,7 @@ Teníemos un Palaciu…\n
   <string name="menu_proc_stats_type_cached">Na caché</string>
   <!-- Voice input/output settings -->
   <!-- Title of setting on main settings screen. This item will take the user to the screen to tweak settings related to speech functionality -->
+  <string name="voice_input_output_settings">Entrada y salida de voz</string>
   <!-- Main voice input/output settings screen title -->
   <string name="voice_input_output_settings_title">Axustes d\'entrada y salida de voz</string>
   <!-- Title of voice search settings list item within voice input/output settings -->
@@ -2418,6 +2496,7 @@ Teníemos un Palaciu…\n
   <!-- Voice input settings -->
   <!-- [CHAR_LIMIT=NONE] Name of the settings item to open the voice input settings. -->
   <!-- [CHAR_LIMIT=NONE] Title of the screen of the voice input settings -->
+  <string name="voice_input_settings_title">Entrada de voz</string>
   <!-- [CHAR LIMIT=50] The text for the settings section in which users select
          a voice interaction or recognition service to use. -->
   <!-- [CHAR LIMIT=NONE] The summary text for the voice service preference that is
@@ -2481,6 +2560,7 @@ Teníemos un Palaciu…\n
   <!-- Description of dialog to explain that a lock screen password is required to use credential storage [CHAR LIMIT=NONE] -->
   <!-- Title of Usage Access preference item [CHAR LIMIT=30] -->
   <!-- Sound settings screen, setting check box label -->
+  <string name="emergency_tone_title">Tonu d\'emerxencia</string>
   <!-- Sound settings screen, setting option summary text -->
   <!-- Backup and reset Settings screen -->
   <!-- Backup and reset settings menu title -->
@@ -2874,6 +2954,7 @@ Teníemos un Palaciu…\n
   </plurals>
   <!-- User settings -->
   <!-- User settings screen title [CHAR LIMIT=25] -->
+  <string name="user_settings_title">Usuarios</string>
   <!-- User settings header for list of users and profiles [CHAR LIMIT=40] -->
   <!-- User settings add user or restricted profile menu [CHAR LIMIT=35] -->
   <!-- User settings add user menu [CHAR LIMIT=35] -->
@@ -3068,6 +3149,7 @@ Teníemos un Palaciu…\n
   <!-- Accessibility message for the photo selector which is a button/popup with the current photo [CHAR LIMIT=50] -->
   <!-- Text to display in regulatory info screen (from device overlay). -->
   <!-- Title for SIM card settings during Setup Wizard.  [CHAR LIMIT=40] -->
+  <string name="sim_setup_wizard_title">Tarxetes SIM</string>
   <!-- Title for SIM settings title settings during Setup Wizard.  [CHAR LIMIT=40] -->
   <!-- Summary for SIM settings title settings during Setup Wizard.  [CHAR LIMIT=40] -->
   <!-- Message that SIM cards have changed.  [CHAR LIMIT=40] -->
@@ -3516,6 +3598,7 @@ Teníemos un Palaciu…\n
   <!-- Description of the usage access setting [CHAR LIMIT=NONE] -->
   <string name="usage_access_description">L\'accesu d\'usu permite a una aplicación rastrexar lo que faen otres que teas usando, la operadora que tienes, los axustes de llingua, la cantidá d\'usu u otros detalles.</string>
   <!-- Title for screen showing recent memory usage of device [CHAR LIMIT=30]-->
+  <string name="memory_settings_title">Memoria</string>
   <!-- Title for screen showing recent memory usage of specific app [CHAR LIMIT=30]-->
   <!-- Description of app always running [CHAR LIMIT=45] -->
   <!-- Description of app sometimes running [CHAR LIMIT=45] -->
@@ -3983,6 +4066,7 @@ Teníemos un Palaciu…\n
   <!-- Message for telling the user the kind of BT device being displayed in list. -->
   <string name="bluetooth_talkback_input_peripheral">Periféricu d\'entrada</string>
   <!-- Message for telling the user the kind of BT device being displayed in list. -->
+  <string name="bluetooth_talkback_bluetooth">Bluetooth</string>
   <!-- Wifi extension requirement -->
   <string name="wifi_set_priority_settings_summary">Primi p\'afitar la prioridá de cada puntu d\'accesu</string>
   <string name="wifi_auto_connect_type_summary">Especifica la triba de conexón</string>
