@@ -554,25 +554,6 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             }
         }
 
-        /**
-        * get number of Subs provisioned on the device
-        * @param context
-        * @return
-        */
-        public int getNumOfSubsProvisioned() {
-            int activeSubInfoCount = 0;
-            List<SubscriptionInfo> subInfoLists =
-                    mSubscriptionManager.getActiveSubscriptionInfoList();
-            if (subInfoLists != null) {
-                for (SubscriptionInfo subInfo : subInfoLists) {
-                    if (getProvisionStatus(subInfo.getSimSlotIndex()) == PROVISIONED) {
-                        activeSubInfoCount++;
-                    }
-                }
-            }
-            return activeSubInfoCount;
-        }
-
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             mIsChecked = isChecked;
@@ -606,14 +587,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             }
 
             if (!mIsChecked) {
-                if (getNumOfSubsProvisioned() > 1) {
-                    logd("More than one sub is active, Deactivation possible.");
-                    sendUiccProvisioningRequest();
-                } else {
-                    logd("Only one sub is active. Deactivation not possible.");
-                    showAlertDialog(ERROR_ALERT_DLG_ID, R.string.sim_enabler_both_inactive);
-                    return;
-                }
+                logd("More than one sub is active, Deactivation possible.");
+                sendUiccProvisioningRequest();
             } else {
                 logd("Activate the sub");
                 sendUiccProvisioningRequest();
