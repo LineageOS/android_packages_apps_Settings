@@ -33,6 +33,47 @@
       "revId": "8e7dd30e4633e97879a4b457ad60ca46c3ad53ca",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de292f5e_02165eee",
+        "filename": "res/values/config.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-01-23T09:31:04Z",
+      "side": 1,
+      "message": "It\u0027s set to false on 14.1 https://github.com/LineageOS/android_packages_apps_Settings/blob/cm-14.1/res/values/bools.xml#L105",
+      "parentUuid": "69b5389b_4e53cf2f",
+      "revId": "8e7dd30e4633e97879a4b457ad60ca46c3ad53ca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46de992a_e9711e0a",
+        "filename": "src/com/android/settings/sim/SimSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2018-01-23T09:31:04Z",
+      "side": 1,
+      "message": "Without telephony-ext the option won\u0027t be available even if config_enableManualSubProvisioning set to true.",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 40
+      },
+      "revId": "8e7dd30e4633e97879a4b457ad60ca46c3ad53ca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
