@@ -918,6 +918,8 @@
                 android:value="com.android.settings.display.NightDisplaySettings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
+            <meta-data android:name="com.android.settings.require_feature"
+                android:value="!org.lineageos.livedisplay" />
         </activity>
 
         <activity android:name="Settings$NightDisplaySuggestionActivity"
