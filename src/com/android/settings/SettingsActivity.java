@@ -492,7 +492,7 @@ public class SettingsActivity extends SettingsBaseActivity
 
     @Override
     public void setTaskDescription(ActivityManager.TaskDescription taskDescription) {
-        taskDescription.setIcon(Icon.createWithResource(this, R.drawable.ic_launcher_settings));
+        taskDescription.setIcon(Icon.createWithResource(this, R.mipmap.ic_launcher));
         super.setTaskDescription(taskDescription);
     }
 
