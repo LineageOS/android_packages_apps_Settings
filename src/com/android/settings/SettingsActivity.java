@@ -492,7 +492,11 @@ public class SettingsActivity extends SettingsBaseActivity
 
     @Override
     public void setTaskDescription(ActivityManager.TaskDescription taskDescription) {
+<<<<<<< HEAD   (ac41e8 Settings: support black theme for dark mode [2/4])
         taskDescription.setIcon(Icon.createWithResource(this, R.drawable.ic_launcher_settings));
+=======
+        taskDescription.setIcon(R.mipmap.ic_launcher);
+>>>>>>> CHANGE (af85f3 Settings: adaptive icon)
         super.setTaskDescription(taskDescription);
     }
 
