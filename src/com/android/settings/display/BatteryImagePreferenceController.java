@@ -23,18 +23,18 @@ import android.support.v14.preference.SwitchPreference;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
-import static android.provider.Settings.System.SHOW_BATTERY_PERCENT;
+import static android.provider.Settings.System.SHOW_BATTERY_IMAGE;
 
 /**
- * A controller to manage the switch for showing battery percentage in the status bar.
+ * A controller to manage the switch for showing battery image in the status bar.
  */
 
-public class BatteryPercentagePreferenceController extends AbstractPreferenceController implements
-        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
+public class BatteryImagePreferenceController extends AbstractPreferenceController
+        implements PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
-    private static final String KEY_BATTERY_PERCENTAGE = "battery_percentage";
+    private static final String KEY_BATTERY_IMAGE = "battery_image";
 
-    public BatteryPercentagePreferenceController(Context context) {
+    public BatteryImagePreferenceController(Context context) {
         super(context);
     }
 
@@ -45,22 +45,22 @@ public class BatteryPercentagePreferenceController extends AbstractPreferenceCon
 
     @Override
     public String getPreferenceKey() {
-        return KEY_BATTERY_PERCENTAGE;
+        return KEY_BATTERY_IMAGE;
     }
 
     @Override
     public void updateState(Preference preference) {
         int setting = Settings.System.getInt(mContext.getContentResolver(),
-                SHOW_BATTERY_PERCENT, 0);
+                SHOW_BATTERY_IMAGE, 1);
 
         ((SwitchPreference) preference).setChecked(setting == 1);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        boolean showPercentage = (Boolean) newValue;
-        Settings.System.putInt(mContext.getContentResolver(), SHOW_BATTERY_PERCENT,
-                showPercentage ? 1 : 0);
+        boolean showImage = (Boolean) newValue;
+        Settings.System.putInt(mContext.getContentResolver(), SHOW_BATTERY_IMAGE,
+                showImage ? 1 : 0);
         return true;
     }
 }
