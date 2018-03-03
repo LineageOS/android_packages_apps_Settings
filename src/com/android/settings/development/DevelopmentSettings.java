@@ -640,6 +640,11 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             mAllPrefs.add(mRootAccess);
             mAllPrefs.add(mRootAppops);
         }
+
+        if (SystemProperties.get("ro.config.low_ram").equals("true")) {
+            findPreference(FORCE_RESIZABLE_KEY).setEnabled(false);
+        }
+
         addDashboardCategoryPreferences();
     }
 
@@ -1578,8 +1583,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     private void updateForceResizableOptions() {
-        updateSwitchPreference(mForceResizable, Settings.Global.getInt(getContentResolver(),
-                Settings.Global.DEVELOPMENT_FORCE_RESIZABLE_ACTIVITIES, 0) != 0);
+        if (SystemProperties.get("ro.config.low_ram").equals("true")) {
+            mForceResizable.setEnabled(false);
+        } else {
+            updateSwitchPreference(mForceResizable, Settings.Global.getInt(getContentResolver(),
+                    Settings.Global.DEVELOPMENT_FORCE_RESIZABLE_ACTIVITIES, 0) != 0);
+        }
     }
 
     private void writeForceResizableOptions() {
