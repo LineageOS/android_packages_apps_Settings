@@ -558,6 +558,13 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mUSBAudio = findAndInitSwitchPref(USB_AUDIO_KEY);
         mForceResizable = findAndInitSwitchPref(FORCE_RESIZABLE_KEY);
 
+        // multi-window mode is not supported on Android Go, so let's
+        // disable the option to force apps to be resizable
+        // in this mode if Go is enabled
+        if (SystemProperties.getBoolean("ro.config.low_ram", true)) {
+            disableForUser(mForceResizable);
+        }
+
         mImmediatelyDestroyActivities = (SwitchPreference) findPreference(
                 IMMEDIATELY_DESTROY_ACTIVITIES_KEY);
         mAllPrefs.add(mImmediatelyDestroyActivities);
