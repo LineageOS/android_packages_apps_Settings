@@ -18,6 +18,12 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+  <plurals name="show_dev_countdown_cm">
+    <item quantity="one">Teraz ste <xliff:g id="step_count">%1$d</xliff:g> krok od povolenia možnosti pre vývojárov.</item>
+    <item quantity="few">Teraz ste <xliff:g id="step_count">%1$d</xliff:g> kroky od povolenia možnosti pre vývojárov.</item>
+    <item quantity="many">Teraz ste <xliff:g id="step_count">%1$d</xliff:g> krokov od povolenia možnosti pre vývojárov.</item>
+    <item quantity="other">Teraz ste <xliff:g id="step_count">%1$d</xliff:g> krokov od povolenia možnosti pre vývojárov.</item>
+  </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Povolili ste možnosti pre vývojárov!</string>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
@@ -297,6 +303,15 @@
   <string name="app_ops_reset_confirm_title">Potvrdiť reset počítadiel</string>
   <string name="app_ops_reset_confirm_mesg">Naozaj chcete vyresetovať počítadlá?</string>
   <string name="ok">OK</string>
+  <string name="security_privacy_settings_title">Bezpečnosť a súkromie</string>
   <!-- LineageOS legal -->
   <string name="lineagelicense_title">Právne informácie LineageOS</string>
+  <!-- Volume settings - Volume adjustment sound -->
+  <string name="volume_adjust_sounds_title">Zvuk pri úprave hlasitosti</string>
+  <!-- Wake on plug -->
+  <string name="wake_when_plugged_or_unplugged_title">Prebudiť po pripojení</string>
+  <string name="wake_when_plugged_or_unplugged_summary">Zapnúť obrazovku pri pripojení alebo odpojení zdroja nabíjania</string>
+  <!-- Heads-up -->
+  <string name="heads_up_notifications_enabled_title">Plávajúce upozornenia</string>
+  <string name="heads_up_notifications_enabled_summary">Zobraziť prioritné upozornenia v malom plávajúcom okne</string>
 </resources>
