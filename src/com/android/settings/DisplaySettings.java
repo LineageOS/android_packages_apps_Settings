@@ -35,12 +35,16 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
 
+import lineageos.hardware.LineageHardwareManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class DisplaySettings extends DashboardFragment {
     private static final String TAG = "DisplaySettings";
+
+    private static final String KEY_HIGH_TOUCH_SENSITIVITY = "high_touch_sensitivity_enable";
 
     @Override
     public int getMetricsCategory() {
@@ -92,6 +96,17 @@ public class DisplaySettings extends DashboardFragment {
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.display_settings) {
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    List<String> keys = super.getNonIndexableKeys(context);
+                    LineageHardwareManager hardware = LineageHardwareManager.getInstance(context);
+                    if (!hardware.isSupported(
+                            LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+                        keys.add(KEY_HIGH_TOUCH_SENSITIVITY);
+                    }
+                    return keys;
+                }
 
                 @Override
                 public List<AbstractPreferenceController> createPreferenceControllers(
