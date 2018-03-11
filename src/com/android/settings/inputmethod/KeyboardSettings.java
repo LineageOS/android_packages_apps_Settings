@@ -37,6 +37,8 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
 
+import lineageos.hardware.LineageHardwareManager;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,6 +50,7 @@ public class KeyboardSettings extends DashboardFragment {
 
     private static final String KEY_KEYBOARDS_CATEGORY = "keyboards_category";
     private static final String KEY_POINTER_CATEGORY = "pointer_category";
+    private static final String KEY_TOUCH_HOVERING = "feature_touch_hovering";
 
     @Override
     public int getMetricsCategory() {
@@ -125,6 +128,16 @@ public class KeyboardSettings extends DashboardFragment {
                 protected boolean isPageSearchEnabled(Context context) {
                     // TODO(b/483182050): Temporary mitigation by hiding keyboard settings.
                     return !Utils.shouldDisableKeyboardSettingsInDemoMode(context);
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    List<String> keys = super.getNonIndexableKeys(context);
+                    LineageHardwareManager hardware = LineageHardwareManager.getInstance(context);
+                    if (!hardware.isSupported(LineageHardwareManager.FEATURE_TOUCH_HOVERING)) {
+                        keys.add(KEY_TOUCH_HOVERING);
+                    }
+                    return keys;
                 }
             };
 }
