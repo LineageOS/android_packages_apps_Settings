@@ -17,6 +17,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/language_settings">
     <PreferenceCategory
@@ -98,6 +99,14 @@
             android:key="pointer_speed"
             android:title="@string/pointer_speed"
             android:dialogTitle="@string/pointer_speed" />
+
+        <lineageos.preference.LineageSecureSettingSwitchPreference
+            android:key="feature_touch_hovering"
+            android:title="@string/touchscreen_hovering_title"
+            android:summary="@string/touchscreen_hovering_summary"
+            android:defaultValue="false"
+            lineage:requiresFeature="lineagehardware:FEATURE_TOUCH_HOVERING" />
+
     </PreferenceCategory>
 
     <SwitchPreference
