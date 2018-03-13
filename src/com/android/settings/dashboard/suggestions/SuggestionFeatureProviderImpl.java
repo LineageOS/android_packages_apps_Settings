@@ -166,7 +166,8 @@ public class SuggestionFeatureProviderImpl implements SuggestionFeatureProvider 
     @VisibleForTesting
     boolean hasUsedNightDisplay(Context context) {
         final ContentResolver cr = context.getContentResolver();
-        return Secure.getInt(cr, Secure.NIGHT_DISPLAY_AUTO_MODE, 0) != 0
-                || Secure.getString(cr, Secure.NIGHT_DISPLAY_LAST_ACTIVATED_TIME) != null;
+        return context.getPackageManager().hasSystemFeature("org.lineageos.livedisplay") ||
+                (Secure.getInt(cr, Secure.NIGHT_DISPLAY_AUTO_MODE, 0) != 0
+                || Secure.getString(cr, Secure.NIGHT_DISPLAY_LAST_ACTIVATED_TIME) != null);
     }
 }
