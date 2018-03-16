@@ -108,6 +108,7 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
         OP_ICONS.put(AppOpsManager.OP_DATA_CONNECT_CHANGE, R.drawable.ic_perm_data);
         OP_ICONS.put(AppOpsManager.OP_GET_USAGE_STATS, R.drawable.ic_perm_data);
         OP_ICONS.put(AppOpsManager.OP_GPS, R.drawable.ic_perm_location);
+        OP_ICONS.put(AppOpsManager.OP_AUDIO_MEDIA_VOLUME, R.drawable.ic_perm_audio);
         OP_ICONS.put(AppOpsManager.OP_MUTE_MICROPHONE, R.drawable.ic_perm_microphone);
         OP_ICONS.put(AppOpsManager.OP_NFC_CHANGE, R.drawable.ic_perm_nfc);
         OP_ICONS.put(AppOpsManager.OP_POST_NOTIFICATION, R.drawable.ic_perm_notifications);
@@ -117,6 +118,7 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
         OP_ICONS.put(AppOpsManager.OP_SYSTEM_ALERT_WINDOW, R.drawable.ic_perm_drawontop);
         OP_ICONS.put(AppOpsManager.OP_TAKE_AUDIO_FOCUS, R.drawable.ic_perm_audio);
         OP_ICONS.put(AppOpsManager.OP_TOAST_WINDOW, R.drawable.ic_perm_notifications);
+        OP_ICONS.put(AppOpsManager.OP_TURN_SCREEN_ON, R.drawable.ic_perm_turnscreenon);
         OP_ICONS.put(AppOpsManager.OP_VIBRATE, R.drawable.ic_perm_vibrate);
         OP_ICONS.put(AppOpsManager.OP_WAKE_LOCK, R.drawable.ic_perm_nosleep);
         OP_ICONS.put(AppOpsManager.OP_WIFI_SCAN, R.drawable.ic_perm_wifi);
