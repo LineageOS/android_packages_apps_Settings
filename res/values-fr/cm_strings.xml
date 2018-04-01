@@ -31,6 +31,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="development_tools_title">Outils de développement</string>
   <!-- Advanced restart options -->
   <string name="advanced_reboot_title">Redémarrage avancé</string>
+  <string name="advanced_reboot_summary">Inclure les options de redémarrage en mode recovery et bootloader dans le menu Marche/Arrêt lorsque l\'appareil est déverrouillé</string>
   <!-- Setting checkbox title for root access -->
   <string name="root_access">Accès root</string>
   <string name="root_access_warning_title">Autoriser l\'accès root\u00A0?</string>
@@ -43,6 +44,8 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="root_appops_title">Gérer les accès root</string>
   <string name="root_appops_summary">Visualiser et contrôler les règles root</string>
   <!-- Double tap to sleep on status bar or lockscreen -->
+  <string name="status_bar_double_tap_to_sleep_title">Appuyer pour mettre en veille</string>
+  <string name="status_bar_double_tap_to_sleep_summary">Appuyer deux fois sur la barre d\'état ou sur l\'écran de verrouillage pour éteindre l\'écran</string>
   <!-- Touchscreen gesture settings -->
   <string name="touchscreen_gesture_settings_title">Gestes tactiles</string>
   <string name="touchscreen_gesture_settings_summary">Effectuer différents gestes tactiles pour des actions rapides</string>
@@ -51,10 +54,13 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="proximity_wake_summary">Vérifier le capteur de proximité avant d\'allumer l\'écran</string>
   <!-- Whether the keyguard will directly show the password entry -->
   <string name="lock_directly_show_password">Montrer directement le champ d\'entrée du mot de passe</string>
+  <string name="lock_directly_show_password_summary">Passer l\'étape du glisser pour déverrouiller et entrer directement le mot de passe</string>
   <!-- Whether the keyguard will directly show the pattern view -->
   <string name="lock_directly_show_pattern">Montrer directement la vue schéma</string>
+  <string name="lock_directly_show_pattern_summary">Passer l\'étape du glisser pour déverrouiller et entrer directement le schéma</string>
   <!-- Whether the keyguard will directly show the PIN entry -->
   <string name="lock_directly_show_pin">Montrer directement le champ d\'entrée PIN</string>
+  <string name="lock_directly_show_pin_summary">Passer l\'étape du glisser pour déverrouiller et entrer directement le code PIN</string>
   <!-- PIN scramble -->
   <string name="unlock_scramble_pin_layout_title">Disposition aléatoire</string>
   <string name="unlock_scramble_pin_layout_summary">Disposer aléatoirement les touches lors du déverrouillage</string>
@@ -96,6 +102,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="increasing_ring_min_volume_title">Volume de démarrage</string>
   <string name="increasing_ring_ramp_up_time_title">Durée de progression</string>
   <!-- Volume link notification -->
+  <string name="volume_link_notification_title">Lier les volumes de la sonnerie &amp; des notifications</string>
   <!-- Memory -->
   <string name="memory_startup_apps_title">Applications lancées au démarrage</string>
   <!-- Manual provisioning support -->
@@ -189,6 +196,12 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="app_ops_summaries_turn_screen_on">allumer l\'écran</string>
   <string name="app_ops_summaries_get_accounts">obtenir les comptes</string>
   <string name="app_ops_summaries_run_in_background">exécuter en arrière-plan</string>
+  <string name="app_ops_summaries_accessibility_volume">volume de l’accessibilité audio</string>
+  <string name="app_ops_summaries_read_phone_numbers">lire les numéros de téléphone</string>
+  <string name="app_ops_summaries_request_install_packages">demander les packages d\'installation</string>
+  <string name="app_ops_summaries_picture_in_picture">utiliser le mode Picture-in-Picture</string>
+  <string name="app_ops_summaries_instant_app_start_foreground">démarrer l\'application instantanée au premier plan</string>
+  <string name="app_ops_summaries_answer_phone_calls">répondre aux appels téléphoniques</string>
   <string name="app_ops_summaries_toggle_wifi">activer/désactiver le Wi-Fi</string>
   <string name="app_ops_summaries_toggle_bluetooth">activer/désactiver le Bluetooth</string>
   <string name="app_ops_summaries_start_at_boot">démarrer au lancement</string>
@@ -260,6 +273,12 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="app_ops_labels_turn_screen_on">Allumer l\'écran</string>
   <string name="app_ops_labels_get_accounts">Obtenir les comptes</string>
   <string name="app_ops_labels_run_in_background">Exécuter en arrière plan</string>
+  <string name="app_ops_labels_accessibility_volume">Volume de l’accessibilité audio</string>
+  <string name="app_ops_labels_read_phone_numbers">Lire les numéros de téléphone</string>
+  <string name="app_ops_labels_request_install_packages">Demander les packages d\'installation</string>
+  <string name="app_ops_labels_picture_in_picture">Utiliser le mode Picture-in-Picture</string>
+  <string name="app_ops_labels_instant_app_start_foreground">Démarrage instantané de l\'application au premier plan</string>
+  <string name="app_ops_labels_answer_phone_calls">Répondre aux appels téléphoniques</string>
   <string name="app_ops_labels_toggle_wifi">Activer/désactiver le Wi-Fi</string>
   <string name="app_ops_labels_toggle_bluetooth">Activer/désactiver le Bluetooth</string>
   <string name="app_ops_labels_start_at_boot">Démarrer au lancement</string>
@@ -283,6 +302,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <string name="app_ops_reset_confirm_title">Confirmer la réinitialisation des compteurs</string>
   <string name="app_ops_reset_confirm_mesg">Êtes-vous sûr de vouloir réinitialiser les compteurs ?</string>
   <string name="ok">OK</string>
+  <string name="security_privacy_settings_title">Sécurité &amp; confidentialité</string>
   <!-- LineageOS legal -->
   <string name="lineagelicense_title">Infos légales LineageOS</string>
   <!-- Volume settings - Volume adjustment sound -->
@@ -293,4 +313,10 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
   <!-- Heads-up -->
   <string name="heads_up_notifications_enabled_title">Notifications flottantes</string>
   <string name="heads_up_notifications_enabled_summary">Afficher les notifications prioritaires dans une petite fenêtre de notification flottante</string>
+  <!-- High touch sensitivity -->
+  <string name="high_touch_sensitivity_title">Haute sensibilité tactile</string>
+  <string name="high_touch_sensitivity_summary">Augmenter la sensibilité de l\'écran permettant ainsi le port de gants</string>
+  <!-- Touchscreen hovering -->
+  <string name="touchscreen_hovering_title">Survol de l\'écran tactile</string>
+  <string name="touchscreen_hovering_summary">Permet de survoler l\'écran comme avec une souris dans les navigateurs web, les bureaux à distance, etc.</string>
 </resources>
