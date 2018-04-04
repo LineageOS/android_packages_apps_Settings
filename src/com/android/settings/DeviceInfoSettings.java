@@ -67,6 +67,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_DEVICE_NAME = "device_name";
     private static final String KEY_SELINUX_STATUS = "selinux_status";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
+    private static final String KEY_BASEBAND_VERSION_2 = "baseband_version_2";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
@@ -126,6 +127,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         }
 
         setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
+        setValueSummary(KEY_BASEBAND_VERSION_2, "cdma.version.baseband");
         setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
@@ -179,6 +181,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         // Remove Baseband version if wifi-only device
         if (Utils.isWifiOnly(getActivity())) {
             getPreferenceScreen().removePreference(findPreference(KEY_BASEBAND_VERSION));
+            getPreferenceScreen().removePreference(findPreference(KEY_BASEBAND_VERSION_2));
         }
 
         // Dont show feedback option if there is no reporter.
@@ -541,6 +544,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 // Remove Baseband version if wifi-only device
                 if (Utils.isWifiOnly(context)) {
                     keys.add((KEY_BASEBAND_VERSION));
+                    keys.add((KEY_BASEBAND_VERSION_2));
                 }
                 // Dont show feedback option if there is no reporter.
                 if (TextUtils.isEmpty(DeviceInfoUtils.getFeedbackReporterPackage(context))) {
