@@ -166,6 +166,28 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
 
+        <!-- GSM Device Baseband version -->
+        <com.android.settings.DividerPreference
+                android:key="gsm_baseband_version"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:selectable="false"
+                android:title="@string/gsm_baseband_version"
+                android:summary="@string/device_info_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
+
+        <!-- CDMA Device Baseband version -->
+        <com.android.settings.DividerPreference
+                android:key="cdma_baseband_version"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:selectable="false"
+                android:title="@string/cdma_baseband_version"
+                android:summary="@string/device_info_default"
+                settings:allowDividerAbove="true"
+                settings:allowDividerBelow="true"/>
+
         <!-- Device Kernel version -->
         <com.android.settings.DividerPreference
                 android:key="kernel_version"
