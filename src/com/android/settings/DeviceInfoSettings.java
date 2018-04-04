@@ -67,6 +67,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_DEVICE_NAME = "device_name";
     private static final String KEY_SELINUX_STATUS = "selinux_status";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
+    private static final String KEY_CDMA_BASEBAND_VERSION = "cdma_baseband_version";
+    private static final String KEY_GSM_BASEBAND_VERSION = "gsm_baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
@@ -164,6 +166,16 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_DEVICE_NAME, Build.PRODUCT);
         removePreferenceIfBoolFalse(KEY_DEVICE_NAME, R.bool.config_displayDeviceName);
 
+        final boolean mhidecdmaBaseband = getResources().getBoolean(R.bool.config_hidecdmaBaseband);
+        if (mhidecdmaBaseband) {
+            removePreference(KEY_CDMA_BASEBAND_VERSION);
+            removePreference(KEY_GSM_BASEBAND_VERSION);
+        } else {
+            setValueSummary(KEY_CDMA_BASEBAND_VERSION, "cdma.version.baseband");
+            setValueSummary(KEY_GSM_BASEBAND_VERSION, "gsm.version.baseband");
+            removePreference(KEY_BASEBAND_VERSION);
+        }
+
         // Remove selinux information if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
                 PROPERTY_SELINUX_STATUS);
@@ -178,7 +190,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
         // Remove Baseband version if wifi-only device
         if (Utils.isWifiOnly(getActivity())) {
-            getPreferenceScreen().removePreference(findPreference(KEY_BASEBAND_VERSION));
+            if (mhidecdmaBaseband) {
+                getPreferenceScreen().removePreference(findPreference(KEY_CDMA_BASEBAND_VERSION));
+                getPreferenceScreen().removePreference(findPreference(KEY_GSM_BASEBAND_VERSION));
+            } else {
+                getPreferenceScreen().removePreference(findPreference(KEY_BASEBAND_VERSION));
+            }
         }
 
         // Dont show feedback option if there is no reporter.
