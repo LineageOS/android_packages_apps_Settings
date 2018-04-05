@@ -32,7 +32,7 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,74 +46,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.settings.connecteddevice;
+package com.android.settings.bluetooth;
 
-import android.app.settings.SettingsEnums;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.net.Uri;
-import android.provider.DeviceConfig;
 
-import androidx.annotation.VisibleForTesting;
-
-import com.android.settings.R;
-import com.android.settings.core.SettingsUIDeviceConfig;
+import com.android.settings.connecteddevice.DevicePreferenceCallback;
 import com.android.settings.dashboard.DashboardFragment;
-import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settings.slices.SlicePreferenceController;
-import com.android.settingslib.search.SearchIndexable;
+import com.android.settingslib.bluetooth.CachedBluetoothDevice;
+import com.android.settingslib.bluetooth.LocalBluetoothManager;
 
-@SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
-public class ConnectedDeviceDashboardFragment extends DashboardFragment {
+/**
+ * Maintain and update saved TWS+ bluetooth devices(bonded but not connected)
+ */
+public class SavedBluetoothTwsDeviceUpdater extends BluetoothDeviceUpdater {
 
-    private static final String TAG = "ConnectedDeviceFrag";
+    public SavedBluetoothTwsDeviceUpdater(Context context, DashboardFragment fragment,
+            DevicePreferenceCallback devicePreferenceCallback) {
+        super(context, fragment, devicePreferenceCallback);
+    }
 
-    @VisibleForTesting
-    static final String KEY_CONNECTED_DEVICES = "connected_device_list";
-    @VisibleForTesting
-    static final String KEY_AVAILABLE_DEVICES = "available_device_list";
-
-    @Override
-    public int getMetricsCategory() {
-        return SettingsEnums.SETTINGS_CONNECTED_DEVICE_CATEGORY;
+    SavedBluetoothTwsDeviceUpdater(DashboardFragment fragment,
+            DevicePreferenceCallback devicePreferenceCallback,
+            LocalBluetoothManager localBluetoothManager) {
+        super(fragment, devicePreferenceCallback, localBluetoothManager);
     }
 
     @Override
-    protected String getLogTag() {
-        return TAG;
+    public void onConnectionStateChanged(CachedBluetoothDevice cachedDevice, int state) {
+        if (state == BluetoothAdapter.STATE_CONNECTED) {
+            removePreference(cachedDevice);
+        } else if (state == BluetoothAdapter.STATE_DISCONNECTED) {
+            addPreference(cachedDevice);
+        }
     }
 
     @Override
-    protected boolean isParalleledControllers() {
-        return true;
+    public boolean isFilterMatched(CachedBluetoothDevice cachedDevice) {
+        final BluetoothDevice device = cachedDevice.getDevice();
+        return device.getBondState() == BluetoothDevice.BOND_BONDED &&
+            !device.isConnected() && device.isTwsPlusDevice();
     }
-
-    @Override
-    public int getHelpResource() {
-        return R.string.help_url_connected_devices;
-    }
-
-    @Override
-    protected int getPreferenceScreenResId() {
-        return R.xml.connected_devices;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        final boolean nearbyEnabled = DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_SETTINGS_UI,
-                SettingsUIDeviceConfig.BT_NEAR_BY_SUGGESTION_ENABLED, true);
-        use(AvailableMediaDeviceGroupController.class).init(this);
-        use(ConnectedDeviceGroupController.class).init(this);
-        use(SavedTwsDeviceGroupController.class).init(this);
-        use(PreviouslyConnectedDevicePreferenceController.class).init(this);
-        use(SlicePreferenceController.class).setSliceUri(nearbyEnabled
-                ? Uri.parse(getString(R.string.config_nearby_devices_slice_uri))
-                : null);
-    }
-
-    /**
-     * For Search.
-     */
-    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.connected_devices);
 }
