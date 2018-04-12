@@ -37,6 +37,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
@@ -99,6 +100,7 @@ public class ConfirmLockPassword extends ConfirmDeviceCredentialBaseActivity {
         private AsyncTask<?, ?, ?> mPendingLockCheck;
         private CredentialCheckResultTracker mCredentialCheckResultTracker;
         private boolean mDisappearing = false;
+        private ImageView mTrustIconView;
         private TextView mHeaderTextView;
         private TextView mDetailsTextView;
         private CountDownTimer mCountdownTimer;
@@ -142,6 +144,7 @@ public class ConfirmLockPassword extends ConfirmDeviceCredentialBaseActivity {
             if (mHeaderTextView == null) {
                 mHeaderTextView = view.findViewById(R.id.suw_layout_title);
             }
+            mTrustIconView = view.findViewById(R.id.confirm_lock_trust);
             mDetailsTextView = (TextView) view.findViewById(R.id.detailsText);
             mErrorTextView = (TextView) view.findViewById(R.id.errorText);
             mIsAlpha = DevicePolicyManager.PASSWORD_QUALITY_ALPHABETIC == storedQuality
@@ -243,6 +246,7 @@ public class ConfirmLockPassword extends ConfirmDeviceCredentialBaseActivity {
         public void prepareEnterAnimation() {
             super.prepareEnterAnimation();
             mHeaderTextView.setAlpha(0f);
+            mTrustIconView.setAlpha(0f);
             mDetailsTextView.setAlpha(0f);
             mCancelButton.setAlpha(0f);
             mPasswordEntry.setAlpha(0f);
@@ -253,6 +257,7 @@ public class ConfirmLockPassword extends ConfirmDeviceCredentialBaseActivity {
         private View[] getActiveViews() {
             ArrayList<View> result = new ArrayList<>();
             result.add(mHeaderTextView);
+            result.add(mTrustIconView);
             result.add(mDetailsTextView);
             if (mCancelButton.getVisibility() == View.VISIBLE) {
                 result.add(mCancelButton);
