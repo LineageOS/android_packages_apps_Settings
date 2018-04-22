@@ -83,6 +83,10 @@
         android:fragment="com.android.settings.accessibility.ToggleFontSizePreferenceFragment"
         settings:keywords="@string/keywords_display_font_size" />
 
+    <org.lineageos.internal.lineageparts.LineagePartsPreference
+        android:key="long_screen_settings"
+        lineage:requiresConfig="@*lineageos.platform:bool/config_haveHigherAspectRatioScreen" />
+
     <com.android.settings.display.ScreenZoomPreference
         android:key="screen_zoom"
         android:title="@string/screen_zoom_title"
