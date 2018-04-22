@@ -88,6 +88,10 @@
         android:title="@string/screen_zoom_title"
         settings:keywords="@string/screen_zoom_keywords" />
 
+    <org.lineageos.internal.lineageparts.LineagePartsPreference
+        android:key="long_screen_settings"
+        lineage:requiresConfig="@*lineageos.platform:bool/config_haveHigherAspectRatioScreen" />
+
     <Preference
         android:key="screensaver"
         android:title="@string/screensaver_settings_title"
