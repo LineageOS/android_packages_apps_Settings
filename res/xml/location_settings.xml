@@ -44,6 +44,12 @@
         android:fragment="com.android.settings.location.RecentLocationAccessSeeAllFragment"
         settings:controller="com.android.settings.location.RecentLocationAccessSeeAllExpressiveButtonPreferenceController" />
 
+    <SwitchPreferenceCompat
+        android:key="assisted_gps"
+        android:title="@string/assisted_gps"
+        android:summary="@string/assisted_gps_summary"
+        settings:controller="com.android.settings.location.AgpsPreferenceController"/>
+
     <com.android.settingslib.widget.UntitledPreferenceCategory
         android:key="location_advanced_settings">
 
