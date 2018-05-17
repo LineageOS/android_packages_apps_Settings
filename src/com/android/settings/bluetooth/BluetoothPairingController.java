@@ -108,6 +108,11 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
         }
 
         if (getDialogType() == USER_ENTRY_DIALOG) {
+            if (mPbapAllowed) {
+                mDevice.setPhonebookAccessPermission(BluetoothDevice.ACCESS_ALLOWED);
+            } else {
+                mDevice.setPhonebookAccessPermission(BluetoothDevice.ACCESS_REJECTED);
+            }
             onPair(mUserInput);
         } else {
             onPair(null);
