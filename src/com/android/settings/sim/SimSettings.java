@@ -268,7 +268,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         simPref.setSummary(account == null
                 ? mContext.getResources().getString(R.string.sim_calls_ask_first_prefs_title)
                 : (String) account.getLabel());
-        simPref.setEnabled(allPhoneAccounts.size() > 1);
+        simPref.setEnabled(allPhoneAccounts.size() > 1 && mSelectableSubInfos.size() > 1);
     }
 
     @Override
