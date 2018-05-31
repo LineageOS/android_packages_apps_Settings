@@ -503,7 +503,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
                 mSwitch.setVisibility(View.GONE);
             } else {
                 mSwitch.setVisibility(View.VISIBLE);
-                mSwitch.setEnabled(!isAirplaneModeOn() || isValid());
+                mSwitch.setEnabled((!isAirplaneModeOn() || isValid()) && super.isEnabled());
                 setChecked(getProvisionStatus(mSlotId) == PROVISIONED);
             }
         }
