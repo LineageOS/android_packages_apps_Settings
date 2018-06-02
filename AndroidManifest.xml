@@ -2830,7 +2830,8 @@
 
         <activity android:name=".sim.SimPreferenceDialog"
             android:theme="@*android:style/Theme.DeviceDefault.Settings.Dialog.NoActionBar"
-            android:excludeFromRecents="true">
+            android:excludeFromRecents="true"
+            android:process="com.android.phone">
         </activity>
 
         <activity android:name=".wifi.RequestToggleWiFiActivity"

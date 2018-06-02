@@ -37,8 +37,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.TextView;
 
+import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneFactory;
 import com.android.settings.R;
 
 public class SimPreferenceDialog extends Activity {
@@ -53,6 +56,7 @@ public class SimPreferenceDialog extends Activity {
     AlertDialog.Builder mBuilder;
     View mDialogLayout;
     private final String SIM_NAME = "sim_name";
+    private final String SIM_NUMBER = "sim_number";
     private final String TINT_POS = "tint_pos";
 
     @Override
@@ -83,6 +87,9 @@ public class SimPreferenceDialog extends Activity {
         final EditText nameText = (EditText)mDialogLayout.findViewById(R.id.sim_name);
         savedInstanceState.putString(SIM_NAME, nameText.getText().toString());
 
+        final EditText numberText = (EditText)mDialogLayout.findViewById(R.id.sim_number);
+        savedInstanceState.putString(SIM_NUMBER, numberText.getText().toString());
+
         super.onSaveInstanceState(savedInstanceState);
 
     }
@@ -98,6 +105,9 @@ public class SimPreferenceDialog extends Activity {
 
         EditText nameText = (EditText)mDialogLayout.findViewById(R.id.sim_name);
         nameText.setText(savedInstanceState.getString(SIM_NAME));
+
+        EditText numberText = (EditText)mDialogLayout.findViewById(R.id.sim_number);
+        numberText.setText(savedInstanceState.getString(SIM_NUMBER));
     }
 
     private void createEditDialog(Bundle bundle) {
@@ -134,12 +144,10 @@ public class SimPreferenceDialog extends Activity {
 
         final TelephonyManager tm = (TelephonyManager) mContext.getSystemService(
                 Context.TELEPHONY_SERVICE);
-        TextView numberView = (TextView)mDialogLayout.findViewById(R.id.number);
+        EditText numberView = (EditText)mDialogLayout.findViewById(R.id.sim_number);
         final String rawNumber =  tm.getLine1Number(mSubInfoRecord.getSubscriptionId());
-        if (TextUtils.isEmpty(rawNumber)) {
-            numberView.setText(res.getString(com.android.internal.R.string.unknownName));
-        } else {
-            numberView.setText(PhoneNumberUtils.formatNumber(rawNumber));
+        if (!TextUtils.isEmpty(rawNumber)) {
+            numberView.setText(rawNumber);
         }
 
         String simCarrierName = tm.getSimOperatorName(mSubInfoRecord.getSubscriptionId());
@@ -160,6 +168,22 @@ public class SimPreferenceDialog extends Activity {
                 mSubInfoRecord.setDisplayName(displayName);
                 mSubscriptionManager.setDisplayName(displayName, subId,
                         SubscriptionManager.NAME_SOURCE_USER_INPUT);
+
+                String phoneNumber = numberView.getText().toString();
+                Phone phone = PhoneFactory.getPhone(mSlotId);
+                if (phone != null) {
+                    String alphaTag = phone.getLine1AlphaTag();
+                    if (TextUtils.isEmpty(alphaTag)) {
+                        // No tag, set it.
+                        alphaTag = res.getString(R.string.msisdn_alpha_tag);
+                    }
+                    if (!TextUtils.isEmpty(phoneNumber) && !phoneNumber.equals(rawNumber)) {
+                        if (!phone.setLine1Number(alphaTag, phoneNumber, null)) {
+                            Toast.makeText(mContext, res.getString(
+                                    R.string.set_phone_number_failed), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
 
                 final int tintSelected = tintSpinner.getSelectedItemPosition();
                 int subscriptionId = mSubInfoRecord.getSubscriptionId();
