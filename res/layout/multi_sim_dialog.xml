@@ -108,13 +108,16 @@
                     android:textColor="?android:attr/textColorSecondary"
                     android:text="@string/sim_editor_number" />
 
-            <TextView android:id="@+id/number"
+            <EditText android:id="@+id/sim_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/sim_dialog_margin_bottom"
                     android:paddingStart="@dimen/sim_content_padding"
                     android:singleLine="true"
                     android:textColor="?android:attr/textColorPrimary"
+                    android:hint="@string/phone_number_hint"
+                    android:inputType="phone"
+                    android:digits="0123456789+"
                     style="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
