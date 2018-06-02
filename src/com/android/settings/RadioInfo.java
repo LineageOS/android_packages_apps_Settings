@@ -172,7 +172,7 @@ public class RadioInfo extends Activity {
     private static final int MENU_ITEM_TOGGLE_DATA  = 5;
 
     private TextView mDeviceId; //DeviceId is the IMEI in GSM and the MEID in CDMA
-    private TextView number;
+    private EditText number;
     private TextView mSubscriberId;
     private TextView callState;
     private TextView operatorName;
@@ -373,7 +373,7 @@ public class RadioInfo extends Activity {
                 SubscriptionManager.getDefaultVoicePhoneId());
 
         mDeviceId = (TextView) findViewById(R.id.imei);
-        number = (TextView) findViewById(R.id.number);
+        number = (EditText) findViewById(R.id.sim_number);
         mSubscriberId = (TextView) findViewById(R.id.imsi);
         callState = (TextView) findViewById(R.id.call);
         operatorName = (TextView) findViewById(R.id.operator);
