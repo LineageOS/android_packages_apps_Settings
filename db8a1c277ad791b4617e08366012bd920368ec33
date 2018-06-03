@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "624d3db0_df7fa84e",
+        "filename": "res/layout/multi_sim_dialog.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-06-03T18:32:02Z",
+      "side": 1,
+      "message": "check the same thing with this patch. it\u0027s probably using phone number utils to format the number, which is why it shows +33. I removed the phone number utils format call for that reason, so as to not confuse the user as to what chars are allowed.",
+      "parentUuid": "ac222906_6776691f",
+      "revId": "db8a1c277ad791b4617e08366012bd920368ec33",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03d8c5b1_bc431668",
         "filename": "src/com/android/settings/RadioInfo.java",
         "patchSetId": 1
