@@ -792,7 +792,7 @@ public final class Utils extends com.android.settingslib.Utils {
         final TelephonyManager tm =
                 (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
-        return tm.getSimCount() > 1;
+        return tm.getSimCount() >= 1;
     }
 
     /**
