@@ -789,10 +789,7 @@ public final class Utils extends com.android.settingslib.Utils {
      * TODO: See bug 16533525.
      */
     public static boolean showSimCardTile(Context context) {
-        final TelephonyManager tm =
-                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-
-        return tm.getSimCount() > 1;
+        return true;
     }
 
     /**
