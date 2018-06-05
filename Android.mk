@@ -32,8 +32,7 @@ LOCAL_JAVA_LIBRARIES := \
     bouncycastle \
     core-oj \
     telephony-common \
-    ims-common \
-    telephony-ext
+    ims-common
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     jsr305 \
