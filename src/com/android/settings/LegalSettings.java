@@ -46,7 +46,9 @@ public class LegalSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_LICENSE = "license";
     private static final String KEY_COPYRIGHT = "copyright";
     private static final String KEY_WEBVIEW_LICENSE = "webview_license";
+/*
     private static final String KEY_WALLPAPER_ATTRIBUTIONS = "wallpaper_attributions";
+*/
     private static final String PROPERTY_LINEAGELICENSE_URL = "ro.lineagelegal.url";
     private static final String KEY_LINEAGE_LICENSE = "lineagelicense";
 
@@ -114,7 +116,9 @@ public class LegalSettings extends SettingsPreferenceFragment implements Indexab
                 if (!checkIntentAction(context, "android.settings.WEBVIEW_LICENSE")) {
                     keys.add(KEY_WEBVIEW_LICENSE);
                 }
+/*
                 keys.add(KEY_WALLPAPER_ATTRIBUTIONS);
+*/
                 return keys;
             }
 
