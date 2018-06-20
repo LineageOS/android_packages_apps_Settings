@@ -16,8 +16,10 @@
 
 package com.android.settings.deviceinfo;
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.support.annotation.VisibleForTesting;
@@ -57,6 +59,17 @@ public class HardwareInfoDialogFragment extends InstrumentedDialogFragment {
         // Hardware rev
         setText(content, R.id.hardware_rev_label, R.id.hardware_rev_value,
                 SystemProperties.get("ro.boot.hardware.revision"));
+
+        // Platform
+        setText(content, R.id.hardware_plat_label, R.id.hardware_plat_value,
+                SystemProperties.get("ro.board.platform"));
+
+        // RAM
+        ActivityManager actManager = (ActivityManager) builder.getContext().getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
+        actManager.getMemoryInfo(memInfo);
+        setText(content, R.id.hardware_ram_label, R.id.hardware_ram_value,
+                String.valueOf(memInfo.totalMem));
 
         return builder.setView(content).create();
     }
