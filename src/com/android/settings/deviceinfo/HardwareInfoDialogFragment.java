@@ -58,6 +58,10 @@ public class HardwareInfoDialogFragment extends InstrumentedDialogFragment {
         setText(content, R.id.hardware_rev_label, R.id.hardware_rev_value,
                 SystemProperties.get("ro.boot.hardware.revision"));
 
+        // Platform
+        setText(content, R.id.hardware_plat_label, R.id.hardware_plat_value,
+                SystemProperties.get("ro.board.platform"));
+
         return builder.setView(content).create();
     }
 
