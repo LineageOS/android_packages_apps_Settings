@@ -19,6 +19,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_label">
 
+    <PreferenceScreen
+        android:key="lockscreen_targets"
+        android:title="@string/lockscreen_targets_title">
+        <intent android:action="com.android.settings.action.LOCKSCREEN_TUNER" />
+    </PreferenceScreen>
+
     <com.android.settingslib.RestrictedPreference
         android:key="owner_info_settings"
         android:title="@string/owner_info_settings_title"
