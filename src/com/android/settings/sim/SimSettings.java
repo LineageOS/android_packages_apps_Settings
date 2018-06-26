@@ -656,22 +656,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
             switch(dialogId) {
                 case CONFIRM_ALERT_DLG_ID:
-                    String message;
-                    if (mContext.getResources().getBoolean(
-                            R.bool.confirm_to_switch_data_service)) {
-                        if (SubscriptionManager.getDefaultDataSubscriptionId() ==
-                                mSubInfoRecord.getSubscriptionId()) {
-                            message = mContext.getString(
-                                    R.string.sim_enabler_need_switch_data_service,
-                                    getProvisionedSlotId());
-                        } else {
-                            message = mContext.getString(R.string.sim_enabler_need_disable_sim);
-                        }
-                        builder.setTitle(R.string.sim_enabler_will_disable_sim_title);
-                    } else {
-                        message = mContext.getString(R.string.sim_enabler_need_disable_sim);
-                    }
-                    builder.setMessage(message);
+                    builder.setMessage(R.string.sim_enabler_need_disable_sim);
                     builder.setPositiveButton(android.R.string.ok, mDialogClickListener);
                     builder.setNegativeButton(android.R.string.no, mDialogClickListener);
                     builder.setOnCancelListener(mDialogCanceListener);
