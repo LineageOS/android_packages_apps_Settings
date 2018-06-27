@@ -684,7 +684,7 @@ public class ChooseLockGeneric extends SettingsActivity {
         }
 
         private void removeAllFingerprintForUserAndFinish(final int userId) {
-            if (mFingerprintManager != null && mFingerprintManager.isHardwareDetected()) {
+            if (false && mFingerprintManager != null && mFingerprintManager.isHardwareDetected()) {
                 if (mFingerprintManager.hasEnrolledFingerprints(userId)) {
                     mFingerprintManager.setActiveUser(userId);
                     // For the purposes of M and N, groupId is the same as userId.
