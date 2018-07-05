@@ -40,7 +40,7 @@ public class BatteryPercentagePreferenceController extends AbstractPreferenceCon
 
     @Override
     public boolean isAvailable() {
-        return true;
+        return false;
     }
 
     @Override
