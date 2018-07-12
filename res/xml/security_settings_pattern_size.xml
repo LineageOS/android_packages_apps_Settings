@@ -18,9 +18,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
-        android:icon="@drawable/ic_security_pattern_3x3"
-        android:key="lock_pattern_size_3"
-        android:title="@string/lock_pattern_size_3"
+        android:icon="@drawable/ic_security_pattern_6x6"
+        android:key="lock_pattern_size_6"
+        android:title="@string/lock_pattern_size_6"
+        android:persistent="false"/>
+
+    <!--
+    <Preference
+        android:icon="@drawable/ic_security_pattern_5x5"
+        android:key="lock_pattern_size_5"
+        android:title="@string/lock_pattern_size_5"
         android:persistent="false"/>
 
     <Preference
@@ -30,15 +37,10 @@
         android:persistent="false"/>
 
     <Preference
-        android:icon="@drawable/ic_security_pattern_5x5"
-        android:key="lock_pattern_size_5"
-        android:title="@string/lock_pattern_size_5"
+        android:icon="@drawable/ic_security_pattern_3x3"
+        android:key="lock_pattern_size_3"
+        android:title="@string/lock_pattern_size_3"
         android:persistent="false"/>
-
-    <Preference
-        android:icon="@drawable/ic_security_pattern_6x6"
-        android:key="lock_pattern_size_6"
-        android:title="@string/lock_pattern_size_6"
-        android:persistent="false"/>
+    -->
 
 </PreferenceScreen>
