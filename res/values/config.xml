@@ -33,10 +33,13 @@
     <integer name="dashboard_num_columns">1</integer>
 
     <!-- Carrier_enabled editable -->
-    <bool name="config_allow_edit_carrier_enabled" translatable="false">false</bool>
+    <bool name="config_allow_edit_carrier_enabled" translatable="false">true</bool>
 
     <!-- When true enable color temperature setting. -->
     <bool name="config_enableColorTemperature">false</bool>
+
+    <!-- Whether to show TelphonyMonitor switch in Developer Options -->
+    <bool name="config_show_telephony_monitor">true</bool>
 
     <!-- Whether to show Camera laser sensor switch in Developer Options -->
     <bool name="config_show_camera_laser_sensor">false</bool>
@@ -66,7 +69,7 @@
     <bool name="config_gesture_settings_enabled">false</bool>
 
     <!-- If the Storage Manager settings are enabled. -->
-    <bool name="config_storage_manager_settings_enabled">false</bool>
+    <bool name="config_storage_manager_settings_enabled">true</bool>
 
     <!-- If the support features are enabled. -->
     <bool name="config_support_enabled">false</bool>
