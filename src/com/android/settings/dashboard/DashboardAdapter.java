@@ -31,11 +31,13 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -244,6 +246,15 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             case R.layout.dashboard_tile:
                 final Tile tile = (Tile) mDashboardData.getItemEntityByPosition(position);
                 onBindTile(holder, tile);
+
+                LinearLayout.LayoutParams itemParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                itemParams.height = 84;
+                holder.itemView.setLayoutParams(itemParams);
+
+                LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                titleParams.gravity = Gravity.CENTER;
+                holder.title.setLayoutParams(titleParams);
+
                 holder.itemView.setTag(tile);
                 holder.itemView.setOnClickListener(mTileClickListener);
                 break;
