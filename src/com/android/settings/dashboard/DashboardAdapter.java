@@ -72,7 +72,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     @VisibleForTesting
     static final int MAX_SUGGESTION_TO_SHOW = 5;
 
-    private final IconCache mCache;
     private final Context mContext;
     private final MetricsFeatureProvider mMetricsFeatureProvider;
     private final DashboardFeatureProvider mDashboardFeatureProvider;
@@ -121,7 +120,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
         mMetricsFeatureProvider = factory.getMetricsFeatureProvider();
         mDashboardFeatureProvider = factory.getDashboardFeatureProvider(context);
         mSuggestionFeatureProvider = factory.getSuggestionFeatureProvider(context);
-        mCache = new IconCache(context);
         mSuggestionParser = suggestionParser;
         mCallback = callback;
 
@@ -152,7 +150,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
 
     public void setCategoriesAndSuggestions(DashboardCategory category,
             List<Tile> suggestions) {
-        tintIcons(category, suggestions);
 
         final DashboardData prevData = mDashboardData;
         mDashboardData = new DashboardData.Builder(prevData)
@@ -469,14 +466,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             itemView.removeAllViews();
             itemView.addView(tile.remoteViews.apply(itemView.getContext(), itemView));
         } else {
-            holder.icon.setImageDrawable(mCache.getIcon(tile.icon));
-            holder.title.setText(tile.title);
-            if (!TextUtils.isEmpty(tile.summary)) {
-                holder.summary.setText(tile.summary);
-                holder.summary.setVisibility(View.VISIBLE);
-            } else {
-                holder.summary.setVisibility(View.GONE);
-            }
+            holder.summary.setVisibility(View.GONE);
         }
     }
 
@@ -548,15 +538,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
         public IconCache(Context context) {
             mContext = context;
         }
-
-        public Drawable getIcon(Icon icon) {
-            Drawable drawable = mMap.get(icon);
-            if (drawable == null) {
-                drawable = icon.loadDrawable(mContext);
-                mMap.put(icon, drawable);
-            }
-            return drawable;
-        }
     }
 
     public static class DashboardItemHolder extends RecyclerView.ViewHolder {
@@ -569,6 +550,8 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             icon = itemView.findViewById(android.R.id.icon);
             title = itemView.findViewById(android.R.id.title);
             summary = itemView.findViewById(android.R.id.summary);
+            icon.setVisibility(View.GONE);
+            summary.setVisibility(View.GONE);
         }
     }
 
