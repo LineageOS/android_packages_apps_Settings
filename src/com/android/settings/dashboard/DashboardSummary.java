@@ -193,7 +193,7 @@ public class DashboardSummary extends InstrumentedFragment
             mLayoutManager.scrollToPosition(scrollPosition);
         }
         mDashboard.setLayoutManager(mLayoutManager);
-        mDashboard.setHasFixedSize(true);
+        mDashboard.setHasFixedSize(false);
         mDashboard.setListener(this);
         mAdapter = new DashboardAdapter(getContext(), bundle, mConditionManager.getConditions(),
             mSuggestionParser, this /* SuggestionDismissController.Callback */);
