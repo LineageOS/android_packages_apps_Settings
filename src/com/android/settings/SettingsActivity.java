@@ -322,11 +322,11 @@ public class SettingsActivity extends SettingsDrawerActivity
         }
 
         if (mIsShowingDashboard) {
-            findViewById(R.id.search_bar).setVisibility(View.VISIBLE);
+            findViewById(R.id.search_bar).setVisibility(View.GONE);
             findViewById(R.id.action_bar).setVisibility(View.GONE);
-            Toolbar toolbar = findViewById(R.id.search_action_bar);
-            toolbar.setOnClickListener(this);
-            setActionBar(toolbar);
+            //Toolbar toolbar = findViewById(R.id.search_action_bar);
+            //toolbar.setOnClickListener(this);
+            //setActionBar(toolbar);
 
             // Please forgive me for what I am about to do.
             //
