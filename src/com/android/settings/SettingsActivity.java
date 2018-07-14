@@ -321,22 +321,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             launchSettingFragment(initialFragmentName, isSubSettings, intent);
         }
 
-        if (mIsShowingDashboard) {
-            findViewById(R.id.search_bar).setVisibility(View.VISIBLE);
-            findViewById(R.id.action_bar).setVisibility(View.GONE);
-            Toolbar toolbar = findViewById(R.id.search_action_bar);
-            toolbar.setOnClickListener(this);
-            setActionBar(toolbar);
-
-            // Please forgive me for what I am about to do.
-            //
-            // Need to make the navigation icon non-clickable so that the entire card is clickable
-            // and goes to the search UI. Also set the background to null so there's no ripple.
-            View navView = toolbar.getNavigationView();
-            navView.setClickable(false);
-            navView.setBackground(null);
-        }
-
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(mDisplayHomeAsUpEnabled);
