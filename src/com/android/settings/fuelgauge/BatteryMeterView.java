@@ -113,9 +113,9 @@ public class BatteryMeterView extends ImageView {
         }
 
         public void setBatteryColorFilter(@Nullable ColorFilter colorFilter) {
-            mFramePaint.setColorFilter(colorFilter);
-            mBatteryPaint.setColorFilter(colorFilter);
-            mBoltPaint.setColorFilter(colorFilter);
+//            mFramePaint.setColorFilter(colorFilter);
+//            mBatteryPaint.setColorFilter(colorFilter);
+//            mBoltPaint.setColorFilter(colorFilter);
         }
     }
 
