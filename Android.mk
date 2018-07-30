@@ -37,7 +37,8 @@ LOCAL_JAVA_LIBRARIES := \
 LOCAL_STATIC_JAVA_LIBRARIES := \
     jsr305 \
     settings-logtags \
-    org.lineageos.platform.internal
+    org.lineageos.platform.internal \
+    vendor.lineage.vibrator-V1.0-java-static
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
