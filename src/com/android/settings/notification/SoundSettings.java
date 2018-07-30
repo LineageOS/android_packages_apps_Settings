@@ -317,6 +317,9 @@ public class SoundSettings extends DashboardFragment {
                         bootSoundPreferenceController,
                         emergencyTonePreferenceController)));
 
+        // === Vibrator intensity Settings ===
+        controllers.add(new VibratorIntensityController(context));
+
         return controllers;
     }
 

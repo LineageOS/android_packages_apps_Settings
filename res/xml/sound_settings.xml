@@ -206,6 +206,15 @@
           android:summary="%s" />
     </PreferenceCategory>
 
+    <!-- Vibrator intensity -->
+    <com.android.settings.notification.VibratorIntensity
+        android:key="vibrator_intensity"
+        android:title="@string/vibrator_intensity_title"
+        android:dialogTitle="@string/vibrator_intensity_title"
+        android:max="255"
+        android:order="-40"
+        android:persistent="false" />
+
     <com.android.settings.widget.WorkOnlyCategory
         android:key="sound_work_settings_section"
         android:title="@string/sound_work_settings"
