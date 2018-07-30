@@ -26,6 +26,7 @@ import android.os.UserHandle;
 import android.preference.SeekBarVolumizer;
 import android.provider.SearchIndexableResource;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
 import android.text.TextUtils;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -248,6 +249,9 @@ public class SoundSettings extends DashboardFragment {
         controllers.add(new DockAudioMediaPreferenceController(context, fragment, lifecycle));
         controllers.add(new BootSoundPreferenceController(context));
         controllers.add(new EmergencyTonePreferenceController(context, fragment, lifecycle));
+
+        // === Vibrator intensity Settings ===
+        controllers.add(new VibratorIntensityController(context));
 
         return controllers;
     }
