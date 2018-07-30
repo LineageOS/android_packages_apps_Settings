@@ -172,6 +172,15 @@
           android:summary="%s" />
     </PreferenceCategory>
 
+    <!-- Vibrator intensity -->
+    <com.android.settings.notification.VibratorIntensity
+        android:key="vibrator_intensity"
+        android:title="@string/vibrator_intensity_title"
+        android:dialogTitle="@string/vibrator_intensity_title"
+        android:max="255"
+        android:order="-40"
+        android:persistent="false" />
+
     <com.android.settingslib.RestrictedPreference
       android:key="cell_broadcast_settings"
       android:title="@string/cell_broadcast_settings"
