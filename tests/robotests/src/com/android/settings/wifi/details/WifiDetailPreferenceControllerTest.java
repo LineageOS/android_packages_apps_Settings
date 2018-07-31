@@ -218,8 +218,8 @@ public class WifiDetailPreferenceControllerTest {
                 IPV6_GLOBAL1 = ipv6LinkAddress("2001:db8:1::211:25ff:fef8:7cb2");
                 IPV6_GLOBAL2 = ipv6LinkAddress("2001:db8:1::3dfe:8902:f98f:739d");
 
-                IPV4_DNS1 = InetAddress.getByName("8.8.8.8");
-                IPV4_DNS2 = InetAddress.getByName("8.8.4.4");
+                IPV4_DNS1 = InetAddress.getByName("84.200.69.80");
+                IPV4_DNS2 = InetAddress.getByName("84.200.70.40");
                 IPV6_DNS = InetAddress.getByName("2001:4860:4860::64");
             } catch (UnknownHostException e) {
                 throw new RuntimeException("Invalid hardcoded IP addresss: " + e);
