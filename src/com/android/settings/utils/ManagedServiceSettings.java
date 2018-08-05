@@ -95,12 +95,12 @@ public abstract class ManagedServiceSettings extends EmptyTextSettings {
     @Override
     public void onResume() {
         super.onResume();
-        if (!ActivityManager.isLowRamDeviceStatic()) {
+        //if (!ActivityManager.isLowRamDeviceStatic()) {
             mServiceListing.reload();
             mServiceListing.setListening(true);
-        } else {
-            setEmptyText(R.string.disabled_low_ram_device);
-        }
+        //} else {
+        //    setEmptyText(R.string.disabled_low_ram_device);
+        //}
     }
 
     @Override

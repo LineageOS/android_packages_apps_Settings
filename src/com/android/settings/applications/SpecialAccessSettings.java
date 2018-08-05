@@ -33,8 +33,7 @@ public class SpecialAccessSettings extends DashboardFragment {
     private static final String TAG = "SpecialAccessSettings";
 
     private static final String[] DISABLED_FEATURES_LOW_RAM =
-            new String[]{"notification_access", "zen_access", "enabled_vr_listeners",
-                    "picture_in_picture"};
+            new String[]{"enabled_vr_listeners", "picture_in_picture"};
 
     @Override
     protected String getLogTag() {

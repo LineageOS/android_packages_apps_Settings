@@ -92,7 +92,7 @@ public class ZenAccessSettings extends EmptyTextSettings {
     @Override
     public void onResume() {
         super.onResume();
-        if (!ActivityManager.isLowRamDeviceStatic()) {
+        //if (!ActivityManager.isLowRamDeviceStatic()) {
             reloadList();
             getContentResolver().registerContentObserver(
                     Secure.getUriFor(Secure.ENABLED_NOTIFICATION_POLICY_ACCESS_PACKAGES), false,
@@ -100,17 +100,17 @@ public class ZenAccessSettings extends EmptyTextSettings {
             getContentResolver().registerContentObserver(
                     Secure.getUriFor(Secure.ENABLED_NOTIFICATION_LISTENERS), false,
                     mObserver);
-        } else {
-            setEmptyText(R.string.disabled_low_ram_device);
-        }
+        //} else {
+        //    setEmptyText(R.string.disabled_low_ram_device);
+        //}
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (!ActivityManager.isLowRamDeviceStatic()) {
+        //if (!ActivityManager.isLowRamDeviceStatic()) {
             getContentResolver().unregisterContentObserver(mObserver);
-        }
+        //}
     }
 
     private void reloadList() {
