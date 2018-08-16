@@ -731,6 +731,7 @@ Mae\'r cyfrinair a rhoddaist yn gywir, ond yn anffodus mae dy ddata yn llwgr.\n\
   <!-- Content of the dialog shown when the user has failed to provide the user lock too many times and the user is removed. [CHAR LIMIT=NONE] -->
   <!-- Content of the dialog shown when the user has failed to provide the work lock too many times and the work profile is removed. [CHAR LIMIT=NONE] -->
   <!-- Button label to dismiss the dialog telling the user the work profile has been wiped. [CHAR LIMIT=40] -->
+  <string name="lock_failed_attempts_now_wiping_dialog_dismiss">Wfftio</string>
   <!-- Hint shown in dialog screen when password is too short -->
   <!-- Hint shown in dialog screen when PIN is too short -->
   <!-- Hint shown after minimum password criteria is met -->
@@ -1683,12 +1684,17 @@ Mae\'r cyfrinair a rhoddaist yn gywir, ond yn anffodus mae dy ddata yn llwgr.\n\
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <!-- SD card & phone storage settings screen, instructions and list of current accounts.  The list of accounts follows this text[CHAR LIMIT=NONE] -->
+  <string name="master_clear_accounts" product="default">\n\nRwyt ar hyn o bryd wedi mewngofnodi i\'r cyfrifon a ganlyn:\n</string>
   <!-- SD card & phone storage settings screen, notification if other users are present on the device [CHAR LIMIT=NONE] -->
+  <string name="master_clear_other_users_present" product="default">\n\nMae defnyddwyr eraill ar y ddyfais hon.\n</string>
   <!-- SD card & phone storage settings screen, list of items in user data storage (USB storage or SD card) that will be erased during this operation [CHAR LIMIT=NONE] -->
   <!-- SD card & phone storage settings screen, list of items on an eSIM (embedded SIM) that will be erased during this operation [CHAR LIMIT=NONE] -->
   <!-- SD card & phone storage settings screen, notification if there are eSIM (embedded SIM) profiles present that the user's mobile service plan will not be canceled [CHAR LIMIT=NONE] -->
+  <string name="master_clear_desc_no_cancel_mobile_plan">\n\nNi fydd hyn yn canslo dy gynllun gwasanaeth ffôn symudol.</string>
   <!-- SD card & phone storage settings screen, instructions about whether to also erase the external storage (SD card) when erasing the internal storage [CHAR LIMIT=NONE] -->
+  <string name="master_clear_desc_erase_external_storage" product="nosdcard">\n\nRhaid dileu\'r <b>storfa USB</b> er mwyn clirio cerddoriaeth, lluniau a data arall defnyddiwr.</string>
   <!-- SD card & phone storage settings screen, instructions about whether to also erase the external storage (SD card) when erasing the internal storage [CHAR LIMIT=NONE] -->
+  <string name="master_clear_desc_erase_external_storage" product="default">\n\nRhaid dileu\'r <b>cerdyn SD</b> er mwyn clirio cerddoriaeth, lluniau a data arall defnyddiwr.</string>
   <!-- SD card & phone storage settings screen, label for check box to erase USB storage [CHAR LIMIT=30] -->
   <!-- SD card & phone storage settings screen, label for check box to erase SD card [CHAR LIMIT=30] -->
   <!-- SD card & phone storage settings screen, description for check box to erase USB storage [CHAR LIMIT=NONE] -->
@@ -2232,11 +2238,14 @@ yn cael ei ddefnyddio ar hyn o bryd. Tara Gosodiadau i\'w reoli.</string>
   <!-- On Languages & input settings screen, setting summary.  Setting to redirect vibration to input devices. [CHAR LIMIT=100] -->
   <!-- Keyboard Layout Preference Dialog -->
   <!-- Title for the keyboard layout preference dialog. [CHAR LIMIT=35] -->
+  <string name="keyboard_layout_dialog_title">Dewis gosodiad bysellfwrdd</string>
   <!-- Button to configure keyboard layouts.  [CHAR LIMIT=35] -->
+  <string name="keyboard_layout_dialog_setup_button">Gosod gosodiad bysellfwrdd</string>
   <!-- Hint describing how to switch keyboard layouts using the keyboard.  [CHAR LIMIT=48] -->
   <!-- Label of the default keyboard layout.  [CHAR LIMIT=35] -->
   <!-- Keyboard Layout Picker -->
   <!-- Title for the keyboard layout picker activity. [CHAR LIMIT=35] -->
+  <string name="keyboard_layout_picker_title">Gosodiadau bysellfyrddau</string>
   <!-- User dictionary settings -->
   <!-- User dictionary settings. The title of the list item to go into the Personal dictionary settings screen. [CHAR LIMIT=35] -->
   <!-- User dictionary settings.  The summary of the list item to go into the Personal dictionary settings screen. -->
@@ -3161,6 +3170,7 @@ yn cael ei ddefnyddio ar hyn o bryd. Tara Gosodiadau i\'w reoli.</string>
   <!-- Button label to cancel changing a VPN profile. [CHAR LIMIT=40] -->
   <string name="vpn_cancel">Diddymu</string>
   <!-- Button label to finish editing a VPN profile. [CHAR LIMIT=40] -->
+  <string name="vpn_done">Wfftio</string>
   <!-- Button label to save a VPN profile. [CHAR LIMIT=40] -->
   <!-- Button label to connect to a VPN profile. [CHAR LIMIT=40] -->
   <!-- Button label to connect a VPN profile, replacing the current one. [CHAR LIMIT=40] -->
@@ -3760,7 +3770,7 @@ yn cael ei ddefnyddio ar hyn o bryd. Tara Gosodiadau i\'w reoli.</string>
   <!-- Summary for a warning message about security implications of enabling a notification
           listener, displayed as a dialog message. [CHAR LIMIT=NONE] -->
   <string name="notification_listener_security_warning_summary">
-\nMi fydd yn bosib i <xliff:g id="notification_listener_name">%1$s</xliff:g> ddarllen dy holl hysbysiadau, gan gynnwys gwybodaeth bersonol megis enwau cysylltiadau a thestun negeseuon rwyt yn eu derbyn.\nMi fydd hefyd yn bosib diddymu rhai hysbysiadau neu i weithredu unrhyw fotymau maen nhw\'n eu cynnwys.\n\nBydd hyn hefyd yn caniatáu i\'r ap droi Dim Tarfu ymlaen neu ffwrdd ac i newid gosodiadau cysylltiedig.\n</string>
+\nMi fydd yn bosib i <xliff:g id="notification_listener_name">%1$s</xliff:g> ddarllen dy holl hysbysiadau, gan gynnwys gwybodaeth bersonol megis enwau cysylltiadau a thestun negeseuon rwyt yn eu derbyn.\nMi fydd hefyd yn bosib wfftio rhai hysbysiadau neu i weithredu unrhyw fotymau maen nhw\'n eu cynnwys.\n\nBydd hyn hefyd yn caniatáu i\'r ap droi Dim Tarfu ymlaen neu ffwrdd ac i newid gosodiadau cysylltiedig.\n</string>
   <string name="notification_listener_disable_warning_summary">
 Os wyt ti\'n gwrthod mynediad <xliff:g id="notification_listener_name">%1$s</xliff:g> at hysbysiadau, mae\'n bosib y bydd mynediad at Dim Tarfu hefyd yn cael ei gwrthod.
     </string>
@@ -3990,7 +4000,6 @@ Bydd <xliff:g id="vr_listener_name">%1$s</xliff:g> yn medru rhedeg tra\'r wyt yn
   <!-- App notification summary with notifications bypassing DND [CHAR LIMIT=40] -->
   <string name="notifications_priority">Dim Tarfu wedi ei anwybyddu</string>
   <!-- App notification summary divider [CHAR LIMIT=40] -->
-  <string name="notifications_summary_divider">\u00A0/\u00A0</string>
   <!-- App notification summary for advanced controls -->
   <string name="notification_summary_level">Lefel %d</string>
   <!-- App notification summary channel divider-->
@@ -4547,6 +4556,7 @@ Gosod <xliff:g id="assistant_app_name">%s</xliff:g> fel dy gynorthwyydd?    </st
   <string name="support_escalation_24_7_summary">Mae\'n tîm cymorth ar gael trwy\'r dydd, pob dydd</string>
   <!-- Summary text when customer support is closed. [CHAR LIMIT=NONE]-->
   <!-- Summary text to call customer support when there is no internet. [CHAR LIMIT=NONE]-->
+  <string name="support_escalation_no_internet_summary">Oriau cymorth dros y ffôn (amser lleol)&lt;br&gt;&lt;b&gt;<xliff:g id="operation_hours">%s</xliff:g>&lt;/b&gt;</string>
   <!-- Summary text when customer support is unavailable in the region. [CHAR LIMIT=NONE]-->
   <string name="support_escalation_unavailable_summary">Chwilio\'r tudalennau cymorth neu grwydro awgrymiadau a thriciau</string>
   <!-- Template for formatting support hours eg Mon - Fri, 8:00 AM - 19:30 PM. [CHAR LIMIT=NONE]-->
