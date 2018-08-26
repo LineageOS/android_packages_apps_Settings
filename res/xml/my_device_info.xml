@@ -145,10 +145,19 @@
             android:fragment="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionSettings"
             settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionPreferenceController"/>
 
+        <!-- Lineage version -->
+        <Preference
+            android:key="lineage_os_version"
+            android:order="43"
+            android:title="@*lineageos.platform:string/lineage_version"
+            android:summary="@string/summary_placeholder"
+            settings:enableCopying="true"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.LineageVersionDetailPreferenceController"/>
+
         <!-- Battery information -->
         <Preference
             android:key="battery_info"
-            android:order="43"
+            android:order="44"
             android:title="@string/battery_info"
             android:fragment="com.android.settings.deviceinfo.batteryinfo.BatteryInfoFragment"
             settings:keywords="@string/keywords_battery_info"
