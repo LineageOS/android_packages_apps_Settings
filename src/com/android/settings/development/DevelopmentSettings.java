@@ -245,6 +245,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             = "immediately_destroy_activities";
     private static final String APP_PROCESS_LIMIT_KEY = "app_process_limit";
 
+    private static final String CAPTIVE_PORTAL_SWITCH_KEY = "captive_portal_switch";
+
     private static final String BACKGROUND_CHECK_KEY = "background_check";
 
     private static final String SHOW_ALL_ANRS_KEY = "show_all_anrs";
@@ -350,6 +352,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private SwitchPreference mUSBAudio;
     private SwitchPreference mImmediatelyDestroyActivities;
+
+    private SwitchPreference mCaptivePortalMode;
 
     private ListPreference mAppProcessLimit;
 
@@ -566,6 +570,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 IMMEDIATELY_DESTROY_ACTIVITIES_KEY);
         mAllPrefs.add(mImmediatelyDestroyActivities);
         mResetSwitchPrefs.add(mImmediatelyDestroyActivities);
+
+        mCaptivePortalMode = (SwitchPreference) findPreference(CAPTIVE_PORTAL_SWITCH_KEY);
+        mAllPrefs.add(mCaptivePortalMode);
 
         mAppProcessLimit = addListPreference(APP_PROCESS_LIMIT_KEY);
 
@@ -891,6 +898,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateAnimationScaleOptions();
         updateOverlayDisplayDevicesOptions();
         updateImmediatelyDestroyActivitiesOptions();
+        updateCaptivePortalModeOption();
         updateAppProcessLimitOptions();
         updateShowAllANRsOptions();
         updateShowNotificationChannelWarningsOptions();
@@ -971,6 +979,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         resetDebuggerOptions();
         resetAdbNotifyOptions();
         resetRootAccessOptions();
+        resetCaptivePortalMode();
         writeLogpersistOption(null, true);
         writeLogdSizeOption(null);
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
@@ -1036,6 +1045,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                     Settings.Secure.ADB_ENABLED, 1);
         }
         updateRootAccessOptions();
+    }
+
+    private void resetCaptivePortalMode() {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+                        Settings.Global.CAPTIVE_PORTAL_MODE, 1);
+        updateCaptivePortalModeOption();
     }
 
     private void updateHdcpValues() {
@@ -2396,6 +2411,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 != 0);
     }
 
+    private void updateCaptivePortalModeOption() {
+        updateSwitchPreference(mCaptivePortalMode, Settings.Global.getInt(
+                getActivity().getContentResolver(), Settings.Global.CAPTIVE_PORTAL_MODE,
+                Settings.Global.CAPTIVE_PORTAL_MODE_PROMPT) != 0);
+    }
+
     private void updateAnimationScaleValue(int which, ListPreference pref) {
         try {
             float scale = mWindowManager.getAnimationScale(which);
@@ -2716,6 +2737,11 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeDisableOverlaysOption();
         } else if (preference == mImmediatelyDestroyActivities) {
             writeImmediatelyDestroyActivitiesOptions();
+        } else if (preference == mCaptivePortalMode) {
+            Settings.Global.putInt(getActivity().getContentResolver(),
+                        Settings.Global.CAPTIVE_PORTAL_MODE,
+                        mCaptivePortalMode.isChecked() ? 1 : 0);
+            updateCaptivePortalModeOption();
         } else if (preference == mShowAllANRs) {
             writeShowAllANRsOptions();
         } else if (preference == mShowNotificationChannelWarnings) {
