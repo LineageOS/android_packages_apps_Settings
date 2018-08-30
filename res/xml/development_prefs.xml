@@ -501,6 +501,11 @@
                 android:fragment="com.android.settings.fuelgauge.InactiveApps"/>
 
         <SwitchPreference
+            android:key="captive_portal_switch"
+            android:title="@string/captive_portal_switch_title"
+            android:summary="@string/captive_portal_switch_summary"/>
+
+        <SwitchPreference
             android:key="force_allow_on_external"
             android:title="@string/force_allow_on_external"
             android:summary="@string/force_allow_on_external_summary"/>

@@ -245,6 +245,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             = "immediately_destroy_activities";
     private static final String APP_PROCESS_LIMIT_KEY = "app_process_limit";
 
+    private static final String CAPTIVE_PORTAL_SWITCH_KEY = "captive_portal_switch";
+
     private static final String BACKGROUND_CHECK_KEY = "background_check";
 
     private static final String SHOW_ALL_ANRS_KEY = "show_all_anrs";
@@ -351,6 +353,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private SwitchPreference mUSBAudio;
     private SwitchPreference mImmediatelyDestroyActivities;
 
+    private SwitchPreference mCaptivePortalMode;
+
     private ListPreference mAppProcessLimit;
 
     private SwitchPreference mShowAllANRs;
@@ -380,6 +384,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private Dialog mAdbTcpDialog;
     private Dialog mAdbKeysDialog;
+    private Dialog mCaptivePortalWarningDialog;
     private boolean mUnavailable;
     private Dialog mRootDialog;
 
@@ -566,6 +571,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 IMMEDIATELY_DESTROY_ACTIVITIES_KEY);
         mAllPrefs.add(mImmediatelyDestroyActivities);
         mResetSwitchPrefs.add(mImmediatelyDestroyActivities);
+
+        mCaptivePortalMode = (SwitchPreference) findPreference(CAPTIVE_PORTAL_SWITCH_KEY);
+        mAllPrefs.add(mCaptivePortalMode);
 
         mAppProcessLimit = addListPreference(APP_PROCESS_LIMIT_KEY);
 
@@ -891,6 +899,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateAnimationScaleOptions();
         updateOverlayDisplayDevicesOptions();
         updateImmediatelyDestroyActivitiesOptions();
+        updateCaptivePortalModeOption();
         updateAppProcessLimitOptions();
         updateShowAllANRsOptions();
         updateShowNotificationChannelWarningsOptions();
@@ -971,6 +980,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         resetDebuggerOptions();
         resetAdbNotifyOptions();
         resetRootAccessOptions();
+        resetCaptivePortalMode();
         writeLogpersistOption(null, true);
         writeLogdSizeOption(null);
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
@@ -1036,6 +1046,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                     Settings.Secure.ADB_ENABLED, 1);
         }
         updateRootAccessOptions();
+    }
+
+    private void resetCaptivePortalMode() {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+                        Settings.Global.CAPTIVE_PORTAL_MODE, 1);
+        updateCaptivePortalModeOption();
     }
 
     private void updateHdcpValues() {
@@ -2396,6 +2412,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 != 0);
     }
 
+    private void updateCaptivePortalModeOption() {
+        updateSwitchPreference(mCaptivePortalMode, Settings.Global.getInt(
+                getActivity().getContentResolver(), Settings.Global.CAPTIVE_PORTAL_MODE,
+                Settings.Global.CAPTIVE_PORTAL_MODE_PROMPT) != 0);
+    }
+
     private void updateAnimationScaleValue(int which, ListPreference pref) {
         try {
             float scale = mWindowManager.getAnimationScale(which);
@@ -2716,6 +2738,24 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeDisableOverlaysOption();
         } else if (preference == mImmediatelyDestroyActivities) {
             writeImmediatelyDestroyActivitiesOptions();
+        } else if (preference == mCaptivePortalMode) {
+            if (!mCaptivePortalMode.isChecked()) {
+                if (mCaptivePortalWarningDialog != null) {
+                    dismissDialogs();
+                }
+                mCaptivePortalWarningDialog = new AlertDialog.Builder(getActivity()).setMessage(
+                        getResources().getString(R.string.captive_portal_switch_warning))
+                        .setTitle(R.string.captive_portal_switch_title)
+                        .setIconAttribute(android.R.attr.alertDialogIcon)
+                        .setPositiveButton(android.R.string.yes, this)
+                        .setNegativeButton(android.R.string.no, this)
+                        .show();
+                mCaptivePortalWarningDialog.setOnDismissListener(this);
+            } else {
+                Settings.Global.putInt(getActivity().getContentResolver(),
+                            Settings.Global.CAPTIVE_PORTAL_MODE, 1);
+                updateCaptivePortalModeOption();
+            }
         } else if (preference == mShowAllANRs) {
             writeShowAllANRsOptions();
         } else if (preference == mShowNotificationChannelWarnings) {
@@ -2910,6 +2950,14 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 // Reset the option
                 writeRootAccessOptions("0");
             }
+        } else if (dialog == mCaptivePortalWarningDialog) {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                Settings.Global.putInt(getActivity().getContentResolver(),
+                                Settings.Global.CAPTIVE_PORTAL_MODE, 0);
+            } else {
+                // Reset the toggle
+                mCaptivePortalMode.setChecked(true);
+            }
         }
     }
 
@@ -2928,6 +2976,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         } else if (dialog == mRootDialog) {
             updateRootAccessOptions();
             mRootDialog = null;
+        } else if (dialog == mCaptivePortalWarningDialog) {
+            updateCaptivePortalModeOption();
+            mCaptivePortalWarningDialog = null;
         }
     }
 
