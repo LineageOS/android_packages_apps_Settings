@@ -34,11 +34,13 @@
         android:title="@string/owner_info_settings_title"
         android:summary="@string/owner_info_settings_summary" />
 
+    <!-- We have our own setting for power menu entries
     <SwitchPreference
         android:key="security_setting_lockdown_enabled"
         android:title="@string/lockdown_settings_title"
         android:summary="@string/lockdown_settings_summary"
         settings:controller="com.android.settings.security.LockdownButtonPreferenceController"/>
+    -->
 
     <!-- Work profile settings are at the bottom with high order value to avoid users thinking that
          any of the above settings (including dynamic) are specific to the work profile. -->
