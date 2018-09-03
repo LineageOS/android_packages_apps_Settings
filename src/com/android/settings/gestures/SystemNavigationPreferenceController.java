@@ -23,6 +23,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.RemoteException;
+import android.view.Display;
+import android.view.IWindowManager;
+import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
@@ -54,9 +58,19 @@ public class SystemNavigationPreferenceController extends BasePreferenceControll
 
     /** Returns {@code true} if gesture is available. */
     public static boolean isGestureAvailable(Context context) {
+        boolean hasNavigationBar = false;
+        final boolean configEnabled = context.getResources().getBoolean(
+                com.android.internal.R.bool.config_swipe_up_gesture_setting_available);
+
+        try {
+            IWindowManager windowManager = WindowManagerGlobal.getWindowManagerService();
+            hasNavigationBar = windowManager.hasNavigationBar(Display.DEFAULT_DISPLAY);
+        } catch (RemoteException ex) {
+            // no window manager? good luck with that
+        }
         // Skip if the swipe up settings are not available
-        if (!context.getResources().getBoolean(
-                com.android.internal.R.bool.config_swipe_up_gesture_setting_available)) {
+        // or if on-screen navbar is disabled (for devices with hardware keys)
+        if (!configEnabled || !hasNavigationBar) {
             return false;
         }
 
