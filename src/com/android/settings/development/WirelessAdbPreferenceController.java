@@ -17,9 +17,9 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.net.NetworkUtils;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.net.ConnectivityManager;
+import android.net.LinkAddress;
+import android.net.Network;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
@@ -37,6 +37,11 @@ import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
 import lineageos.providers.LineageSettings;
 
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.util.List;
+
 public class WirelessAdbPreferenceController extends DeveloperOptionsPreferenceController
         implements PreferenceControllerMixin {
 
@@ -44,14 +49,15 @@ public class WirelessAdbPreferenceController extends DeveloperOptionsPreferenceC
     private static final String PREF_KEY = "adb_over_network";
 
     private final DevelopmentSettingsDashboardFragment mFragment;
-    private final WifiManager mWifiManager;
+
+    private final ConnectivityManager mConnectivityManager;
 
     public WirelessAdbPreferenceController(Context context,
             DevelopmentSettingsDashboardFragment fragment) {
         super(context);
 
         mFragment = fragment;
-        mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        mConnectivityManager = context.getSystemService(ConnectivityManager.class);
     }
 
     @Override
@@ -98,7 +104,8 @@ public class WirelessAdbPreferenceController extends DeveloperOptionsPreferenceC
 
     public void onWirelessAdbDialogConfirmed() {
         LineageSettings.Secure.putInt(mContext.getContentResolver(),
-                LineageSettings.Secure.ADB_PORT, 5555);
+                LineageSettings.Secure.ADB_PORT,
+                mConnectivityManager.getActiveNetwork() == null ? -1 : 5555);
         updatePreference();
     }
 
@@ -110,12 +117,30 @@ public class WirelessAdbPreferenceController extends DeveloperOptionsPreferenceC
         int port = LineageSettings.Secure.getInt(mContext.getContentResolver(),
                 LineageSettings.Secure.ADB_PORT, -1);
         boolean enabled = port > 0;
-        WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
 
-        if (enabled && wifiInfo != null) {
-            String hostAddress = NetworkUtils.intToInetAddress(
-                    wifiInfo.getIpAddress()).getHostAddress();
-            mPreference.setSummary(hostAddress + ":" + String.valueOf(port));
+        Network network = mConnectivityManager.getActiveNetwork();
+        String networkAddress = null;
+
+        if (network != null) {
+            List<LinkAddress> linkAddresses =
+                    mConnectivityManager.getLinkProperties(network).getLinkAddresses();
+            // Determine local network address.
+            // Use first IPv4 address if available, otherwise use first IPv6.
+            String ipv4 = null, ipv6 = null;
+            for (LinkAddress la : linkAddresses) {
+                final InetAddress addr = la.getAddress();
+                if (ipv4 == null && addr instanceof Inet4Address) {
+                    ipv4 = addr.getHostAddress();
+                    break;
+                } else if (ipv6 == null && addr instanceof Inet6Address) {
+                    ipv6 = addr.getHostAddress();
+                }
+            }
+            networkAddress = ipv4 != null ? ipv4 : ipv6;
+        }
+
+        if (enabled && networkAddress != null) {
+            mPreference.setSummary(networkAddress + ":" + String.valueOf(port));
         } else {
             mPreference.setSummary(R.string.adb_over_network_summary);
         }
