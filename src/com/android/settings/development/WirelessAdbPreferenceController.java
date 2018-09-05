@@ -17,6 +17,8 @@
 package com.android.settings.development;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.NetworkUtils;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -96,9 +98,17 @@ public class WirelessAdbPreferenceController extends DeveloperOptionsPreferenceC
         }
     }
 
+    private boolean isConnectedToSupportedInterface() {
+        ConnectivityManager connMgr = mContext.getSystemService(ConnectivityManager.class);
+        NetworkInfo wiredNwInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_ETHERNET);
+        NetworkInfo wirelessNwInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        return (wiredNwInfo != null && wiredNwInfo.isConnected()) ||
+                (wirelessNwInfo != null && wirelessNwInfo.isConnected());
+    }
+
     public void onWirelessAdbDialogConfirmed() {
         LineageSettings.Secure.putInt(mContext.getContentResolver(),
-                LineageSettings.Secure.ADB_PORT, 5555);
+                LineageSettings.Secure.ADB_PORT, !isConnectedToSupportedInterface() ? -1 : 5555);
         updatePreference();
     }
 
