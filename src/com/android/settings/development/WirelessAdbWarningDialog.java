@@ -21,6 +21,8 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import com.android.internal.logging.nano.MetricsProto;
@@ -49,11 +51,16 @@ public class WirelessAdbWarningDialog extends InstrumentedDialogFragment impleme
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new AlertDialog.Builder(getActivity())
-                .setMessage(R.string.adb_over_network_warning)
-                .setPositiveButton(android.R.string.ok, this /* onClickListener */)
-                .setNegativeButton(android.R.string.cancel, this /* onClickListener */)
-                .create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        if (isConnectedToSupportedInterface()) {
+            builder.setMessage(R.string.adb_over_network_warning);
+            builder.setPositiveButton(android.R.string.ok, this /* onClickListener */);
+            builder.setNegativeButton(android.R.string.cancel, this /* onClickListener */);
+        } else {
+            builder.setMessage(R.string.adb_over_network_disallowed_error);
+            builder.setPositiveButton(android.R.string.ok, this /* onClickListener */);
+        }
+        return builder.create();
     }
 
     @Override
@@ -77,5 +84,13 @@ public class WirelessAdbWarningDialog extends InstrumentedDialogFragment impleme
             return;
         }
         host.onWirelessAdbDialogDismissed();
+    }
+
+    private boolean isConnectedToSupportedInterface() {
+        ConnectivityManager connMgr = getActivity().getSystemService(ConnectivityManager.class);
+        NetworkInfo wiredNwInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_ETHERNET);
+        NetworkInfo wirelessNwInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        return (wiredNwInfo != null && wiredNwInfo.isConnected()) ||
+                (wirelessNwInfo != null && wirelessNwInfo.isConnected());
     }
 }
