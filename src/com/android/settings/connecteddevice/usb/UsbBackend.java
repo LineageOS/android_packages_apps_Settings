@@ -168,6 +168,30 @@ public class UsbBackend {
                 && mPortStatus.isRoleCombinationSupported(POWER_ROLE_SOURCE, DATA_ROLE_HOST);
     }
 
+    public boolean isSingleDataRoleSupported() {
+        return mPort != null && mPortStatus != null
+                && ((!mPortStatus
+                .isRoleCombinationSupported(POWER_ROLE_SINK, DATA_ROLE_HOST)
+                && !mPortStatus
+                .isRoleCombinationSupported(POWER_ROLE_SOURCE, DATA_ROLE_HOST))
+                || (!mPortStatus
+                .isRoleCombinationSupported(POWER_ROLE_SINK, DATA_ROLE_DEVICE)
+                && !mPortStatus
+                .isRoleCombinationSupported(POWER_ROLE_SOURCE, DATA_ROLE_DEVICE)));
+    }
+
+    public boolean isSinglePowerRoleSupported() {
+        return mPort != null && mPortStatus != null
+                && ((!mPortStatus
+                .isRoleCombinationSupported(POWER_ROLE_SINK, DATA_ROLE_DEVICE)
+                && !mPortStatus
+                .isRoleCombinationSupported(POWER_ROLE_SINK, DATA_ROLE_HOST))
+                || (!mPortStatus
+                .isRoleCombinationSupported(POWER_ROLE_SOURCE, DATA_ROLE_DEVICE)
+                && !mPortStatus
+                .isRoleCombinationSupported(POWER_ROLE_SOURCE, DATA_ROLE_HOST)));
+    }
+
     public boolean isPciTunnelingEnabled() {
         return mUsbManager.isPciTunnelingEnabled();
     }
