@@ -45,7 +45,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NetworkDashboardFragment extends DashboardFragment implements
-        MobilePlanPreferenceHost {
+        MobilePlanPreferenceHost, CaptivePortalWarningDialogHost {
 
     private static final String TAG = "NetworkDashboardFrag";
 
@@ -69,12 +69,20 @@ public class NetworkDashboardFragment extends DashboardFragment implements
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mProgressiveDisclosureMixin.setTileLimit(7);
         mNetworkResetController = new NetworkResetActionMenuController(context);
     }
 
     @Override
     protected int getHelpResource() {
         return R.string.help_url_network_dashboard;
+    }
+
+    @Override
+    public void onCaptivePortalSwitchOffDialogConfirmed() {
+        final CaptivePortalModePreferenceController controller =
+                getPreferenceController(CaptivePortalModePreferenceController.class);
+        controller.onCaptivePortalSwitchOffDialogConfirmed();
     }
 
     @Override
@@ -103,6 +111,8 @@ public class NetworkDashboardFragment extends DashboardFragment implements
                 new MobileNetworkPreferenceController(context);
         final VpnPreferenceController vpnPreferenceController =
                 new VpnPreferenceController(context);
+        final CaptivePortalModePreferenceController captiveportalModePreferenceController =
+                new CaptivePortalModePreferenceController(context, fragment);
 
         if (lifecycle != null) {
             lifecycle.addObserver(airplaneModePreferenceController);
@@ -113,6 +123,7 @@ public class NetworkDashboardFragment extends DashboardFragment implements
         }
 
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(captiveportalModePreferenceController);
         controllers.add(airplaneModePreferenceController);
         controllers.add(mobileNetworkPreferenceController);
         controllers.add(new TetherPreferenceController(context, lifecycle));

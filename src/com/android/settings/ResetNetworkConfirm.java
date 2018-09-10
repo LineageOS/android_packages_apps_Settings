@@ -27,6 +27,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
@@ -107,6 +108,9 @@ public class ResetNetworkConfirm extends OptionsMenuFragment {
 
             ImsManager.factoryReset(context);
             restoreDefaultApn(context);
+
+            Settings.Global.putInt(context.getContentResolver(),
+                    Settings.Global.CAPTIVE_PORTAL_MODE, 1);
 
             Toast.makeText(context, R.string.reset_network_complete_toast, Toast.LENGTH_SHORT)
                     .show();
