@@ -1995,7 +1995,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
         // Init the Channel Mode - Default
         values = getResources().getStringArray(R.array.bluetooth_a2dp_codec_channel_mode_values);
-        summaries = getResources().getStringArray(R.array.bluetooth_a2dp_codec_channel_mode_summaries);
+        summaries = getResources().getStringArray(R.array.lineage_bluetooth_a2dp_codec_channel_mode_summaries);
         index = 0;
         mBluetoothSelectA2dpChannelMode.setValue(values[index]);
         mBluetoothSelectA2dpChannelMode.setSummary(summaries[index]);
@@ -2136,12 +2136,15 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         case BluetoothCodecConfig.CHANNEL_MODE_STEREO:
             index = 2;
             break;
+        case BluetoothCodecConfig.CHANNEL_MODE_DUAL_CHANNEL:
+            index = 3;
+            break;
         case BluetoothCodecConfig.CHANNEL_MODE_NONE:
         default:
             break;
         }
         if (index >= 0 && mBluetoothSelectA2dpChannelMode != null) {
-            summaries = resources.getStringArray(R.array.bluetooth_a2dp_codec_channel_mode_summaries);
+            summaries = resources.getStringArray(R.array.lineage_bluetooth_a2dp_codec_channel_mode_summaries);
             streaming = resources.getString(R.string.bluetooth_select_a2dp_codec_streaming_label, summaries[index]);
              mBluetoothSelectA2dpChannelMode.setSummary(streaming);
         }
@@ -2328,7 +2331,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             channelMode = newValue.toString();
             index = mBluetoothSelectA2dpChannelMode.findIndexOfValue(newValue.toString());
             if (index >= 0) {
-                summaries = getResources().getStringArray(R.array.bluetooth_a2dp_codec_channel_mode_summaries);
+                summaries = getResources().getStringArray(R.array.lineage_bluetooth_a2dp_codec_channel_mode_summaries);
                 mBluetoothSelectA2dpChannelMode.setSummary(summaries[index]);
             }
         }
@@ -2342,6 +2345,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             break;
         case 2:
             channelModeValue = BluetoothCodecConfig.CHANNEL_MODE_STEREO;
+            break;
+        case 3:
+            channelModeValue = BluetoothCodecConfig.CHANNEL_MODE_DUAL_CHANNEL;
             break;
         default:
             break;
