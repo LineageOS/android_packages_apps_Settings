@@ -2135,6 +2135,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         case BluetoothCodecConfig.CHANNEL_MODE_STEREO:
             index = 2;
             break;
+        case BluetoothCodecConfig.CHANNEL_MODE_DUAL_CHANNEL:
+            index = 3;
+            break;
         case BluetoothCodecConfig.CHANNEL_MODE_NONE:
         default:
             break;
@@ -2341,6 +2344,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             break;
         case 2:
             channelModeValue = BluetoothCodecConfig.CHANNEL_MODE_STEREO;
+            break;
+        case 3:
+            channelModeValue = BluetoothCodecConfig.CHANNEL_MODE_DUAL_CHANNEL;
             break;
         default:
             break;
