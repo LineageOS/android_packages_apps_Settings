@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0025e8a_1c614f47",
+        "filename": "src/com/android/settings/network/NetworkDashboardFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 17656
+      },
+      "writtenOn": "2018-09-10T21:41:10Z",
+      "side": 1,
+      "message": "Smaller limit leads to crash, because \u0027Airplane Mode\u0027 is #7 and builds a dependency restriction for some prefs, but setting it to 7 has no effect at all...",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "f1b58ac1aa07d724c294ac63a37435ca9842d060",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
