@@ -59,13 +59,15 @@ public class BluetoothChannelModeDialogPreference extends BaseBluetoothDialogPre
         mRadioButtonIds.add(R.id.bluetooth_audio_channel_mode_default);
         mRadioButtonIds.add(R.id.bluetooth_audio_channel_mode_mono);
         mRadioButtonIds.add(R.id.bluetooth_audio_channel_mode_stereo);
+        mRadioButtonIds.add(R.id.bluetooth_audio_channel_mode_dual_channel);
         String[] stringArray = context.getResources().getStringArray(
-                R.array.bluetooth_a2dp_codec_channel_mode_titles);
+                R.array.bluetooth_a2dp_codec_channel_mode_titles_cm);
+
         for (int i = 0; i < stringArray.length; i++) {
             mRadioButtonStrings.add(stringArray[i]);
         }
         stringArray = context.getResources().getStringArray(
-                R.array.bluetooth_a2dp_codec_channel_mode_summaries);
+                R.array.bluetooth_a2dp_codec_channel_mode_summaries_cm);
         for (int i = 0; i < stringArray.length; i++) {
             mSummaryStrings.add(stringArray[i]);
         }
