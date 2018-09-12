@@ -47,6 +47,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.network.NetworkExtrasFragment;
 import com.android.settings.R;
 import com.android.settings.SummaryPreference;
 import com.android.settings.Utils;
@@ -94,6 +95,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
     private NetworkRestrictionsPreference mNetworkRestrictionPreference;
     private WifiManager mWifiManager;
     private NetworkPolicyEditor mPolicyEditor;
+    private Context mContext;
 
     @Override
     protected int getHelpResource() {
@@ -105,6 +107,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
         super.onCreate(icicle);
 
         final Context context = getContext();
+        mContext = context;
         NetworkPolicyManager policyManager = NetworkPolicyManager.from(context);
         mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         mPolicyEditor = new NetworkPolicyEditor(policyManager);
@@ -174,6 +177,13 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
                 intent.setComponent(new ComponentName("com.android.phone",
                         "com.android.phone.MobileNetworkSettings"));
                 startActivity(intent);
+                return true;
+            }
+            case R.id.network_extras_menu: {
+                Utils.startWithFragment(mContext,
+                    NetworkExtrasFragment.class.getName(),
+                    null, null, 0, R.string.network_extras_menu,
+                    null, MetricsEvent.TYPE_UNKNOWN);
                 return true;
             }
         }
