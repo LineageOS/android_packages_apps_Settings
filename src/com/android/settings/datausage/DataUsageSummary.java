@@ -32,6 +32,7 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
@@ -47,6 +48,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.network.CaptivePortalWarningDialog;
+import com.android.settings.network.CaptivePortalWarningDialogHost;
 import com.android.settings.R;
 import com.android.settings.SummaryPreference;
 import com.android.settings.Utils;
@@ -64,7 +67,8 @@ import java.util.List;
  * This class in deprecated use {@link DataPlanUsageSummary}.
  */
 @Deprecated
-public class DataUsageSummary extends DataUsageBase implements Indexable, DataUsageEditController {
+public class DataUsageSummary extends DataUsageBase implements Indexable,
+        DataUsageEditController, CaptivePortalWarningDialogHost {
 
     static final boolean LOGD = false;
 
@@ -94,6 +98,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
     private NetworkRestrictionsPreference mNetworkRestrictionPreference;
     private WifiManager mWifiManager;
     private NetworkPolicyEditor mPolicyEditor;
+    private Context mContext;
 
     @Override
     protected int getHelpResource() {
@@ -105,6 +110,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
         super.onCreate(icicle);
 
         final Context context = getContext();
+        mContext = context;
         NetworkPolicyManager policyManager = NetworkPolicyManager.from(context);
         mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         mPolicyEditor = new NetworkPolicyEditor(policyManager);
@@ -162,6 +168,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         if (UserManager.get(getContext()).isAdminUser()) {
             inflater.inflate(R.menu.data_usage, menu);
+            menu.findItem(R.id.captive_portal_switch).setChecked(isCaptivePortalDisabled());
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -176,6 +183,15 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
                 startActivity(intent);
                 return true;
             }
+            case R.id.captive_portal_switch: {
+                if (isCaptivePortalDisabled()) {
+                    setCaptivePortalMode(1);
+                } else {
+                    CaptivePortalWarningDialog.show(this);
+                }
+                item.setChecked(isCaptivePortalDisabled());
+                return true;
+            }
         }
         return false;
     }
@@ -187,6 +203,21 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
             return false;
         }
         return super.onPreferenceTreeClick(preference);
+    }
+
+    public void onCaptivePortalSwitchOffDialogConfirmed() {
+        setCaptivePortalMode(0);
+    }
+
+    private boolean isCaptivePortalDisabled() {
+        return (Settings.Global.getInt(mContext.getContentResolver(),
+                Settings.Global.CAPTIVE_PORTAL_MODE,
+                Settings.Global.CAPTIVE_PORTAL_MODE_PROMPT) == 0);
+    }
+
+    private void setCaptivePortalMode(int mode) {
+        Settings.Global.putInt(mContext.getContentResolver(),
+                Settings.Global.CAPTIVE_PORTAL_MODE, mode);
     }
 
     private void addMobileSection(int subId) {
