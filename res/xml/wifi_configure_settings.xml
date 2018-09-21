@@ -24,23 +24,27 @@
         android:key="enable_wifi_wakeup"
         android:title="@string/wifi_wakeup"
         android:icon="@drawable/ic_auto_wifi"
+	android:defaultValue="false"
         android:summary="@string/wifi_wakeup_summary" />
 
     <SwitchPreference
         android:key="use_open_wifi_automatically"
         android:icon="@drawable/ic_open_wifi_autoconnect"
         android:title="@string/use_open_wifi_automatically_title"
+	android:defaultValue="false"
         android:summary="@string/use_open_wifi_automatically_summary" />
 
     <SwitchPreference
         android:key="notify_open_networks"
         android:title="@string/wifi_notify_open_networks"
         android:icon="@drawable/ic_open_wifi_notifications"
+	android:defaultValue="false"
         android:summary="@string/wifi_notify_open_networks_summary" />
 
     <SwitchPreference
         android:key="wifi_cellular_data_fallback"
         android:title="@string/wifi_cellular_data_fallback_title"
+	android:defaultValue="false"
         android:summary="@string/wifi_cellular_data_fallback_summary" />
 
     <Preference
