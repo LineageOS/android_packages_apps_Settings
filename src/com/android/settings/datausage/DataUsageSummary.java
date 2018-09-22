@@ -15,8 +15,11 @@
 package com.android.settings.datausage;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ActivityNotFoundException;
 import android.net.ConnectivityManager;
@@ -28,6 +31,7 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.telephony.SubscriptionInfo;
@@ -59,7 +63,9 @@ import java.util.List;
 import static android.net.ConnectivityManager.TYPE_ETHERNET;
 import static android.net.ConnectivityManager.TYPE_WIFI;
 
-public class DataUsageSummary extends DataUsageBase implements Indexable, DataUsageEditController {
+public class DataUsageSummary extends DataUsageBase
+        implements Indexable, DataUsageEditController,
+                DialogInterface.OnClickListener, DialogInterface.OnDismissListener {
 
     private static final String TAG = "DataUsageSummary";
     static final boolean LOGD = false;
@@ -77,6 +83,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
     private Preference mLimitPreference;
     private NetworkTemplate mDefaultTemplate;
     private int mDataUsageTemplate;
+    private Dialog mCaptivePortalWarningDialog;
 
     @Override
     protected int getHelpResource() {
@@ -135,6 +142,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         if (UserManager.get(getContext()).isAdminUser()) {
             inflater.inflate(R.menu.data_usage, menu);
+            menu.findItem(R.id.captive_portal_switch).setChecked(isCaptivePortalDisabled());
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -143,6 +151,8 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
     public void onPrepareOptionsMenu(Menu menu) {
         final Context context = getActivity();
         final MenuItem networkaccess = menu.findItem(R.id.data_usage_menu_app_network_access);
+        final MenuItem captiveportal = menu.findItem(R.id.captive_portal_switch);
+        captiveportal.setChecked(isCaptivePortalDisabled());
         if (networkaccess == null) {
             return;
         }
@@ -177,6 +187,22 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
                 }
                 return true;
             }
+            case R.id.captive_portal_switch: {
+                if (isCaptivePortalDisabled()) {
+                    setCaptivePortalMode(1);
+                } else {
+                    if (mCaptivePortalWarningDialog != null) dismissDialogs();
+                    mCaptivePortalWarningDialog = new AlertDialog.Builder(getActivity())
+                            .setMessage(getActivity().getResources()
+                                    .getString(R.string.captive_portal_switch_warning))
+                            .setTitle(R.string.captive_portal_switch_title)
+                            .setPositiveButton(R.string.captive_portal_warning_positive, this)
+                            .setNegativeButton(android.R.string.no, this)
+                            .show();
+                    mCaptivePortalWarningDialog.setOnDismissListener(this);
+                }
+                return true;
+            }
         }
         return false;
     }
@@ -188,6 +214,35 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
             return false;
         }
         return super.onPreferenceTreeClick(preference);
+    }
+
+    public void onClick(DialogInterface dialog, int which) {
+        if (dialog == mCaptivePortalWarningDialog)
+            if (which == DialogInterface.BUTTON_POSITIVE)
+                setCaptivePortalMode(0);
+    }
+
+    public void onDismiss(DialogInterface dialog) {
+        if (dialog == mCaptivePortalWarningDialog)
+            mCaptivePortalWarningDialog = null;
+    }
+
+    private void dismissDialogs() {
+        if (mCaptivePortalWarningDialog != null) {
+            mCaptivePortalWarningDialog.dismiss();
+            mCaptivePortalWarningDialog = null;
+        }
+    }
+
+    private boolean isCaptivePortalDisabled() {
+        return (Settings.Global.getInt(getContext().getContentResolver(),
+                Settings.Global.CAPTIVE_PORTAL_MODE,
+                Settings.Global.CAPTIVE_PORTAL_MODE_PROMPT) == 0);
+    }
+
+    private void setCaptivePortalMode(int mode) {
+        Settings.Global.putInt(getContext().getContentResolver(),
+                Settings.Global.CAPTIVE_PORTAL_MODE, mode);
     }
 
     private void addMobileSection(int subId) {
