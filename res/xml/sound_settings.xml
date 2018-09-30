@@ -99,6 +99,7 @@
         android:key="vibrate_when_ringing"
         android:title="@string/vibrate_when_ringing_title"
         settings:controller="com.android.settings.notification.VibrateWhenRingPreferenceController"
+	defaultValue="true"
         android:order="-130"/>
 
     <!-- Phone ringtone -->
@@ -155,16 +156,19 @@
         <!-- Dial pad tones -->
         <SwitchPreference
           android:key="dial_pad_tones"
+          android:defaultValue="false"
           android:title="@string/dial_pad_tones_title" />
 
         <!-- Screen locking sounds -->
         <SwitchPreference
           android:key="screen_locking_sounds"
+          android:defaultValue="true"
           android:title="@string/screen_locking_sounds_title" />
 
         <!-- Charging sounds -->
         <SwitchPreference
           android:key="charging_sounds"
+          android:defaultValue="true"
           android:title="@string/charging_sounds_title" />
 
         <!-- Custom charging sounds -->
@@ -197,6 +201,7 @@
         <!-- Boot sounds -->
         <SwitchPreference
           android:key="boot_sounds"
+          android:defaultValue="false"
           android:title="@string/boot_sounds_title" />
 
         <!-- Emergency tone -->
