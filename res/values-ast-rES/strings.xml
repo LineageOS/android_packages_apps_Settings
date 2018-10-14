@@ -166,6 +166,9 @@ Teníemos un Palaciu…\n
   <!-- Bluetooth settings screen, check box label whether or not to allow
         bluetooth voice dialing when lock screen is up-->
   <!-- Bluetooth settings screen, lock voice dialing checkbox summary text -->
+  <string name="bluetooth_lock_voice_dialing_summary">
+      Evita l\'usu del marcador Bluetooth cuando la pantalla tea bloquiada
+    </string>
   <!-- Bluetooth settings screen, heading above the list of nearby bluetooth devices -->
   <string name="bluetooth_devices">Preseos Bluetooth</string>
   <!-- Bluetooth settings screen, title for the current bluetooth name setting -->
@@ -218,10 +221,12 @@ Teníemos un Palaciu…\n
   <!-- Bluetooth connection permission Alert Activity text [CHAR LIMIT=none]-->
   <!-- Activity label of BluetoothPbPermissionActivity, also used as Strings in the permission dialog [CHAR LIMIT=none] -->
   <!-- Bluetooth phone book permission Alert Activity text [CHAR LIMIT=none] -->
+  <string name="bluetooth_pb_acceptance_dialog_text">%1$s quier acceder a los contautos y al historial de llamaes. ¿Das-y accesu a %2$s?</string>
   <!-- Bluetooth phone book permission Alert Activity checkbox text [CHAR LIMIT=none] -->
   <!--FIXME SHOULD BE REMOVED AND ALL LANG VERSIONS FIXED TO ABOVE NAME -->
   <!-- Activity label of BluetoothMessagePermissionActivity, also used as Strings in the permission dialog [CHAR LIMIT=none] -->
   <!-- Bluetooth message permission Alert Activity text [CHAR LIMIT=none] -->
+  <string name="bluetooth_map_acceptance_dialog_text">%1$s quier acceder a los mensaxes. ¿Das-y accesu a %2$s?</string>
   <!-- Activity label of BluetoothMessagePermissionActivity for SIM access profile. Also used as Strings in the permission dialog [CHAR LIMIT=none] -->
   <!-- Bluetooth SIM access permission Alert Activity text [CHAR LIMIT=none] -->
   <!-- Date & time settings screen title -->
@@ -385,6 +390,7 @@ Teníemos un Palaciu…\n
   <!-- Label for option to select a settings panel as a shortcut -->
   <string name="settings_shortcut">Atayu d\'Axustes</string>
   <!-- Wireless controls settings screen, setting check box label -->
+  <string name="airplane_mode">Mou avión</string>
   <!-- Main Settings screen settings title for things like airplane mode, tethering, NFC, VPN.  This will take you to another screen with those settings.  [CHAR LIMIT=30] -->
   <string name="radio_controls_title">Más</string>
   <!-- Wireless Settings screen title for things like Wi-Fi, bluetooth, airplane mode. -->
@@ -513,6 +519,8 @@ Teníemos un Palaciu…\n
   <string name="go_back_button_label">Volver</string>
   <!-- Introduction title shown in fingerprint enrollment dialog to locate the sensor [CHAR LIMIT=29] -->
   <!-- Message shown in fingerprint enrollment dialog to locate the sensor -->
+  <string name="security_settings_fingerprint_enroll_find_sensor_message">
+        Alluga\'l sensor de buelgues que ta darrera del teléfonu.</string>
   <!-- Content description of graphic that shows where the fingerprint of the device is [CHAR LIMIT=NONE] -->
   <!-- Label text shown in fingerprint dialog for renaming a fingerprint template [CHAR LIMIT=22] -->
   <!-- Button text shown in fingerprint dialog that allows the user to rename a fingerprint template [CHAR LIMIT=22] -->
@@ -555,7 +563,23 @@ Teníemos un Palaciu…\n
   <!-- Title of the preferences item to control encryption -->
   <!-- Summary of the preferences item to control encryption, when encryption is active -->
   <!-- Informational text in the first confirmation screen before starting device encryption -->
+  <string name="crypt_keeper_desc" product="tablet">
+    Pues cifrar les cuentes, axustes, aplicaciones baxaes y los sos datos, y otros ficheros.
+    Tres cifrar la tableta, asumiendo qu\u2019afitares una pantalla de bloquéu (esto ye, un patrón,
+    una contraseña o PIN numbéricu), vas precisar desbloquiar la pantalla pa descifrar la
+    tableta cada vegada que la prendas. La otra forma de descifrala ye reafitándola,
+    desaniciando tolos datos.\n\nEl cifráu entarda una hora o más. Has apenzar per tener la
+    batería cargada y dexar la tableta enchufada en tol procesu. Si lu interrumpes, vas perder
+    dalgunos o tolos datos</string>
   <!-- Informational text in the first confirmation screen before starting device encryption -->
+  <string name="crypt_keeper_desc" product="default">
+    Pues cifrar les cuentes, axustes, aplicaciones baxaes y los sos datos, y otros ficheros.
+    Tres cifrar el teléfonu, asumiendo qu\u2019afitares una pantalla de bloquéu (esto ye, un patrón,
+    una contraseña o PIN numbéricu), vas precisar desbloquiar la pantalla pa descifrar el
+    teléfonu cada vegada que lu prendas. La otra forma de descifralu ye reafitándolu,
+    desaniciando tolos datos.\n\nEl cifráu entarda una hora o más. Has apenzar per tener la
+    batería cargada y dexar el móvil enchufáu en tol procesu. Si lu interrumpes, vas perder
+    dalgunos o tolos datos.</string>
   <!-- Button text to start encryption process -->
   <!-- Button text to start encryption process -->
   <!-- Warning string that will be displayed when encryption cannot be started -->
@@ -564,7 +588,15 @@ Teníemos un Palaciu…\n
   <!-- Dialog message, shown when encryption cannot proceed because a PIN/Password is needed -->
   <!-- Title of the final confirmation screen before starting device encryption -->
   <!-- Warning text in the final confirmation screen before starting device encryption -->
+  <string name="crypt_keeper_final_desc" product="tablet">
+    La operación de cifráu ye irreversible y si la interrumpes, vas perder datos.
+    El cifráu entarda una hora o más na que\u2019l preséu va reaniciase delles vegaes.
+    </string>
   <!-- Warning text in the final confirmation screen before starting device encryption -->
+  <string name="crypt_keeper_final_desc" product="default">
+    La operación de cifráu ye irreversible y si la interrumpes, vas perder datos.
+    El cifráu entarda una hora o más na que\u2019l preséu va reaniciase delles vegaes.
+    </string>
   <!-- Title of the progress screen while encrypting the device -->
   <!-- Informational text on the progress screen while encrypting the device -->
   <!-- Informational text on the progress screen while encrypting the device -->
@@ -572,10 +604,37 @@ Teníemos un Palaciu…\n
   <!-- Informational text on the password entry screen prompting the user for their password -->
   <!-- Title of the encryption screen when encrypting the device failed -->
   <!-- Informational text when encryption fails -->
+  <string name="crypt_keeper_failed_summary" product="tablet">
+      Interrupióse\u2019l cifráu y nun pue completase. De resultes, los datos de
+      la tableta yá nun van ser accesibles.
+      \n\n
+      Pa siguir usando la tableta, precises reafitala.
+      Cuando la configures tres reafitala, vas tener la oportunidá de restaurar
+      cualesquier datu que se ficiere copia de seguranza na to cuenta de Google.
+    </string>
   <!-- Informational text when encryption fails -->
+  <string name="crypt_keeper_failed_summary" product="default">
+      Interrupióse\u2019l cifráu y nun pue completase. De resultes, los datos del
+      teléfonu yá nun van ser accesibles.
+      \n\nPa siguir usando\u2019l teléfonu, precises reafitalu.
+      Cuando lu configures tres reafitalu, vas tener la oportunidá de restaurar
+      cualesquier datu que se ficiere copia de seguranza na to cuenta de Google.
+    </string>
   <!-- Title of the encryption screen when decrypting the device failed -->
   <!-- Informational text when encryption fails -->
+  <string name="crypt_keeper_data_corrupt_summary" product="tablet">
+      La contraseña qu\u2019introduxesti ye correuta, pero los datos tán toyíos.
+      \n\nPa siguir usando la tableta, precises reafitala.
+      Cuando la configures tres reafitala, vas tener la oportunidá de restaurar
+      cualesquier datu que se ficiere copia de seguranza na to cuenta de Google.
+    </string>
   <!-- Informational text when encryption fails -->
+  <string name="crypt_keeper_data_corrupt_summary" product="default">
+      La contraseña qu\u2019introduxesti ye correuta, pero los datos tán toyíos.
+      \n\nPa siguir usando\u2019l teléfonu, precises reafitalu.
+      Cuando lu configures tres reafitalu, vas tener la oportunidá de restaurar
+      cualesquier datu que se ficiere copia de seguranza na to cuenta de Google.
+    </string>
   <!-- Image button description to switch input method -->
   <!-- Unlock Picker Settings -->
   <!-- Security Picker -->
@@ -832,8 +891,10 @@ Teníemos un Palaciu…\n
   <!-- Wifi Display settings. The dropdown menu title for choosing listen channel during certification process. [CHAR LIMIT=40] -->
   <!-- Wifi Display settings. The dropdown menu title for choosing operating channel during certification process. [CHAR LIMIT=40] -->
   <!-- Wifi 2.4GHz is used as an universal itendifier for 2.4GHz band -->
+  <string name="wifi_band_24ghz">2,4 GHz</string>
   <!-- Wifi Internal 5GHz as an universal itendifier for 5GHz band -->
   <!-- Link speed on Wifi Status screen -->
+  <string name="link_speed">%1$d Mbps</string>
   <!-- NFC settings -->
   <!-- Used in the 1st-level settings screen to turn on NFC -->
   <string name="nfc_quick_toggle_title">NFC</string>
@@ -845,11 +906,13 @@ Teníemos un Palaciu…\n
   <!-- Dialog title for NFC disclaimr [CHAR_LIMIT=NONE]-->
   <string name="nfc_disclaimer_content">El NFC intercambia datos ente esti preséu y otros averaos, como terminales de pagu, llectores d\'accesu y anuncios o etiquetes interautives.</string>
   <!-- Used to enter the Android Beam sharing preferences screen. This phrase is a trademark. [CHAR LIMIT=32] -->
+  <string name="android_beam_settings_title">Android Beam</string>
   <!-- Used to describe the on state of the Android Beam feature [CHAR LIMIT=NONE] -->
   <!-- Used to describe the off state of the Android Beam feature [CHAR LIMIT=NONE] -->
   <!-- Used to describe the enabled state of the Android Beam feature when NFC, which it relies on, is turned off [CHAR LIMIT=NONE] -->
   <string name="android_beam_disabled_summary">Non disponible porque\'l NFC ta desactivao</string>
   <!-- Used in the Android Beam sharing preferences screen. This phrase is a trademark. [CHAR LIMIT=32] -->
+  <string name="android_beam_label">Android Beam</string>
   <!-- Explanation of the Android Beam feature in the Android Beam settings panel. The use of "beam" here is as a verb and not considered trademarked. [CHAR LIMIT=NONE] -->
   <!-- Wi-Fi Settings -->
   <!-- Used in the 1st-level settings screen to turn on Wi-Fi -->
@@ -960,16 +1023,19 @@ Teníemos un Palaciu…\n
   <!-- Label for the EAP user certificate of the network -->
   <!-- Label for the EAP identity of the network -->
   <!-- Label for the EAP anonymous identity of the network -->
+  <string name="wifi_eap_anonymous">Identidá anónima</string>
   <!-- Label for the password of the secured network -->
   <!-- Label for the check box to show password -->
   <!-- Label for the RadioGroup to choose wifi ap band -->
   <!-- Label for the radio button to choose wifi ap 2.4 GHz band -->
+  <string name="wifi_ap_choose_2G">Banda de 2,4 GHz</string>
   <!-- Label for the radio button to choose wifi ap 5GHz band -->
   <!-- Label for the spinner to show ip settings [CHAR LIMIT=25] -->
   <string name="wifi_ip_settings">Axuste d\'IP</string>
   <!-- Label for the check box to share a network with other users on the same device -->
   <string name="wifi_shared">Compartir con otros usuarios del preséu</string>
   <!-- Hint for unchanged fields -->
+  <string name="wifi_unchanged">(nun camudó)</string>
   <!-- Hint for unspecified fields -->
   <!-- Hint for multiple certificates being added to the configuration -->
   <!-- Menu option for using trusted system CA certificates to validate EAP servers -->
@@ -991,6 +1057,7 @@ Teníemos un Palaciu…\n
   <!-- Message in WriteWifiConfigToNfcDialog when prompted to enter network password [CHAR_LIMIT=40] -->
   <string name="wifi_scan_always_turnon_message">P\'ameyorar la precisión del allugamientu y otros fines, <xliff:g id="app_name">%1$s</xliff:g> quier activar l\'escanéu de redes, magar que\'l Wi-Fi tea apagáu.\n\n¿Permitilo pa toles aplicaciones que quieran escaniar?</string>
   <!-- Message informing the user how to turn off  [CHAR LIMIT=200] -->
+  <string name="wifi_scan_always_confirm_allow">Permitir</string>
   <string name="wifi_scan_always_confirm_deny">Ñegar</string>
   <!-- Dialog label to sign in to a Hotspot. [CHAR LIMIT=50]-->
   <!-- Dialog message to sign in to a Hotspot. [CHAR LIMIT=50]-->
@@ -1143,6 +1210,15 @@ Teníemos un Palaciu…\n
   <!-- Summary of WFC roaming preference item [CHAR LIMIT=NONE]-->
   <string name="wifi_calling_roaming_mode_summary"><xliff:g id="wfc_roaming_preference" example="Wi-Fi">%1$s</xliff:g></string>
   <!-- WFC mode dialog [CHAR LIMIT=45] -->
+  <string-array name="wifi_calling_mode_values">
+    <item>"2"</item>
+    <item>"1"</item>
+    <item>"0"</item>
+  </string-array>
+  <string-array name="wifi_calling_mode_values_without_wifi_only">
+    <item>"2"</item>
+    <item>"1"</item>
+  </string-array>
   <!-- Wi-Fi Calling settings. Text displayed when Wi-Fi Calling is off -->
   <!-- Title of a preference for updating emergency address [CHAR LIMIT=40] -->
   <!-- Summary of Update Emergency Address preference, explaining usage of emergency address [CHAR LIMIT=NONE] -->
@@ -1189,6 +1265,7 @@ Teníemos un Palaciu…\n
   <!-- Volume description for notification volume -->
   <string name="volume_notification_description">Avisos</string>
   <!-- Volume description for alarm volume -->
+  <string name="volume_alarm_description">Alarmes</string>
   <!-- Image description for ring volume mute button. -->
   <string name="volume_ring_mute">Silenciar timbre y avisos</string>
   <!-- Image description for media volume mute button. -->
@@ -1198,6 +1275,7 @@ Teníemos un Palaciu…\n
   <!-- Dock settings title, top level -->
   <!-- Dock settings title -->
   <!-- Dock audio settings -->
+  <string name="dock_audio_settings_title">Audiu</string>
   <!-- Dock audio summary for docked to desk dock -->
   <!-- Dock audio summary for docked to car dock -->
   <!-- Dock audio summary for undocked -->
@@ -1257,6 +1335,7 @@ Teníemos un Palaciu…\n
   <!-- Sound & display settings screen, setting option name to change screen timeout -->
   <!-- Sound & display settings screen, setting option name to change screen timeout [CHAR LIMIT=30] -->
   <!-- Sound & display settings screen, setting option summary to change screen timeout -->
+  <string name="screen_timeout_summary">Tres <xliff:g id="timeout_description">%1$s</xliff:g> d\'inactividá</string>
   <!-- Wallpaper settings title [CHAR LIMIT=30] -->
   <!-- Wallpaper suggestion title [CHAR LIMIT=30] -->
   <string name="wallpaper_suggestion_title">Camudar fondu de pantalla</string>
@@ -1327,8 +1406,9 @@ Teníemos un Palaciu…\n
   <string name="system_update_settings_list_item_title">Anovamientos del sistema</string>
   <!-- About phone screen, list item summary.  Takes the user to the screen for seeing and installing system updates. [CHAR LIMIT=40] -->
   <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+  <string name="firmware_version">Versión d\'Android</string>
   <!-- About phone screen, status item label  [CHAR LIMIT=60] -->
-  <string name="security_patch">Nivel de parche de seguranza d\'Android</string>
+  <string name="security_patch">Nivel del parche de seguranza d\'Android</string>
   <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
   <string name="model_info">Modelu</string>
   <!-- About phone screen, fcc equipment id label  [CHAR LIMIT=40] -->
@@ -1474,9 +1554,11 @@ Teníemos un Palaciu…\n
   <string name="storage_internal_forget_confirm_title">¿Escaecer <xliff:g id="name" example="SD card">^1</xliff:g>?</string>
   <!-- Body of dialog confirming that user wants to forget an internal storage device [CHAR LIMIT=NONE]-->
   <!-- Item title describing storage used by apps [CHAR LIMIT=48]-->
+  <string name="storage_detail_apps">Aplicaciones</string>
   <!-- Item title describing storage used by images [CHAR LIMIT=48]-->
   <!-- Item title describing storage used by videos [CHAR LIMIT=48]-->
   <!-- Item title describing storage used by audio [CHAR LIMIT=48]-->
+  <string name="storage_detail_audio">Audiu</string>
   <!-- Item title describing storage used by cached data [CHAR LIMIT=48]-->
   <string name="storage_detail_cached">Datos na caché</string>
   <!-- Item title describing storage used by other data [CHAR LIMIT=48]-->
@@ -1514,6 +1596,9 @@ Teníemos un Palaciu…\n
     </string>
   <!-- Title of wizard step indicating that storage is ready [CHAR LIMIT=32] -->
   <!-- Body of wizard step indicating that external storage is ready [CHAR LIMIT=NONE] -->
+  <string name="storage_wizard_ready_external_body">
+        <xliff:g id="name" example="SD card">^1</xliff:g> ta configurada pa usar con fotos y otros ficheros.
+    </string>
   <!-- Body of wizard step indicating that internal storage is ready [CHAR LIMIT=NONE] -->
   <!-- Title of wizard step prompting user to move an app [CHAR LIMIT=32] -->
   <!-- Body of wizard step prompting user to move an app [CHAR LIMIT=NONE] -->
@@ -1531,6 +1616,7 @@ Teníemos un Palaciu…\n
   <!-- Edit access point label summary text when no value has been set -->
   <!-- Edit access point labels: A label the user can give to the APN to allow him to differentiate it from the others -->
   <!-- Edit access point labels: The actual access point name-->
+  <string name="apn_apn">APN</string>
   <!-- Edit access point labels: The addess of the proxy to use for this APN -->
   <!-- Edit access point labels: The port number of the proxy to use for this APN -->
   <!-- Edit access point labels: The username that will be used when conencting to this APN-->
@@ -1594,7 +1680,9 @@ Teníemos un Palaciu…\n
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
   <!-- SD card & phone storage settings screen, instructions and list of current accounts.  The list of accounts follows this text[CHAR LIMIT=NONE] -->
+  <string name="master_clear_accounts" product="default">\n\nAnguaño aniciesti sesión nes cuentes de darréu:\n</string>
   <!-- SD card & phone storage settings screen, notification if other users are present on the device [CHAR LIMIT=NONE] -->
+  <string name="master_clear_other_users_present" product="default">\n\nHai otros usuarios presentes nesti preséu.\n</string>
   <!-- SD card & phone storage settings screen, list of items in user data storage (USB storage or SD card) that will be erased during this operation [CHAR LIMIT=NONE] -->
   <!-- SD card & phone storage settings screen, instructions about whether to also erase the external storage (SD card) when erasing the internal storage [CHAR LIMIT=NONE] -->
   <!-- SD card & phone storage settings screen, instructions about whether to also erase the external storage (SD card) when erasing the internal storage [CHAR LIMIT=NONE] -->
@@ -1694,6 +1782,9 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=130] Description text for Bluetooth always scanning -->
   <string name="location_scanning_bluetooth_always_scanning_title">Escanéu Bluetooth</string>
   <!-- Description text for Bluetooth always scanning -->
+  <string name="location_scanning_bluetooth_always_scanning_description">
+        Ameyora l\'allugamientu permitiendo que les aplicaciones y servicios del sistema deteuten
+        preseos Bluetooth en cualesquier momentu.</string>
   <!-- [CHAR LIMIT=30] Security & location settings screen, setting check box label for Google location service (cell ID, wifi, etc.) -->
   <string name="location_network_based">Allugamientu de Wi\u2011Fi y rede móvil</string>
   <!-- [CHAR LIMIT=130] Security & location settings screen, setting summary for Google location service check box-->
@@ -1948,6 +2039,7 @@ Teníemos un Palaciu…\n
   <!-- Manage applications, individual application screen, confirmation dialog button. Displays when user selects to "Clear data". -->
   <!-- Manage applications, individual application dialog box title. Shown when the user somehow got into a state where it wants to manage some app that isn't found. -->
   <!-- Manage applications, individual application dialog box message. Shown when the user somehow got into a state where it wants to manage some app that isn't found. -->
+  <string name="app_not_found_dlg_text"> L\u2019aplicación nun s\u2019alcontró na llista d\u2019aplicaciones instalaes.</string>
   <!-- Manage applications, individual application dialog box message. Shown when there was an error trying to clear the data. -->
   <!-- Manage applications, title for dialog if clear data fails-->
   <!-- Manage applications, text for dialog if clear data fails-->
@@ -1996,6 +2088,9 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=30] Manage applications, title for dialog when disabling notifications for an app -->
   <string name="app_disable_notifications_dlg_title">¿Desactivar avisos?</string>
   <!-- [CHAR LIMIT=200] Manage applications, text for dialog when disabling notifications for an app -->
+  <string name="app_disable_notifications_dlg_text">
+        Si desactives los avisos d\'esta aplicación, seique nun veas les alertes y anovamientos importantes.
+    </string>
   <!-- Manage applications, individual application info screen, section heading for information about the app installer [CHAR_LIMIT=25] -->
   <string name="app_install_details_group_title">Tienda</string>
   <!-- Manage applications, individual application info screen, title for the option which will trigger application info in it's installer [CHAR_LIMIT=25] -->
@@ -2005,6 +2100,7 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=NONE] App ops settings title, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
   <!-- [CHAR LIMIT=NONE] Time label for an operation that is currently running. -->
   <!-- [CHAR LIMIT=NONE] Time label for an operation that has never executed. -->
+  <string name="app_ops_never_used">(Enxamás s\'usó)</string>
   <!-- [CHAR LIMIT=25] Text shown when there are no default Apps -->
   <!-- [CHAR LIMIT=25] Services settings screen, setting option name for the user to go to the screen to view app storage use -->
   <!-- Services settings screen, setting option summary for the user to go to the screen to app storage use -->
@@ -2032,6 +2128,7 @@ Teníemos un Palaciu…\n
          used by system. -->
   <!-- [CHAR LIMIT=20] Running processes/services header: prefix for line showing RAM
          used by apps. -->
+  <string name="running_processes_header_apps_prefix">Aplicaciones</string>
   <!-- [CHAR LIMIT=20] Running processes/services header: prefix for line showing RAM
          that is free. -->
   <!-- [CHAR LIMIT=20] Running processes/services header: prefix for line showing total RAM
@@ -2226,6 +2323,7 @@ Teníemos un Palaciu…\n
   <!-- Title for accessibility preference to choose long-press delay i.e. timeout before it is detected. [CHAR LIMIT=35] -->
   <!-- Title for the accessibility preference to configure display color inversion. [CHAR LIMIT=NONE] -->
   <!-- Subtitle for the accessibility preference to configure display color inversion. [CHAR LIMIT=NONE] -->
+  <string name="accessibility_display_inversion_preference_subtitle">(Esperimental) Podría afeutar al rindimientu</string>
   <!-- Title for accessibility preference for configuring feature that performs click action soon after mouse/trackpad pointer stops moving. [CHAR LIMIT=NONE] -->
   <!-- Title for accessibility preference for configuring amount of time that has to pass after pointer stops moving before click action can be performed (if automatic click after pointer stops moving feature is enabled). [CHAR LIMIT=NONE] -->
   <!-- Title for the preference to show a tile for a particular feature in the Quick Settings pane. [CHAR LIMIT=NONE] -->
@@ -2269,6 +2367,7 @@ Teníemos un Palaciu…\n
   <!-- Label for the color blue. [CHAR LIMIT=35] -->
   <!-- Label for the color cyan. [CHAR LIMIT=35] -->
   <!-- Label for the color yellow. [CHAR LIMIT=35] -->
+  <string name="color_yellow">Mariellu</string>
   <!-- Label for the color magenta. [CHAR LIMIT=35] -->
   <!-- Label for custom colors, formats as a HTML color. -->
   <!-- Title for a warning about security implications of enabling an accessibility
@@ -2350,6 +2449,7 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=25] Label for battery stats wake lock state graph -->
   <!-- [CHAR LIMIT=25] Label for battery stats phone signal strength graph -->
   <!-- Battery usage during last unplugged period -->
+  <string name="battery_stats_last_duration">@string/menu_stats_last_unplugged</string>
   <!-- CPU awake time title -->
   <!-- Wifi on time -->
   <!-- Bluetooth on time -->
@@ -2382,6 +2482,7 @@ Teníemos un Palaciu…\n
   <!-- Label for Wi-Fi network data sent [CHAR LIMIT=32] -->
   <!-- Label for Wi-Fi network data received [CHAR LIMIT=32] -->
   <!-- Label for Audio usage time -->
+  <string name="usage_type_audio">Audiu</string>
   <!-- Label for Video usage time -->
   <!-- Label for Camera usage time -->
   <!-- Label for Flashlight usage time -->
@@ -2430,6 +2531,7 @@ Teníemos un Palaciu…\n
   <!-- Menu label for refreshing with latest usage numbers -->
   <!-- TODO: Remove it once the same entry in SettingsLib is translated. -->
   <!-- Label for kernel threads in battery usage -->
+  <string name="process_kernel_label">SO Android</string>
   <!-- Label for mediaserver process in battery usage -->
   <!-- Label for dex2oat process in battery usage used for the optimization of one or more apps -->
   <!-- [CHAR_LIMIT=40] Battery saver: Label for feature, title + menu item -->
@@ -2451,9 +2553,11 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=NONE] Label for process stats, text for stats type -->
   <string name="process_stats_type_cached">Na caché</string>
   <!-- [CHAR LIMIT=NONE] Label OS "process" app -->
+  <string name="process_stats_os_label">SO Android</string>
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for all native processes -->
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for all kernel memory -->
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for all zram memory -->
+  <string name="process_stats_os_zram">Z-Ram</string>
   <!-- [CHAR LIMIT=NONE] Name of OS "process" for base memory needed for caches -->
   <string name="process_stats_os_cache">Cachés</string>
   <!-- [CHAR LIMIT=NONE] Label for item showing details of average RAM use -->
@@ -2469,12 +2573,16 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=NONE] Type of memory use associated with native processes -->
   <!-- [CHAR LIMIT=NONE] Type of memory use associated with kernel caches -->
   <!-- [CHAR LIMIT=NONE] Type of memory use associated with kernel zram swap -->
+  <string name="mem_use_zram_type">intercambéu ZRam</string>
   <!-- [CHAR LIMIT=NONE] Type of memory use that is available/free -->
   <!-- [CHAR LIMIT=NONE] Total of all memory use -->
   <!-- [CHAR LIMIT=NONE] Menu for process stats to show 3 hours of data -->
+  <string name="menu_duration_3h">3 hores</string>
   <!-- [CHAR LIMIT=NONE] Menu for process stats to show 3 hours of data -->
   <!-- [CHAR LIMIT=NONE] Menu for process stats to show 3 hours of data -->
+  <string name="menu_duration_12h">12 hores</string>
   <!-- [CHAR LIMIT=NONE] Menu for process stats to show 3 hours of data -->
+  <string name="menu_duration_1d">1 día</string>
   <!-- [CHAR LIMIT=NONE] Menu for manage apps to control whether system processes are shown -->
   <!-- [CHAR LIMIT=NONE] Menu for manage apps to control whether system processes are hidden -->
   <!-- [CHAR LIMIT=NONE] Menu for process stats to control whether stats are shown
@@ -2742,6 +2850,7 @@ Teníemos un Palaciu…\n
   <!-- Formatter in AccountSyncSettings for each application we wish to synchronize, e.g. "Sync Calendar" -->
   <!-- Title of dialog shown when you can't manually sync an item because it's disabled -->
   <!-- Messaage shown in dialog when you can't manually sync -->
+  <string name="wimax_settings">4G</string>
   <!-- This is displayed to the user when the device needs to be decrypted -->
   <!-- Informational text on the pin entry screen prompting the user for their pin -->
   <!-- Informational text on the pattern entry screen prompting the user for their pattern -->
@@ -2802,7 +2911,9 @@ Teníemos un Palaciu…\n
   <!-- Tab title for showing Ethernet data usage. [CHAR LIMIT=10] -->
   <!-- Tab title for showing combined mobile data usage. [CHAR LIMIT=20] -->
   <!-- Tab title for showing 4G data usage. [CHAR LIMIT=10] -->
+  <string name="data_usage_tab_4g">4G</string>
   <!-- Tab title for showing 2G and 3G data usage. [CHAR LIMIT=10] -->
+  <string name="data_usage_tab_3g">2G-3G</string>
   <!-- Title shown when current operation applies to mobile networks. [CHAR LIMIT=20] -->
   <!-- Title shown when current operation applies to no networks. [CHAR LIMIT=20] -->
   <!-- Toggle switch title for enabling all mobile data network connections. [CHAR LIMIT=32] -->
@@ -3016,6 +3127,7 @@ Teníemos un Palaciu…\n
   <!-- Title of dialog to user to confirm exiting guest. [CHAR LIMIT=50] -->
   <string name="user_exit_guest_confirm_title">¿Desaniciar convidáu?</string>
   <!-- Message to user to confirm exiting guest. [CHAR LIMIT=none] -->
+  <string name="user_exit_guest_confirm_message">Van desaniciase toles aplicaciones y datos d\'esta sesión.</string>
   <!-- Label for button in confirmation dialog when exiting guest session [CHAR LIMIT=35] -->
   <!-- Title of preference to enable calling[CHAR LIMIT=40] -->
   <!-- Title of preference to enable calling and SMS [CHAR LIMIT=45] -->
@@ -3193,6 +3305,7 @@ Teníemos un Palaciu…\n
   <string name="sim_notification_summary">Calca pa configurar</string>
   <!-- This is a divider in the SIM cards preferences that is the header of various settings where the user chooses which SIM to use for phone calls, data, and SMS messages [CHAR LIMIT=50] -->
   <!-- When a user chooses this "Ask first" preference for the SIM to use for phone calls, they'll be prompted to choose a SIM every time they initiate a call [CHAR LIMIT=50] -->
+  <string name="sim_calls_ask_first_prefs_title">Entrugar cada vegada</string>
   <!-- When a SIM preference hasn't been selected yet, this string is displayed as the pref summary until the user chooses a SIM subscription from the preference list [CHAR LIMIT=50] -->
   <!--Dashboard strings-->
   <!-- Text to describe the dashboard fragment title [CHAR LIMIT=16] -->
@@ -3256,6 +3369,7 @@ Teníemos un Palaciu…\n
   <!-- Sound: Other sounds: Value for the dock audio media with value 1: enabled. [CHAR LIMIT=30] -->
   <!-- Sound: Other sounds: Value for the emergency tone option with value 0: silent. [CHAR LIMIT=30] -->
   <!-- Sound: Other sounds: Value for the emergency tone option with value 1: alert. [CHAR LIMIT=30] -->
+  <string name="emergency_tone_alert">Alerta</string>
   <!-- Sound: Other sounds: Value for the emergency tone option with value 2: vibrate. [CHAR LIMIT=30] -->
   <!-- Sound: Other sounds: Title for the option enabling boot sounds. [CHAR LIMIT=30] -->
   <!-- Sound: Title for the Do not Disturb option and associated settings page. [CHAR LIMIT=30] -->
@@ -3268,6 +3382,7 @@ Teníemos un Palaciu…\n
   <string name="zen_mode_automation_suggestion_summary">Silencia\'l to preséu cada ciertu tiempu</string>
   <!--  Do not disturb: Zen mode option: Important interruptions [CHAR LIMIT=60] -->
   <!--  Do not disturb: Zen mode option: Alarms only [CHAR LIMIT=60] -->
+  <string name="zen_mode_option_alarms">Namái alarmes</string>
   <!--  Do not disturb: Zen mode option: No interruptions [CHAR LIMIT=60] -->
   <!--  Do not disturb: Zen mode combined summary + condition line [CHAR LIMIT=60] -->
   <!--  Do not disturb: Title for the Visual interruptions option and associated settings page. [CHAR LIMIT=30] -->
@@ -3325,8 +3440,8 @@ Teníemos un Palaciu…\n
   <!-- Summary of preference to manage notification listeners, when one or more are enabled
          and are therefore able to read the user's notifications -->
   <plurals name="manage_notification_access_summary_nonzero">
-    <item quantity="one">%d aplicación pue lleer avisos</item>
-    <item quantity="other">%d aplicaciones puen lleer avisos</item>
+    <item quantity="one">%d aplicación pue lleer los avisos</item>
+    <item quantity="other">%d aplicaciones puen lleer los avisos</item>
   </plurals>
   <!-- String to show in the list of notification listeners, when none is installed -->
   <!-- Title for a warning message about security implications of enabling a notification
@@ -3395,6 +3510,7 @@ Teníemos un Palaciu…\n
   <!-- [CHAR LIMIT=60] Zen mode settings: Downtime rule setting -->
   <!-- [CHAR LIMIT=NONE] Zen mode settings: Downtime rule setting -->
   <!-- [CHAR LIMIT=40] General divider text when concatenating multiple items in a text summary -->
+  <string name="summary_divider_text">,\u0020</string>
   <!-- [CHAR LIMIT=40] General template for a symbolic start - end range in a text summary -->
   <string name="summary_range_symbol_combination"><xliff:g id="start" example="Sun">%1$s</xliff:g> - <xliff:g id="end" example="Thu">%2$s</xliff:g></string>
   <!-- [CHAR LIMIT=40] General template for a verbal start to end range in a text summary -->
@@ -3413,6 +3529,7 @@ Teníemos un Palaciu…\n
   <string name="zen_mode_from_starred">De namái contautos favoritos</string>
   <!-- [CHAR LIMIT=40] Zen mode settings: Calls or messages option value: None -->
   <!-- [CHAR LIMIT=50] Zen mode settings: Alarms option -->
+  <string name="zen_mode_alarms">Alarmes</string>
   <!-- [CHAR LIMIT=50] Zen mode settings: Reminders option -->
   <string name="zen_mode_reminders">Recordatorios</string>
   <!-- [CHAR LIMIT=50] Zen mode settings: Events option -->
@@ -3457,6 +3574,7 @@ Teníemos un Palaciu…\n
   <!-- Opening string on the dialog that prompts the user to confirm that they really want to delete their existing work profile. The administration app icon and name appear after the final colon. [CHAR LIMIT=NONE] -->
   <!-- Summary for work profile accounts group. [CHAR LIMIT=25] -->
   <!-- Summary Title for saying that the preference is experimental and will evolve over time due to User feedback. [CHAR LIMIT=NONE] -->
+  <string name="experimental_preference">(Esperimental)</string>
   <!-- [CHAR LIMIT=45] Auto-rotate setting title -->
   <!-- [CHAR LIMIT=70] Rotate when screen is turned option -->
   <!-- [CHAR LIMIT=70] Keep the screen in portrait when rotated -->
@@ -3468,8 +3586,20 @@ Teníemos un Palaciu…\n
   <!-- Encryption interstitial title. This screen asks the user whether the device will ask for a PIN / pattern / password before the device starts up. [CHAR LIMIT=30] -->
   <!-- Encryption interstitial button to continue with the shown setting.  Appears on screen that asks the user to opt in/out of encrypting device with a pin/pattern/password. [CHAR LIMIT=NONE] -->
   <!-- Message shown on encryption interstitial to ask the user whether or not they want to use a PIN to encrypt the device. [CHAR LIMIT=NONE] -->
+  <string name="encryption_interstitial_message_pin">
+   Pues protexer más esti preséu riquiendo un PIN enantes de que s\'anicie. Hasta que\'l preséu s\'anicie, nun va poder recibir llamaes, mensaxes o avisos, incluyendo alarmes.
+   \n\nEsto ayuda a protexer los datos en preseos perdios o robaos.
+   </string>
   <!-- Message shown on encryption interstitial to ask the user whether or not they want to use a pattern to encrypt the device. [CHAR LIMIT=NONE] -->
+  <string name="encryption_interstitial_message_pattern">
+   Pues protexer más esti preséu riquiendo un patrón enantes de que s\'anicie. Hasta que\'l preséu s\'anicie, nun va poder recibir llamaes, mensaxes o avisos, incluyendo alarmes.
+   \n\nEsto ayuda a protexer los datos en preseos perdios o robaos.
+   </string>
   <!-- Message shown on encryption interstitial to ask the user whether or not they want to use a password to encrypt the device. [CHAR LIMIT=NONE] -->
+  <string name="encryption_interstitial_message_password">
+   Pues protexer más esti preséu riquiendo una contraseña enantes de que s\'anicie. Hasta que\'l preséu s\'anicie, nun va poder recibir llamaes, mensaxes o avisos, incluyendo alarmes.
+   \n\nEsto ayuda a protexer los datos en preseos perdios o robaos.
+   </string>
   <!-- Message shown on encryption interstitial to ask the user whether or not they want to use a PIN to encrypt the device while setting up fingerprint unlock. [CHAR LIMIT=NONE] -->
   <!-- Message shown on encryption interstitial to ask the user whether or not they want to use a pattern to encrypt the device while setting up fingerprint unlock. [CHAR LIMIT=NONE] -->
   <!-- Message shown on encryption interstitial to ask the user whether or not they want to use a password to encrypt the device while setting up fingerprint unlock. [CHAR LIMIT=NONE] -->
@@ -3568,6 +3698,7 @@ Teníemos un Palaciu…\n
   <!-- Description of settings item that leads to list of all apps that can open web links [CHAR LIMIT=NONE] -->
   <!-- Explanation that the app that will ALWAYS be launched to open web links to domains that it understands -->
   <!-- Explanation that the user will be asked whether to launch the app to open web links to domains that it understands -->
+  <string name="app_link_open_ask">Entrugar cada vegada</string>
   <!-- Explanation that the app that will NEVER be launched to open web links to domains that it understands -->
   <string name="app_link_open_never">Nun abrir n\'esta aplicación</string>
   <!-- Fingerprint hint message when finger was not recognized.-->
@@ -3578,6 +3709,9 @@ Teníemos un Palaciu…\n
   <!-- Summary for No Default Assist settings [CHAR LIMIT=45] -->
   <!-- Title for Choose Assist dialog [CHAR LIMIT=35] -->
   <!-- [CHAR_LIMIT=45] Title of the security warning dialog for setting an assitant -->
+  <string name="assistant_security_warning_title">
+        ¿Facer asistente a <xliff:g id="assistant_app_name">%s</xliff:g>?
+    </string>
   <!-- [CHAR_LIMIT=NONE] Warning message about security implications of setting an assistant,
          displayed as a dialog message when the user selects an assistant. -->
   <!-- Label for the button to acknowledge assistant security implications. [CHAR LIMIT=30] -->
@@ -3589,6 +3723,7 @@ Teníemos un Palaciu…\n
   <string name="default_browser_title_none">Nun hai restolador predetermináu</string>
   <!--  Title for Default Phone app settings [CHAR LIMIT=30] -->
   <!-- Label of default app for current setting [CHAR LIMIT=40] -->
+  <string name="default_app">(Por defeutu)</string>
   <!-- Label of system app for current setting -->
   <string name="system_app">(Sistema)</string>
   <!-- Label of system and default app for current setting -->
@@ -3727,6 +3862,7 @@ Teníemos un Palaciu…\n
   <!-- Title of draw overlay screen [CHAR LIMIT=30] -->
   <!-- Settings title in main settings screen for SYSTEM_ALERT_WINDOW [CHAR LIMIT=45] -->
   <!-- Title for the apps with SYSTEM_ALERT_WINDOW permission/privilege [CHAR LIMIT=20] -->
+  <string name="system_alert_window_apps_title">Aplicaciones</string>
   <!-- Title for the apps that are allowed to draw on top of other apps [CHAR LIMIT=60] -->
   <!-- Label for setting which controls whether app can draw overlays [CHAR LIMIT=45] -->
   <!-- Link to the apps page for SYSTEM_ALERT_WINDOW settings [CHAR LIMIT=45] -->

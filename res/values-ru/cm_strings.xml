@@ -19,10 +19,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
   <plurals name="show_dev_countdown_cm">
-    <item quantity="one">Нажмите ещё <xliff:g id="step_count">%1$d</xliff:g> раз, чтобы включить настройки для разработчиков.</item>
-    <item quantity="few">Нажмите ещё <xliff:g id="step_count">%1$d</xliff:g> раза, чтобы включить настройки для разработчиков.</item>
-    <item quantity="many">Нажмите ещё <xliff:g id="step_count">%1$d</xliff:g> раз, чтобы включить настройки для разработчиков.</item>
-    <item quantity="other">Нажмите ещё <xliff:g id="step_count">%1$d</xliff:g> раз, чтобы включить настройки для разработчиков.</item>
+    <item quantity="one">Нажмите еще <xliff:g id="step_count">%1$d</xliff:g> раз, чтобы включить настройки для разработчиков.</item>
+    <item quantity="few">Нажмите еще <xliff:g id="step_count">%1$d</xliff:g> раза, чтобы включить настройки для разработчиков.</item>
+    <item quantity="many">Нажмите еще <xliff:g id="step_count">%1$d</xliff:g> раз, чтобы включить настройки для разработчиков.</item>
+    <item quantity="other">Нажмите еще <xliff:g id="step_count">%1$d</xliff:g> раз, чтобы включить настройки для разработчиков.</item>
   </plurals>
   <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
   <string name="show_dev_on_cm">Настройки для разработчиков включены!</string>
@@ -35,8 +35,8 @@
   <string name="root_access_warning_title">Разрешить использование cуперпользователя?</string>
   <string name="root_access_warning_message">Использование приложениями прав суперпользователя может быть крайне опасным и ставит под угрозу безопасность вашего устройства!</string>
   <string name="root_access_none">Выключен</string>
-  <string name="root_access_apps">Только для приложений</string>
-  <string name="root_access_adb">Только для ADB</string>
+  <string name="root_access_apps">Только приложения</string>
+  <string name="root_access_adb">Только ADB</string>
   <string name="root_access_all">Для приложений и ADB</string>
   <!-- Preference link for root appops -->
   <string name="root_appops_title">Права суперпользователя</string>
@@ -216,7 +216,7 @@
   <string name="app_ops_allowed_count">Разрешено <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_ignored_count">Запрещено <xliff:g id="count" example="2 times">%s</xliff:g></string>
   <string name="app_ops_both_count">Разрешено <xliff:g id="count">%1$s</xliff:g>, запрещено <xliff:g id="count">%2$s</xliff:g></string>
-  <string name="app_ops_no_blockable_permissions">Нет разрешений, доступных для блокировки</string>
+  <string name="app_ops_no_blockable_permissions">Отсутствуют разрешения для блокировки</string>
   <!-- App ops menu options -->
   <string name="app_ops_show_user_apps">Загруженные приложения</string>
   <string name="app_ops_show_system_apps">Системные приложения</string>
@@ -328,7 +328,7 @@
   <!-- [CHAR LIMIT=50] Like zen_mode_events, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_events">События</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_all_callers, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_all_callers">все вызовы</string>
+  <string name="zen_mode_summary_all_callers">все абоненты</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_selected_callers, but part of a list, so lower case if needed -->
   <string name="zen_mode_summary_selected_callers">Выбранные абоненты</string>
   <!-- [CHAR LIMIT=50] Like zen_mode_repeat_callers, but part of a list, so lower case if needed -->
@@ -364,8 +364,8 @@
   <!-- Fingerprint sensor locations -->
   <string name="security_settings_fingerprint_sensor_location_back">задней панели</string>
   <string name="security_settings_fingerprint_sensor_location_front">передней панели</string>
-  <string name="security_settings_fingerprint_sensor_location_left">левой грани</string>
-  <string name="security_settings_fingerprint_sensor_location_right">правой грани</string>
+  <string name="security_settings_fingerprint_sensor_location_left">левой стороне</string>
+  <string name="security_settings_fingerprint_sensor_location_right">правой стороне</string>
   <!-- Wi-Fi region code -->
   <string name="wifi_setting_countrycode_title">Код региона Wi-Fi</string>
   <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
@@ -419,7 +419,7 @@
   <string name="sim_enabler_need_disable_sim">SIM-карта будет отключена. Продолжить?</string>
   <string name="sim_enabler_will_disable_sim_title">Внимание</string>
   <string name="sim_enabler_need_switch_data_service">Текущая SIM-карта будет отключена, а для передачи данных будет использоваться SIM-карта <xliff:g id="slotid">%1$s </xliff:g>. Продолжить?</string>
-  <string name="sim_enabler_airplane_on">Выполнение операции невозможно при включённом режиме полёта.</string>
+  <string name="sim_enabler_airplane_on">Выполнение операции невозможно при включенном режиме полета.</string>
   <string name="sim_enabler_in_call">Выполнение операции невозможно во время вызова.</string>
   <string name="sim_enabler_both_inactive">Невозможно отключить все SIM-карты</string>
   <string name="sim_enabler_enabling">Включение\u2026</string>
