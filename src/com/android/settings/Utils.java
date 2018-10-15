@@ -382,6 +382,128 @@ public final class Utils extends com.android.settingslib.Utils {
     }
 
     /**
+     * Start a new instance of the activity, showing only the given fragment.
+     * When launched in this mode, the given preference fragment will be instantiated and fill the
+     * entire activity.
+     *
+     * @param context The context.
+     * @param fragmentName The name of the fragment to display.
+     * @param args Optional arguments to supply to the fragment.
+     * @param resultTo Option fragment that should receive the result of the activity launch.
+     * @param resultRequestCode If resultTo is non-null, this is the request code in which
+     *                          to report the result.
+     * @param titleResId resource id for the String to display for the title of this set
+     *                   of preferences.
+     * @param title String to display for the title of this set of preferences.
+     * @param metricsCategory The current metricsCategory for logging source when fragment starts
+     */
+    public static void startWithFragment(Context context, String fragmentName, Bundle args,
+            Fragment resultTo, int resultRequestCode, int titleResId,
+            CharSequence title, int metricsCategory) {
+        startWithFragment(context, fragmentName, args, resultTo, resultRequestCode,
+                null /* titleResPackageName */, titleResId, title, false /* not a shortcut */,
+                metricsCategory);
+    }
+
+    /**
+     * Start a new instance of the activity, showing only the given fragment.
+     * When launched in this mode, the given preference fragment will be instantiated and fill the
+     * entire activity.
+     *
+     * @param context The context.
+     * @param fragmentName The name of the fragment to display.
+     * @param args Optional arguments to supply to the fragment.
+     * @param resultTo Option fragment that should receive the result of the activity launch.
+     * @param resultRequestCode If resultTo is non-null, this is the request code in which
+     *                          to report the result.
+     * @param titleResPackageName Optional package name for the resource id of the title.
+     * @param titleResId resource id for the String to display for the title of this set
+     *                   of preferences.
+     * @param title String to display for the title of this set of preferences.
+     * @param metricsCategory The current metricsCategory for logging source when fragment starts
+     */
+    public static void startWithFragment(Context context, String fragmentName, Bundle args,
+            Fragment resultTo, int resultRequestCode, String titleResPackageName, int titleResId,
+            CharSequence title, int metricsCategory) {
+        startWithFragment(context, fragmentName, args, resultTo, resultRequestCode,
+                titleResPackageName, titleResId, title, false /* not a shortcut */,
+                metricsCategory);
+    }
+
+    public static void startWithFragment(Context context, String fragmentName, Bundle args,
+            Fragment resultTo, int resultRequestCode, int titleResId,
+            CharSequence title, boolean isShortcut, int metricsCategory) {
+        Intent intent = onBuildStartFragmentIntent(context, fragmentName, args,
+                null /* titleResPackageName */, titleResId, title, isShortcut, metricsCategory);
+        if (resultTo == null) {
+            context.startActivity(intent);
+        } else {
+            resultTo.getActivity().startActivityForResult(intent, resultRequestCode);
+        }
+    }
+
+    public static void startWithFragment(Context context, String fragmentName, Bundle args,
+            Fragment resultTo, int resultRequestCode, String titleResPackageName, int titleResId,
+            CharSequence title, boolean isShortcut, int metricsCategory) {
+        Intent intent = onBuildStartFragmentIntent(context, fragmentName, args, titleResPackageName,
+                titleResId, title, isShortcut, metricsCategory);
+        if (resultTo == null) {
+            context.startActivity(intent);
+        } else {
+            resultTo.startActivityForResult(intent, resultRequestCode);
+        }
+    }
+
+    public static void startWithFragmentAsUser(Context context, String fragmentName, Bundle args,
+            int titleResId, CharSequence title, boolean isShortcut, int metricsCategory,
+            UserHandle userHandle) {
+        // workaround to avoid crash in b/17523189
+        if (userHandle.getIdentifier() == UserHandle.myUserId()) {
+            startWithFragment(context, fragmentName, args, null, 0, titleResId, title, isShortcut,
+                    metricsCategory);
+        } else {
+            Intent intent = onBuildStartFragmentIntent(context, fragmentName, args,
+                    null /* titleResPackageName */, titleResId, title, isShortcut, metricsCategory);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivityAsUser(intent, userHandle);
+        }
+    }
+
+    /**
+     * Build an Intent to launch a new activity showing the selected fragment.
+     * The implementation constructs an Intent that re-launches the current activity with the
+     * appropriate arguments to display the fragment.
+     *
+     *
+     * @param context The Context.
+     * @param fragmentName The name of the fragment to display.
+     * @param args Optional arguments to supply to the fragment.
+     * @param titleResPackageName Optional package name for the resource id of the title.
+     * @param titleResId Optional title resource id to show for this item.
+     * @param title Optional title to show for this item.
+     * @param isShortcut  tell if this is a Launcher Shortcut or not
+     * @param sourceMetricsCategory The context (source) from which an action is performed
+     * @return Returns an Intent that can be launched to display the given
+     * fragment.
+     */
+    public static Intent onBuildStartFragmentIntent(Context context, String fragmentName,
+            Bundle args, String titleResPackageName, int titleResId, CharSequence title,
+            boolean isShortcut, int sourceMetricsCategory) {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setClass(context, SubSettings.class);
+        intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT, fragmentName);
+        intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS, args);
+        intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_TITLE_RES_PACKAGE_NAME,
+                titleResPackageName);
+        intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_TITLE_RESID, titleResId);
+        intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_TITLE, title);
+        intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_AS_SHORTCUT, isShortcut);
+        intent.putExtra(SettingsActivity.EXTRA_SOURCE_METRICS_CATEGORY, sourceMetricsCategory);
+        return intent;
+    }
+
+    /**
      * Returns the managed profile of the current user or {@code null} if none is found or a profile
      * exists but it is disabled.
      */

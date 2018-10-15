@@ -56,7 +56,6 @@ import android.widget.Toolbar;
 
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.Settings.WifiSettingsActivity;
-import com.android.settings.applications.manageapplications.ManageApplications;
 import com.android.settings.backup.BackupSettingsActivity;
 import com.android.settings.core.FeatureFlags;
 import com.android.settings.core.SubSettingLauncher;
@@ -69,6 +68,7 @@ import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.widget.SwitchBar;
 import com.android.settingslib.core.instrumentation.Instrumentable;
 import com.android.settingslib.core.instrumentation.SharedPreferencesLogger;
+import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.development.DevelopmentSettingsEnabler;
 import com.android.settingslib.drawer.DashboardCategory;
 import com.android.settingslib.drawer.SettingsDrawerActivity;
@@ -76,6 +76,7 @@ import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class SettingsActivity extends SettingsDrawerActivity
         implements PreferenceManager.OnPreferenceTreeClickListener,
@@ -86,6 +87,8 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     // Constants for state save/restore
     private static final String SAVE_KEY_CATEGORIES = ":settings:categories";
+    @VisibleForTesting
+    static final String SAVE_KEY_SHOW_HOME_AS_UP = ":settings:show_home_as_up";
 
     /**
      * When starting this activity, the invoking Intent can contain this extra
@@ -95,6 +98,11 @@ public class SettingsActivity extends SettingsDrawerActivity
      * activity.
      */
     public static final String EXTRA_SHOW_FRAGMENT = ":settings:show_fragment";
+
+    /**
+     * The metrics category constant for logging source when a setting fragment is opened.
+     */
+    public static final String EXTRA_SOURCE_METRICS_CATEGORY = ":settings:source_metrics";
 
     /**
      * When starting this activity and using {@link #EXTRA_SHOW_FRAGMENT},
@@ -152,12 +160,20 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private static final String EXTRA_UI_OPTIONS = "settings:ui_options";
 
+    private static final int REQUEST_SUGGESTION = 42;
+
     private String mFragmentClass;
 
     private CharSequence mInitialTitle;
     private int mInitialTitleResId;
 
+    private static final String[] LIKE_SHORTCUT_INTENT_ACTION_ARRAY = {
+            "android.settings.APPLICATION_DETAILS_SETTINGS"
+    };
+
     private BroadcastReceiver mDevelopmentSettingsListener;
+    private SharedPreferences mDevelopmentPreferences;
+    private SharedPreferences.OnSharedPreferenceChangeListener mDevelopmentPreferencesListener;
 
     private boolean mBatteryPresent = true;
     private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
@@ -180,8 +196,12 @@ public class SettingsActivity extends SettingsDrawerActivity
     private Button mNextButton;
 
     private boolean mIsShowingDashboard;
+    private boolean mIsShortcut;
 
     private ViewGroup mContent;
+
+    private ComponentName mCurrentSuggestion;
+    private MetricsFeatureProvider mMetricsFeatureProvider;
 
     // Categories
     private ArrayList<DashboardCategory> mCategories = new ArrayList<>();
@@ -212,10 +232,6 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     @Override
     public SharedPreferences getSharedPreferences(String name, int mode) {
-        if (name.equals(getPackageName() + "_preferences")) {
-            return new SharedPreferencesLogger(this, getMetricsTag(),
-                    FeatureFactory.getFactory(this).getMetricsFeatureProvider());
-        }
         return super.getSharedPreferences(name, mode);
     }
 
@@ -230,6 +246,22 @@ public class SettingsActivity extends SettingsDrawerActivity
         return tag;
     }
 
+    private static boolean isShortCutIntent(final Intent intent) {
+        Set<String> categories = intent.getCategories();
+        return (categories != null) && categories.contains("com.android.settings.SHORTCUT");
+    }
+
+    private static boolean isLikeShortCutIntent(final Intent intent) {
+        String action = intent.getAction();
+        if (action == null) {
+            return false;
+        }
+        for (int i = 0; i < LIKE_SHORTCUT_INTENT_ACTION_ARRAY.length; i++) {
+            if (LIKE_SHORTCUT_INTENT_ACTION_ARRAY[i].equals(action)) return true;
+        }
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
@@ -239,6 +271,7 @@ public class SettingsActivity extends SettingsDrawerActivity
         final FeatureFactory factory = FeatureFactory.getFactory(this);
 
         mDashboardFeatureProvider = factory.getDashboardFeatureProvider(this);
+        mMetricsFeatureProvider = factory.getMetricsFeatureProvider();
 
         // Should happen before any call to getIntent()
         getMetaData();
@@ -250,6 +283,9 @@ public class SettingsActivity extends SettingsDrawerActivity
 
         // Getting Intent properties can only be done after the super.onCreate(...)
         final String initialFragmentName = intent.getStringExtra(EXTRA_SHOW_FRAGMENT);
+
+        mIsShortcut = isShortCutIntent(intent) || isLikeShortCutIntent(intent) ||
+                intent.getBooleanExtra(EXTRA_SHOW_FRAGMENT_AS_SHORTCUT, false);
 
         final ComponentName cn = intent.getComponent();
         final String className = cn.getClassName();
@@ -553,13 +589,91 @@ public class SettingsActivity extends SettingsDrawerActivity
         String intentClass = intent.getComponent().getClassName();
         if (intentClass.equals(getClass().getName())) return null;
 
-        if ("com.android.settings.RunningServices".equals(intentClass)
+/*
+        if ("com.android.settings.ManageApplications".equals(intentClass)
+                || "com.android.settings.RunningServices".equals(intentClass)
                 || "com.android.settings.applications.StorageUse".equals(intentClass)) {
             // Old names of manage apps.
-            intentClass = ManageApplications.class.getName();
+            intentClass = com.android.settings.applications.ManageApplications.class.getName();
         }
+*/
 
         return intentClass;
+    }
+
+    /**
+     * Start a new fragment containing a preference panel.  If the preferences
+     * are being displayed in multi-pane mode, the given fragment class will
+     * be instantiated and placed in the appropriate pane.  If running in
+     * single-pane mode, a new activity will be launched in which to show the
+     * fragment.
+     *
+     * @param fragmentClass Full name of the class implementing the fragment.
+     * @param args Any desired arguments to supply to the fragment.
+     * @param titleRes Optional resource identifier of the title of this
+     * fragment.
+     * @param titleText Optional text of the title of this fragment.
+     * @param resultTo Optional fragment that result data should be sent to.
+     * If non-null, resultTo.onActivityResult() will be called when this
+     * preference panel is done.  The launched panel must use
+     * {@link #finishPreferencePanel(Fragment, int, Intent)} when done.
+     * @param resultRequestCode If resultTo is non-null, this is the caller's
+     * request code to be received with the result.
+     */
+    public void startPreferencePanel(Fragment caller, String fragmentClass, Bundle args,
+            int titleRes, CharSequence titleText, Fragment resultTo, int resultRequestCode) {
+        String title = null;
+        if (titleRes < 0) {
+            if (titleText != null) {
+                title = titleText.toString();
+            } else {
+                // There not much we can do in that case
+                title = "";
+            }
+        }
+        Utils.startWithFragment(this, fragmentClass, args, resultTo, resultRequestCode,
+                titleRes, title, mIsShortcut, mMetricsFeatureProvider.getMetricsCategory(caller));
+    }
+
+    /**
+     * Start a new fragment in a new activity containing a preference panel for a given user. If the
+     * preferences are being displayed in multi-pane mode, the given fragment class will be
+     * instantiated and placed in the appropriate pane. If running in single-pane mode, a new
+     * activity will be launched in which to show the fragment.
+     *
+     * @param fragmentClass Full name of the class implementing the fragment.
+     * @param args Any desired arguments to supply to the fragment.
+     * @param titleRes Optional resource identifier of the title of this fragment.
+     * @param titleText Optional text of the title of this fragment.
+     * @param userHandle The user for which the panel has to be started.
+     */
+    public void startPreferencePanelAsUser(Fragment caller, String fragmentClass,
+            Bundle args, int titleRes, CharSequence titleText, UserHandle userHandle) {
+        // This is a workaround.
+        //
+        // Calling startWithFragmentAsUser() without specifying FLAG_ACTIVITY_NEW_TASK to the intent
+        // starting the fragment could cause a native stack corruption. See b/17523189. However,
+        // adding that flag and start the preference panel with the same UserHandler will make it
+        // impossible to use back button to return to the previous screen. See b/20042570.
+        //
+        // We work around this issue by adding FLAG_ACTIVITY_NEW_TASK to the intent, while doing
+        // another check here to call startPreferencePanel() instead of startWithFragmentAsUser()
+        // when we're calling it as the same user.
+        if (userHandle.getIdentifier() == UserHandle.myUserId()) {
+            startPreferencePanel(caller, fragmentClass, args, titleRes, titleText, null, 0);
+        } else {
+            String title = null;
+            if (titleRes < 0) {
+                if (titleText != null) {
+                    title = titleText.toString();
+                } else {
+                    // There not much we can do in that case
+                    title = "";
+                }
+            }
+            Utils.startWithFragmentAsUser(this, fragmentClass, args, titleRes, title,
+                    mIsShortcut, mMetricsFeatureProvider.getMetricsCategory(caller), userHandle);
+        }
     }
 
     /**
@@ -573,6 +687,25 @@ public class SettingsActivity extends SettingsDrawerActivity
     public void finishPreferencePanel(int resultCode, Intent resultData) {
         setResult(resultCode, resultData);
         finish();
+    }
+
+    /**
+     * Start a new fragment.
+     *
+     * @param fragment The fragment to start
+     * @param push If true, the current fragment will be pushed onto the back stack.  If false,
+     * the current fragment will be replaced.
+     */
+    public void startPreferenceFragment(Fragment fragment, boolean push) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_content, fragment);
+        if (push) {
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.addToBackStack(BACK_STACK_PREFS);
+        } else {
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        }
+        transaction.commitAllowingStateLoss();
     }
 
     /**
@@ -796,6 +929,29 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     public Button getNextButton() {
         return mNextButton;
+    }
+
+    @Override
+    public boolean shouldUpRecreateTask(Intent targetIntent) {
+        return super.shouldUpRecreateTask(new Intent(this, SettingsActivity.class));
+    }
+
+    public void startSuggestion(Intent intent) {
+        if (intent == null || ActivityManager.isUserAMonkey()) {
+            return;
+        }
+        mCurrentSuggestion = intent.getComponent();
+        startActivityForResult(intent, REQUEST_SUGGESTION);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_SUGGESTION && mCurrentSuggestion != null
+                && resultCode != RESULT_CANCELED) {
+            getPackageManager().setComponentEnabledSetting(mCurrentSuggestion,
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @VisibleForTesting
