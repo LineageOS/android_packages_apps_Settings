@@ -180,6 +180,7 @@ public class AppOpsState {
                     false,
                     false,
                     false,
+                    false,
                     false }
             );
 
@@ -211,9 +212,61 @@ public class AppOpsState {
             new boolean[] { false }
             );
 
+    public static final OpsTemplate BOOTUP_TEMPLATE = new OpsTemplate(
+            new int[] { AppOpsManager.OP_BOOT_COMPLETED },
+            new boolean[] { true }
+            );
+
+    public static final OpsTemplate SU_TEMPLATE = new OpsTemplate(
+            new int[] { AppOpsManager.OP_SU },
+            new boolean[] { false }
+            );
+
+    // this template should contain all ops which are not part of any other template in
+    // ALL_TEMPLATES
+    public static final OpsTemplate REMAINING_TEMPLATE = new OpsTemplate(
+            new int[] { AppOpsManager.OP_GET_USAGE_STATS,
+                    AppOpsManager.OP_TOAST_WINDOW,
+                    AppOpsManager.OP_WRITE_WALLPAPER,
+                    AppOpsManager.OP_READ_PHONE_STATE,
+                    AppOpsManager.OP_ADD_VOICEMAIL,
+                    AppOpsManager.OP_USE_SIP,
+                    AppOpsManager.OP_PROCESS_OUTGOING_CALLS,
+                    AppOpsManager.OP_USE_FINGERPRINT,
+                    AppOpsManager.OP_BODY_SENSORS,
+                    AppOpsManager.OP_READ_CELL_BROADCASTS,
+                    AppOpsManager.OP_MOCK_LOCATION,
+                    AppOpsManager.OP_READ_EXTERNAL_STORAGE,
+                    AppOpsManager.OP_WRITE_EXTERNAL_STORAGE,
+                    AppOpsManager.OP_TURN_SCREEN_ON,
+                    AppOpsManager.OP_GET_ACCOUNTS },
+            new boolean[] { true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true }
+    );
+
     public static final OpsTemplate[] ALL_TEMPLATES = new OpsTemplate[] {
             LOCATION_TEMPLATE, PERSONAL_TEMPLATE, MESSAGING_TEMPLATE,
             MEDIA_TEMPLATE, DEVICE_TEMPLATE, RUN_IN_BACKGROUND_TEMPLATE
+    };
+
+    // this template contains all permissions grouped by templates
+    public static final OpsTemplate[] ALL_PERMS_TEMPLATES = new OpsTemplate[] {
+            LOCATION_TEMPLATE, PERSONAL_TEMPLATE, MESSAGING_TEMPLATE,
+            MEDIA_TEMPLATE, DEVICE_TEMPLATE, RUN_IN_BACKGROUND_TEMPLATE,
+            BOOTUP_TEMPLATE, SU_TEMPLATE, REMAINING_TEMPLATE
     };
 
     /**
