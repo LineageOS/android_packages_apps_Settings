@@ -430,7 +430,7 @@ public class DataUsageSummary extends DataUsageBase implements Indexable, DataUs
                     used = Utils.formatPercentage(info.usageLevel, info.limitLevel);
                 }
                 mSummaryLoader.setSummary(this,
-                        mActivity.getString(R.string.data_usage_summary_format, used));
+                        mActivity.getString(R.string.data_usage_summary_cm, used, info.carrier));
             }
         }
     }
