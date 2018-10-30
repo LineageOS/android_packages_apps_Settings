@@ -81,6 +81,17 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="data_usage_app_restrict_vpn_category"
+        android:title="@string/data_usage_app_restrict_vpn_category_title" >
+
+        <SwitchPreference
+            android:key="restrict_all_vpn"
+            android:title="@string/data_usage_app_restrict_all_vpn_title"
+            android:summary="@string/data_usage_app_restrict_all_vpn_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="app_list"
         android:title="@string/data_usage_other_apps" />
 
