@@ -71,6 +71,11 @@
             settings:useAdditionalSummary="true"
             settings:restrictedSwitchSummary="@string/disabled_by_admin" />
 
+        <SwitchPreference
+            android:key="restrict_vpn"
+            android:title="@string/data_usage_app_restrict_vpn"
+            android:summary="@string/data_usage_app_restrict_vpn_summary" />
+
         <com.android.settingslib.RestrictedSwitchPreference
             android:key="unrestricted_data_saver"
             android:title="@string/unrestricted_app_title"
