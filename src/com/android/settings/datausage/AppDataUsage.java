@@ -15,6 +15,12 @@
 package com.android.settings.datausage;
 
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
+=======
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ON_DATA;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ON_VPN;
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ON_WLAN;
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
 
 import android.app.Activity;
 import android.app.settings.SettingsEnums;
@@ -70,6 +76,12 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private static final String KEY_BACKGROUND_USAGE = "background_usage";
     private static final String KEY_APP_SETTINGS = "app_settings";
     private static final String KEY_RESTRICT_BACKGROUND = "restrict_background";
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
+=======
+    private static final String KEY_RESTRICT_DATA = "restrict_data";
+    private static final String KEY_RESTRICT_VPN = "restrict_vpn";
+    private static final String KEY_RESTRICT_WLAN = "restrict_wlan";
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
     private static final String KEY_APP_LIST = "app_list";
     private static final String KEY_CYCLE = "cycle";
     private static final String KEY_UNRESTRICTED_DATA = "unrestricted_data_saver";
@@ -84,6 +96,12 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private Preference mBackgroundUsage;
     private Preference mAppSettings;
     private RestrictedSwitchPreference mRestrictBackground;
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
+=======
+    private SwitchPreference mRestrictData;
+    private SwitchPreference mRestrictVpn;
+    private SwitchPreference mRestrictWlan;
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
     private PreferenceCategory mAppList;
 
     private Drawable mIcon;
@@ -156,6 +174,12 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                 mLabel = uidDetail.label;
                 removePreference(KEY_UNRESTRICTED_DATA);
                 removePreference(KEY_RESTRICT_BACKGROUND);
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
+=======
+                removePreference(KEY_RESTRICT_DATA);
+                removePreference(KEY_RESTRICT_VPN);
+                removePreference(KEY_RESTRICT_WLAN);
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
             } else {
                 if (mPackages.size() != 0) {
                     try {
@@ -169,7 +193,18 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                 }
                 mRestrictBackground = findPreference(KEY_RESTRICT_BACKGROUND);
                 mRestrictBackground.setOnPreferenceChangeListener(this);
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
                 mUnrestrictedData = findPreference(KEY_UNRESTRICTED_DATA);
+=======
+                mRestrictData = (SwitchPreference) findPreference(KEY_RESTRICT_DATA);
+                mRestrictData.setOnPreferenceChangeListener(this);
+                mRestrictVpn = (SwitchPreference) findPreference(KEY_RESTRICT_VPN);
+                mRestrictVpn.setOnPreferenceChangeListener(this);
+                mRestrictWlan = (SwitchPreference) findPreference(KEY_RESTRICT_WLAN);
+                mRestrictWlan.setOnPreferenceChangeListener(this);
+                mUnrestrictedData = (RestrictedSwitchPreference) findPreference(
+                        KEY_UNRESTRICTED_DATA);
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
                 mUnrestrictedData.setOnPreferenceChangeListener(this);
             }
             mDataSaverBackend = new DataSaverBackend(mContext);
@@ -209,6 +244,12 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
             removePreference(KEY_UNRESTRICTED_DATA);
             removePreference(KEY_APP_SETTINGS);
             removePreference(KEY_RESTRICT_BACKGROUND);
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
+=======
+            removePreference(KEY_RESTRICT_DATA);
+            removePreference(KEY_RESTRICT_VPN);
+            removePreference(KEY_RESTRICT_WLAN);
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
             removePreference(KEY_APP_LIST);
         }
     }
@@ -238,6 +279,21 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
             mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
             updatePrefs();
             return true;
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
+=======
+        } else if (preference == mRestrictData) {
+            setAppRestrictData(!(Boolean) newValue);
+            updatePrefs();
+            return true;
+        } else if (preference == mRestrictVpn) {
+            setAppRestrictVpn(!(Boolean) newValue);
+            updatePrefs();
+            return true;
+        } else if (preference == mRestrictWlan) {
+            setAppRestrictWlan(!(Boolean) newValue);
+            updatePrefs();
+            return true;
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
         } else if (preference == mUnrestrictedData) {
             mDataSaverBackend.setIsWhitelisted(mAppItem.key, mPackageName, (Boolean) newValue);
             return true;
@@ -256,11 +312,19 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         return super.onPreferenceTreeClick(preference);
     }
 
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
     @Override
     protected int getPreferenceScreenResId() {
         return R.xml.app_data_usage;
+=======
+    @VisibleForTesting
+    void updatePrefs() {
+        updatePrefs(getAppRestrictBackground(), getUnrestrictData(),
+                getAppRestrictData(), getAppRestrictVpn(), getAppRestrictWlan());
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
     }
 
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
     @Override
     protected String getLogTag() {
         return TAG;
@@ -279,9 +343,35 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private void updatePrefs(boolean restrictBackground, boolean unrestrictData) {
         final EnforcedAdmin admin = RestrictedLockUtilsInternal.checkIfMeteredDataRestricted(
                 mContext, mPackageName, UserHandle.getUserId(mAppItem.key));
+=======
+    private void updatePrefs(boolean restrictBackground, boolean unrestrictData,
+            boolean restrictData, boolean restrictVpn, boolean restrictWlan) {
+        final EnforcedAdmin admin = RestrictedLockUtils.checkIfMeteredDataRestricted(
+                getContext(), mPackageName, UserHandle.getUserId(mAppItem.key));
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
         if (mRestrictBackground != null) {
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
             mRestrictBackground.setChecked(!restrictBackground);
             mRestrictBackground.setDisabledByAdmin(admin);
+=======
+            if (restrictData) {
+                mRestrictBackground.setEnabled(false);
+                mRestrictBackground.setChecked(false);
+            } else {
+                mRestrictBackground.setEnabled(true);
+                mRestrictBackground.setChecked(!restrictBackground);
+                mRestrictBackground.setDisabledByAdmin(admin);
+            }
+        }
+        if (mRestrictData != null) {
+            mRestrictData.setChecked(!restrictData);
+        }
+        if (mRestrictVpn != null) {
+            mRestrictVpn.setChecked(!restrictVpn);
+        }
+        if (mRestrictWlan != null) {
+            mRestrictWlan.setChecked(!restrictWlan);
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
         }
         if (mUnrestrictedData != null) {
             if (restrictBackground) {
@@ -323,9 +413,25 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     }
 
     private boolean getAppRestrictBackground() {
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
         final int uid = mAppItem.key;
         final int uidPolicy = services.mPolicyManager.getUidPolicy(uid);
         return (uidPolicy & POLICY_REJECT_METERED_BACKGROUND) != 0;
+=======
+        return getAppRestriction(POLICY_REJECT_METERED_BACKGROUND);
+    }
+
+    private boolean getAppRestrictData() {
+        return getAppRestriction(POLICY_REJECT_ON_DATA);
+    }
+
+    private boolean getAppRestrictVpn() {
+        return getAppRestriction(POLICY_REJECT_ON_VPN);
+    }
+
+    private boolean getAppRestrictWlan() {
+        return getAppRestriction(POLICY_REJECT_ON_WLAN);
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
     }
 
     private boolean getUnrestrictData() {
@@ -335,6 +441,36 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         return false;
     }
 
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
+=======
+    private boolean getAppRestriction(int policy) {
+        final int uid = mAppItem.key;
+        final int uidPolicy = services.mPolicyManager.getUidPolicy(uid);
+        return (uidPolicy & policy) != 0;
+    }
+
+    private void setAppRestrictData(boolean restrict) {
+        setAppRestriction(POLICY_REJECT_ON_DATA, restrict);
+    }
+
+    private void setAppRestrictVpn(boolean restrict) {
+        setAppRestriction(POLICY_REJECT_ON_VPN, restrict);
+    }
+
+    private void setAppRestrictWlan(boolean restrict) {
+        setAppRestriction(POLICY_REJECT_ON_WLAN, restrict);
+    }
+
+    private void setAppRestriction(int policy, boolean restrict) {
+        final int uid = mAppItem.key;
+        if (restrict) {
+            mPolicyManager.addUidPolicy(uid, policy);
+        } else {
+            mPolicyManager.removeUidPolicy(uid, policy);
+        }
+    }
+
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -466,14 +602,24 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     @Override
     public void onWhitelistStatusChanged(int uid, boolean isWhitelisted) {
         if (mAppItem.uids.get(uid, false)) {
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
             updatePrefs(getAppRestrictBackground(), isWhitelisted);
+=======
+            updatePrefs(getAppRestrictBackground(), isWhitelisted,
+                    getAppRestrictData(), getAppRestrictVpn(), getAppRestrictWlan());
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
         }
     }
 
     @Override
     public void onBlacklistStatusChanged(int uid, boolean isBlacklisted) {
         if (mAppItem.uids.get(uid, false)) {
+<<<<<<< HEAD   (189a20 Settings: display: Add wake on plug switch)
             updatePrefs(isBlacklisted, getUnrestrictData());
+=======
+            updatePrefs(isBlacklisted, getUnrestrictData(),
+                    getAppRestrictData(), getAppRestrictVpn(), getAppRestrictWlan());
+>>>>>>> CHANGE (4616aa Settings: per-app VPN data restriction)
         }
     }
 }
