@@ -70,8 +70,8 @@ public class SearchMenuController implements LifecycleObserver, OnCreateOptionsM
 
         searchItem.setOnMenuItemClickListener(target -> {
             final Intent intent = SearchFeatureProvider.SEARCH_UI_INTENT;
-            intent.setPackage(FeatureFactory.getFactory(mHost.getContext())
-                    .getSearchFeatureProvider().getSettingsIntelligencePkgName());
+            intent.setPackage(context.getString(
+                R.string.config_settingsintelligence_package_name));
 
             mHost.startActivityForResult(intent, 0 /* requestCode */);
             return true;

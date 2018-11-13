@@ -23,6 +23,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toolbar;
 
+<<<<<<< HEAD
+=======
+import com.android.internal.logging.nano.MetricsProto;
+import com.android.settings.R;
+import com.android.settings.Utils;
+>>>>>>> 35ae9bbaac... Read SettingsIntelligence package name from resource
 import com.android.settings.overlay.FeatureFactory;
 
 /**
@@ -53,8 +59,8 @@ public interface SearchFeatureProvider {
      */
     SearchIndexableResources getSearchIndexableResources();
 
-    default String getSettingsIntelligencePkgName() {
-        return "com.android.settings.intelligence";
+    default String getSettingsIntelligencePkgName(Context context) {
+        return context.getString(R.string.config_settingsintelligence_package_name);
     }
 
     /**
@@ -66,7 +72,7 @@ public interface SearchFeatureProvider {
         }
         toolbar.setOnClickListener(tb -> {
             final Intent intent = SEARCH_UI_INTENT;
-            intent.setPackage(getSettingsIntelligencePkgName());
+            intent.setPackage(getSettingsIntelligencePkgName(activity));
 
             FeatureFactory.getFactory(
                     activity.getApplicationContext()).getSlicesFeatureProvider()
