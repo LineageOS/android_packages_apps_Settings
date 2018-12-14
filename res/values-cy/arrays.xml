@@ -103,7 +103,7 @@
         <!-- Status message of Wi-Fi when it is disconnecting. -->
         <item>Yn datgysylltu\u2026</item>
         <!-- Status message of Wi-Fi when it is disconnected. -->
-        <item>Disconnected</item>
+        <item>Heb gysylltu</item>
         <!-- Status message of Wi-Fi when it is a failure. -->
         <item>Aflwyddiannus</item>
         <!-- Status message of Wi-Fi when it is blocked. -->
@@ -131,7 +131,7 @@
         <!-- Status message of Wi-Fi when it is disconnecting from a network. -->
         <item>Yn datgysylltu oddi wrth <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
         <!-- Status message of Wi-Fi when it is disconnected. -->
-        <item>Disconnected</item>
+        <item>Heb gysylltu</item>
         <!-- Status message of Wi-Fi when it is a failure. -->
         <item>Aflwyddiannus</item>
         <!-- Status message of Wi-Fi when it is blocked. -->
@@ -439,6 +439,20 @@
     <!-- Longer descriptions for each VPN type. [CHAR LIMIT=100] -->
     <!-- Match this with the constants in LegacyVpnInfo. -->
     <!-- Status for a VPN network. [CHAR LIMIT=100] -->
+    <string-array name="vpn_states">
+        <!-- Status message when VPN is disconnected. -->
+        <item>Heb gysylltu</item>
+        <!-- Status message when VPN is initializing. -->
+        <item>Initializing\u2026</item>
+        <!-- Status message when VPN is connecting. -->
+        <item>Connecting\u2026</item>
+        <!-- Status message when VPN is connected. -->
+        <item>Connected</item>
+        <!-- Status message when VPN is timeout. -->
+        <item>Timeout</item>
+        <!-- Status message when VPN is failed. -->
+        <item>Unsuccessful</item>
+    </string-array>
     <!-- User content ratings for restricted users [CHAR LIMIT=30] -->
     <!-- Values for user content ratings for restricted users -->
     <!-- Values for premium SMS permission selector [CHAR LIMIT=30] -->
