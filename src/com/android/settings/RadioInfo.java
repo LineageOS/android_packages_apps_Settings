@@ -83,6 +83,7 @@ import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.TelephonyProperties;
 
 import java.io.IOException;
+import java.lang.RuntimeException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
@@ -1281,6 +1282,8 @@ public class RadioInfo extends Activity {
                 }
             } catch (ImsException ex) {
                 Log.e(TAG, "isFeatureProvisioned() exception:", ex);
+            } catch (java.lang.RuntimeException ex) {
+                Log.e(TAG, "isFeatureProvisioned() RunTimeException:", ex);
             }
         }
 
