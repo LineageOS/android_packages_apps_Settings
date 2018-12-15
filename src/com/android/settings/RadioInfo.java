@@ -83,6 +83,7 @@ import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.TelephonyProperties;
 
 import java.io.IOException;
+import java.lang.RuntimeException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
@@ -1279,7 +1280,7 @@ public class RadioInfo extends Activity {
                             (imsConfig.getProvisionedValue(featureId)
                                     == ImsConfig.FeatureValueConstants.ON);
                 }
-            } catch (ImsException ex) {
+            } catch (ImsException | RuntimeException ex) {
                 Log.e(TAG, "isFeatureProvisioned() exception:", ex);
             }
         }
