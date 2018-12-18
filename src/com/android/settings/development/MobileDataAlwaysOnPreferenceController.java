@@ -56,7 +56,7 @@ public class MobileDataAlwaysOnPreferenceController extends
     @Override
     public void updateState(Preference preference) {
         final int mobileDataAlwaysOnMode = Settings.Global.getInt(mContext.getContentResolver(),
-                Settings.Global.MOBILE_DATA_ALWAYS_ON, SETTING_VALUE_ON);
+                Settings.Global.MOBILE_DATA_ALWAYS_ON, SETTING_VALUE_OFF);
 
         ((SwitchPreference) mPreference).setChecked(mobileDataAlwaysOnMode != SETTING_VALUE_OFF);
     }
