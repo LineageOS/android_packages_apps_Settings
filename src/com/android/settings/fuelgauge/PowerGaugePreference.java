@@ -21,6 +21,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.TextView;
 
 import com.android.settings.R;
@@ -104,6 +105,7 @@ public class PowerGaugePreference extends AppPreference {
     public void onBindViewHolder(PreferenceViewHolder view) {
         super.onBindViewHolder(view);
 
+        view.findViewById(R.id.appendix).setVisibility(View.GONE);
         final TextView subtitle = (TextView) view.findViewById(R.id.widget_summary);
         subtitle.setText(mProgress);
         if (mShowAnomalyIcon) {
