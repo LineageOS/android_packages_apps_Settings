@@ -96,6 +96,7 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
         }
         if (errorMsg == 0) {
             mErrorText.setText(null);
+            mErrorText.setVisibility(View.GONE);
             getNextButton().setVisibility(View.VISIBLE);
         } else {
             mErrorText.setText(errorMsg);
