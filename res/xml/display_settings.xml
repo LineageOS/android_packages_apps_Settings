@@ -147,6 +147,12 @@
         android:title="@string/tap_to_wake"
         android:summary="@string/tap_to_wake_summary" />
 
+    <lineageos.preference.SystemSettingSwitchPreference
+        android:key="com.android.onehand.onehanded_mode"
+        android:title="@string/one_hand_mode_title"
+        android:summary="@string/one_hand_mode_summary"
+        android:defaultValue="false" />
+
     <!-- Double tap to sleep -->
     <lineageos.preference.LineageSystemSettingSwitchPreference
         android:key="double_tap_sleep_gesture"
