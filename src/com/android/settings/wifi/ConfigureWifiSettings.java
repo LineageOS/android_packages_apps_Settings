@@ -98,6 +98,7 @@ public class ConfigureWifiSettings extends DashboardFragment {
         controllers.add(new WifiCallingPreferenceController(context));
         controllers.add(new WpsPreferenceController(
                 context, getLifecycle(), wifiManager, getFragmentManager()));
+        controllers.add(new WifiCountryCodePreferenceController(context));
         return controllers;
     }
 
