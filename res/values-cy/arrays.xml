@@ -78,7 +78,7 @@
     <!-- Do not translate. -->
     <string-array name="entries_font_size">
         <item msgid="6490061470416867723">Bach</item>
-        <item msgid="3579015730662088893">Default</item>
+        <item msgid="3579015730662088893">Arferol</item>
         <item msgid="1678068858001018666">Mawr</item>
         <item msgid="490158884605093126">Mwyaf</item>
     </string-array>
@@ -109,7 +109,7 @@
         <!-- Status message of Wi-Fi when it is blocked. -->
         <item>Wedi\'i rhwystro</item>
         <!-- Status message of Wi-Fi when connectiong is being verified. -->
-        <item>Temporarily avoiding poor connection</item>
+        <item>Yn osgoi cysylltiad gwael am y tro</item>
     </string-array>
     <!-- Match this with the order of NetworkInfo.DetailedState. -->
     <!-- Wi-Fi settings. The status messages when the network is known. -->
@@ -152,6 +152,14 @@
     <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
     <!-- Wi-Fi WPS setup for p2p connections.  -->
     <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
+    <string-array name="wifi_p2p_wps_setup">
+        <!-- Push button based configuration involves pushing a button on two connecting devices [CHAR LIMIT=30]-->
+        <item>Gwthio botwm</item>
+        <!-- This involves entering a pin obtained from a peer device [CHAR LIMIT=30] -->
+        <item>PIN gan ddyfais cyfaill</item>
+        <!-- This involves generating a pin from this device [CHAR LIMIT=20] -->
+        <item>PIN gan y ddyfais hon</item>
+    </string-array>
     <!-- Match this with the order of WifiP2pDevice.Status -->
     <!-- Wi-Fi p2p settings device status message -->
     <string-array name="wifi_p2p_status">
@@ -187,8 +195,8 @@
     </string-array>
     <!-- Display options for UsageStats class -->
     <string-array name="usage_stats_display_order_types">
-        <item>Usage time</item>
-        <item>Last time used</item>
+        <item>Amser defnydd</item>
+        <item>Defnyddiwyd ddiwethaf</item>
         <item>Enw\'r ap</item>
     </string-array>
     <!-- EAP method -->
@@ -236,10 +244,28 @@
         <item>Dim</item>
         <item>PAP</item>
         <item>CHAP</item>
-        <item>PAP or CHAP</item>
+        <item>PAP neu CHAP</item>
     </string-array>
     <!-- Authentication Types used in APN editor -->
     <!-- Bearer Info used in APN editor -->
+    <string-array name="bearer_entries">
+        <item>Anhysbys</item>
+        <item>LTE</item>
+        <item>HSPAP</item>
+        <item>HSPA</item>
+        <item>HSUPA</item>
+        <item>HSDPA</item>
+        <item>UMTS</item>
+        <item>EDGE</item>
+        <item>GPRS</item>
+        <item>eHRPD</item>
+        <item>EVDO_B</item>
+        <item>EVDO_A</item>
+        <item>EVDO_0</item>
+        <item>1xRTT</item>
+        <item>IS95B</item>
+        <item>IS95A</item>
+    </string-array>
     <!-- MVNO Info used in APN editor -->
     <string-array name="mvno_type_entries">
         <item>Dim</item>
@@ -251,13 +277,18 @@
         <item>GID</item>
     </string-array>
     <!-- Apps on SD installation location options in ApplicationSettings -->
+    <string-array name="app_install_location_entries">
+        <item>Internal device storage</item>
+        <item>Removable SD card</item>
+        <item>Gadael i\'r system benderfynu</item>
+    </string-array>
     <!-- Do not translate. -->
     <!-- Names of categories of app ops tabs -->
     <string-array name="app_ops_categories">
         <item>Lleoliad</item>
-        <item>Personal</item>
-        <item>Messaging</item>
-        <item>Media</item>
+        <item>Personol</item>
+        <item>Negesu</item>
+        <item>Cyfryngau</item>
         <item>Dyfais</item>
     </string-array>
     <!-- User display names for app ops codes -->
@@ -265,65 +296,65 @@
         <item>coarse location</item>
         <item>fine location</item>
         <item>GPS</item>
-        <item>vibrate</item>
-        <item>read contacts</item>
-        <item>modify contacts</item>
+        <item>dirgrynu</item>
+        <item>darllen cysylltiadau</item>
+        <item>addasu cysylltiadau</item>
         <item>darllen y log galwadau</item>
         <item>addasu\'r log galwadau</item>
-        <item>read calendar</item>
-        <item>modify calendar</item>
-        <item>wi-fi scan</item>
+        <item>darllen y calendr</item>
+        <item>addasu\'r calendr</item>
+        <item>sganio wi-fi</item>
         <item>hysbysiad</item>
         <item>cell scan</item>
         <item>galw ffôn</item>
-        <item>read SMS</item>
-        <item>write SMS</item>
-        <item>receive SMS</item>
-        <item>receive emergency SMS</item>
-        <item>receive MMS</item>
+        <item>darllen SMS</item>
+        <item>ysgrifennu SMS</item>
+        <item>derbyn SMS</item>
+        <item>derbyn SMS brys</item>
+        <item>derbyn MMS</item>
         <item>receive WAP push</item>
         <item>anfon SMS</item>
-        <item>read ICC SMS</item>
+        <item>darllen SMS ICC</item>
         <item>write ICC SMS</item>
         <item>addasu gosodiadau</item>
         <item>draw on top</item>
         <item>access notifications</item>
         <item>camera</item>
-        <item>record audio</item>
-        <item>play audio</item>
-        <item>read clipboard</item>
-        <item>modify clipboard</item>
-        <item>media buttons</item>
-        <item>audio focus</item>
-        <item>master volume</item>
-        <item>voice volume</item>
-        <item>ring volume</item>
-        <item>media volume</item>
+        <item>recordio sain</item>
+        <item>chwarae sain</item>
+        <item>darllen y clipfwrdd</item>
+        <item>addasu\'r clipfwrdd</item>
+        <item>botymau cyfryngau</item>
+        <item>ffocws sain</item>
+        <item>prif uchder sain</item>
+        <item>uchder sain llais</item>
+        <item>uchder sain caniad ffôn</item>
+        <item>uchder sain cyfryngau</item>
         <item>uchder sain larymau</item>
         <item>uchder sain hysbysiadau</item>
-        <item>bluetooth volume</item>
-        <item>keep awake</item>
+        <item>Uchder sain Bluetooth</item>
+        <item>cadw\'n effro</item>
         <item>monitor location</item>
         <item>monitor high power location</item>
-        <item>get usage stats</item>
-        <item>mute/unmute microphone</item>
+        <item>cael ystadegau defnydd</item>
+        <item>distewi/dad-ddistewi\'r meicroffon</item>
         <item>show toast</item>
         <item>project media</item>
         <item>activate VPN</item>
-        <item>write wallpaper</item>
+        <item>ysgrifennu papur wal</item>
         <item>assist structure</item>
         <item>assist screenshot</item>
         <item>read phone state</item>
-        <item>add voicemail</item>
+        <item>ychwanegu lleisbost</item>
         <item>use sip</item>
         <item>process outgoing call</item>
-        <item>fingerprint</item>
-        <item>body sensors</item>
+        <item>ôl bys</item>
+        <item>synwyryddion corff</item>
         <item>read cell broadcasts</item>
         <item>mock location</item>
         <item>read storage</item>
         <item>write storage</item>
-        <item>turn on screen</item>
+        <item>troi sgrin ymlaen</item>
         <item>get accounts</item>
         <item>run in background</item>
         <item>uchder sain hygyrchedd</item>
@@ -333,72 +364,91 @@
         <item>Lleoliad</item>
         <item>Lleoliad</item>
         <item>Lleoliad</item>
-        <item>Vibrate</item>
-        <item>Read contacts</item>
-        <item>Modify contacts</item>
+        <item>Dirgrynu</item>
+        <item>Darllen cysylltiadau</item>
+        <item>Addasu cysylltiadau</item>
         <item>Darllen y log galwadau</item>
         <item>Addasu\'r log galwadau</item>
-        <item>Read calendar</item>
-        <item>Modify calendar</item>
+        <item>Darllen y calendr</item>
+        <item>Addasu\'r calendr</item>
         <item>Lleoliad</item>
         <item>Post notification</item>
         <item>Lleoliad</item>
         <item>Galw ffôn</item>
-        <item>Read SMS/MMS</item>
-        <item>Write SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
-        <item>Receive SMS/MMS</item>
+        <item>Darllen SMS/MMS</item>
+        <item>Ysgrifennu SMS/MMS</item>
+        <item>Derbyn SMS/MMS</item>
+        <item>Derbyn SMS/MMS</item>
+        <item>Derbyn SMS/MMS</item>
+        <item>Derbyn SMS/MMS</item>
         <item>Anfon SMS/MMS</item>
-        <item>Read SMS/MMS</item>
-        <item>Write SMS/MMS</item>
+        <item>Darllen SMS/MMS</item>
+        <item>Ysgrifennu SMS/MMS</item>
         <item>Addasu gosodiadau</item>
         <item>Draw on top</item>
         <item>Access notifications</item>
         <item>Camera</item>
-        <item>Record audio</item>
-        <item>Play audio</item>
-        <item>Read clipboard</item>
-        <item>Modify clipboard</item>
-        <item>Media buttons</item>
-        <item>Audio focus</item>
-        <item>Master volume</item>
-        <item>Voice volume</item>
-        <item>Ring volume</item>
-        <item>Media volume</item>
+        <item>Recordio sain</item>
+        <item>Chwarae sain</item>
+        <item>Darllen y clipfwrdd</item>
+        <item>Addasu\'r clipfwrdd</item>
+        <item>Botymau cyfryngau</item>
+        <item>Ffocws sain</item>
+        <item>Prif uchder sain</item>
+        <item>Uchder sain llais</item>
+        <item>Uchder sain caniad ffôn</item>
+        <item>Uchder sain cyfryngau</item>
         <item>Uchder sain larymau</item>
         <item>Uchder sain hysbysiadau</item>
         <item>Bluetooth volume</item>
-        <item>Keep awake</item>
+        <item>Cadw\'n effro</item>
         <item>Lleoliad</item>
         <item>Lleoliad</item>
-        <item>Get usage stats</item>
-        <item>Mute/unmute microphone</item>
+        <item>Cael ystadegau defnydd</item>
+        <item>Distewi/dad-ddistewi\'r meicroffon</item>
         <item>Show toast</item>
         <item>Project media</item>
         <item>Activate VPN</item>
-        <item>Write wallpaper</item>
+        <item>Ysgrifennu papur wal</item>
         <item>Assist structure</item>
         <item>Assist screenshot</item>
         <item>Read phone state</item>
-        <item>Add voicemail</item>
+        <item>Ychwanegu lleisbost</item>
         <item>Use sip</item>
         <item>Process outgoing call</item>
-        <item>Fingerprint</item>
-        <item>Body sensors</item>
+        <item>Ôl bys</item>
+        <item>Synwyryddion corff</item>
         <item>Read cell broadcasts</item>
         <item>Mock location</item>
         <item>Read storage</item>
         <item>Write storage</item>
-        <item>Turn on screen</item>
+        <item>Troi sgrin ymlaen</item>
         <item>Get accounts</item>
         <item>Run in background</item>
         <item>Uchder sain hygyrchedd</item>
     </string-array>
     <!-- Titles for the list of long press timeout options. -->
+    <string-array name="long_press_timeout_selector_titles">
+        <!-- A title for the option for short long-press timeout [CHAR LIMIT=25] -->
+        <item>Byr</item>
+        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->
+        <item>Canolig</item>
+        <!-- A title for the option for long long-press timeout [CHAR LIMIT=25] -->
+        <item>Hir</item>
+    </string-array>
     <!-- Values for the list of long press timeout options. -->
     <!-- Titles for captioning typeface preference. [CHAR LIMIT=35] -->
+    <string-array name="captioning_typeface_selector_titles">
+        <item>Rhagosodiad</item>
+        <item>Sans-serif</item>
+        <item>Sans-serif condensed</item>
+        <item>Sans-serif monospace</item>
+        <item>Serif</item>
+        <item>Serif monospace</item>
+        <item>Achlysurol</item>
+        <item>Rhedol</item>
+        <item>Priflythrennau bychain</item>
+    </string-array>
     <!-- Values for captioning typeface preference. -->
     <!-- Titles for captioning font size preference. [CHAR LIMIT=35] -->
     <string-array name="captioning_font_size_selector_titles">
@@ -411,12 +461,12 @@
     <!-- Values for captioning font size preference. -->
     <!-- Titles for captioning character edge type preference. [CHAR LIMIT=35] -->
     <string-array name="captioning_edge_type_selector_titles">
-        <item>Default</item>
+        <item>Rhagosodiad</item>
         <item>Dim</item>
-        <item>Outline</item>
+        <item>Amlinell</item>
         <item>Drop shadow</item>
-        <item>Raised</item>
-        <item>Depressed</item>
+        <item>Codwyd</item>
+        <item>Gostyngwyd</item>
     </string-array>
     <!-- Values for captioning character edge type preference. -->
     <!-- Titles for captioning color preference. -->
@@ -437,56 +487,90 @@
     <!-- Short names for each VPN type, not really translatable. [CHAR LIMIT=20] -->
     <!-- Match this with the constants in VpnProfile. -->
     <!-- Longer descriptions for each VPN type. [CHAR LIMIT=100] -->
+    <string-array name="vpn_types_long">
+        <item>PPTP VPN</item>
+        <item>L2TP/IPSec VPN with pre-shared keys</item>
+        <item>L2TP/IPSec VPN gyda thystysgrifau</item>
+        <item>IPSec VPN with pre-shared keys and Xauth authentication</item>
+        <item>IPSec VPN with certificates and Xauth authentication</item>
+        <item>IPSec VPN with certificates and hybrid authentication</item>
+    </string-array>
     <!-- Match this with the constants in LegacyVpnInfo. -->
     <!-- Status for a VPN network. [CHAR LIMIT=100] -->
     <string-array name="vpn_states">
         <!-- Status message when VPN is disconnected. -->
         <item>Heb gysylltu</item>
         <!-- Status message when VPN is initializing. -->
-        <item>Initializing\u2026</item>
+        <item>Yn ymgychwyn\u2026</item>
         <!-- Status message when VPN is connecting. -->
-        <item>Connecting\u2026</item>
+        <item>Yn cysylltu\u2026</item>
         <!-- Status message when VPN is connected. -->
-        <item>Connected</item>
+        <item>Wedi cysyllltu</item>
         <!-- Status message when VPN is timeout. -->
         <item>Timeout</item>
         <!-- Status message when VPN is failed. -->
-        <item>Unsuccessful</item>
+        <item>Aflwyddiannus</item>
     </string-array>
     <!-- User content ratings for restricted users [CHAR LIMIT=30] -->
     <!-- Values for user content ratings for restricted users -->
     <!-- Values for premium SMS permission selector [CHAR LIMIT=30] -->
     <string-array name="security_settings_premium_sms_values">
         <!-- Ask user before sending to premium SMS short code. -->
-        <item>Ask</item>
+        <item>Gofyn</item>
         <!-- Never allow app to send to premium SMS short code. -->
         <item>Caniatáu Byth</item>
         <!-- Always allow app to send to premium SMS short code. -->
         <item>Caniatáu Bob Tro</item>
     </string-array>
     <!-- [CHAR LIMIT=40] Labels for memory states -->
+    <string-array name="ram_states">
+        <!-- Normal desired memory state. -->
+        <item>Arferol</item>
+        <!-- Moderate memory state, not as good as normal. -->
+        <item>Cymedrol</item>
+        <!-- Memory is running low. -->
+        <item>Isel</item>
+        <!-- Memory is critical. -->
+        <item>Critigol</item>
+        <!-- Unknown memory state -->
+        <item>\?</item>
+    </string-array>
     <!-- Display color space adjustment modes for accessibility -->
     <!-- Values for display color space adjustment modes for accessibility -->
     <!-- Battery saver mode: allowable trigger threshold levels. -->
     <!-- Process stats memory use details: labels for memory states -->
+    <string-array name="proc_stats_memory_states">
+        <item>Arferol</item>
+        <item>Cymedrol</item>
+        <item>Isel</item>
+        <item>Critigol</item>
+    </string-array>
     <!-- Process stats memory use details: labels for process -->
     <string-array name="proc_stats_process_states">
         <item>Persistent</item>
         <item>Top activity</item>
-        <item>Important (foreground)</item>
-        <item>Important (background)</item>
+        <item>Pwysig (blaendir)</item>
+        <item>Pwysig (cefndir)</item>
         <item>Copi wrth gefn</item>
         <item>Heavy weight</item>
-        <item>Service (running)</item>
-        <item>Service (restarting)</item>
+        <item>Gwasanaeth (yn rhedeg)</item>
+        <item>Gwasanaeth (ailddechrau)</item>
         <item>Receiver</item>
         <item>Cartref</item>
-        <item>Last activity</item>
+        <item>Gweithred ddiwethaf</item>
         <item>Cached (activity)</item>
         <item>Cached (activity client)</item>
         <item>Cached (empty)</item>
     </string-array>
     <!-- Array of titles for sim color for multi-sim -->
+    <string-array name="color_picker">
+        <item>Glaswyrdd</item>
+        <item>Glas</item>
+        <item>Indigo</item>
+        <item>Porffor</item>
+        <item>Pinc</item>
+        <item>Coch</item>
+    </string-array>
     <!-- Automatic storage management settings. The amount of days for the automatic storage manager
          to retain. These are shown in a list dialog. [CHAR LIMIT=70] -->
     <string-array name="automatic_storage_management_days">
