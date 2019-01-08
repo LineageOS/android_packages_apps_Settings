@@ -23,15 +23,13 @@
     android:title="@string/gesture_preference_title">
 
     <org.lineageos.internal.lineageparts.LineagePartsPreference
-        android:key="touchscreen_gesture_settings"
-        lineage:requiresFeature="lineagehardware:FEATURE_TOUCHSCREEN_GESTURES" />
+        android:key="touchscreen_gesture_settings" />
 
     <lineageos.preference.RemotePreference
             android:key="device_touchscreen_gesture_settings"
             android:title="@string/touchscreen_gesture_settings_title"
             android:summary="@string/touchscreen_gesture_settings_summary"
-            lineage:replacesKey="touchscreen_gesture_settings"
-            lineage:requiresFeature="lineagehardware:FEATURE_TOUCHSCREEN_GESTURES">
+            lineage:replacesKey="touchscreen_gesture_settings">
         <intent android:action="org.lineageos.settings.device.GESTURE_SETTINGS" />
     </lineageos.preference.RemotePreference>
 
