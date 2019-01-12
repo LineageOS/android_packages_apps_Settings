@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33c6dac9_cf5dc6b5",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2019-01-12T18:18:05Z",
+      "side": 1,
+      "message": "The changes to this file are completely unnecessary and in fact break the telephone information screen: *#*#4636#+#+. Reverting this file only fixes the crash\nReason for the crash: this screen loads \"R.layout.radio_info\" (see line 363) which has \"number\", not \"sim_number\"",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 20
+      },
+      "revId": "dc071ca1ca44a15455a185b88203e1189133b459",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
