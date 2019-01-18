@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a6e7bbd_6d8cfedb",
+        "filename": "src/com/android/settings/development/WirelessAdbPreferenceController.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-18T09:55:58Z",
+      "side": 1,
+      "message": "Should be made public.",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 12
+      },
+      "revId": "725401f9a601aa332f1a448af8e71a2f84ad19af",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5172f49e_5aa2b7bf",
+        "filename": "src/com/android/settings/development/WirelessAdbWarningDialog.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-18T09:55:58Z",
+      "side": 1,
+      "message": "Can be removed.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "725401f9a601aa332f1a448af8e71a2f84ad19af",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf88527_efea78c9",
+        "filename": "src/com/android/settings/development/WirelessAdbWarningDialog.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-18T09:55:58Z",
+      "side": 1,
+      "message": "No need to duplicate isConnectedToSupportedInterface() method if this code is applied:\n\n        final WirelessAdbDialogHost host \u003d (WirelessAdbDialogHost) getTargetFragment();\n        if (host \u003d\u003d null) {\n            return;\n        }\n        if (host.isConnectedToSupportedInterface()) {",
+      "revId": "725401f9a601aa332f1a448af8e71a2f84ad19af",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d00fb892_74c59017",
+        "filename": "src/com/android/settings/development/WirelessAdbWarningDialog.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-18T09:55:58Z",
+      "side": 1,
+      "message": "Can be removed.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 5
+      },
+      "revId": "725401f9a601aa332f1a448af8e71a2f84ad19af",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
