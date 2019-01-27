@@ -53,7 +53,7 @@ public class OemUnlockPreferenceController extends DeveloperOptionsPreferenceCon
     public OemUnlockPreferenceController(Context context, Activity activity,
             DevelopmentSettingsDashboardFragment fragment) {
         super(context);
-        mOemLockManager = (OemLockManager) context.getSystemService(Context.OEM_LOCK_SERVICE);
+        mOemLockManager = getLockManager(context);
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         mFragment = fragment;
@@ -61,6 +61,15 @@ public class OemUnlockPreferenceController extends DeveloperOptionsPreferenceCon
             mChooseLockSettingsHelper = new ChooseLockSettingsHelper(activity, mFragment);
         } else {
             mChooseLockSettingsHelper = null;
+        }
+    }
+
+    private OemLockManager getLockManager(Context context) {
+        try {
+            return (OemLockManager) context.getSystemService(Context.OEM_LOCK_SERVICE);
+        } catch (Exception e) {
+            // Ignore
+            return null;
         }
     }
 
@@ -182,7 +191,7 @@ public class OemUnlockPreferenceController extends DeveloperOptionsPreferenceCon
      */
     @VisibleForTesting
     boolean isBootloaderUnlocked() {
-        return mOemLockManager.isDeviceOemUnlocked();
+        return mOemLockManager != null && mOemLockManager.isDeviceOemUnlocked();
     }
 
     private boolean enableOemUnlockPreference() {
@@ -209,14 +218,14 @@ public class OemUnlockPreferenceController extends DeveloperOptionsPreferenceCon
     @VisibleForTesting
     boolean isOemUnlockAllowedByUserAndCarrier() {
         final UserHandle userHandle = UserHandle.of(UserHandle.myUserId());
-        return mOemLockManager.isOemUnlockAllowedByCarrier()
+        return mOemLockManager == null || (mOemLockManager.isOemUnlockAllowedByCarrier()
                 && !mUserManager.hasBaseUserRestriction(UserManager.DISALLOW_FACTORY_RESET,
-                userHandle);
+                userHandle));
     }
 
     @VisibleForTesting
     boolean isOemUnlockedAllowed() {
-        return mOemLockManager.isOemUnlockAllowed();
+        return mOemLockManager != null && mOemLockManager.isOemUnlockAllowed();
     }
 
 }

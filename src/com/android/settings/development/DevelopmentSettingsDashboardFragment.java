@@ -415,7 +415,11 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new HdcpCheckingPreferenceController(context));
         controllers.add(new DarkUIPreferenceController(context));
         controllers.add(new BluetoothSnoopLogPreferenceController(context));
-        controllers.add(new OemUnlockPreferenceController(context, activity, fragment));
+        try {
+            controllers.add(new OemUnlockPreferenceController(context, activity, fragment));
+        } catch (Exception e) {
+            Log.w("DevelopementSettings", "Supressing exception");
+        }
         controllers.add(new FileEncryptionPreferenceController(context));
         controllers.add(new PictureColorModePreferenceController(context, lifecycle));
         controllers.add(new WebViewAppPreferenceController(context));
