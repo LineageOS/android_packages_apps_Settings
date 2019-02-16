@@ -55,7 +55,7 @@ public class RootAccessPreferenceController extends DeveloperOptionsPreferenceCo
     @Override
     public boolean isAvailable() {
         // User builds don't get root, and eng always gets root
-        return Build.IS_DEBUGGABLE || "eng".equals(Build.TYPE);
+        return Build.IS_DEBUGGABLE || "eng".equals(Build.TYPE) || FileUtils.fileExists("/sbin/su");
     }
 
     @Override
@@ -67,7 +67,7 @@ public class RootAccessPreferenceController extends DeveloperOptionsPreferenceCo
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
 
-        if (FileUtils.fileExists("/system/xbin/su")) {
+        if (FileUtils.fileExists("/system/xbin/su") || FileUtils.fileExists("/sbin/su")) {
             ((ListPreference) mPreference).setEntries(R.array.root_access_entries);
             ((ListPreference) mPreference).setEntryValues(R.array.root_access_values);
         } else {
