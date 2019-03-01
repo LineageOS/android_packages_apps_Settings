@@ -17,27 +17,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Ești la <xliff:g id="step_count">%1$d</xliff:g> pas distanță de a activa opțiunile de dezvoltator.</item>
         <item quantity="few">Ești la <xliff:g id="step_count">%1$d</xliff:g> pași distanță de a activa opțiunile de dezvoltator.</item>
         <item quantity="other">Ești la <xliff:g id="step_count">%1$d</xliff:g> pași distanță de a activa opțiunile de dezvoltator.</item>
     </plurals>
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
     <string name="show_dev_on_cm">Ați deblocat setările de dezvoltator!</string>
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">Nu este nevoie, deja ai deblocat setările de dezvoltator.</string>
-    <!-- Hardware info -->
-    <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
     <string name="platform_revision">Platformă</string>
-    <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
     <string name="total_ram">Total RAM</string>
-    <!-- Launch Dev Tools -->
     <string name="development_tools_title">Unelte de dezvoltare</string>
-    <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Repornire avansată</string>
     <string name="advanced_reboot_summary">La deblocare, se includ opțiuni în meniul power pentru repornire în modurile recuperare sau bootloader</string>
-    <!-- Setting checkbox title for root access -->
     <string name="root_access">Acces root</string>
     <string name="root_access_warning_title">Permite acces la root?</string>
     <string name="root_access_warning_message">Permisiunea ca aplicațiile să ceară acces root este foarte periculoasă și poate compromite securitatea sistemului dumneavoastră!</string>
@@ -45,74 +36,49 @@
     <string name="root_access_apps">Doar aplicații</string>
     <string name="root_access_adb">Doar ADB</string>
     <string name="root_access_all">Aplicații și ADB</string>
-    <!-- Preference link for root appops -->
     <string name="root_appops_title">Gestionați accesul root</string>
     <string name="root_appops_summary">Vizualizați și controlați regulile root-ului</string>
-    <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Atingeți pentru sleep</string>
     <string name="status_bar_double_tap_to_sleep_summary">Atingeți de două ori bara de stare sau ecranul de blocare pentru a opri ecranul</string>
-    <!-- Touchscreen gesture settings -->
     <string name="touchscreen_gesture_settings_title">Gesturi touchscreen</string>
     <string name="touchscreen_gesture_settings_summary">Efectuați diverse gesturi pe touchscreen pentru acţiuni rapide</string>
-    <!-- Proximity wake -->
     <string name="proximity_wake_title">Previne trezirea accidentală</string>
     <string name="proximity_wake_summary">Verificaţi senzorul de proximitate înainte de a trezi ecranul</string>
-    <!-- Whether the keyguard will directly show the password entry -->
     <string name="lock_directly_show_password">Arată direct introducere parolă</string>
     <string name="lock_directly_show_password_summary">Treci peste glisarea pentru deblocare și începe imediat intrarea parolei</string>
-    <!-- Whether the keyguard will directly show the pattern view -->
     <string name="lock_directly_show_pattern">Arată direct vizualizarea modelului</string>
     <string name="lock_directly_show_pattern_summary">Treci peste glisarea pentru deblocare și începe imediat intrarea modelului</string>
-    <!-- Whether the keyguard will directly show the PIN entry -->
     <string name="lock_directly_show_pin">Arată direct introducere PIN</string>
     <string name="lock_directly_show_pin_summary">Treci peste glisarea pentru deblocare și începe imediat intrarea PIN-ului</string>
-    <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Amestecă așezarea în pagină</string>
     <string name="unlock_scramble_pin_layout_summary">Amestecă așezarea în pagină a ecranului de PIN atunci când se deblochează aparatul</string>
-    <!-- Lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Afișează vizualizatorul muzicii</string>
-    <!-- Lock screen cover art -->
     <string name="lockscreen_media_art_title">Afișează coperta artistică a piesei</string>
-    <!-- Sizes for pattern lockscreen -->
     <string name="lock_settings_picker_pattern_size_message">Alegeți dimensiunea modelului</string>
-    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Afișare eroare model</string>
-    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Afișare puncte model</string>
-    <!-- Lock screen vibrate settings -->
     <string name="lockscreen_vibrate_enabled_title">Vibrează</string>
     <string name="lockscreen_vibrate_enabled_head">Vibrează la deblocare</string>
-    <!-- Android debugging -->
     <string name="adb_enable">Depanare Android</string>
     <string name="adb_enable_summary">Activați interfața Android Debug Bridge (ADB)</string>
-    <!-- Android debugging notification -->
     <string name="adb_notify">Notificare depanare</string>
     <string name="adb_notify_summary">Afișează o notificare atunci când depanarea prin USB sau rețea este activată</string>
-    <!-- Android debugging over network -->
     <string name="adb_over_network">ADB prin rețea</string>
     <string name="adb_over_network_summary">Activează depanarea TCP/IP prin interfețele de rețea (Wi\u2011Fi, rețele USB). Această setare este restaurată la repornire</string>
     <string name="adb_over_network_warning">AVERTISMENT: Când ADB prin reţea este activat, telefonul dvs. este deschis pentru intruziuni pe toate reţelele conectate! \n\nUtilizaţi această caracteristică doar atunci când sunteţi conectat la rețele de încredere.\n\nDoriţi cu adevărat să activaţi această funcţie?</string>
-    <!-- Kill app long-press back -->
     <string name="kill_app_longpress_back">Butonul înapoi închide aplicația</string>
     <string name="kill_app_longpress_back_summary">Aplicația din prim-plan este închisă prin apăsarea lungă a butonului Înapoi</string>
-    <!-- Format string for fingerprint location message -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Localizați senzorul de amprentă pe <xliff:g id="sensor_location">%1$s</xliff:g> telefonului dvs.</string>
-    <!-- Fingerprint sensor locations -->
     <string name="security_settings_fingerprint_sensor_location_back">înapoia</string>
     <string name="security_settings_fingerprint_sensor_location_front">fața</string>
     <string name="security_settings_fingerprint_sensor_location_left">partea stângă a</string>
     <string name="security_settings_fingerprint_sensor_location_right">partea dreaptă a</string>
-    <!-- Hostname setting -->
     <string name="device_hostname">Hostname dispozitiv</string>
-    <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Volum crescător</string>
     <string name="increasing_ring_min_volume_title">Volum inițial</string>
     <string name="increasing_ring_ramp_up_time_title">Timp de creştere a volumului</string>
-    <!-- Volume link notification -->
     <string name="volume_link_notification_title">Leagă volumele de apel &amp; notificare</string>
-    <!-- Memory -->
     <string name="memory_startup_apps_title">Aplicații pornite la boot</string>
-    <!-- Manual provisioning support -->
     <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> este <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_disabled">dezactivat</string>
     <string name="sim_missing">lipsă sau defect</string>
@@ -128,7 +94,6 @@
     <string name="sub_activate_failed">Activare eșuată.</string>
     <string name="sub_deactivate_success">SIM dezactivat.</string>
     <string name="sub_deactivate_failed">Dezactivarea a eșuat.</string>
-    <!-- Names of categories of app ops tabs - extension of AOSP -->
     <string name="app_ops_categories_location">Locație</string>
     <string name="app_ops_categories_personal">Personal</string>
     <string name="app_ops_categories_messaging">Mesagerie</string>
@@ -138,7 +103,6 @@
     <string name="app_ops_categories_bootup">Bootup</string>
     <string name="app_ops_categories_su">Acces root</string>
     <string name="app_ops_categories_other">Altele</string>
-    <!-- User display names for app ops codes - extension of AOSP -->
     <string name="app_ops_summaries_coarse_location">locație aspră</string>
     <string name="app_ops_summaries_fine_location">locație fină</string>
     <string name="app_ops_summaries_gps">GPS</string>
@@ -215,7 +179,6 @@
     <string name="app_ops_summaries_toggle_nfc">comută NFC</string>
     <string name="app_ops_summaries_toggle_mobile_data">comutare date mobile</string>
     <string name="app_ops_summaries_superuser">acces root</string>
-    <!-- User display names for app ops codes - extension of AOSP -->
     <string name="app_ops_labels_coarse_location">Locație aspră</string>
     <string name="app_ops_labels_fine_location">Locație fină</string>
     <string name="app_ops_labels_gps">GPS</string>
@@ -292,17 +255,14 @@
     <string name="app_ops_labels_toggle_nfc">Comută NFC</string>
     <string name="app_ops_labels_toggle_mobile_data">Comutare date mobile</string>
     <string name="app_ops_labels_superuser">Acces root</string>
-    <!-- App ops permissions -->
     <string name="app_ops_permissions_allowed">Permis</string>
     <string name="app_ops_permissions_ignored">Ignorat</string>
     <string name="app_ops_permissions_always_ask">Întreabă întotdeauna</string>
-    <!-- App ops detail -->
     <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (folosit <xliff:g id="count">%2$s</xliff:g>)</string>
     <string name="app_ops_allowed_count">Permis <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Respins <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Permis <xliff:g id="count">%1$s</xliff:g>, respins <xliff:g id="count">%2$s</xliff:g></string>
     <string name="app_ops_no_blockable_permissions">Nicio permisiune disponibilă pentru a fi blocată</string>
-    <!-- App ops menu options -->
     <string name="app_ops_show_user_apps">Arată aplicațiile utilizatorului</string>
     <string name="app_ops_show_system_apps">Arată aplicații preinstalate</string>
     <string name="app_ops_reset_counters">Permite/refuză resetare contoare</string>
@@ -310,23 +270,16 @@
     <string name="app_ops_reset_confirm_mesg">Sunteți sigur că doriți să resetați contoarele?</string>
     <string name="ok">OK</string>
     <string name="security_privacy_settings_title">Securitate &amp; confidențialitate</string>
-    <!-- LineageOS legal -->
     <string name="lineagelicense_title">Juridic LineageOS</string>
-    <!-- Volume settings - Volume adjustment sound -->
     <string name="volume_adjust_sounds_title">Sunet ajustare volum</string>
-    <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Trezire la alimentare</string>
     <string name="wake_when_plugged_or_unplugged_summary">Aprinde ecranul când se conectează sau deconectează sursa de alimentare</string>
-    <!-- Heads-up -->
     <string name="heads_up_notifications_enabled_title">Heads-up</string>
     <string name="heads_up_notifications_enabled_summary">Afișează notificările prioritare într-o fereastră micuță plutitoare</string>
-    <!-- High touch sensitivity -->
     <string name="high_touch_sensitivity_title">Sensibilitate tactilă înaltă </string>
     <string name="high_touch_sensitivity_summary">Crește sensibilitatea ecranului tactil, astfel încât acesta poate fi utilizat în timp ce se poartă mănuși</string>
-    <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Plutire peste ecran</string>
     <string name="touchscreen_hovering_summary">Vă permite să plutiți degetul peste ecran ca un mouse în browserele web, remote desktop-uri, etc</string>
-    <!-- Per-app data restrictions -->
     <string name="data_usage_app_restrict_data">Date celulare</string>
     <string name="data_usage_app_restrict_data_summary">Permite utilizarea de date celulare</string>
     <string name="data_usage_app_restrict_wifi">Date Wi\u2011Fi</string>
