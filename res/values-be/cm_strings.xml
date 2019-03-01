@@ -17,19 +17,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
     <string name="show_dev_on_cm">Налады для распрацоўнікаў улучаны!</string>
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">Не патрэбна, налады для распрацоўнікаў ужо ўлучаны.</string>
-    <!-- Hardware info -->
-    <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
-    <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
-    <!-- Launch Dev Tools -->
     <string name="development_tools_title">Прылады распрацоўкі</string>
-    <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Варыянты перазагрузкі</string>
-    <!-- Setting checkbox title for root access -->
     <string name="root_access">Рэжым суперкарыстальніка</string>
     <string name="root_access_warning_title">Дазволіць выкарыстанне Суперкарыстальніка?</string>
     <string name="root_access_warning_message">Выкарыстанне дадаткамі праў суперкарыстальніка можа быць вельмі небяспечным і ставіць пад пагрозу бяспеку вашай прылады!</string>
@@ -37,55 +28,30 @@
     <string name="root_access_apps">Толькі для дадаткаў</string>
     <string name="root_access_adb">Толькі для ADB</string>
     <string name="root_access_all">Для дадаткаў і ADB</string>
-    <!-- Preference link for root appops -->
-    <!-- Double tap to sleep on status bar or lockscreen -->
-    <!-- Touchscreen gesture settings -->
-    <!-- Proximity wake -->
     <string name="proximity_wake_title">Прадухіляць выпадковае ўлучэнне</string>
-    <!-- Whether the keyguard will directly show the password entry -->
     <string name="lock_directly_show_password">Адразу прапанаваць увод пароля</string>
-    <!-- Whether the keyguard will directly show the pattern view -->
     <string name="lock_directly_show_pattern">Адразу прапанаваць увод графічнага ключа</string>
-    <!-- Whether the keyguard will directly show the PIN entry -->
     <string name="lock_directly_show_pin">Адразу прапанаваць увод PIN-кода</string>
-    <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Змешваць кнопкі</string>
     <string name="unlock_scramble_pin_layout_summary">Перастаўляць кнопкі ўводу PIN-кода ў выпадковым парадку</string>
-    <!-- Lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Візуалізацыя спектра музыкі</string>
-    <!-- Lock screen cover art -->
-    <!-- Sizes for pattern lockscreen -->
     <string name="lock_settings_picker_pattern_size_message">Абяры памер графічнага ключа</string>
-    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Паказваць няправільны ўвод</string>
-    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Паказваць кропкі</string>
-    <!-- Lock screen vibrate settings -->
     <string name="lockscreen_vibrate_enabled_title">Вібрацыя</string>
-    <!-- Android debugging -->
     <string name="adb_enable">Рэжым адладкі</string>
-    <!-- Android debugging notification -->
     <string name="adb_notify">Паведамленьні наладжваньня</string>
     <string name="adb_notify_summary">Паказваць паведамленьне аб тым, што задзейнічана наладка па USB ці сетцы</string>
-    <!-- Android debugging over network -->
     <string name="adb_over_network">Адладка па сетцы</string>
     <string name="adb_over_network_summary">Уключыць рэжым адладкі праз сеткавыя інтэрфейсы (Wi-Fi і USB-сеткі). Адладка адключаецца пры перазагрузцы прылады</string>
     <string name="adb_over_network_warning">УВАГА: калі ўключана адладка па сетцы, прылада адкрыта для некантралюемага доступу з усіх падлучаных сетак!\n\nСкарыстайце гэту функцыю толькі тады, калі вы падлучаны да давераных сетак.\n\nВы сапраўды хочаце ўключыць гэту функцыю?</string>
-    <!-- Kill app long-press back -->
     <string name="kill_app_longpress_back">Зачыненне дадатку</string>
     <string name="kill_app_longpress_back_summary">Завяршаць працу бягучага дадатку ўтрымліваннем кнопкі \"Назад\"</string>
-    <!-- Format string for fingerprint location message -->
-    <!-- Fingerprint sensor locations -->
-    <!-- Hostname setting -->
     <string name="device_hostname">Сеткавае імя прылады</string>
-    <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Нарастальная гучнасць званку</string>
     <string name="increasing_ring_min_volume_title">Пачатковая гучнасць</string>
     <string name="increasing_ring_ramp_up_time_title">Час павелічэння</string>
-    <!-- Volume link notification -->
-    <!-- Memory -->
     <string name="memory_startup_apps_title">Улучана падчас запуску прылады</string>
-    <!-- Manual provisioning support -->
     <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> — <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_disabled">адключана</string>
     <string name="sim_missing">адсутнічае альбо няспраўная</string>
@@ -101,7 +67,6 @@
     <string name="sub_activate_failed">Памылка падчас актывацыі.</string>
     <string name="sub_deactivate_success">SIM дэактывована.</string>
     <string name="sub_deactivate_failed">Памылка падчас дэактывацыі.</string>
-    <!-- Names of categories of app ops tabs - extension of AOSP -->
     <string name="app_ops_categories_location">Месцазнаходжанне</string>
     <string name="app_ops_categories_personal">Асабістыя дадзеныя</string>
     <string name="app_ops_categories_messaging">Паведамленьні</string>
@@ -111,7 +76,6 @@
     <string name="app_ops_categories_bootup">Загрузка</string>
     <string name="app_ops_categories_su">Суперкарыстальнік</string>
     <string name="app_ops_categories_other">Іншы</string>
-    <!-- User display names for app ops codes - extension of AOSP -->
     <string name="app_ops_summaries_coarse_location">прыблізнае месцазнаходжанне</string>
     <string name="app_ops_summaries_fine_location">дакладнае месцазнаходжанне</string>
     <string name="app_ops_summaries_gps">GPS-модуль</string>
@@ -181,7 +145,6 @@
     <string name="app_ops_summaries_toggle_nfc">пераключыць NFC</string>
     <string name="app_ops_summaries_toggle_mobile_data">пераключыць стан сотавай сеткі</string>
     <string name="app_ops_summaries_superuser">суперкарыстальнік</string>
-    <!-- User display names for app ops codes - extension of AOSP -->
     <string name="app_ops_labels_coarse_location">Прыблізнае месцазнаходжанне</string>
     <string name="app_ops_labels_fine_location">Дакладнае месцазнаходжанне</string>
     <string name="app_ops_labels_gps">GPS</string>
@@ -252,35 +215,25 @@
     <string name="app_ops_labels_toggle_nfc">Пераключыць NFC</string>
     <string name="app_ops_labels_toggle_mobile_data">пераключыць стан сотавай сеткі</string>
     <string name="app_ops_labels_superuser">Рэжым суперкарыстальніка</string>
-    <!-- App ops permissions -->
     <string name="app_ops_permissions_allowed">Дазваляць</string>
     <string name="app_ops_permissions_ignored">Забараняць</string>
     <string name="app_ops_permissions_always_ask">Пытаць</string>
-    <!-- App ops detail -->
     <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (выкарыстана <xliff:g id="count">%2$s</xliff:g>)</string>
     <string name="app_ops_allowed_count">Дазволена <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Забаронена <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Дазволена <xliff:g id="count">%1$s</xliff:g>, забаронена <xliff:g id="count">%2$s</xliff:g></string>
-    <!-- App ops menu options -->
     <string name="app_ops_show_user_apps">Загружаныя дадаткі</string>
     <string name="app_ops_show_system_apps">Сістэмныя дадаткі</string>
     <string name="app_ops_reset_counters">Скінуць лічыльнікі</string>
     <string name="app_ops_reset_confirm_title">Пацверджанне скіду</string>
     <string name="app_ops_reset_confirm_mesg">Вы ўпэўнены, што хочаце скінуць лічыльнікі?</string>
     <string name="ok">Добра</string>
-    <!-- LineageOS legal -->
     <string name="lineagelicense_title">Палітыка прыватнасці LineageOS</string>
-    <!-- Volume settings - Volume adjustment sound -->
     <string name="volume_adjust_sounds_title">Гук пры рэгулёўцы гучнасці</string>
-    <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Улучэнне пры зарадцы</string>
     <string name="wake_when_plugged_or_unplugged_summary">Улучаць экран пры падлучэнні ці адключэнні крыніцы сілкавання</string>
-    <!-- Heads-up -->
-    <!-- High touch sensitivity -->
     <string name="high_touch_sensitivity_title">Рэжым пальчаткаў</string>
     <string name="high_touch_sensitivity_summary">Павялічваць адчувальнасць экрана для магчымасці працы ў пальчатках</string>
-    <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Навядзенне пальца</string>
     <string name="touchscreen_hovering_summary">Распазнаваць набліжэнне пальца да экрана для падзей навядзення курсора ў браўзары ці іншых дадатках</string>
-    <!-- Per-app data restrictions -->
 </resources>

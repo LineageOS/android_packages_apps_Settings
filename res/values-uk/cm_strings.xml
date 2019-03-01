@@ -17,19 +17,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
     <string name="show_dev_on_cm">Ви увімкнули налаштування розробника!</string>
-    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">Немає необхідності, ви вже увімкнули налаштування для розробників.</string>
-    <!-- Hardware info -->
-    <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
-    <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
-    <!-- Launch Dev Tools -->
     <string name="development_tools_title">Інструм. розробника</string>
-    <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Розширене перезавантаження</string>
-    <!-- Setting checkbox title for root access -->
     <string name="root_access">Root доступ</string>
     <string name="root_access_warning_title">Дозволити root доступ?</string>
     <string name="root_access_warning_message">Дозвіл програмам отримувати root доступ може бути дуже небезпечним і ставить під загрозу безпеку вашої системи!</string>
@@ -37,65 +28,40 @@
     <string name="root_access_apps">Тільки програми</string>
     <string name="root_access_adb">Тільки ADB</string>
     <string name="root_access_all">Програми та ADB</string>
-    <!-- Preference link for root appops -->
     <string name="root_appops_title">Керування root правами</string>
     <string name="root_appops_summary">Перегляд та керування root правилами</string>
-    <!-- Double tap to sleep on status bar or lockscreen -->
-    <!-- Touchscreen gesture settings -->
-    <!-- Proximity wake -->
     <string name="proximity_wake_title">Запобігання випадкового пробудження</string>
-    <!-- Whether the keyguard will directly show the password entry -->
     <string name="lock_directly_show_password">Відразу пропонувати введення паролю</string>
-    <!-- Whether the keyguard will directly show the pattern view -->
     <string name="lock_directly_show_pattern">Відразу пропонувати введення графічного ключа</string>
-    <!-- Whether the keyguard will directly show the PIN entry -->
     <string name="lock_directly_show_pin">Відразу пропонувати введення PIN-коду</string>
-    <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Перемішана розкладка</string>
     <string name="unlock_scramble_pin_layout_summary">Перемішувати розкладку PIN-коду під час розблокування пристрою</string>
-    <!-- Lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Візуалізація під час програвання музики</string>
-    <!-- Lock screen cover art -->
     <string name="lockscreen_media_art_title">Показувати обкладинку мультимедіа</string>
-    <!-- Sizes for pattern lockscreen -->
     <string name="lock_settings_picker_pattern_size_message">Оберіть розмір шаблону</string>
-    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Показувати неправильний ключ</string>
-    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Показувати точки</string>
-    <!-- Lock screen vibrate settings -->
     <string name="lockscreen_vibrate_enabled_title">Вібро</string>
     <string name="lockscreen_vibrate_enabled_head">Вібрувати при розблокуванні</string>
-    <!-- Android debugging -->
     <string name="adb_enable">Налагодження Android</string>
     <string name="adb_enable_summary">Увімкнути інтерфейс Android Debug Bridge (ADB)</string>
-    <!-- Android debugging notification -->
     <string name="adb_notify">Сповіщення налагодження</string>
     <string name="adb_notify_summary">Відображати сповіщення, коли налагодження USB або по мережі увімкнено</string>
-    <!-- Android debugging over network -->
     <string name="adb_over_network">ADB по мережі</string>
     <string name="adb_over_network_summary">Увімкнути налагодження TCP/IP через мережеві інтерфейси (Wi-Fi, USB мережі). Це налаштування скидається при перезавантаженні</string>
     <string name="adb_over_network_warning">УВАГА: коли включено налагодження по мережі, пристрій відкритий для неконтрольованого доступу з усіх підключених мереж!\n\nВикористовуйте цю функцію тільки тоді, коли ви підключені до довірених мереж.\n\nВи дійсно хочете увімкнути цю функцію?</string>
-    <!-- Kill app long-press back -->
     <string name="kill_app_longpress_back">Закрити програму</string>
     <string name="kill_app_longpress_back_summary">Довгий натиск на кнопку «Назад» закриє запущену програму</string>
-    <!-- Format string for fingerprint location message -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Сканер відбитку пальців розташовано на <xliff:g id="sensor_location">%1$s</xliff:g> вашого телефону.</string>
-    <!-- Fingerprint sensor locations -->
     <string name="security_settings_fingerprint_sensor_location_back">задній панелі</string>
     <string name="security_settings_fingerprint_sensor_location_front">передній панелі</string>
     <string name="security_settings_fingerprint_sensor_location_left">ліва сторона</string>
     <string name="security_settings_fingerprint_sensor_location_right">права сторона</string>
-    <!-- Hostname setting -->
     <string name="device_hostname">Ім’я пристрою</string>
-    <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Наростаюча гучність дзвінка</string>
     <string name="increasing_ring_min_volume_title">Початкова гучність</string>
     <string name="increasing_ring_ramp_up_time_title">Час збільшення</string>
-    <!-- Volume link notification -->
-    <!-- Memory -->
     <string name="memory_startup_apps_title">Додатки з автозапуском</string>
-    <!-- Manual provisioning support -->
     <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> — <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_disabled">вимкнено</string>
     <string name="sim_missing">відсутній або несправний</string>
@@ -111,7 +77,6 @@
     <string name="sub_activate_failed">Помилка активації.</string>
     <string name="sub_deactivate_success">SIM деактивована.</string>
     <string name="sub_deactivate_failed">Помилка деактивації.</string>
-    <!-- Names of categories of app ops tabs - extension of AOSP -->
     <string name="app_ops_categories_location">Місцезнаходження</string>
     <string name="app_ops_categories_personal">Особисті дані</string>
     <string name="app_ops_categories_messaging">Повідомлення</string>
@@ -121,7 +86,6 @@
     <string name="app_ops_categories_bootup">Завантаження</string>
     <string name="app_ops_categories_su">Root-доступ</string>
     <string name="app_ops_categories_other">Інше</string>
-    <!-- User display names for app ops codes - extension of AOSP -->
     <string name="app_ops_summaries_coarse_location">приблизне місце розташування</string>
     <string name="app_ops_summaries_fine_location">точне місце розташування</string>
     <string name="app_ops_summaries_gps">GPS</string>
@@ -192,7 +156,6 @@
     <string name="app_ops_summaries_toggle_nfc">переключити NFC</string>
     <string name="app_ops_summaries_toggle_mobile_data">перемикати стільникові дані</string>
     <string name="app_ops_summaries_superuser">root доступ</string>
-    <!-- User display names for app ops codes - extension of AOSP -->
     <string name="app_ops_labels_coarse_location">Приблизне розташування</string>
     <string name="app_ops_labels_fine_location">Точне розташування</string>
     <string name="app_ops_labels_gps">GPS</string>
@@ -263,38 +226,28 @@
     <string name="app_ops_labels_toggle_nfc">Перемикати NFC</string>
     <string name="app_ops_labels_toggle_mobile_data">Перемикати стільникові дані</string>
     <string name="app_ops_labels_superuser">Root доступ</string>
-    <!-- App ops permissions -->
     <string name="app_ops_permissions_allowed">Дозволено</string>
     <string name="app_ops_permissions_ignored">Ігнорується</string>
     <string name="app_ops_permissions_always_ask">Завжди питати</string>
-    <!-- App ops detail -->
     <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (використано <xliff:g id="count">%2$s</xliff:g>)</string>
     <string name="app_ops_allowed_count">Дозволено <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Заборонено <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Дозволено <xliff:g id="count">%1$s</xliff:g>, заборонено <xliff:g id="count">%2$s</xliff:g></string>
     <string name="app_ops_no_blockable_permissions">Відсутні дозволи для блокування</string>
-    <!-- App ops menu options -->
     <string name="app_ops_show_user_apps">Показати користувацькі програми</string>
     <string name="app_ops_show_system_apps">Показати системні програми</string>
     <string name="app_ops_reset_counters">Скинути лічильники дозволу/заборони</string>
     <string name="app_ops_reset_confirm_title">Підтвердити скидання лічильників</string>
     <string name="app_ops_reset_confirm_mesg">Ви впевнені що хочете скинути лічильники?</string>
     <string name="ok">OK</string>
-    <!-- LineageOS legal -->
     <string name="lineagelicense_title">Політика конфіденційності LineageOS</string>
-    <!-- Volume settings - Volume adjustment sound -->
     <string name="volume_adjust_sounds_title">Звуки регулювання гучності</string>
-    <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Екран прокидається при підключені</string>
     <string name="wake_when_plugged_or_unplugged_summary">Екран прокидається при підключені до зарядного пристрою</string>
-    <!-- Heads-up -->
     <string name="heads_up_notifications_enabled_title">Спливаючі сповіщення</string>
     <string name="heads_up_notifications_enabled_summary">Відображати пріоритетні сповіщення у невеликому плаваючому вікні</string>
-    <!-- High touch sensitivity -->
     <string name="high_touch_sensitivity_title">Висока чутливість дотику</string>
     <string name="high_touch_sensitivity_summary">Підвищити чутливість сенсорного екрану для користуванням пристроєм у рукавичках</string>
-    <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Зависання над сенсорним екраном</string>
     <string name="touchscreen_hovering_summary">Дозволяє виділяти елементи інтерфейсу при зависанні над ними без дотику</string>
-    <!-- Per-app data restrictions -->
 </resources>
