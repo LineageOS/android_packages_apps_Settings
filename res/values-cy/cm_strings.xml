@@ -31,6 +31,7 @@
     <string name="total_ram">Cyfanswm RAM</string>
     <string name="development_tools_title">Offer datblygu</string>
     <string name="advanced_reboot_title">Ailgychwyn arbennig</string>
+    <string name="advanced_reboot_summary">Pan wedi datgloi, cynnwys opsiynau yn y ddewislen pŵer i ailgychwyn y system neu ailgychwyn i\'r modd adfer</string>
     <string name="root_access">Mynediad craidd</string>
     <string name="root_access_warning_title">Caniatáu mynediad craidd?</string>
     <string name="root_access_warning_message">Mae caniatáu i apiau gael mynediad craidd yn hynod beryglus a gall peryglu diogelwch dy ddyfais!</string>
@@ -40,19 +41,31 @@
     <string name="root_access_all">Apiau ac ADB</string>
     <string name="root_appops_title">Rheoli mynediad craidd</string>
     <string name="root_appops_summary">Gweld a rheoli rheolau craidd</string>
-    <string name="status_bar_double_tap_to_sleep_title">Taro i gysgu</string>
-    <string name="status_bar_double_tap_to_sleep_summary">Taro dwywaith ar y bar statws neu\'r sgrin cloi i droi\'r sgrin i ffwrdd</string>
+    <string name="status_bar_double_tap_to_sleep_title">Tapio i gysgu</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Tapio dwywaith ar y bar statws neu\'r sgrin cloi i droi\'r sgrin i ffwrdd</string>
+    <string name="touchscreen_gesture_settings_title">Ystumiau sgrin gyffwrdd</string>
+    <string name="touchscreen_gesture_settings_summary">Perfformio ystumiau amrywiol ar y sgrin gyffwrdd am weithredoedd cyflym</string>
+    <string name="proximity_wake_title">Rhwystro deffro ar gam</string>
+    <string name="proximity_wake_summary">Gwirio\'r synhwyrydd agosrwydd cyn deffro\'r sgrin</string>
     <string name="lock_directly_show_password">Dangos blwch cyfrinair yn syth</string>
     <string name="lock_directly_show_password_summary">Neidio\'r sgrin llithro i ddatgloi a dechrau yn hytrach yn syth gyda\'r sgrin cyfrinair</string>
     <string name="lock_directly_show_pattern">Dangos golwg patrwm yn syth</string>
     <string name="lock_directly_show_pattern_summary">Neidio\'r sgrin llithro i ddatgloi a dechrau yn hytrach yn syth gyda\'r sgrin patrwm</string>
     <string name="lock_directly_show_pin">Dangos blwch PIN yn syth</string>
     <string name="lock_directly_show_pin_summary">Neidio\'r sgrin llithro i ddatgloi a dechrau yn hytrach yn syth gyda\'r sgrin PIN</string>
+    <string name="unlock_scramble_pin_layout_title">Cymysgu\'r cynllun</string>
+    <string name="unlock_scramble_pin_layout_summary">Cymysgu cynllun y PIN wrth ddatgloi\'r ddyfais</string>
+    <string name="lockscreen_visualizer_title">Dangos patrymau cerddoriaeth</string>
+    <string name="lockscreen_media_art_title">Dangos llun clawr cyfryngau</string>
     <string name="lock_settings_picker_pattern_size_message">Dewisa faint patrwm</string>
     <string name="lockpattern_settings_enable_error_path_title">Dangos gwall patrwm</string>
     <string name="lockpattern_settings_enable_dots_title">Dangos dotiau patrwm</string>
     <string name="lockscreen_vibrate_enabled_title">Dirgrynu</string>
+    <string name="lockscreen_vibrate_enabled_head">Dirgrynu wrth ddatgloi</string>
     <string name="adb_enable">Dadfygio Android</string>
+    <string name="adb_enable_summary">Galluogi\'r rhyngwyneb ADB (Android Debug Bridge)</string>
+    <string name="adb_notify">Hysbysiad dadfygio</string>
+    <string name="adb_notify_summary">Dangos hysbysiad pan fo dadfygio trwy USB neu rwydwaith wedi\'i alluogi</string>
     <string name="adb_over_network">ADB dros rwydwaith</string>
     <string name="adb_over_network_summary">Galluogi dadfygio TCP/IP dros ryngwynebau rhwydwaith (Wi\u2011Fi, rhwydweithiau USB). Mae\'r gosodiad yn cael ei ail-osod wrth ail-gychwyn y ddyfais.</string>
     <string name="adb_over_network_warning">RHYBUDD: Tra bod ADB dros rwydwaith wedi\'i alluogi, mae dy ffôn ar gael ac yn agor i ymyrraeth ar bob rhwydwaith mae wedi cysylltu â nhw!\n\nDefnyddia\'r nodwedd hon dim ond pan wyt wedi cysylltu â rhwydweithiau rwyt yn ymddiried ynddynt.\n\nWyt ti wir eisiau parhau i alluogi\'r nodwedd hon?</string>
@@ -63,25 +76,34 @@
     <string name="security_settings_fingerprint_sensor_location_front">flaen</string>
     <string name="security_settings_fingerprint_sensor_location_left">ochr chwith</string>
     <string name="security_settings_fingerprint_sensor_location_right">ochr dde</string>
+    <string name="device_hostname">Enw gwestai\'r ddyfais</string>
     <string name="increasing_ring_volume_option_title">Uchder sain yn cynyddu</string>
     <string name="increasing_ring_min_volume_title">Uchder sain i ddechrau</string>
     <string name="increasing_ring_ramp_up_time_title">Amser i gynyddu</string>
     <string name="volume_link_notification_title">Cysylltu uchder sain caniad ffôn a hysbysiadau</string>
+    <string name="memory_startup_apps_title">Apiau a ddechreuir gyda\'r system</string>
     <string name="sim_enabler_summary">Statws <xliff:g id="displayName">%1$s</xliff:g>: <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_disabled">analluogwyd</string>
+    <string name="sim_missing">ar goll neu\'n wallus</string>
+    <string name="sim_enabler_need_disable_sim">Caiff y cerdyn SIM ei ddadactifadu. Wyt ti am barhau?</string>
     <string name="sim_enabler_will_disable_sim_title">Sylw</string>
     <string name="sim_enabler_need_switch_data_service">Caiff y SIM hwn ei analluogi a defnyddir SIM <xliff:g id="slotid">%1$s</xliff:g> ar gyfer gwasanaethau data. Wyt ti am barhau?</string>
     <string name="sim_enabler_airplane_on">Nid yw\'n bosib cyflawni\'r dasg tra ym modd awyren.</string>
     <string name="sim_enabler_in_call">Nid yw\'n bosib cyflawni\'r dasg tra bod galwad ar y gweill.</string>
     <string name="sim_enabler_both_inactive">Methu ag analluogi pob cerdyn SIM</string>
     <string name="sim_enabler_enabling">Yn rhoi ar waith\u2026</string>
+    <string name="sim_enabler_disabling">Yn dadactifadu\u2026</string>
+    <string name="sub_activate_success">Wedi actifadu\'r SIM.</string>
     <string name="sub_activate_failed">Methwyd â\'i roi ar waith.</string>
+    <string name="sub_deactivate_success">Wedi dadactifadu\'r SIM.</string>
+    <string name="sub_deactivate_failed">Methodd y dadactifadu.</string>
     <string name="app_ops_categories_location">Lleoliad</string>
     <string name="app_ops_categories_personal">Personol</string>
     <string name="app_ops_categories_messaging">Negesu</string>
     <string name="app_ops_categories_media">Cyfryngau</string>
     <string name="app_ops_categories_device">Dyfais</string>
     <string name="app_ops_categories_run_in_background">Rhedeg yn y cefndir</string>
+    <string name="app_ops_categories_bootup">Dechrau\'r system</string>
     <string name="app_ops_categories_su">Mynediad craidd</string>
     <string name="app_ops_categories_other">Arall</string>
     <string name="app_ops_summaries_coarse_location">lleoliad bras</string>
@@ -95,6 +117,7 @@
     <string name="app_ops_summaries_read_calendar">darllen y calendr</string>
     <string name="app_ops_summaries_modify_calendar">addasu\'r calendr</string>
     <string name="app_ops_summaries_wifi_scan">Sganio wi-fi</string>
+    <string name="app_ops_summaries_notification">hysbysiad/hysbysyn</string>
     <string name="app_ops_summaries_cell_scan">sganio symudol</string>
     <string name="app_ops_summaries_call_phone">galw ffôn</string>
     <string name="app_ops_summaries_read_sms">darllen SMS</string>
@@ -126,7 +149,9 @@
     <string name="app_ops_summaries_keep_awake">cadw\'n effro</string>
     <string name="app_ops_summaries_monitor_location">monitro lleoliad</string>
     <string name="app_ops_summaries_monitor_high_power_location">monitro lleoliad pŵer uchel</string>
+    <string name="app_ops_summaries_get_usage_stats">cael ystadegau defnydd apiau</string>
     <string name="app_ops_summaries_mute_unmute_microphone">distewi/dad-ddistewi\'r meicroffon</string>
+    <string name="app_ops_summaries_toast_window">dangos hysbysion</string>
     <string name="app_ops_summaries_project_media">taflunio cyfryngau</string>
     <string name="app_ops_summaries_activate_vpn">rhoi VPN ar waith</string>
     <string name="app_ops_summaries_write_wallpaper">ysgrifennu papur wal</string>
@@ -168,6 +193,7 @@
     <string name="app_ops_labels_read_calendar">Darllen y calendr</string>
     <string name="app_ops_labels_modify_calendar">Addasu\'r calendr</string>
     <string name="app_ops_labels_wifi_scan">Sganio wi-fi</string>
+    <string name="app_ops_labels_notification">Hysbysiad/Hysbysyn</string>
     <string name="app_ops_labels_cell_scan">Sganio symudol</string>
     <string name="app_ops_labels_call_phone">Galw ffôn</string>
     <string name="app_ops_labels_read_sms">Darllen SMS</string>
@@ -201,6 +227,7 @@
     <string name="app_ops_labels_monitor_high_power_location">Monitro lleoliad pŵer uchel</string>
     <string name="app_ops_labels_get_usage_stats">Cael ystadegau defnydd</string>
     <string name="app_ops_labels_mute_unmute_microphone">Distewi/dad-ddistewi\'r meicroffon</string>
+    <string name="app_ops_labels_toast_window">Dangos hysbysion</string>
     <string name="app_ops_labels_project_media">Taflunio cyfryngau</string>
     <string name="app_ops_labels_activate_vpn">Rhoi VPN ar waith</string>
     <string name="app_ops_labels_write_wallpaper">Ysgrifennu papur wal</string>
@@ -219,6 +246,7 @@
     <string name="app_ops_labels_turn_screen_on">Troi\'r sgrin ymlaen</string>
     <string name="app_ops_labels_get_accounts">Cael cyfrifon</string>
     <string name="app_ops_labels_run_in_background">Rhedeg yn y cefndir</string>
+    <string name="app_ops_labels_accessibility_volume">Uchder sain hygyrchedd</string>
     <string name="app_ops_labels_read_phone_numbers">Darllen rhifau ffôn</string>
     <string name="app_ops_labels_request_install_packages">Gofyn i weld pecynnau gosod</string>
     <string name="app_ops_labels_picture_in_picture">Defnyddio llun o fewn llun</string>
@@ -233,12 +261,15 @@
     <string name="app_ops_permissions_allowed">Caniateir</string>
     <string name="app_ops_permissions_ignored">Anwybyddwyd</string>
     <string name="app_ops_permissions_always_ask">Gofyn pob tro</string>
+    <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (wedi defnyddio <xliff:g id="count">%2$s</xliff:g>)</string>
     <string name="app_ops_allowed_count">Caniatawyd <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Gwrthodwyd <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Caniatawyd <xliff:g id="count">%1$s</xliff:g>, gwrthodwyd <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_no_blockable_permissions">Dim caniatâd ar gael i\'w rhwystro</string>
     <string name="app_ops_show_user_apps">Dangos apiau defnyddiwr</string>
     <string name="app_ops_show_system_apps">Dangos apiau craidd</string>
     <string name="app_ops_reset_counters">Ailosod rhifyddion caniatáu/gwrthod</string>
+    <string name="app_ops_reset_confirm_title">Cadarnhau ailosod cownteri</string>
     <string name="app_ops_reset_confirm_mesg">Wyt ti\'n bendant eisiau ailosod rhifyddion?</string>
     <string name="ok">Iawn</string>
     <string name="security_privacy_settings_title">Diogelwch a phreifatrwydd</string>
@@ -246,6 +277,10 @@
     <string name="volume_adjust_sounds_title">Seiniau addasu uchder sain</string>
     <string name="wake_when_plugged_or_unplugged_title">Deffro wrth gysylltu â phŵer</string>
     <string name="wake_when_plugged_or_unplugged_summary">Troi\'r sgrin ymlaen wrth gysylltu neu ddatgysylltu â phŵer</string>
+    <string name="heads_up_notifications_enabled_title">Rhagrybudd</string>
+    <string name="heads_up_notifications_enabled_summary">Dangos hysbysiadau blaenoriaeth mewn ffenestr fach sy\'n arnofio</string>
+    <string name="high_touch_sensitivity_title">Sensitifrwydd cyffwrdd uchel</string>
+    <string name="high_touch_sensitivity_summary">Cynyddu sensitifrwydd y sgrin gyffwrdd fel y gellir ei defnyddio wrth wisgo menig</string>
     <string name="touchscreen_hovering_title">Hofran sgrin gyffwrdd</string>
     <string name="touchscreen_hovering_summary">Mae\'n dy ganiatáu i hofran ar y sgrin fel defnyddio llygoden mewn porwyr, byrddau gwaith pell, ayyb</string>
     <string name="data_usage_app_restrict_data">Data symudol</string>
