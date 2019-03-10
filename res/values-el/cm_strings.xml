@@ -17,425 +17,338 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
-  <plurals name="show_dev_countdown_cm">
-    <item quantity="one">Απομένει <xliff:g id="step_count">%1$d</xliff:g> βήμα για να ενεργοποιήσετε τις ρυθμίσεις για προγραμματιστές.</item>
-    <item quantity="other">Απομένουν <xliff:g id="step_count">%1$d</xliff:g> βήματα για να ενεργοποιήσετε τις ρυθμίσεις για προγραμματιστές.</item>
-  </plurals>
-  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
-  <string name="show_dev_on_cm">Ενεργοποιήσατε τις ρυθμίσεις για προγραμματιστές!</string>
-  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
-  <string name="show_dev_already_cm">Δεν χρειάζεται, έχετε ήδη ενεργοποιήσει τις ρυθμίσεις για προγραμματιστές.</string>
-  <!-- Launch Dev Tools -->
-  <string name="development_tools_title">Εργαλεία ανάπτυξης</string>
-  <!-- Setting checkbox title for root access -->
-  <string name="root_access">Πρόσβαση root</string>
-  <string name="root_access_warning_title">Να επιτρέπεται η πρόσβαση root;</string>
-  <string name="root_access_warning_message">Επιτρέποντας στις εφαρμογές να ζητούν πρόσβαση root είναι πολύ επικίνδυνο και θα μπορούσε να θέσει σε κίνδυνο την ασφάλεια του συστήματος σας!</string>
-  <string name="root_access_none">Απενεργοποιημένη</string>
-  <string name="root_access_apps">Μόνο εφαρμογές</string>
-  <string name="root_access_adb">Μόνο ADB</string>
-  <string name="root_access_all">Εφαρμογές και ADB</string>
-  <!-- Preference link for root appops -->
-  <string name="root_appops_title">Διαχείριση προσβάσεων root</string>
-  <string name="root_appops_summary">Προβολή και έλεγχος των κανόνων root</string>
-  <!-- About phone screen, LineageOS version -->
-  <string name="mod_version">Έκδοση LineageOS</string>
-  <string name="mod_version_default">Άγνωστη</string>
-  <!-- About phone screen, Device model -->
-  <string name="device_model">Μοντέλο συσκευής</string>
-  <!-- About phone screen, Device name -->
-  <string name="device_name">Όνομα συσκευής</string>
-  <!-- About phone screen, LineageOS Api Level -->
-  <string name="mod_api_level">Επίπεδο LineageOS API</string>
-  <string name="mod_api_level_default">Άγνωστη</string>
-  <!-- About phone screen, build date -->
-  <string name="build_date">Ημερομηνία έκδοσης</string>
-  <!-- CM Updater -->
-  <string name="cmupdate_settings_title">Ενημερώσεις LineageOS</string>
-  <!-- Names of categories of app ops tabs - extension of AOSP -->
-  <string name="app_ops_categories_location">Τοποθεσία</string>
-  <string name="app_ops_categories_personal">Προσωπικά</string>
-  <string name="app_ops_categories_messaging">Ανταλλαγή μηνυμάτων</string>
-  <string name="app_ops_categories_media">Μέσα</string>
-  <string name="app_ops_categories_device">Συσκευή</string>
-  <string name="app_ops_categories_background">Παρασκήνιο</string>
-  <string name="app_ops_categories_bootup">Εκκίνηση</string>
-  <string name="app_ops_categories_su">Πρόσβαση root</string>
-  <string name="app_ops_categories_other">Άλλες</string>
-  <!-- User display names for app ops codes - extension of AOSP -->
-  <string name="app_ops_summaries_coarse_location">τοποθεσία κατά προσέγγιση</string>
-  <string name="app_ops_summaries_fine_location">ακριβής τοποθεσία</string>
-  <string name="app_ops_summaries_gps">GPS</string>
-  <string name="app_ops_summaries_vibrate">δόνηση</string>
-  <string name="app_ops_summaries_read_contacts">ανάγνωση επαφών</string>
-  <string name="app_ops_summaries_modify_contacts">τροποποίηση επαφών</string>
-  <string name="app_ops_summaries_read_call_log">ανάγνωση αρχείου κλήσεων</string>
-  <string name="app_ops_summaries_modify_call_log">τροποποίηση αρχείου κλήσεων</string>
-  <string name="app_ops_summaries_read_calendar">ανάγνωση ημερολογίου</string>
-  <string name="app_ops_summaries_modify_calendar">τροποποίηση ημερολογίου</string>
-  <string name="app_ops_summaries_wifi_scan">σάρωση Wi-Fi</string>
-  <string name="app_ops_summaries_notification">ειδοποίηση/μήνυμα στην οθόνη</string>
-  <string name="app_ops_summaries_cell_scan">σάρωση κυψέλης</string>
-  <string name="app_ops_summaries_call_phone">κλήση τηλεφώνου</string>
-  <string name="app_ops_summaries_read_sms">ανάγνωση SMS</string>
-  <string name="app_ops_summaries_write_sms">σύνταξη SMS</string>
-  <string name="app_ops_summaries_receive_sms">λήψη SMS</string>
-  <string name="app_ops_summaries_receive_emergency_sms">λήψη SMS έκτακτης ανάγκης</string>
-  <string name="app_ops_summaries_receive_mms">λήψη MMS</string>
-  <string name="app_ops_summaries_receive_wap_push">λήψη μηνύματος push μέσω WAP</string>
-  <string name="app_ops_summaries_send_sms">αποστολή SMS</string>
-  <string name="app_ops_summaries_read_icc_sms">ανάγνωση ICC SMS</string>
-  <string name="app_ops_summaries_write_icc_sms">σύνταξη ICC SMS</string>
-  <string name="app_ops_summaries_modify_settings">τροποποίηση ρυθμίσεων</string>
-  <string name="app_ops_summaries_draw_on_top">μεταφορά στην κορυφή</string>
-  <string name="app_ops_summaries_access_notifications">πρόσβαση στις ειδοποιήσεις</string>
-  <string name="app_ops_summaries_camera">φωτογρ. μηχανή</string>
-  <string name="app_ops_summaries_record_audio">εγγραφή ήχου</string>
-  <string name="app_ops_summaries_play_audio">αναπαραγωγή ήχου</string>
-  <string name="app_ops_summaries_read_clipboard">ανάγνωση περιεχόμενων προχείρου</string>
-  <string name="app_ops_summaries_modify_clipboard">τροποποίηση περιεχομένων προχείρου</string>
-  <string name="app_ops_summaries_media_buttons">πλήκτρα μέσων</string>
-  <string name="app_ops_summaries_audio_focus">εστίαση ήχου</string>
-  <string name="app_ops_summaries_master_volume">κύρια ένταση ήχου</string>
-  <string name="app_ops_summaries_voice_volume">ένταση ήχου φωνής</string>
-  <string name="app_ops_summaries_ring_volume">ένταση ήχου κλήσης</string>
-  <string name="app_ops_summaries_media_volume">ένταση ήχου μέσων</string>
-  <string name="app_ops_summaries_alarm_volume">ένταση ήχου ξυπνητηριού</string>
-  <string name="app_ops_summaries_notification_volume">ένταση ήχου ειδοποιήσεων</string>
-  <string name="app_ops_summaries_bluetooth_volume">ένταση ήχου bluetooth</string>
-  <string name="app_ops_summaries_keep_awake">διατήρηση λειτουργίας</string>
-  <string name="app_ops_summaries_monitor_location">παρακολούθηση τοποθεσίας</string>
-  <string name="app_ops_summaries_monitor_high_power_location">παρακολούθηση θέσης υψηλής ισχύος</string>
-  <string name="app_ops_summaries_get_usage_stats">λήψη στατιστικών χρήσης εφαρμογών</string>
-  <string name="app_ops_summaries_mute_unmute_microphone">σίγαση/κατάργηση σίγασης μικροφώνου</string>
-  <string name="app_ops_summaries_toast_window">εμφάνιση αναδυόμενων μηνυμάτων</string>
-  <string name="app_ops_summaries_project_media">εμφάνιση πολυμέσων</string>
-  <string name="app_ops_summaries_activate_vpn">ενεργοποίηση VPN</string>
-  <string name="app_ops_summaries_write_wallpaper">ορισμός ταπετσαρίας</string>
-  <string name="app_ops_summaries_assist_structure">δομή βοήθειας</string>
-  <string name="app_ops_summaries_assist_screenshot">στιγμιότυπο οθόνης βοήθειας</string>
-  <string name="app_ops_summaries_read_phone_state">ανάγνωση κατάστασης τηλεφώνου</string>
-  <string name="app_ops_summaries_add_voicemail">προσθήκη φωνητικού μηνύματος</string>
-  <string name="app_ops_summaries_use_sip">χρήση SIP</string>
-  <string name="app_ops_summaries_make_call">κλήση</string>
-  <string name="app_ops_summaries_use_fingerprint">χρήση δακτυλικού αποτυπώματος</string>
-  <string name="app_ops_summaries_use_body_sensors">χρήση αισθητήρων σώματος</string>
-  <string name="app_ops_summaries_read_cell_broadcasts">ανάγνωση εκπομπών κινητής τηλεφωνίας</string>
-  <string name="app_ops_summaries_mock_location">αναφορά ψευδής τοποθεσίας</string>
-  <string name="app_ops_summaries_read_external_storage">ανάγνωση εξωτερικού αποθ. χώρου</string>
-  <string name="app_ops_summaries_write_external_storage">εγγραφή εξωτερικού αποθ. χώρου</string>
-  <string name="app_ops_summaries_turn_screen_on">ενεργοποίηση οθόνης</string>
-  <string name="app_ops_summaries_get_accounts">ανάγνωση λογαριασμών</string>
-  <string name="app_ops_summaries_run_in_background">εκτέλεση στο παρασκήνιο</string>
-  <string name="app_ops_summaries_toggle_wifi">εναλλαγή Wi-Fi</string>
-  <string name="app_ops_summaries_toggle_bluetooth">εναλλαγή bluetooth</string>
-  <string name="app_ops_summaries_start_at_boot">έναρξη κατά την εκκίνηση</string>
-  <string name="app_ops_summaries_toggle_nfc">εναλλαγή NFC</string>
-  <string name="app_ops_summaries_toggle_mobile_data">εναλλαγή δεδομένων κινητής τηλεφωνίας</string>
-  <string name="app_ops_summaries_superuser">πρόσβαση root</string>
-  <!-- User display names for app ops codes - extension of AOSP -->
-  <string name="app_ops_labels_coarse_location">Τοποθεσία κατά προσέγγιση</string>
-  <string name="app_ops_labels_fine_location">Ακριβής τοποθεσία</string>
-  <string name="app_ops_labels_gps">GPS</string>
-  <string name="app_ops_labels_vibrate">Δόνηση</string>
-  <string name="app_ops_labels_read_contacts">Ανάγνωση επαφών</string>
-  <string name="app_ops_labels_modify_contacts">Τροποποίηση επαφών</string>
-  <string name="app_ops_labels_read_call_log">Ανάγνωση αρχείου κλήσεων</string>
-  <string name="app_ops_labels_modify_call_log">Τροποποίηση αρχείου κλήσεων</string>
-  <string name="app_ops_labels_read_calendar">Ανάγνωση ημερολογίου</string>
-  <string name="app_ops_labels_modify_calendar">Τροποποίηση ημερολογίου</string>
-  <string name="app_ops_labels_wifi_scan">Σάρωση Wi-Fi</string>
-  <string name="app_ops_labels_notification">Ειδοποίηση/μήνυμα στην οθόνη</string>
-  <string name="app_ops_labels_cell_scan">Σάρωση κυψέλης</string>
-  <string name="app_ops_labels_call_phone">Κλήση τηλεφώνου</string>
-  <string name="app_ops_labels_read_sms">Ανάγνωση SMS</string>
-  <string name="app_ops_labels_write_sms">Σύνταξη SMS</string>
-  <string name="app_ops_labels_receive_sms">Λήψη SMS</string>
-  <string name="app_ops_labels_receive_emergency_sms">Λήψη SMS έκτακτης ανάγκης</string>
-  <string name="app_ops_labels_receive_mms">Λήψη MMS</string>
-  <string name="app_ops_labels_receive_wap_push">Λήψη μηνύματος push μέσω WAP</string>
-  <string name="app_ops_labels_send_sms">Αποστολή SMS</string>
-  <string name="app_ops_labels_read_icc_sms">Ανάγνωση ICC SMS</string>
-  <string name="app_ops_labels_write_icc_sms">Σύνταξη ICC SMS</string>
-  <string name="app_ops_labels_modify_settings">Τροποποίηση ρυθμίσεων</string>
-  <string name="app_ops_labels_draw_on_top">Μεταφορά στην κορυφή</string>
-  <string name="app_ops_labels_access_notifications">Πρόσβαση στις ειδοποιήσεις</string>
-  <string name="app_ops_labels_camera">Φωτογρ. μηχανή</string>
-  <string name="app_ops_labels_record_audio">Ηχογράφηση</string>
-  <string name="app_ops_labels_play_audio">Αναπαραγωγή ήχου</string>
-  <string name="app_ops_labels_read_clipboard">Ανάγνωση περιεχομένων προχείρου</string>
-  <string name="app_ops_labels_modify_clipboard">Τροποποίηση περιεχομένων προχείρου</string>
-  <string name="app_ops_labels_media_buttons">Πλήκτρα μέσων</string>
-  <string name="app_ops_labels_audio_focus">Εστίαση ήχου</string>
-  <string name="app_ops_labels_master_volume">Κύρια ένταση ήχου</string>
-  <string name="app_ops_labels_voice_volume">Ένταση ήχου φωνής</string>
-  <string name="app_ops_labels_ring_volume">Ένταση ήχου κλήσης</string>
-  <string name="app_ops_labels_media_volume">Ένταση ήχου μέσων</string>
-  <string name="app_ops_labels_alarm_volume">Ένταση ήχου ξυπνητηριού</string>
-  <string name="app_ops_labels_notification_volume">Ένταση ήχου ειδοποιήσεων</string>
-  <string name="app_ops_labels_bluetooth_volume">Ένταση ήχου Bluetooth</string>
-  <string name="app_ops_labels_keep_awake">Διατήρηση λειτουργίας</string>
-  <string name="app_ops_labels_monitor_location">Παρακολούθηση τοποθεσίας</string>
-  <string name="app_ops_labels_monitor_high_power_location">Παρακολούθηση θέσης υψηλής ισχύος</string>
-  <string name="app_ops_labels_get_usage_stats">Λήψη στατιστικών χρήσης</string>
-  <string name="app_ops_labels_mute_unmute_microphone">Σίγαση/κατάργηση σίγασης μικροφώνου</string>
-  <string name="app_ops_labels_toast_window">Εμφάνιση αναδυόμενων μηνυμάτων</string>
-  <string name="app_ops_labels_project_media">Εμφάνιση πολυμέσων</string>
-  <string name="app_ops_labels_activate_vpn">Ενεργοποίηση VPN</string>
-  <string name="app_ops_labels_write_wallpaper">Ορισμός ταπετσαρίας</string>
-  <string name="app_ops_labels_assist_structure">Βοηθητική εφαρμογή</string>
-  <string name="app_ops_labels_assist_screenshot">Στιγμιότυπο οθόνης βοήθειας</string>
-  <string name="app_ops_labels_read_phone_state">Ανάγνωση κατάστασης τηλεφώνου</string>
-  <string name="app_ops_labels_add_voicemail">Προσθήκη φωνητικού μηνύματος</string>
-  <string name="app_ops_labels_use_sip">Χρήση SIP</string>
-  <string name="app_ops_labels_make_call">Κλήση</string>
-  <string name="app_ops_labels_use_fingerprint">Χρήση δακτυλικού αποτυπώματος</string>
-  <string name="app_ops_labels_use_body_sensors">Χρήση αισθητήρων σώματος</string>
-  <string name="app_ops_labels_read_cell_broadcasts">Ανάγνωση εκπομπών κινητής τηλεφωνίας</string>
-  <string name="app_ops_labels_mock_location">Αναφορά ψευδής τοποθεσίας</string>
-  <string name="app_ops_labels_read_external_storage">Ανάγνωση εξωτερικού αποθ. χώρου</string>
-  <string name="app_ops_labels_write_external_storage">Εγγραφή εξωτερικού αποθ. χώρου</string>
-  <string name="app_ops_labels_turn_screen_on">Ενεργοποίηση οθόνης</string>
-  <string name="app_ops_labels_get_accounts">Ανάγνωση λογαριασμών</string>
-  <string name="app_ops_labels_run_in_background">Τρέχει στο παρασκήνιο</string>
-  <string name="app_ops_labels_toggle_wifi">Εναλλαγή Wi-Fi</string>
-  <string name="app_ops_labels_toggle_bluetooth">Εναλλαγή bluetooth</string>
-  <string name="app_ops_labels_start_at_boot">Έναρξη κατά την εκκίνηση</string>
-  <string name="app_ops_labels_toggle_nfc">Εναλλαγή NFC</string>
-  <string name="app_ops_labels_toggle_mobile_data">Εναλλαγή δεδομένων κινητής τηλεφωνίας</string>
-  <string name="app_ops_labels_superuser">Πρόσβαση root</string>
-  <!-- App ops permissions -->
-  <string name="app_ops_permissions_allowed">Επιτρέπεται</string>
-  <string name="app_ops_permissions_ignored">Δεν επιτρέπεται</string>
-  <string name="app_ops_permissions_always_ask">Ερώτηση πάντα</string>
-  <!-- App ops detail -->
-  <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (χρησιμοποιήθηκε <xliff:g id="count">%2$s</xliff:g>)</string>
-  <string name="app_ops_allowed_count">Επιτράπηκε <xliff:g id="count" example="2 φορές">%s</xliff:g></string>
-  <string name="app_ops_ignored_count">Δεν επιτράπηκε <xliff:g id="count" example="2 φορές">%s</xliff:g></string>
-  <string name="app_ops_both_count">Επιτράπηκε <xliff:g id="count">%1$s</xliff:g>, δεν επιτράπηκε <xliff:g id="count">%2$s</xliff:g></string>
-  <string name="app_ops_no_blockable_permissions">Δεν υπάρχουν διαθέσιμα δικαιώματα για αποκλεισμό</string>
-  <!-- App ops menu options -->
-  <string name="app_ops_show_user_apps">Εμφάνιση εφαρμογών χρήστη</string>
-  <string name="app_ops_show_system_apps">Εμφάνιση ενσωματωμένων εφαρμογών</string>
-  <string name="app_ops_reset_counters">Επαναφορά μετρητών \'επιτράπηκε/δεν επιτράπηκε\'</string>
-  <string name="app_ops_reset_confirm_title">Επιβεβαίωση επαναφοράς μετρητών</string>
-  <string name="app_ops_reset_confirm_mesg">Είστε σίγουρος/η ότι θέλετε να κάνετε επαναφορά των μετρητών;</string>
-  <string name="ok">ΟΚ</string>
-  <!-- Volume settings - Volume adjustment sound -->
-  <string name="volume_adjust_sounds_title">Ήχοι πλήκτρων έντασης</string>
-  <!-- Vibrator intensity -->
-  <string name="vibrator_intensity_title">Ένταση δόνησης</string>
-  <string name="vibrator_intensity_dialog_warning">Δεν συνιστώνται τιμές άνω του %1$d%%</string>
-  <string name="vibrator_intensity_dialog_reset">Επαναφορά</string>
-  <!-- Sizes for pattern lockscreen -->
-  <string name="lock_settings_picker_pattern_size_message">Επιλέξτε ένα μέγεθος μοτίβου</string>
-  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
-  <string name="lockpattern_settings_enable_error_path_title">Εμφάνιση λάθος μοτίβου</string>
-  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
-  <string name="lockpattern_settings_enable_dots_title">Εμφάνιση τελειών μοτίβου</string>
-  <!-- Whether the keyguard will directly show the password entry -->
-  <string name="lock_directly_show_password">Άμεση εμφάνιση εισόδου κωδικού</string>
-  <!-- Whether the keyguard will directly show the pattern view -->
-  <string name="lock_directly_show_pattern">Άμεση εμφάνιση εισόδου μοτίβου</string>
-  <!-- Whether the keyguard will directly show the PIN entry -->
-  <string name="lock_directly_show_pin">Άμεση εμφάνιση εισόδου PIN</string>
-  <!-- Lock screen vibrate settings -->
-  <string name="lockscreen_vibrate_enabled_title">Δόνηση</string>
-  <string name="lockscreen_vibrate_enabled_head">Δόνηση κατά το ξεκλείδωμα</string>
-  <!-- Lights settings -->
-  <string name="lights_label">Φωτισμός</string>
-  <!-- Memory -->
-  <string name="memory_startup_apps_title">Εφαρμογές που ξεκινούν κατά την εκκίνηση</string>
-  <!-- Advanced restart options -->
-  <string name="advanced_reboot_title">Προηγμένη επανεκκίνηση</string>
-  <string name="advanced_reboot_summary">Όταν είναι ενεργή, περιλαμβάνονται στο μενού πλήκτρου απενεργοποίησης οι επιλογές επανεκκίνησης σε λειτουργία recovery, bootloader ή εκτέλεση γρήγορης επανεκκίνησης</string>
-  <!-- PIN scramble -->
-  <string name="unlock_scramble_pin_layout_title">Ανακάτεμα διάταξης</string>
-  <string name="unlock_scramble_pin_layout_summary">Ανακάτεμα της διάταξης PIN κατά το ξεκλείδωμα της συσκευής</string>
-  <!-- lock screen visualizer -->
-  <string name="lockscreen_visualizer_title">Εμφάνιση οπτικοποίησης μουσικής</string>
-  <!-- Lock screen cover art -->
-  <string name="lockscreen_media_art_title">Προβολή εξώφυλλου άλμπουμ</string>
-  <!-- Double tap to sleep on keyguard -->
-  <string name="double_tap_sleep_anywhere_title">Διπλό πάτημα οπουδήποτε για απενεργοποίηση</string>
-  <!-- Protected apps lockpattern reset button -->
-  <string name="lockpattern_reset_button">Επαναφορά μοτίβου</string>
-  <string name="lockpattern_settings_reset_summary">Εισάγετε την κύρια διεύθυνση ηλεκτρονικού ταχυδρομείου και τον κωδικό πρόσβασης για να επαναφέρετε το μοτίβο κλειδώματος</string>
-  <!-- Protected Apps -->
-  <string name="menu_hidden_apps_delete">Επαναφορά</string>
-  <string name="menu_hidden_apps_reset_lock">Επαναφέρετε το μοτίβο κλειδώματος</string>
-  <string name="protected_apps">Προστατευμένες εφαρμογές</string>
-  <string name="protected_apps_summary">Διαχειριστείτε ποιές εφαρμογές θα είναι κρυμμένες πίσω από ένα ασφαλές κλείδωμα</string>
-  <string name="saving_protected_components">Αποθήκευση κατάστασης εφαρμογών\u2026</string>
-  <string name="launch_app">Εκκίνηση εφαρμογής</string>
-  <string name="pa_login_username_hint">Όνομα χρήστη (ηλεκτρονικό ταχυδρομείο)</string>
-  <string name="pa_login_password_hint">Κωδικός</string>
-  <string name="pa_login_submit_button">Είσοδος</string>
-  <string name="pa_login_checking_password">Έλεγχος λογαριασμού\u2026</string>
-  <string name="pa_login_incorrect_login">Τα στοιχεία είναι εσφαλμένα</string>
-  <string name="pa_pattern_or_fingerprint_header">Πρέπει να σχεδιάσετε το μοτίβο ή να χρησιμοποιήσετε το δακτυλικό αποτύπωμα για να ξεκλειδώσετε</string>
-  <!-- title for lock screen weather preference -->
-  <string name="lockscreen_weather_enabled_title">Εμφάνιση καιρού</string>
-  <!-- title for lock screen blur preference -->
-  <string name="lockscreen_blur_enabled_title">Θολό παρασκήνιο</string>
-  <!-- Proximity wake -->
-  <string name="proximity_wake_title">Πρόληψη ακούσιας αφύπνισης</string>
-  <string name="proximity_wake_summary">Έλεγχος του αισθητήρα εγγύτητας πριν την αφύπνιση που προκλήθηκε από χειρονομίες</string>
-  <!-- High touch sensitivity -->
-  <string name="high_touch_sensitivity_title">Υψηλή ευαισθησία αφής</string>
-  <string name="high_touch_sensitivity_summary">Αύξηση της ευαισθησίας της οθόνης αφής έτσι ώστε να μπορεί να χρησιμοποιηθεί φορώντας γάντια</string>
-  <!-- Touchscreen hovering -->
-  <string name="touchscreen_hovering_title">Αιώρηση οθόνης αφής</string>
-  <string name="touchscreen_hovering_summary">Σας επιτρέπει να αιωρείτε πάνω από την οθόνη όπως ένα ποντίκι σε προγράμματα περιήγησης στο web, απομακρυσμένες επιφάνειες εργασίας, κλπ</string>
-  <!-- Whether to display IME switcher notifcation -->
-  <string name="ime_switcher_notify">Εικονίδιο επιλογέα</string>
-  <string name="ime_switcher_notify_summary">Εμφάνιση εικονιδίου για τον επιλογέα μεθόδου εισαγωγής</string>
-  <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">Χωρίς λειτ. διακοπ., σύντ. προβ., ήχου ή δόν. σε πλ. οθόνη. Εμφ. στο κάτω μέρος της λίστ. ειδ. Απόκρ. από οθ. κλειδ.</string>
-  <!-- Stylus Icon -->
-  <string name="stylus_icon_enabled_title">Ένδειξη κατά τη χρήση γραφίδας</string>
-  <string name="stylus_icon_enabled_summary">Εμφάνιση ενδεικτικού εικονιδίου όταν αιωρείτε ή σχεδίαζετε με τη γραφίδα</string>
-  <!-- Kill app long-press back -->
-  <string name="kill_app_longpress_back">Τερμ. με πλήκτρο πίσω</string>
-  <string name="kill_app_longpress_back_summary">Πιέζοντας παρατεταμένα το πλήκτρο πίσω, τερματίζετε την τρέχουσα εφαρμογή</string>
-  <!-- Android debugging -->
-  <string name="enable_adb_cm">Εντοπισμός σφαλμάτων Android</string>
-  <string name="enable_adb_summary_cm">Ενεργοποίηση του περιβάλλοντος Android Debug Bridge (ADB)</string>
-  <!-- Android debugging notification -->
-  <string name="adb_notify">Ειδοποίηση εντοπισμού σφαλμάτων</string>
-  <string name="adb_notify_summary">Εμφάνιση ειδοποίησης όταν ο εντοπισμός σφαλμάτων μέσω USB ή δικτύου είναι ενεργοποιημένος</string>
-  <!-- Android debugging over network -->
-  <string name="adb_over_network">ADB μέσω δικτύου</string>
-  <string name="adb_over_network_summary">Λειτουργία εντοπισμού σφαλμάτων μέσω TCP/IP δικτύων (δίκτυα Wi-Fi, USB). Η ρύθμιση επαναφέρεται κατα την εκκίνηση</string>
-  <string name="adb_over_network_warning">ΠΡΟΣΟΧΗ: Όταν ο εντοπισμός σφαλμάτων μέσω δικτύου είναι ενεργοποιημένος, το τηλέφωνό σας είναι ανοικτό για εισβολές σε όλα τα συνδεδεμένα δίκτυα!\n\nΧρησιμοποιήστε αυτή τη λειτουργία μόνο όταν είστε συνδεδεμένοι σε έμπιστα δίκτυα.\n\nΘέλετε πραγματικά να ενεργοποιήσετε αυτή τη λειτουργία;</string>
-  <!-- Hostname setting -->
-  <string name="device_hostname">Hostname συσκευής</string>
-  <!-- Increasing ring tone volume -->
-  <string name="increasing_ring_volume_option_title">Αυξανόμενη ένταση κουδουνίσματος</string>
-  <string name="increasing_ring_min_volume_title">Αρχική ένταση</string>
-  <string name="increasing_ring_ramp_up_time_title">Χρονικό διάστημα αύξησης</string>
-  <!-- Allow vibration in zen mode -->
-  <string name="zen_mode_vibration">Δόνηση</string>
-  <string name="zen_mode_vibration_never">Απενεργοποίηση δόνησης</string>
-  <string name="zen_mode_vibration_calls_only">Δόνηση μόνο για κλήσεις</string>
-  <string name="zen_mode_vibration_calls_and_notifications">Δόνηση για κλήσεις και ειδοποιήσεις</string>
-  <!-- Zen mode allowed event setting summary items -->
-  <!-- [CHAR LIMIT=50] Like zen_mode_reminders, but part of a list, so lower case if needed-->
-  <string name="zen_mode_summary_reminders">υπενθυμίσεις</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_events, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_events">εκδηλώσεις</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_all_callers, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_all_callers">όλοι οι καλούντες</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_selected_callers, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_selected_callers">επιλεγμένοι καλούντες</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_repeat_callers, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_repeat_callers">καλούντες κατ\' επανάληψη</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_all_messages, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_all_messages">όλα τα μηνύματα</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_selected_messages, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_selected_messages">επιλεγμένα μηνύματα</string>
-  <!-- Notification sound timeout -->
-  <string name="app_notification_sound_timeout_title">Ελάχιστος χρόνος μεταξύ ήχων ειδοποίησης</string>
-  <string name="app_notification_sound_timeout_summary_template">Να επιτρέπονται ήχοι ή δονήσεις όχι περισσότερο από μία φορά κάθε <xliff:g id="duration">%1$s</xliff:g></string>
-  <string name="app_notification_sound_timeout_value_none">Χωρίς περιορισμό</string>
-  <string name="app_notification_sound_timeout_value_10_seconds">10 δευτερόλεπτα</string>
-  <string name="app_notification_sound_timeout_value_30_seconds">30 δευτερόλεπτα</string>
-  <string name="app_notification_sound_timeout_value_1_minute">1 λεπτό</string>
-  <string name="app_notification_sound_timeout_value_5_minutes">5 λεπτά</string>
-  <string name="app_notification_sound_timeout_value_15_minutes">10 λεπτά</string>
-  <string name="app_notification_sound_timeout_value_30_minutes">30 λεπτά</string>
-  <!-- MSIM SIM status -->
-  <string name="sim_card_status_title">Κατάσταση SIM %d</string>
-  <string name="sim_card_lock_settings_title">Ρυθμίσεις κλειδώματος SIM %d</string>
-  <string name="sim_card_summary_empty">Δεν έχει τοποθετηθεί SIM</string>
-  <string name="sim_mobile_network_settings_category_title">Ρυθμίσεις δικτύων κινητής τηλεφωνίας</string>
-  <string name="sim_mobile_network_settings_title">Ρυθμίσεις SIM %d</string>
-  <!-- NFC PreferenceCategory title -->
-  <string name="nfc_title_category">NFC</string>
-  <!-- Notification importance -->
-  <string name="tuner_full_importance_settings">Στοιχεία ελέγχου ειδοποίησης ισχύος</string>
-  <!-- CM Legal -->
-  <string name="cmlicense_title">Νομικές πληροφορίες LineageOS</string>
-  <!-- Format string for fingerprint location message -->
-  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Εντοπίστε τον αισθητήρα μοναδικού χαρακτηριστικού <xliff:g id="sensor_location">%1$s</xliff:g> του τηλεφώνου σας.</string>
-  <!-- Fingerprint sensor locations -->
-  <string name="security_settings_fingerprint_sensor_location_back">στο πίσω μέρος</string>
-  <string name="security_settings_fingerprint_sensor_location_front">στο μπροστινό μέρος</string>
-  <string name="security_settings_fingerprint_sensor_location_left">στην αριστερή πλευρά</string>
-  <string name="security_settings_fingerprint_sensor_location_right">στη δεξιά πλευρά</string>
-  <!-- Wi-Fi region code -->
-  <string name="wifi_setting_countrycode_title">Κωδικός περιοχής Wi-Fi</string>
-  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
-  <string name="wifi_setting_countrycode_summary">Προσδιορίστε τον κωδικό περιοχής για το Wi-Fi</string>
-  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
-  <string name="wifi_setting_countrycode_error">Πρόβλημα κατά τη ρύθμιση του κωδικού περιοχής.</string>
-  <!-- Wake on plug -->
-  <string name="wake_when_plugged_or_unplugged_title">Αφύπνιση κατά τη σύνδεση</string>
-  <string name="wake_when_plugged_or_unplugged_summary">Ενεργοποίηση της οθόνης κατά την σύνδεση ή αποσύνδεση μιας πηγής ισχύος</string>
-  <!-- Heads-up -->
-  <string name="heads_up_notifications_enabled_title">Αναδυόμενες ειδοποιήσεις</string>
-  <string name="heads_up_notifications_enabled_summary">Εμφάνιση ειδοποιήσεων προτεραιότητας σε ένα μικρό αιωρούμενο παράθυρο</string>
-  <!-- Tethering & portable hotspot other category -->
-  <string name="tethering_other_category_text">Άλλες</string>
-  <!-- Wi-Fi tethering inactivity timeout -->
-  <string name="hotstpot_inactivity_timeout_text">Χρονικό όριο Wi\u2011Fi hotspot</string>
-  <string name="hotstpot_inactivity_timeout_never">Ποτέ</string>
-  <string name="hotstpot_inactivity_timeout_1_minute">1 λεπτό</string>
-  <string name="hotstpot_inactivity_timeout_5_minutes">5 λεπτά</string>
-  <string name="hotstpot_inactivity_timeout_10_minutes">10 λεπτά</string>
-  <string name="hotstpot_inactivity_timeout_never_summary_text">Το φορητό Wi\u2011Fi hotspot δεν θα απενεργοποιείται ποτέ</string>
-  <string name="hotstpot_inactivity_timeout_summary_text">Το φορητό Wi\u2011Fi hotspot θα απενεργοποιείται μετά από <xliff:g id="timeout">%1$s</xliff:g></string>
-  <!-- Per-app data restrictions -->
-  <string name="data_usage_app_restrict_data_category_title">Πρόσβαση δεδομένων κινητής τηλεφωνίας</string>
-  <string name="data_usage_app_restrict_wifi_category_title">Πρόσβαση δεδομένων Wi\u2011Fi</string>
-  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
-  <string name="data_usage_app_restrict_all_data_title">Πλήρης απενεργοποίηση πρόσβασης δεδομένων κινητής</string>
-  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
-  <string name="data_usage_app_restrict_all_data_summary">Πλήρης αποτροπή χρήσης δεδομένων μέσω δικτύων κινητής τηλεφωνίας</string>
-  <!-- Title for switch to block app data usage [CHAR LIMIT=30] -->
-  <string name="data_usage_app_restrict_all_wifi_title">Πλήεης απενεργοποίηση πρόσβασης δεδομένων Wi\u2011Fi</string>
-  <!-- Summary for switch to block app data usage [CHAR LIMIT=NONE] -->
-  <string name="data_usage_app_restrict_all_wifi_summary">Πλήρης αποτροπή χρήσης δεδομένων μέσω δικτύων Wi\u2011Fi</string>
-  <!-- Volume link notification -->
-  <string name="volume_link_notification_title">Σύνδεση εντάσεων ήχου κλήσης &amp; ειδοποιήσεων</string>
-  <!-- Launch music player when headset is connected -->
-  <string name="headset_connect_player_title">Εκκίνηση εφαρμογής μουσικής</string>
-  <string name="headset_connect_player_summary">Εκκίνηση της προεπιλεγμένης εφαρμογής μουσικής κατά τη σύνδεση ακουστικών</string>
-  <!-- Update recovery -->
-  <string name="update_recovery_title">Ενημέρωση recovery</string>
-  <string name="update_recovery_summary">Ενημέρωση της προεγκατεστημένης recovery με τις ενημερώσεις συστήματος</string>
-  <string name="update_recovery_on_warning">ΣΗΜΕΙΩΣΗ: Όταν αυτή η λειτουργία είναι ενεργοποιημένη, η εγκατεστημένη recovery σας θα αντικατασταθεί με αυτήν που περιλαμβάνεται στην τρέχουσα έκδοση του το λειτουργικού συστήματος.\n\nΗ recovery θα ενημερώνεται μαζί με τις αναβαθμίσεις στο σύστημά σας, βοηθώντας να εξασφαλισθεί η συμβατότητα με μελλοντικές εκδόσεις.\n\nΘέλετε να ενεργοποιήσετε αυτήν τη λειτουργία;</string>
-  <string name="update_recovery_off_warning">ΠΡΟΣΟΧΗ: Όταν αυτή η λειτουργία είναι απενεργοποιημένη, η εγκατεστημένη recovery σας δεν θα ενημερώνεται με τις αναβαθμίσεις του λειτουργικού συστήματος.\n\nΕνδέχεται να μην είναι η δυνατή η εγκατάσταση μελλοντικών ενημερώσεων με ξεπερασμένες ή τροποποιημένες εκδόσεις recovery.\n\nΘέλετε πράγματι να απενεργοποιήσετε αυτήν τη λειτουργία;</string>
-  <!-- Status bar - double tap to sleep -->
-  <string name="status_bar_double_tap_to_sleep_title">Διπλό χτύπημα για αναστολή</string>
-  <string name="status_bar_double_tap_to_sleep_summary">Διπλό χτύπημα στη γραμμή κατάστασης για αναστολή της συσκευής</string>
-  <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> - <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
-  <string name="sim_enabled">ενεργή</string>
-  <string name="sim_disabled">απενεργοποιημένη</string>
-  <string name="sim_missing">απούσα ή ελαττωματική</string>
-  <string name="sim_enabler_need_disable_sim">Η κάρτα SIM θα απενεργοποιηθεί. Θέλετε να συνεχίσετε;</string>
-  <string name="sim_enabler_will_disable_sim_title">Προσοχή</string>
-  <string name="sim_enabler_need_switch_data_service">Αυτή η SIM θα απενεργοποιηθεί και η SIM <xliff:g id="slotid">%1$s</xliff:g> θα χρησιμοποιηθεί για υπηρεσίες δεδομένων. Είστε βέβαιοι ότι θέλετε να συνεχίσετε;</string>
-  <string name="sim_enabler_airplane_on">Δεν είναι δυνατή η εκτέλεση της ενέργειας κατά τη λειτουργία πτήσης.</string>
-  <string name="sim_enabler_in_call">Δεν είναι δυνατή η εκτέλεση της ενέργειας κατά τη διάρκεια μιας κλήσης.</string>
-  <string name="sim_enabler_both_inactive">Δεν μπορείτε να απενεργοποιήσετε όλες τις κάρτες SIM</string>
-  <string name="sim_enabler_enabling">Ενεργοποίηση\u2026</string>
-  <string name="sim_enabler_disabling">Απενεργοποίηση\u2026</string>
-  <string name="sub_activate_success">Η SIM ενεργοποιήθηκε.</string>
-  <string name="sub_activate_failed">Ανεπιτυχής ενεργοποίηση.</string>
-  <string name="sub_deactivate_success">Η SIM απενεργοποιήθηκε.</string>
-  <string name="sub_deactivate_failed">Ανεπιτυχής απενεργοποίηση.</string>
-  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
-  <!-- SAR information -->
-  <string name="maximum_head_level">Κεφάλι: %1$s W/kg</string>
-  <string name="maximum_body_level">Σώμα: %1$s W/kg</string>
-  <!-- IC Codes -->
-  <string name="ic_code_model">Μοντέλο: %1$s</string>
-  <string name="ic_code_full">IC: %1$s</string>
-  <!-- Label for settings shortcut: carrier selection -->
-  <string name="shortcut_carrier_title">Εταιρίες δικτύου</string>
-  <!-- Burn in protection -->
-  <string name="burnin_protection_title">Προστασία οθόνης από σύμπτωμα \"burn-in\"</string>
-  <string name="burnin_protection_summary">Μετακινεί περιοδικά τα στοιχεία τα οποία εμφανίζονται μόνιμα στην οθόνη για αποφυγή υπερβολικής φθοράς οθόνης σε εκείνη την περιοχή</string>
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Απομένει <xliff:g id="step_count">%1$d</xliff:g> βήμα για να ενεργοποιήσετε τις ρυθμίσεις για προγραμματιστές.</item>
+        <item quantity="other">Απομένουν <xliff:g id="step_count">%1$d</xliff:g> βήματα για να ενεργοποιήσετε τις ρυθμίσεις για προγραμματιστές.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Ενεργοποιήσατε τις ρυθμίσεις για προγραμματιστές!</string>
+    <string name="show_dev_already_cm">Δεν χρειάζεται, έχετε ήδη ενεργοποιήσει τις ρυθμίσεις για προγραμματιστές.</string>
+    <string name="development_tools_title">Εργαλεία ανάπτυξης</string>
+    <string name="root_access">Πρόσβαση root</string>
+    <string name="root_access_warning_title">Να επιτρέπεται η πρόσβαση root;</string>
+    <string name="root_access_warning_message">Επιτρέποντας στις εφαρμογές να ζητούν πρόσβαση root είναι πολύ επικίνδυνο και θα μπορούσε να θέσει σε κίνδυνο την ασφάλεια του συστήματος σας!</string>
+    <string name="root_access_none">Απενεργοποιημένη</string>
+    <string name="root_access_apps">Μόνο εφαρμογές</string>
+    <string name="root_access_adb">Μόνο ADB</string>
+    <string name="root_access_all">Εφαρμογές και ADB</string>
+    <string name="root_appops_title">Διαχείριση προσβάσεων root</string>
+    <string name="root_appops_summary">Προβολή και έλεγχος των κανόνων root</string>
+    <string name="mod_version">Έκδοση LineageOS</string>
+    <string name="mod_version_default">Άγνωστη</string>
+    <string name="device_model">Μοντέλο συσκευής</string>
+    <string name="device_name">Όνομα συσκευής</string>
+    <string name="mod_api_level">Επίπεδο LineageOS API</string>
+    <string name="mod_api_level_default">Άγνωστη</string>
+    <string name="build_date">Ημερομηνία έκδοσης</string>
+    <string name="cmupdate_settings_title">Ενημερώσεις LineageOS</string>
+    <string name="app_ops_categories_location">Τοποθεσία</string>
+    <string name="app_ops_categories_personal">Προσωπικά</string>
+    <string name="app_ops_categories_messaging">Ανταλλαγή μηνυμάτων</string>
+    <string name="app_ops_categories_media">Μέσα</string>
+    <string name="app_ops_categories_device">Συσκευή</string>
+    <string name="app_ops_categories_background">Παρασκήνιο</string>
+    <string name="app_ops_categories_bootup">Εκκίνηση</string>
+    <string name="app_ops_categories_su">Πρόσβαση root</string>
+    <string name="app_ops_categories_other">Άλλες</string>
+    <string name="app_ops_summaries_coarse_location">τοποθεσία κατά προσέγγιση</string>
+    <string name="app_ops_summaries_fine_location">ακριβής τοποθεσία</string>
+    <string name="app_ops_summaries_gps">GPS</string>
+    <string name="app_ops_summaries_vibrate">δόνηση</string>
+    <string name="app_ops_summaries_read_contacts">ανάγνωση επαφών</string>
+    <string name="app_ops_summaries_modify_contacts">τροποποίηση επαφών</string>
+    <string name="app_ops_summaries_read_call_log">ανάγνωση αρχείου κλήσεων</string>
+    <string name="app_ops_summaries_modify_call_log">τροποποίηση αρχείου κλήσεων</string>
+    <string name="app_ops_summaries_read_calendar">ανάγνωση ημερολογίου</string>
+    <string name="app_ops_summaries_modify_calendar">τροποποίηση ημερολογίου</string>
+    <string name="app_ops_summaries_wifi_scan">σάρωση Wi-Fi</string>
+    <string name="app_ops_summaries_notification">ειδοποίηση/μήνυμα στην οθόνη</string>
+    <string name="app_ops_summaries_cell_scan">σάρωση κυψέλης</string>
+    <string name="app_ops_summaries_call_phone">κλήση τηλεφώνου</string>
+    <string name="app_ops_summaries_read_sms">ανάγνωση SMS</string>
+    <string name="app_ops_summaries_write_sms">σύνταξη SMS</string>
+    <string name="app_ops_summaries_receive_sms">λήψη SMS</string>
+    <string name="app_ops_summaries_receive_emergency_sms">λήψη SMS έκτακτης ανάγκης</string>
+    <string name="app_ops_summaries_receive_mms">λήψη MMS</string>
+    <string name="app_ops_summaries_receive_wap_push">λήψη μηνύματος push μέσω WAP</string>
+    <string name="app_ops_summaries_send_sms">αποστολή SMS</string>
+    <string name="app_ops_summaries_read_icc_sms">ανάγνωση ICC SMS</string>
+    <string name="app_ops_summaries_write_icc_sms">σύνταξη ICC SMS</string>
+    <string name="app_ops_summaries_modify_settings">τροποποίηση ρυθμίσεων</string>
+    <string name="app_ops_summaries_draw_on_top">μεταφορά στην κορυφή</string>
+    <string name="app_ops_summaries_access_notifications">πρόσβαση στις ειδοποιήσεις</string>
+    <string name="app_ops_summaries_camera">φωτογρ. μηχανή</string>
+    <string name="app_ops_summaries_record_audio">εγγραφή ήχου</string>
+    <string name="app_ops_summaries_play_audio">αναπαραγωγή ήχου</string>
+    <string name="app_ops_summaries_read_clipboard">ανάγνωση περιεχόμενων προχείρου</string>
+    <string name="app_ops_summaries_modify_clipboard">τροποποίηση περιεχομένων προχείρου</string>
+    <string name="app_ops_summaries_media_buttons">πλήκτρα μέσων</string>
+    <string name="app_ops_summaries_audio_focus">εστίαση ήχου</string>
+    <string name="app_ops_summaries_master_volume">κύρια ένταση ήχου</string>
+    <string name="app_ops_summaries_voice_volume">ένταση ήχου φωνής</string>
+    <string name="app_ops_summaries_ring_volume">ένταση ήχου κλήσης</string>
+    <string name="app_ops_summaries_media_volume">ένταση ήχου μέσων</string>
+    <string name="app_ops_summaries_alarm_volume">ένταση ήχου ξυπνητηριού</string>
+    <string name="app_ops_summaries_notification_volume">ένταση ήχου ειδοποιήσεων</string>
+    <string name="app_ops_summaries_bluetooth_volume">ένταση ήχου bluetooth</string>
+    <string name="app_ops_summaries_keep_awake">διατήρηση λειτουργίας</string>
+    <string name="app_ops_summaries_monitor_location">παρακολούθηση τοποθεσίας</string>
+    <string name="app_ops_summaries_monitor_high_power_location">παρακολούθηση θέσης υψηλής ισχύος</string>
+    <string name="app_ops_summaries_get_usage_stats">λήψη στατιστικών χρήσης εφαρμογών</string>
+    <string name="app_ops_summaries_mute_unmute_microphone">σίγαση/κατάργηση σίγασης μικροφώνου</string>
+    <string name="app_ops_summaries_toast_window">εμφάνιση αναδυόμενων μηνυμάτων</string>
+    <string name="app_ops_summaries_project_media">εμφάνιση πολυμέσων</string>
+    <string name="app_ops_summaries_activate_vpn">ενεργοποίηση VPN</string>
+    <string name="app_ops_summaries_write_wallpaper">ορισμός ταπετσαρίας</string>
+    <string name="app_ops_summaries_assist_structure">δομή βοήθειας</string>
+    <string name="app_ops_summaries_assist_screenshot">στιγμιότυπο οθόνης βοήθειας</string>
+    <string name="app_ops_summaries_read_phone_state">ανάγνωση κατάστασης τηλεφώνου</string>
+    <string name="app_ops_summaries_add_voicemail">προσθήκη φωνητικού μηνύματος</string>
+    <string name="app_ops_summaries_use_sip">χρήση SIP</string>
+    <string name="app_ops_summaries_make_call">κλήση</string>
+    <string name="app_ops_summaries_use_fingerprint">χρήση δακτυλικού αποτυπώματος</string>
+    <string name="app_ops_summaries_use_body_sensors">χρήση αισθητήρων σώματος</string>
+    <string name="app_ops_summaries_read_cell_broadcasts">ανάγνωση εκπομπών κινητής τηλεφωνίας</string>
+    <string name="app_ops_summaries_mock_location">αναφορά ψευδής τοποθεσίας</string>
+    <string name="app_ops_summaries_read_external_storage">ανάγνωση εξωτερικού αποθ. χώρου</string>
+    <string name="app_ops_summaries_write_external_storage">εγγραφή εξωτερικού αποθ. χώρου</string>
+    <string name="app_ops_summaries_turn_screen_on">ενεργοποίηση οθόνης</string>
+    <string name="app_ops_summaries_get_accounts">ανάγνωση λογαριασμών</string>
+    <string name="app_ops_summaries_run_in_background">εκτέλεση στο παρασκήνιο</string>
+    <string name="app_ops_summaries_toggle_wifi">εναλλαγή Wi-Fi</string>
+    <string name="app_ops_summaries_toggle_bluetooth">εναλλαγή bluetooth</string>
+    <string name="app_ops_summaries_start_at_boot">έναρξη κατά την εκκίνηση</string>
+    <string name="app_ops_summaries_toggle_nfc">εναλλαγή NFC</string>
+    <string name="app_ops_summaries_toggle_mobile_data">εναλλαγή δεδομένων κινητής τηλεφωνίας</string>
+    <string name="app_ops_summaries_superuser">πρόσβαση root</string>
+    <string name="app_ops_labels_coarse_location">Τοποθεσία κατά προσέγγιση</string>
+    <string name="app_ops_labels_fine_location">Ακριβής τοποθεσία</string>
+    <string name="app_ops_labels_gps">GPS</string>
+    <string name="app_ops_labels_vibrate">Δόνηση</string>
+    <string name="app_ops_labels_read_contacts">Ανάγνωση επαφών</string>
+    <string name="app_ops_labels_modify_contacts">Τροποποίηση επαφών</string>
+    <string name="app_ops_labels_read_call_log">Ανάγνωση αρχείου κλήσεων</string>
+    <string name="app_ops_labels_modify_call_log">Τροποποίηση αρχείου κλήσεων</string>
+    <string name="app_ops_labels_read_calendar">Ανάγνωση ημερολογίου</string>
+    <string name="app_ops_labels_modify_calendar">Τροποποίηση ημερολογίου</string>
+    <string name="app_ops_labels_wifi_scan">Σάρωση Wi-Fi</string>
+    <string name="app_ops_labels_notification">Ειδοποίηση/μήνυμα στην οθόνη</string>
+    <string name="app_ops_labels_cell_scan">Σάρωση κυψέλης</string>
+    <string name="app_ops_labels_call_phone">Κλήση τηλεφώνου</string>
+    <string name="app_ops_labels_read_sms">Ανάγνωση SMS</string>
+    <string name="app_ops_labels_write_sms">Σύνταξη SMS</string>
+    <string name="app_ops_labels_receive_sms">Λήψη SMS</string>
+    <string name="app_ops_labels_receive_emergency_sms">Λήψη SMS έκτακτης ανάγκης</string>
+    <string name="app_ops_labels_receive_mms">Λήψη MMS</string>
+    <string name="app_ops_labels_receive_wap_push">Λήψη μηνύματος push μέσω WAP</string>
+    <string name="app_ops_labels_send_sms">Αποστολή SMS</string>
+    <string name="app_ops_labels_read_icc_sms">Ανάγνωση ICC SMS</string>
+    <string name="app_ops_labels_write_icc_sms">Σύνταξη ICC SMS</string>
+    <string name="app_ops_labels_modify_settings">Τροποποίηση ρυθμίσεων</string>
+    <string name="app_ops_labels_draw_on_top">Μεταφορά στην κορυφή</string>
+    <string name="app_ops_labels_access_notifications">Πρόσβαση στις ειδοποιήσεις</string>
+    <string name="app_ops_labels_camera">Φωτογρ. μηχανή</string>
+    <string name="app_ops_labels_record_audio">Ηχογράφηση</string>
+    <string name="app_ops_labels_play_audio">Αναπαραγωγή ήχου</string>
+    <string name="app_ops_labels_read_clipboard">Ανάγνωση περιεχομένων προχείρου</string>
+    <string name="app_ops_labels_modify_clipboard">Τροποποίηση περιεχομένων προχείρου</string>
+    <string name="app_ops_labels_media_buttons">Πλήκτρα μέσων</string>
+    <string name="app_ops_labels_audio_focus">Εστίαση ήχου</string>
+    <string name="app_ops_labels_master_volume">Κύρια ένταση ήχου</string>
+    <string name="app_ops_labels_voice_volume">Ένταση ήχου φωνής</string>
+    <string name="app_ops_labels_ring_volume">Ένταση ήχου κλήσης</string>
+    <string name="app_ops_labels_media_volume">Ένταση ήχου μέσων</string>
+    <string name="app_ops_labels_alarm_volume">Ένταση ήχου ξυπνητηριού</string>
+    <string name="app_ops_labels_notification_volume">Ένταση ήχου ειδοποιήσεων</string>
+    <string name="app_ops_labels_bluetooth_volume">Ένταση ήχου Bluetooth</string>
+    <string name="app_ops_labels_keep_awake">Διατήρηση λειτουργίας</string>
+    <string name="app_ops_labels_monitor_location">Παρακολούθηση τοποθεσίας</string>
+    <string name="app_ops_labels_monitor_high_power_location">Παρακολούθηση θέσης υψηλής ισχύος</string>
+    <string name="app_ops_labels_get_usage_stats">Λήψη στατιστικών χρήσης</string>
+    <string name="app_ops_labels_mute_unmute_microphone">Σίγαση/κατάργηση σίγασης μικροφώνου</string>
+    <string name="app_ops_labels_toast_window">Εμφάνιση αναδυόμενων μηνυμάτων</string>
+    <string name="app_ops_labels_project_media">Εμφάνιση πολυμέσων</string>
+    <string name="app_ops_labels_activate_vpn">Ενεργοποίηση VPN</string>
+    <string name="app_ops_labels_write_wallpaper">Ορισμός ταπετσαρίας</string>
+    <string name="app_ops_labels_assist_structure">Βοηθητική εφαρμογή</string>
+    <string name="app_ops_labels_assist_screenshot">Στιγμιότυπο οθόνης βοήθειας</string>
+    <string name="app_ops_labels_read_phone_state">Ανάγνωση κατάστασης τηλεφώνου</string>
+    <string name="app_ops_labels_add_voicemail">Προσθήκη φωνητικού μηνύματος</string>
+    <string name="app_ops_labels_use_sip">Χρήση SIP</string>
+    <string name="app_ops_labels_make_call">Κλήση</string>
+    <string name="app_ops_labels_use_fingerprint">Χρήση δακτυλικού αποτυπώματος</string>
+    <string name="app_ops_labels_use_body_sensors">Χρήση αισθητήρων σώματος</string>
+    <string name="app_ops_labels_read_cell_broadcasts">Ανάγνωση εκπομπών κινητής τηλεφωνίας</string>
+    <string name="app_ops_labels_mock_location">Αναφορά ψευδής τοποθεσίας</string>
+    <string name="app_ops_labels_read_external_storage">Ανάγνωση εξωτερικού αποθ. χώρου</string>
+    <string name="app_ops_labels_write_external_storage">Εγγραφή εξωτερικού αποθ. χώρου</string>
+    <string name="app_ops_labels_turn_screen_on">Ενεργοποίηση οθόνης</string>
+    <string name="app_ops_labels_get_accounts">Ανάγνωση λογαριασμών</string>
+    <string name="app_ops_labels_run_in_background">Τρέχει στο παρασκήνιο</string>
+    <string name="app_ops_labels_toggle_wifi">Εναλλαγή Wi-Fi</string>
+    <string name="app_ops_labels_toggle_bluetooth">Εναλλαγή bluetooth</string>
+    <string name="app_ops_labels_start_at_boot">Έναρξη κατά την εκκίνηση</string>
+    <string name="app_ops_labels_toggle_nfc">Εναλλαγή NFC</string>
+    <string name="app_ops_labels_toggle_mobile_data">Εναλλαγή δεδομένων κινητής τηλεφωνίας</string>
+    <string name="app_ops_labels_superuser">Πρόσβαση root</string>
+    <string name="app_ops_permissions_allowed">Επιτρέπεται</string>
+    <string name="app_ops_permissions_ignored">Δεν επιτρέπεται</string>
+    <string name="app_ops_permissions_always_ask">Ερώτηση πάντα</string>
+    <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (χρησιμοποιήθηκε <xliff:g id="count">%2$s</xliff:g>)</string>
+    <string name="app_ops_allowed_count">Επιτράπηκε <xliff:g id="count" example="2 φορές">%s</xliff:g></string>
+    <string name="app_ops_ignored_count">Δεν επιτράπηκε <xliff:g id="count" example="2 φορές">%s</xliff:g></string>
+    <string name="app_ops_both_count">Επιτράπηκε <xliff:g id="count">%1$s</xliff:g>, δεν επιτράπηκε <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_no_blockable_permissions">Δεν υπάρχουν διαθέσιμα δικαιώματα για αποκλεισμό</string>
+    <string name="app_ops_show_user_apps">Εμφάνιση εφαρμογών χρήστη</string>
+    <string name="app_ops_show_system_apps">Εμφάνιση ενσωματωμένων εφαρμογών</string>
+    <string name="app_ops_reset_counters">Επαναφορά μετρητών \'επιτράπηκε/δεν επιτράπηκε\'</string>
+    <string name="app_ops_reset_confirm_title">Επιβεβαίωση επαναφοράς μετρητών</string>
+    <string name="app_ops_reset_confirm_mesg">Είστε σίγουρος/η ότι θέλετε να κάνετε επαναφορά των μετρητών;</string>
+    <string name="ok">ΟΚ</string>
+    <string name="volume_adjust_sounds_title">Ήχοι πλήκτρων έντασης</string>
+    <string name="vibrator_intensity_title">Ένταση δόνησης</string>
+    <string name="vibrator_intensity_dialog_warning">Δεν συνιστώνται τιμές άνω του %1$d%%</string>
+    <string name="vibrator_intensity_dialog_reset">Επαναφορά</string>
+    <string name="lock_settings_picker_pattern_size_message">Επιλέξτε ένα μέγεθος μοτίβου</string>
+    <string name="lockpattern_settings_enable_error_path_title">Εμφάνιση λάθος μοτίβου</string>
+    <string name="lockpattern_settings_enable_dots_title">Εμφάνιση τελειών μοτίβου</string>
+    <string name="lock_directly_show_password">Άμεση εμφάνιση εισόδου κωδικού</string>
+    <string name="lock_directly_show_pattern">Άμεση εμφάνιση εισόδου μοτίβου</string>
+    <string name="lock_directly_show_pin">Άμεση εμφάνιση εισόδου PIN</string>
+    <string name="lockscreen_vibrate_enabled_title">Δόνηση</string>
+    <string name="lockscreen_vibrate_enabled_head">Δόνηση κατά το ξεκλείδωμα</string>
+    <string name="lights_label">Φωτισμός</string>
+    <string name="memory_startup_apps_title">Εφαρμογές που ξεκινούν κατά την εκκίνηση</string>
+    <string name="advanced_reboot_title">Προηγμένη επανεκκίνηση</string>
+    <string name="advanced_reboot_summary">Όταν είναι ενεργή, περιλαμβάνονται στο μενού πλήκτρου απενεργοποίησης οι επιλογές επανεκκίνησης σε λειτουργία recovery, bootloader ή εκτέλεση γρήγορης επανεκκίνησης</string>
+    <string name="unlock_scramble_pin_layout_title">Ανακάτεμα διάταξης</string>
+    <string name="unlock_scramble_pin_layout_summary">Ανακάτεμα της διάταξης PIN κατά το ξεκλείδωμα της συσκευής</string>
+    <string name="lockscreen_visualizer_title">Εμφάνιση οπτικοποίησης μουσικής</string>
+    <string name="lockscreen_media_art_title">Προβολή εξώφυλλου άλμπουμ</string>
+    <string name="double_tap_sleep_anywhere_title">Διπλό πάτημα οπουδήποτε για απενεργοποίηση</string>
+    <string name="lockpattern_reset_button">Επαναφορά μοτίβου</string>
+    <string name="lockpattern_settings_reset_summary">Εισάγετε την κύρια διεύθυνση ηλεκτρονικού ταχυδρομείου και τον κωδικό πρόσβασης για να επαναφέρετε το μοτίβο κλειδώματος</string>
+    <string name="menu_hidden_apps_delete">Επαναφορά</string>
+    <string name="menu_hidden_apps_reset_lock">Επαναφέρετε το μοτίβο κλειδώματος</string>
+    <string name="protected_apps">Προστατευμένες εφαρμογές</string>
+    <string name="protected_apps_summary">Διαχειριστείτε ποιές εφαρμογές θα είναι κρυμμένες πίσω από ένα ασφαλές κλείδωμα</string>
+    <string name="saving_protected_components">Αποθήκευση κατάστασης εφαρμογών\u2026</string>
+    <string name="launch_app">Εκκίνηση εφαρμογής</string>
+    <string name="pa_login_username_hint">Όνομα χρήστη (ηλεκτρονικό ταχυδρομείο)</string>
+    <string name="pa_login_password_hint">Κωδικός</string>
+    <string name="pa_login_submit_button">Είσοδος</string>
+    <string name="pa_login_checking_password">Έλεγχος λογαριασμού\u2026</string>
+    <string name="pa_login_incorrect_login">Τα στοιχεία είναι εσφαλμένα</string>
+    <string name="pa_pattern_or_fingerprint_header">Πρέπει να σχεδιάσετε το μοτίβο ή να χρησιμοποιήσετε το δακτυλικό αποτύπωμα για να ξεκλειδώσετε</string>
+    <string name="lockscreen_weather_enabled_title">Εμφάνιση καιρού</string>
+    <string name="lockscreen_blur_enabled_title">Θολό παρασκήνιο</string>
+    <string name="proximity_wake_title">Πρόληψη ακούσιας αφύπνισης</string>
+    <string name="proximity_wake_summary">Έλεγχος του αισθητήρα εγγύτητας πριν την αφύπνιση που προκλήθηκε από χειρονομίες</string>
+    <string name="high_touch_sensitivity_title">Υψηλή ευαισθησία αφής</string>
+    <string name="high_touch_sensitivity_summary">Αύξηση της ευαισθησίας της οθόνης αφής έτσι ώστε να μπορεί να χρησιμοποιηθεί φορώντας γάντια</string>
+    <string name="touchscreen_hovering_title">Αιώρηση οθόνης αφής</string>
+    <string name="touchscreen_hovering_summary">Σας επιτρέπει να αιωρείτε πάνω από την οθόνη όπως ένα ποντίκι σε προγράμματα περιήγησης στο web, απομακρυσμένες επιφάνειες εργασίας, κλπ</string>
+    <string name="ime_switcher_notify">Εικονίδιο επιλογέα</string>
+    <string name="ime_switcher_notify_summary">Εμφάνιση εικονιδίου για τον επιλογέα μεθόδου εισαγωγής</string>
+    <string name="notification_importance_very_low">Χωρίς λειτ. διακοπ., σύντ. προβ., ήχου ή δόν. σε πλ. οθόνη. Εμφ. στο κάτω μέρος της λίστ. ειδ. Απόκρ. από οθ. κλειδ.</string>
+    <string name="stylus_icon_enabled_title">Ένδειξη κατά τη χρήση γραφίδας</string>
+    <string name="stylus_icon_enabled_summary">Εμφάνιση ενδεικτικού εικονιδίου όταν αιωρείτε ή σχεδίαζετε με τη γραφίδα</string>
+    <string name="kill_app_longpress_back">Τερμ. με πλήκτρο πίσω</string>
+    <string name="kill_app_longpress_back_summary">Πιέζοντας παρατεταμένα το πλήκτρο πίσω, τερματίζετε την τρέχουσα εφαρμογή</string>
+    <string name="enable_adb_cm">Εντοπισμός σφαλμάτων Android</string>
+    <string name="enable_adb_summary_cm">Ενεργοποίηση του περιβάλλοντος Android Debug Bridge (ADB)</string>
+    <string name="adb_notify">Ειδοποίηση εντοπισμού σφαλμάτων</string>
+    <string name="adb_notify_summary">Εμφάνιση ειδοποίησης όταν ο εντοπισμός σφαλμάτων μέσω USB ή δικτύου είναι ενεργοποιημένος</string>
+    <string name="adb_over_network">ADB μέσω δικτύου</string>
+    <string name="adb_over_network_summary">Λειτουργία εντοπισμού σφαλμάτων μέσω TCP/IP δικτύων (δίκτυα Wi-Fi, USB). Η ρύθμιση επαναφέρεται κατα την εκκίνηση</string>
+    <string name="adb_over_network_warning">ΠΡΟΣΟΧΗ: Όταν ο εντοπισμός σφαλμάτων μέσω δικτύου είναι ενεργοποιημένος, το τηλέφωνό σας είναι ανοικτό για εισβολές σε όλα τα συνδεδεμένα δίκτυα!\n\nΧρησιμοποιήστε αυτή τη λειτουργία μόνο όταν είστε συνδεδεμένοι σε έμπιστα δίκτυα.\n\nΘέλετε πραγματικά να ενεργοποιήσετε αυτή τη λειτουργία;</string>
+    <string name="device_hostname">Hostname συσκευής</string>
+    <string name="increasing_ring_volume_option_title">Αυξανόμενη ένταση κουδουνίσματος</string>
+    <string name="increasing_ring_min_volume_title">Αρχική ένταση</string>
+    <string name="increasing_ring_ramp_up_time_title">Χρονικό διάστημα αύξησης</string>
+    <string name="zen_mode_vibration">Δόνηση</string>
+    <string name="zen_mode_vibration_never">Απενεργοποίηση δόνησης</string>
+    <string name="zen_mode_vibration_calls_only">Δόνηση μόνο για κλήσεις</string>
+    <string name="zen_mode_vibration_calls_and_notifications">Δόνηση για κλήσεις και ειδοποιήσεις</string>
+    <string name="zen_mode_summary_reminders">υπενθυμίσεις</string>
+    <string name="zen_mode_summary_events">εκδηλώσεις</string>
+    <string name="zen_mode_summary_all_callers">όλοι οι καλούντες</string>
+    <string name="zen_mode_summary_selected_callers">επιλεγμένοι καλούντες</string>
+    <string name="zen_mode_summary_repeat_callers">καλούντες κατ\' επανάληψη</string>
+    <string name="zen_mode_summary_all_messages">όλα τα μηνύματα</string>
+    <string name="zen_mode_summary_selected_messages">επιλεγμένα μηνύματα</string>
+    <string name="app_notification_sound_timeout_title">Ελάχιστος χρόνος μεταξύ ήχων ειδοποίησης</string>
+    <string name="app_notification_sound_timeout_summary_template">Να επιτρέπονται ήχοι ή δονήσεις όχι περισσότερο από μία φορά κάθε <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Χωρίς περιορισμό</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 δευτερόλεπτα</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 δευτερόλεπτα</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 λεπτό</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 λεπτά</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 λεπτά</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 λεπτά</string>
+    <string name="sim_card_status_title">Κατάσταση SIM %d</string>
+    <string name="sim_card_lock_settings_title">Ρυθμίσεις κλειδώματος SIM %d</string>
+    <string name="sim_card_summary_empty">Δεν έχει τοποθετηθεί SIM</string>
+    <string name="sim_mobile_network_settings_category_title">Ρυθμίσεις δικτύων κινητής τηλεφωνίας</string>
+    <string name="sim_mobile_network_settings_title">Ρυθμίσεις SIM %d</string>
+    <string name="nfc_title_category">NFC</string>
+    <string name="tuner_full_importance_settings">Στοιχεία ελέγχου ειδοποίησης ισχύος</string>
+    <string name="cmlicense_title">Νομικές πληροφορίες LineageOS</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Εντοπίστε τον αισθητήρα μοναδικού χαρακτηριστικού <xliff:g id="sensor_location">%1$s</xliff:g> του τηλεφώνου σας.</string>
+    <string name="security_settings_fingerprint_sensor_location_back">στο πίσω μέρος</string>
+    <string name="security_settings_fingerprint_sensor_location_front">στο μπροστινό μέρος</string>
+    <string name="security_settings_fingerprint_sensor_location_left">στην αριστερή πλευρά</string>
+    <string name="security_settings_fingerprint_sensor_location_right">στη δεξιά πλευρά</string>
+    <string name="wifi_setting_countrycode_title">Κωδικός περιοχής Wi-Fi</string>
+    <string name="wifi_setting_countrycode_summary">Προσδιορίστε τον κωδικό περιοχής για το Wi-Fi</string>
+    <string name="wifi_setting_countrycode_error">Πρόβλημα κατά τη ρύθμιση του κωδικού περιοχής.</string>
+    <string name="wake_when_plugged_or_unplugged_title">Αφύπνιση κατά τη σύνδεση</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Ενεργοποίηση της οθόνης κατά την σύνδεση ή αποσύνδεση μιας πηγής ισχύος</string>
+    <string name="heads_up_notifications_enabled_title">Αναδυόμενες ειδοποιήσεις</string>
+    <string name="heads_up_notifications_enabled_summary">Εμφάνιση ειδοποιήσεων προτεραιότητας σε ένα μικρό αιωρούμενο παράθυρο</string>
+    <string name="tethering_other_category_text">Άλλες</string>
+    <string name="hotstpot_inactivity_timeout_text">Χρονικό όριο Wi\u2011Fi hotspot</string>
+    <string name="hotstpot_inactivity_timeout_never">Ποτέ</string>
+    <string name="hotstpot_inactivity_timeout_1_minute">1 λεπτό</string>
+    <string name="hotstpot_inactivity_timeout_5_minutes">5 λεπτά</string>
+    <string name="hotstpot_inactivity_timeout_10_minutes">10 λεπτά</string>
+    <string name="hotstpot_inactivity_timeout_never_summary_text">Το φορητό Wi\u2011Fi hotspot δεν θα απενεργοποιείται ποτέ</string>
+    <string name="hotstpot_inactivity_timeout_summary_text">Το φορητό Wi\u2011Fi hotspot θα απενεργοποιείται μετά από <xliff:g id="timeout">%1$s</xliff:g></string>
+    <string name="data_usage_app_restrict_data_category_title">Πρόσβαση δεδομένων κινητής τηλεφωνίας</string>
+    <string name="data_usage_app_restrict_wifi_category_title">Πρόσβαση δεδομένων Wi\u2011Fi</string>
+    <string name="data_usage_app_restrict_all_data_title">Πλήρης απενεργοποίηση πρόσβασης δεδομένων κινητής</string>
+    <string name="data_usage_app_restrict_all_data_summary">Πλήρης αποτροπή χρήσης δεδομένων μέσω δικτύων κινητής τηλεφωνίας</string>
+    <string name="data_usage_app_restrict_all_wifi_title">Πλήεης απενεργοποίηση πρόσβασης δεδομένων Wi\u2011Fi</string>
+    <string name="data_usage_app_restrict_all_wifi_summary">Πλήρης αποτροπή χρήσης δεδομένων μέσω δικτύων Wi\u2011Fi</string>
+    <string name="volume_link_notification_title">Σύνδεση εντάσεων ήχου κλήσης &amp; ειδοποιήσεων</string>
+    <string name="headset_connect_player_title">Εκκίνηση εφαρμογής μουσικής</string>
+    <string name="headset_connect_player_summary">Εκκίνηση της προεπιλεγμένης εφαρμογής μουσικής κατά τη σύνδεση ακουστικών</string>
+    <string name="update_recovery_title">Ενημέρωση recovery</string>
+    <string name="update_recovery_summary">Ενημέρωση της προεγκατεστημένης recovery με τις ενημερώσεις συστήματος</string>
+    <string name="update_recovery_on_warning">ΣΗΜΕΙΩΣΗ: Όταν αυτή η λειτουργία είναι ενεργοποιημένη, η εγκατεστημένη recovery σας θα αντικατασταθεί με αυτήν που περιλαμβάνεται στην τρέχουσα έκδοση του το λειτουργικού συστήματος.\n\nΗ recovery θα ενημερώνεται μαζί με τις αναβαθμίσεις στο σύστημά σας, βοηθώντας να εξασφαλισθεί η συμβατότητα με μελλοντικές εκδόσεις.\n\nΘέλετε να ενεργοποιήσετε αυτήν τη λειτουργία;</string>
+    <string name="update_recovery_off_warning">ΠΡΟΣΟΧΗ: Όταν αυτή η λειτουργία είναι απενεργοποιημένη, η εγκατεστημένη recovery σας δεν θα ενημερώνεται με τις αναβαθμίσεις του λειτουργικού συστήματος.\n\nΕνδέχεται να μην είναι η δυνατή η εγκατάσταση μελλοντικών ενημερώσεων με ξεπερασμένες ή τροποποιημένες εκδόσεις recovery.\n\nΘέλετε πράγματι να απενεργοποιήσετε αυτήν τη λειτουργία;</string>
+    <string name="status_bar_double_tap_to_sleep_title">Διπλό χτύπημα για αναστολή</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Διπλό χτύπημα στη γραμμή κατάστασης για αναστολή της συσκευής</string>
+    <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> - <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
+    <string name="sim_enabled">ενεργή</string>
+    <string name="sim_disabled">απενεργοποιημένη</string>
+    <string name="sim_missing">απούσα ή ελαττωματική</string>
+    <string name="sim_enabler_need_disable_sim">Η κάρτα SIM θα απενεργοποιηθεί. Θέλετε να συνεχίσετε;</string>
+    <string name="sim_enabler_will_disable_sim_title">Προσοχή</string>
+    <string name="sim_enabler_need_switch_data_service">Αυτή η SIM θα απενεργοποιηθεί και η SIM <xliff:g id="slotid">%1$s</xliff:g> θα χρησιμοποιηθεί για υπηρεσίες δεδομένων. Είστε βέβαιοι ότι θέλετε να συνεχίσετε;</string>
+    <string name="sim_enabler_airplane_on">Δεν είναι δυνατή η εκτέλεση της ενέργειας κατά τη λειτουργία πτήσης.</string>
+    <string name="sim_enabler_in_call">Δεν είναι δυνατή η εκτέλεση της ενέργειας κατά τη διάρκεια μιας κλήσης.</string>
+    <string name="sim_enabler_both_inactive">Δεν μπορείτε να απενεργοποιήσετε όλες τις κάρτες SIM</string>
+    <string name="sim_enabler_enabling">Ενεργοποίηση\u2026</string>
+    <string name="sim_enabler_disabling">Απενεργοποίηση\u2026</string>
+    <string name="sub_activate_success">Η SIM ενεργοποιήθηκε.</string>
+    <string name="sub_activate_failed">Ανεπιτυχής ενεργοποίηση.</string>
+    <string name="sub_deactivate_success">Η SIM απενεργοποιήθηκε.</string>
+    <string name="sub_deactivate_failed">Ανεπιτυχής απενεργοποίηση.</string>
+    <string name="maximum_head_level">Κεφάλι: %1$s W/kg</string>
+    <string name="maximum_body_level">Σώμα: %1$s W/kg</string>
+    <string name="ic_code_model">Μοντέλο: %1$s</string>
+    <string name="ic_code_full">IC: %1$s</string>
+    <string name="shortcut_carrier_title">Εταιρίες δικτύου</string>
+    <string name="burnin_protection_title">Προστασία οθόνης από σύμπτωμα \"burn-in\"</string>
+    <string name="burnin_protection_summary">Μετακινεί περιοδικά τα στοιχεία τα οποία εμφανίζονται μόνιμα στην οθόνη για αποφυγή υπερβολικής φθοράς οθόνης σε εκείνη την περιοχή</string>
 </resources>
