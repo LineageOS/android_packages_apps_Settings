@@ -537,6 +537,7 @@ public class AppButtonsPreferenceController extends AbstractPreferenceController
         // by not allowing disabling of apps signed with the
         // system cert and any launcher app in the system.
         if (mHomePackages.contains(mAppEntry.info.packageName)
+                || mAppEntry.info.packageName.equals("com.android.inputmethod.latin")
                 || isSystemPackage(mActivity.getResources(), mPm, mPackageInfo)) {
             // Disable button for core system applications.
             mButtonsPref.setButton1Text(R.string.disable_text)
