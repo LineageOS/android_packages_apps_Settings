@@ -116,6 +116,7 @@ public class LocationSettings extends DashboardFragment {
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, LocationSettings fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new LocationModePreferenceController(context, lifecycle));
         controllers.add(new AppLocationPermissionPreferenceController(context));
         controllers.add(new LocationForWorkPreferenceController(context, lifecycle));
         controllers.add(
