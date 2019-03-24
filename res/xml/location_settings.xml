@@ -20,6 +20,11 @@
         android:title="@string/location_settings_title"
         settings:keywords="@string/keywords_location">
 
+        <SwitchPreference
+            android:key="location_battery_saving_mode"
+            android:title="@string/location_mode_battery_saving_title"
+            android:summary="@string/location_mode_battery_saving_summary" />
+
         <PreferenceCategory
             android:key="recent_location_requests"
             android:title="@string/location_category_recent_location_requests"/>
