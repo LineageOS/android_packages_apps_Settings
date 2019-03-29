@@ -21,6 +21,11 @@
     android:title="@string/header_category_system"
     settings:initialExpandedChildrenCount="4">
 
+    <SwitchPreference
+        android:key="treble_for_all"
+        android:title="@string/treble_for_all_title"
+        android:summary="@string/treble_for_all_summary" />
+
     <Preference
         android:key="gesture_settings"
         android:title="@string/gesture_preference_title"
