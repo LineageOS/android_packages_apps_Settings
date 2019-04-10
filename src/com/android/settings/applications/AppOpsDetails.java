@@ -109,6 +109,7 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
         OP_ICONS.put(AppOpsManager.OP_GPS, R.drawable.ic_perm_location);
         OP_ICONS.put(AppOpsManager.OP_MUTE_MICROPHONE, R.drawable.ic_perm_microphone);
         OP_ICONS.put(AppOpsManager.OP_NFC_CHANGE, R.drawable.ic_perm_nfc);
+        OP_ICONS.put(AppOpsManager.OP_OTHER_SENSORS, R.drawable.ic_perm_data);
         OP_ICONS.put(AppOpsManager.OP_POST_NOTIFICATION, R.drawable.ic_perm_notifications);
         OP_ICONS.put(AppOpsManager.OP_READ_CLIPBOARD, R.drawable.ic_perm_clipboard);
         OP_ICONS.put(AppOpsManager.OP_RUN_IN_BACKGROUND, R.drawable.ic_perm_background);
@@ -192,6 +193,10 @@ public class AppOpsDetails extends SettingsPreferenceFragment {
                 Drawable icon = getIconByPermission(perm);
                 if (icon == null && op != -1 && OP_ICONS.containsKey(op)) {
                     icon = getActivity().getDrawable(OP_ICONS.get(op));
+                }
+                if (icon == null && op == AppOpsManager.OP_MOTION_SENSORS) {
+                    icon = getIconByPermission(AppOpsManager.opToPermission(
+                                   AppOpsManager.OP_USE_FINGERPRINT));
                 }
 
                 final AppOpsManager.OpEntry firstOp = entry.getOpEntry(0);
