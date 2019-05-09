@@ -111,5 +111,15 @@
         android:key="gesture_prevent_ringing_summary"
         android:title="@string/gesture_prevent_ringing_screen_title"
         android:fragment="com.android.settings.gestures.PreventRingingGestureSettings"
+<<<<<<< HEAD   (fe00b5 Automatic translation import)
         settings:controller="com.android.settings.gestures.PreventRingingParentPreferenceController" />
+=======
+        settings:controller="com.android.settings.gestures.PreventRingingPreferenceController" />
+
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="swipe_to_screenshot"
+        android:title="@string/swipe_to_screenshot_gesture_title"
+        android:summary="@string/swipe_to_screenshot_gesture_summary"
+        android:defaultValue="false" />
+>>>>>>> CHANGE (091587 Add 3 finger swipe screenshot [3/3])
 </PreferenceScreen>
