@@ -41,6 +41,8 @@ import com.android.settings.search.Indexable;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
+import lineageos.hardware.LineageHardwareManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,7 @@ public class DisplaySettings extends DashboardFragment {
     private static final String KEY_AMBIENT_DISPLAY = "ambient_display";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness_entry";
     private static final String KEY_NIGHT_DISPLAY = "night_display";
+    private static final String KEY_HIGH_TOUCH_SENSITIVITY = "high_touch_sensitivity_enable";
 
     @Override
     public int getMetricsCategory() {
@@ -119,6 +122,7 @@ public class DisplaySettings extends DashboardFragment {
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
+                    LineageHardwareManager hardware = LineageHardwareManager.getInstance(context);
                     keys.add(KEY_DISPLAY_SIZE);
                     keys.add(WallpaperPreferenceController.KEY_WALLPAPER);
                     keys.add(KEY_NIGHT_DISPLAY);
@@ -126,6 +130,10 @@ public class DisplaySettings extends DashboardFragment {
                     if (!context.getResources().getBoolean(
                             org.lineageos.platform.internal.R.bool.config_proximityCheckOnWake)) {
                         keys.add(KEY_PROXIMITY_ON_WAKE);
+                    }
+                    if (!hardware.isSupported(
+                            LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+                        keys.add(KEY_HIGH_TOUCH_SENSITIVITY);
                     }
                     return keys;
                 }
