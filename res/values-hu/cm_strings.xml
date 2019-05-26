@@ -23,8 +23,11 @@
     </plurals>
     <string name="show_dev_on_cm">Sikeresen engedélyezte a fejlesztői beállításokat!</string>
     <string name="show_dev_already_cm">Már korábban engedélyezte a fejlesztői beállításokat.</string>
+    <string name="platform_revision">Hardver-felület</string>
+    <string name="total_ram">Összes RAM</string>
     <string name="development_tools_title">Fejlesztőeszközök</string>
     <string name="advanced_reboot_title">Speciális újraindítás</string>
+    <string name="advanced_reboot_summary">Feloldott kijelzőnél a Recovery és a Bootloader újraindítási mód is jelenjen meg a kikapcsoló menüben</string>
     <string name="root_access">Rendszergazda hozzáférés</string>
     <string name="root_access_warning_title">Engedélyezi a rendszergazdai hozzáférést?</string>
     <string name="root_access_warning_message">Veszélyes rendszergazda jogosultságot adni az alkalmazásoknak, és veszélyeztetheti a rendszere biztonságát!</string>
@@ -34,10 +37,18 @@
     <string name="root_access_all">Alkalmazások és ADB</string>
     <string name="root_appops_title">Root hozzáférések kezelése</string>
     <string name="root_appops_summary">Root szabályok megtekintése és kezelése</string>
+    <string name="status_bar_double_tap_to_sleep_title">Dupla érintésre alvómód</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Az állapotsor vagy a záróképernyő dupla érintésére kikapcsol a képernyő</string>
+    <string name="touchscreen_gesture_settings_title">Érintőképernyő-mozdulatvezérlés</string>
+    <string name="touchscreen_gesture_settings_summary">Különböző képernyő-mozdulatvezérlések végrehajtása a gyorsműveletekhez</string>
     <string name="proximity_wake_title">Véletlen ébresztés megakadályozása</string>
+    <string name="proximity_wake_summary">Közelségérzékelő ellenőrzése a képernyő felébresztése előtt</string>
     <string name="lock_directly_show_password">Közvetlen jelszó megadás megjelenítése</string>
+    <string name="lock_directly_show_password_summary">Kihagyja a csúsztatással való feloldást és azonnal a jelszavas belépéssel kezdi</string>
     <string name="lock_directly_show_pattern">Közvetlen minta nézet megjelenítése</string>
+    <string name="lock_directly_show_pattern_summary">Kihagyja a csúsztatással való feloldást és azonnal a feloldómintás belépéssel kezdi</string>
     <string name="lock_directly_show_pin">Közvetlen PIN megadás megjelenítése</string>
+    <string name="lock_directly_show_pin_summary">Kihagyja a csúsztatással való feloldást és azonnal a PIN-kódbevitellel kezdi</string>
     <string name="unlock_scramble_pin_layout_title">Szoros elrendezés</string>
     <string name="unlock_scramble_pin_layout_summary">PIN szoros elrendezése az eszköz feloldásakor</string>
     <string name="lockscreen_visualizer_title">Zenei vizualítás megjelenítése</string>
@@ -65,6 +76,7 @@
     <string name="increasing_ring_volume_option_title">Emelkedő csengőhang</string>
     <string name="increasing_ring_min_volume_title">Kezdeti hangerő</string>
     <string name="increasing_ring_ramp_up_time_title">Felfutási idő</string>
+    <string name="volume_link_notification_title">Értesítési és csengőhangok összekapcsolása</string>
     <string name="memory_startup_apps_title">Rendszerindításkor indult alkalmazások</string>
     <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_disabled">letiltva</string>
@@ -154,6 +166,12 @@
     <string name="app_ops_summaries_turn_screen_on">képernyő bekapcsolása</string>
     <string name="app_ops_summaries_get_accounts">fiókok lekérdezése</string>
     <string name="app_ops_summaries_run_in_background">futtatás a háttérben</string>
+    <string name="app_ops_summaries_accessibility_volume">kisegítő hangerő</string>
+    <string name="app_ops_summaries_read_phone_numbers">telefonszám beolvasása</string>
+    <string name="app_ops_summaries_request_install_packages">telepítőcsomagok kérése</string>
+    <string name="app_ops_summaries_picture_in_picture">kép a képben mód használata</string>
+    <string name="app_ops_summaries_instant_app_start_foreground">azonnali alkalmazás indítása az előtérben</string>
+    <string name="app_ops_summaries_answer_phone_calls">telefonhívás-fogadás</string>
     <string name="app_ops_summaries_toggle_wifi">Wi-Fi kapcsolása</string>
     <string name="app_ops_summaries_toggle_bluetooth">bluetooth kapcsolása</string>
     <string name="app_ops_summaries_start_at_boot">indítás rendszerbetöltéskor</string>
@@ -224,6 +242,12 @@
     <string name="app_ops_labels_turn_screen_on">Képernyő bekapcsolása</string>
     <string name="app_ops_labels_get_accounts">Fiókok lekérdezése</string>
     <string name="app_ops_labels_run_in_background">Futtatás a háttérben</string>
+    <string name="app_ops_labels_accessibility_volume">Kisegítő hangerő</string>
+    <string name="app_ops_labels_read_phone_numbers">Telefonszám-beolvasás</string>
+    <string name="app_ops_labels_request_install_packages">Telepítőcsomagok kérése</string>
+    <string name="app_ops_labels_picture_in_picture">Kép a képben mód használata</string>
+    <string name="app_ops_labels_instant_app_start_foreground">Azonnali alkalmazás indítása az előtérben</string>
+    <string name="app_ops_labels_answer_phone_calls">Telefonhívás-fogadás</string>
     <string name="app_ops_labels_toggle_wifi">Wi-Fi kapcsolása</string>
     <string name="app_ops_labels_toggle_bluetooth">Bluetooth kapcsolása</string>
     <string name="app_ops_labels_start_at_boot">Indítás rendszerbetöltéskor</string>
@@ -237,12 +261,14 @@
     <string name="app_ops_allowed_count">Engedélyezve <xliff:g id="count" example="2 times">%s</xliff:g> alkalommal</string>
     <string name="app_ops_ignored_count">Megtagadva <xliff:g id="count" example="2 times">%s</xliff:g> alkalommal</string>
     <string name="app_ops_both_count">Engedélyezve <xliff:g id="count">%1$s</xliff:g>, megtagadva <xliff:g id="count">%2$s</xliff:g> alkalommal</string>
+    <string name="app_ops_no_blockable_permissions">Nincs elérhető engedély a blokkoláshoz</string>
     <string name="app_ops_show_user_apps">Felhasználói alkalmazások megjelenítése</string>
     <string name="app_ops_show_system_apps">Rendszeralkalmazások megjelenítése</string>
     <string name="app_ops_reset_counters">Számlálók nullázása</string>
     <string name="app_ops_reset_confirm_title">Számlálók törlésének megerősítése</string>
     <string name="app_ops_reset_confirm_mesg">Biztosan szeretné alaphelyzetbe állítani a számlálókat?</string>
     <string name="ok">OK</string>
+    <string name="security_privacy_settings_title">Biztonság és adatvédelem</string>
     <string name="lineagelicense_title">LineageOS jogi nyilatkozat</string>
     <string name="volume_adjust_sounds_title">Hangerő állítási hangok</string>
     <string name="wake_when_plugged_or_unplugged_title">Felébredés töltő csatlakoztatásakor</string>
@@ -253,4 +279,8 @@
     <string name="high_touch_sensitivity_summary">Érintőképernyő érzékenységének növelése, így kesztyű viselése esetén is használható</string>
     <string name="touchscreen_hovering_title">Lebegő érintés</string>
     <string name="touchscreen_hovering_summary">Engedélyezi a lebegéssel való vezérlést, mint egy egérrel a böngészőknél, távoli asztaloknál, stb.</string>
+    <string name="data_usage_app_restrict_data">Mobiladat-kapcsolat</string>
+    <string name="data_usage_app_restrict_data_summary">Mobiladat-használat engedélyezése</string>
+    <string name="data_usage_app_restrict_wifi">Wi-Fi-kapcsolat</string>
+    <string name="data_usage_app_restrict_wifi_summary">Wi\u2011Fi-adathasználat engedélyezése</string>
 </resources>

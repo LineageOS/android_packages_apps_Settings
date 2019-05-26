@@ -22,7 +22,10 @@
     </plurals>
     <string name="show_dev_on_cm">คุณเปิดใช้งานการตั้งค่าการพัฒนาแล้ว!</string>
     <string name="show_dev_already_cm">ไม่จำเป็น คุณได้เปิดใช้งานการตั้งค่าการพัฒนาแล้ว</string>
+    <string name="platform_revision">แพลตฟอร์ม</string>
+    <string name="total_ram">แรมทั้งหมด</string>
     <string name="development_tools_title">เครื่องมือการพัฒนา</string>
+    <string name="advanced_reboot_summary">เมื่อปลดล็อค รวมตัวเลือกในเมนูปิดระบบเครื่องเพื่อเริ่มใหม่ในโหมดกู้คืนหรือโหมดดาวน์โหลด</string>
     <string name="root_access">สิทธิผู้ดูแลระบบ</string>
     <string name="root_access_warning_title">ให้สิทธิผู้ดูแลระบบหรือไม่</string>
     <string name="root_access_warning_message">การอนุญาติให้แอปพลิเคชันเข้าถึงสิทธิผู้ดูแลระบบถือเป็นอันตรายอย่างมากและสามารถส่งผลต่อความปลอดภัยของระบบของคุณ!</string>
@@ -30,10 +33,20 @@
     <string name="root_access_apps">แอปเท่านั้น</string>
     <string name="root_access_adb">ADB เท่านั้น</string>
     <string name="root_access_all">แอปและ ADB</string>
+    <string name="root_appops_title">จัดการการเข้าถึง root</string>
+    <string name="root_appops_summary">ดูและควบคุมกฎของ root</string>
+    <string name="status_bar_double_tap_to_sleep_title">แตะเพื่อหลับ</string>
+    <string name="status_bar_double_tap_to_sleep_summary">แตะสองครั้งที่แถบสถานะเพื่อพักหน้าจอ</string>
+    <string name="touchscreen_gesture_settings_title">ท่าทางสัมผัสบนหน้าจอ</string>
+    <string name="touchscreen_gesture_settings_summary">ใช้ท่าทางสัมผัสรูปแบบต่าง ๆ เพื่อการทำงานที่รวดเร็วขึ้น</string>
     <string name="proximity_wake_title">ป้องกันการเปิดหน้าจอโดยไม่เจตนา</string>
+    <string name="proximity_wake_summary">ตรวจสอบด้วยเซ็นเซอร์ก่อนปลุกหน้าจอ</string>
     <string name="lock_directly_show_password">แสดงรหัสผ่านโดยตรง</string>
+    <string name="lock_directly_show_password_summary">ข้ามการปัดเพื่อปลดล็อคหน้าจอ และเริ่มการใส่รหัสผ่านทันที</string>
     <string name="lock_directly_show_pattern">แสดงรูปแบบโดยตรง</string>
+    <string name="lock_directly_show_pattern_summary">ข้ามการปัดเพื่อปลดล็อคหน้าจอ และเริ่มการใส่รหัสผ่านทันที</string>
     <string name="lock_directly_show_pin">แสดง PIN โดยตรง</string>
+    <string name="lock_directly_show_pin_summary">ข้ามการปัดเพื่อปลดล็อคหน้าจอ และเริ่มการใส่รหัสผ่านทันที</string>
     <string name="unlock_scramble_pin_layout_title">แบบสุ่มสลับ</string>
     <string name="unlock_scramble_pin_layout_summary">สุ่มสลับรหัสเมื่อปลดล็อคอุปกรณ์</string>
     <string name="lockscreen_visualizer_title">แสดงเส้นจังหวะเพลง</string>
@@ -48,10 +61,16 @@
     <string name="adb_over_network_warning">คำเตือน: เมื่อเปิดใช้งาน ADB บนเครือข่าย โทรศัพท์ของคุณอาจโดนโจมตีจากทุกช่องทางที่เชื่อมต่ออยู่\n\nใช้คุณลักษณะนี้เมื่อคุณเชื่อมต่อกับเครือข่ายที่ไว้ใจได้เท่านั้น\n\nต้องการเปิดใช้งานฟังก์ชันนี้หรือไม่</string>
     <string name="kill_app_longpress_back">ปิดแอปด้วยปุ่มกลับ</string>
     <string name="kill_app_longpress_back_summary">ปิดแอปที่กำลังใช้งานโดยกดปุ่มกลับค้าง</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">ค้นหาเซ็นเซอร์ลายนิ้วมือที่ <xliff:g id="sensor_location">%1$s</xliff:g> ของโทรศัพท์ของคุณ</string>
+    <string name="security_settings_fingerprint_sensor_location_back">ด้านหลัง</string>
+    <string name="security_settings_fingerprint_sensor_location_front">ด้านหน้า</string>
+    <string name="security_settings_fingerprint_sensor_location_left">ด้านซ้าย</string>
+    <string name="security_settings_fingerprint_sensor_location_right">ด้านขวา</string>
     <string name="device_hostname">ชื่อโฮสต์ของอุปกรณ์</string>
     <string name="increasing_ring_volume_option_title">การเพิ่มเสียงเรียกเข้า</string>
     <string name="increasing_ring_min_volume_title">ระดับเสียงเริ่มต้น</string>
     <string name="increasing_ring_ramp_up_time_title">ระยะเวลาที่ดังเพิ่มขึ้น</string>
+    <string name="volume_link_notification_title">เชื่อมต่อความดังเสียงเรียกเข้า&amp; เสียงแจ้งเตือน</string>
     <string name="memory_startup_apps_title">เริ่มแอปเมื่อบูต</string>
     <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> ถูก <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_disabled">ปิดใช้งานแล้ว</string>
@@ -138,6 +157,12 @@
     <string name="app_ops_summaries_write_external_storage">เขียนที่เก็บข้อมูลภายนอก</string>
     <string name="app_ops_summaries_turn_screen_on">เปิดหน้าจอ</string>
     <string name="app_ops_summaries_get_accounts">เข้าถึงบัญชี</string>
+    <string name="app_ops_summaries_accessibility_volume">การเข้าถึงระดับเสียง</string>
+    <string name="app_ops_summaries_read_phone_numbers">อ่านหมายเลขโทรศัพท์</string>
+    <string name="app_ops_summaries_request_install_packages">ขอติดตั้งแพคเกจ</string>
+    <string name="app_ops_summaries_picture_in_picture">ใช้รูปภาพในรูปภาพ (PIP)</string>
+    <string name="app_ops_summaries_instant_app_start_foreground">เริ่ม แอปทันที ในเบื้องหน้า</string>
+    <string name="app_ops_summaries_answer_phone_calls">รับสายโทรศัพท์</string>
     <string name="app_ops_summaries_toggle_wifi">สลับ Wi-Fi</string>
     <string name="app_ops_summaries_toggle_bluetooth">สลับบลูทูธ</string>
     <string name="app_ops_summaries_start_at_boot">เริ่มต้นเมื่อบูต</string>
@@ -207,6 +232,12 @@
     <string name="app_ops_labels_write_external_storage">เขียนที่เก็บข้อมูลภายนอก</string>
     <string name="app_ops_labels_turn_screen_on">เปิดหน้าจอ</string>
     <string name="app_ops_labels_get_accounts">เข้าถึงบัญชี</string>
+    <string name="app_ops_labels_accessibility_volume">การเข้าถึงระดับเสียง</string>
+    <string name="app_ops_labels_read_phone_numbers">อ่านหมายเลขโทรศัพท์</string>
+    <string name="app_ops_labels_request_install_packages">ขอติดตั้งแพคเกจ</string>
+    <string name="app_ops_labels_picture_in_picture">ใช้รูปภาพในรูปภาพ (PIP)</string>
+    <string name="app_ops_labels_instant_app_start_foreground">เริ่ม แอปทันที ในเบื้องหน้า</string>
+    <string name="app_ops_labels_answer_phone_calls">รับสายโทรศัพท์</string>
     <string name="app_ops_labels_toggle_wifi">สลับ Wi-Fi</string>
     <string name="app_ops_labels_toggle_bluetooth">สลับบลูทูธ</string>
     <string name="app_ops_labels_start_at_boot">เริ่มต้นเมื่อบูต</string>
@@ -226,6 +257,7 @@
     <string name="app_ops_reset_confirm_title">ยืนยันการรีเซ็ตการนับ</string>
     <string name="app_ops_reset_confirm_mesg">แน่ใจหรือไม่ว่าต้องการรีเซ็ตการนับ</string>
     <string name="ok">ตกลง</string>
+    <string name="security_privacy_settings_title">ความปลอดภัยและความเป็นส่วนตัว</string>
     <string name="lineagelicense_title">เกี่ยวกับกฎหมาย LineageOS</string>
     <string name="volume_adjust_sounds_title">เสียงปรับความดัง</string>
     <string name="wake_when_plugged_or_unplugged_title">ตื่นเมื่อเสียบปลั๊ก</string>
@@ -234,4 +266,8 @@
     <string name="high_touch_sensitivity_summary">เพิ่มความไวของหน้าจอสัมผัสเพื่อสามารถใช้ขณะสวมถุงมือ</string>
     <string name="touchscreen_hovering_title">วางนิ้วเหนือจอ</string>
     <string name="touchscreen_hovering_summary">อนุญาตให้คุณสามารถวางนิ้วเหนือจอเหมือนการวางเม้าส์เหนือปุ่มในคอมพิวเตอร์</string>
+    <string name="data_usage_app_restrict_data">ข้อมูลมือถือ</string>
+    <string name="data_usage_app_restrict_data_summary">เปิดใช้งานการใช้ข้อมูลมือถือ</string>
+    <string name="data_usage_app_restrict_wifi">ข้อมูล Wi\u2011Fi</string>
+    <string name="data_usage_app_restrict_wifi_summary">เปิดการใช้งานของข้อมูล Wi\u2011Fi</string>
 </resources>

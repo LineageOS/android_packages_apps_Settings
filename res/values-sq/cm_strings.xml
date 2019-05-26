@@ -23,8 +23,11 @@
     </plurals>
     <string name="show_dev_on_cm">Ju keni aktivizuar parametrat e zhvillimit!</string>
     <string name="show_dev_already_cm">Nuk ka më nevojë të shtypni! Parametrat e zhvillimit janë të aktivizuara.</string>
+    <string name="platform_revision">Platforma</string>
+    <string name="total_ram">RAM në total</string>
     <string name="development_tools_title">Veglat e zhvillimit</string>
     <string name="advanced_reboot_title">Rindezje e përparuar</string>
+    <string name="advanced_reboot_summary">Kur telefoni është i zhbllokuar, përfshi në menunë e energjisë opsione për t\'u rindezur në Recovery ose Bootloader</string>
     <string name="root_access">Aksesi Root</string>
     <string name="root_access_warning_title">Dëshiron të lejosh aksesin Root?</string>
     <string name="root_access_none">I çaktivizuar</string>
@@ -32,7 +35,16 @@
     <string name="root_access_adb">Vetëm ADB</string>
     <string name="root_access_all">Aplikacionet dhe ADB</string>
     <string name="root_appops_title">Menaxho akseset Root</string>
+    <string name="status_bar_double_tap_to_sleep_title">Shtyp për të fjetur</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Shtyp dy herë shiritin e ekranit ose mbyllekranin për të fikur ekranin</string>
+    <string name="touchscreen_gesture_settings_title">Gjestet me prekje në ekran</string>
+    <string name="touchscreen_gesture_settings_summary">Kryej gjeste të ndryshme duke prekur ekranin për veprime të shpejta</string>
+    <string name="proximity_wake_summary">Kontrollo sensorin e afërsisë para se të ndezësh ekranin</string>
+    <string name="lock_directly_show_password_summary">Anashkallo rrëshkit për të zhbllokuar ekranin dhe menjëherë fillo vendosjen e fjalëkalimit</string>
+    <string name="lock_directly_show_pattern_summary">Anashkallo rrëshkit për të zhbllokuar ekranin dhe menjëherë fillo vendosjen e stilimit</string>
+    <string name="lock_directly_show_pin_summary">Anashkallo rrëshkit për të zhbllokuar ekranin dhe menjëherë fillo vendosjen e PIN</string>
     <string name="lockscreen_visualizer_title">Trego vizualizuesin e muzikës</string>
+    <string name="lockscreen_media_art_title">Shfaq ikonën e albumit</string>
     <string name="lock_settings_picker_pattern_size_message">Zgjidh madhësinë e modelit</string>
     <string name="lockpattern_settings_enable_error_path_title">Shfaq gabimet në vizatimin e modelit</string>
     <string name="lockpattern_settings_enable_dots_title">Shfaq pikat e modelit</string>
@@ -55,6 +67,7 @@
     <string name="increasing_ring_volume_option_title">Volum me rritje graduale</string>
     <string name="increasing_ring_min_volume_title">Volumi fillestar</string>
     <string name="increasing_ring_ramp_up_time_title">Kohëzgjatja e rritjes</string>
+    <string name="volume_link_notification_title">Lidh volumin e ziles &amp; njoftimeve</string>
     <string name="memory_startup_apps_title">Aplikacionet që hapen në ndezje</string>
     <string name="sim_disabled">e çaktivizuar</string>
     <string name="sim_missing">mungon ose e prishur</string>
@@ -119,6 +132,12 @@
     <string name="app_ops_summaries_write_external_storage">shkruaj në memorien e jashtme</string>
     <string name="app_ops_summaries_turn_screen_on">ndiz ekranin</string>
     <string name="app_ops_summaries_run_in_background">puno në sfond</string>
+    <string name="app_ops_summaries_accessibility_volume">volumi i qasshmërisë</string>
+    <string name="app_ops_summaries_read_phone_numbers">lexo numrat e telefonit</string>
+    <string name="app_ops_summaries_request_install_packages">kërko paketën e instalimit</string>
+    <string name="app_ops_summaries_picture_in_picture">përdor imazh mbi imazh</string>
+    <string name="app_ops_summaries_instant_app_start_foreground">hap app e momentit në plan të parë</string>
+    <string name="app_ops_summaries_answer_phone_calls">përgjigju telefonatave</string>
     <string name="app_ops_summaries_toggle_wifi">aktivizo/çaktivizo Wi-Fi</string>
     <string name="app_ops_summaries_toggle_bluetooth">ndiz/fik bluetooth-in</string>
     <string name="app_ops_summaries_toggle_nfc">ndiz/fik NFC</string>
@@ -167,6 +186,12 @@
     <string name="app_ops_labels_write_external_storage">Shkruaj në memorien e jashtme</string>
     <string name="app_ops_labels_turn_screen_on">Ndiz ekranin</string>
     <string name="app_ops_labels_run_in_background">Puno në sfond</string>
+    <string name="app_ops_labels_accessibility_volume">Volumi i qasshmërisë</string>
+    <string name="app_ops_labels_read_phone_numbers">Lexo numrat e telefonit</string>
+    <string name="app_ops_labels_request_install_packages">Kërko paketën e instalimit</string>
+    <string name="app_ops_labels_picture_in_picture">Përdor imazh mbi imazh</string>
+    <string name="app_ops_labels_instant_app_start_foreground">Hap app e momentit në plan të parë</string>
+    <string name="app_ops_labels_answer_phone_calls">Përgjigju telefonatave</string>
     <string name="app_ops_labels_toggle_wifi">Aktivizo/çaktivizo Wi-Fi</string>
     <string name="app_ops_labels_toggle_bluetooth">Ndiz/fik bluetoothin</string>
     <string name="app_ops_labels_toggle_nfc">Ndiz/fik NFC</string>
@@ -179,11 +204,17 @@
     <string name="app_ops_allowed_count">Lejuar <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Refuzuar <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Lejuar <xliff:g id="count">%1$s</xliff:g>, refuzuar <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_no_blockable_permissions">Nuk ka asnjë nga të Drejtat për te bllokuar</string>
     <string name="app_ops_reset_confirm_mesg">A jeni të sigurt që doni të rifilloni numeratorët?</string>
     <string name="ok">OK</string>
+    <string name="security_privacy_settings_title">Siguria &amp; privatësia</string>
     <string name="lineagelicense_title">Liçensa e LineageOS</string>
     <string name="volume_adjust_sounds_title">Tingujt e rregullimit të volumit</string>
     <string name="heads_up_notifications_enabled_title">Heads-up</string>
     <string name="heads_up_notifications_enabled_summary">Shfaq njoftimet kryesore në një dritare të vogël lundruese</string>
     <string name="high_touch_sensitivity_title">Ndjesi e lartë e prekjes</string>
+    <string name="data_usage_app_restrict_data">Internet nga Karta</string>
+    <string name="data_usage_app_restrict_data_summary">Lejo përdorimin e internetit nga karta</string>
+    <string name="data_usage_app_restrict_wifi">Të dhëna Wi\u2011Fi</string>
+    <string name="data_usage_app_restrict_wifi_summary">Hap përdorimin e internetit nga Wi\u2011Fi</string>
 </resources>
