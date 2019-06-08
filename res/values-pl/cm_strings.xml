@@ -102,21 +102,27 @@
     <string name="app_ops_summaries_start_foreground">uruchamianie na pierwszym planie</string>
     <string name="app_ops_summaries_su">dostęp do roota</string>
     <string name="app_ops_summaries_toast_window">wyświetla wyskakujące powiadomienia</string>
+    <string name="app_ops_summaries_toggle_bluetooth">przełączanie Bluetooth</string>
     <string name="app_ops_summaries_toggle_mobile_data">przełączanie transmisji danych</string>
     <string name="app_ops_summaries_toggle_nfc">przełączanie NFC</string>
     <string name="app_ops_summaries_toggle_wifi">przełączanie Wi-Fi</string>
     <string name="app_ops_summaries_turn_on_screen">włączanie ekranu</string>
     <string name="app_ops_summaries_use_alarm_volume">kontrola głośności alarmu</string>
+    <string name="app_ops_summaries_use_audio_focus">kontrolowanie priorytetów audio</string>
     <string name="app_ops_summaries_use_bluetooth_volume">kontrola głośności Bluetooth</string>
     <string name="app_ops_summaries_use_body_sensors">odczyt czujników ciała</string>
     <string name="app_ops_summaries_use_fingerprint">odczyt linii papilarnych</string>
     <string name="app_ops_summaries_use_master_volume">kontrolowanie głośności</string>
+    <string name="app_ops_summaries_use_media_buttons">używanie przycisków mediów</string>
+    <string name="app_ops_summaries_use_media_volume">kontrola głośności mediów</string>
     <string name="app_ops_summaries_use_notification_volume">regulacja głośności powiadomień</string>
     <string name="app_ops_summaries_use_ring_volume">kontrola głośności dzwonka</string>
     <string name="app_ops_summaries_use_vibrate">używanie wibracji</string>
+    <string name="app_ops_summaries_use_voice_volume">kontrolowanie głośności rozmów</string>
     <string name="app_ops_summaries_wifi_change">zmiana stanu Wi-Fi</string>
     <string name="app_ops_summaries_write_external_storage">zapis w pamięci zewnętrznej</string>
     <string name="app_ops_summaries_write_sms">zapis SMS-ów</string>
+    <string name="app_ops_labels_accept_handover">Przekazanie połączenia z innej aplikacji</string>
     <string name="app_ops_labels_access_camera">Dostęp do aparatu</string>
     <string name="app_ops_labels_access_notifications">Dostęp do powiadomień</string>
     <string name="app_ops_labels_activate_vpn">Aktywowowanie VPN</string>
@@ -130,11 +136,15 @@
     <string name="app_ops_labels_change_wallpaper">Zmień tapetę</string>
     <string name="app_ops_labels_coarse_location">Przybliżona lokalizacja</string>
     <string name="app_ops_labels_delete_contacts">Usuń kontakty</string>
+    <string name="app_ops_labels_delete_mms">Usuń wiadomości MMS</string>
+    <string name="app_ops_labels_delete_sms">Usuń wiadomości SMS</string>
     <string name="app_ops_labels_draw_on_top">Rysuj na wierzchu</string>
     <string name="app_ops_labels_fine_location">Dokładna lokalizacja</string>
     <string name="app_ops_labels_get_accounts">Pobieranie kont</string>
     <string name="app_ops_labels_get_usage_stats">Pobieranie statystyk używania</string>
     <string name="app_ops_labels_gps">GPS</string>
+    <string name="app_ops_labels_install_packages">Instaluj pakiety</string>
+    <string name="app_ops_labels_keep_device_awake">Zostaw urządzenie włączone</string>
     <string name="app_ops_labels_mock_location">Pozorowanie lokalizacji</string>
     <string name="app_ops_labels_modify_calendar">Modyfikowanie kalendarza</string>
     <string name="app_ops_labels_modify_call_log">Edytowanie rejestru połączeń</string>
@@ -155,12 +165,15 @@
     <string name="app_ops_labels_read_clipboard">Odczytywanie schowka</string>
     <string name="app_ops_labels_read_contacts">Odczytywanie kontaktów</string>
     <string name="app_ops_labels_read_external_storage">Odczyt pamięci zewnętrznej</string>
+    <string name="app_ops_labels_read_mms">Czytaj wiadomości MMS</string>
     <string name="app_ops_labels_read_phone_numbers">Odczytaj numery telefonów</string>
     <string name="app_ops_labels_read_phone_state">Odczyt stanu telefonu</string>
     <string name="app_ops_labels_read_sms">Odczyt SMS</string>
     <string name="app_ops_labels_receive_sms">Odbieranie SMS-ów</string>
     <string name="app_ops_labels_record_audio">Nagrywanie dźwięku</string>
     <string name="app_ops_labels_run_in_background">Uruchom w tle</string>
+    <string name="app_ops_labels_scan_wifi">Skanuj sieci WiFi</string>
+    <string name="app_ops_labels_send_mms">Wyślij wiadomość MMS</string>
     <string name="app_ops_labels_send_sms">Wysyłanie SMS-ów</string>
     <string name="app_ops_labels_toast_window">Wyświetlanie wyskakujących powiadomień</string>
     <string name="app_ops_labels_toggle_mobile_data">Przełączanie transmisji danych</string>
@@ -186,6 +199,12 @@
     <string name="adb_over_network">ADB przez sieć</string>
     <string name="adb_over_network_summary">Aktywuj debugowanie TCP/IP przez interfejs sieciowy (Wi-Fi, sieci USB). Ustawienie zostanie zresetowane po ponownym uruchomieniu</string>
     <string name="adb_over_network_warning">OSTRZEŻENIE: Gdy ADB przez sieć jest włączone, twój telefon jest narażony na intruzów z wszystkich podłączonych sieci!\n\nUżywaj tej funkcji tylko wtedy, gdy korzystasz z zaufanych sieci.\n\nNa pewno chcesz włączyć tę funkcję?</string>
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Jesteś o <xliff:g id="step_count">%1$d</xliff:g> krok od włączenia ustawień programisty.</item>
+        <item quantity="few">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroki od włączenia ustawień programisty.</item>
+        <item quantity="many">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia ustawień programisty.</item>
+        <item quantity="other">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia ustawień programisty.</item>
+    </plurals>
     <string name="show_dev_on_cm">Aktywowałeś opcje programistyczne!</string>
     <string name="show_dev_already_cm">Wystarczy, już jesteś programistą.</string>
     <string name="lineagelicense_title">Informacje prawne LineageOS</string>
@@ -202,6 +221,7 @@
     <string name="increasing_ring_volume_option_title">Narastająca głośność dzwonka</string>
     <string name="increasing_ring_min_volume_title">Głośność początkowa</string>
     <string name="increasing_ring_ramp_up_time_title">Wydłużenie odstępu</string>
+    <string name="volume_link_notification_title">Połącz głośność dzwonka i powiadomień</string>
     <string name="kill_app_longpress_back">Zabijaj aplikacje przyciskiem wstecz</string>
     <string name="kill_app_longpress_back_summary">Przytrzymanie przycisku wstecz zabija aktywną aplikację</string>
     <string name="development_tools_title">Narzędzia programistyczne</string>
