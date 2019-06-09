@@ -29,6 +29,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.UserHandle;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.util.SparseArray;
@@ -330,30 +331,6 @@ public class AppOpsState {
             return mLabel;
         }
 
-        public Drawable getIcon() {
-            if (mIcon == null) {
-                if (mApkFile.exists()) {
-                    mIcon = mInfo.loadIcon(mState.mPm);
-                    return mIcon;
-                } else {
-                    mMounted = false;
-                }
-            } else if (!mMounted) {
-                // If the app wasn't mounted but is now mounted, reload
-                // its icon.
-                if (mApkFile.exists()) {
-                    mMounted = true;
-                    mIcon = mInfo.loadIcon(mState.mPm);
-                    return mIcon;
-                }
-            } else {
-                return mIcon;
-            }
-
-            return mState.mContext.getDrawable(
-                    android.R.drawable.sym_def_app_icon);
-        }
-
         @Override public String toString() {
             return mLabel;
         }
@@ -601,13 +578,13 @@ public class AppOpsState {
         return buildState(tpl, 0, null, RECENCY_COMPARATOR);
     }
 
-    private AppEntry getAppEntry(final Context context, final HashMap<String, AppEntry> appEntries,
-            final String packageName, ApplicationInfo appInfo, boolean applyFilters) {
+    private AppEntry getAppEntry(final Context context, final HashMap<String,AppEntry> appEntries,
+            final String packageName, ApplicationInfo appInfo, int userId, boolean applyFilters) {
 
         if (appInfo == null) {
             try {
-                appInfo = mPm.getApplicationInfo(packageName,
-                        PackageManager.GET_DISABLED_COMPONENTS);
+                appInfo = mPm.getApplicationInfoAsUser(packageName,
+                        PackageManager.GET_DISABLED_COMPONENTS, userId);
             } catch (PackageManager.NameNotFoundException e) {
                 Log.w(TAG, "Unable to find info for package " + packageName);
                 return null;
@@ -627,11 +604,11 @@ public class AppOpsState {
             }
         }
 
-        AppEntry appEntry = appEntries.get(packageName);
+        AppEntry appEntry = appEntries.get(String.format("%d_%s", userId, packageName));
         if (appEntry == null) {
             appEntry = new AppEntry(this, appInfo);
             appEntry.loadLabel(context);
-            appEntries.put(packageName, appEntry);
+            appEntries.put(String.format("%d_%s",userId, packageName), appEntry);
         }
         return appEntry;
     }
@@ -715,7 +692,8 @@ public class AppOpsState {
         if (pkgs != null) {
             for (int i=0; i<pkgs.size(); i++) {
                 AppOpsManager.PackageOps pkgOps = pkgs.get(i);
-                AppEntry appEntry = getAppEntry(context, appEntries, pkgOps.getPackageName(), null,
+                int userId = UserHandle.getUserId(pkgOps.getUid());
+                AppEntry appEntry = getAppEntry(context, appEntries, pkgOps.getPackageName(), null, userId,
                         applyFilters);
                 if (appEntry == null) {
                     continue;
@@ -740,7 +718,7 @@ public class AppOpsState {
         if (packageName != null) {
             apps = new ArrayList<PackageInfo>();
             try {
-                PackageInfo pi = mPm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
+                PackageInfo pi = mPm.getPackageInfoAsUser(packageName, PackageManager.GET_PERMISSIONS, UserHandle.getUserId(uid));
                 apps.add(pi);
             } catch (NameNotFoundException e) {
             }
@@ -751,8 +729,12 @@ public class AppOpsState {
         }
         for (int i=0; i<apps.size(); i++) {
             PackageInfo appInfo = apps.get(i);
+            int userId = UserHandle.getUserId(uid);
+            if (appInfo.applicationInfo != null) {
+                userId = UserHandle.getUserId(appInfo.applicationInfo.uid);
+            }
             AppEntry appEntry = getAppEntry(context, appEntries, appInfo.packageName,
-                    appInfo.applicationInfo, applyFilters);
+                    appInfo.applicationInfo, userId, applyFilters);
             if (appEntry == null) {
                 continue;
             }
