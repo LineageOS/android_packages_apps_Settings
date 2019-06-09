@@ -60,6 +60,7 @@ public class AppOpsCategory extends ListFragment implements
     AppListAdapter mAdapter;
 
     String mCurrentPkgName;
+    int mCurrentPkgUid;
 
     public AppOpsCategory() {
     }
@@ -361,6 +362,7 @@ public class AppOpsCategory extends ListFragment implements
         // start new fragment to display extended information
         final Bundle args = new Bundle();
         args.putString(AppOpsDetails.ARG_PACKAGE_NAME, mCurrentPkgName);
+        args.putInt(AppOpsDetails.ARG_PACKAGE_UID, mCurrentPkgUid);
 
         new SubSettingLauncher(getContext())
                 .setDestination(AppOpsDetails.class.getName())
@@ -388,6 +390,7 @@ public class AppOpsCategory extends ListFragment implements
                 entry.overridePrimaryOpMode(mode);
             } else {
                 mCurrentPkgName = entry.getAppEntry().getApplicationInfo().packageName;
+                mCurrentPkgUid = entry.getAppEntry().getApplicationInfo().uid;
                 startApplicationDetailsActivity();
             }
         }
