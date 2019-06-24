@@ -72,9 +72,13 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
     // DNS_MODE -> RadioButton id
     private static final Map<Integer, Integer> PRIVATE_DNS_MAP;
 
+    // Only used in Settings, update on additions to ConnectivitySettingsUtils
+    private static final int PRIVATE_DNS_MODE_CLOUDFLARE = 4;
+
     static {
         PRIVATE_DNS_MAP = new HashMap<>();
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_OFF, R.id.private_dns_mode_off);
+        PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_CLOUDFLARE, R.id.private_dns_mode_cloudflare);
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_OPPORTUNISTIC, R.id.private_dns_mode_opportunistic);
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME, R.id.private_dns_mode_provider);
     }
@@ -144,6 +148,15 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         final ContentResolver contentResolver = context.getContentResolver();
 
         mMode = ConnectivitySettingsManager.getPrivateDnsMode(context);
+        if (mMode == PRIVATE_DNS_MODE_PROVIDER_HOSTNAME) {
+            final String privateDnsHostname =
+                    ConnectivitySettingsManager.getPrivateDnsHostname(context);
+            final String cloudflareHostname =
+                    context.getString(R.string.private_dns_hostname_cloudflare);
+            if (privateDnsHostname.equals(cloudflareHostname)) {
+                mMode = PRIVATE_DNS_MODE_CLOUDFLARE;
+            }
+        }
 
         mEditText = view.findViewById(R.id.private_dns_mode_provider_hostname);
         mEditText.addTextChangedListener(this);
@@ -156,6 +169,9 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         // Initial radio button text
         final RadioButton offRadioButton = view.findViewById(R.id.private_dns_mode_off);
         offRadioButton.setText(com.android.settingslib.R.string.private_dns_mode_off);
+        final RadioButton cloudflareRadioButton =
+                view.findViewById(R.id.private_dns_mode_cloudflare);
+        cloudflareRadioButton.setText(R.string.private_dns_mode_cloudflare);
         final RadioButton opportunisticRadioButton =
                 view.findViewById(R.id.private_dns_mode_opportunistic);
         opportunisticRadioButton.setText(
@@ -182,15 +198,21 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
     public void onClick(DialogInterface dialog, int which) {
         if (which == DialogInterface.BUTTON_POSITIVE) {
             final Context context = getContext();
+            int modeToSet = mMode;
             if (mMode == PRIVATE_DNS_MODE_PROVIDER_HOSTNAME) {
                 // Only clickable if hostname is valid, so we could save it safely
                 ConnectivitySettingsManager.setPrivateDnsHostname(context,
                         mEditText.getText().toString());
+            } else if (mMode == PRIVATE_DNS_MODE_CLOUDFLARE) {
+                final String cloudflareHostname =
+                        context.getString(R.string.private_dns_hostname_cloudflare);
+                ConnectivitySettingsManager.setPrivateDnsHostname(context, cloudflareHostname);
+                modeToSet = PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
             }
 
             FeatureFactory.getFeatureFactory().getMetricsFeatureProvider().action(context,
-                    SettingsEnums.ACTION_PRIVATE_DNS_MODE, mMode);
-            ConnectivitySettingsManager.setPrivateDnsMode(context, mMode);
+                    SettingsEnums.ACTION_PRIVATE_DNS_MODE, modeToSet);
+            ConnectivitySettingsManager.setPrivateDnsMode(context, modeToSet);
         }
     }
 
@@ -198,6 +220,8 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (checkedId == R.id.private_dns_mode_off) {
             mMode = PRIVATE_DNS_MODE_OFF;
+        } else if (checkedId == R.id.private_dns_mode_cloudflare) {
+            mMode = PRIVATE_DNS_MODE_CLOUDFLARE;
         } else if (checkedId == R.id.private_dns_mode_opportunistic) {
             mMode = PRIVATE_DNS_MODE_OPPORTUNISTIC;
         } else if (checkedId == R.id.private_dns_mode_provider) {
