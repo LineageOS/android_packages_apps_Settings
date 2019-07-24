@@ -30,7 +30,7 @@ import com.android.settings.overlay.FeatureFactory;
  */
 public interface SearchFeatureProvider {
 
-    Intent SEARCH_UI_INTENT = new Intent("com.android.settings.action.SETTINGS_SEARCH");
+    Intent SEARCH_UI_INTENT = new Intent("com.google.android.settings.action.SETTINGS_SEARCH");
 
     /**
      * Ensures the caller has necessary privilege to launch search result page.
@@ -54,7 +54,7 @@ public interface SearchFeatureProvider {
     SearchIndexableResources getSearchIndexableResources();
 
     default String getSettingsIntelligencePkgName() {
-        return "com.android.settings.intelligence";
+        return "com.google.android.settings.intelligence";
     }
 
     /**
