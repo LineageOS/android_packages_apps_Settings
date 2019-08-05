@@ -54,7 +54,7 @@ public interface SearchFeatureProvider {
     SearchIndexableResources getSearchIndexableResources();
 
     default String getSettingsIntelligencePkgName() {
-        return "com.google.android.settings.intelligence";
+        return "com.android.settings.intelligence";
     }
 
     /**
