@@ -30,6 +30,8 @@
     <string name="root_access_apps">แอปเท่านั้น</string>
     <string name="root_access_adb">ADB เท่านั้น</string>
     <string name="root_access_all">แอปและ ADB</string>
+    <string name="root_appops_title">จัดการการเข้าถึง root</string>
+    <string name="root_appops_summary">ดูและควบคุมกฎของ root</string>
     <string name="mod_version">รุ่นของ LineageOS</string>
     <string name="mod_version_default">ไม่รู้จัก</string>
     <string name="device_model">รุ่นอุปกรณ์</string>
@@ -224,7 +226,9 @@
     <string name="pa_login_incorrect_login">การเข้าสู่ระบบไม่ถูกต้อง</string>
     <string name="pa_pattern_or_fingerprint_header">ต้องวาดรูปแบบหรือใช้ลายนิ้วมือเพื่อปลดล็อค</string>
     <string name="lockscreen_weather_enabled_title">แสดงสภาพอากาศ</string>
+    <string name="lockscreen_blur_enabled_title">พื้นหลังเบลอ</string>
     <string name="proximity_wake_title">ป้องกันการเปิดหน้าจอโดยไม่เจตนา</string>
+    <string name="proximity_wake_summary">ตรวจสอบเซ็นเซอร์ความใกล้ชิดก่อนปลุดด้วยท่าทางสัมผัส</string>
     <string name="high_touch_sensitivity_title">ความไวต่อสัมผัสสูง</string>
     <string name="high_touch_sensitivity_summary">เพิ่มความไวของหน้าจอสัมผัสเพื่อสามารถใช้ขณะสวมถุงมือ</string>
     <string name="touchscreen_hovering_title">วางนิ้วเหนือจอ</string>
@@ -245,10 +249,23 @@
     <string name="increasing_ring_volume_option_title">การเพิ่มเสียงเรียกเข้า</string>
     <string name="increasing_ring_min_volume_title">ระดับเสียงเริ่มต้น</string>
     <string name="increasing_ring_ramp_up_time_title">ระยะเวลาที่ดังเพิ่มขึ้น</string>
+    <string name="zen_mode_vibration">สั่น</string>
+    <string name="zen_mode_vibration_never">ไม่สั่น</string>
+    <string name="zen_mode_vibration_calls_only">สั่นเฉพาะสำหรับการโทร</string>
+    <string name="zen_mode_vibration_calls_and_notifications">สั่นเมื่อมีสายเรียกเข้าและการแจ้งเตือน</string>
     <string name="zen_mode_summary_reminders">การแจ้งเตือน</string>
     <string name="zen_mode_summary_events">กิจกรรม</string>
     <string name="zen_mode_summary_selected_callers">ผู้โทรที่เลือก</string>
     <string name="zen_mode_summary_selected_messages">ข้อความที่เลือก</string>
+    <string name="app_notification_sound_timeout_title">ระยะเวลาขั้นต่ำระหว่างเสียงการแจ้งเตือน</string>
+    <string name="app_notification_sound_timeout_summary_template">อนุญาตให้มีเสียงหรือการสั่นไม่เกินหนึ่งครั้งทุก <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">ไม่จำกัด</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 วินาที</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 วินาที</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 นาที</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 นาที</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 นาที</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 นาที</string>
     <string name="sim_card_status_title">สถานะซิม %d</string>
     <string name="sim_card_lock_settings_title">ตั้งค่าการล็อคซิม %d</string>
     <string name="sim_card_summary_empty">ไม่ได้ใส่ซิม</string>
@@ -256,6 +273,11 @@
     <string name="sim_mobile_network_settings_title">การตั้งค่าซิม %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="cmlicense_title">เกี่ยวกับกฎหมาย LineageOS</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">ค้นหาเซ็นเซอร์ลายนิ้วมือที่ <xliff:g id="sensor_location">%1$s</xliff:g> ของโทรศัพท์ของคุณ</string>
+    <string name="security_settings_fingerprint_sensor_location_back">ด้านหลัง</string>
+    <string name="security_settings_fingerprint_sensor_location_front">ด้านหน้า</string>
+    <string name="security_settings_fingerprint_sensor_location_left">ด้านซ้าย</string>
+    <string name="security_settings_fingerprint_sensor_location_right">ด้านขวา</string>
     <string name="wifi_setting_countrycode_title">รหัสภูมิภาค Wi\u2011Fi</string>
     <string name="wifi_setting_countrycode_summary">ระบุรหัสภูมิภาคสำหรับ Wi\u2011Fi</string>
     <string name="wifi_setting_countrycode_error">มีปัญหาขณะตั้งรหัสภูมิภาค</string>

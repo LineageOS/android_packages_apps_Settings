@@ -31,13 +31,13 @@
     <string name="root_access_apps">Kun apps</string>
     <string name="root_access_adb">Kun ADB</string>
     <string name="root_access_all">Apps og ADB</string>
-    <string name="root_appops_title">Administrer root adgang</string>
+    <string name="root_appops_title">Håndtér rod-adgange</string>
     <string name="root_appops_summary">Vis og kontrollér rootreglerne</string>
     <string name="mod_version">LineageOS-version</string>
     <string name="mod_version_default">Ukendt</string>
     <string name="device_model">Enhedsmodel</string>
     <string name="device_name">Enhedens navn</string>
-    <string name="mod_api_level">LineageOS API niveau</string>
+    <string name="mod_api_level">LineageOS API-niveau</string>
     <string name="mod_api_level_default">Ukendt</string>
     <string name="build_date">Kørselsdato</string>
     <string name="cmupdate_settings_title">LineageOS-opdateringer</string>
@@ -56,14 +56,14 @@
     <string name="app_ops_summaries_vibrate">vibrér</string>
     <string name="app_ops_summaries_read_contacts">læs kontaktpersoner</string>
     <string name="app_ops_summaries_modify_contacts">ændre kontaktpersoner</string>
-    <string name="app_ops_summaries_read_call_log">læs opkaldslog</string>
-    <string name="app_ops_summaries_modify_call_log">ændre opkaldslog</string>
+    <string name="app_ops_summaries_read_call_log">læse opkaldshistorik</string>
+    <string name="app_ops_summaries_modify_call_log">modificere opkaldshistorik</string>
     <string name="app_ops_summaries_read_calendar">læs kalender</string>
     <string name="app_ops_summaries_modify_calendar">ændre kalender</string>
     <string name="app_ops_summaries_wifi_scan">Wi-Fi skanning</string>
     <string name="app_ops_summaries_notification">underretning</string>
     <string name="app_ops_summaries_cell_scan">scan mobil</string>
-    <string name="app_ops_summaries_call_phone">opkald til telefon</string>
+    <string name="app_ops_summaries_call_phone">ringe til telefon</string>
     <string name="app_ops_summaries_read_sms">læs SMS</string>
     <string name="app_ops_summaries_write_sms">skriv SMS</string>
     <string name="app_ops_summaries_receive_sms">modtag SMS</string>
@@ -104,7 +104,7 @@
     <string name="app_ops_summaries_read_phone_state">læs telefon status</string>
     <string name="app_ops_summaries_add_voicemail">tilføj voicemail</string>
     <string name="app_ops_summaries_use_sip">brug SIP</string>
-    <string name="app_ops_summaries_make_call">foretag opkald</string>
+    <string name="app_ops_summaries_make_call">foretage opkald</string>
     <string name="app_ops_summaries_use_fingerprint">brug fingeraftryk</string>
     <string name="app_ops_summaries_use_body_sensors">brug krops sensor</string>
     <string name="app_ops_summaries_read_cell_broadcasts">læs celle beskeder</string>
@@ -126,14 +126,14 @@
     <string name="app_ops_labels_vibrate">Vibrér</string>
     <string name="app_ops_labels_read_contacts">Læs kontaktpersoner</string>
     <string name="app_ops_labels_modify_contacts">Ændre kontaktpersoner</string>
-    <string name="app_ops_labels_read_call_log">Læs opkaldslog</string>
-    <string name="app_ops_labels_modify_call_log">Ændre opkaldslog</string>
+    <string name="app_ops_labels_read_call_log">Læse opkaldshistorik</string>
+    <string name="app_ops_labels_modify_call_log">Modificere opkaldshistorik</string>
     <string name="app_ops_labels_read_calendar">Læs kalender</string>
     <string name="app_ops_labels_modify_calendar">Ændre kalender</string>
     <string name="app_ops_labels_wifi_scan">Wi-Fi skanning</string>
     <string name="app_ops_labels_notification">Skriv notifikation</string>
     <string name="app_ops_labels_cell_scan">Mobilnetværksskanning</string>
-    <string name="app_ops_labels_call_phone">Opkald til telefon</string>
+    <string name="app_ops_labels_call_phone">Ringe til telefon</string>
     <string name="app_ops_labels_read_sms">Læs SMS</string>
     <string name="app_ops_labels_write_sms">Skriv SMS</string>
     <string name="app_ops_labels_receive_sms">Modtag SMS/MMS</string>
@@ -174,7 +174,7 @@
     <string name="app_ops_labels_read_phone_state">Læs telefon status</string>
     <string name="app_ops_labels_add_voicemail">Tilføj voicemail</string>
     <string name="app_ops_labels_use_sip">Brug SIP</string>
-    <string name="app_ops_labels_make_call">Foretag opkald</string>
+    <string name="app_ops_labels_make_call">Foretage opkald</string>
     <string name="app_ops_labels_use_fingerprint">Brug fingeraftryk</string>
     <string name="app_ops_labels_use_body_sensors">Brug kropssensorer</string>
     <string name="app_ops_labels_read_cell_broadcasts">Læs mobil-transmissioner</string>
@@ -197,6 +197,7 @@
     <string name="app_ops_allowed_count">Tilladt <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Afvist <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Tilladt <xliff:g id="count">%1$s</xliff:g>, afvist <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_no_blockable_permissions">Ingen tilladelser tilgængelige til at blokere</string>
     <string name="app_ops_show_user_apps">Vis bruger-apps</string>
     <string name="app_ops_show_system_apps">Vis indbyggede apps</string>
     <string name="app_ops_reset_counters">Nulstil tillad/nægte-tællere</string>
@@ -208,7 +209,7 @@
     <string name="vibrator_intensity_dialog_warning">Værdier højere end %1$d%% anbefales ikke</string>
     <string name="vibrator_intensity_dialog_reset">Nulstil</string>
     <string name="lock_settings_picker_pattern_size_message">Vælg en mønsterstørrelse</string>
-    <string name="lockpattern_settings_enable_error_path_title">Vis mønsterfejl</string>
+    <string name="lockpattern_settings_enable_error_path_title">Vis mønster-fejl</string>
     <string name="lockpattern_settings_enable_dots_title">Vis mønsterprikker</string>
     <string name="lock_directly_show_password">Gå direkte til adgangskode</string>
     <string name="lock_directly_show_pattern">Gå direkte til mønster</string>
@@ -229,7 +230,7 @@
     <string name="menu_hidden_apps_delete">Nulstil</string>
     <string name="menu_hidden_apps_reset_lock">Nulstil mønster lås</string>
     <string name="protected_apps">Beskyttede apps</string>
-    <string name="protected_apps_summary">Administrer, hvilke apps, der er skjult bag en sikker lås</string>
+    <string name="protected_apps_summary">Håndtér hvilke apps, der er skjult bag en sikker lås</string>
     <string name="saving_protected_components">Gemmer komponenttilstand\u2026</string>
     <string name="launch_app">Start app</string>
     <string name="pa_login_username_hint">Brugernavn (e-mail)</string>
@@ -243,9 +244,9 @@
     <string name="proximity_wake_title">Undgå utilsigtet vækning</string>
     <string name="proximity_wake_summary">Check nærhedsføler før oplåsning udløst af bevægelser</string>
     <string name="high_touch_sensitivity_title">Høj berøringsfølsomhed</string>
-    <string name="high_touch_sensitivity_summary">Forøger skærmens følsomhed, så den kan bruges med handsker</string>
-    <string name="touchscreen_hovering_title">Brug skærmen som mus</string>
-    <string name="touchscreen_hovering_summary">Gør det muligt at bevæge skærmen og bruge den som mus f.eks. i en browser, på fjernskriveborde m.v.</string>
+    <string name="high_touch_sensitivity_summary">Forøg berøringsfølsom skærms følsomhed, så den kan bruges med handsker på</string>
+    <string name="touchscreen_hovering_title">Berøringsfølsom skærm-svævning</string>
+    <string name="touchscreen_hovering_summary">Tillader dig at holde fingeren over skærmen, som en mus i netlæsere, på fjernskriveborde, osv.</string>
     <string name="ime_switcher_notify">Ikon for valg</string>
     <string name="ime_switcher_notify_summary">Vis ikon til valg af input-metode</string>
     <string name="notification_importance_very_low">Ingen fuldskærmsafbrydelse, smugkig, lyd eller vibration. Vis nederst på underretningslisten. Skjul fra skærmlås.</string>
@@ -270,9 +271,9 @@
     <string name="zen_mode_vibration_calls_and_notifications">Vibrér ved opkald og notifikationer</string>
     <string name="zen_mode_summary_reminders">påmindelser</string>
     <string name="zen_mode_summary_events">begivenheder</string>
-    <string name="zen_mode_summary_all_callers">alle opkaldere</string>
-    <string name="zen_mode_summary_selected_callers">udvalgte opkaldere</string>
-    <string name="zen_mode_summary_repeat_callers">gentagne opkaldere</string>
+    <string name="zen_mode_summary_all_callers">alle opkaldskilder</string>
+    <string name="zen_mode_summary_selected_callers">valgte opkaldskilder</string>
+    <string name="zen_mode_summary_repeat_callers">gentagne opkaldskilder</string>
     <string name="zen_mode_summary_all_messages">alle beskeder</string>
     <string name="zen_mode_summary_selected_messages">valgte beskeder</string>
     <string name="app_notification_sound_timeout_title">Minimumstid mellem notifikationslyde</string>
@@ -291,7 +292,7 @@
     <string name="sim_mobile_network_settings_title">SIM %d indstillinger</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Kontroller til strømunderretninger</string>
-    <string name="cmlicense_title">Juridisk information for LineageOS</string>
+    <string name="cmlicense_title">LineageOS-juridisk</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Find fingerprint sensoren på <xliff:g id="sensor_location">%1$s</xliff:g> af din telefon.</string>
     <string name="security_settings_fingerprint_sensor_location_back">tilbage</string>
     <string name="security_settings_fingerprint_sensor_location_front">front</string>
@@ -310,8 +311,8 @@
     <string name="hotstpot_inactivity_timeout_1_minute">1 minut</string>
     <string name="hotstpot_inactivity_timeout_5_minutes">5 minutter</string>
     <string name="hotstpot_inactivity_timeout_10_minutes">10 minutter</string>
-    <string name="hotstpot_inactivity_timeout_never_summary_text">Ingen tidsgrænse for Mobil Wi\u2011Fi hotspot</string>
-    <string name="hotstpot_inactivity_timeout_summary_text">Tidsgrænse for Mobil Wi\u2011Fi hotspot udløber efter <xliff:g id="timeout">%1$s</xliff:g></string>
+    <string name="hotstpot_inactivity_timeout_never_summary_text">Mobilt Wi\u2011Fi-adgangspunkt vil aldrig udløbe</string>
+    <string name="hotstpot_inactivity_timeout_summary_text">Mobilt Wi\u2011Fi-adgangspunkt vil udløbe efter <xliff:g id="timeout">%1$s</xliff:g></string>
     <string name="data_usage_app_restrict_data_category_title">Dataadgang til mobildata</string>
     <string name="data_usage_app_restrict_wifi_category_title">Dataadgang til Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_all_data_title">Deaktivér al dataadgang til mobildata</string>
@@ -326,7 +327,7 @@
     <string name="update_recovery_on_warning">BEMÆRK: Når denne funktion er aktiveret, vil din installerede \'recovery\' blive erstattet af en inkluderet i den aktuelle version af styresystemet.\n\nDin \'recovery\' opdateres sammen med opdateringer til styresystemet, hvilket sikrer kompatibilitet med fremtidige versioner.\n\nVil du aktivere denne funktion?</string>
     <string name="update_recovery_off_warning">ARVARSEL: Med denne funktion slået fra, vil din \'recovery\' ikke blive opdateret sammen med styresystemet.\n\nFremtidige opdateringer til styresystemet kan måske ikke installeres med en forældet \'recovery\'\n\nVil du virkelig slå denne funktion fra?</string>
     <string name="status_bar_double_tap_to_sleep_title">Dobbelttryk for dvale</string>
-    <string name="status_bar_double_tap_to_sleep_summary">Dobbelttryk på statuslinjen for at slukke skærmen</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Dobbelt-tryk på statusbjælken for at slukke for skærmen</string>
     <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> er <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_enabled">aktiveret</string>
     <string name="sim_disabled">deaktiveret</string>
@@ -334,8 +335,8 @@
     <string name="sim_enabler_need_disable_sim">SIM-kortet vil blive deaktiveret. Vil du fortsætte?</string>
     <string name="sim_enabler_will_disable_sim_title">Advarsel</string>
     <string name="sim_enabler_need_switch_data_service">Dette SIM-kort deaktiveres og SIM-<xliff:g id="slotid">%1$s</xliff:g> vil blive anvendt til data-tjenester. Vil du fortsætte?</string>
-    <string name="sim_enabler_airplane_on">Kan ikke udføre operationen, mens flytilstand er slået til.</string>
-    <string name="sim_enabler_in_call">Kan ikke udføre handlingen under igangværende opkald.</string>
+    <string name="sim_enabler_airplane_on">Ude af stand til at udføre opgaven, imens flytilstand er slået til.</string>
+    <string name="sim_enabler_in_call">Ude af stand til at udføre opgaven, midt i et opkald.</string>
     <string name="sim_enabler_both_inactive">Kan ikke deaktivere alle SIM-kort</string>
     <string name="sim_enabler_enabling">Aktiverer\u2026</string>
     <string name="sim_enabler_disabling">Deaktiverer\u2026</string>
@@ -348,4 +349,6 @@
     <string name="ic_code_model">Model: %1$s</string>
     <string name="ic_code_full">IC: %1$s</string>
     <string name="shortcut_carrier_title">Netværksoperatører</string>
+    <string name="burnin_protection_title">Skærm-fastbrændingsbeskyttelse</string>
+    <string name="burnin_protection_summary">Flyt periodisk elementer, der permanent vises på skærmen, for at undgå overdreven skærmslid i det område</string>
 </resources>
