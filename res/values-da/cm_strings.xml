@@ -23,6 +23,8 @@
     </plurals>
     <string name="show_dev_on_cm">Du har aktiveret Instillinger for udviklere!</string>
     <string name="show_dev_already_cm">Du behøves ikke gøre dette. Du har allerede aktiveret Indstillinger for udviklere.</string>
+    <string name="platform_revision">Platform</string>
+    <string name="total_ram">Samlet RAM</string>
     <string name="development_tools_title">Udviklingsværktøjer</string>
     <string name="advanced_reboot_title">Avanceret genstart</string>
     <string name="root_access">Root-adgang</string>
@@ -32,8 +34,12 @@
     <string name="root_access_apps">Kun apps</string>
     <string name="root_access_adb">Kun ADB</string>
     <string name="root_access_all">Apps og ADB</string>
-    <string name="root_appops_title">Administrer root adgang</string>
+    <string name="root_appops_title">Håndtér rod-adgange</string>
     <string name="root_appops_summary">Vis og kontrollér rootreglerne</string>
+    <string name="status_bar_double_tap_to_sleep_title">Tryk for at slumre</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Dobbelt-tryk på statusbjælken eller låseskærmen, for at slukke for skærmen</string>
+    <string name="touchscreen_gesture_settings_title">Bevægelser på berøringsfølsom skærm</string>
+    <string name="touchscreen_gesture_settings_summary">Udfør forskellige bevægelser på berøringsfølsom skærm, for hurtig-handlinger</string>
     <string name="proximity_wake_title">Undgå utilsigtet vækning</string>
     <string name="lock_directly_show_password">Gå direkte til adgangskode</string>
     <string name="lock_directly_show_pattern">Gå direkte til mønster</string>
@@ -43,7 +49,7 @@
     <string name="lockscreen_visualizer_title">Vis musikvisualisator</string>
     <string name="lockscreen_media_art_title">Vis coveralbum</string>
     <string name="lock_settings_picker_pattern_size_message">Vælg en mønsterstørrelse</string>
-    <string name="lockpattern_settings_enable_error_path_title">Vis mønsterfejl</string>
+    <string name="lockpattern_settings_enable_error_path_title">Vis mønster-fejl</string>
     <string name="lockpattern_settings_enable_dots_title">Vis mønsterprikker</string>
     <string name="lockscreen_vibrate_enabled_title">Vibrér</string>
     <string name="lockscreen_vibrate_enabled_head">Vibrér ved oplåsning</string>
@@ -72,8 +78,8 @@
     <string name="sim_enabler_need_disable_sim">SIM-kortet vil blive deaktiveret. Vil du fortsætte?</string>
     <string name="sim_enabler_will_disable_sim_title">Advarsel</string>
     <string name="sim_enabler_need_switch_data_service">Dette SIM-kort deaktiveres og SIM-<xliff:g id="slotid">%1$s</xliff:g> vil blive anvendt til data-tjenester. Vil du fortsætte?</string>
-    <string name="sim_enabler_airplane_on">Kan ikke udføre operationen, mens flytilstand er slået til.</string>
-    <string name="sim_enabler_in_call">Kan ikke udføre handlingen under igangværende opkald.</string>
+    <string name="sim_enabler_airplane_on">Ude af stand til at udføre opgaven, imens flytilstand er slået til.</string>
+    <string name="sim_enabler_in_call">Ude af stand til at udføre opgaven, midt i et opkald.</string>
     <string name="sim_enabler_both_inactive">Kan ikke deaktivere alle SIM-kort</string>
     <string name="sim_enabler_enabling">Aktiverer\u2026</string>
     <string name="sim_enabler_disabling">Deaktiverer\u2026</string>
@@ -96,14 +102,14 @@
     <string name="app_ops_summaries_vibrate">vibrér</string>
     <string name="app_ops_summaries_read_contacts">læs kontaktpersoner</string>
     <string name="app_ops_summaries_modify_contacts">ændre kontaktpersoner</string>
-    <string name="app_ops_summaries_read_call_log">læs opkaldslog</string>
-    <string name="app_ops_summaries_modify_call_log">ændre opkaldslog</string>
+    <string name="app_ops_summaries_read_call_log">læse opkaldshistorik</string>
+    <string name="app_ops_summaries_modify_call_log">modificere opkaldshistorik</string>
     <string name="app_ops_summaries_read_calendar">læs kalender</string>
     <string name="app_ops_summaries_modify_calendar">ændre kalender</string>
     <string name="app_ops_summaries_wifi_scan">Wi-Fi skanning</string>
     <string name="app_ops_summaries_notification">underretning</string>
     <string name="app_ops_summaries_cell_scan">scan mobil</string>
-    <string name="app_ops_summaries_call_phone">opkald til telefon</string>
+    <string name="app_ops_summaries_call_phone">ringe til telefon</string>
     <string name="app_ops_summaries_read_sms">læs SMS</string>
     <string name="app_ops_summaries_write_sms">skriv SMS</string>
     <string name="app_ops_summaries_receive_sms">modtag SMS</string>
@@ -144,7 +150,7 @@
     <string name="app_ops_summaries_read_phone_state">læs telefon status</string>
     <string name="app_ops_summaries_add_voicemail">tilføj voicemail</string>
     <string name="app_ops_summaries_use_sip">brug SIP</string>
-    <string name="app_ops_summaries_make_call">foretag opkald</string>
+    <string name="app_ops_summaries_make_call">foretage opkald</string>
     <string name="app_ops_summaries_use_fingerprint">brug fingeraftryk</string>
     <string name="app_ops_summaries_use_body_sensors">brug krops sensor</string>
     <string name="app_ops_summaries_read_cell_broadcasts">læs celle beskeder</string>
@@ -154,6 +160,7 @@
     <string name="app_ops_summaries_turn_screen_on">tænd skærmen</string>
     <string name="app_ops_summaries_get_accounts">hent konti</string>
     <string name="app_ops_summaries_run_in_background">kør i baggrunden</string>
+    <string name="app_ops_summaries_answer_phone_calls">besvare telefonopkald</string>
     <string name="app_ops_summaries_toggle_wifi">Wi-Fi til/fra</string>
     <string name="app_ops_summaries_toggle_bluetooth">bluetooth til/fra</string>
     <string name="app_ops_summaries_start_at_boot">start ved opstart</string>
@@ -166,14 +173,14 @@
     <string name="app_ops_labels_vibrate">Vibrér</string>
     <string name="app_ops_labels_read_contacts">Læs kontaktpersoner</string>
     <string name="app_ops_labels_modify_contacts">Ændre kontaktpersoner</string>
-    <string name="app_ops_labels_read_call_log">Læs opkaldslog</string>
-    <string name="app_ops_labels_modify_call_log">Ændre opkaldslog</string>
+    <string name="app_ops_labels_read_call_log">Læse opkaldshistorik</string>
+    <string name="app_ops_labels_modify_call_log">Modificere opkaldshistorik</string>
     <string name="app_ops_labels_read_calendar">Læs kalender</string>
     <string name="app_ops_labels_modify_calendar">Ændre kalender</string>
     <string name="app_ops_labels_wifi_scan">Wi-Fi skanning</string>
     <string name="app_ops_labels_notification">Skriv notifikation</string>
     <string name="app_ops_labels_cell_scan">Mobilnetværksskanning</string>
-    <string name="app_ops_labels_call_phone">Opkald til telefon</string>
+    <string name="app_ops_labels_call_phone">Ringe til telefon</string>
     <string name="app_ops_labels_read_sms">Læs SMS</string>
     <string name="app_ops_labels_write_sms">Skriv SMS</string>
     <string name="app_ops_labels_receive_sms">Modtag SMS/MMS</string>
@@ -214,7 +221,7 @@
     <string name="app_ops_labels_read_phone_state">Læs telefon status</string>
     <string name="app_ops_labels_add_voicemail">Tilføj voicemail</string>
     <string name="app_ops_labels_use_sip">Brug SIP</string>
-    <string name="app_ops_labels_make_call">Foretag opkald</string>
+    <string name="app_ops_labels_make_call">Foretage opkald</string>
     <string name="app_ops_labels_use_fingerprint">Brug fingeraftryk</string>
     <string name="app_ops_labels_use_body_sensors">Brug kropssensorer</string>
     <string name="app_ops_labels_read_cell_broadcasts">Læs mobil-transmissioner</string>
@@ -224,6 +231,7 @@
     <string name="app_ops_labels_turn_screen_on">Tænd skærmen</string>
     <string name="app_ops_labels_get_accounts">Hent konti</string>
     <string name="app_ops_labels_run_in_background">Kør i baggrunden</string>
+    <string name="app_ops_labels_answer_phone_calls">Besvare telefonopkald</string>
     <string name="app_ops_labels_toggle_wifi">Wi-Fi til/fra</string>
     <string name="app_ops_labels_toggle_bluetooth">Bluetooth til/fra</string>
     <string name="app_ops_labels_start_at_boot">Start ved opstart</string>
@@ -237,20 +245,21 @@
     <string name="app_ops_allowed_count">Tilladt <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Afvist <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Tilladt <xliff:g id="count">%1$s</xliff:g>, afvist <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_no_blockable_permissions">Ingen tilladelser tilgængelige til at blokere</string>
     <string name="app_ops_show_user_apps">Vis bruger-apps</string>
     <string name="app_ops_show_system_apps">Vis indbyggede apps</string>
     <string name="app_ops_reset_counters">Nulstil tillad/nægte-tællere</string>
     <string name="app_ops_reset_confirm_title">Bekræft nulstilling af tællere</string>
     <string name="app_ops_reset_confirm_mesg">Er du sikker på, du vil nulstille tællere?</string>
     <string name="ok">OK</string>
-    <string name="lineagelicense_title">Juridisk information for LineageOS</string>
+    <string name="lineagelicense_title">LineageOS-juridisk</string>
     <string name="volume_adjust_sounds_title">Lyd for lydstyrkejustering</string>
     <string name="wake_when_plugged_or_unplugged_title">Væk ved strøm</string>
     <string name="wake_when_plugged_or_unplugged_summary">Tænd skærmen, når du tilslutter eller frakobler en strømkilde</string>
     <string name="heads_up_notifications_enabled_title">Vigtige underretninger</string>
     <string name="heads_up_notifications_enabled_summary">Vise prioriteretsunderretninger i et lille flydende vindue</string>
     <string name="high_touch_sensitivity_title">Høj berøringsfølsomhed</string>
-    <string name="high_touch_sensitivity_summary">Forøger skærmens følsomhed, så den kan bruges med handsker</string>
-    <string name="touchscreen_hovering_title">Brug skærmen som mus</string>
-    <string name="touchscreen_hovering_summary">Gør det muligt at bevæge skærmen og bruge den som mus f.eks. i en browser, på fjernskriveborde m.v.</string>
+    <string name="high_touch_sensitivity_summary">Forøg berøringsfølsom skærms følsomhed, så den kan bruges med handsker på</string>
+    <string name="touchscreen_hovering_title">Berøringsfølsom skærm-svævning</string>
+    <string name="touchscreen_hovering_summary">Tillader dig at holde fingeren over skærmen, som en mus i netlæsere, på fjernskriveborde, osv.</string>
 </resources>
