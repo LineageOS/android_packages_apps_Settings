@@ -17,1085 +17,903 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to show Device Id -->
-  <plurals name="show_device_id_countdown_cm">
-    <item quantity="one">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritt von der Abfrage der Geräte-ID entfernt.</item>
-    <item quantity="other">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritte von der Abfrage der Geräte-ID entfernt.</item>
-  </plurals>
-  <!--  Device Info screen. Confirmation that Device ID is copied to clipboard -->
-  <string name="show_device_id_copied_cm">Geräte-ID:[<xliff:g id="device_id">%1$s</xliff:g>] in die Zwischenablage kopiert</string>
-  <!--  Device Info screen. Confirmation that Device ID is not available -->
-  <string name="show_device_id_failed_cm">Geräte-ID ist in diesem Build nicht verfügbar</string>
-  <!-- [CHAR LIMIT=NONE] Device Info screen. Label for the deviceID text put to clipboard -->
-  <string name="show_device_id_clipboard_label">Geräte-ID</string>
-  <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
-  <plurals name="show_dev_countdown_cm">
-    <item quantity="one">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritt vom Aktivieren der Entwicklereinstellungen entfernt.</item>
-    <item quantity="other">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritte vom Aktivieren der Entwicklereinstellungen entfernt.</item>
-  </plurals>
-  <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
-  <string name="show_dev_on_cm">Sie haben die Entwicklereinstellungen aktiviert!</string>
-  <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
-  <string name="show_dev_already_cm">Nicht nötig, Sie haben die Entwicklereinstellungen bereits aktiviert.</string>
-  <!-- Launch Dev Tools -->
-  <string name="development_tools_title">Entwicklerwerkzeuge</string>
-  <!-- Development shortcut -->
-  <string name="development_shortcut_title">Entwicklerverknüpfung</string>
-  <string name="development_shortcut_summary">Aktiviert Verknüpfungen zur App-Verwaltung in der Liste kürzlich verwendeter Apps</string>
-  <!-- Setting checkbox title for root access -->
-  <string name="root_access">Root-Zugriff</string>
-  <string name="root_access_warning_title">Root-Zugriff erlauben?</string>
-  <string name="root_access_warning_message">Apps den Root-Zugriff zu erlauben, kann gefährlich sein und die Sicherheit des Geräts beeinträchtigen!</string>
-  <string name="root_access_none">Deaktiviert</string>
-  <string name="root_access_apps">Nur Apps</string>
-  <string name="root_access_adb">Nur ADB</string>
-  <string name="root_access_all">Apps und ADB</string>
-  <!-- Preference link for root appops -->
-  <string name="root_appops_title">Root-Zugriffe verwalten</string>
-  <string name="root_appops_summary">Anzeigen und Kontrollieren der Root-Regeln</string>
-  <!-- NFC PreferenceCategory title -->
-  <string name="nfc_title_category">NFC</string>
-  <!-- About phone screen, LineageOS version -->
-  <string name="mod_version">LineageOS-Version</string>
-  <string name="mod_version_default">Unbekannt</string>
-  <!-- About phone screen, Device model -->
-  <string name="device_model">Gerätemodell</string>
-  <!-- About phone screen, Device name -->
-  <string name="device_name">Gerätename</string>
-  <!-- About phone screen, LineageOS Api Level -->
-  <string name="mod_api_level">LineageOS API-Level</string>
-  <string name="mod_api_level_default">Unbekannt</string>
-  <!-- About phone screen, build date -->
-  <string name="build_date">Build-Datum</string>
-  <!-- CM Updater -->
-  <string name="cmupdate_settings_title">LineageOS-Updates</string>
-  <!-- Settings switch for updating Cyanogen recovery -->
-  <string name="update_recovery_title">CM-Recovery aktualisieren</string>
-  <string name="update_recovery_summary">Recovery bei Systemupdates aktualisieren</string>
-  <string name="update_recovery_on_warning">HINWEIS: Wenn diese Funktion aktiviert ist, wird Ihr installiertes Recovery-System durch das in der aktuellen Version des Betriebssystems ersetzt.\n\nIhr Recovery-System wird fortan bei Updates des Systems ebenfalls aktualisiert, damit die Kompatibilität mit zukünftigen Versionen gewährleistet ist.\n\nWollen Sie diese Funktion aktivieren?</string>
-  <string name="update_recovery_off_warning">ACHTUNG: Wenn diese Funktion deaktiviert ist, wird das installierte Recovery-System nicht zusammen mit dem Betriebssystem aktualisiert.\n\nZukünftige OS-Updates können unter Umständen nicht installiert werden, wenn veraltete oder benutzerdefinierte Recovery-Versionen vorliegen.\n\nMöchten Sie diese Funktion wirklich deaktivieren?</string>
-  <!-- Themes Settings -->
-  <!-- Settings main menu entry -->
-  <string name="themes_settings_title">Designs</string>
-  <!-- Sound settings screen -->
-  <string name="ring_mode_title">Klingelmodus</string>
-  <string name="ring_mode_normal">Normal</string>
-  <string name="ring_mode_vibrate">Vibrieren</string>
-  <string name="ring_mode_mute">Lautlos</string>
-  <string name="settings_reset_button">Zurücksetzen</string>
-  <!-- Profiles settings  -->
-  <string name="profiles_settings_title">Systemprofile</string>
-  <string name="profiles_add">Hinzufügen</string>
-  <string name="profile_menu_delete">Löschen</string>
-  <string name="profile_settings_title">Profil</string>
-  <string name="profile_empty_list_profiles_off">Aktivieren Sie die Profilfunktion, um Systemprofile konfigurieren und nutzen zu können.</string>
-  <string name="profile_trigger_configure">Auslöser konfigurieren</string>
-  <string name="profile_write_nfc_tag">NFC-Tag beschreiben</string>
-  <string name="profile_write_touch_tag">Zum Beschreiben NFC-Tag berühren</string>
-  <string name="profile_write_success">Tag wurde erfolgreich beschrieben</string>
-  <string name="profile_write_failed">Beschreiben des Tags fehlgeschlagen!</string>
-  <string name="profile_selected">Profil %1$s aktiviert</string>
-  <string name="profile_nfc_text">Wird ein Profil auf einen NFC-Tag geschrieben, kann es durch eine Berührung des Tags aktiviert werden. Eine weitere Berührung aktiviert das vorherige Profil.</string>
-  <string name="profile_unknown_nfc_tag">Unbekanntes Profil</string>
-  <string name="profile_add_nfc_text">Der NFC-Tag verweist auf ein unbekanntes Profil. Das Verknüpfen des NFC-Tags mit einem existierenden Profil ermöglicht es, das entsprechende Profil in Zukunft durch eine Berührung zu aktivieren.</string>
-  <string name="profile_select">Profil auswählen</string>
-  <string name="profile_remove_dialog_message">Wollen Sie wirklich das Profil %1$s entfernen?</string>
-  <string name="profile_populate_profile_from_state">Profil mit aktuellen Geräteeinstellungen erstellen?</string>
-  <string name="profile_menu_fill_from_state">Aktuelle Geräteeinstellungen importieren</string>
-  <string name="profile_remove_current_profile">Aktuelles Profil kann nicht gelöscht werden!</string>
-  <string name="profile_app_group_category_title">Überschreibungen von Benachrichtigungen</string>
-  <string name="profile_app_group_item_instructions">Gruppen hinzufügen oder löschen</string>
-  <string name="profile_app_group_item_instructions_summary">App-Gruppen zu diesem Profil hinzufügen oder entfernen, für die Benachrichtigungen überschrieben werden</string>
-  <!-- Profile mode options. -->
-  <string name="profile_entries_on">An</string>
-  <string name="profile_entries_off">Aus</string>
-  <string name="profile_entries_no_override">Nicht ändern</string>
-  <!-- Add Profile -->
-  <string name="profile_name_title">Name</string>
-  <string name="new_profile_name">&lt;Neues Profil&gt;</string>
-  <!-- Rename Dialog  -->
-  <string name="rename_dialog_title">Umbenennen</string>
-  <string name="rename_dialog_message">Neuen Namen eingeben</string>
-  <string name="duplicate_appgroup_name">Doppelter App-Gruppenname!</string>
-  <string name="rename_dialog_hint">Profilnamen eingeben</string>
-  <!-- Reset Profiles -->
-  <string name="profile_reset_title">Zurücksetzen</string>
-  <string name="profile_reset_message">Alle vom Benutzer erstellten Profile und App-Gruppen löschen und auf den Ausgangszustand zurücksetzen?</string>
-  <!-- Delete confimation messages -->
-  <string name="profile_app_delete_confirm">Diese App entfernen?</string>
-  <!-- Profile network mode -->
-  <string name="profile_networkmode_2g">2G</string>
-  <string name="profile_networkmode_3g">3G</string>
-  <string name="profile_networkmode_4g">LTE</string>
-  <string name="profile_networkmode_2g3g">2G/3G</string>
-  <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
-  <!-- Profile Config screen PreferenceGroup titles -->
-  <string name="profile_volumeoverrides_title">Lautstärke festlegen</string>
-  <string name="connection_state_enabled">Aktivieren</string>
-  <string name="volume_override_summary">Auf %1$s/%2$s gesetzt</string>
-  <string name="profile_volume_override_checkbox_label">Lautstärke überschreiben</string>
-  <!-- Menu item for managing profiles -->
-  <string name="profile_profiles_manage">Profile</string>
-  <string name="profile_profile_manage">Profil bearbeiten</string>
-  <string name="profile_appgroups_manage">App-Gruppen</string>
-  <string name="profile_appgroup_manage">App-Gruppe verwalten</string>
-  <!-- Profile settings screen, section header for settings related to notification profiles -->
-  <string name="profile_settings">Profileinstellungen</string>
-  <string name="profile_trigger_connect">Beim Verbinden</string>
-  <string name="profile_trigger_disconnect">Beim Trennen</string>
-  <string name="profile_trigger_notrigger">Nicht auslösen</string>
-  <!-- Profile Settings sound modes labels -->
-  <string name="sound_mode">Benachrichtigungsmodus</string>
-  <string name="ringer_mode">Klingelmodus</string>
-  <string name="lights_mode">LED-Modus</string>
-  <string name="vibrate_mode">Vibrationsmodus</string>
-  <string name="choose_soundtone">Benachrichtigungston auswählen</string>
-  <string name="choose_ringtone">Klingelton auswählen</string>
-  <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
-  <string name="soundtone_title">Benachrichtigungston</string>
-  <!-- Title for application group setting screen -->
-  <string name="profile_appgroups_title">App-Gruppen</string>
-  <string name="profile_applist_title">Apps</string>
-  <string name="profile_new_appgroup">Neue App-Gruppe</string>
-  <string name="profile_delete_appgroup">Diese App-Gruppe löschen?</string>
-  <string name="profile_appgroup_name_prompt">Geben Sie einen Namen für die neue App-Gruppe ein.</string>
-  <string name="profile_appgroup_name_title">Name</string>
-  <!-- Add application dialog box title -->
-  <string name="profile_choose_app">App auswählen</string>
-  <!-- Profiles - system settings -->
-  <string name="profile_system_settings_title">Systemeinstellungen</string>
-  <string name="profile_lockmode_title">Bildschirmsperre</string>
-  <string name="profile_lockmode_policy_disabled_summary">Diese Option wurde durch eine Geräteadministrator-Richtlinie deaktiviert.</string>
-  <string name="profile_lockmode_insecure_summary">Nicht nach PIN oder Passwort fragen</string>
-  <string name="profile_lockmode_disabled_summary">Bildschirmsperre deaktivieren</string>
-  <string name="profile_airplanemode_title">Flugmodus</string>
-  <string name="profile_brightness_title">Bildschirmhelligkeit</string>
-  <string name="profile_brightness_override_summary">Auf %1$d%% gesetzt</string>
-  <string name="profile_brightness_override_checkbox_label">Helligkeit überschreiben</string>
-  <!-- Connection override toggles (not all are used at this time ) -->
-  <string name="toggleWifi">WLAN</string>
-  <string name="toggleWifiAp">Mobiler WLAN-Hotspot</string>
-  <string name="toggleBluetooth">Bluetooth</string>
-  <string name="toggleGPS">GPS</string>
-  <string name="toggleData">Datenverbindung</string>
-  <string name="toggleSync">Daten automatisch synchronisieren</string>
-  <string name="toggle2g3g4g">Bevorzugter Netzwerktyp</string>
-  <string name="toggle2g3g4g_msim">Bevorzugter Netzwerktyp (%1$s)</string>
-  <string name="toggleNfc">NFC</string>
-  <!-- Wi-Fi region code -->
-  <string name="wifi_setting_countrycode_title">WLAN-Ländercode</string>
-  <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
-  <string name="wifi_setting_countrycode_summary">WLAN-Ländercode festlegen</string>
-  <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
-  <string name="wifi_setting_countrycode_error">Beim Festlegen des WLAN-Ländercodes ist ein Problem aufgetreten.</string>
-  <string name="wifi_countrycode_us">USA</string>
-  <string name="wifi_countrycode_ca">Kanada, Taiwan</string>
-  <string name="wifi_countrycode_de">Deutschland</string>
-  <string name="wifi_countrycode_gb">Europa</string>
-  <string name="wifi_countrycode_jp">Japan, Russland</string>
-  <string name="wifi_countrycode_au">Australien</string>
-  <string name="wifi_countrycode_cn">China</string>
-  <string name="wifi_countrycode_kr">Korea</string>
-  <string name="wifi_countrycode_tr">Südafrika, Türkei</string>
-  <string name="wifi_countrycode_sg">Israel, Singapur</string>
-  <string name="wifi_countrycode_br">Brasilien</string>
-  <string name="wifi_countrycode_in">Indien</string>
-  <!-- Profiles -->
-  <string name="profile_menu_delete_title">Löschen</string>
-  <string name="profile_action_none">Unverändert lassen</string>
-  <string name="profile_action_system">Systemstandard</string>
-  <string name="profile_action_disable">Ausschalten</string>
-  <string name="profile_action_enable">Einschalten</string>
-  <string name="profile_trigger_a2dp_connect">Beim Verbinden von A2DP</string>
-  <string name="profile_trigger_a2dp_disconnect">Beim Trennen von A2DP</string>
-  <string name="profile_tabs_wifi">WLAN</string>
-  <string name="profile_tabs_bluetooth">Bluetooth</string>
-  <string name="profile_tabs_nfc">NFC</string>
-  <string name="profile_triggers_header">Auslöser, die dieses Profil aktivieren</string>
-  <string name="profile_setup_setup_triggers_title">Schritt 1: Auslöser hinzufügen</string>
-  <string name="profile_setup_setup_triggers_title_config">Auslöser ändern: <xliff:g id="profile_name">%1$s</xliff:g></string>
-  <string name="profile_setup_actions_title">Schritt 2: Aktionen festlegen</string>
-  <string name="profile_setup_actions_title_config">Aktionen neu konfigurieren</string>
-  <string name="profile_appgroups_manage">App-Gruppen</string>
-  <string name="profile_appgroup_manage">App-Gruppe verwalten</string>
-  <!-- Title for application group setting screen -->
-  <string name="profile_appgroups_title">App-Gruppen</string>
-  <string name="profile_new_appgroup">Neue App-Gruppe</string>
-  <string name="profile_delete_appgroup">Diese App-Gruppe löschen?</string>
-  <string name="profile_appgroup_name_prompt">Geben Sie einen Namen für die neue App-Gruppe ein.</string>
-  <string name="profile_appgroup_name_title">Name</string>
-  <string name="duplicate_appgroup_name">Doppelter App-Gruppenname!</string>
-  <string name="profile_app_delete_confirm">Diese App entfernen?</string>
-  <string name="no_bluetooth_triggers">Keine Bluetooth-Geräte gekoppelt.\nTippen Sie, um Bluetooth-Geräte vor dem Konfigurieren von Auslösern zu koppeln.</string>
-  <string name="no_wifi_triggers">Keine WLAN-Zugangspunkte konfiguriert.\nTippen Sie, um vor dem Konfigurieren von Auslösern eine WLAN-Verbindung herzustellen.</string>
-  <string name="no_triggers_configured">Keine Auslöser konfiguriert. Tippen Sie, um weitere hinzuzufügen.</string>
-  <string name="no_triggers_configured_nfc">Tippen Sie zum Einrichten eines neuen NFC-Auslösers.</string>
-  <string name="profile_setup_setup_triggers_description">Bitte bestimmen Sie die Auslöser, die dieses Profil aktivieren.</string>
-  <string name="profile_setup_actions_description">Konfigurieren was passiert, wenn das Profil aktiviert ist</string>
-  <!-- Navigation Bar -->
-  <string name="navigation_bar_category">Navigationsleiste</string>
-  <string name="navigation_bar_left_title">Linkshänder-Modus</string>
-  <string name="navigation_bar_left_summary">Navigationsleiste im Querformat auf der linken Seite anzeigen</string>
-  <string name="navigation_bar_title">Schaltflächen und Anordnung</string>
-  <string name="navigation_bar_help_text">Tippen Sie zunächst auf das \"Bearbeiten\"-Symbol, um die Navigationsleiste zu entsperren.\n\nSie können ein Symbol antippen, um dessen Verknüpfung zu ändern oder lange auf ein Symbol drücken, um das Layout zu verändern.\n\nTippen Sie auf \"Speichern\", um Ihre Änderungen zu sichern oder auf \"Wiederherstellen\", um das Layout auf die Standardeinstellungen zurückzusetzen.</string>
-  <string name="navigation_restore_button_text">Standardeinstellungen\nwiederherstellen</string>
-  <string name="navigation_edit_button_text">Bearbeiten</string>
-  <string name="navigation_save_button_text">Speichern</string>
-  <string name="navigation_bar_reset_message">Alle Einstellungen löschen und das Standardlayout wiederherstellen?</string>
-  <string name="navigation_bar_arrow_keys_title">Pfeiltasten beim Tippen anzeigen</string>
-  <string name="navigation_bar_arrow_keys_summary">Beim Tippen Links/Rechts-Cursortasten anzeigen (deaktiviert die Eingabemethodenauswahl)</string>
-  <string name="navigation_bar_recents_title">Langes Drücken auf Anwendungsverlauf</string>
-  <!-- Notification light dialogs -->
-  <string name="edit_light_settings">LED-Einstellungen ändern</string>
-  <string name="pulse_speed_title">Pulsdauer und Geschwindigkeit</string>
-  <string name="default_time">Normal</string>
-  <string name="custom_time">Benutzerdefiniert</string>
-  <string name="dialog_delete_title">Löschen</string>
-  <string name="dialog_delete_message">Ausgewähltes Element entfernen?</string>
-  <!-- Values for the notification light pulse spinners -->
-  <string name="pulse_length_always_on">Immer an</string>
-  <string name="pulse_length_very_short">Sehr kurz</string>
-  <string name="pulse_length_short">Kurz</string>
-  <string name="pulse_length_normal">Normal</string>
-  <string name="pulse_length_long">Lang</string>
-  <string name="pulse_length_very_long">Sehr lang</string>
-  <string name="pulse_speed_very_fast">Sehr schnell</string>
-  <string name="pulse_speed_fast">Schnell</string>
-  <string name="pulse_speed_normal">Normal</string>
-  <string name="pulse_speed_slow">Langsam</string>
-  <string name="pulse_speed_very_slow">Sehr langsam</string>
-  <!-- Battery light settings -->
-  <string name="battery_light_title">Akku-LED</string>
-  <string name="battery_low_pulse_title">Bei schwachem Akku pulsieren</string>
-  <string name="battery_light_list_title">Farben</string>
-  <string name="battery_light_low_color_title">Akku schwach</string>
-  <string name="battery_light_medium_color_title">Laden</string>
-  <string name="battery_light_full_color_title">Aufgeladen</string>
-  <!-- Lights settings screen, notification light settings -->
-  <string name="notification_light_title">Benachrichtigungs-LED</string>
-  <string name="notification_light_general_title">Allgemein</string>
-  <string name="notification_light_applist_title">Apps</string>
-  <string name="notification_light_phonelist_title">Telefon</string>
-  <string name="notification_light_use_custom">App-Anpassungen</string>
-  <string name="notification_light_default_value">Standard</string>
-  <string name="notification_light_missed_call_title">Verpasster Anruf</string>
-  <string name="notification_light_voicemail_title">Sprachnachricht</string>
-  <string name="notification_light_screen_on">LED-Anzeige bei aktivem Display</string>
-  <string name="notification_light_zen_mode">LED-Anzeige im \"Nicht stören\"-Modus</string>
-  <string name="notification_light_use_multiple_leds">Mehrere LEDs</string>
-  <string name="keywords_lights_brightness_level">LED-Helligkeit reduzieren</string>
-  <string name="notification_light_automagic">Farben automatisch wählen</string>
-  <!-- Lights settings, LED notification -->
-  <string name="led_notification_title">LED-Einstellungen</string>
-  <string name="led_notification_text">Benachrichtigungs-LED durch Einstellungen aktiviert</string>
-  <string name="notification_light_no_apps_summary">Um App-spezifische Einstellungen hinzuzufügen, \"%1$s\" aktivieren und \"\u002b\" in der Menüleiste berühren.</string>
-  <!-- Setting checkbox title for Whether to enable Android debugging support on the phone. -->
-  <string name="enable_adb_cm">Android-Debugging</string>
-  <!-- Setting checkbox summary for Whether to enable Android debugging support on the phone -->
-  <string name="enable_adb_summary_cm">ADB-Protokoll für Debugging über USB oder Netzwerk aktivieren</string>
-  <!-- Android debugging over WiFi -->
-  <string name="adb_over_network">ADB über Netzwerk</string>
-  <string name="adb_over_network_summary">TCP/IP-Debugging über Netzwerkschnittstellen (WLAN, USB-Netzwerke) aktivieren. Diese Einstellung wird beim Neustart zurückgesetzt.</string>
-  <!-- Warning for Adb over Network -->
-  <string name="adb_over_network_warning">WARNUNG: Wenn ADB übers Netzwerk aktiviert ist, kann auf Ihr Gerät von jedem verbundenen Netzwerk zugegriffen werden!\n\nDiese Funktion sollten Sie nur verwenden, wenn Sie sich in einem vertrauenswürdigen Netzwerk befinden.\n\nMöchten Sie diese Funktion trotzdem aktivieren?</string>
-  <!-- Setting checkbox summary for displaying USB debugging notification -->
-  <string name="adb_notify">Debugging-Benachrichtigung</string>
-  <string name="adb_notify_summary">Eine Benachrichtigung anzeigen, wenn USB- oder Netzwerkdebugging aktiviert ist</string>
-  <!-- Names of categories of app ops tabs - extension of AOSP -->
-  <string name="app_ops_categories_location">Standort</string>
-  <string name="app_ops_categories_personal">Persönlich</string>
-  <string name="app_ops_categories_messaging">SMS/MMS</string>
-  <string name="app_ops_categories_media">Medien</string>
-  <string name="app_ops_categories_device">Gerät</string>
-  <string name="app_ops_categories_bootup">Systemstart</string>
-  <string name="app_ops_categories_su">Root-Zugriff</string>
-  <!-- User display names for app ops codes - extension of AOSP -->
-  <string name="app_ops_summaries_coarse_location">Ungefährer Standort</string>
-  <string name="app_ops_summaries_fine_location">Genauer Standort</string>
-  <string name="app_ops_summaries_gps">GPS</string>
-  <string name="app_ops_summaries_vibrate">vibrieren</string>
-  <string name="app_ops_summaries_read_contacts">Kontakte lesen</string>
-  <string name="app_ops_summaries_modify_contacts">Kontakte ändern</string>
-  <string name="app_ops_summaries_read_call_log">Anrufprotokoll lesen</string>
-  <string name="app_ops_summaries_modify_call_log">Anrufprotokoll ändern</string>
-  <string name="app_ops_summaries_read_calendar">Kalender lesen</string>
-  <string name="app_ops_summaries_modify_calendar">Kalender ändern</string>
-  <string name="app_ops_summaries_wifi_scan">WLAN-Scan</string>
-  <string name="app_ops_summaries_notification">Benachrichtigung</string>
-  <string name="app_ops_summaries_cell_scan">Mobilfunknetz-Scan</string>
-  <string name="app_ops_summaries_call_phone">Telefonieren</string>
-  <string name="app_ops_summaries_read_sms">SMS lesen</string>
-  <string name="app_ops_summaries_write_sms">SMS schreiben</string>
-  <string name="app_ops_summaries_receive_sms">SMS empfangen</string>
-  <string name="app_ops_summaries_receive_emergency_sms">Notfall-SMS empfangen</string>
-  <string name="app_ops_summaries_receive_mms">MMS empfangen</string>
-  <string name="app_ops_summaries_receive_wap_push">WAP-Push-Nachricht empfangen</string>
-  <string name="app_ops_summaries_send_sms">SMS senden</string>
-  <string name="app_ops_summaries_read_icc_sms">ICC-SMS lesen</string>
-  <string name="app_ops_summaries_write_icc_sms">ICC-SMS schreiben</string>
-  <string name="app_ops_summaries_modify_settings">Einstellungen ändern</string>
-  <string name="app_ops_summaries_draw_on_top">Über anderen Apps einblenden</string>
-  <string name="app_ops_summaries_access_notifications">Auf Benachrichtigungen zugreifen</string>
-  <string name="app_ops_summaries_camera">Kamera</string>
-  <string name="app_ops_summaries_record_audio">Audio aufzeichnen</string>
-  <string name="app_ops_summaries_play_audio">Audio wiedergeben</string>
-  <string name="app_ops_summaries_read_clipboard">Zwischenablage lesen</string>
-  <string name="app_ops_summaries_modify_clipboard">Zwischenablage ändern</string>
-  <string name="app_ops_summaries_media_buttons">Medienschaltflächen</string>
-  <string name="app_ops_summaries_audio_focus">Audiofokus</string>
-  <string name="app_ops_summaries_master_volume">Gesamtlautstärke</string>
-  <string name="app_ops_summaries_voice_volume">Sprachlautstärke</string>
-  <string name="app_ops_summaries_ring_volume">Klingeltonlautstärke</string>
-  <string name="app_ops_summaries_media_volume">Medienlautstärke</string>
-  <string name="app_ops_summaries_alarm_volume">Weckerlautstärke</string>
-  <string name="app_ops_summaries_notification_volume">Benachrichtigungslautstärke</string>
-  <string name="app_ops_summaries_bluetooth_volume">Bluetooth-Lautstärke</string>
-  <string name="app_ops_summaries_keep_awake">aktiv lassen</string>
-  <string name="app_ops_summaries_monitor_location">Standort beobachten</string>
-  <string name="app_ops_summaries_monitor_high_power_location">Standort mit hohem Stromverbrauch beobachten</string>
-  <string name="app_ops_summaries_get_usage_stats">Nutzungsstatistiken abrufen</string>
-  <string name="app_ops_summaries_mute_unmute_microphone">Mikrofon ein-/ausschalten</string>
-  <string name="app_ops_summaries_toast_window">Pop-ups anzeigen</string>
-  <string name="app_ops_summaries_project_media">Medien projizieren</string>
-  <string name="app_ops_summaries_activate_vpn">VPN aktivieren</string>
-  <string name="app_ops_summaries_write_wallpaper">Hintergrund schreiben</string>
-  <string name="app_ops_summaries_assist_structure">Strukturassistent</string>
-  <string name="app_ops_summaries_assist_screenshot">Screenshotassistent</string>
-  <string name="app_ops_summaries_read_phone_state">Telefonstatus lesen</string>
-  <string name="app_ops_summaries_add_voicemail">Sprachnachricht hinzuzufügen</string>
-  <string name="app_ops_summaries_use_sip">SIP verwenden</string>
-  <string name="app_ops_summaries_make_call">Anrufe tätigen</string>
-  <string name="app_ops_summaries_use_fingerprint">Fingerabdruck verwenden</string>
-  <string name="app_ops_summaries_use_body_sensors">Körpersensoren verwenden</string>
-  <string name="app_ops_summaries_read_cell_broadcasts">Notfall-Broadcasts lesen</string>
-  <string name="app_ops_summaries_mock_location">Standorte simulieren</string>
-  <string name="app_ops_summaries_read_external_storage">Externen Speicher lesen</string>
-  <string name="app_ops_summaries_write_external_storage">auf externen Speicher schreiben</string>
-  <string name="app_ops_summaries_turn_screen_on">Bildschirm einschalten</string>
-  <string name="app_ops_summaries_get_accounts">Konten abrufen</string>
-  <string name="app_ops_summaries_toggle_wifi">WLAN ein-/ausschalten</string>
-  <string name="app_ops_summaries_toggle_bluetooth">Bluetooth ein-/ausschalten</string>
-  <string name="app_ops_summaries_start_at_boot">Beim Booten starten</string>
-  <string name="app_ops_summaries_toggle_nfc">NFC ein-/ausschalten</string>
-  <string name="app_ops_summaries_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
-  <string name="app_ops_summaries_superuser">Root-Zugriff</string>
-  <!-- User display names for app ops codes - extension of AOSP -->
-  <string name="app_ops_labels_coarse_location">Ungefährer Standort</string>
-  <string name="app_ops_labels_fine_location">Genauer Standort</string>
-  <string name="app_ops_labels_gps">GPS</string>
-  <string name="app_ops_labels_vibrate">Vibrieren</string>
-  <string name="app_ops_labels_read_contacts">Kontakte lesen</string>
-  <string name="app_ops_labels_modify_contacts">Kontakte ändern</string>
-  <string name="app_ops_labels_read_call_log">Anrufprotokoll lesen</string>
-  <string name="app_ops_labels_modify_call_log">Anrufprotokoll ändern</string>
-  <string name="app_ops_labels_read_calendar">Kalender lesen</string>
-  <string name="app_ops_labels_modify_calendar">Kalender ändern</string>
-  <string name="app_ops_labels_wifi_scan">WLAN-Scan</string>
-  <string name="app_ops_labels_notification">Benachrichtigung</string>
-  <string name="app_ops_labels_cell_scan">Mobilfunknetz-Scan</string>
-  <string name="app_ops_labels_call_phone">Telefonieren</string>
-  <string name="app_ops_labels_read_sms">SMS lesen</string>
-  <string name="app_ops_labels_write_sms">SMS schreiben</string>
-  <string name="app_ops_labels_receive_sms">SMS empfangen</string>
-  <string name="app_ops_labels_receive_emergency_sms">Notfall-SMS empfangen</string>
-  <string name="app_ops_labels_receive_mms">MMS empfangen</string>
-  <string name="app_ops_labels_receive_wap_push">WAP-Push-Nachricht empfangen</string>
-  <string name="app_ops_labels_send_sms">SMS senden</string>
-  <string name="app_ops_labels_read_icc_sms">ICC-SMS lesen</string>
-  <string name="app_ops_labels_write_icc_sms">ICC-SMS schreiben</string>
-  <string name="app_ops_labels_modify_settings">Einstellungen ändern</string>
-  <string name="app_ops_labels_draw_on_top">Über anderen Apps einblenden</string>
-  <string name="app_ops_labels_access_notifications">Auf Benachrichtigungen zugreifen</string>
-  <string name="app_ops_labels_camera">Kamera</string>
-  <string name="app_ops_labels_record_audio">Audio aufzeichnen</string>
-  <string name="app_ops_labels_play_audio">Audio wiedergeben</string>
-  <string name="app_ops_labels_read_clipboard">Zwischenablage lesen</string>
-  <string name="app_ops_labels_modify_clipboard">Zwischenablage ändern</string>
-  <string name="app_ops_labels_media_buttons">Medienschaltflächen</string>
-  <string name="app_ops_labels_audio_focus">Audiofokus</string>
-  <string name="app_ops_labels_master_volume">Gesamtlautstärke</string>
-  <string name="app_ops_labels_voice_volume">Sprachlautstärke</string>
-  <string name="app_ops_labels_ring_volume">Klingeltonlautstärke</string>
-  <string name="app_ops_labels_media_volume">Medienlautstärke</string>
-  <string name="app_ops_labels_alarm_volume">Weckerlautstärke</string>
-  <string name="app_ops_labels_notification_volume">Benachrichtigungslautstärke</string>
-  <string name="app_ops_labels_bluetooth_volume">Bluetooth-Lautstärke</string>
-  <string name="app_ops_labels_keep_awake">Aktiv lassen</string>
-  <string name="app_ops_labels_monitor_location">Standort beobachten</string>
-  <string name="app_ops_labels_monitor_high_power_location">Standort mit hohem Stromverbrauch beobachten</string>
-  <string name="app_ops_labels_get_usage_stats">Nutzungsstatistiken abrufen</string>
-  <string name="app_ops_labels_mute_unmute_microphone">Mikrofon ein-/ausschalten</string>
-  <string name="app_ops_labels_toast_window">Pop-ups anzeigen</string>
-  <string name="app_ops_labels_project_media">Medien projizieren</string>
-  <string name="app_ops_labels_activate_vpn">VPN aktivieren</string>
-  <string name="app_ops_labels_write_wallpaper">Hintergrund schreiben</string>
-  <string name="app_ops_labels_assist_structure">Strukturassistent</string>
-  <string name="app_ops_labels_assist_screenshot">Screenshotassistent</string>
-  <string name="app_ops_labels_read_phone_state">Telefonstatus lesen</string>
-  <string name="app_ops_labels_add_voicemail">Sprachnachricht hinzufügen</string>
-  <string name="app_ops_labels_use_sip">SIP verwenden</string>
-  <string name="app_ops_labels_make_call">Anrufe tätigen</string>
-  <string name="app_ops_labels_use_fingerprint">Fingerabdruck nutzen</string>
-  <string name="app_ops_labels_use_body_sensors">Körpersensoren verwenden</string>
-  <string name="app_ops_labels_read_cell_broadcasts">Notfall-Broadcasts lesen</string>
-  <string name="app_ops_labels_mock_location">Simulierte Standorte</string>
-  <string name="app_ops_labels_read_external_storage">Externen Speicher lesen</string>
-  <string name="app_ops_labels_write_external_storage">Auf externen Speicher schreiben</string>
-  <string name="app_ops_labels_turn_screen_on">Bildschirm einschalten</string>
-  <string name="app_ops_labels_get_accounts">Konten abrufen</string>
-  <string name="app_ops_labels_toggle_wifi">WLAN ein-/ausschalten</string>
-  <string name="app_ops_labels_toggle_bluetooth">Bluetooth ein-/ausschalten</string>
-  <string name="app_ops_labels_start_at_boot">Beim Booten starten</string>
-  <string name="app_ops_labels_toggle_nfc">NFC ein-/ausschalten</string>
-  <string name="app_ops_labels_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
-  <string name="app_ops_labels_superuser">Root-Zugriff</string>
-  <!-- App ops permissions -->
-  <string name="app_ops_permissions_allowed">Erlaubt</string>
-  <string name="app_ops_permissions_ignored">Verboten</string>
-  <string name="app_ops_permissions_always_ask">Immer nachfragen</string>
-  <!-- App ops detail -->
-  <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (<xliff:g id="count">%2$s</xliff:g> verwendet)</string>
-  <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> erlaubt</string>
-  <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> verweigert</string>
-  <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> erlaubt, <xliff:g id="count">%2$s</xliff:g> verweigert</string>
-  <string name="app_ops_disabled_by_optimization">Durch Akkuoptimierung deaktiviert</string>
-  <!-- App ops menu options -->
-  <string name="app_ops_show_user_apps">Benutzer-Apps anzeigen</string>
-  <string name="app_ops_show_system_apps">System-Apps anzeigen</string>
-  <string name="app_ops_reset_counters">Erlaubt/Verweigert-Zähler zurücksetzen</string>
-  <string name="app_ops_reset_confirm_title">Zurücksetzen der Zähler bestätigen</string>
-  <string name="app_ops_reset_confirm_mesg">Wollen Sie die Zähler wirklich zurücksetzen?</string>
-  <string name="ok">OK</string>
-  <!-- Hostname setting -->
-  <string name="device_hostname">Hostname des Geräts</string>
-  <string name="unlock_scramble_pin_layout_title">Zufällige Anordnung</string>
-  <string name="unlock_scramble_pin_layout_summary">Bei jedem Entsperrversuch die Ziffernanordnung zufällig neu wählen</string>
-  <string name="button_pref_title">Tasten</string>
-  <string name="hardware_keys_power_key_title">Ein-/Aus-Taste</string>
-  <string name="hardware_keys_home_key_title">Home-Taste</string>
-  <string name="hardware_keys_back_key_title">Zurück-Taste</string>
-  <string name="hardware_keys_menu_key_title">Menü-Taste</string>
-  <string name="hardware_keys_assist_key_title">Suche-Taste</string>
-  <string name="hardware_keys_appswitch_key_title">Anwendungsverlauf-Taste</string>
-  <string name="hardware_keys_camera_key_title">Kamera-Taste</string>
-  <string name="hardware_keys_volume_keys_title">Lautstärketasten</string>
-  <string name="hardware_keys_short_press_title">Kurzes Drücken</string>
-  <string name="hardware_keys_long_press_title">Langes Drücken</string>
-  <string name="hardware_keys_double_tap_title">Doppeltes Tippen</string>
-  <string name="hardware_keys_action_nothing">Keine Aktion</string>
-  <string name="hardware_keys_action_menu">Menü öffnen/schließen</string>
-  <string name="hardware_keys_action_app_switch">Anwendungsverlauf</string>
-  <string name="hardware_keys_action_search">Suchassistent</string>
-  <string name="hardware_keys_action_voice_search">Sprachsuche</string>
-  <string name="hardware_keys_action_in_app_search">In-App-Suche</string>
-  <string name="hardware_keys_action_launch_camera">Kamera starten</string>
-  <string name="hardware_keys_action_sleep">Bildschirm ausschalten</string>
-  <string name="hardware_keys_action_last_app">Vorherige App</string>
-  <string name="camera_sleep_on_release_title">Kurzer Blick</string>
-  <string name="camera_sleep_on_release_summary">Der Bildschirm bleibt aktiviert, solange die Kamera-Taste halb durchgedrückt gehalten wird.</string>
-  <string name="camera_launch_title">Kamera starten</string>
-  <string name="camera_launch_summary">Langes Drücken und Loslassen startet die Kamera</string>
-  <string name="volbtn_music_controls_title">Musiksteuerung</string>
-  <string name="volbtn_music_controls_summary">Bei abgeschaltetem Bildschirm durch langes Drücken der Lautstärketasten zum nächsten / vorherigen Titel springen</string>
-  <string name="volbtn_cursor_control_title">Cursorsteuerung</string>
-  <string name="volbtn_cursor_control_off">Deaktiviert</string>
-  <string name="volbtn_cursor_control_on">Lauter-/Leiser-Taste bewegt den Cursor nach links/rechts</string>
-  <string name="volbtn_cursor_control_on_reverse">Lauter-/Leiser-Taste bewegt den Cursor nach rechts/links</string>
-  <string name="power_end_call_title">Anruf beenden</string>
-  <string name="power_end_call_summary">Ein laufendes Telefonat wird durch Drücken der Ein-/Aus-Taste beendet.</string>
-  <string name="swap_volume_buttons_title">Umkehren</string>
-  <string name="swap_volume_buttons_summary">Belegung der Lautstärketasten umkehren, wenn das Gerät gedreht wird</string>
-  <string name="button_wake_title">Gerät aufwecken</string>
-  <string name="home_answer_call_title">Anruf beantworten</string>
-  <string name="home_answer_call_summary">Eingehende Anrufe werden durch Drücken der Home-Taste angenommen</string>
-  <!-- Backlight brightness settings screen -->
-  <string name="adaptive_backlight_title">Adaptive Beleuchtung</string>
-  <string name="adaptive_backlight_summary">Die Hintergrundbeleuchtung des Bildschirms dynamisch regeln, um die Akkulaufzeit zu verbessern</string>
-  <!-- Sunlight readability enhancement screen -->
-  <string name="sunlight_enhancement_title">Verbesserung bei Sonnenlicht</string>
-  <string name="sunlight_enhancement_summary">Ablesbarkeit des Displays bei hellem Sonnenlicht verbessern</string>
-  <!-- Color enhancement settings screen -->
-  <string name="color_enhancement_title">Farbverbesserung</string>
-  <string name="color_enhancement_summary">Farbdarstellung des Displays dynamisch verbessern</string>
-  <!-- Key backlight -->
-  <string name="button_backlight_title">Hintergrundbeleuchtung</string>
-  <string name="button_backlight_enabled">Tasten beleuchten</string>
-  <string name="keyboard_backlight_enabled">Tastatur beleuchten</string>
-  <string name="button_backlight_seekbar_title">Tasten-Helligkeit</string>
-  <string name="keyboard_backlight_seekbar_title">Tastatur-Helligkeit</string>
-  <string name="backlight_timeout_title">Automatisch abschalten nach</string>
-  <string name="backlight_timeout_unlimited">Nie ausschalten</string>
-  <string name="backlight_summary_disabled">Deaktiviert</string>
-  <string name="backlight_summary_enabled_with_timeout">Für <xliff:g id="timeout">%s</xliff:g> aktiviert</string>
-  <string name="backlight_summary_enabled">Aktiviert</string>
-  <!-- Gesture Settings -->
-  <!-- Settings main menu entry -->
-  <string name="gesture_settings_title">Gesten</string>
-  <!-- Power menu -->
-  <string name="power_menu_title">Ein-/Aus-Menü</string>
-  <string name="power_menu_reboot_title">Neustart-Menü</string>
-  <string name="power_menu_screenshot_title">Bildschirmfoto</string>
-  <string name="power_menu_airplane_title">Flugmodus</string>
-  <string name="power_menu_users_title">Benutzer wechseln</string>
-  <string name="power_menu_settings_title">Einstellungsverknüpfung</string>
-  <string name="power_menu_lockdown_title">Gerät sperren</string>
-  <string name="power_menu_bug_report_title">Fehlerbericht</string>
-  <string name="power_menu_sound_title">Ton-Einstellungen</string>
-  <string name="power_menu_bug_report_disabled">Fehlerberichte sind in Entwicklereinstellungen deaktiviert</string>
-  <!-- Buttons - Enable navbar -->
-  <string name="disable_navkeys_title">Navigationsleiste aktivieren</string>
-  <string name="disable_navkeys_summary">Navigationstasten deaktivieren und stattdessen eine Navigationsleiste auf dem Bildschirm anzeigen</string>
-  <!-- tap-to-wake -->
-  <string name="double_tap_to_wake_title">Aufwecken durch doppeltes Tippen</string>
-  <string name="double_tap_to_wake_summary">Doppelt auf den Bildschirm tippen, um das Display einzuschalten</string>
-  <!-- tap-to-sleep -->
-  <string name="double_tap_to_sleep_title">Standby durch doppeltes Tippen</string>
-  <string name="double_tap_to_sleep_summary">Doppelt auf die Statusleiste tippen, um das Display auszuschalten</string>
-  <!-- Proximity wake -->
-  <string name="proximity_wake_title">Unbeabsichtigtes Aufwecken verhindern</string>
-  <string name="proximity_wake_summary">Vor dem Aufwecken durch Gesten den Näherungssensor prüfen</string>
-  <!-- Turn on display when power connected; turn off display when power disconnected -->
-  <string name="wake_when_plugged_or_unplugged_title">Beim Einstecken aufwecken</string>
-  <string name="wake_when_plugged_or_unplugged_summary">Beim Anschließen oder Trennen einer Stromquelle den Bildschirm einschalten</string>
-  <!-- Font size sample text. This needs to be a very short string, as it is shown in
-    multiple font sizes in a limited amount of space. -->
-  <string name="font_size_sample">Beispieltext</string>
-  <!-- Volume settings - Volume adjustment sound -->
-  <string name="volume_adjust_sounds_title">Ton bei Lautstärkeänderung</string>
-  <!-- Hardware tunables - Vibrator intensity -->
-  <string name="vibrator_intensity_title">Vibrationsstärke</string>
-  <string name="vibrator_warning">Höhere Werte als %1$d%% werden nicht empfohlen</string>
-  <!-- Hardware tunables - Color calibration -->
-  <string name="color_calibration_title">Farbkalibrierung</string>
-  <string name="color_calibration_summary">Displayfarben kalibrieren</string>
-  <string name="color_red_title">Rot</string>
-  <string name="color_green_title">Grün</string>
-  <string name="color_blue_title">Blau</string>
-  <!-- Launch music player when headset is connected -->
-  <string name="headset_connect_player_title">Musik-App starten</string>
-  <string name="headset_connect_player_summary">Beim Anschließen eines Kopfhörers die Standard-Musik-App starten</string>
-  <!-- WiFi auto-configure priorities -->
-  <string name="wifi_auto_config_priorities">Automatische Priorität</string>
-  <string name="auto_brightness_reset_button">Zurücksetzen</string>
-  <!-- Display : Rotation  -->
-  <string name="display_rotation_title">Bildschirmausrichtung</string>
-  <string name="display_rotation_disabled">Deaktiviert</string>
-  <string name="display_rotation_unit">Grad</string>
-  <string name="display_lockscreen_rotation_title">Sperrbildschirm drehen</string>
-  <string name="display_rotation_category_title">Bei Drehung um</string>
-  <string name="display_rotation_0_title">0 Grad</string>
-  <string name="display_rotation_90_title">90 Grad</string>
-  <string name="display_rotation_180_title">180 Grad</string>
-  <string name="display_rotation_270_title">270 Grad</string>
-  <!-- LiveDisplay -->
-  <string name="live_display_summary">Optimiert Ihren Bildschirm basierend auf der Tageszeit und den Umgebungsbedingungen, um die Lesbarkeit zu verbessern und die Ermüdung der Augen zu mildern</string>
-  <string name="live_display_mode">Bildschirmmodus</string>
-  <string name="live_display_color_temperature_title">Farbtemperatur</string>
-  <string name="live_display_color_temperature_summary">Tag: <xliff:g id="day_temperature">%1$d</xliff:g> K Nacht: <xliff:g id="night_temperature">%2$d</xliff:g> K</string>
-  <string name="live_display_color_temperature_label"><xliff:g id="degrees">%1$d</xliff:g> K</string>
-  <string name="live_display_day">Tag</string>
-  <string name="live_display_night">Nacht</string>
-  <string name="live_display_outdoor_mode_title">Automatischer Außen-Modus</string>
-  <string name="live_display_outdoor_mode_summary">Bei grellem Sonnenlicht Helligkeit und Sättigung automatisch erhöhen</string>
-  <string name="live_display_low_power_title">Akkuverbrauch reduzieren</string>
-  <string name="live_display_low_power_summary">Anpassen der Anzeige für den niedrigsten Akkuverbrauch ohne Beeinträchtigungen</string>
-  <string name="live_display_enhance_color_title">Farben verbessern</string>
-  <string name="live_display_enhance_color_summary">Verbessert die Farben von Hauttönen, Landschaften und von anderen Bildern</string>
-  <string name="live_display_color_profile_title">Farbprofil</string>
-  <string name="live_display_color_profile_standard_title">Standard</string>
-  <string name="live_display_color_profile_standard_summary">Genaue Farbdarstellung und helle Weißtöne</string>
-  <string name="live_display_color_profile_natural_title">Natürlich</string>
-  <string name="live_display_color_profile_natural_summary">Realistische Farben und Hauttöne</string>
-  <string name="live_display_color_profile_dynamic_title">Dynamisch</string>
-  <string name="live_display_color_profile_dynamic_summary">Verbesserte Farben und helleres Weiß</string>
-  <string name="live_display_color_profile_cinema_title">Kino</string>
-  <string name="live_display_color_profile_cinema_summary">Perfekte Farbwiedergabe für Videos</string>
-  <string name="live_display_color_profile_astronomy_title">Astronomie</string>
-  <string name="live_display_color_profile_astronomy_summary">Tiefes Rot für den Erhalt der Nachtsicht</string>
-  <string name="live_display_color_profile_photography_title">Fotografie</string>
-  <string name="live_display_color_profile_photography_summary">Perfekte Farbwiedergabe für Fotos</string>
-  <string name="live_display_color_profile_basic_title">Einfach</string>
-  <string name="live_display_color_profile_basic_summary">Display unkalibriert verwenden</string>
-  <string name="live_display_color_profile_adaptive_title">Adaptiv</string>
-  <string name="live_display_color_profile_adaptive_summary">Farben an Umgebungsbedingungen anpassen</string>
-  <!-- LiveDisplay : Picture Adjustment -->
-  <string name="picture_adjustment_title">Bildanpassung</string>
-  <string name="picture_adjustment_summary">Farbton, Sättigung, Leuchtdichte und Kontrast anpassen</string>
-  <string name="adj_hue_title">Farbton</string>
-  <string name="adj_saturation_title">Sättigung</string>
-  <string name="adj_intensity_title">Leuchtdichte</string>
-  <string name="adj_contrast_title">Kontrast</string>
-  <!-- Whether to display IME switcher notifcation -->
-  <string name="ime_switcher_notify">Auswahlsymbol</string>
-  <string name="ime_switcher_notify_summary">Symbol für Eingabemethodenauswahl anzeigen</string>
-  <!-- Heads up -->
-  <string name="heads_up_notifications">Pop-up-Benachrichtigungen</string>
-  <string name="summary_heads_up_enabled">Pop-up-Benachrichtigungen sind aktiviert</string>
-  <string name="summary_heads_up_disabled">Pop-up-Benachrichtigungen sind deaktiviert</string>
-  <!-- Bluetooth settings.  A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
-  <string name="bluetooth_accept_all_files">Alle Dateiformate akzeptieren</string>
-  <!-- High touch sensitivity -->
-  <string name="high_touch_sensitivity_title">Hohe Touch-Empfindlichkeit</string>
-  <string name="high_touch_sensitivity_summary">Touch-Empfindlichkeit erhöhen, um den Touchscreen auch mit Handschuhen bedienen zu können</string>
-  <!-- Display & Lights screen, setting options for LCD density -->
-  <string name="lcd_density">Pixeldichte</string>
-  <string name="dialog_title_lcd_density">Pixeldichte</string>
-  <string name="lcd_density_value_format">%d DPI</string>
-  <string name="lcd_density_default_value_format">%d DPI (Standard)</string>
-  <string name="restarting_ui">Benutzeroberfläche wird neu gestartet\u2026</string>
-  <!-- Stylus Icon -->
-  <string name="stylus_icon_enabled_title">Stiftsymbol bei Verwendung des Stifts anzeigen</string>
-  <string name="stylus_icon_enabled_summary">Zeiger einblenden, wenn ein Stift verwendet wird</string>
-  <!-- Stylus Gestures -->
-  <string name="gestures_settings_title">Stiftgesten</string>
-  <string name="category_spen_title">Stiftgesten</string>
-  <string name="enable_subcat_title">Stift</string>
-  <string name="enable_spen_title_head">Gesten aktivieren</string>
-  <string name="enable_spen_summary_head">Aktionen durch Wischgesten mit gedrücktem Knopf am Stift auslösen</string>
-  <string name="gestures_subcat_title">Gesten</string>
-  <string name="gestures_left_spen_title_head">Nach links wischen</string>
-  <string name="gestures_right_spen_title_head">Nach rechts wischen</string>
-  <string name="gestures_up_spen_title_head">Nach oben wischen</string>
-  <string name="gestures_down_spen_title_head">Nach unten wischen</string>
-  <string name="gestures_long_spen_title_head">Lange drücken</string>
-  <string name="gestures_double_spen_title_head">Doppelt tippen</string>
-  <!-- Gestures Options -->
-  <string name="gestures_action_empty">Keine Aktion</string>
-  <string name="gestures_action_home">Startseite</string>
-  <string name="gestures_action_back">Zurück</string>
-  <string name="gestures_action_menu">Menü</string>
-  <string name="gestures_action_search">Suche starten</string>
-  <string name="gestures_action_recent">Anwendungsverlauf</string>
-  <!-- Stylus gestures -->
-  <string name="stylus_app_not_installed">%s ist nicht installiert</string>
-  <!-- Touchscreen hovering -->
-  <string name="touchscreen_hovering_title">Touchscreen als Maus verwenden</string>
-  <string name="touchscreen_hovering_summary">Erlaubt es, den über dem Touchscreen schwebenden Finger im Browser, Remote Desktop usw. als Mauszeiger zu verwenden.</string>
-  <!-- Increasing ring tone volume -->
-  <string name="increasing_ring_volume_option_title">Ansteigende Klingeltonlautstärke</string>
-  <string name="increasing_ring_min_volume_title">Anfangslautstärke</string>
-  <string name="increasing_ring_ramp_up_time_title">Anstiegszeit</string>
-  <!-- LTO download data over wi-fi only -->
-  <string name="lto_download_data_wifi_only">Herunterladen von A-GPS-Daten</string>
-  <string name="lto_download_data_wifi_only_on">Über alle Netzwerke</string>
-  <string name="lto_download_data_wifi_only_off">Nur über WLAN</string>
-  <string name="volume_keys_control_ring_stream_title">Klingeltonlautstärke steuern</string>
-  <string name="volume_keys_control_ring_stream_summary_on">Lautstärketasten steuern Klingeltonlautstärke</string>
-  <string name="volume_keys_control_ring_stream_summary_off">Lautstärketasten steuern Medienlautstärke</string>
-  <string name="category_calibration">Kalibrierung</string>
-  <string name="display_and_lights">Display &amp; LEDs</string>
-  <!-- Category title for Charging sounds (Power state change) specific Settings.
-         [CHAR LIMIT=40] -->
-  <string name="power_notifications_category_title">Ladegeräte-Töne</string>
-  <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
-  <string name="power_notifications_enable_title">Aktivieren</string>
-  <string name="power_notifications_enable_summary">Beim Anschließen oder Trennen einer Stromquelle einen Ton abspielen</string>
-  <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
-  <string name="power_notifications_vibrate_title">Vibrieren</string>
-  <!-- Sound settings, Charging sounds ringtone selection, preference label -->
-  <string name="power_notifications_ringtone_title">Benachrichtigungston</string>
-  <!-- Sound settings, charging sounds label for ringtone == none -->
-  <string name="power_notifications_ringtone_silent">Kein Ton</string>
-  <!-- Status bar -->
-  <string name="status_bar_title">Statusleiste</string>
-  <string name="status_bar_toggle_brightness">Helligkeitssteuerung</string>
-  <string name="status_bar_toggle_brightness_summary">Helligkeit durch Wischen über die Statusleiste anpassen</string>
-  <string name="status_bar_notif_count_title">Benachrichtigungszähler</string>
-  <string name="status_bar_notif_count_summary">Anzahl der ungelesenen Benachrichtigungen in der Statusleiste anzeigen</string>
-  <string name="status_bar_quick_qs_pulldown_title">Schnelles Öffnen</string>
-  <string name="status_bar_quick_qs_pulldown_summary">Herunterziehen der Benachrichtigungsleiste am %1$s Rand öffnet die Schnelleinstellungen</string>
-  <string name="status_bar_quick_qs_pulldown_summary_left">linken</string>
-  <string name="status_bar_quick_qs_pulldown_summary_right">rechten</string>
-  <string name="status_bar_quick_qs_pulldown_off">Aus</string>
-  <string name="status_bar_quick_qs_pulldown_left">Links</string>
-  <string name="status_bar_quick_qs_pulldown_right">Rechts</string>
-  <!-- Status bar - Clock -->
-  <string name="status_bar_clock_style_title">Darstellung der Uhr</string>
-  <string name="status_bar_clock_style_right">Rechts</string>
-  <string name="status_bar_clock_style_left">Links</string>
-  <string name="status_bar_clock_style_center">Zentriert</string>
-  <string name="status_bar_clock_style_hidden">Ausgeblendet</string>
-  <string name="status_bar_am_pm_title">AM/PM-Format</string>
-  <string name="status_bar_am_pm_info">24-Stunden-Format ist aktiviert</string>
-  <string name="status_bar_am_pm_normal">Normal</string>
-  <string name="status_bar_am_pm_small">Klein</string>
-  <string name="status_bar_am_pm_hidden">Ausgeblendet</string>
-  <!-- Status bar - Battery -->
-  <string name="status_bar_battery_style_title">Akkustand-Anzeigeformat</string>
-  <string name="status_bar_battery_style_icon_portrait">Symbol (Hochformat)</string>
-  <string name="status_bar_battery_style_icon_landscape">Symbol (Querformat)</string>
-  <string name="status_bar_battery_style_circle">Kreis</string>
-  <string name="status_bar_battery_style_text">Text</string>
-  <string name="status_bar_battery_style_hidden">Ausgeblendet</string>
-  <!-- Status bar - Battery percentage -->
-  <string name="status_bar_battery_percentage_title">Akkustand in Prozent</string>
-  <string name="status_bar_battery_percentage_default">Ausgeblendet</string>
-  <string name="status_bar_battery_percentage_text_inside">Innerhalb des Symbols</string>
-  <string name="status_bar_battery_percentage_text_next">Neben dem Symbol</string>
-  <!-- Status bar - icon blacklist -->
-  <string name="status_bar_icons_title">Statusleistensymbole</string>
-  <string name="status_bar_icons_summary">Festlegen, welche Statusleistensymbole angezeigt werden</string>
-  <!-- EdgeGesture service -->
-  <string name="edge_gesture_service_title">Berührungsgesten unterdrücken</string>
-  <string name="edge_gesture_service_summary">Berührungsgesten für die Status- und Navigationsleiste nicht an Apps senden</string>
-  <!-- Keep screen on strings -->
-  <string name="keep_screen_on_never">Nie</string>
-  <string name="keep_screen_on_debugging">Beim Debuggen über USB</string>
-  <string name="keep_screen_on_charging">Beim Laden</string>
-  <!-- Privacy Settings Header item -->
-  <string name="privacy_settings_cyanogenmod_title">Datenschutz</string>
-  <!-- Privacy Guard -->
-  <string name="privacy_guard_default_title">Standardmäßig aktiviert</string>
-  <string name="privacy_guard_default_summary">Für neu installierte Apps standardmäßig den Datenschutz aktivieren</string>
-  <string name="privacy_guard_manager_title">Datenschutz</string>
-  <string name="privacy_guard_manager_summary">Apps mit Zugriff auf persönliche Daten verwalten</string>
-  <string name="privacy_guard_no_user_apps">Es sind keine Apps installiert.</string>
-  <string name="privacy_guard_help_title">Hilfe</string>
-  <string name="privacy_guard_reset_title">Zurücksetzen</string>
-  <string name="privacy_guard_reset_text">Berechtigungen zurücksetzen?</string>
-  <string name="privacy_guard_help_text">An dieser Stelle kann der Datenschutz für einzelne Apps durch einfache Berührung ein- und ausgeschaltet werden. Ausgewählte Apps haben keinen Zugriff auf persönliche Daten wie Kontakte, Nachrichten oder das Anrufprotokoll. Langes Drücken auf einen Eintrag öffnet die Detailanzeige für diese App.\n\nStandardmäßig werden in das System integrierte Apps nicht angezeigt. Wenn diese angezeigt werden sollen, kann dies mit der entsprechenden Menü-Option ausgewählt werden.</string>
-  <string name="privacy_guard_manager_show_system_apps">Integrierte Apps anzeigen</string>
-  <string name="privacy_guard_advanced_settings_title">Erweitert</string>
-  <string name="privacy_guard_notification_title">Benachrichtigung anzeigen</string>
-  <!-- Sizes for pattern lockscreen -->
-  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
-  <string name="lockpattern_settings_enable_error_path_title">Sperrmuster-Fehler anzeigen</string>
-  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
-  <string name="lockpattern_settings_enable_dots_title">Sperrmuster-Punkte anzeigen</string>
-  <!-- Whether the keyguard will directly pass to password entry -->
-  <string name="lock_directly_show_password">Passwort-Abfrage direkt anzeigen</string>
-  <!-- Whether the keyguard will directly pass to pattern view -->
-  <string name="lock_directly_show_pattern">Muster-Abfrage direkt anzeigen</string>
-  <!-- Whether the keyguard will directly pass to PIN entry -->
-  <string name="lock_directly_show_pin">PIN-Abfrage direkt anzeigen</string>
-  <!-- lock screen visualizer -->
-  <string name="lockscreen_visualizer_title">Musikvisualisierung anzeigen</string>
-  <!-- lock screen disabled by QS tile warning -->
-  <string name="lockscreen_disabled_by_qs_tile_title">Durch Schnelleinstellungs-Kachel deaktiviert</string>
-  <string name="lockscreen_disabled_by_qs_tile_summary">Tippen, um die Bildschirmsperre zu aktivieren</string>
-  <string name="lockscreen_disabled_by_qs_tile_summary_enabled">Bildschirmsperre aktiviert!</string>
-  <!-- Battery saver -->
-  <string name="battery_saver_threshold">Schwellwert für Akku-Sparmodus</string>
-  <string name="battery_saver_summary">Leistung und Hintergrunddaten verringern</string>
-  <string name="battery_saver_summary_unavailable">Während des Ladevorgangs nicht verfügbar</string>
-  <!-- Battery : Automatic performance profiles -->
-  <string name="autoperf_title">App-Profile aktivieren</string>
-  <string name="autoperf_summary">Wählt für manche Apps automatisch einen passenden Akkumodus aus</string>
-  <string name="perf_profile_title">Akkumodus</string>
-  <!-- Memory -->
-  <string name="memory_startup_apps_title">Beim Booten gestartete Apps</string>
-  <!-- Sound & notification > Sound section: Title for the option defining the default notification ringtone. [CHAR LIMIT=30] -->
-  <string name="notification_ringtone_title_cm">Benachrichtigungston</string>
-  <!-- Advanced reboot options -->
-  <string name="advanced_reboot_title">Erweitertes Neustartmenü</string>
-  <string name="advanced_reboot_summary">Bei entsperrtem Bildschirm dem Neustartmenü Optionen für Neustart in Recovery, Bootloader oder schnellen Neustart hinzufügen</string>
-  <string name="category_interface">Oberfläche</string>
-  <!-- Expanded desktop -->
-  <string name="power_menu_expanded_desktop">Erweiterter Desktop</string>
-  <string name="expanded_hide_nothing">Nichts ausblenden</string>
-  <string name="expanded_hide_status">Statusleiste ausblenden</string>
-  <string name="expanded_hide_navigation">Navigationsleiste ausblenden</string>
-  <string name="expanded_hide_both">Beides ausblenden</string>
-  <string name="expanded_nothing_to_show">Um eine benutzerdefinierte Per-App-Konfiguration für den erweiterten Modus hinzuzufügen, schalten Sie \"Für alle aktiviert\" aus.</string>
-  <string name="expanded_enabled_for_all">Für alle aktiviert</string>
-  <string name="expanded_desktop_style">Stil des erweiterten Desktops</string>
-  <string name="expanded_desktop_style_description">Wählen Sie einen Standard-Stil für den erweiterten Desktop.</string>
-  <string name="expanded_desktop_title">Einstellungen für erweiterten Desktop</string>
-  <!-- Kill app long-press back -->
-  <string name="kill_app_longpress_back">App beenden mit Zurück-Taste</string>
-  <string name="kill_app_longpress_back_summary">Beenden der Vordergrund-App durch Gedrückthalten der Zurück-Taste</string>
-  <!-- Show/Hide Search Bar -->
-  <string name="recents_show_searchbar">Suchleiste im Anwendungsverlauf</string>
-  <string name="keywords_recents_show_searchbar">Anwendungsverlauf aktivieren deaktivieren anzeigen Suchleiste Suche ausblenden</string>
-  <!-- Voice Wakeup -->
-  <string name="voice_wakeup_settings_title">Mit Stimme aufwecken</string>
-  <string name="voice_wakeup_retrain_title">Stimme neu lernen</string>
-  <string name="voice_wakeup_activity_title">Auszuführende Aktion</string>
-  <string name="voice_wakeup_default_activity">Google Now</string>
-  <string name="voice_wakeup_needs_dial_permission_warning">Um eine Direktwahl auszuführen, benötigt \"Mit Stimme wecken\" die Berechtigung, Anrufe auszuführen.</string>
-  <string name="picker_activities">Aktivitäten</string>
-  <string name="select_custom_app_title">Benutzerdefinierte Anwendung auswählen</string>
-  <string name="select_custom_activity_title">Benutzerdefinierte Aktivität auswählen</string>
-  <!-- Blacklist preferences -->
-  <string name="blacklist_title">Anrufer-Sperrliste</string>
-  <string name="blacklist_edit_dialog_title">Gesperrte Telefonnummer bearbeiten</string>
-  <string name="blacklist_prefs">Einstellungen</string>
-  <string name="blacklist_button_delete">Löschen</string>
-  <string name="blacklist_empty_text">Es sind noch keine Einträge in der Sperrliste enthalten. Sie können Einträge hinzufügen, indem Sie das \"+\"-Symbol berühren.</string>
-  <string name="blacklist_disabled_empty_text">Um Anrufe und Nachrichten von bestimmten Nummern zu verhindern, aktivieren Sie die Anrufer-Sperrliste.</string>
-  <string name="blacklist_summary_disabled">Deaktiviert</string>
-  <string name="blacklist_summary">Sie werden keine Anrufe oder Nachrichten von Nummern aus der Sperrliste empfangen.</string>
-  <string name="blacklist_notify">Benachrichtigung anzeigen</string>
-  <string name="blacklist_private_numbers_title">Unterdrückte Nummern</string>
-  <string name="blacklist_private_numbers_summary_disabled">Anrufe mit unterdrückter Nummer nicht abweisen</string>
-  <string name="blacklist_private_numbers_summary">Eingehende <xliff:g id="type">%s</xliff:g> mit unterdrückter Nummer abweisen</string>
-  <string name="blacklist_unknown_numbers_title">Unbekannte Nummern</string>
-  <string name="blacklist_unknown_numbers_summary_disabled">Anrufe und Nachrichten von Nummern, die sich nicht in der Kontaktliste befinden, nicht abweisen</string>
-  <string name="blacklist_unknown_numbers_summary">Eingehende <xliff:g id="type">%s</xliff:g> von Nummern abweisen, die sich nicht in der Kontaktliste befinden</string>
-  <string name="blacklist_summary_type_calls_only">Anrufe</string>
-  <string name="blacklist_summary_type_messages_only">Nachrichten</string>
-  <string name="blacklist_summary_type_calls_and_messages">Anrufe und Nachrichten</string>
-  <string name="blacklist_regex_title">Platzhalter verwenden</string>
-  <string name="blacklist_regex_summary">Einen Punkt als Platzhalter und einen Stern für Wiederholungen verwenden.\nBeispielsweise würde 123.* alle Nummern abweisen, die mit 123 beginnen, und .*123.* alle Nummern, die 123 enthalten.</string>
-  <string name="blacklist_policy_block_calls">Eingehende Anrufe abweisen</string>
-  <string name="blacklist_policy_block_messages">Eingehende Nachrichten abweisen</string>
-  <string name="blacklist_bad_number_add">Ungültige Nummer kann nicht zur Anrufer-Sperrliste hinzugefügt werden</string>
-  <!-- Blacklist management -->
-  <string name="remove_blacklist_number_title">Nummer entfernen</string>
-  <string name="remove_blacklist_entry">Soll diese gesperrte Nummer entfernt werden?</string>
-  <string name="select_contact">Kontakt auswählen</string>
-  <!-- Sms security limit -->
-  <string name="app_security_title">App-Sicherheit</string>
-  <string name="sms_security_check_limit_title">SMS-Begrenzung</string>
-  <string name="sms_security_check_limit_summary">Apps können %d Nachrichten in 1 Minute ohne zusätzliche Bestätigung versenden.</string>
-  <string name="sms_security_check_limit_summary_none">Apps dürfen keine Nachrichten ohne Bestätigung versenden.</string>
-  <string name="sms_security_check_limit_none">Keine</string>
-  <!-- Notification spamfilter -->
-  <string name="spam_added_title">%1$s hinzugefügt</string>
-  <string name="spam_last_blocked_title">Zuletzt blockiert %1$s</string>
-  <string name="block_notifications_title">Benachrichtigungen filtern</string>
-  <string name="block_notifications_summary">Ignorierte Benachrichtigungen und Filter verwalten</string>
-  <string name="no_filters_title">Keine Filter aktiv</string>
-  <!-- Anonymous Statistics #CM -->
-  <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-  <string name="anonymous_statistics_title">LineageOS-Statistiken</string>
-  <string name="anonymous_statistics_summary">Helfen Sie uns, LineageOS zu verbessern, indem Sie dem Sammeln anonymer Gerätestatistiken zustimmen.</string>
-  <string name="anonymous_statistics_warning_title">Über</string>
-  <string name="anonymous_statistics_warning">Die Aktivierung der LineageOS-Statistiken ermöglicht die Übertragung von nicht-personenbezogenen Daten an die Entwickler von LineageOS. Die bei jedem Neustart des Geräts übermittelten Daten beeinträchtigen nicht die Privatsphäre, da sie keinerlei Rückschlüsse auf den Benutzer zulassen.\n\nFür ein Beispiel der gesendeten Daten bitte auf \"Vorschau\" klicken.</string>
-  <string name="enable_reporting_title">Berichte einschalten</string>
-  <string name="preview_data_title">Vorschau</string>
-  <string name="view_stats_title">Statistiken anzeigen</string>
-  <string name="anonymous_learn_more">Mehr erfahren</string>
-  <!-- Anonymous Statistics - Preview -->
-  <string name="preview_id_title">Eindeutige ID</string>
-  <string name="preview_device_title">Gerät</string>
-  <string name="preview_version_title">Version</string>
-  <string name="preview_country_title">Land</string>
-  <string name="preview_carrier_title">Anbieter</string>
-  <string name="stats_collection_title">Statistikaufzeichnung</string>
-  <string name="stats_collection_summary">Erlaubt das Sammeln von Statistiken</string>
-  <!-- Protected apps lockpattern reset button -->
-  <string name="lockpattern_reset_button">Muster zurücksetzen</string>
-  <string name="lockpattern_settings_reset_summary">Geben Sie die Adresse Ihres primären E-Mail-Kontos und das dazugehörige Passwort ein, um das Muster zurückzusetzen.</string>
-  <!-- Protected Apps -->
-  <string name="menu_hidden_apps_delete">Zurücksetzen</string>
-  <string name="menu_hidden_apps_reset_lock">Sperrmuster zurücksetzen</string>
-  <string name="protected_apps">Geschützte Apps</string>
-  <string name="protected_apps_summary">Verwalten Sie, welche Apps hinter einer sicheren Sperre verborgen sind.</string>
-  <string name="saving_protected_components">Geschützte Komponenten werden gespeichert\u2026</string>
-  <string name="pa_login_username_hint">Benutzername (E-Mail)</string>
-  <string name="pa_login_password_hint">Passwort</string>
-  <string name="pa_login_submit_button">Anmelden</string>
-  <string name="pa_login_checking_password">Konto wird überprüft\u2026</string>
-  <string name="pa_login_incorrect_login">Anmeldedaten sind nicht korrekt</string>
-  <string name="pa_pattern_or_fingerprint_header">Fingerabdruck oder Muster zum Entsperren erforderlich</string>
-  <!-- Contributors cloud activity -->
-  <string name="contributors_cloud_fragment_title">Mitwirkende</string>
-  <string name="contributors_cloud_loading_message">Mitwirkende werden geladen\u2026</string>
-  <string name="contributors_cloud_failed_message">Laden der Mitwirkenden nicht möglich</string>
-  <string name="contributor_info_menu">Mitwirkender – Info</string>
-  <string name="contributor_info_msg">
-<![CDATA[<b>Name:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
-<b>Nickname:</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
-<b>Beiträge:</b> <xliff:g id="commits">%3$s</xliff:g>]]></string>
-  <string name="contributions_info_menu">Beiträge – Info</string>
-  <string name="contributions_info_msg">
-<![CDATA[<b>Mitwirkende insgesamt:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
-<b>Beiträge insgesamt:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
-<b>Letzte Aktualisierung:</b> <xliff:g id="date">%3$s</xliff:g>]]></string>
-  <string name="category_sounds">Töne</string>
-  <string name="notification_manager">Benachrichtigungen</string>
-  <string name="lockscreen_settings">Bildschirmsperre</string>
-  <string name="category_lights">LEDs</string>
-  <string name="category_volume">Lautstärke</string>
-  <string name="category_vibrate">Vibrieren</string>
-  <string name="category_misc">Verschiedenes</string>
-  <string name="title_general">Allgemein</string>
-  <string name="advanced">Erweitert</string>
-  <string name="link_volume_option_title">Gleiche Lautstärke für Klingelton und Benachrichtigungen</string>
-  <string name="lcd_density_prompt_message">Einige Apps könnten mit einer veränderten DPI-Einstellung nicht funktionieren.\n\nEin Neustart ist zum Anwenden dieser Einstellungen erforderlich.</string>
-  <!-- Edit access point labels: PPP number -->
-  <string name="apn_ppp_number">APN: PPP-Telefonnummer</string>
-  <!-- APNs screen message indicating new APN user is adding is a duplicate -->
-  <string name="duplicate_apn_error_title">APN bereits vorhanden</string>
-  <string name="duplicate_apn_error_message">Dieser APN ist bereits vorhanden. Parameter ändern oder verwerfen.</string>
-  <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> ist <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
-  <string name="sim_disabled">deaktiviert</string>
-  <string name="sim_missing">defekt oder fehlt</string>
-  <string name="sim_enabler_need_disable_sim">SIM-Karte wird deaktiviert. Möchten Sie fortfahren?</string>
-  <string name="sim_enabler_will_disable_sim_title">Achtung</string>
-  <string name="sim_enabler_need_switch_data_service">Diese SIM-Karte wird deaktiviert und SIM-Karte <xliff:g id="slotid">%1$s</xliff:g> wird für Datendienste weiterverwendet. Sind Sie sicher, dass Sie fortfahren möchten?</string>
-  <string name="sim_enabler_airplane_on">Vorgang kann nicht im Flugmodus durchgeführt werden.</string>
-  <string name="sim_enabler_in_call">Vorgang kann nicht während eines Anrufs durchgeführt werden.</string>
-  <string name="sim_enabler_both_inactive">Es können nicht alle SIM-Karten deaktiviert werden.</string>
-  <string name="sim_enabler_enabling">Aktivieren\u2026</string>
-  <string name="sim_enabler_disabling">Deaktivieren\u2026</string>
-  <string name="sub_activate_success">SIM-Karte aktiviert.</string>
-  <string name="sub_activate_failed">Aktivierung fehlgeschlagen.</string>
-  <string name="sub_deactivate_success">SIM-Karte deaktiviert.</string>
-  <string name="sub_deactivate_failed">Deaktivierung fehlgeschlagen.</string>
-  <string name="primary_sub_select_title">Standard 3G/LTE-Abonnement</string>
-  <string name="select_sim_card">SIM-Karte auswählen</string>
-  <!-- MSIM SIM status -->
-  <string name="sim_card_status_title">SIM %d-Status</string>
-  <string name="sim_card_lock_settings_title">SIM %d-Sperreinstellungen</string>
-  <string name="sim_card_summary_empty">SIM-Karte nicht eingelegt</string>
-  <string name="sim_mobile_network_settings_category_title">Mobilfunknetz-Einstellungen</string>
-  <string name="sim_mobile_network_settings_title">SIM %d-Einstellungen</string>
-  <!-- Zen mode allowed event setting summary items -->
-  <!-- [CHAR LIMIT=50] Like zen_mode_reminders, but part of a list, so lower case if needed-->
-  <string name="zen_mode_summary_reminders">Erinnerungen</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_events, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_events">Termine</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_callers, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_selected_callers">ausgewählte Anrufer</string>
-  <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
-  <string name="zen_mode_summary_selected_messages">ausgewählte Nachrichten</string>
-  <!-- Allow vibration in zen mode -->
-  <string name="zen_mode_vibration">Vibration</string>
-  <string name="zen_mode_vibration_never">Nicht vibrieren</string>
-  <string name="zen_mode_vibration_calls_only">Nur bei Anrufen vibrieren</string>
-  <string name="zen_mode_vibration_calls_and_notifications">Bei Anrufen und Benachrichtigungen vibrieren</string>
-  <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
-  <!-- SAR information -->
-  <string name="maximum_head_level">Kopf: %1$s W/kg</string>
-  <string name="maximum_body_level">Körper: %1$s W/kg</string>
-  <!-- IC Codes -->
-  <string name="ic_code_model">Modell: %1$s</string>
-  <string name="ic_code_full">IC: %1$s</string>
-  <string name="sim_ringtone_title">SIM %d-Klingelton</string>
-  <!-- label for application name -->
-  <string name="app_name_label_cm">App:</string>
-  <!-- label for last time used -->
-  <string name="last_time_used_label_cm">Zuletzt genutzt:</string>
-  <!-- label for usage time -->
-  <string name="usage_time_label_cm">Benutzungsdauer:</string>
-  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-  <string name="master_clear_desc_cm" product="tablet">Diese Aktion löscht alle Daten aus dem <b>Internen Speicher</b> Ihres Tablets, einschließlich:\n\n<li>Ihrer Konten auf dem Gerät</li>\n<li>System- und App-Daten und Einstellungen</li>\n<li>Heruntergeladener Apps</li></string>
-  <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-  <string name="master_clear_desc_cm" product="default">Diese Aktion löscht alle Daten aus dem <b>Internen Speicher</b> Ihres Telefons, einschließlich:\n\n<li>Ihrer Konten auf dem Gerät</li>\n<li>System- und App-Daten und Einstellungen</li>\n<li>Heruntergeladener Apps</li></string>
-  <!-- Factory reset strings -->
-  <string name="factory_reset_instructions_title">Persönliche Daten und Apps</string>
-  <string name="factory_reset_instructions_summary">Diese Aktion löscht alle Ihre Konten, Anwendungen, App-Daten und Systemeinstellungen auf diesem Gerät.</string>
-  <string name="factory_reset_personal_content">Persönliche Inhalte</string>
-  <string name="factory_reset_erase_stored_content">Gespeicherte Inhalte löschen</string>
-  <string name="factory_reset_erase_stored_content_summary">Musik, Fotos, Videos und andere auf diesem Gerät gespeicherten Benutzerdaten löschen</string>
-  <string name="factory_reset_erase_stored_content_summary_forced">Musik, Fotos, Videos und andere auf diesem Gerät gespeicherte Benutzerdaten löschen. \n\n<b>Der Inhalt kann aufgrund der Geräteverschlüsselung nicht gespeichert werden.</b></string>
-  <string name="factory_reset_erase_sd_card">SD-Karte formatieren</string>
-  <string name="factory_reset_erase_sd_card_summary">Löscht alle Daten auf der SD-Karte, einschließlich Musik und Fotos</string>
-  <string name="factory_reset_warning_text_reset_now">JETZT ZURÜCKSETZEN</string>
-  <string name="factory_reset_warning_text_message">Alle Konten, Apps, App-Daten und Systemeinstellungen werden von diesem Gerät gelöscht. Dies kann nicht rückgängig gemacht werden.</string>
-  <!-- Tethering & portable hotspot other category -->
-  <string name="tethering_other_category_text">Andere</string>
-  <!-- Wi-Fi tethering inactivity timeout -->
-  <string name="hotstpot_inactivity_timeout_text">WLAN-Hotspot-Zeitabschaltung</string>
-  <string name="hotstpot_inactivity_timeout_never">Nie</string>
-  <string name="hotstpot_inactivity_timeout_1_minute">1 Minute</string>
-  <string name="hotstpot_inactivity_timeout_5_minutes">5 Minuten</string>
-  <string name="hotstpot_inactivity_timeout_10_minutes">10 Minuten</string>
-  <string name="hotstpot_inactivity_timeout_never_summary_text">Mobiler WLAN-Hotspot wird niemals abgeschaltet</string>
-  <string name="hotstpot_inactivity_timeout_summary_text">Mobiler WLAN-Hotspot wird nach <xliff:g id="timeout">%1$s</xliff:g> abgeschaltet</string>
-  <!-- Live lock screen -->
-  <!-- Live lock screen title -->
-  <string name="live_lock_screen_title">Animierter Sperrbildschirm</string>
-  <!-- Live lock screen summary -->
-  <string name="live_lock_screen_summary">Animierte Sperrbildschirme aktivieren und konfigurieren</string>
-  <!-- Live lock screen settings content description -->
-  <string name="live_lock_screen_settings_button">Einstellungen</string>
-  <!-- Live lock screen settings screen, caption for when live lock screens are disabled -->
-  <string name="live_lock_screen_settings_disabled_prompt">Um die verfügbaren Sperrbildschirme mit Animationen anzuzeigen, aktivieren Sie \"Animierte Sperrbildschirme\".</string>
-  <string name="interruptions_ignore_while_media_title">Audio-Dämpfung verhindern</string>
-  <string name="interruptions_ignore_while_media_summary">Medienlautstärke beim Eintreffen einer Benachrichtigung nicht reduzieren</string>
-  <!-- CM Legal -->
-  <string name="cmlicense_title">Rechtliche Hinweise zu LineageOS</string>
-  <!-- Menu label for reset the battery stats -->
-  <string name="menu_stats_reset">Statistik zurücksetzen</string>
-  <!-- Reset stats confirmation dialog's message -->
-  <string name="reset_stats_msg">Statistik zum Akkuverlauf wird zurückgesetzt.</string>
-  <!-- Dock battery not present message -->
-  <string name="dock_battery_not_present">Dock-Akku nicht vorhanden</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging on Dock AC. -->
-  <string name="battery_info_status_charging_dock_ac">Laden über Ladedock</string>
-  <!-- [CHAR_LIMIT=20] Battery use screen. Battery status shown in chart label when charging over Dock USB. -->
-  <string name="battery_info_status_charging_dock_usb">Laden über USB-Dock</string>
-  <string name="restrict_app_wlan_title">WLAN-Nutzung verhindern</string>
-  <string name="restrict_app_wlan_summary">Verhindert die Nutzung von WLAN durch die App</string>
-  <string name="restrict_app_cellular_title">Nutzung mobiler Daten verhindern</string>
-  <string name="restrict_app_cellular_summary">Verhindert die Nutzung mobiler Daten durch die App</string>
-  <string name="privacy_guard_internet_category">Internet</string>
-  <!-- Weather -->
-  <string name="weather_settings_title">Wetter</string>
-  <string name="weather_settings_no_services_prompt">Keine Wetteranbieterdienste installiert</string>
-  <string name="weather_settings_button">Anbieter-Einstellungen</string>
-  <string name="weather_settings_activity_not_found">Das Einstellungsmenü dieses Anbieters konnte nicht gestartet werden</string>
-  <string name="weather_settings_add_weather_provider">Wetterdatenanbieter hinzufügen</string>
-  <string name="weather_settings_general_settings_title">Allgemein</string>
-  <string name="weather_settings_providers_title">Anbieter</string>
-  <string name="weather_settings_temp_units_title">Temperatureinheit</string>
-  <string name="weather_settings_temp_celsius">Celsius</string>
-  <string name="weather_settings_temp_fahrenheit">Fahrenheit</string>
-  <string name="weather_settings_keyword">Wetter</string>
-  <string name="background_data_access">Datenzugriff im Hintergrund</string>
-  <string name="allow_background_both">Über Mobilfunk &amp; WLAN</string>
-  <string name="allow_background_wlan">Nur über WLAN</string>
-  <string name="allow_background_none">Kein Zugriff</string>
-  <string name="mobile_data_alert">Mobilfunkdaten-Warnung</string>
-  <string name="mobile_data_alert_summary">Benachrichtigen, wenn die Anwendung eine erhebliche Menge an Daten verbraucht</string>
-  <string name="data_usage_menu_enable_data_alerts">Datenverbrauchswarnungen aktivieren</string>
-  <string name="data_usage_menu_disable_data_alerts">Datenverbrauchswarnungen deaktivieren</string>
-  <string name="data_usage_menu_reset_stats">Zähler zurücksetzen</string>
-  <string name="reset_data_stats_msg">Diese Aktion löscht alle vergangenen und die aktuellen Datenverbrauchs-Statistiken.</string>
-  <string name="reset_stats_confirm">Bestätigen</string>
-  <string name="restrict_cellular_access_title">Mobilfunk-Datenzugriff beschränken</string>
-  <string name="restrict_cellular_access_summary">Datenzugriff aus Mobilfunknetzen deaktivieren</string>
-  <string name="restrict_cellular_access_dialog_title">Mobilfunk-Datenzugriff beschränken?</string>
-  <string name="restrict_cellular_access_dialog_summary">Diese Funktion kann dazu führen, dass eine App, die Netzzugang benötigt, nicht mehr funktioniert, wenn nur das Mobilfunknetz zur Verfügung steht.\n\nPassendere Einstellungen können Sie in den App-eigenen Einstellungen finden.</string>
-  <!-- Label for settings shortcut: carrier selection -->
-  <string name="shortcut_carrier_title">Netzbetreiber</string>
-  <!-- title for lock screen blur preference -->
-  <string name="lockscreen_blur_enabled_title">Hintergrund weichzeichnen</string>
-  <!-- title for lock screen weather preference -->
-  <string name="lockscreen_weather_enabled_title">Wetter anzeigen</string>
-  <!-- Per app controls for LP keyguard notifications -->
-  <string name="app_notification_show_on_keyguard_title">Auf dem Sperrbildschirm anzeigen</string>
-  <string name="app_notification_show_on_keyguard_summary">Benachrichtigungen von dieser App auf dem Sperrbildschirm anzeigen</string>
-  <string name="app_notification_no_ongoing_on_keyguard_title">Dauerhafte Benachrichtigungen auf dem Sperrbildschirm deaktivieren</string>
-  <string name="app_notification_no_ongoing_on_keyguard_summary">Keine dauerhaften Benachrichtigungen dieser App auf dem Sperrbildschirm anzeigen</string>
-  <!-- Notification sound timeout -->
-  <string name="app_notification_sound_timeout_title">Minimale Zeit zwischen Benachrichtigungstönen</string>
-  <string name="app_notification_sound_timeout_summary_template">Töne und Vibrationen nur alle <xliff:g id="duration">%1$s</xliff:g> zulassen</string>
-  <string name="app_notification_sound_timeout_value_none">Keine Beschränkung</string>
-  <string name="app_notification_sound_timeout_value_10_seconds">10 Sekunden</string>
-  <string name="app_notification_sound_timeout_value_30_seconds">30 Sekunden</string>
-  <string name="app_notification_sound_timeout_value_1_minute">1 Minute</string>
-  <string name="app_notification_sound_timeout_value_5_minutes">5 Minuten</string>
-  <string name="app_notification_sound_timeout_value_15_minutes">10 Minuten</string>
-  <string name="app_notification_sound_timeout_value_30_minutes">30 Minuten</string>
-  <!-- CmRadioInfo -->
-  <string name="cm_radio_info_label">Erweiterte Modemfunktionen</string>
-  <!-- Radio Control (IMS/MBN etc.) -->
-  <string name="cm_radio_info_mbn_auto_load_on_label">MBN-Autoladen ausschalten</string>
-  <string name="cm_radio_info_mbn_auto_load_off_label">MBN-Autoladen einschalten</string>
-  <string name="cm_radio_info_volte_avail_ovr_on_label">VoLTE-Debugging ausschalten</string>
-  <string name="cm_radio_info_volte_avail_ovr_off_label">VoLTE-Debugging einschalten</string>
-  <string name="cm_radio_info_vt_avail_ovr_on_label">VT-Debugging ausschalten</string>
-  <string name="cm_radio_info_vt_avail_ovr_off_label">VT-Debugging einschalten</string>
-  <string name="cm_radio_info_wfc_avail_ovr_on_label">WFC-Debugging ausschalten</string>
-  <string name="cm_radio_info_wfc_avail_ovr_off_label">WFC-Debugging einschalten</string>
-  <string name="cm_radio_info_adb_log_on_label">ADB-Modemprotokoll ausschalten</string>
-  <string name="cm_radio_info_adb_log_off_label">ADB-Modemprotokoll einschalten</string>
-  <string name="cm_radio_info_diag_log_on_label">Diagnoseprotokoll ausschalten</string>
-  <string name="cm_radio_info_diag_log_off_label">Diagnoseprotokoll einschalten</string>
-  <!-- Lock screen wallpaper -->
-  <string name="lockscreen_wallpaper_title">Hintergrundbild</string>
-  <string name="not_available_with_app">Nicht verfügbar für %1$s</string>
-  <!-- Format string for fingerprint location message -->
-  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Suchen Sie den Fingerabdrucksensor auf der <xliff:g id="sensor_location">%1$s</xliff:g> des Geräts.</string>
-  <!-- Fingerprint sensor locations -->
-  <string name="security_settings_fingerprint_sensor_location_back">Front</string>
-  <string name="security_settings_fingerprint_sensor_location_front">Rückseite</string>
-  <string name="security_settings_fingerprint_sensor_location_left">linken Seite</string>
-  <string name="security_settings_fingerprint_sensor_location_right">rechten Seite</string>
-  <!-- SIM status format string -->
-  <string name="sim_status_format_string">Anrufe: <xliff:g id="voice_state">%1$s</xliff:g> / Daten: <xliff:g id="data_state">%2$s</xliff:g></string>
+    <plurals name="show_device_id_countdown_cm">
+        <item quantity="one">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritt von der Abfrage der Geräte-ID entfernt.</item>
+        <item quantity="other">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritte von der Abfrage der Geräte-ID entfernt.</item>
+    </plurals>
+    <string name="show_device_id_copied_cm">Geräte-ID:[<xliff:g id="device_id">%1$s</xliff:g>] in die Zwischenablage kopiert</string>
+    <string name="show_device_id_failed_cm">Geräte-ID ist in diesem Build nicht verfügbar</string>
+    <string name="show_device_id_clipboard_label">Geräte-ID</string>
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritt vom Aktivieren der Entwicklereinstellungen entfernt.</item>
+        <item quantity="other">Sie sind <xliff:g id="step_count">%1$d</xliff:g> Schritte vom Aktivieren der Entwicklereinstellungen entfernt.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Sie haben die Entwicklereinstellungen aktiviert!</string>
+    <string name="show_dev_already_cm">Nicht nötig, Sie haben die Entwicklereinstellungen bereits aktiviert.</string>
+    <string name="development_tools_title">Entwicklerwerkzeuge</string>
+    <string name="development_shortcut_title">Entwicklerverknüpfung</string>
+    <string name="development_shortcut_summary">Aktiviert Verknüpfungen zur App-Verwaltung in der Liste kürzlich verwendeter Apps</string>
+    <string name="root_access">Root-Zugriff</string>
+    <string name="root_access_warning_title">Root-Zugriff erlauben?</string>
+    <string name="root_access_warning_message">Apps den Root-Zugriff zu erlauben, kann gefährlich sein und die Sicherheit des Geräts beeinträchtigen!</string>
+    <string name="root_access_none">Deaktiviert</string>
+    <string name="root_access_apps">Nur Apps</string>
+    <string name="root_access_adb">Nur ADB</string>
+    <string name="root_access_all">Apps und ADB</string>
+    <string name="root_appops_title">Root-Zugriffe verwalten</string>
+    <string name="root_appops_summary">Anzeigen und Kontrollieren der Root-Regeln</string>
+    <string name="nfc_title_category">NFC</string>
+    <string name="mod_version">LineageOS-Version</string>
+    <string name="mod_version_default">Unbekannt</string>
+    <string name="device_model">Gerätemodell</string>
+    <string name="device_name">Gerätename</string>
+    <string name="mod_api_level">LineageOS API-Level</string>
+    <string name="mod_api_level_default">Unbekannt</string>
+    <string name="build_date">Build-Datum</string>
+    <string name="cmupdate_settings_title">LineageOS-Updates</string>
+    <string name="update_recovery_title">CM-Recovery aktualisieren</string>
+    <string name="update_recovery_summary">Recovery bei Systemupdates aktualisieren</string>
+    <string name="update_recovery_on_warning">HINWEIS: Wenn diese Funktion aktiviert ist, wird Ihr installiertes Recovery-System durch das in der aktuellen Version des Betriebssystems ersetzt.\n\nIhr Recovery-System wird fortan bei Updates des Systems ebenfalls aktualisiert, damit die Kompatibilität mit zukünftigen Versionen gewährleistet ist.\n\nWollen Sie diese Funktion aktivieren?</string>
+    <string name="update_recovery_off_warning">ACHTUNG: Wenn diese Funktion deaktiviert ist, wird das installierte Recovery-System nicht zusammen mit dem Betriebssystem aktualisiert.\n\nZukünftige OS-Updates können unter Umständen nicht installiert werden, wenn veraltete oder benutzerdefinierte Recovery-Versionen vorliegen.\n\nMöchten Sie diese Funktion wirklich deaktivieren?</string>
+    <string name="themes_settings_title">Designs</string>
+    <string name="ring_mode_title">Klingelmodus</string>
+    <string name="ring_mode_normal">Normal</string>
+    <string name="ring_mode_vibrate">Vibrieren</string>
+    <string name="ring_mode_mute">Lautlos</string>
+    <string name="settings_reset_button">Zurücksetzen</string>
+    <string name="profiles_settings_title">Systemprofile</string>
+    <string name="profiles_add">Hinzufügen</string>
+    <string name="profile_menu_delete">Löschen</string>
+    <string name="profile_settings_title">Profil</string>
+    <string name="profile_empty_list_profiles_off">Aktivieren Sie die Profilfunktion, um Systemprofile konfigurieren und nutzen zu können.</string>
+    <string name="profile_trigger_configure">Auslöser konfigurieren</string>
+    <string name="profile_write_nfc_tag">NFC-Tag beschreiben</string>
+    <string name="profile_write_touch_tag">Zum Beschreiben NFC-Tag berühren</string>
+    <string name="profile_write_success">Tag wurde erfolgreich beschrieben</string>
+    <string name="profile_write_failed">Beschreiben des Tags fehlgeschlagen!</string>
+    <string name="profile_selected">Profil %1$s aktiviert</string>
+    <string name="profile_nfc_text">Wird ein Profil auf einen NFC-Tag geschrieben, kann es durch eine Berührung des Tags aktiviert werden. Eine weitere Berührung aktiviert das vorherige Profil.</string>
+    <string name="profile_unknown_nfc_tag">Unbekanntes Profil</string>
+    <string name="profile_add_nfc_text">Der NFC-Tag verweist auf ein unbekanntes Profil. Das Verknüpfen des NFC-Tags mit einem existierenden Profil ermöglicht es, das entsprechende Profil in Zukunft durch eine Berührung zu aktivieren.</string>
+    <string name="profile_select">Profil auswählen</string>
+    <string name="profile_remove_dialog_message">Wollen Sie wirklich das Profil %1$s entfernen?</string>
+    <string name="profile_populate_profile_from_state">Profil mit aktuellen Geräteeinstellungen erstellen?</string>
+    <string name="profile_menu_fill_from_state">Aktuelle Geräteeinstellungen importieren</string>
+    <string name="profile_remove_current_profile">Aktuelles Profil kann nicht gelöscht werden!</string>
+    <string name="profile_app_group_category_title">Überschreibungen von Benachrichtigungen</string>
+    <string name="profile_app_group_item_instructions">Gruppen hinzufügen oder löschen</string>
+    <string name="profile_app_group_item_instructions_summary">App-Gruppen zu diesem Profil hinzufügen oder entfernen, für die Benachrichtigungen überschrieben werden</string>
+    <string name="profile_entries_on">An</string>
+    <string name="profile_entries_off">Aus</string>
+    <string name="profile_entries_no_override">Nicht ändern</string>
+    <string name="profile_name_title">Name</string>
+    <string name="new_profile_name">&lt;Neues Profil&gt;</string>
+    <string name="rename_dialog_title">Umbenennen</string>
+    <string name="rename_dialog_message">Neuen Namen eingeben</string>
+    <string name="duplicate_appgroup_name">Doppelter App-Gruppenname!</string>
+    <string name="rename_dialog_hint">Profilnamen eingeben</string>
+    <string name="profile_reset_title">Zurücksetzen</string>
+    <string name="profile_reset_message">Alle vom Benutzer erstellten Profile und App-Gruppen löschen und auf den Ausgangszustand zurücksetzen?</string>
+    <string name="profile_app_delete_confirm">Diese App entfernen?</string>
+    <string name="profile_networkmode_2g">2G</string>
+    <string name="profile_networkmode_3g">3G</string>
+    <string name="profile_networkmode_4g">LTE</string>
+    <string name="profile_networkmode_2g3g">2G/3G</string>
+    <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
+    <string name="profile_volumeoverrides_title">Lautstärke festlegen</string>
+    <string name="connection_state_enabled">Aktivieren</string>
+    <string name="volume_override_summary">Auf %1$s/%2$s gesetzt</string>
+    <string name="profile_volume_override_checkbox_label">Lautstärke überschreiben</string>
+    <string name="profile_profiles_manage">Profile</string>
+    <string name="profile_profile_manage">Profil bearbeiten</string>
+    <string name="profile_appgroups_manage">App-Gruppen</string>
+    <string name="profile_appgroup_manage">App-Gruppe verwalten</string>
+    <string name="profile_settings">Profileinstellungen</string>
+    <string name="profile_trigger_connect">Beim Verbinden</string>
+    <string name="profile_trigger_disconnect">Beim Trennen</string>
+    <string name="profile_trigger_notrigger">Nicht auslösen</string>
+    <string name="sound_mode">Benachrichtigungsmodus</string>
+    <string name="ringer_mode">Klingelmodus</string>
+    <string name="lights_mode">LED-Modus</string>
+    <string name="vibrate_mode">Vibrationsmodus</string>
+    <string name="choose_soundtone">Benachrichtigungston auswählen</string>
+    <string name="choose_ringtone">Klingelton auswählen</string>
+    <string name="soundtone_title">Benachrichtigungston</string>
+    <string name="profile_appgroups_title">App-Gruppen</string>
+    <string name="profile_applist_title">Apps</string>
+    <string name="profile_new_appgroup">Neue App-Gruppe</string>
+    <string name="profile_delete_appgroup">Diese App-Gruppe löschen?</string>
+    <string name="profile_appgroup_name_prompt">Geben Sie einen Namen für die neue App-Gruppe ein.</string>
+    <string name="profile_appgroup_name_title">Name</string>
+    <string name="profile_choose_app">App auswählen</string>
+    <string name="profile_system_settings_title">Systemeinstellungen</string>
+    <string name="profile_lockmode_title">Bildschirmsperre</string>
+    <string name="profile_lockmode_policy_disabled_summary">Diese Option wurde durch eine Geräteadministrator-Richtlinie deaktiviert.</string>
+    <string name="profile_lockmode_insecure_summary">Nicht nach PIN oder Passwort fragen</string>
+    <string name="profile_lockmode_disabled_summary">Bildschirmsperre deaktivieren</string>
+    <string name="profile_airplanemode_title">Flugmodus</string>
+    <string name="profile_brightness_title">Bildschirmhelligkeit</string>
+    <string name="profile_brightness_override_summary">Auf %1$d%% gesetzt</string>
+    <string name="profile_brightness_override_checkbox_label">Helligkeit überschreiben</string>
+    <string name="toggleWifi">WLAN</string>
+    <string name="toggleWifiAp">Mobiler WLAN-Hotspot</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Datenverbindung</string>
+    <string name="toggleSync">Daten automatisch synchronisieren</string>
+    <string name="toggle2g3g4g">Bevorzugter Netzwerktyp</string>
+    <string name="toggle2g3g4g_msim">Bevorzugter Netzwerktyp (%1$s)</string>
+    <string name="toggleNfc">NFC</string>
+    <string name="wifi_setting_countrycode_title">WLAN-Ländercode</string>
+    <string name="wifi_setting_countrycode_summary">WLAN-Ländercode festlegen</string>
+    <string name="wifi_setting_countrycode_error">Beim Festlegen des WLAN-Ländercodes ist ein Problem aufgetreten.</string>
+    <string name="wifi_countrycode_us">USA</string>
+    <string name="wifi_countrycode_ca">Kanada, Taiwan</string>
+    <string name="wifi_countrycode_de">Deutschland</string>
+    <string name="wifi_countrycode_gb">Europa</string>
+    <string name="wifi_countrycode_jp">Japan, Russland</string>
+    <string name="wifi_countrycode_au">Australien</string>
+    <string name="wifi_countrycode_cn">China</string>
+    <string name="wifi_countrycode_kr">Korea</string>
+    <string name="wifi_countrycode_tr">Südafrika, Türkei</string>
+    <string name="wifi_countrycode_sg">Israel, Singapur</string>
+    <string name="wifi_countrycode_br">Brasilien</string>
+    <string name="wifi_countrycode_in">Indien</string>
+    <string name="profile_menu_delete_title">Löschen</string>
+    <string name="profile_action_none">Unverändert lassen</string>
+    <string name="profile_action_system">Systemstandard</string>
+    <string name="profile_action_disable">Ausschalten</string>
+    <string name="profile_action_enable">Einschalten</string>
+    <string name="profile_trigger_a2dp_connect">Beim Verbinden von A2DP</string>
+    <string name="profile_trigger_a2dp_disconnect">Beim Trennen von A2DP</string>
+    <string name="profile_tabs_wifi">WLAN</string>
+    <string name="profile_tabs_bluetooth">Bluetooth</string>
+    <string name="profile_tabs_nfc">NFC</string>
+    <string name="profile_triggers_header">Auslöser, die dieses Profil aktivieren</string>
+    <string name="profile_setup_setup_triggers_title">Schritt 1: Auslöser hinzufügen</string>
+    <string name="profile_setup_setup_triggers_title_config">Auslöser ändern: <xliff:g id="profile_name">%1$s</xliff:g></string>
+    <string name="profile_setup_actions_title">Schritt 2: Aktionen festlegen</string>
+    <string name="profile_setup_actions_title_config">Aktionen neu konfigurieren</string>
+    <string name="profile_appgroups_manage">App-Gruppen</string>
+    <string name="profile_appgroup_manage">App-Gruppe verwalten</string>
+    <string name="profile_appgroups_title">App-Gruppen</string>
+    <string name="profile_new_appgroup">Neue App-Gruppe</string>
+    <string name="profile_delete_appgroup">Diese App-Gruppe löschen?</string>
+    <string name="profile_appgroup_name_prompt">Geben Sie einen Namen für die neue App-Gruppe ein.</string>
+    <string name="profile_appgroup_name_title">Name</string>
+    <string name="duplicate_appgroup_name">Doppelter App-Gruppenname!</string>
+    <string name="profile_app_delete_confirm">Diese App entfernen?</string>
+    <string name="no_bluetooth_triggers">Keine Bluetooth-Geräte gekoppelt.\nTippen Sie, um Bluetooth-Geräte vor dem Konfigurieren von Auslösern zu koppeln.</string>
+    <string name="no_wifi_triggers">Keine WLAN-Zugangspunkte konfiguriert.\nTippen Sie, um vor dem Konfigurieren von Auslösern eine WLAN-Verbindung herzustellen.</string>
+    <string name="no_triggers_configured">Keine Auslöser konfiguriert. Tippen Sie, um weitere hinzuzufügen.</string>
+    <string name="no_triggers_configured_nfc">Tippen Sie zum Einrichten eines neuen NFC-Auslösers.</string>
+    <string name="profile_setup_setup_triggers_description">Bitte bestimmen Sie die Auslöser, die dieses Profil aktivieren.</string>
+    <string name="profile_setup_actions_description">Konfigurieren was passiert, wenn das Profil aktiviert ist</string>
+    <string name="navigation_bar_category">Navigationsleiste</string>
+    <string name="navigation_bar_left_title">Linkshänder-Modus</string>
+    <string name="navigation_bar_left_summary">Navigationsleiste im Querformat auf der linken Seite anzeigen</string>
+    <string name="navigation_bar_title">Schaltflächen und Anordnung</string>
+    <string name="navigation_bar_help_text">Tippen Sie zunächst auf das \"Bearbeiten\"-Symbol, um die Navigationsleiste zu entsperren.\n\nSie können ein Symbol antippen, um dessen Verknüpfung zu ändern oder lange auf ein Symbol drücken, um das Layout zu verändern.\n\nTippen Sie auf \"Speichern\", um Ihre Änderungen zu sichern oder auf \"Wiederherstellen\", um das Layout auf die Standardeinstellungen zurückzusetzen.</string>
+    <string name="navigation_restore_button_text">Standardeinstellungen\nwiederherstellen</string>
+    <string name="navigation_edit_button_text">Bearbeiten</string>
+    <string name="navigation_save_button_text">Speichern</string>
+    <string name="navigation_bar_reset_message">Alle Einstellungen löschen und das Standardlayout wiederherstellen?</string>
+    <string name="navigation_bar_arrow_keys_title">Pfeiltasten beim Tippen anzeigen</string>
+    <string name="navigation_bar_arrow_keys_summary">Beim Tippen Links/Rechts-Cursortasten anzeigen (deaktiviert die Eingabemethodenauswahl)</string>
+    <string name="navigation_bar_recents_title">Langes Drücken auf Anwendungsverlauf</string>
+    <string name="edit_light_settings">LED-Einstellungen ändern</string>
+    <string name="pulse_speed_title">Pulsdauer und Geschwindigkeit</string>
+    <string name="default_time">Normal</string>
+    <string name="custom_time">Benutzerdefiniert</string>
+    <string name="dialog_delete_title">Löschen</string>
+    <string name="dialog_delete_message">Ausgewähltes Element entfernen?</string>
+    <string name="pulse_length_always_on">Immer an</string>
+    <string name="pulse_length_very_short">Sehr kurz</string>
+    <string name="pulse_length_short">Kurz</string>
+    <string name="pulse_length_normal">Normal</string>
+    <string name="pulse_length_long">Lang</string>
+    <string name="pulse_length_very_long">Sehr lang</string>
+    <string name="pulse_speed_very_fast">Sehr schnell</string>
+    <string name="pulse_speed_fast">Schnell</string>
+    <string name="pulse_speed_normal">Normal</string>
+    <string name="pulse_speed_slow">Langsam</string>
+    <string name="pulse_speed_very_slow">Sehr langsam</string>
+    <string name="battery_light_title">Akku-LED</string>
+    <string name="battery_low_pulse_title">Bei schwachem Akku pulsieren</string>
+    <string name="battery_light_list_title">Farben</string>
+    <string name="battery_light_low_color_title">Akku schwach</string>
+    <string name="battery_light_medium_color_title">Laden</string>
+    <string name="battery_light_full_color_title">Aufgeladen</string>
+    <string name="notification_light_title">Benachrichtigungs-LED</string>
+    <string name="notification_light_general_title">Allgemein</string>
+    <string name="notification_light_applist_title">Apps</string>
+    <string name="notification_light_phonelist_title">Telefon</string>
+    <string name="notification_light_use_custom">App-Anpassungen</string>
+    <string name="notification_light_default_value">Standard</string>
+    <string name="notification_light_missed_call_title">Verpasster Anruf</string>
+    <string name="notification_light_voicemail_title">Sprachnachricht</string>
+    <string name="notification_light_screen_on">LED-Anzeige bei aktivem Display</string>
+    <string name="notification_light_zen_mode">LED-Anzeige im \"Nicht stören\"-Modus</string>
+    <string name="notification_light_use_multiple_leds">Mehrere LEDs</string>
+    <string name="keywords_lights_brightness_level">LED-Helligkeit reduzieren</string>
+    <string name="notification_light_automagic">Farben automatisch wählen</string>
+    <string name="led_notification_title">LED-Einstellungen</string>
+    <string name="led_notification_text">Benachrichtigungs-LED durch Einstellungen aktiviert</string>
+    <string name="notification_light_no_apps_summary">Um App-spezifische Einstellungen hinzuzufügen, \"%1$s\" aktivieren und \"\u002b\" in der Menüleiste berühren.</string>
+    <string name="enable_adb_cm">Android-Debugging</string>
+    <string name="enable_adb_summary_cm">ADB-Protokoll für Debugging über USB oder Netzwerk aktivieren</string>
+    <string name="adb_over_network">ADB über Netzwerk</string>
+    <string name="adb_over_network_summary">TCP/IP-Debugging über Netzwerkschnittstellen (WLAN, USB-Netzwerke) aktivieren. Diese Einstellung wird beim Neustart zurückgesetzt.</string>
+    <string name="adb_over_network_warning">WARNUNG: Wenn ADB übers Netzwerk aktiviert ist, kann auf Ihr Gerät von jedem verbundenen Netzwerk zugegriffen werden!\n\nDiese Funktion sollten Sie nur verwenden, wenn Sie sich in einem vertrauenswürdigen Netzwerk befinden.\n\nMöchten Sie diese Funktion trotzdem aktivieren?</string>
+    <string name="adb_notify">Debugging-Benachrichtigung</string>
+    <string name="adb_notify_summary">Eine Benachrichtigung anzeigen, wenn USB- oder Netzwerkdebugging aktiviert ist</string>
+    <string name="app_ops_categories_location">Standort</string>
+    <string name="app_ops_categories_personal">Persönlich</string>
+    <string name="app_ops_categories_messaging">SMS/MMS</string>
+    <string name="app_ops_categories_media">Medien</string>
+    <string name="app_ops_categories_device">Gerät</string>
+    <string name="app_ops_categories_bootup">Systemstart</string>
+    <string name="app_ops_categories_su">Root-Zugriff</string>
+    <string name="app_ops_summaries_coarse_location">Ungefährer Standort</string>
+    <string name="app_ops_summaries_fine_location">Genauer Standort</string>
+    <string name="app_ops_summaries_gps">GPS</string>
+    <string name="app_ops_summaries_vibrate">vibrieren</string>
+    <string name="app_ops_summaries_read_contacts">Kontakte lesen</string>
+    <string name="app_ops_summaries_modify_contacts">Kontakte ändern</string>
+    <string name="app_ops_summaries_read_call_log">Anrufprotokoll lesen</string>
+    <string name="app_ops_summaries_modify_call_log">Anrufprotokoll ändern</string>
+    <string name="app_ops_summaries_read_calendar">Kalender lesen</string>
+    <string name="app_ops_summaries_modify_calendar">Kalender ändern</string>
+    <string name="app_ops_summaries_wifi_scan">WLAN-Scan</string>
+    <string name="app_ops_summaries_notification">Benachrichtigung</string>
+    <string name="app_ops_summaries_cell_scan">Mobilfunknetz-Scan</string>
+    <string name="app_ops_summaries_call_phone">Telefonieren</string>
+    <string name="app_ops_summaries_read_sms">SMS lesen</string>
+    <string name="app_ops_summaries_write_sms">SMS schreiben</string>
+    <string name="app_ops_summaries_receive_sms">SMS empfangen</string>
+    <string name="app_ops_summaries_receive_emergency_sms">Notfall-SMS empfangen</string>
+    <string name="app_ops_summaries_receive_mms">MMS empfangen</string>
+    <string name="app_ops_summaries_receive_wap_push">WAP-Push-Nachricht empfangen</string>
+    <string name="app_ops_summaries_send_sms">SMS senden</string>
+    <string name="app_ops_summaries_read_icc_sms">ICC-SMS lesen</string>
+    <string name="app_ops_summaries_write_icc_sms">ICC-SMS schreiben</string>
+    <string name="app_ops_summaries_modify_settings">Einstellungen ändern</string>
+    <string name="app_ops_summaries_draw_on_top">Über anderen Apps einblenden</string>
+    <string name="app_ops_summaries_access_notifications">Auf Benachrichtigungen zugreifen</string>
+    <string name="app_ops_summaries_camera">Kamera</string>
+    <string name="app_ops_summaries_record_audio">Audio aufzeichnen</string>
+    <string name="app_ops_summaries_play_audio">Audio wiedergeben</string>
+    <string name="app_ops_summaries_read_clipboard">Zwischenablage lesen</string>
+    <string name="app_ops_summaries_modify_clipboard">Zwischenablage ändern</string>
+    <string name="app_ops_summaries_media_buttons">Medienschaltflächen</string>
+    <string name="app_ops_summaries_audio_focus">Audiofokus</string>
+    <string name="app_ops_summaries_master_volume">Gesamtlautstärke</string>
+    <string name="app_ops_summaries_voice_volume">Sprachlautstärke</string>
+    <string name="app_ops_summaries_ring_volume">Klingeltonlautstärke</string>
+    <string name="app_ops_summaries_media_volume">Medienlautstärke</string>
+    <string name="app_ops_summaries_alarm_volume">Weckerlautstärke</string>
+    <string name="app_ops_summaries_notification_volume">Benachrichtigungslautstärke</string>
+    <string name="app_ops_summaries_bluetooth_volume">Bluetooth-Lautstärke</string>
+    <string name="app_ops_summaries_keep_awake">aktiv lassen</string>
+    <string name="app_ops_summaries_monitor_location">Standort beobachten</string>
+    <string name="app_ops_summaries_monitor_high_power_location">Standort mit hohem Stromverbrauch beobachten</string>
+    <string name="app_ops_summaries_get_usage_stats">Nutzungsstatistiken abrufen</string>
+    <string name="app_ops_summaries_mute_unmute_microphone">Mikrofon ein-/ausschalten</string>
+    <string name="app_ops_summaries_toast_window">Pop-ups anzeigen</string>
+    <string name="app_ops_summaries_project_media">Medien projizieren</string>
+    <string name="app_ops_summaries_activate_vpn">VPN aktivieren</string>
+    <string name="app_ops_summaries_write_wallpaper">Hintergrund schreiben</string>
+    <string name="app_ops_summaries_assist_structure">Strukturassistent</string>
+    <string name="app_ops_summaries_assist_screenshot">Screenshotassistent</string>
+    <string name="app_ops_summaries_read_phone_state">Telefonstatus lesen</string>
+    <string name="app_ops_summaries_add_voicemail">Sprachnachricht hinzuzufügen</string>
+    <string name="app_ops_summaries_use_sip">SIP verwenden</string>
+    <string name="app_ops_summaries_make_call">Anrufe tätigen</string>
+    <string name="app_ops_summaries_use_fingerprint">Fingerabdruck verwenden</string>
+    <string name="app_ops_summaries_use_body_sensors">Körpersensoren verwenden</string>
+    <string name="app_ops_summaries_read_cell_broadcasts">Notfall-Broadcasts lesen</string>
+    <string name="app_ops_summaries_mock_location">Standorte simulieren</string>
+    <string name="app_ops_summaries_read_external_storage">Externen Speicher lesen</string>
+    <string name="app_ops_summaries_write_external_storage">auf externen Speicher schreiben</string>
+    <string name="app_ops_summaries_turn_screen_on">Bildschirm einschalten</string>
+    <string name="app_ops_summaries_get_accounts">Konten abrufen</string>
+    <string name="app_ops_summaries_toggle_wifi">WLAN ein-/ausschalten</string>
+    <string name="app_ops_summaries_toggle_bluetooth">Bluetooth ein-/ausschalten</string>
+    <string name="app_ops_summaries_start_at_boot">Beim Booten starten</string>
+    <string name="app_ops_summaries_toggle_nfc">NFC ein-/ausschalten</string>
+    <string name="app_ops_summaries_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
+    <string name="app_ops_summaries_superuser">Root-Zugriff</string>
+    <string name="app_ops_labels_coarse_location">Ungefährer Standort</string>
+    <string name="app_ops_labels_fine_location">Genauer Standort</string>
+    <string name="app_ops_labels_gps">GPS</string>
+    <string name="app_ops_labels_vibrate">Vibrieren</string>
+    <string name="app_ops_labels_read_contacts">Kontakte lesen</string>
+    <string name="app_ops_labels_modify_contacts">Kontakte ändern</string>
+    <string name="app_ops_labels_read_call_log">Anrufprotokoll lesen</string>
+    <string name="app_ops_labels_modify_call_log">Anrufprotokoll ändern</string>
+    <string name="app_ops_labels_read_calendar">Kalender lesen</string>
+    <string name="app_ops_labels_modify_calendar">Kalender ändern</string>
+    <string name="app_ops_labels_wifi_scan">WLAN-Scan</string>
+    <string name="app_ops_labels_notification">Benachrichtigung</string>
+    <string name="app_ops_labels_cell_scan">Mobilfunknetz-Scan</string>
+    <string name="app_ops_labels_call_phone">Telefonieren</string>
+    <string name="app_ops_labels_read_sms">SMS lesen</string>
+    <string name="app_ops_labels_write_sms">SMS schreiben</string>
+    <string name="app_ops_labels_receive_sms">SMS empfangen</string>
+    <string name="app_ops_labels_receive_emergency_sms">Notfall-SMS empfangen</string>
+    <string name="app_ops_labels_receive_mms">MMS empfangen</string>
+    <string name="app_ops_labels_receive_wap_push">WAP-Push-Nachricht empfangen</string>
+    <string name="app_ops_labels_send_sms">SMS senden</string>
+    <string name="app_ops_labels_read_icc_sms">ICC-SMS lesen</string>
+    <string name="app_ops_labels_write_icc_sms">ICC-SMS schreiben</string>
+    <string name="app_ops_labels_modify_settings">Einstellungen ändern</string>
+    <string name="app_ops_labels_draw_on_top">Über anderen Apps einblenden</string>
+    <string name="app_ops_labels_access_notifications">Auf Benachrichtigungen zugreifen</string>
+    <string name="app_ops_labels_camera">Kamera</string>
+    <string name="app_ops_labels_record_audio">Audio aufzeichnen</string>
+    <string name="app_ops_labels_play_audio">Audio wiedergeben</string>
+    <string name="app_ops_labels_read_clipboard">Zwischenablage lesen</string>
+    <string name="app_ops_labels_modify_clipboard">Zwischenablage ändern</string>
+    <string name="app_ops_labels_media_buttons">Medienschaltflächen</string>
+    <string name="app_ops_labels_audio_focus">Audiofokus</string>
+    <string name="app_ops_labels_master_volume">Gesamtlautstärke</string>
+    <string name="app_ops_labels_voice_volume">Sprachlautstärke</string>
+    <string name="app_ops_labels_ring_volume">Klingeltonlautstärke</string>
+    <string name="app_ops_labels_media_volume">Medienlautstärke</string>
+    <string name="app_ops_labels_alarm_volume">Weckerlautstärke</string>
+    <string name="app_ops_labels_notification_volume">Benachrichtigungslautstärke</string>
+    <string name="app_ops_labels_bluetooth_volume">Bluetooth-Lautstärke</string>
+    <string name="app_ops_labels_keep_awake">Aktiv lassen</string>
+    <string name="app_ops_labels_monitor_location">Standort beobachten</string>
+    <string name="app_ops_labels_monitor_high_power_location">Standort mit hohem Stromverbrauch beobachten</string>
+    <string name="app_ops_labels_get_usage_stats">Nutzungsstatistiken abrufen</string>
+    <string name="app_ops_labels_mute_unmute_microphone">Mikrofon ein-/ausschalten</string>
+    <string name="app_ops_labels_toast_window">Pop-ups anzeigen</string>
+    <string name="app_ops_labels_project_media">Medien projizieren</string>
+    <string name="app_ops_labels_activate_vpn">VPN aktivieren</string>
+    <string name="app_ops_labels_write_wallpaper">Hintergrund schreiben</string>
+    <string name="app_ops_labels_assist_structure">Strukturassistent</string>
+    <string name="app_ops_labels_assist_screenshot">Screenshotassistent</string>
+    <string name="app_ops_labels_read_phone_state">Telefonstatus lesen</string>
+    <string name="app_ops_labels_add_voicemail">Sprachnachricht hinzufügen</string>
+    <string name="app_ops_labels_use_sip">SIP verwenden</string>
+    <string name="app_ops_labels_make_call">Anrufe tätigen</string>
+    <string name="app_ops_labels_use_fingerprint">Fingerabdruck nutzen</string>
+    <string name="app_ops_labels_use_body_sensors">Körpersensoren verwenden</string>
+    <string name="app_ops_labels_read_cell_broadcasts">Notfall-Broadcasts lesen</string>
+    <string name="app_ops_labels_mock_location">Simulierte Standorte</string>
+    <string name="app_ops_labels_read_external_storage">Externen Speicher lesen</string>
+    <string name="app_ops_labels_write_external_storage">Auf externen Speicher schreiben</string>
+    <string name="app_ops_labels_turn_screen_on">Bildschirm einschalten</string>
+    <string name="app_ops_labels_get_accounts">Konten abrufen</string>
+    <string name="app_ops_labels_toggle_wifi">WLAN ein-/ausschalten</string>
+    <string name="app_ops_labels_toggle_bluetooth">Bluetooth ein-/ausschalten</string>
+    <string name="app_ops_labels_start_at_boot">Beim Booten starten</string>
+    <string name="app_ops_labels_toggle_nfc">NFC ein-/ausschalten</string>
+    <string name="app_ops_labels_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
+    <string name="app_ops_labels_superuser">Root-Zugriff</string>
+    <string name="app_ops_permissions_allowed">Erlaubt</string>
+    <string name="app_ops_permissions_ignored">Verboten</string>
+    <string name="app_ops_permissions_always_ask">Immer nachfragen</string>
+    <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (<xliff:g id="count">%2$s</xliff:g> verwendet)</string>
+    <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> erlaubt</string>
+    <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> verweigert</string>
+    <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> erlaubt, <xliff:g id="count">%2$s</xliff:g> verweigert</string>
+    <string name="app_ops_disabled_by_optimization">Durch Akkuoptimierung deaktiviert</string>
+    <string name="app_ops_show_user_apps">Benutzer-Apps anzeigen</string>
+    <string name="app_ops_show_system_apps">System-Apps anzeigen</string>
+    <string name="app_ops_reset_counters">Erlaubt/Verweigert-Zähler zurücksetzen</string>
+    <string name="app_ops_reset_confirm_title">Zurücksetzen der Zähler bestätigen</string>
+    <string name="app_ops_reset_confirm_mesg">Wollen Sie die Zähler wirklich zurücksetzen?</string>
+    <string name="ok">OK</string>
+    <string name="device_hostname">Hostname des Geräts</string>
+    <string name="unlock_scramble_pin_layout_title">Zufällige Anordnung</string>
+    <string name="unlock_scramble_pin_layout_summary">Bei jedem Entsperrversuch die Ziffernanordnung zufällig neu wählen</string>
+    <string name="button_pref_title">Tasten</string>
+    <string name="hardware_keys_power_key_title">Ein-/Aus-Taste</string>
+    <string name="hardware_keys_home_key_title">Home-Taste</string>
+    <string name="hardware_keys_back_key_title">Zurück-Taste</string>
+    <string name="hardware_keys_menu_key_title">Menü-Taste</string>
+    <string name="hardware_keys_assist_key_title">Suche-Taste</string>
+    <string name="hardware_keys_appswitch_key_title">Anwendungsverlauf-Taste</string>
+    <string name="hardware_keys_camera_key_title">Kamera-Taste</string>
+    <string name="hardware_keys_volume_keys_title">Lautstärketasten</string>
+    <string name="hardware_keys_short_press_title">Kurzes Drücken</string>
+    <string name="hardware_keys_long_press_title">Langes Drücken</string>
+    <string name="hardware_keys_double_tap_title">Doppeltes Tippen</string>
+    <string name="hardware_keys_action_nothing">Keine Aktion</string>
+    <string name="hardware_keys_action_menu">Menü öffnen/schließen</string>
+    <string name="hardware_keys_action_app_switch">Anwendungsverlauf</string>
+    <string name="hardware_keys_action_search">Suchassistent</string>
+    <string name="hardware_keys_action_voice_search">Sprachsuche</string>
+    <string name="hardware_keys_action_in_app_search">In-App-Suche</string>
+    <string name="hardware_keys_action_launch_camera">Kamera starten</string>
+    <string name="hardware_keys_action_sleep">Bildschirm ausschalten</string>
+    <string name="hardware_keys_action_last_app">Vorherige App</string>
+    <string name="camera_sleep_on_release_title">Kurzer Blick</string>
+    <string name="camera_sleep_on_release_summary">Der Bildschirm bleibt aktiviert, solange die Kamera-Taste halb durchgedrückt gehalten wird.</string>
+    <string name="camera_launch_title">Kamera starten</string>
+    <string name="camera_launch_summary">Langes Drücken und Loslassen startet die Kamera</string>
+    <string name="volbtn_music_controls_title">Musiksteuerung</string>
+    <string name="volbtn_music_controls_summary">Bei abgeschaltetem Bildschirm durch langes Drücken der Lautstärketasten zum nächsten / vorherigen Titel springen</string>
+    <string name="volbtn_cursor_control_title">Cursorsteuerung</string>
+    <string name="volbtn_cursor_control_off">Deaktiviert</string>
+    <string name="volbtn_cursor_control_on">Lauter-/Leiser-Taste bewegt den Cursor nach links/rechts</string>
+    <string name="volbtn_cursor_control_on_reverse">Lauter-/Leiser-Taste bewegt den Cursor nach rechts/links</string>
+    <string name="power_end_call_title">Anruf beenden</string>
+    <string name="power_end_call_summary">Ein laufendes Telefonat wird durch Drücken der Ein-/Aus-Taste beendet.</string>
+    <string name="swap_volume_buttons_title">Umkehren</string>
+    <string name="swap_volume_buttons_summary">Belegung der Lautstärketasten umkehren, wenn das Gerät gedreht wird</string>
+    <string name="button_wake_title">Gerät aufwecken</string>
+    <string name="home_answer_call_title">Anruf beantworten</string>
+    <string name="home_answer_call_summary">Eingehende Anrufe werden durch Drücken der Home-Taste angenommen</string>
+    <string name="adaptive_backlight_title">Adaptive Beleuchtung</string>
+    <string name="adaptive_backlight_summary">Die Hintergrundbeleuchtung des Bildschirms dynamisch regeln, um die Akkulaufzeit zu verbessern</string>
+    <string name="sunlight_enhancement_title">Verbesserung bei Sonnenlicht</string>
+    <string name="sunlight_enhancement_summary">Ablesbarkeit des Displays bei hellem Sonnenlicht verbessern</string>
+    <string name="color_enhancement_title">Farbverbesserung</string>
+    <string name="color_enhancement_summary">Farbdarstellung des Displays dynamisch verbessern</string>
+    <string name="button_backlight_title">Hintergrundbeleuchtung</string>
+    <string name="button_backlight_enabled">Tasten beleuchten</string>
+    <string name="keyboard_backlight_enabled">Tastatur beleuchten</string>
+    <string name="button_backlight_seekbar_title">Tasten-Helligkeit</string>
+    <string name="keyboard_backlight_seekbar_title">Tastatur-Helligkeit</string>
+    <string name="backlight_timeout_title">Automatisch abschalten nach</string>
+    <string name="backlight_timeout_unlimited">Nie ausschalten</string>
+    <string name="backlight_summary_disabled">Deaktiviert</string>
+    <string name="backlight_summary_enabled_with_timeout">Für <xliff:g id="timeout">%s</xliff:g> aktiviert</string>
+    <string name="backlight_summary_enabled">Aktiviert</string>
+    <string name="gesture_settings_title">Gesten</string>
+    <string name="power_menu_title">Ein-/Aus-Menü</string>
+    <string name="power_menu_reboot_title">Neustart-Menü</string>
+    <string name="power_menu_screenshot_title">Screenshot</string>
+    <string name="power_menu_airplane_title">Flugmodus</string>
+    <string name="power_menu_users_title">Benutzer wechseln</string>
+    <string name="power_menu_settings_title">Einstellungsverknüpfung</string>
+    <string name="power_menu_lockdown_title">Gerät sperren</string>
+    <string name="power_menu_bug_report_title">Fehlerbericht</string>
+    <string name="power_menu_sound_title">Ton-Einstellungen</string>
+    <string name="power_menu_bug_report_disabled">Fehlerberichte sind in Entwicklereinstellungen deaktiviert</string>
+    <string name="disable_navkeys_title">Navigationsleiste aktivieren</string>
+    <string name="disable_navkeys_summary">Navigationstasten deaktivieren und stattdessen eine Navigationsleiste auf dem Bildschirm anzeigen</string>
+    <string name="double_tap_to_wake_title">Aufwecken durch doppeltes Tippen</string>
+    <string name="double_tap_to_wake_summary">Doppelt auf den Bildschirm tippen, um das Display einzuschalten</string>
+    <string name="double_tap_to_sleep_title">Standby durch doppeltes Tippen</string>
+    <string name="double_tap_to_sleep_summary">Doppelt auf die Statusleiste tippen, um das Display auszuschalten</string>
+    <string name="proximity_wake_title">Unbeabsichtigtes Aufwecken verhindern</string>
+    <string name="proximity_wake_summary">Vor dem Aufwecken durch Gesten den Näherungssensor prüfen</string>
+    <string name="wake_when_plugged_or_unplugged_title">Beim Einstecken aufwecken</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Beim Anschließen oder Trennen einer Stromquelle den Bildschirm einschalten</string>
+    <string name="font_size_sample">Beispieltext</string>
+    <string name="volume_adjust_sounds_title">Ton bei Lautstärkeänderung</string>
+    <string name="vibrator_intensity_title">Vibrationsstärke</string>
+    <string name="vibrator_warning">Höhere Werte als %1$d%% werden nicht empfohlen</string>
+    <string name="color_calibration_title">Farbkalibrierung</string>
+    <string name="color_calibration_summary">Displayfarben kalibrieren</string>
+    <string name="color_red_title">Rot</string>
+    <string name="color_green_title">Grün</string>
+    <string name="color_blue_title">Blau</string>
+    <string name="headset_connect_player_title">Musik-App starten</string>
+    <string name="headset_connect_player_summary">Beim Anschließen eines Kopfhörers die Standard-Musik-App starten</string>
+    <string name="wifi_auto_config_priorities">Automatische Priorität</string>
+    <string name="auto_brightness_reset_button">Zurücksetzen</string>
+    <string name="display_rotation_title">Bildschirmausrichtung</string>
+    <string name="display_rotation_disabled">Deaktiviert</string>
+    <string name="display_rotation_unit">Grad</string>
+    <string name="display_lockscreen_rotation_title">Sperrbildschirm drehen</string>
+    <string name="display_rotation_category_title">Bei Drehung um</string>
+    <string name="display_rotation_0_title">0 Grad</string>
+    <string name="display_rotation_90_title">90 Grad</string>
+    <string name="display_rotation_180_title">180 Grad</string>
+    <string name="display_rotation_270_title">270 Grad</string>
+    <string name="live_display_summary">Optimiert Ihren Bildschirm basierend auf der Tageszeit und den Umgebungsbedingungen, um die Lesbarkeit zu verbessern und die Ermüdung der Augen zu mildern</string>
+    <string name="live_display_mode">Bildschirmmodus</string>
+    <string name="live_display_color_temperature_title">Farbtemperatur</string>
+    <string name="live_display_color_temperature_summary">Tag: <xliff:g id="day_temperature">%1$d</xliff:g> K Nacht: <xliff:g id="night_temperature">%2$d</xliff:g> K</string>
+    <string name="live_display_color_temperature_label"><xliff:g id="degrees">%1$d</xliff:g> K</string>
+    <string name="live_display_day">Tag</string>
+    <string name="live_display_night">Nacht</string>
+    <string name="live_display_outdoor_mode_title">Automatischer Außen-Modus</string>
+    <string name="live_display_outdoor_mode_summary">Bei grellem Sonnenlicht Helligkeit und Sättigung automatisch erhöhen</string>
+    <string name="live_display_low_power_title">Akkuverbrauch reduzieren</string>
+    <string name="live_display_low_power_summary">Anpassen der Anzeige für den niedrigsten Akkuverbrauch ohne Beeinträchtigungen</string>
+    <string name="live_display_enhance_color_title">Farben verbessern</string>
+    <string name="live_display_enhance_color_summary">Verbessert die Farben von Hauttönen, Landschaften und von anderen Bildern</string>
+    <string name="live_display_color_profile_title">Farbprofil</string>
+    <string name="live_display_color_profile_standard_title">Standard</string>
+    <string name="live_display_color_profile_standard_summary">Genaue Farbdarstellung und helle Weißtöne</string>
+    <string name="live_display_color_profile_natural_title">Natürlich</string>
+    <string name="live_display_color_profile_natural_summary">Realistische Farben und Hauttöne</string>
+    <string name="live_display_color_profile_dynamic_title">Dynamisch</string>
+    <string name="live_display_color_profile_dynamic_summary">Verbesserte Farben und helleres Weiß</string>
+    <string name="live_display_color_profile_cinema_title">Kino</string>
+    <string name="live_display_color_profile_cinema_summary">Perfekte Farbwiedergabe für Videos</string>
+    <string name="live_display_color_profile_astronomy_title">Astronomie</string>
+    <string name="live_display_color_profile_astronomy_summary">Tiefes Rot für den Erhalt der Nachtsicht</string>
+    <string name="live_display_color_profile_photography_title">Fotografie</string>
+    <string name="live_display_color_profile_photography_summary">Perfekte Farbwiedergabe für Fotos</string>
+    <string name="live_display_color_profile_basic_title">Einfach</string>
+    <string name="live_display_color_profile_basic_summary">Display unkalibriert verwenden</string>
+    <string name="live_display_color_profile_adaptive_title">Adaptiv</string>
+    <string name="live_display_color_profile_adaptive_summary">Farben an Umgebungsbedingungen anpassen</string>
+    <string name="picture_adjustment_title">Bildanpassung</string>
+    <string name="picture_adjustment_summary">Farbton, Sättigung, Leuchtdichte und Kontrast anpassen</string>
+    <string name="adj_hue_title">Farbton</string>
+    <string name="adj_saturation_title">Sättigung</string>
+    <string name="adj_intensity_title">Leuchtdichte</string>
+    <string name="adj_contrast_title">Kontrast</string>
+    <string name="ime_switcher_notify">Auswahlsymbol</string>
+    <string name="ime_switcher_notify_summary">Symbol für Eingabemethodenauswahl anzeigen</string>
+    <string name="heads_up_notifications">Pop-up-Benachrichtigungen</string>
+    <string name="summary_heads_up_enabled">Pop-up-Benachrichtigungen sind aktiviert</string>
+    <string name="summary_heads_up_disabled">Pop-up-Benachrichtigungen sind deaktiviert</string>
+    <string name="bluetooth_accept_all_files">Alle Dateiformate akzeptieren</string>
+    <string name="high_touch_sensitivity_title">Hohe Touch-Empfindlichkeit</string>
+    <string name="high_touch_sensitivity_summary">Touch-Empfindlichkeit erhöhen, um den Touchscreen auch mit Handschuhen bedienen zu können</string>
+    <string name="lcd_density">Pixeldichte</string>
+    <string name="dialog_title_lcd_density">Pixeldichte</string>
+    <string name="lcd_density_value_format">%d DPI</string>
+    <string name="lcd_density_default_value_format">%d DPI (Standard)</string>
+    <string name="restarting_ui">Benutzeroberfläche wird neu gestartet\u2026</string>
+    <string name="stylus_icon_enabled_title">Stiftsymbol bei Verwendung des Stifts anzeigen</string>
+    <string name="stylus_icon_enabled_summary">Zeiger einblenden, wenn ein Stift verwendet wird</string>
+    <string name="gestures_settings_title">Stiftgesten</string>
+    <string name="category_spen_title">Stiftgesten</string>
+    <string name="enable_subcat_title">Stift</string>
+    <string name="enable_spen_title_head">Gesten aktivieren</string>
+    <string name="enable_spen_summary_head">Aktionen durch Wischgesten mit gedrücktem Knopf am Stift auslösen</string>
+    <string name="gestures_subcat_title">Gesten</string>
+    <string name="gestures_left_spen_title_head">Nach links wischen</string>
+    <string name="gestures_right_spen_title_head">Nach rechts wischen</string>
+    <string name="gestures_up_spen_title_head">Nach oben wischen</string>
+    <string name="gestures_down_spen_title_head">Nach unten wischen</string>
+    <string name="gestures_long_spen_title_head">Lange drücken</string>
+    <string name="gestures_double_spen_title_head">Doppelt tippen</string>
+    <string name="gestures_action_empty">Keine Aktion</string>
+    <string name="gestures_action_home">Startseite</string>
+    <string name="gestures_action_back">Zurück</string>
+    <string name="gestures_action_menu">Menü</string>
+    <string name="gestures_action_search">Suche starten</string>
+    <string name="gestures_action_recent">Anwendungsverlauf</string>
+    <string name="stylus_app_not_installed">%s ist nicht installiert</string>
+    <string name="touchscreen_hovering_title">Touchscreen als Maus verwenden</string>
+    <string name="touchscreen_hovering_summary">Erlaubt es, den über dem Touchscreen schwebenden Finger im Browser, Remote Desktop usw. als Mauszeiger zu verwenden.</string>
+    <string name="increasing_ring_volume_option_title">Ansteigende Klingeltonlautstärke</string>
+    <string name="increasing_ring_min_volume_title">Anfangslautstärke</string>
+    <string name="increasing_ring_ramp_up_time_title">Anstiegszeit</string>
+    <string name="lto_download_data_wifi_only">Herunterladen von A-GPS-Daten</string>
+    <string name="lto_download_data_wifi_only_on">Über alle Netzwerke</string>
+    <string name="lto_download_data_wifi_only_off">Nur über WLAN</string>
+    <string name="volume_keys_control_ring_stream_title">Klingeltonlautstärke steuern</string>
+    <string name="volume_keys_control_ring_stream_summary_on">Lautstärketasten steuern Klingeltonlautstärke</string>
+    <string name="volume_keys_control_ring_stream_summary_off">Lautstärketasten steuern Medienlautstärke</string>
+    <string name="category_calibration">Kalibrierung</string>
+    <string name="display_and_lights">Display &amp; LEDs</string>
+    <string name="power_notifications_category_title">Ladegeräte-Töne</string>
+    <string name="power_notifications_enable_title">Aktivieren</string>
+    <string name="power_notifications_enable_summary">Beim Anschließen oder Trennen einer Stromquelle einen Ton abspielen</string>
+    <string name="power_notifications_vibrate_title">Vibrieren</string>
+    <string name="power_notifications_ringtone_title">Benachrichtigungston</string>
+    <string name="power_notifications_ringtone_silent">Kein Ton</string>
+    <string name="status_bar_title">Statusleiste</string>
+    <string name="status_bar_toggle_brightness">Helligkeitssteuerung</string>
+    <string name="status_bar_toggle_brightness_summary">Helligkeit durch Wischen über die Statusleiste anpassen</string>
+    <string name="status_bar_notif_count_title">Benachrichtigungszähler</string>
+    <string name="status_bar_notif_count_summary">Anzahl der ungelesenen Benachrichtigungen in der Statusleiste anzeigen</string>
+    <string name="status_bar_quick_qs_pulldown_title">Schnelles Öffnen</string>
+    <string name="status_bar_quick_qs_pulldown_summary">Herunterziehen der Benachrichtigungsleiste am %1$s Rand öffnet die Schnelleinstellungen</string>
+    <string name="status_bar_quick_qs_pulldown_summary_left">linken</string>
+    <string name="status_bar_quick_qs_pulldown_summary_right">rechten</string>
+    <string name="status_bar_quick_qs_pulldown_off">Aus</string>
+    <string name="status_bar_quick_qs_pulldown_left">Links</string>
+    <string name="status_bar_quick_qs_pulldown_right">Rechts</string>
+    <string name="status_bar_clock_style_title">Darstellung der Uhr</string>
+    <string name="status_bar_clock_style_right">Rechts</string>
+    <string name="status_bar_clock_style_left">Links</string>
+    <string name="status_bar_clock_style_center">Zentriert</string>
+    <string name="status_bar_clock_style_hidden">Ausgeblendet</string>
+    <string name="status_bar_am_pm_title">AM/PM-Format</string>
+    <string name="status_bar_am_pm_info">24-Stunden-Format ist aktiviert</string>
+    <string name="status_bar_am_pm_normal">Normal</string>
+    <string name="status_bar_am_pm_small">Klein</string>
+    <string name="status_bar_am_pm_hidden">Ausgeblendet</string>
+    <string name="status_bar_battery_style_title">Akkustand-Anzeigeformat</string>
+    <string name="status_bar_battery_style_icon_portrait">Symbol (Hochformat)</string>
+    <string name="status_bar_battery_style_icon_landscape">Symbol (Querformat)</string>
+    <string name="status_bar_battery_style_circle">Kreis</string>
+    <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_hidden">Ausgeblendet</string>
+    <string name="status_bar_battery_percentage_title">Akkustand in Prozent</string>
+    <string name="status_bar_battery_percentage_default">Ausgeblendet</string>
+    <string name="status_bar_battery_percentage_text_inside">Innerhalb des Symbols</string>
+    <string name="status_bar_battery_percentage_text_next">Neben dem Symbol</string>
+    <string name="status_bar_icons_title">Statusleistensymbole</string>
+    <string name="status_bar_icons_summary">Festlegen, welche Statusleistensymbole angezeigt werden</string>
+    <string name="edge_gesture_service_title">Berührungsgesten unterdrücken</string>
+    <string name="edge_gesture_service_summary">Berührungsgesten für die Status- und Navigationsleiste nicht an Apps senden</string>
+    <string name="keep_screen_on_never">Nie</string>
+    <string name="keep_screen_on_debugging">Beim Debuggen über USB</string>
+    <string name="keep_screen_on_charging">Beim Laden</string>
+    <string name="privacy_settings_cyanogenmod_title">Datenschutz</string>
+    <string name="privacy_guard_default_title">Standardmäßig aktiviert</string>
+    <string name="privacy_guard_default_summary">Für neu installierte Apps standardmäßig den Datenschutz aktivieren</string>
+    <string name="privacy_guard_manager_title">Datenschutz</string>
+    <string name="privacy_guard_manager_summary">Apps mit Zugriff auf persönliche Daten verwalten</string>
+    <string name="privacy_guard_no_user_apps">Es sind keine Apps installiert.</string>
+    <string name="privacy_guard_help_title">Hilfe</string>
+    <string name="privacy_guard_reset_title">Zurücksetzen</string>
+    <string name="privacy_guard_reset_text">Berechtigungen zurücksetzen?</string>
+    <string name="privacy_guard_help_text">An dieser Stelle kann der Datenschutz für einzelne Apps durch einfache Berührung ein- und ausgeschaltet werden. Ausgewählte Apps haben keinen Zugriff auf persönliche Daten wie Kontakte, Nachrichten oder das Anrufprotokoll. Langes Drücken auf einen Eintrag öffnet die Detailanzeige für diese App.\n\nStandardmäßig werden in das System integrierte Apps nicht angezeigt. Wenn diese angezeigt werden sollen, kann dies mit der entsprechenden Menü-Option ausgewählt werden.</string>
+    <string name="privacy_guard_manager_show_system_apps">Integrierte Apps anzeigen</string>
+    <string name="privacy_guard_advanced_settings_title">Erweitert</string>
+    <string name="privacy_guard_notification_title">Benachrichtigung anzeigen</string>
+    <string name="lockpattern_settings_enable_error_path_title">Sperrmuster-Fehler anzeigen</string>
+    <string name="lockpattern_settings_enable_dots_title">Sperrmuster-Punkte anzeigen</string>
+    <string name="lock_directly_show_password">Passwort-Abfrage direkt anzeigen</string>
+    <string name="lock_directly_show_pattern">Muster-Abfrage direkt anzeigen</string>
+    <string name="lock_directly_show_pin">PIN-Abfrage direkt anzeigen</string>
+    <string name="lockscreen_visualizer_title">Musikvisualisierung anzeigen</string>
+    <string name="lockscreen_disabled_by_qs_tile_title">Durch Schnelleinstellungs-Kachel deaktiviert</string>
+    <string name="lockscreen_disabled_by_qs_tile_summary">Tippen, um die Bildschirmsperre zu aktivieren</string>
+    <string name="lockscreen_disabled_by_qs_tile_summary_enabled">Bildschirmsperre aktiviert!</string>
+    <string name="battery_saver_threshold">Schwellwert für Akku-Sparmodus</string>
+    <string name="battery_saver_summary">Leistung und Hintergrunddaten verringern</string>
+    <string name="battery_saver_summary_unavailable">Während des Ladevorgangs nicht verfügbar</string>
+    <string name="autoperf_title">App-Profile aktivieren</string>
+    <string name="autoperf_summary">Wählt für manche Apps automatisch einen passenden Akkumodus aus</string>
+    <string name="perf_profile_title">Akkumodus</string>
+    <string name="memory_startup_apps_title">Beim Booten gestartete Apps</string>
+    <string name="notification_ringtone_title_cm">Benachrichtigungston</string>
+    <string name="advanced_reboot_title">Erweitertes Neustartmenü</string>
+    <string name="advanced_reboot_summary">Bei entsperrtem Bildschirm dem Neustartmenü Optionen für Neustart in Recovery, Bootloader oder schnellen Neustart hinzufügen</string>
+    <string name="category_interface">Oberfläche</string>
+    <string name="power_menu_expanded_desktop">Erweiterter Desktop</string>
+    <string name="expanded_hide_nothing">Nichts ausblenden</string>
+    <string name="expanded_hide_status">Statusleiste ausblenden</string>
+    <string name="expanded_hide_navigation">Navigationsleiste ausblenden</string>
+    <string name="expanded_hide_both">Beides ausblenden</string>
+    <string name="expanded_nothing_to_show">Um eine benutzerdefinierte Per-App-Konfiguration für den erweiterten Modus hinzuzufügen, schalten Sie \"Für alle aktiviert\" aus.</string>
+    <string name="expanded_enabled_for_all">Für alle aktiviert</string>
+    <string name="expanded_desktop_style">Stil des erweiterten Desktops</string>
+    <string name="expanded_desktop_style_description">Wählen Sie einen Standard-Stil für den erweiterten Desktop.</string>
+    <string name="expanded_desktop_title">Einstellungen für erweiterten Desktop</string>
+    <string name="kill_app_longpress_back">App beenden mit Zurück-Taste</string>
+    <string name="kill_app_longpress_back_summary">Beenden der Vordergrund-App durch Gedrückthalten der Zurück-Taste</string>
+    <string name="recents_show_searchbar">Suchleiste im Anwendungsverlauf</string>
+    <string name="keywords_recents_show_searchbar">Anwendungsverlauf aktivieren deaktivieren anzeigen Suchleiste Suche ausblenden</string>
+    <string name="voice_wakeup_settings_title">Mit Stimme aufwecken</string>
+    <string name="voice_wakeup_retrain_title">Stimme neu lernen</string>
+    <string name="voice_wakeup_activity_title">Auszuführende Aktion</string>
+    <string name="voice_wakeup_default_activity">Google Now</string>
+    <string name="voice_wakeup_needs_dial_permission_warning">Um eine Direktwahl auszuführen, benötigt \"Mit Stimme wecken\" die Berechtigung, Anrufe auszuführen.</string>
+    <string name="picker_activities">Aktivitäten</string>
+    <string name="select_custom_app_title">Benutzerdefinierte Anwendung auswählen</string>
+    <string name="select_custom_activity_title">Benutzerdefinierte Aktivität auswählen</string>
+    <string name="blacklist_title">Anrufer-Sperrliste</string>
+    <string name="blacklist_edit_dialog_title">Gesperrte Telefonnummer bearbeiten</string>
+    <string name="blacklist_prefs">Einstellungen</string>
+    <string name="blacklist_button_delete">Löschen</string>
+    <string name="blacklist_empty_text">Es sind noch keine Einträge in der Sperrliste enthalten. Sie können Einträge hinzufügen, indem Sie das \"+\"-Symbol berühren.</string>
+    <string name="blacklist_disabled_empty_text">Um Anrufe und Nachrichten von bestimmten Nummern zu verhindern, aktivieren Sie die Anrufer-Sperrliste.</string>
+    <string name="blacklist_summary_disabled">Deaktiviert</string>
+    <string name="blacklist_summary">Sie werden keine Anrufe oder Nachrichten von Nummern aus der Sperrliste empfangen.</string>
+    <string name="blacklist_notify">Benachrichtigung anzeigen</string>
+    <string name="blacklist_private_numbers_title">Unterdrückte Nummern</string>
+    <string name="blacklist_private_numbers_summary_disabled">Anrufe mit unterdrückter Nummer nicht abweisen</string>
+    <string name="blacklist_private_numbers_summary">Eingehende <xliff:g id="type">%s</xliff:g> mit unterdrückter Nummer abweisen</string>
+    <string name="blacklist_unknown_numbers_title">Unbekannte Nummern</string>
+    <string name="blacklist_unknown_numbers_summary_disabled">Anrufe und Nachrichten von Nummern, die sich nicht in der Kontaktliste befinden, nicht abweisen</string>
+    <string name="blacklist_unknown_numbers_summary">Eingehende <xliff:g id="type">%s</xliff:g> von Nummern abweisen, die sich nicht in der Kontaktliste befinden</string>
+    <string name="blacklist_summary_type_calls_only">Anrufe</string>
+    <string name="blacklist_summary_type_messages_only">Nachrichten</string>
+    <string name="blacklist_summary_type_calls_and_messages">Anrufe und Nachrichten</string>
+    <string name="blacklist_regex_title">Platzhalter verwenden</string>
+    <string name="blacklist_regex_summary">Einen Punkt als Platzhalter und einen Stern für Wiederholungen verwenden.\nBeispielsweise würde 123.* alle Nummern abweisen, die mit 123 beginnen, und .*123.* alle Nummern, die 123 enthalten.</string>
+    <string name="blacklist_policy_block_calls">Eingehende Anrufe abweisen</string>
+    <string name="blacklist_policy_block_messages">Eingehende Nachrichten abweisen</string>
+    <string name="blacklist_bad_number_add">Ungültige Nummer kann nicht zur Anrufer-Sperrliste hinzugefügt werden</string>
+    <string name="remove_blacklist_number_title">Nummer entfernen</string>
+    <string name="remove_blacklist_entry">Soll diese gesperrte Nummer entfernt werden?</string>
+    <string name="select_contact">Kontakt auswählen</string>
+    <string name="app_security_title">App-Sicherheit</string>
+    <string name="sms_security_check_limit_title">SMS-Begrenzung</string>
+    <string name="sms_security_check_limit_summary">Apps können %d Nachrichten in 1 Minute ohne zusätzliche Bestätigung versenden.</string>
+    <string name="sms_security_check_limit_summary_none">Apps dürfen keine Nachrichten ohne Bestätigung versenden.</string>
+    <string name="sms_security_check_limit_none">Keine</string>
+    <string name="spam_added_title">%1$s hinzugefügt</string>
+    <string name="spam_last_blocked_title">Zuletzt blockiert %1$s</string>
+    <string name="block_notifications_title">Benachrichtigungen filtern</string>
+    <string name="block_notifications_summary">Ignorierte Benachrichtigungen und Filter verwalten</string>
+    <string name="no_filters_title">Keine Filter aktiv</string>
+    <string name="anonymous_statistics_title">LineageOS-Statistiken</string>
+    <string name="anonymous_statistics_summary">Helfen Sie uns, LineageOS zu verbessern, indem Sie dem Sammeln anonymer Gerätestatistiken zustimmen.</string>
+    <string name="anonymous_statistics_warning_title">Über</string>
+    <string name="anonymous_statistics_warning">Die Aktivierung der LineageOS-Statistiken ermöglicht die Übertragung von nicht-personenbezogenen Daten an die Entwickler von LineageOS. Die bei jedem Neustart des Geräts übermittelten Daten beeinträchtigen nicht die Privatsphäre, da sie keinerlei Rückschlüsse auf den Benutzer zulassen.\n\nFür ein Beispiel der gesendeten Daten bitte auf \"Vorschau\" klicken.</string>
+    <string name="enable_reporting_title">Berichte einschalten</string>
+    <string name="preview_data_title">Vorschau</string>
+    <string name="view_stats_title">Statistiken anzeigen</string>
+    <string name="anonymous_learn_more">Mehr erfahren</string>
+    <string name="preview_id_title">Eindeutige ID</string>
+    <string name="preview_device_title">Gerät</string>
+    <string name="preview_version_title">Version</string>
+    <string name="preview_country_title">Land</string>
+    <string name="preview_carrier_title">Anbieter</string>
+    <string name="stats_collection_title">Statistikaufzeichnung</string>
+    <string name="stats_collection_summary">Erlaubt das Sammeln von Statistiken</string>
+    <string name="lockpattern_reset_button">Muster zurücksetzen</string>
+    <string name="lockpattern_settings_reset_summary">Geben Sie die Adresse Ihres primären E-Mail-Kontos und das dazugehörige Passwort ein, um das Muster zurückzusetzen.</string>
+    <string name="menu_hidden_apps_delete">Zurücksetzen</string>
+    <string name="menu_hidden_apps_reset_lock">Sperrmuster zurücksetzen</string>
+    <string name="protected_apps">Geschützte Apps</string>
+    <string name="protected_apps_summary">Verwalten Sie, welche Apps hinter einer sicheren Sperre verborgen sind.</string>
+    <string name="saving_protected_components">Geschützte Komponenten werden gespeichert\u2026</string>
+    <string name="pa_login_username_hint">Benutzername (E-Mail)</string>
+    <string name="pa_login_password_hint">Passwort</string>
+    <string name="pa_login_submit_button">Anmelden</string>
+    <string name="pa_login_checking_password">Konto wird überprüft\u2026</string>
+    <string name="pa_login_incorrect_login">Anmeldedaten sind nicht korrekt</string>
+    <string name="pa_pattern_or_fingerprint_header">Fingerabdruck oder Muster zum Entsperren erforderlich</string>
+    <string name="contributors_cloud_fragment_title">Mitwirkende</string>
+    <string name="contributors_cloud_loading_message">Mitwirkende werden geladen\u2026</string>
+    <string name="contributors_cloud_failed_message">Laden der Mitwirkenden nicht möglich</string>
+    <string name="contributor_info_menu">Mitwirkender – Info</string>
+    <string name="contributor_info_msg">&lt;b&gt;Name:&lt;/b&gt; &lt;xliff:g id="name"&gt;%1$s&lt;/xliff:g&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;b&gt;Nickname:&lt;/b&gt; &lt;xliff:g id="nick"&gt;%2$s&lt;/xliff:g&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;b&gt;Beiträge:&lt;/b&gt; &lt;xliff:g id="commits"&gt;%3$s&lt;/xliff:g&gt;</string>
+    <string name="contributions_info_menu">Beiträge – Info</string>
+    <string name="contributions_info_msg">&lt;b&gt;Mitwirkende insgesamt:&lt;/b&gt; &lt;xliff:g id="total_contributors"&gt;%1$s&lt;/xliff:g&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;b&gt;Beiträge insgesamt:&lt;/b&gt; &lt;xliff:g id="total_commits"&gt;%2$s&lt;/xliff:g&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;b&gt;Letzte Aktualisierung:&lt;/b&gt; &lt;xliff:g id="date"&gt;%3$s&lt;/xliff:g&gt;</string>
+    <string name="category_sounds">Töne</string>
+    <string name="notification_manager">Benachrichtigungen</string>
+    <string name="lockscreen_settings">Bildschirmsperre</string>
+    <string name="category_lights">LEDs</string>
+    <string name="category_volume">Lautstärke</string>
+    <string name="category_vibrate">Vibrieren</string>
+    <string name="category_misc">Verschiedenes</string>
+    <string name="title_general">Allgemein</string>
+    <string name="advanced">Erweitert</string>
+    <string name="link_volume_option_title">Gleiche Lautstärke für Klingelton und Benachrichtigungen</string>
+    <string name="lcd_density_prompt_message">Einige Apps könnten mit einer veränderten DPI-Einstellung nicht funktionieren.\n\nEin Neustart ist zum Anwenden dieser Einstellungen erforderlich.</string>
+    <string name="apn_ppp_number">APN: PPP-Telefonnummer</string>
+    <string name="duplicate_apn_error_title">APN bereits vorhanden</string>
+    <string name="duplicate_apn_error_message">Dieser APN ist bereits vorhanden. Parameter ändern oder verwerfen.</string>
+    <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> ist <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
+    <string name="sim_disabled">deaktiviert</string>
+    <string name="sim_missing">defekt oder fehlt</string>
+    <string name="sim_enabler_need_disable_sim">SIM-Karte wird deaktiviert. Möchten Sie fortfahren?</string>
+    <string name="sim_enabler_will_disable_sim_title">Achtung</string>
+    <string name="sim_enabler_need_switch_data_service">Diese SIM-Karte wird deaktiviert und SIM-Karte <xliff:g id="slotid">%1$s</xliff:g> wird für Datendienste weiterverwendet. Sind Sie sicher, dass Sie fortfahren möchten?</string>
+    <string name="sim_enabler_airplane_on">Vorgang kann nicht im Flugmodus durchgeführt werden.</string>
+    <string name="sim_enabler_in_call">Vorgang kann nicht während eines Anrufs durchgeführt werden.</string>
+    <string name="sim_enabler_both_inactive">Es können nicht alle SIM-Karten deaktiviert werden.</string>
+    <string name="sim_enabler_enabling">Aktivieren\u2026</string>
+    <string name="sim_enabler_disabling">Deaktivieren\u2026</string>
+    <string name="sub_activate_success">SIM-Karte aktiviert.</string>
+    <string name="sub_activate_failed">Aktivierung fehlgeschlagen.</string>
+    <string name="sub_deactivate_success">SIM-Karte deaktiviert.</string>
+    <string name="sub_deactivate_failed">Deaktivierung fehlgeschlagen.</string>
+    <string name="primary_sub_select_title">Standard 3G/LTE-Abonnement</string>
+    <string name="select_sim_card">SIM-Karte auswählen</string>
+    <string name="sim_card_status_title">SIM %d-Status</string>
+    <string name="sim_card_lock_settings_title">SIM %d-Sperreinstellungen</string>
+    <string name="sim_card_summary_empty">SIM-Karte nicht eingelegt</string>
+    <string name="sim_mobile_network_settings_category_title">Mobilfunknetz-Einstellungen</string>
+    <string name="sim_mobile_network_settings_title">SIM %d-Einstellungen</string>
+    <string name="zen_mode_summary_reminders">Erinnerungen</string>
+    <string name="zen_mode_summary_events">Termine</string>
+    <string name="zen_mode_summary_selected_callers">ausgewählte Anrufer</string>
+    <string name="zen_mode_summary_selected_messages">ausgewählte Nachrichten</string>
+    <string name="zen_mode_vibration">Vibration</string>
+    <string name="zen_mode_vibration_never">Nicht vibrieren</string>
+    <string name="zen_mode_vibration_calls_only">Nur bei Anrufen vibrieren</string>
+    <string name="zen_mode_vibration_calls_and_notifications">Bei Anrufen und Benachrichtigungen vibrieren</string>
+    <string name="maximum_head_level">Kopf: %1$s W/kg</string>
+    <string name="maximum_body_level">Körper: %1$s W/kg</string>
+    <string name="ic_code_model">Modell: %1$s</string>
+    <string name="ic_code_full">IC: %1$s</string>
+    <string name="sim_ringtone_title">SIM %d-Klingelton</string>
+    <string name="app_name_label_cm">App:</string>
+    <string name="last_time_used_label_cm">Zuletzt genutzt:</string>
+    <string name="usage_time_label_cm">Benutzungsdauer:</string>
+    <string name="master_clear_desc_cm" product="tablet">Diese Aktion löscht alle Daten aus dem <b>Internen Speicher</b> Ihres Tablets, einschließlich:\n\n<li>Ihrer Konten auf dem Gerät</li>\n<li>System- und App-Daten und Einstellungen</li>\n<li>Heruntergeladener Apps</li></string>
+    <string name="master_clear_desc_cm" product="default">Diese Aktion löscht alle Daten aus dem <b>Internen Speicher</b> Ihres Telefons, einschließlich:\n\n<li>Ihrer Konten auf dem Gerät</li>\n<li>System- und App-Daten und Einstellungen</li>\n<li>Heruntergeladener Apps</li></string>
+    <string name="factory_reset_instructions_title">Persönliche Daten und Apps</string>
+    <string name="factory_reset_instructions_summary">Diese Aktion löscht alle Ihre Konten, Anwendungen, App-Daten und Systemeinstellungen auf diesem Gerät.</string>
+    <string name="factory_reset_personal_content">Persönliche Inhalte</string>
+    <string name="factory_reset_erase_stored_content">Gespeicherte Inhalte löschen</string>
+    <string name="factory_reset_erase_stored_content_summary">Musik, Fotos, Videos und andere auf diesem Gerät gespeicherten Benutzerdaten löschen</string>
+    <string name="factory_reset_erase_stored_content_summary_forced">Musik, Fotos, Videos und andere auf diesem Gerät gespeicherte Benutzerdaten löschen. \n\n<b>Der Inhalt kann aufgrund der Geräteverschlüsselung nicht gespeichert werden.</b></string>
+    <string name="factory_reset_erase_sd_card">SD-Karte formatieren</string>
+    <string name="factory_reset_erase_sd_card_summary">Löscht alle Daten auf der SD-Karte, einschließlich Musik und Fotos</string>
+    <string name="factory_reset_warning_text_reset_now">JETZT ZURÜCKSETZEN</string>
+    <string name="factory_reset_warning_text_message">Alle Konten, Apps, App-Daten und Systemeinstellungen werden von diesem Gerät gelöscht. Dies kann nicht rückgängig gemacht werden.</string>
+    <string name="tethering_other_category_text">Andere</string>
+    <string name="hotstpot_inactivity_timeout_text">WLAN-Hotspot-Zeitabschaltung</string>
+    <string name="hotstpot_inactivity_timeout_never">Nie</string>
+    <string name="hotstpot_inactivity_timeout_1_minute">1 Minute</string>
+    <string name="hotstpot_inactivity_timeout_5_minutes">5 Minuten</string>
+    <string name="hotstpot_inactivity_timeout_10_minutes">10 Minuten</string>
+    <string name="hotstpot_inactivity_timeout_never_summary_text">Mobiler WLAN-Hotspot wird niemals abgeschaltet</string>
+    <string name="hotstpot_inactivity_timeout_summary_text">Mobiler WLAN-Hotspot wird nach <xliff:g id="timeout">%1$s</xliff:g> abgeschaltet</string>
+    <string name="live_lock_screen_title">Animierter Sperrbildschirm</string>
+    <string name="live_lock_screen_summary">Animierte Sperrbildschirme aktivieren und konfigurieren</string>
+    <string name="live_lock_screen_settings_button">Einstellungen</string>
+    <string name="live_lock_screen_settings_disabled_prompt">Um die verfügbaren Sperrbildschirme mit Animationen anzuzeigen, aktivieren Sie \"Animierte Sperrbildschirme\".</string>
+    <string name="interruptions_ignore_while_media_title">Audio-Dämpfung verhindern</string>
+    <string name="interruptions_ignore_while_media_summary">Medienlautstärke beim Eintreffen einer Benachrichtigung nicht reduzieren</string>
+    <string name="cmlicense_title">Rechtliche Hinweise zu LineageOS</string>
+    <string name="menu_stats_reset">Statistik zurücksetzen</string>
+    <string name="reset_stats_msg">Statistik zum Akkuverlauf wird zurückgesetzt.</string>
+    <string name="dock_battery_not_present">Dock-Akku nicht vorhanden</string>
+    <string name="battery_info_status_charging_dock_ac">Laden über Ladedock</string>
+    <string name="battery_info_status_charging_dock_usb">Laden über USB-Dock</string>
+    <string name="restrict_app_wlan_title">WLAN-Nutzung verhindern</string>
+    <string name="restrict_app_wlan_summary">Verhindert die Nutzung von WLAN durch die App</string>
+    <string name="restrict_app_cellular_title">Nutzung mobiler Daten verhindern</string>
+    <string name="restrict_app_cellular_summary">Verhindert die Nutzung mobiler Daten durch die App</string>
+    <string name="privacy_guard_internet_category">Internet</string>
+    <string name="weather_settings_title">Wetter</string>
+    <string name="weather_settings_no_services_prompt">Keine Wetteranbieterdienste installiert</string>
+    <string name="weather_settings_button">Anbieter-Einstellungen</string>
+    <string name="weather_settings_activity_not_found">Das Einstellungsmenü dieses Anbieters konnte nicht gestartet werden</string>
+    <string name="weather_settings_add_weather_provider">Wetterdatenanbieter hinzufügen</string>
+    <string name="weather_settings_general_settings_title">Allgemein</string>
+    <string name="weather_settings_providers_title">Anbieter</string>
+    <string name="weather_settings_temp_units_title">Temperatureinheit</string>
+    <string name="weather_settings_temp_celsius">Celsius</string>
+    <string name="weather_settings_temp_fahrenheit">Fahrenheit</string>
+    <string name="weather_settings_keyword">Wetter</string>
+    <string name="background_data_access">Datenzugriff im Hintergrund</string>
+    <string name="allow_background_both">Über Mobilfunk &amp; WLAN</string>
+    <string name="allow_background_wlan">Nur über WLAN</string>
+    <string name="allow_background_none">Kein Zugriff</string>
+    <string name="mobile_data_alert">Mobilfunkdaten-Warnung</string>
+    <string name="mobile_data_alert_summary">Benachrichtigen, wenn die Anwendung eine erhebliche Menge an Daten verbraucht</string>
+    <string name="data_usage_menu_enable_data_alerts">Datenverbrauchswarnungen aktivieren</string>
+    <string name="data_usage_menu_disable_data_alerts">Datenverbrauchswarnungen deaktivieren</string>
+    <string name="data_usage_menu_reset_stats">Zähler zurücksetzen</string>
+    <string name="reset_data_stats_msg">Diese Aktion löscht alle vergangenen und die aktuellen Datenverbrauchs-Statistiken.</string>
+    <string name="reset_stats_confirm">Bestätigen</string>
+    <string name="restrict_cellular_access_title">Mobilfunk-Datenzugriff beschränken</string>
+    <string name="restrict_cellular_access_summary">Datenzugriff aus Mobilfunknetzen deaktivieren</string>
+    <string name="restrict_cellular_access_dialog_title">Mobilfunk-Datenzugriff beschränken?</string>
+    <string name="restrict_cellular_access_dialog_summary">Diese Funktion kann dazu führen, dass eine App, die Netzzugang benötigt, nicht mehr funktioniert, wenn nur das Mobilfunknetz zur Verfügung steht.\n\nPassendere Einstellungen können Sie in den App-eigenen Einstellungen finden.</string>
+    <string name="shortcut_carrier_title">Netzbetreiber</string>
+    <string name="lockscreen_blur_enabled_title">Hintergrund weichzeichnen</string>
+    <string name="lockscreen_weather_enabled_title">Wetter anzeigen</string>
+    <string name="app_notification_show_on_keyguard_title">Auf dem Sperrbildschirm anzeigen</string>
+    <string name="app_notification_show_on_keyguard_summary">Benachrichtigungen von dieser App auf dem Sperrbildschirm anzeigen</string>
+    <string name="app_notification_no_ongoing_on_keyguard_title">Dauerhafte Benachrichtigungen auf dem Sperrbildschirm deaktivieren</string>
+    <string name="app_notification_no_ongoing_on_keyguard_summary">Keine dauerhaften Benachrichtigungen dieser App auf dem Sperrbildschirm anzeigen</string>
+    <string name="app_notification_sound_timeout_title">Minimale Zeit zwischen Benachrichtigungstönen</string>
+    <string name="app_notification_sound_timeout_summary_template">Töne und Vibrationen nur alle <xliff:g id="duration">%1$s</xliff:g> zulassen</string>
+    <string name="app_notification_sound_timeout_value_none">Keine Beschränkung</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 Sekunden</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 Sekunden</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 Minute</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 Minuten</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 Minuten</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 Minuten</string>
+    <string name="cm_radio_info_label">Erweiterte Modemfunktionen</string>
+    <string name="cm_radio_info_mbn_auto_load_on_label">MBN-Autoladen ausschalten</string>
+    <string name="cm_radio_info_mbn_auto_load_off_label">MBN-Autoladen einschalten</string>
+    <string name="cm_radio_info_volte_avail_ovr_on_label">VoLTE-Debugging ausschalten</string>
+    <string name="cm_radio_info_volte_avail_ovr_off_label">VoLTE-Debugging einschalten</string>
+    <string name="cm_radio_info_vt_avail_ovr_on_label">VT-Debugging ausschalten</string>
+    <string name="cm_radio_info_vt_avail_ovr_off_label">VT-Debugging einschalten</string>
+    <string name="cm_radio_info_wfc_avail_ovr_on_label">WFC-Debugging ausschalten</string>
+    <string name="cm_radio_info_wfc_avail_ovr_off_label">WFC-Debugging einschalten</string>
+    <string name="cm_radio_info_adb_log_on_label">ADB-Modemprotokoll ausschalten</string>
+    <string name="cm_radio_info_adb_log_off_label">ADB-Modemprotokoll einschalten</string>
+    <string name="cm_radio_info_diag_log_on_label">Diagnoseprotokoll ausschalten</string>
+    <string name="cm_radio_info_diag_log_off_label">Diagnoseprotokoll einschalten</string>
+    <string name="lockscreen_wallpaper_title">Hintergrundbild</string>
+    <string name="not_available_with_app">Nicht verfügbar für %1$s</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Suchen Sie den Fingerabdrucksensor auf der <xliff:g id="sensor_location">%1$s</xliff:g> des Geräts.</string>
+    <string name="security_settings_fingerprint_sensor_location_back">Rückseite</string>
+    <string name="security_settings_fingerprint_sensor_location_front">Front</string>
+    <string name="security_settings_fingerprint_sensor_location_left">linken Seite</string>
+    <string name="security_settings_fingerprint_sensor_location_right">rechten Seite</string>
+    <string name="sim_status_format_string">Anrufe: <xliff:g id="voice_state">%1$s</xliff:g> / Daten: <xliff:g id="data_state">%2$s</xliff:g></string>
 </resources>

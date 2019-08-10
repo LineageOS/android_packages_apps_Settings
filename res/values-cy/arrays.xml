@@ -19,138 +19,561 @@
 */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Choices for timezone picker first level.
-         These values will be used as search terms for TimeZone displayName
-         strings. -->
-  <!-- The time zone picker screen has two levels.  The first level allows the user to choose a region. -->
-  <!-- Display settings.  The delay in inactivity before the screen is turned off. These are shown in a list dialog. -->
-  <!-- Do not translate. -->
-  <!-- Display settings.  The delay in inactivity before the dream is shown. These are shown in a list dialog. -->
-  <!-- Do not translate. -->
-  <!-- Security settings.  The delay after screen is turned off until device locks.
-         These are shown in a list dialog. -->
-  <!-- Do not translate. -->
-  <!-- TTS settings -->
-  <!-- Default speech rate choices -->
-  <!-- Do not translate. -->
-  <!-- Default pitch choices -->
-  <!-- Do not translate. -->
-  <!-- Do not translate. -->
-  <!-- Wi-Fi settings -->
-  <!-- Match this with the order of NetworkInfo.DetailedState. -->
-  <!-- Wi-Fi settings. The status messages when the network is unknown. -->
-  <!-- Match this with the order of NetworkInfo.DetailedState. -->
-  <!-- Wi-Fi settings. The status messages when the network is known. -->
-  <!-- Match this with the constants in AccessPoint. -->
-  <!-- Wi-Fi security choices used when manually added a Wi-Fi network -->
-  <!-- Match this with the constants in AccessPoint. -->
-  <!-- Wi-Fi security types for New User Dialog. EAP is not configurable. -->
-  <!-- Wi-Fi AP settings.  The type of security a Wi-Fi AP supports. -->
-  <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
-  <!-- Match this with the constants in WifiDialog. -->
-  <!-- Wi-Fi settings.  The type of EAP method a Wi-Fi network has. -->
-  <!-- Type of EAP method when EAP SIM, AKA, AKA' are not supported -->
-  <!-- Wi-Fi AP band settings.  Either 2.4GHz or 5GHz. -->
-  <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
-  <!-- Wi-Fi WPS setup for p2p connections.  -->
-  <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
-  <!-- Match this with the order of WifiP2pDevice.Status -->
-  <!-- Wi-Fi p2p settings device status message -->
-  <!-- Bluetooth Settings -->
-  <!-- Discoverable mode timeout options -->
-  <!-- Match this with drawable.wifi_signal. -->
-  <!-- Wi-Fi settings. The signal strength a Wi-Fi network has. -->
-  <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi sleep policy. -->
-  <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi sleep policy. Used when
-         the device is Wi-Fi-only. [CHAR LIMIT=30] -->
-  <!-- Match with wifi_sleep_policy_entries and the values of the settings in Settings class. -->
-  <!-- Do not translate. -->
-  <!-- Data Usage settings. Range of data usage. -->
-  <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi frequency band. -->
-  <!-- Match with wifi_frequency_band_entries and the values of the settings in WifiManager. -->
-  <!-- Do not translate. -->
-  <!-- Display options for UsageStats class -->
-  <!-- EAP method -->
-  <!-- Phase 2 options for PEAP -->
-  <!-- Phase 2 options for rest of EAP methods -->
-  <!-- Wi-Fi IP settings. -->
-  <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
-  <!-- Wi-Fi proxy settings. -->
-  <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
-  <!-- Authentication Types used in APN editor -->
-  <!-- Authentication Types used in APN editor -->
-  <!-- Bearer Info used in APN editor -->
-  <!-- MVNO Info used in APN editor -->
-  <!-- Apps on SD installation location options in ApplicationSettings -->
-  <!-- Do not translate. -->
-  <!-- Names of categories of app ops tabs -->
-  <!-- User display names for app ops codes -->
-  <!-- User display names for app ops codes -->
-  <!-- Titles for the list of long press timeout options. -->
-  <!-- Values for the list of long press timeout options. -->
-  <!-- Titles for captioning typeface preference. [CHAR LIMIT=35] -->
-  <!-- Values for captioning typeface preference. -->
-  <!-- Titles for captioning font size preference. [CHAR LIMIT=35] -->
-  <!-- Values for captioning font size preference. -->
-  <!-- Titles for captioning character edge type preference. [CHAR LIMIT=35] -->
-  <!-- Values for captioning character edge type preference. -->
-  <!-- Titles for captioning color preference. -->
-  <!-- Values for captioning color preference. -->
-  <!-- Titles for captioning opacity preference. [CHAR LIMIT=35] -->
-  <!-- Values for captioning opacity preference. -->
-  <!-- Titles for captioning text style preset preference. [CHAR LIMIT=35] -->
-  <!-- Values for captioning text style preset preference. -->
-  <!-- Titles for logd limit size selection preference. [CHAR LIMIT=14] -->
-  <!-- Titles for logd limit size lowram selection preference. [CHAR LIMIT=14] -->
-  <!-- Values for logd limit size selection preference. -->
-  <!-- Summaries for logd limit size selection preference. [CHAR LIMIT=30]-->
-  <!-- Titles for HDCP checking preference. [CHAR LIMIT=35] -->
-  <!-- Values for HDCP checking preference. -->
-  <!-- Summaries for HDCP checking preference. [CHAR LIMIT=100]-->
-  <!-- Titles for window animation scale preference. [CHAR LIMIT=35] -->
-  <!-- Values for window animation scale preference. -->
-  <!-- Titles for transition animation scale preference. [CHAR LIMIT=35] -->
-  <!-- Values for transition animation scale preference. -->
-  <!-- Titles for animator duration scale preference. [CHAR LIMIT=35] -->
-  <!-- Values for animator duration scale preference. -->
-  <!-- Titles for overlay display devices preference. [CHAR LIMIT=35] -->
-  <!-- Values for overlay display devices preference. -->
-  <!-- Titles for OpenGL traces preference. [CHAR LIMIT=35] -->
-  <!-- Values for OpenGL traces preference. -->
-  <!-- Titles for non-rectangular clipping preference. [CHAR LIMIT=35] -->
-  <!-- Values for non-rectangular clipping preference. -->
-  <!-- Titles for frame time tracking preference. [CHAR LIMIT=35] -->
-  <!-- Values for frame time tracking preference. -->
-  <!-- Titles for debug overdraw preference. [CHAR LIMIT=50] -->
-  <!-- Values for debug overdraw preference. -->
-  <!-- Titles for app process limit preference. [CHAR LIMIT=35] -->
-  <!-- Values for app process limit preference. -->
-  <!-- Match this with the constants in VpnProfile. -->
-  <!-- Short names for each VPN type, not really translatable. [CHAR LIMIT=20] -->
-  <!-- Match this with the constants in VpnProfile. -->
-  <!-- Longer descriptions for each VPN type. [CHAR LIMIT=100] -->
-  <!-- Match this with the constants in LegacyVpnInfo. -->
-  <!-- Status for a VPN network. [CHAR LIMIT=100] -->
-  <!-- User content ratings for restricted users [CHAR LIMIT=30] -->
-  <!-- Values for user content ratings for restricted users -->
-  <!-- Values for premium SMS permission selector [CHAR LIMIT=30] -->
-  <!-- [CHAR LIMIT=40] Labels for memory states -->
-  <!-- Display color space adjustment modes for accessibility -->
-  <!-- Values for display color space adjustment modes for accessibility -->
-  <!-- Display color space adjustment modes for developers -->
-  <!-- Values for display color space adjustment modes for developers -->
-  <!-- Battery saver mode: allowable trigger threshold levels. -->
-  <!-- Process stats memory use details: labels for memory states -->
-  <!-- Process stats memory use details: labels for process -->
-  <!-- Array of titles for sim color for multi-sim -->
-  <!-- USB configuration names for Developer Settings.
-         This can be overridden by devices with additional USB configurations. -->
-  <!-- USB configuration values for Developer Settings.
-         These are lists of USB functions passed to the USB Manager to change USB configuraton.
-         This can be overridden by devices with additional USB configurations.
-         Do not translate. -->
-  <!-- Possible values for user theme in Display Settings.
-         Do not translate. -->
-  <!-- These values should match up with the MODE_NIGHT constants in UiModeManager.
-         Do not translate. -->
+    <string-array name="timezone_filters">
+        <item>America</item>
+        <item>Ewrop</item>
+        <item>Affrica</item>
+        <item>Asia</item>
+        <item>Awstralia</item>
+        <item>Cefnfor Tawel</item>
+        <item>Y Cyfan</item>
+    </string-array>
+    <string-array name="screen_timeout_entries">
+        <item>15 eiliad</item>
+        <item>30 eiliad</item>
+        <item>1 munud</item>
+        <item>2 funud</item>
+        <item>5 munud</item>
+        <item>10 munud</item>
+        <item>30 munud</item>
+    </string-array>
+    <string-array name="dream_timeout_entries">
+        <item>Byth</item>
+        <item>15 eiliad</item>
+        <item>30 eiliad</item>
+        <item>1 munud</item>
+        <item>2 funud</item>
+        <item>5 munud</item>
+        <item>10 munud</item>
+        <item>30 munud</item>
+    </string-array>
+    <string-array name="lock_after_timeout_entries">
+        <item>Ar unwaith</item>
+        <item>5 eiliad</item>
+        <item>15 eiliad</item>
+        <item>30 eiliad</item>
+        <item>1 munud</item>
+        <item>2 funud</item>
+        <item>5 munud</item>
+        <item>10 munud</item>
+        <item>30 munud</item>
+    </string-array>
+    <string-array name="entries_font_size">
+        <item msgid="6490061470416867723">lleihaf</item>
+        <item msgid="3579015730662088893">bẏchan</item>
+        <item msgid="1678068858001018666">maỽr</item>
+        <item msgid="490158884605093126">mỽyhaf</item>
+    </string-array>
+    <string-array name="tts_rate_entries">
+        <item>Araf iawn</item>
+        <item>Araf</item>
+        <item>Arferol</item>
+        <item>Cyflym</item>
+        <item>Cyflymach</item>
+        <item>Cyflym iawn</item>
+        <item>Cyflym iawn</item>
+        <item>Hynod o gyflym</item>
+        <item>Cyflymaf</item>
+    </string-array>
+    <string-array name="tts_rate_values">
+        <item>60</item>
+        <item>80</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>250</item>
+        <item>300</item>
+        <item>350</item>
+        <item>400</item>
+    </string-array>
+    <string-array name="tts_pitch_entries">
+        <item>Isel iawn</item>
+        <item>Isel</item>
+        <item>Arferol</item>
+        <item>Uchel</item>
+        <item>Uchel iawn</item>
+    </string-array>
+    <string-array name="tts_pitch_values">
+        <item>50</item>
+        <item>80</item>
+        <item>100</item>
+        <item>120</item>
+        <item>150</item>
+    </string-array>
+    <string-array name="wifi_status">
+        <item/>
+        <item>Yn sganio\u2026</item>
+        <item>Yn cysylltu\u2026</item>
+        <item>Yn dilysu\u2026</item>
+        <item>Yn cael cyfeiriad IP\u2026</item>
+        <item>Wedi cysylltu</item>
+        <item>Wedi\'i atal</item>
+        <item>Yn datgysylltu\u2026</item>
+        <item>Heb gysylltu</item>
+        <item>Aflwyddiannus</item>
+        <item>Wedi\'i rhwystro</item>
+        <item>Yn osgoi cysylltiad gwael am y tro</item>
+    </string-array>
+    <string-array name="wifi_status_with_ssid">
+        <item/>
+        <item>Yn sganio\u2026</item>
+        <item>Yn cysylltu â <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Yn dilysu gyda <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Yn cael cyfeiriad IP oddi wrth <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Wedi cysylltu â <xliff:g id="network_name">%1$s </xliff:g></item>
+        <item>Wedi\'i atal</item>
+        <item>Yn datgysylltu oddi wrth <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Heb gysylltu</item>
+        <item>Aflwyddiannus</item>
+        <item>Wedi\'i rhwystro</item>
+        <item>Yn osgoi cysylltiad gwael am y tro</item>
+    </string-array>
+    <string-array name="wifi_security">
+        <item>@string/wifi_security_none</item>
+        <item>@string/wifi_security_wep</item>
+        <item>@string/wifi_security_psk_generic</item>
+        <item>@string/wifi_security_eap</item>
+    </string-array>
+    <string-array name="wifi_security_no_eap">
+        <item>@string/wifi_security_none</item>
+        <item>@string/wifi_security_wep</item>
+        <item>@string/wifi_security_psk_generic</item>
+    </string-array>
+    <string-array name="wifi_ap_security">
+        <item>@string/wifi_security_none</item>
+        <item>@string/wifi_security_wpa2</item>
+    </string-array>
+    <string-array name="wifi_p2p_wps_setup">
+        <item>Gwthio botwm</item>
+        <item>PIN gan ddyfais cyfaill</item>
+        <item>PIN gan y ddyfais hon</item>
+    </string-array>
+    <string-array name="wifi_p2p_status">
+        <item>Wedi cysylltu</item>
+        <item>Gwahoddwyd</item>
+        <item>Aflwyddiannus</item>
+        <item>Ar gael</item>
+        <item>Allan-o-amrediad</item>
+    </string-array>
+    <string-array name="bluetooth_visibility_timeout_entries">
+        <item>2 funud</item>
+        <item>5 munud</item>
+        <item>1 awr</item>
+        <item>Peidio diffodd byth</item>
+    </string-array>
+    <string-array name="wifi_signal">
+        <item>Gwael</item>
+        <item>Gweddol</item>
+        <item>Da</item>
+        <item>Ardderchog</item>
+    </string-array>
+    <string-array name="wifi_sleep_policy_entries">
+        <item>O hyd</item>
+        <item>Pan fo\'r ddyfais yn gwefru</item>
+        <item>Byth</item>
+    </string-array>
+    <string-array name="wifi_sleep_policy_entries_wifi_only">
+        <item>O hyd</item>
+        <item>Pan fo\'r ddyfais yn gwefru</item>
+        <item>Byth</item>
+    </string-array>
+    <string-array name="wifi_sleep_policy_values">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="data_usage_data_range">
+        <item>Y 30 diwrnod diwethaf</item>
+        <item>Gosod cyfnod defnydd...</item>
+    </string-array>
+    <string-array name="wifi_frequency_band_entries">
+        <item>Awtomatig</item>
+        <item>5 GHz yn unig</item>
+        <item>2.4 GHz yn unig</item>
+    </string-array>
+    <string-array name="wifi_frequency_band_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="usage_stats_display_order_types">
+        <item>Amser defnydd</item>
+        <item>Defnyddiwyd ddiwethaf</item>
+        <item>Enw\'r ap</item>
+    </string-array>
+    <string-array name="wifi_peap_phase2_entries">
+        <item>Dim</item>
+        <item>MSCHAPV2</item>
+        <item>GTC</item>
+    </string-array>
+    <string-array name="wifi_ip_settings">
+        <item>DHCP</item>
+        <item>Statig</item>
+    </string-array>
+    <string-array name="wifi_proxy_settings">
+        <item>Dim</item>
+        <item>Â llaw</item>
+        <item>Awto-Ffurfweddu Procsi</item>
+    </string-array>
+    <string-array name="apn_auth_entries">
+        <item>Dim</item>
+        <item>PAP</item>
+        <item>CHAP</item>
+        <item>PAP neu CHAP</item>
+    </string-array>
+    <string-array name="apn_protocol_entries">
+        <item>IPv4</item>
+        <item>IPv6</item>
+        <item>IPv4/IPv6</item>
+    </string-array>
+    <string-array name="bearer_entries">
+        <item>Anhysbys</item>
+        <item>LTE</item>
+        <item>HSPAP</item>
+        <item>HSPA</item>
+        <item>HSUPA</item>
+        <item>HSDPA</item>
+        <item>UMTS</item>
+        <item>EDGE</item>
+        <item>GPRS</item>
+        <item>eHRPD</item>
+        <item>EVDO_B</item>
+        <item>EVDO_A</item>
+        <item>EVDO_0</item>
+        <item>1xRTT</item>
+        <item>IS95B</item>
+        <item>IS95A</item>
+    </string-array>
+    <string-array name="mvno_type_entries">
+        <item>Dim</item>
+        <item>SPN</item>
+        <item>IMSI</item>
+        <item>GID</item>
+    </string-array>
+    <string-array name="app_install_location_entries">
+        <item>Storfa fewnol y ddyfais</item>
+        <item>Cerdyn SD gellir ei dynnu allan</item>
+        <item>Gadael i\'r system benderfynu</item>
+    </string-array>
+    <string-array name="app_ops_categories">
+        <item>Lleoliad</item>
+        <item>Personol</item>
+        <item>Negesu</item>
+        <item>Cyfryngau</item>
+        <item>Dyfais</item>
+    </string-array>
+    <string-array name="app_ops_summaries">
+        <item>lleoliad bras</item>
+        <item>lleoliad union</item>
+        <item>GPS</item>
+        <item>dirgrynu</item>
+        <item>darllen cysylltiadau</item>
+        <item>addasu cysylltiadau</item>
+        <item>darllen y log galwadau</item>
+        <item>addasu\'r log galwadau</item>
+        <item>darllen y calendr</item>
+        <item>addasu\'r calendr</item>
+        <item>sganio wi-fi</item>
+        <item>hysbysiad</item>
+        <item>sganio symudol</item>
+        <item>galw ffôn</item>
+        <item>darllen SMS</item>
+        <item>ysgrifennu SMS</item>
+        <item>derbyn SMS</item>
+        <item>derbyn SMS brys</item>
+        <item>derbyn MMS</item>
+        <item>derbyn gwthiad WAP</item>
+        <item>anfon SMS</item>
+        <item>darllen SMS ICC</item>
+        <item>ysgrifennu SMS ICC</item>
+        <item>addasu gosodiadau</item>
+        <item>llunio dros ben</item>
+        <item>cael at hysbysiadau</item>
+        <item>camera</item>
+        <item>recordio sain</item>
+        <item>chwarae sain</item>
+        <item>darllen y clipfwrdd</item>
+        <item>addasu\'r clipfwrdd</item>
+        <item>botymau cyfryngau</item>
+        <item>ffocws sain</item>
+        <item>prif uchder sain</item>
+        <item>uchder sain llais</item>
+        <item>uchder sain caniad ffôn</item>
+        <item>uchder sain cyfryngau</item>
+        <item>uchder sain larymau</item>
+        <item>uchder sain hysbysiadau</item>
+        <item>Uchder sain Bluetooth</item>
+        <item>cadw\'n effro</item>
+        <item>monitro lleoliad</item>
+        <item>monitro lleoliad pŵer uchel</item>
+        <item>cael ystadegau defnydd</item>
+        <item>distewi/dad-ddistewi\'r meicroffon</item>
+        <item>taflunio cyfryngau</item>
+        <item>rhoi VPN ar waith</item>
+        <item>ysgrifennu papur wal</item>
+        <item>cynorthwyo strwythur</item>
+        <item>cynorthwyo sgrinlun</item>
+    </string-array>
+    <string-array name="app_ops_labels">
+        <item>Lleoliad</item>
+        <item>Lleoliad</item>
+        <item>Lleoliad</item>
+        <item>Dirgrynu</item>
+        <item>Darllen cysylltiadau</item>
+        <item>Addasu cysylltiadau</item>
+        <item>Darllen y log galwadau</item>
+        <item>Addasu\'r log galwadau</item>
+        <item>Darllen y calendr</item>
+        <item>Addasu\'r calendr</item>
+        <item>Lleoliad</item>
+        <item>Gosod hysbysiad</item>
+        <item>Lleoliad</item>
+        <item>Galw ffôn</item>
+        <item>Darllen SMS/MMS</item>
+        <item>Ysgrifennu SMS/MMS</item>
+        <item>Derbyn SMS/MMS</item>
+        <item>Derbyn SMS/MMS</item>
+        <item>Derbyn SMS/MMS</item>
+        <item>Derbyn SMS/MMS</item>
+        <item>Anfon SMS/MMS</item>
+        <item>Darllen SMS/MMS</item>
+        <item>Ysgrifennu SMS/MMS</item>
+        <item>Addasu gosodiadau</item>
+        <item>Llunio dros ben</item>
+        <item>Cael at hysbysiadau</item>
+        <item>Camera</item>
+        <item>Recordio sain</item>
+        <item>Chwarae sain</item>
+        <item>Darllen y clipfwrdd</item>
+        <item>Addasu\'r clipfwrdd</item>
+        <item>Botymau cyfryngau</item>
+        <item>Ffocws sain</item>
+        <item>Prif uchder sain</item>
+        <item>Uchder sain llais</item>
+        <item>Uchder sain caniad ffôn</item>
+        <item>Uchder sain cyfryngau</item>
+        <item>Uchder sain larymau</item>
+        <item>Uchder sain hysbysiadau</item>
+        <item>Uchder sain Bluetooth</item>
+        <item>Cadw\'n effro</item>
+        <item>Lleoliad</item>
+        <item>Lleoliad</item>
+        <item>Cael ystadegau defnydd</item>
+        <item>Distewi/dad-ddistewi\'r meicroffon</item>
+        <item>Taflunio cyfryngau</item>
+        <item>Rhoi VPN ar waith</item>
+        <item>Ysgrifennu papur wal</item>
+        <item>Cynorthwyo strwythur</item>
+        <item>Cynorthwyo sgrinlun</item>
+    </string-array>
+    <string-array name="long_press_timeout_selector_titles">
+        <item>Byr</item>
+        <item>Canolig</item>
+        <item>Hir</item>
+    </string-array>
+    <string-array name="captioning_typeface_selector_titles">
+        <item>Rhagosodiad</item>
+        <item>Sans-serif</item>
+        <item>Sans-serif cyddwys</item>
+        <item>Sans-serif monofwlch</item>
+        <item>Serif</item>
+        <item>Serif monofwlch</item>
+        <item>Achlysurol</item>
+        <item>Rhedol</item>
+        <item>Priflythrennau bychain</item>
+    </string-array>
+    <string-array name="captioning_font_size_selector_titles">
+        <item>Bach iawn</item>
+        <item>Bach</item>
+        <item>Arferol</item>
+        <item>Mawr</item>
+        <item>Mawr iawn</item>
+    </string-array>
+    <string-array name="captioning_edge_type_selector_titles">
+        <item>Rhagosodiad</item>
+        <item>Dim</item>
+        <item>Amlinell</item>
+        <item>Cysgod</item>
+        <item>Codwyd</item>
+        <item>Gostyngwyd</item>
+    </string-array>
+    <string-array name="captioning_opacity_selector_titles">
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="captioning_preset_selector_titles">
+        <item>Defnyddio rhagosodiadau\'r ap</item>
+        <item>Gwyn ar ddu</item>
+        <item>Du ar wyn</item>
+        <item>Melyn ar ddu</item>
+        <item>Melyn ar las</item>
+        <item>Addasedig</item>
+    </string-array>
+    <string-array name="select_logd_size_titles">
+        <item>64K</item>
+        <item>256K</item>
+        <item>1M</item>
+        <item>4M</item>
+        <item>16M</item>
+    </string-array>
+    <string-array name="select_logd_size_lowram_titles">
+        <item>64K</item>
+        <item>256K</item>
+        <item>1M</item>
+    </string-array>
+    <string-array name="select_logd_size_summaries">
+        <item>byffer 64K i bob log</item>
+        <item>byffer 256K i bob log</item>
+        <item>byffer 1M i bob log</item>
+        <item>byffer 4M i bob log</item>
+        <item>byffer 16M i bob log</item>
+    </string-array>
+    <string-array name="hdcp_checking_titles">
+        <item>Gwirio byth</item>
+        <item>Gwirio cynnwys DRM yn unig</item>
+        <item>Gwirio bob tro</item>
+    </string-array>
+    <string-array name="hdcp_checking_summaries">
+        <item>Byth defnyddio gwirio HDCP</item>
+        <item>Defnyddio HDCP i wirio cynnwys DRM yn unig</item>
+        <item>Defnyddio gwirio HDCP bob tro</item>
+    </string-array>
+    <string-array name="window_animation_scale_entries">
+        <item>Animeiddiad i ffwrdd</item>
+        <item>Graddfa animeiddiad .5x</item>
+        <item>Graddfa animeiddiad 1x</item>
+        <item>Graddfa animeiddiad 1.5x</item>
+        <item>Graddfa animeiddiad 2x</item>
+        <item>Graddfa animeiddiad 5x</item>
+        <item>Graddfa animeiddiad 10x</item>
+    </string-array>
+    <string-array name="transition_animation_scale_entries">
+        <item>Animeiddiad i ffwrdd</item>
+        <item>Graddfa animeiddiad .5x</item>
+        <item>Graddfa animeiddiad 1x</item>
+        <item>Graddfa animeiddiad 1.5x</item>
+        <item>Graddfa animeiddiad 2x</item>
+        <item>Graddfa animeiddiad 5x</item>
+        <item>Graddfa animeiddiad 10x</item>
+    </string-array>
+    <string-array name="animator_duration_scale_entries">
+        <item>Animeiddiad i ffwrdd</item>
+        <item>Graddfa animeiddiad .5x</item>
+        <item>Graddfa animeiddiad 1x</item>
+        <item>Graddfa animeiddiad 1.5x</item>
+        <item>Graddfa animeiddiad 2x</item>
+        <item>Graddfa animeiddiad 5x</item>
+        <item>Graddfa animeiddiad 10x</item>
+    </string-array>
+    <string-array name="overlay_display_devices_entries">
+        <item>Dim</item>
+        <item>480p</item>
+        <item>480p (diogel)</item>
+        <item>720p</item>
+        <item>720p (diogel)</item>
+        <item>1080p</item>
+        <item>1080p (diogel)</item>
+        <item>4K</item>
+        <item>4K (diogel)</item>
+        <item>4K (uwchraddiad)</item>
+        <item>4K (uwchraddiad, diogel)</item>
+        <item>720p, 1080p (sgrin ddeuol)</item>
+    </string-array>
+    <string-array name="enable_opengl_traces_entries">
+        <item>Dim</item>
+        <item>Logcat</item>
+        <item>Systrace (Graffigau)</item>
+        <item>Galw \'stack\' ar glGetError</item>
+    </string-array>
+    <string-array name="show_non_rect_clip_entries">
+        <item>I ffwrdd</item>
+        <item>Llunio ardal clip na sydd yn betryal yn las</item>
+        <item>Amlygu gorchmynion llunio wedi eu profi yn wyrdd</item>
+    </string-array>
+    <string-array name="track_frame_time_entries">
+        <item>I Ffwrdd</item>
+        <item>Ar y sgrin fel barrau</item>
+        <item>Yn adb shell dumpsys gfxinfo</item>
+    </string-array>
+    <string-array name="debug_hw_overdraw_entries">
+        <item>I ffwrdd</item>
+        <item>Dangos ardaloedd trawslunio</item>
+        <item>Dangos ardaloedd ar gyfer anomaledd dewter</item>
+    </string-array>
+    <string-array name="app_process_limit_entries">
+        <item>Cyfyngiad safonol</item>
+        <item>Dim prosesau cefndir</item>
+        <item>1 proses ar y mwyaf</item>
+        <item>2 broses ar y mwyaf</item>
+        <item>3 phroses ar y mwyaf</item>
+        <item>4 proses ar y mwyaf</item>
+    </string-array>
+    <string-array name="vpn_types_long">
+        <item>PPTP VPN</item>
+        <item>L2TP/IPSec VPN gydag allweddau a rennir ymlaen llaw</item>
+        <item>L2TP/IPSec VPN gyda thystysgrifau</item>
+        <item>VPN IPSec gydag allweddau a rannwyd ymlaen llaw a dilysiad Xauth</item>
+        <item>VPN IPSec gyda thystysgrifau a dilysiad Xauth</item>
+        <item>VPN IPSec gyda thystysgrifau a dilysiad hybrid</item>
+    </string-array>
+    <string-array name="vpn_states">
+        <item>Heb gysylltu</item>
+        <item>Yn ymgychwyn\u2026</item>
+        <item>Yn cysylltu\u2026</item>
+        <item>Wedi cysylltu</item>
+        <item>Terfyn amser</item>
+        <item>Aflwyddiannus</item>
+    </string-array>
+    <string-array name="security_settings_premium_sms_values">
+        <item>Gofyn</item>
+        <item>Caniatáu Byth</item>
+        <item>Caniatáu Bob Tro</item>
+    </string-array>
+    <string-array name="ram_states">
+        <item>Arferol</item>
+        <item>Cymedrol</item>
+        <item>Isel</item>
+        <item>Critigol</item>
+        <item>\?</item>
+    </string-array>
+    <string-array name="proc_stats_memory_states">
+        <item>Arferol</item>
+        <item>Cymedrol</item>
+        <item>Isel</item>
+        <item>Critigol</item>
+    </string-array>
+    <string-array name="proc_stats_process_states">
+        <item>Parhaus</item>
+        <item>Gweithred uchaf</item>
+        <item>Pwysig (blaendir)</item>
+        <item>Pwysig (cefndir)</item>
+        <item>Copi wrth gefn</item>
+        <item>Defnydd trwm</item>
+        <item>Gwasanaeth (yn rhedeg)</item>
+        <item>Gwasanaeth (ailddechrau)</item>
+        <item>Derbynnydd</item>
+        <item>Cartref</item>
+        <item>Gweithgaredd diwethaf</item>
+        <item>Yn y cof dros dro (gweithgarwch)</item>
+        <item>Yn y cof dros dro (cleient gweithgarwch)</item>
+        <item>Cuddstoriwyd (gwag)</item>
+    </string-array>
+    <string-array name="color_picker">
+        <item>Glaswyrdd</item>
+        <item>Glas</item>
+        <item>Indigo</item>
+        <item>Porffor</item>
+        <item>Pinc</item>
+        <item>Coch</item>
+    </string-array>
+    <string-array name="usb_configuration_titles">
+        <item>@string/usb_use_charging_only</item>
+        <item>MTP (Media Transfer Protocol)</item>
+        <item>PTP (Picture Transfer Protocol)</item>
+        <item>RNDIS (Ether-rwyd USB)</item>
+        <item>Ffynhonnell Sain</item>
+        <item>MIDI</item>
+    </string-array>
 </resources>
