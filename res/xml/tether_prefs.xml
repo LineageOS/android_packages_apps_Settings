@@ -49,6 +49,12 @@
         android:summary="@string/ethernet_tethering_subtext"
         settings:keywords="@string/keywords_hotspot_tethering" />
 
+    <lineageos.preference.LineageSecureSettingSwitchPreference
+        android:key="tethering_allow_vpn_upstreams"
+        android:title="@string/tethering_allow_vpn_upstreams_title"
+        android:summary="@string/tethering_allow_vpn_upstreams_summary"
+        android:defaultValue="false" />
+
     <com.android.settingslib.widget.FooterPreference
         android:key="disabled_on_data_saver"
         android:title="@string/tether_settings_disabled_on_data_saver"
