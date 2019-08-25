@@ -226,11 +226,19 @@
     <string name="adb_over_network">ADB přes síť</string>
     <string name="adb_over_network_summary">Povolit ladění přes TCP/IP síťové připojení (např. Wi\u2011Fi nebo síť USB). Toto nastavení bude obnoveno po restartu</string>
     <string name="adb_over_network_warning">VAROVÁNÍ: Když je ADB přes síť aktivní, váš telefon je otevřen pro vniknutí jakéhokoliv zařízení ze sítě!\n\nPoužívejte tuto funkci jen když jste připojen na důvěryhodné síti.\n\nChcete opravdu zapnout tuto funkci?</string>
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> krok od povolení vývojářských nastavení.</item>
+        <item quantity="few">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> kroky od povolení vývojářských nastavení.</item>
+        <item quantity="many">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> kroků od povolení vývojářských nastavení.</item>
+        <item quantity="other">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> kroků od povolení vývojářských nastavení.</item>
+    </plurals>
     <string name="show_dev_on_cm">Vývojářské nastavení je povoleno!</string>
     <string name="show_dev_already_cm">Vývojářské nastavení je již povoleno.</string>
     <string name="lineagelicense_title">Právní ujednání LineageOS</string>
     <string name="status_bar_double_tap_to_sleep_title">Klepnutím uspat</string>
     <string name="status_bar_double_tap_to_sleep_summary">Dvojitým poklepáním na stavovou lištu nebo zamykací obrazovku vypnout obrazovku</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Vyhledejte snímač otisku prstů <xliff:g id="sensor_location">%1$s</xliff:g> vašeho tabletu.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Vyhledejte snímač otisku prstů <xliff:g id="sensor_location">%1$s</xliff:g> vašeho zařízení.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Vyhledejte snímač otisku prstů <xliff:g id="sensor_location">%1$s</xliff:g> na telefonu.</string>
     <string name="security_settings_fingerprint_sensor_location_back">zpět</string>
     <string name="security_settings_fingerprint_sensor_location_front">přední</string>
@@ -261,6 +269,8 @@
     <string name="sub_deactivate_failed">Deaktivace selhala.</string>
     <string name="data_usage_app_restrict_data">Mobilní data</string>
     <string name="data_usage_app_restrict_data_summary">Povolit používání mobilních dat</string>
+    <string name="data_usage_app_restrict_vpn">VPN data</string>
+    <string name="data_usage_app_restrict_vpn_summary">Povolit používání VPN dat</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi data</string>
     <string name="data_usage_app_restrict_wifi_summary">Povolit používání Wi\u2011Fi dat</string>
     <string name="unlock_scramble_pin_layout_title">Přeházet rozložení</string>
@@ -286,6 +296,9 @@
     <string name="touchscreen_hovering_summary">Umožňuje pohybovat se jakoby nad obsahem obrazovky podobně, jako když myší najedete na nějaký ovládací prvek</string>
     <string name="directly_show_lock">Odemykat přímo</string>
     <string name="directly_show_lock_summary">Přeskočit odemčení obrazovky přejetím a okamžitě spustit zadávání klíče</string>
+    <string name="open_lockscreen_tuner">Změnit zkratky</string>
+    <string name="location_mode_battery_saving_title">Úsporný režim</string>
+    <string name="location_mode_battery_saving_summary">K určování polohy používat pouze Wi\u2011Fi, Bluetooth nebo mobilní sítě (méně přesné)</string>
     <string name="app_notification_sound_timeout_title">Minimální doba mezi zvuky oznámení</string>
     <string name="app_notification_sound_timeout_summary_template">Povolit zvuky nebo vibrace ne více než jednou každých <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Bez omezení</string>
