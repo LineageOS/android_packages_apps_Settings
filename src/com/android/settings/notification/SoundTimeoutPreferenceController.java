@@ -44,7 +44,7 @@ public class SoundTimeoutPreferenceController extends NotificationPreferenceCont
         if (!super.isAvailable()) {
             return false;
         }
-        if (mAppRow == null) {
+        if (mAppRow == null || mChannel != null) {
             return false;
         }
         return true;
