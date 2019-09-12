@@ -25,7 +25,6 @@
         <item name="slicePreferenceStyle">@style/SlicePreference</item>
         <item name="seekBarPreferenceStyle">@style/SettingsSeekBarPreference</item>
         <item name="twoStateButtonPreferenceStyle">@style/TwoStateButtonPreference</item>
-        <item name="preferenceFragmentCompatStyle">@style/SettingsPreferenceFragmentStyle</item>
     </style>
 
     <style name="PreferenceTheme.SetupWizard" parent="@style/SettingsPreferenceTheme">
@@ -61,10 +60,6 @@
         <item name="android:positiveButtonText">@android:string/ok</item>
         <item name="android:negativeButtonText">@android:string/cancel</item>
         <item name="iconSpaceReserved">@bool/settingslib_config_icon_space_reserved</item>
-    </style>
-
-    <style name="SettingsPreferenceFragmentStyle" parent="@style/PreferenceFragment.Material">
-        <item name="android:divider">@*android:drawable/list_divider_material</item>
     </style>
 
     <style name="SetupWizardPreferenceFragmentStyle" parent="PreferenceFragment.Material">
