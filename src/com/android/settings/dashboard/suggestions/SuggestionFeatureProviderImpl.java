@@ -64,7 +64,7 @@ public class SuggestionFeatureProviderImpl implements SuggestionFeatureProvider 
         if (className.equals(WallpaperSuggestionActivity.class.getName())) {
             return WallpaperSuggestionActivity.isSuggestionComplete(context);
         } else if (className.equals(StyleSuggestionActivity.class.getName())) {
-            return StyleSuggestionActivity.isSuggestionComplete(context);
+            return true;
         } else if (className.equals(FingerprintSuggestionActivity.class.getName())) {
             return FingerprintSuggestionActivity.isSuggestionComplete(context);
         } else if (className.equals(FingerprintEnrollSuggestionActivity.class.getName())) {
