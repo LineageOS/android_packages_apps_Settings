@@ -91,6 +91,7 @@ public class VideoPreference extends Preference {
                 ? attributes.getResourceId(R.styleable.VideoPreference_preview, 0)
                 : mPreviewResource;
             if (mPreviewResource == 0 && mAnimationId == 0) {
+                setVisible(false);
                 return;
             }
             initMediaPlayer();
