@@ -37,6 +37,8 @@ import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
 
+import java.io.IOException;
+
 /**
  * A full width preference that hosts a MP4 video.
  */
@@ -226,7 +228,11 @@ public class VideoPreference extends Preference {
 
     private void initMediaPlayer() {
         if (mMediaPlayer == null) {
-            mMediaPlayer = MediaPlayer.create(mContext, mVideoPath);
+            try {
+                mMediaPlayer = MediaPlayer.create(mContext, mVideoPath);
+            } catch (IOException e) {
+                Log.w(TAG, "Animation resource not found. Will not show animation.");
+            }
             // when the playback res is invalid or others, MediaPlayer create may fail
             // and return null, so need add the null judgement.
             if (mMediaPlayer != null) {
