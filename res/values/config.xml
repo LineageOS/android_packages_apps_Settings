@@ -42,11 +42,11 @@
     <bool name="config_show_telephony_monitor">true</bool>
 
     <!-- Whether to show Camera laser sensor switch in Developer Options -->
-    <bool name="config_show_camera_laser_sensor">false</bool>
+    <bool name="config_show_camera_laser_sensor">true</bool>
 
     <!-- Whether to show Connected MAC Randomization in Developer Options
          as not all devices can support dynamic MAC address change.  -->
-    <bool name="config_wifi_support_connected_mac_randomization">false</bool>
+    <bool name="config_wifi_support_connected_mac_randomization">true</bool>
 
     <!-- Fully-qualified class name for the implementation of the FeatureFactory to be instantiated. -->
     <string name="config_featureFactory" translatable="false">com.android.settings.overlay.FeatureFactoryImpl</string>
@@ -75,7 +75,7 @@
     <bool name="config_support_enabled">false</bool>
 
     <!-- Whether to enable "show operator name in the status bar" setting -->
-    <bool name="config_showOperatorNameInStatusBar">false</bool>
+    <bool name="config_showOperatorNameInStatusBar">true</bool>
 
     <!-- List containing the component names of pre-installed screen reader services. -->
     <string-array name="config_preinstalled_screen_reader_services" translatable="false">
@@ -113,7 +113,7 @@
     <bool name="config_tintSettingIcon">true</bool>
 
     <!-- Whether or not App & Notification screen should display recently used apps -->
-    <bool name="config_display_recent_apps">true</bool>
+    <bool name="config_display_recent_apps">false</bool>
 
     <!-- Package name for the storage manager to use from Settings search. -->
     <string name="config_deletion_helper_package" translatable="false">com.android.storagemanager</string>
