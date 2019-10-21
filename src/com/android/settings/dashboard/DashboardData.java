@@ -225,6 +225,9 @@ public class DashboardData {
     }
 
     private List<Condition> getConditionsToShow(List<Condition> conditions) {
+	    // we dont want conditions
+	    return null;
+	    /*
         if (conditions == null) {
             return null;
         }
@@ -237,9 +240,13 @@ public class DashboardData {
             }
         }
         return result;
+	*/
     }
 
     private List<Suggestion> getSuggestionsToShow(List<Suggestion> suggestions) {
+	    // we dont want suggestions
+	    return null;
+	/*
         if (suggestions == null) {
             return null;
         }
@@ -251,6 +258,7 @@ public class DashboardData {
             suggestionsToShow.add(suggestions.get(i));
         }
         return suggestionsToShow;
+	*/
     }
 
     /**
