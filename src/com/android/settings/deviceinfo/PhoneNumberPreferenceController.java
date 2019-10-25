@@ -47,6 +47,7 @@ public class PhoneNumberPreferenceController extends BasePreferenceController {
     private final TelephonyManager mTelephonyManager;
     private final SubscriptionManager mSubscriptionManager;
     private final List<Preference> mPreferenceList = new ArrayList<>();
+    private boolean mTapped = false;
 
     public PhoneNumberPreferenceController(Context context, String key) {
         super(context, key);
@@ -61,7 +62,10 @@ public class PhoneNumberPreferenceController extends BasePreferenceController {
 
     @Override
     public CharSequence getSummary() {
-        return getFirstPhoneNumber();
+        if (mTapped) {
+            return getFirstPhoneNumber();
+        }
+        return mContext.getString(R.string.device_info_protected_single_press);
     }
 
     @Override
@@ -95,6 +99,18 @@ public class PhoneNumberPreferenceController extends BasePreferenceController {
 
     @Override
     public boolean useDynamicSliceSummary() {
+        return mTapped;
+    }
+
+    @Override
+    public boolean handlePreferenceTreeClick(Preference preference) {
+        final int simSlotNumber = mPreferenceList.indexOf(preference);
+        if (simSlotNumber == -1) {
+            return false;
+        }
+        mTapped = true;
+        final Preference simStatusPreference = mPreferenceList.get(simSlotNumber);
+        simStatusPreference.setSummary(getPhoneNumber(simSlotNumber));
         return true;
     }
 
@@ -126,7 +142,10 @@ public class PhoneNumberPreferenceController extends BasePreferenceController {
             return mContext.getText(R.string.device_info_default);
         }
 
-        return getFormattedPhoneNumber(subscriptionInfo);
+        if (mTapped) {
+            return getFormattedPhoneNumber(subscriptionInfo);
+        }
+        return mContext.getString(R.string.device_info_protected_single_press);
     }
 
     private CharSequence getPreferenceTitle(int simSlot) {
