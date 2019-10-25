@@ -97,13 +97,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
 
     @Override
     public CharSequence getSummary() {
-        return getSummary(0);
-    }
-
-    private CharSequence getSummary(int simSlot) {
-        final int phoneType = getPhoneType(simSlot);
-        return phoneType == PHONE_TYPE_CDMA ? mTelephonyManager.getMeid(simSlot)
-                : mTelephonyManager.getImei(simSlot);
+        return mContext.getString(R.string.device_info_protected_single_press);
     }
 
     @Override
@@ -130,12 +124,12 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
 
     @Override
     public void copy() {
-        Sliceable.setCopyContent(mContext, getSummary(0), getTitle(0));
+        Sliceable.setCopyContent(mContext, getSummary(), getTitle(0));
     }
 
     private void updatePreference(Preference preference, int simSlot) {
         preference.setTitle(getTitle(simSlot));
-        preference.setSummary(getSummary(simSlot));
+        preference.setSummary(getSummary());
     }
 
     private CharSequence getTitleForGsmPhone(int simSlot) {
