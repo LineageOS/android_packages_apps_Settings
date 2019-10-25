@@ -67,7 +67,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         final PreferenceCategory category = screen.findPreference(KEY_PREFERENCE_CATEGORY);
 
         mPreferenceList.add(preference);
-        updatePreference(preference, 0 /* simSlot */);
+        updatePreference(preference, 0 /* simSlot */, false);
 
         final int imeiPreferenceOrder = preference.getOrder();
         // Add additional preferences for each sim in the device
@@ -78,7 +78,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
             multiSimPreference.setKey(getPreferenceKey() + simSlotNumber);
             category.addPreference(multiSimPreference);
             mPreferenceList.add(multiSimPreference);
-            updatePreference(multiSimPreference, simSlotNumber);
+            updatePreference(multiSimPreference, simSlotNumber, false);
         }
     }
 
@@ -90,16 +90,16 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         int size = mPreferenceList.size();
         for (int i = 0; i < size; i++) {
             Preference pref = mPreferenceList.get(i);
-            updatePreference(pref, i);
+            updatePreference(pref, i, false);
         }
     }
 
     @Override
     public CharSequence getSummary() {
-        return getSummary(0);
+        return mContext.getString(R.string.device_info_protected_single_press);
     }
 
-    private CharSequence getSummary(int simSlot) {
+    private CharSequence getImei(int simSlot) {
         final int phoneType = getPhoneType(simSlot);
         return phoneType == PHONE_TYPE_CDMA ? mTelephonyManager.getMeid(simSlot)
                 : mTelephonyManager.getImei(simSlot);
@@ -113,6 +113,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         }
 
         ImeiInfoDialogFragment.show(mFragment, simSlot, preference.getTitle().toString());
+        updatePreference(preference, simSlot, true);
         return true;
     }
 
@@ -127,9 +128,9 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         return true;
     }
 
-    private void updatePreference(Preference preference, int simSlot) {
+    private void updatePreference(Preference preference, int simSlot, boolean enable) {
         preference.setTitle(getTitle(simSlot));
-        preference.setSummary(getSummary(simSlot));
+        preference.setSummary(enable ? getImei(simSlot) : getSummary());
     }
 
     private CharSequence getTitleForGsmPhone(int simSlot) {
