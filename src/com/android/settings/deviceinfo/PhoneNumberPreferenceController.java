@@ -61,7 +61,14 @@ public class PhoneNumberPreferenceController extends BasePreferenceController {
 
     @Override
     public CharSequence getSummary() {
-        return getFirstPhoneNumber();
+        return mContext.getString(R.string.device_info_protected_single_press);
+    }
+
+    @Override
+    public boolean handlePreferenceTreeClick(Preference preference) {
+		// Touching one should update every phone number.
+		updatePhoneNumber(preference, true);
+        return super.handlePreferenceTreeClick(preference);
     }
 
     @Override
@@ -78,7 +85,6 @@ public class PhoneNumberPreferenceController extends BasePreferenceController {
             final Preference multiSimPreference = createNewPreference(screen.getContext());
             multiSimPreference.setOrder(phonePreferenceOrder + simSlotNumber);
             multiSimPreference.setKey(KEY_PHONE_NUMBER + simSlotNumber);
-            multiSimPreference.setSelectable(false);
             category.addPreference(multiSimPreference);
             mPreferenceList.add(multiSimPreference);
         }
@@ -86,10 +92,15 @@ public class PhoneNumberPreferenceController extends BasePreferenceController {
 
     @Override
     public void updateState(Preference preference) {
+        updatePhoneNumber(preference, false);
+    }
+
+    public void updatePhoneNumber(Preference preference, boolean enable) {
         for (int simSlotNumber = 0; simSlotNumber < mPreferenceList.size(); simSlotNumber++) {
             final Preference simStatusPreference = mPreferenceList.get(simSlotNumber);
             simStatusPreference.setTitle(getPreferenceTitle(simSlotNumber));
-            simStatusPreference.setSummary(getPhoneNumber(simSlotNumber));
+            simStatusPreference.setSummary(
+                enable ? getPhoneNumber(simSlotNumber) : getSummary());
         }
     }
 
