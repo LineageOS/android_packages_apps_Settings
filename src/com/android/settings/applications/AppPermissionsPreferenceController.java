@@ -23,6 +23,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 
 import com.android.settings.R;
+import com.android.settings.Utils;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settingslib.applications.PermissionsSummaryHelper;
 
@@ -106,12 +107,12 @@ public class AppPermissionsPreferenceController extends BasePreferenceController
         CharSequence summary;
 
         if (!permissionsToShow.isEmpty()) {
+            final String formatted = Utils.normalizeTitleCaseIfRequired(mContext,
+                    ListFormatter.getInstance().format(permissionsToShow));
             if (isMoreShowed) {
-                summary = mContext.getString(R.string.app_permissions_summary_more,
-                        ListFormatter.getInstance().format(permissionsToShow).toLowerCase());
+                summary = mContext.getString(R.string.app_permissions_summary_more, formatted);
             } else {
-                summary = mContext.getString(R.string.app_permissions_summary,
-                        ListFormatter.getInstance().format(permissionsToShow).toLowerCase());
+                summary = mContext.getString(R.string.app_permissions_summary, formatted);
             }
         } else {
             summary = mContext.getString(

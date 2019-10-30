@@ -1230,4 +1230,11 @@ public final class Utils extends com.android.settingslib.Utils {
     public static int getHomepageIconColorHighlight(Context context) {
         return getColorAttrDefaultColor(context, android.R.attr.textColorSecondaryInverse);
     }
+
+    public static String normalizeTitleCaseIfRequired(Context context, String input) {
+        if (!context.getResources().getBoolean(R.bool.language_capitalizes_nouns)) {
+            return input.toLowerCase();
+        }
+        return input;
+    }
 }
