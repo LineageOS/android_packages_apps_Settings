@@ -164,7 +164,7 @@ public class ChooseLockPattern extends SettingsActivity {
         static final int INFORMATION_MSG_TIMEOUT_MS = 3000;
 
         // how long we wait to clear a wrong pattern
-        private static final int WRONG_PATTERN_CLEAR_TIMEOUT_MS = 2000;
+        private static final int WRONG_PATTERN_CLEAR_TIMEOUT_MS = 750;
 
         private static final int ID_EMPTY_MESSAGE = -1;
 
@@ -863,7 +863,7 @@ public class ChooseLockPattern extends SettingsActivity {
         @Override
         protected void finish(Intent resultData) {
             if (mLockVirgin) {
-                mUtils.setVisiblePatternEnabled(true, mUserId);
+                mUtils.setVisiblePatternEnabled(false, mUserId);
             }
 
             super.finish(resultData);

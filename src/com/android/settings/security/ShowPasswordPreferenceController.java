@@ -41,7 +41,7 @@ public class ShowPasswordPreferenceController extends TogglePreferenceController
     @Override
     public boolean isChecked() {
         return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.TEXT_SHOW_PASSWORD, 1) != 0;
+                Settings.System.TEXT_SHOW_PASSWORD, 0) != 0;
     }
 
     @Override

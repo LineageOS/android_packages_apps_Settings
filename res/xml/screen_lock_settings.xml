@@ -23,17 +23,14 @@
     <!-- available in pattern -->
     <SwitchPreference
         android:key="visiblepattern"
-        android:defaultValue="false"
         android:title="@string/lockpattern_settings_enable_visible_pattern_title" />
 
     <SwitchPreference
         android:key="visible_error_pattern"
-        android:defaultValue="false"
         android:title="@string/lockpattern_settings_enable_error_path_title"/>
 
     <SwitchPreference
         android:key="visibledots"
-        android:defaultValue="true"
         android:title="@string/lockpattern_settings_enable_dots_title"/>
 
     <!-- available in pin/pattern/password -->
@@ -47,14 +44,12 @@
     <!-- available in pin/pattern/password -->
     <SwitchPreference
         android:key="power_button_instantly_locks"
-        android:defaultValue="true"
         android:title="@string/lockpattern_settings_enable_power_button_instantly_locks" />
 
     <!-- available in pin/pattern/password -->
     <SwitchPreference
         android:key="directly_show_lock"
         android:title="@string/directly_show_lock"
-        android:defaultValue="true"
         android:summary="@string/directly_show_lock_summary" />
 
     <!-- available in pin/pattern/password/slide -->
@@ -65,7 +60,6 @@
     <!-- Lineage additions, available in pin/pattern/password/slide -->
     <SwitchPreference
         android:key="lockscreen_scramble_pin_layout"
-        android:defaultValue="true"
         android:title="@string/unlock_scramble_pin_layout_title"
         android:summary="@string/unlock_scramble_pin_layout_summary" />
 

@@ -57,7 +57,7 @@ public class PinScramblePreferenceController extends AbstractPreferenceControlle
         ((TwoStatePreference) preference).setChecked(LineageSettings.System.getInt(
                 mContext.getContentResolver(),
                 LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
-                0) == 1);
+                1) == 1);
     }
 
     private boolean isPinLock() {
