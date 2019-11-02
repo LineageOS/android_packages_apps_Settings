@@ -158,6 +158,13 @@
             android:title="@string/enable_adb"
             android:summary="@string/enable_adb_summary" />
 
+        <SwitchPreference
+            android:key="enable_adb_root"
+            android:title="@string/adb_enable_root"
+            android:summary="@string/adb_enable_summary_root"
+            android:dependency="enable_adb"
+            android:persistent="false" />
+
         <Preference android:key="clear_adb_keys"
                     android:title="@string/clear_adb_keys" />
 
