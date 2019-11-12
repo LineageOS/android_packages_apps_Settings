@@ -156,6 +156,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".shortcut.MobileNetworkSettings"
+                android:label="@string/network_settings_shortcut_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+        </activity>
+
         <!-- Wireless Controls -->
         <activity
             android:name=".Settings$NetworkDashboardActivity"
