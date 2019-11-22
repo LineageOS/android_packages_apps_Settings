@@ -16,8 +16,9 @@
 
 package com.android.settings.development;
 
-import android.adb.ADBRootService;
 import android.content.Context;
+import android.os.Build;
+import android.os.IBinder;
 import android.os.UserManager;
 
 import androidx.preference.Preference;
@@ -28,7 +29,9 @@ import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
+import lineageos.app.LineageContextConstants;
 import lineageos.providers.LineageSettings;
+import lineageos.system.AdbRootManager;
 
 public class AdbRootPreferenceController extends DeveloperOptionsPreferenceController
         implements Preference.OnPreferenceChangeListener, PreferenceControllerMixin {
@@ -36,13 +39,19 @@ public class AdbRootPreferenceController extends DeveloperOptionsPreferenceContr
     private static final String TAG = "AdbRootPreferenceController";
     private static final String PREF_KEY = "enable_adb_root";
 
-    private final ADBRootService mADBRootService;
+    private final AdbRootManager mManager;
 
     public AdbRootPreferenceController(Context context,
             DevelopmentSettingsDashboardFragment fragment) {
         super(context);
 
-        mADBRootService = new ADBRootService(context);
+        mManager = new AdbRootManager();
+    }
+
+    @Override
+    public boolean isAvailable() {
+        // User builds don't get root, and eng always gets root
+        return Build.IS_DEBUGGABLE || "eng".equals(Build.TYPE);
     }
 
     @Override
@@ -54,7 +63,7 @@ public class AdbRootPreferenceController extends DeveloperOptionsPreferenceContr
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
 
-        ((SwitchPreference) mPreference).setChecked(mADBRootService.getEnabled());
+        ((SwitchPreference) mPreference).setChecked(mManager.getEnabled());
 
         if (!isAdminUser()) {
             mPreference.setEnabled(false);
@@ -64,7 +73,7 @@ public class AdbRootPreferenceController extends DeveloperOptionsPreferenceContr
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean rootEnabled = (Boolean) newValue;
-        mADBRootService.setEnabled(rootEnabled);
+        mManager.setEnabled(rootEnabled);
         return true;
     }
 
@@ -75,7 +84,7 @@ public class AdbRootPreferenceController extends DeveloperOptionsPreferenceContr
         }
     }
 
-    boolean isAdminUser() {
+    private boolean isAdminUser() {
         return ((UserManager) mContext.getSystemService(Context.USER_SERVICE)).isAdminUser();
     }
 }
