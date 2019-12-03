@@ -87,6 +87,25 @@
             android:title="@string/security_settings_fingerprint_preference_title"
             android:summary="@string/summary_placeholder" />
 
+<<<<<<< HEAD   (af7632 BasebandVersionPreferenceController: Trim baseband if needed)
+=======
+    </PreferenceCategory>
+
+    <!-- security_settings_misc.xml -->
+    <PreferenceCategory
+        android:order="30"
+        android:key="security_settings_misc_category"
+        android:title="@string/security_passwords_title">
+
+        <!-- Trust interface -->
+        <org.lineageos.internal.lineageparts.LineagePartsPreference
+            android:key="trust_interface" />
+
+        <!-- Firewall -->
+        <org.lineageos.internal.lineageparts.LineagePartsPreference
+            android:key="firewall" />
+
+>>>>>>> CHANGE (be1ea1 Added policy based firewall in the security tab.)
         <Preference
             android:key="face_settings_profile"
             android:title="@string/security_settings_face_preference_title"
