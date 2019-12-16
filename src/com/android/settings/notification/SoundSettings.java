@@ -31,6 +31,7 @@ import android.text.TextUtils;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.R;
 import com.android.settings.RingtonePreference;
@@ -56,6 +57,12 @@ public class SoundSettings extends DashboardFragment implements OnActivityResult
     private static final String SELECTED_PREFERENCE_KEY = "selected_preference";
     private static final int REQUEST_CODE = 200;
     private static final int SAMPLE_CUTOFF = 2000;  // manually cap sample playback at 2 seconds
+
+
+    private static final String VIBRATE_ON_CONNECT = "vibrate_on_connect";
+    private static final String VIBRATE_ON_CALLWAITING = "vibrate_on_callwaiting";
+    private static final String VIBRATE_ON_DISCONNECT = "vibrate_on_disconnect";
+
 
     @VisibleForTesting
     static final int STOP_SAMPLE = 1;
@@ -86,6 +93,10 @@ public class SoundSettings extends DashboardFragment implements OnActivityResult
         return SettingsEnums.SOUND;
     }
 
+    private SwitchPreference mVibOnConnect;
+    private SwitchPreference mVibOnWait;
+    private SwitchPreference mVibOnDisconnect;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +111,10 @@ public class SoundSettings extends DashboardFragment implements OnActivityResult
                             .findFragmentByTag(TAG);
             mDialogFragment = dialogFragment;
         }
+        // In-Call Vibration options
+        mVibOnConnect = (SwitchPreference) findPreference(VIBRATE_ON_CONNECT);
+        mVibOnWait = (SwitchPreference) findPreference(VIBRATE_ON_CALLWAITING);
+        mVibOnDisconnect = (SwitchPreference) findPreference(VIBRATE_ON_DISCONNECT);
     }
 
     @Override
