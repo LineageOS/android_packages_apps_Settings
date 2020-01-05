@@ -104,6 +104,12 @@
             <intent android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
         </lineageos.preference.RemotePreference>
 
+        <lineageos.preference.RemotePreference
+            android:key="add_doze_settings"
+            android:title="@string/ambient_display_screen_title">
+            <intent android:action="org.lineageos.settings.device.ADD_DOZE_SETTINGS" />
+        </lineageos.preference.RemotePreference>
+
     </PreferenceCategory>
 
     <!-- Work profile settings are at the bottom with high order value to avoid users thinking that
