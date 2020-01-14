@@ -93,6 +93,10 @@
             settings:controller="com.android.settings.display.NightDisplayPreferenceController"
             settings:keywords="@string/keywords_display_night_display"/>
 
+        <org.lineageos.internal.lineageparts.LineagePartsPreference
+            android:key="livedisplay"
+            lineage:requiresConfig="@*lineageos.platform:bool/config_enableLiveDisplay" />
+
         <Preference
             android:key="color_mode"
             android:title="@string/color_mode_title"
