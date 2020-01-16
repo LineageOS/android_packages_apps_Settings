@@ -63,6 +63,8 @@ import com.android.settingslib.bluetooth.LocalBluetoothManager;
  */
 public class SavedBluetoothTwsDeviceUpdater extends BluetoothDeviceUpdater {
 
+    private static final String PREF_KEY = "saved_bt_tws";
+
     public SavedBluetoothTwsDeviceUpdater(Context context, DashboardFragment fragment,
             DevicePreferenceCallback devicePreferenceCallback) {
         super(context, fragment, devicePreferenceCallback);
@@ -79,5 +81,10 @@ public class SavedBluetoothTwsDeviceUpdater extends BluetoothDeviceUpdater {
         final BluetoothDevice device = cachedDevice.getDevice();
         return device.getBondState() == BluetoothDevice.BOND_BONDED &&
             !device.isConnected() && device.isTwsPlusDevice();
+    }
+
+    @Override
+    protected String getPreferenceKey() {
+        return PREF_KEY;
     }
 }
