@@ -176,11 +176,19 @@
       android:defaultValue="@*android:bool/config_unplugTurnsOnScreen" />
 
     <lineageos.preference.LineageSystemSettingSwitchPreference
+<<<<<<< HEAD   (db9c85 Settings: Add toggle for heads up notifications)
         android:key="high_touch_sensitivity_enable"
         android:title="@string/high_touch_sensitivity_title"
         android:summary="@string/high_touch_sensitivity_summary"
         android:defaultValue="false"
         lineage:requiresFeature="lineagehardware:FEATURE_HIGH_TOUCH_SENSITIVITY" />
+=======
+        android:key="proximity_on_wake"
+        android:title="@string/proximity_wake_title"
+        android:summary="@string/proximity_wake_summary"
+        android:defaultValue="@*lineageos.platform:bool/config_proximityCheckOnWakeEnabledByDefault"
+        lineage:requiresConfig="@*lineageos.platform:bool/config_proximityCheckOnWake" />
+>>>>>>> CHANGE (786bd5 Settings: Fix default value for proximity on wake pref)
 
     <ListPreference
         android:key="theme"
