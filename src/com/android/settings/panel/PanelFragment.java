@@ -182,8 +182,13 @@ public class PanelFragment extends Fragment {
 
     private void createPanelContent() {
         final FragmentActivity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+
         if (mLayoutView == null) {
             activity.finish();
+            return;
         }
 
         final ViewGroup.LayoutParams params = mLayoutView.getLayoutParams();
@@ -215,6 +220,7 @@ public class PanelFragment extends Fragment {
 
         if (mPanel == null) {
             activity.finish();
+            return;
         }
 
         mPanel.registerCallback(new LocalPanelCallback());
