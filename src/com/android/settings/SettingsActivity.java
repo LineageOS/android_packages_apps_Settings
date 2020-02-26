@@ -535,7 +535,7 @@ public class SettingsActivity extends SettingsDrawerActivity
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
 
-        if (isLockTaskModePinned() && !isSettingsRunOnTop()) {
+        if (isLockTaskModePinned() && !isSettingsRunOnTop() && !isLaunchableInTaskModePinned()) {
             Log.w(LOG_TAG, "Devices lock task mode pinned.");
             finish();
         }
@@ -1353,6 +1353,14 @@ public class SettingsActivity extends SettingsDrawerActivity
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    /**
+     * @return whether or not the activity can be launched from other apps in the pinning screen.
+     */
+    public boolean isLaunchableInTaskModePinned() {
+        return false;
+    }
+
     private boolean isLockTaskModePinned() {
         final ActivityManager activityManager =
             getApplicationContext().getSystemService(ActivityManager.class);
