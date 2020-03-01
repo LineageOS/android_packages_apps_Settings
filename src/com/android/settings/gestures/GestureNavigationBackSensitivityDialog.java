@@ -20,14 +20,18 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.om.IOverlayManager;
 import android.os.Bundle;
 import android.os.ServiceManager;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Switch;
 
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
+
+import lineageos.providers.LineageSettings;
 
 /**
  * Dialog to set the back gesture's sensitivity in Gesture navigation mode.
@@ -59,17 +63,26 @@ public class GestureNavigationBackSensitivityDialog extends InstrumentedDialogFr
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final View view = getActivity().getLayoutInflater().inflate(
                 R.layout.dialog_back_gesture_sensitivity, null);
-        final SeekBar seekBar = view.findViewById(R.id.back_sensitivity_seekbar);
-        seekBar.setProgress(getArguments().getInt(KEY_BACK_SENSITIVITY));
+        final SeekBar sensitivitySeekBar = view.findViewById(R.id.back_sensitivity_seekbar);
+        sensitivitySeekBar.setProgress(getArguments().getInt(KEY_BACK_SENSITIVITY));
+
+        final ContentResolver cr = getContext().getContentResolver();
+        final int excludedPercentage = LineageSettings.Secure.getInt(cr,
+                LineageSettings.Secure.GESTURE_BACK_EXCLUDE_TOP, 0);
+        final SeekBar excludedTopSeekBar = view.findViewById(R.id.back_excluded_top_seekbar);
+        excludedTopSeekBar.setProgress(excludedPercentage);
+
         return new AlertDialog.Builder(getContext())
-                .setTitle(R.string.back_sensitivity_dialog_title)
-                .setMessage(R.string.back_sensitivity_dialog_message)
                 .setView(view)
                 .setPositiveButton(R.string.okay, (dialog, which) -> {
-                    int sensitivity = seekBar.getProgress();
+                    int sensitivity = sensitivitySeekBar.getProgress();
                     getArguments().putInt(KEY_BACK_SENSITIVITY, sensitivity);
                     SystemNavigationGestureSettings.setBackSensitivity(getActivity(),
                             getOverlayManager(), sensitivity);
+
+                    int excludedTopPercentage = excludedTopSeekBar.getProgress();
+                    LineageSettings.Secure.putInt(cr, LineageSettings.Secure.GESTURE_BACK_EXCLUDE_TOP,
+                            excludedTopPercentage);
                 })
                 .create();
     }
