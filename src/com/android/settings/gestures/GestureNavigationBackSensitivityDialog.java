@@ -20,14 +20,18 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.om.IOverlayManager;
 import android.os.Bundle;
 import android.os.ServiceManager;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Switch;
 
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
+
+import lineageos.providers.LineageSettings;
 
 /**
  * Dialog to set the back gesture's sensitivity in Gesture navigation mode.
@@ -61,8 +65,11 @@ public class GestureNavigationBackSensitivityDialog extends InstrumentedDialogFr
                 R.layout.dialog_back_gesture_sensitivity, null);
         final SeekBar seekBar = view.findViewById(R.id.back_sensitivity_seekbar);
         seekBar.setProgress(getArguments().getInt(KEY_BACK_SENSITIVITY));
+
+        setupExcludeSwitch(view);
+
         return new AlertDialog.Builder(getContext())
-                .setTitle(R.string.back_sensitivity_dialog_title)
+                .setTitle(R.string.back_gesture_dialog_title)
                 .setMessage(R.string.back_sensitivity_dialog_message)
                 .setView(view)
                 .setPositiveButton(R.string.okay, (dialog, which) -> {
@@ -76,5 +83,18 @@ public class GestureNavigationBackSensitivityDialog extends InstrumentedDialogFr
 
     private IOverlayManager getOverlayManager() {
         return IOverlayManager.Stub.asInterface(ServiceManager.getService(Context.OVERLAY_SERVICE));
+    }
+
+    private void setupExcludeSwitch(View parent) {
+        final ContentResolver cr = getContext().getContentResolver();
+        final Switch excludeTopSwitch = parent.findViewById(R.id.back_exclude_top);
+        final boolean isTopExcluded = LineageSettings.Secure.getInt(cr,
+                LineageSettings.Secure.GESTURE_BACK_EXCLUDE_TOP, 0) == 1;
+
+        excludeTopSwitch.setChecked(isTopExcluded);
+        excludeTopSwitch.setOnCheckedChangeListener((v, isChecked) -> {
+            LineageSettings.Secure.putInt(cr, LineageSettings.Secure.GESTURE_BACK_EXCLUDE_TOP,
+                    isChecked ? 1 : 0);
+        });
     }
 }
