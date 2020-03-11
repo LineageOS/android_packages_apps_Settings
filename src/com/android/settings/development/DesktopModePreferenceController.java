@@ -35,9 +35,9 @@ public class DesktopModePreferenceController extends DeveloperOptionsPreferenceC
     private static final String FORCE_DESKTOP_MODE_KEY = "force_desktop_mode_on_external_displays";
 
     @VisibleForTesting
-    static final int SETTING_VALUE_OFF = 0;
+    static final int SETTING_VALUE_OFF = 1;
     @VisibleForTesting
-    static final int SETTING_VALUE_ON = 1;
+    static final int SETTING_VALUE_ON = 0;
 
     public DesktopModePreferenceController(Context context) {
         super(context);
