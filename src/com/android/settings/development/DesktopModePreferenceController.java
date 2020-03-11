@@ -68,8 +68,8 @@ public class DesktopModePreferenceController extends DeveloperOptionsPreferenceC
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
         Settings.Global.putInt(mContext.getContentResolver(),
-                DEVELOPMENT_FORCE_DESKTOP_MODE_ON_EXTERNAL_DISPLAYS, SETTING_VALUE_OFF);
-        ((SwitchPreference) mPreference).setChecked(false);
+                DEVELOPMENT_FORCE_DESKTOP_MODE_ON_EXTERNAL_DISPLAYS, SETTING_VALUE_ON);
+        ((SwitchPreference) mPreference).setChecked(true);
     }
 
     @VisibleForTesting
