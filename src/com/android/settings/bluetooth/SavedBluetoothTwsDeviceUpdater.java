@@ -70,10 +70,10 @@ public class SavedBluetoothTwsDeviceUpdater extends BluetoothDeviceUpdater {
         super(context, fragment, devicePreferenceCallback);
     }
 
-    SavedBluetoothTwsDeviceUpdater(DashboardFragment fragment,
+    SavedBluetoothTwsDeviceUpdater(Context context, DashboardFragment fragment,
             DevicePreferenceCallback devicePreferenceCallback,
             LocalBluetoothManager localBluetoothManager) {
-        super(fragment, devicePreferenceCallback, localBluetoothManager);
+        super(context, fragment, devicePreferenceCallback, localBluetoothManager);
     }
 
     @Override
