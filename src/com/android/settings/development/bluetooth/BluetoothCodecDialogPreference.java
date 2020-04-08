@@ -22,11 +22,15 @@ import android.widget.RadioGroup;
 
 import com.android.settings.R;
 
+import android.util.Log;
+
 /**
  * Dialog preference to set the Bluetooth A2DP config of codec
  */
 public class BluetoothCodecDialogPreference extends BaseBluetoothDialogPreference implements
         RadioGroup.OnCheckedChangeListener {
+
+    private static final String TAG = "BtCodecDlgPref";
 
     public BluetoothCodecDialogPreference(Context context) {
         super(context);
@@ -60,13 +64,19 @@ public class BluetoothCodecDialogPreference extends BaseBluetoothDialogPreferenc
         mRadioButtonIds.add(R.id.bluetooth_audio_codec_aac);
         mRadioButtonIds.add(R.id.bluetooth_audio_codec_aptx);
         mRadioButtonIds.add(R.id.bluetooth_audio_codec_aptx_hd);
+        mRadioButtonIds.add(R.id.bluetooth_audio_codec_aptx_adaptive);
         mRadioButtonIds.add(R.id.bluetooth_audio_codec_ldac);
+        mRadioButtonIds.add(R.id.bluetooth_audio_codec_aptx_twsp);
         String[] stringArray = context.getResources().getStringArray(
                 R.array.bluetooth_a2dp_codec_titles);
+
+        Log.e(TAG, "a2dp_codec_titles array length: " + stringArray.length);
         for (int i = 0; i < stringArray.length; i++) {
             mRadioButtonStrings.add(stringArray[i]);
         }
+
         stringArray = context.getResources().getStringArray(R.array.bluetooth_a2dp_codec_summaries);
+        Log.e(TAG, "a2dp_codec_summaries array length: " + stringArray.length);
         for (int i = 0; i < stringArray.length; i++) {
             mSummaryStrings.add(stringArray[i]);
         }
