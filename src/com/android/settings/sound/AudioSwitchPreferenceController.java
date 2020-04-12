@@ -189,6 +189,10 @@ public abstract class AudioSwitchPreferenceController extends BasePreferenceCont
      */
     protected List<BluetoothDevice> getConnectedHfpDevices() {
         final List<BluetoothDevice> connectedDevices = new ArrayList<>();
+        if (mLocalBluetoothManager == null) {
+            Log.e(TAG, "Bluetooth is not supported on this device");
+            return connectedDevices;
+        }
         final HeadsetProfile hfpProfile = mProfileManager.getHeadsetProfile();
         if (hfpProfile == null) {
             return connectedDevices;
@@ -207,6 +211,10 @@ public abstract class AudioSwitchPreferenceController extends BasePreferenceCont
      * (STATE_DISCONNECTED, STATE_CONNECTING, STATE_CONNECTED,  STATE_DISCONNECTING)
      */
     protected List<BluetoothDevice> getConnectedA2dpDevices() {
+        if (mLocalBluetoothManager == null) {
+            Log.e(TAG, "Bluetooth is not supported on this device");
+            return new ArrayList<>();
+        }
         final A2dpProfile a2dpProfile = mProfileManager.getA2dpProfile();
         if (a2dpProfile == null) {
             return new ArrayList<>();
@@ -219,6 +227,10 @@ public abstract class AudioSwitchPreferenceController extends BasePreferenceCont
      */
     protected List<BluetoothDevice> getConnectedHearingAidDevices() {
         final List<BluetoothDevice> connectedDevices = new ArrayList<>();
+        if (mLocalBluetoothManager == null) {
+            Log.e(TAG, "Bluetooth is not supported on this device");
+            return connectedDevices;
+        }
         final HearingAidProfile hapProfile = mProfileManager.getHearingAidProfile();
         if (hapProfile == null) {
             return connectedDevices;
