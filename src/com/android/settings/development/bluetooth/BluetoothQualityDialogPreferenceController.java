@@ -105,7 +105,8 @@ public class BluetoothQualityDialogPreferenceController extends
 
     @Override
     public void onHDAudioEnabled(boolean enabled) {
-        mPreference.setEnabled(false);
+        Log.d(TAG, "onHDAudioEnabled: " + enabled);
+        mPreference.setEnabled(enabled);
     }
 
     @VisibleForTesting
