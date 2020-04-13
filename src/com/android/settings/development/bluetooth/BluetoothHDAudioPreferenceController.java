@@ -81,6 +81,7 @@ public class BluetoothHDAudioPreferenceController extends AbstractBluetoothPrefe
             return true;
         }
         final boolean enabled = (Boolean) newValue;
+        Log.e(TAG, "onPreferenceChange: " + enabled);
         final int prefValue = enabled
                 ? BluetoothA2dp.OPTIONAL_CODECS_PREF_ENABLED
                 : BluetoothA2dp.OPTIONAL_CODECS_PREF_DISABLED;
