@@ -598,6 +598,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
 
     @Override
     public void onBluetoothHDAudioEnabled(boolean enabled) {
+        Log.d(TAG, "onBluetoothHDAudioEnabled: " + enabled);
         for (AbstractPreferenceController controller : mPreferenceControllers) {
             if (controller instanceof AbstractBluetoothDialogPreferenceController) {
                 ((AbstractBluetoothDialogPreferenceController) controller).onHDAudioEnabled(
