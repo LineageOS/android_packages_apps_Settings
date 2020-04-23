@@ -61,7 +61,8 @@
         <lineageos.preference.LineageSecureSettingSwitchPreference
             android:key="lockscreen_translucent_notifications_bg_enabled"
             android:title="@string/translucent_lockscreen_notifications_bg_title"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            lineage:requiresConfig="@*android:bool/config_drawNotificationBackground" />
 
         <SwitchPreference
             android:key="security_setting_lockdown_enabled"
