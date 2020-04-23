@@ -116,12 +116,6 @@
             android:dialogTitle="@string/preferred_network_mode_dialogtitle"
             settings:controller="com.android.settings.network.telephony.EnabledNetworkModePreferenceController"/>
 
-        <Preference
-            android:key="carrier_settings_version_key"
-            android:title="@string/carrier_settings_version"
-            settings:controller="com.android.settings.network.telephony.CarrierSettingsVersionPreferenceController"
-            settings:enableCopying="true"/>
-
         <PreferenceCategory
             android:key="calling_category"
             android:title="@string/call_category">
