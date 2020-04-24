@@ -53,8 +53,16 @@ class BasebandVersionPreference :
 
     override fun storage(context: Context): KeyValueStore = createSummaryStorage(context, key)
 
-    override fun getSummary(context: Context): CharSequence? =
-        SystemProperties.get(BASEBAND_PROPERTY, context.getString(R.string.device_info_default))
+    override fun getSummary(context: Context): CharSequence {
+        val baseband = SystemProperties.get(BASEBAND_PROPERTY,
+            context.getString(R.string.device_info_default)
+        )
+
+        return baseband
+            .split(",")
+            .firstOrNull { it.isNotEmpty() }
+            ?: baseband
+    }
 
     override val availabilityDescription =
         "The device must be mobile data capable or voice capable."
