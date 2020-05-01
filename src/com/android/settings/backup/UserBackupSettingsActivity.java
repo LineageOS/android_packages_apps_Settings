@@ -16,11 +16,13 @@
 
 package com.android.settings.backup;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.FragmentActivity;
@@ -77,8 +79,13 @@ public class UserBackupSettingsActivity extends FragmentActivity implements Inde
             }
 
             // use startActivityForResult to let the activity check the caller signature
-            startActivityForResult(intent, 1);
-            finish();
+            try {
+                startActivityForResult(intent, 1);
+                finish();
+            } catch (ActivityNotFoundException e) {
+                Log.e(TAG, "Failed to find backup activity", e);
+                showErrorAndFinish();
+            }
         } else {
             if (Log.isLoggable(TAG, Log.DEBUG)) {
                 Log.d(TAG, "Manufacturer provided backup settings, showing the preference screen");
@@ -91,6 +98,12 @@ public class UserBackupSettingsActivity extends FragmentActivity implements Inde
                     .replace(android.R.id.content, new BackupSettingsFragment())
                     .commit();
         }
+    }
+
+    private void showErrorAndFinish() {
+        Toast.makeText(this, R.string.settings_backup_activity_unavailable, Toast.LENGTH_LONG)
+                .show();
+        finish();
     }
 
     /**
