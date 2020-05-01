@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfc012bd_1ed13a88",
+        "filename": "src/com/android/settings/backup/UserBackupSettingsActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2020-05-01T14:35:22Z",
+      "side": 1,
+      "message": "This should always return non null by looking at the code\n\n    public Intent getIntentForBackupSettings() {\n        Intent intent;\n        if (isIntentProvidedByTransport()) {\n            intent \u003d getIntentForBackupSettingsFromTransport();\n        } else {\n            Log.e(TAG, \"Backup transport has not provided an intent\"\n                    + \" or the component for the intent is not found!\");\n            intent \u003d getIntentForDefaultBackupSettings();\n        }\n        return intent;\n    }\n\n\n    private Intent getIntentForDefaultBackupSettings() {\n        return new Intent(mContext, PrivacySettingsActivity.class);\n    }\n\n    boolean isIntentProvidedByTransport() {\n        Intent intent \u003d getIntentFromBackupTransport();\n        return intent !\u003d null \u0026\u0026 intent.resolveActivity(mContext.getPackageManager()) !\u003d null;\n    }\n\n    private Intent getIntentFromBackupTransport() {\n        try {\n            Intent intent \u003d\n                    mBackupManager.getDataManagementIntent(mBackupManager.getCurrentTransport());\n            if (Log.isLoggable(TAG, Log.DEBUG)) {\n                if (intent !\u003d null) {\n                    Log.d(TAG, \"Parsed intent from backup transport: \" + intent.toString());\n                } else {\n                    Log.d(TAG, \"Received a null intent from backup transport\");\n                }\n            }\n            return intent;\n        } catch (RemoteException e) {\n            Log.e(TAG, \"Error getting data management intent\", e);\n        }\n        return null;\n    }",
+      "revId": "732334b58daa445e55a6985395369cadfddbe54d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
