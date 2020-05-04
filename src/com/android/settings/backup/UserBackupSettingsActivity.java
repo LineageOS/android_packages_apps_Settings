@@ -75,6 +75,17 @@ public class UserBackupSettingsActivity extends FragmentActivity implements Inde
                         + e.getMessage());
                 // the activity may already be enabled
             }
+            try {
+                // enable the package before launching it
+                getPackageManager().setApplicationEnabledSetting(
+                        intent.getComponent().getPackageName(),
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                        PackageManager.DONT_KILL_APP);
+            } catch (SecurityException e) {
+                Log.w(TAG, "Trying to enable package " + intent.getComponent().getPackageName()
+                        + " but couldn't: " + e.getMessage());
+                // the package may already be enabled
+            }
 
             // use startActivityForResult to let the activity check the caller signature
             startActivityForResult(intent, 1);
