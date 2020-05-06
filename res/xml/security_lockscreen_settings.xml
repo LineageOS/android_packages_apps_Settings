@@ -114,6 +114,12 @@
             <intent android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
         </lineageos.preference.RemotePreference>
 
+        <lineageos.preference.RemotePreference
+            android:key="doze_device_settings_dummy"
+            lineage:replacesKey="ambient_display_always_on">
+            <intent android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
+        </lineageos.preference.RemotePreference>
+
     </PreferenceCategory>
 
     <!-- Work profile settings are at the bottom with high order value to avoid users thinking that
