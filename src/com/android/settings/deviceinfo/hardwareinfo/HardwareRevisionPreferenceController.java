@@ -18,6 +18,7 @@ package com.android.settings.deviceinfo.hardwareinfo;
 
 import android.content.Context;
 import android.os.SystemProperties;
+import android.text.TextUtils;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
@@ -31,6 +32,9 @@ public class HardwareRevisionPreferenceController extends BasePreferenceControll
 
     @Override
     public int getAvailabilityStatus() {
+        if (TextUtils.isEmpty(getSummary())) {
+            return UNSUPPORTED_ON_DEVICE;
+        }
         return mContext.getResources().getBoolean(R.bool.config_show_device_model)
                 ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
