@@ -31,6 +31,9 @@ public class HardwareRevisionPreferenceController extends BasePreferenceControll
 
     @Override
     public int getAvailabilityStatus() {
+        if (SystemProperties.get("ro.boot.hardware.revision").isEmpty()) {
+            return UNSUPPORTED_ON_DEVICE;
+        }
         return mContext.getResources().getBoolean(R.bool.config_show_device_model)
                 ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
