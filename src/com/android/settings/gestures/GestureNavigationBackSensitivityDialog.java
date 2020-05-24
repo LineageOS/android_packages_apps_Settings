@@ -73,6 +73,11 @@ public class GestureNavigationBackSensitivityDialog extends InstrumentedDialogFr
         final SeekBar excludedTopSeekBar = view.findViewById(R.id.back_excluded_top_seekbar);
         excludedTopSeekBar.setProgress(excludedPercentage);
 
+        final boolean isShowHintEnabled = LineageSettings.System.getInt(cr,
+                LineageSettings.System.NAVIGATION_BAR_HINT, 1) == 1;
+        final Switch hintSwitch = view.findViewById(R.id.show_navbar_hint);
+        hintSwitch.setChecked(isShowHintEnabled);
+
         return new AlertDialog.Builder(getContext())
                 .setTitle(R.string.edge_to_edge_navigation_title)
                 .setView(view)
@@ -85,6 +90,10 @@ public class GestureNavigationBackSensitivityDialog extends InstrumentedDialogFr
                     int excludedTopPercentage = excludedTopSeekBar.getProgress();
                     LineageSettings.Secure.putInt(cr,
                             LineageSettings.Secure.GESTURE_BACK_EXCLUDE_TOP, excludedTopPercentage);
+
+                    int showHint = hintSwitch.isChecked() ? 1 : 0;
+                    LineageSettings.System.putInt(cr,
+                            LineageSettings.System.NAVIGATION_BAR_HINT, showHint);
                 })
                 .create();
     }
