@@ -146,4 +146,26 @@
                   android:ellipsize="marquee" />
 
     </LinearLayout>
+
+    <TextView
+        android:textStyle="bold"
+        android:layout_marginTop="8dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="12dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:text="@string/show_navbar_hint_title" />
+
+    <Switch
+        android:id="@+id/show_navbar_hint"
+        android:layout_marginTop="22dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="12dp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:text="@string/show_navbar_hint_summary"/>
 </LinearLayout>
