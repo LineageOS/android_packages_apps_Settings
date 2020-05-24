@@ -25,6 +25,7 @@ import android.content.om.IOverlayManager;
 import android.os.Bundle;
 import android.os.ServiceManager;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -76,6 +77,18 @@ public class GestureNavigationBackSensitivityDialog extends InstrumentedDialogFr
                 LineageSettings.Secure.GESTURE_BACK_EXCLUDE_TOP, 0);
         final SeekBar excludedTopSeekBar = view.findViewById(R.id.back_excluded_top_seekbar);
         excludedTopSeekBar.setProgress(excludedPercentage);
+
+        final boolean isHideHintEnabled = LineageSettings.System.getInt(cr,
+                LineageSettings.System.NAVIGATION_BAR_HIDE_HINT, 0) == 1;
+        final Switch hideHintSwitch = view.findViewById(R.id.hide_navbar_hint);
+        hideHintSwitch.setChecked(isHideHintEnabled);
+        hideHintSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                LineageSettings.System.putInt(cr, LineageSettings.System.NAVIGATION_BAR_HIDE_HINT,
+                            isChecked ? 1 : 0);
+            }
+        });
 
         return new AlertDialog.Builder(getContext())
                 .setView(view)
