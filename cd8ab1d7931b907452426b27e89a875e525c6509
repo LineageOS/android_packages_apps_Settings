@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3c7994c_31b49b6a",
+        "filename": "src/com/android/settings/gestures/GestureNavigationBackSensitivityDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2020-05-24T18:58:22Z",
+      "side": 1,
+      "message": "the writing of the setting should happen in \"setPositiveButton\" of the dialog to be consistent with other settings being only applied when pressing the OK-Button. Also, toggling it right now applies it directly, forcing a rebuild of the screen, which can take a while on older devices",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "cd8ab1d7931b907452426b27e89a875e525c6509",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
