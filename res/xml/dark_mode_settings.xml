@@ -55,4 +55,10 @@
         android:title="@string/night_display_end_time_title"
         settings:searchable="false"/>
 
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="berry_black_theme"
+        android:dependency="dark_ui_activated"
+        android:title="@string/berry_black_theme_title"
+        android:summary="@string/berry_black_theme_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>
