@@ -16,6 +16,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/dark_ui_mode"
     android:key="dark_ui_mode_screen"
@@ -38,6 +39,12 @@
         settings:allowDividerBelow="true"
         settings:controller="com.android.settings.display.darkmode.DarkModeActivationPreferenceController"
         settings:keywords="@string/keywords_dark_ui_mode"/>
+
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="berry_black_theme"
+        android:title="@string/berry_black_theme_title"
+        android:summary="@string/berry_black_theme_summary"
+        android:defaultValue="false" />
 
     <com.android.settingslib.widget.FooterPreference
             android:key="dark_ui_footer"
