@@ -55,4 +55,28 @@
         android:title="@string/night_display_end_time_title"
         settings:searchable="false"/>
 
+<<<<<<< HEAD   (4ad553 Disable notification channel warnings by default)
+=======
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="dark_ui_activated"
+        android:title="@string/dark_ui_title"
+        android:selectable="false"
+        android:layout="@layout/dark_ui_activation_button"
+        settings:allowDividerBelow="true"
+        settings:controller="com.android.settings.display.darkmode.DarkModeActivationPreferenceController"/>
+
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="berry_black_theme"
+        android:title="@string/berry_black_theme_title"
+        android:summary="@string/berry_black_theme_summary"
+        android:defaultValue="false" />
+
+    <com.android.settingslib.widget.FooterPreference
+            android:key="dark_ui_footer"
+            android:title="@string/dark_ui_text"
+            android:selectable="false"
+            settings:searchable="false"
+            settings:allowDividerAbove="true"/>
+
+>>>>>>> CHANGE (ac41e8 Settings: support black theme for dark mode [2/4])
 </PreferenceScreen>
