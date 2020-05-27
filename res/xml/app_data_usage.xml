@@ -59,6 +59,11 @@
             android:title="@string/data_usage_app_settings" />
 
         <com.android.settingslib.RestrictedSwitchPreference
+            android:key="restrict_all"
+            android:title="@string/data_usage_app_restrict_all"
+            android:summary="@string/data_usage_app_restrict_all_summary" />
+
+        <com.android.settingslib.RestrictedSwitchPreference
             android:key="restrict_background"
             android:title="@string/data_usage_app_restrict_background"
             android:summary="@string/data_usage_app_restrict_background_summary"
