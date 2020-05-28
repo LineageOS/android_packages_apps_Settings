@@ -115,6 +115,7 @@ import com.android.settings.fuelgauge.HighPowerDetail;
 import com.android.settings.notification.ConfigureNotificationSettings;
 import com.android.settings.notification.NotificationBackend;
 import com.android.settings.notification.app.AppNotificationSettings;
+import com.android.settings.notification.history.NotificationStation;
 import com.android.settings.widget.LoadingViewController;
 import com.android.settings.wifi.AppStateChangeWifiStateBridge;
 import com.android.settings.wifi.ChangeWifiStateDetails;
@@ -169,6 +170,7 @@ public class ManageApplications extends InstrumentedFragment
     // constant value that can be used to check return code from sub activity.
     private static final int INSTALLED_APP_DETAILS = 1;
     private static final int ADVANCED_SETTINGS = 2;
+    private static final int NOTIFICATION_LOG = 3;
 
     public static final int SIZE_TOTAL = 0;
     public static final int SIZE_INTERNAL = 1;
@@ -757,6 +759,9 @@ public class ManageApplications extends InstrumentedFragment
         mOptionsMenu.findItem(R.id.hide_system).setVisible(mShowSystem
                 && mListType != LIST_TYPE_HIGH_POWER);
 
+        mOptionsMenu.findItem(R.id.notification_log).setVisible(
+                mListType == LIST_TYPE_NOTIFICATION);
+
         mOptionsMenu.findItem(R.id.reset_app_preferences).setVisible(mListType == LIST_TYPE_MAIN);
 
         // Hide notification menu items, because sorting happens when filtering
@@ -779,6 +784,14 @@ public class ManageApplications extends InstrumentedFragment
         } else if (i == R.id.show_system || i == R.id.hide_system) {
             mShowSystem = !mShowSystem;
             mApplications.rebuild();
+        } else if (i == R.id.notification_log) {
+            new SubSettingLauncher(getContext())
+                    .setDestination(NotificationStation.class.getName())
+                    .setTitleRes(R.string.notification_log_title)
+                    .setSourceMetricsCategory(getMetricsCategory())
+                    .setResultListener(this, NOTIFICATION_LOG)
+                    .launch();
+            return true;
         } else if (i == R.id.reset_app_preferences) {
             mResetAppsHelper.buildResetDialog();
             return true;
