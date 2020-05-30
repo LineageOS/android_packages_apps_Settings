@@ -46,6 +46,11 @@
             android:title="@string/sms_preference"
             settings:controller="com.android.settings.network.telephony.SmsDefaultSubscriptionController"/>
 
+        <ListPreference
+            android:key="data_preference"
+            android:title="@string/data_preference"
+            settings:controller="com.android.settings.network.telephony.DataDefaultSubscriptionController"/>
+
         <Preference
             android:key="cdma_lte_data_service_key"
             android:title="@string/cdma_lte_data_service"

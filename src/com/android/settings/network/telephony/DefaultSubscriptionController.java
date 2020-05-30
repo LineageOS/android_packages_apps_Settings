@@ -106,6 +106,8 @@ public abstract class DefaultSubscriptionController extends BasePreferenceContro
         final SubscriptionInfo info = getDefaultSubscriptionInfo();
         if (info != null) {
             return info.getDisplayName();
+        } else if (this instanceof DataDefaultSubscriptionController) {
+            return mContext.getString(R.string.data_preference_not_set_up);
         } else {
             return mContext.getString(R.string.calls_and_sms_ask_every_time);
         }
@@ -147,9 +149,12 @@ public abstract class DefaultSubscriptionController extends BasePreferenceContro
                 subIsAvailable = true;
             }
         }
-        // Add the extra "Ask every time" value at the end.
-        displayNames.add(mContext.getString(R.string.calls_and_sms_ask_every_time));
-        subscriptionIds.add(Integer.toString(SubscriptionManager.INVALID_SUBSCRIPTION_ID));
+
+        if (!(this instanceof DataDefaultSubscriptionController)) {
+            // Add the extra "Ask every time" value at the end.
+            displayNames.add(mContext.getString(R.string.calls_and_sms_ask_every_time));
+            subscriptionIds.add(Integer.toString(SubscriptionManager.INVALID_SUBSCRIPTION_ID));
+        }
 
         mPreference.setEntries(displayNames.toArray(new CharSequence[0]));
         mPreference.setEntryValues(subscriptionIds.toArray(new CharSequence[0]));
