@@ -64,6 +64,12 @@
             android:summary="@string/lockdown_settings_summary"
             settings:controller="com.android.settings.security.LockdownButtonPreferenceController" />
 
+        <PreferenceScreen
+            android:key="lock_screen_shortcuts"
+            android:title="@string/lock_screen_shortcuts_title"
+            android:summary="@string/lock_screen_shortcuts_summary">
+            <intent android:action="com.android.systemui.tuner.LockscreenFragment" />
+        </PreferenceScreen>
     </PreferenceCategory>
 
     <PreferenceCategory
