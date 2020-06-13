@@ -50,11 +50,72 @@
         android:summary="@string/lockdown_settings_summary"
         settings:controller="com.android.settings.security.LockdownButtonPreferenceController"/>
 
+<<<<<<< HEAD   (141a35 Merge tag 'android-9.0.0_r56' of https://android.googlesourc)
     <PreferenceScreen
         android:key="lockscreen_tuner"
         android:title="@string/open_lockscreen_tuner">
         <intent android:action="com.android.settings.action.LOCK_SCREEN_TUNER" />
     </PreferenceScreen>
+=======
+        <SwitchPreference
+            android:key="security_setting_lockdown_enabled"
+            android:title="@string/lockdown_settings_title"
+            android:summary="@string/lockdown_settings_summary"
+            settings:controller="com.android.settings.security.LockdownButtonPreferenceController" />
+
+        <PreferenceScreen
+            android:key="lock_screen_shortcuts"
+            android:title="@string/lock_screen_shortcuts_title"
+            android:summary="@string/lock_screen_shortcuts_summary">
+            <intent android:action="com.android.systemui.tuner.LockscreenFragment" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="ambient_display_category_when_to_show"
+        android:title="@string/ambient_display_category_triggers"
+        android:order="1000">
+
+        <com.android.settingslib.RestrictedSwitchPreference
+            android:key="ambient_display_always_on"
+            android:title="@string/doze_always_on_title"
+            android:summary="@string/doze_always_on_summary"
+            settings:controller="com.android.settings.display.AmbientDisplayAlwaysOnPreferenceController"
+            settings:userRestriction="no_ambient_display" />
+
+        <Preference
+            android:key="ambient_display_tap"
+            android:title="@string/ambient_display_tap_screen_title"
+            android:fragment="com.android.settings.gestures.TapScreenGestureSettings"
+            settings:controller="com.android.settings.gestures.TapScreenGesturePreferenceController" />
+
+        <Preference
+            android:key="ambient_display_double_tap"
+            android:title="@string/ambient_display_title"
+            android:fragment="com.android.settings.gestures.DoubleTapScreenSettings"
+            settings:controller="com.android.settings.gestures.DoubleTapScreenPreferenceController" />
+
+        <Preference
+            android:key="ambient_display_pick_up"
+            android:title="@string/ambient_display_pickup_title"
+            android:fragment="com.android.settings.gestures.PickupGestureSettings"
+            settings:controller="com.android.settings.gestures.PickupGesturePreferenceController" />
+
+        <SwitchPreference
+            android:key="ambient_display_notification"
+            android:title="@string/doze_title"
+            android:summary="@string/doze_summary"
+            settings:controller="com.android.settings.display.AmbientDisplayNotificationsPreferenceController" />
+
+        <lineageos.preference.RemotePreference
+            android:key="doze_device_settings"
+            android:title="@string/ambient_display_screen_title"
+            lineage:replacesKey="ambient_display_notification">
+            <intent android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
+        </lineageos.preference.RemotePreference>
+
+    </PreferenceCategory>
+>>>>>>> CHANGE (e1aed8 Settings: Bring back lock screen short Bringing back lock sc)
 
     <!-- Work profile settings are at the bottom with high order value to avoid users thinking that
          any of the above settings (including dynamic) are specific to the work profile. -->

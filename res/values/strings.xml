@@ -835,7 +835,25 @@
     <!-- Text shown for the title of the lockdown option -->
     <string name="lockdown_settings_title">Show lockdown option</string>
     <!-- Text shown for the description of the lockdown option -->
+<<<<<<< HEAD   (141a35 Merge tag 'android-9.0.0_r56' of https://android.googlesourc)
     <string name="lockdown_settings_summary">Display power button option that turns off Smart Lock, fingerprint unlocking, and notifications on the lock screen</string>
+=======
+    <string name="lockdown_settings_summary">Display power button option that turns off Smart Lock, biometric unlocking, and notifications on the lock screen</string>
+    <!-- Give the user quick access to the lock screen shortcut setting-->
+    <string name="lock_screen_shortcuts_title">Lock Screen Shortcut</string>
+    <string name="lock_screen_shortcuts_summary">Customize the lock screen shortcuts from here</string>
+
+    <!-- Text shown for the title of the extend unlock mode option for trust agents [CHAR LIMIT=40] -->
+    <string name="trust_agents_extend_unlock_title">Trust agents only extend unlock</string>
+    <!-- Text shown for the description of the extend unlock mode option [CHAR LIMIT=NONE] -->
+    <string name="trust_agents_extend_unlock_summary">If enabled, trust agents will keep your device unlocked for longer, but can no longer unlock a locked device.</string>
+
+    <!-- Text shown for the title of the lock when trust lost option [CHAR LIMIT=40] -->
+    <string name="trust_lost_locks_screen_title">Lock screen when trust is lost</string>
+    <!-- Text shown for the description of the lock when trust lost option [CHAR LIMIT=NONE -->
+    <string name="trust_lost_locks_screen_summary">If enabled, the device will lock when the last trust agent loses trust</string>
+
+>>>>>>> CHANGE (e1aed8 Settings: Bring back lock screen short Bringing back lock sc)
     <!-- Text shown for summary of owner info setting (if none set) [CHAR LIMIT=40]-->
     <string name="owner_info_settings_summary">None</string>
     <!-- Description of how many characters are used in owner info [CHAR LIMIT=40]-->
@@ -10087,4 +10105,542 @@
 
     <!-- Title for Connected device shortcut [CHAR LIMIT=30] -->
     <string name="devices_title">Devices</string>
+<<<<<<< HEAD   (141a35 Merge tag 'android-9.0.0_r56' of https://android.googlesourc)
 </resources>
+=======
+
+    <!-- Homepage bottom menu. Title for display all Settings [CHAR LIMIT=30] -->
+    <string name="homepage_all_settings">All Settings</string>
+
+    <!-- Homepage bottom menu. Title for display personalized Settings [CHAR LIMIT=30] -->
+    <string name="homepage_personal_settings">Suggestions</string>
+
+    <!-- Available networks screen, name of button when user wants to select network manually [CHAR LIMIT=60] -->
+    <string name="choose_network_title">Choose network</string>
+    <!-- Available networks screen, text when no networks connected [CHAR LIMIT=60] -->
+    <string name="network_disconnected">Disconnected</string>
+    <!-- Available networks screen, text when network connected [CHAR LIMIT=60] -->
+    <string name="network_connected">Connected</string>
+    <!-- Available networks screen, text when a network is connecting [CHAR LIMIT=60] -->
+    <string name="network_connecting">Connecting\u2026</string>
+    <!-- Available networks screen, text when a network cannot be connected [CHAR LIMIT=60] -->
+    <string name="network_could_not_connect">Couldn\u2019t connect</string>
+    <!-- Available networks screen, text when no networks are found [CHAR LIMIT=NONE] -->
+    <string name="empty_networks_list">No networks found.</string>
+    <!-- Available networks screen, toast when an error is encountered when searching for networks [CHAR LIMIT=NONE] -->
+    <string name="network_query_error">Couldn\u2019t find networks. Try again.</string>
+    <!-- Text to show this network is forbidden [CHAR LIMIT=NONE] -->
+    <string name="forbidden_network">(forbidden)</string>
+
+    <!-- Message informs the user that has no SIM card in personalized Settings [CHAR LIMIT=30] -->
+    <string name="no_sim_card">No SIM card</string>
+
+    <!-- The following strings are summaries for preferred network modes in Mobile network settings,
+     and have a character limit of 100 -->
+    <!-- WCDMA preferred [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_wcdma_perf_summary">Preferred network mode: WCDMA preferred</string>
+    <!-- GSM only [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_gsm_only_summary">Preferred network mode: GSM only</string>
+    <!-- WCDMA only [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_wcdma_only_summary">Preferred network mode: WCDMA only</string>
+    <!-- GSM / WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_gsm_wcdma_summary">Preferred network mode: GSM / WCDMA</string>
+    <!-- CDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_cdma_summary">Preferred network mode: CDMA</string>
+    <!-- CDMA / EvDo [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_cdma_evdo_summary">Preferred network mode: CDMA / EvDo</string>
+    <!-- CDMA only [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_cdma_only_summary">Preferred network mode: CDMA only</string>
+    <!-- EvDo only [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_evdo_only_summary">Preferred network mode: EvDo only</string>
+    <!-- CDMA/EvDo/GSM/WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary">Preferred network mode: CDMA/EvDo/GSM/WCDMA</string>
+    <!-- LTE [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_summary">Preferred network mode: LTE </string>
+    <!-- GSM/WCDMA/LTE [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_gsm_wcdma_summary">Preferred network mode: GSM/WCDMA/LTE</string>
+    <!-- CDMA+LTE/EVDO [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_cdma_evdo_summary">Preferred network mode: CDMA+LTE/EVDO</string>
+    <!-- Global [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_global_summary">Preferred network mode: Global</string>
+    <!-- LTE / WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_wcdma_summary">Preferred network mode: LTE / WCDMA</string>
+    <!-- LTE / GSM / UMTS [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_gsm_umts_summary">Preferred network mode: LTE / GSM / UMTS</string>
+    <!-- LTE / CDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_cdma_summary">Preferred network mode: LTE / CDMA</string>
+    <!-- TDSCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_tdscdma_summary">Preferred network mode: TDSCDMA</string>
+    <!-- TDSCDMA / WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_tdscdma_wcdma_summary">Preferred network mode: TDSCDMA / WCDMA</string>
+    <!-- LTE / TDSCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_tdscdma_summary">Preferred network mode: LTE / TDSCDMA</string>
+    <!-- TDSCDMA / GSM [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_tdscdma_gsm_summary">Preferred network mode: TDSCDMA / GSM</string>
+    <!-- LTE/GSM/TDSCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary">Preferred network mode: LTE/GSM/TDSCDMA</string>
+    <!-- TDSCDMA/GSM/WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary">Preferred network mode: TDSCDMA/GSM/WCDMA</string>
+    <!-- LTE/TDSCDMA/WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary">Preferred network mode: LTE/TDSCDMA/WCDMA</string>
+    <!-- LTE/TDSCDMA/GSM/WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary">Preferred network mode: LTE/TDSCDMA/GSM/WCDMA</string>
+    <!-- TDSCDMA/CDMA/EvDo/GSM/WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary">Preferred network mode: TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
+    <!-- LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Preferred network mode: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
+
+    <!-- Text for Network lte [CHAR LIMIT=NONE] -->
+    <string name="network_lte">LTE (recommended)</string>
+    <!-- Text for Network 4g [CHAR LIMIT=NONE] -->
+    <string name="network_4G">4G (recommended)</string>
+    <!-- Text for Network 3g [CHAR LIMIT=NONE] -->
+    <string name="network_3G" translatable="false">3G</string>
+    <!-- Text for Network 2g [CHAR LIMIT=NONE] -->
+    <string name="network_2G" translatable="false">2G</string>
+    <!-- Text for Network 1x [CHAR LIMIT=NONE] -->
+    <string name="network_1x" translatable="false">1x</string>
+    <!-- Text for Network global [CHAR LIMIT=NONE] -->
+    <string name="network_global">Global</string>
+
+    <!-- Available networks screen title/heading [CHAR LIMIT=NONE] -->
+    <string name="label_available">Available networks</string>
+    <!-- Mobile network settings screen, toast when searching for available networks [CHAR LIMIT=NONE] -->
+    <string name="load_networks_progress">Searching\u2026</string>
+    <!-- Available networks screen, toast when registering on a specific network [CHAR LIMIT=NONE] -->
+    <string name="register_on_network">Registering on <xliff:g id="network" example="Verizon">%s</xliff:g>\u2026</string>
+    <!-- Available networks screen, toast when SIM card isn't allowed on a network [CHAR LIMIT=NONE] -->
+    <string name="not_allowed">Your SIM card doesn\u2019t allow a connection to this network.</string>
+    <!-- Available networks screen, toast when unable to connect to a network temporarily [CHAR LIMIT=NONE] -->
+    <string name="connect_later">Can\u2019t connect to this network right now. Try again later.</string>
+    <!-- Available networks screen, toast when registered on a specific network [CHAR LIMIT=NONE] -->
+    <string name="registration_done">Registered on network.</string>
+
+    <!-- Available networks screen, name of switch button for whether to select network automatically [CHAR LIMIT=NONE] -->
+    <string name="select_automatically">Automatically select network</string>
+
+    <!-- A menu item in "Mobile network settings" that allows the user to update the phone
+     with mobile operator specific settings. [CHAR LIMIT=25] -->
+    <string name="carrier_settings_title">Carrier settings</string>
+    <!-- Preference title for launching an account manager page for prepaid LTE [CHAR LIMIT=30] -->
+    <string name="cdma_lte_data_service">Set up data service</string>
+    <!-- Mobile network settings screen, title of Mobile Data switch preference [CHAR LIMIT=NONE] -->
+    <string name="mobile_data_settings_title">Mobile data</string>
+    <!-- Mobile network settings screen, summary of Mobile data switch preference [CHAR LIMIT=NONE] -->
+    <string name="mobile_data_settings_summary">Access data using mobile network</string>
+    <!-- Mobile network settings screen, summary of Mobile data switch preference when the network
+         is opportunistic and will always be used when it is in range. [CHAR LIMIT=NONE] -->
+    <string name="mobile_data_settings_summary_auto_switch">
+        Phone will automatically switch to this carrier when in range
+    </string>
+
+    <!-- Mobile network settings screen, title of item showing the name of the default subscription
+     that will be used for calls. This only appears in multi-SIM mode. [CHAR LIMIT=NONE] -->
+    <string name="calls_preference">Calls preference</string>
+    <!-- Mobile network settings screen, title of item showing the name of the default subscription
+     that will be used for SMS messages. This only appears in multi-SIM mode. [CHAR LIMIT=NONE] -->
+    <string name="sms_preference">SMS preference</string>
+    <!-- Mobile network settings screen, a label in a chooser dialog that appears when choosing the
+    default subscription to use for either calls or SMS when in multi-SIM mode. This label means
+    that the user will be asked which mobile network subscription to use every time they place a
+    call or send an SMS, instead of defaulting to one particular subscription. [CHAR LIMIT=40]-->
+    <string name="calls_and_sms_ask_every_time">Ask every time</string>
+
+    <!-- Summary of the 'Mobile network' item on the Network & internet page when there is no mobile
+         service setup yet (eg no SIM card inserted and no eSIM configured). Tapping it leads to a
+         UI where the user can setup service. [CHAR LIMIT=50] -->
+    <string name="mobile_network_summary_add_a_network">Add a network</string>
+    <!-- Summary of the 'Mobile network' item on the Network & internet page when there is more than
+         one mobile service configured (aka "dual SIM") - it shows a count of SIM/eSIM and tapping
+         it leads to a page showing a list of the mobile service subscriptions. [CHAR LIMIT=40] -->
+    <plurals name="mobile_network_summary_count">
+        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> SIM</item>
+        <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> SIMs</item>
+    </plurals>
+
+    <!-- Network & internet page. Summary indicating that a SIM is used by default for calls when
+         multiple SIMs are present. [CHAR LIMIT=50] -->
+    <string name="default_for_calls">Default for calls</string>
+    <!-- Network & internet page. Summary indicating that a SIM is used by default for SMS messages
+         when multiple SIMs are present. [CHAR LIMIT=50] -->
+    <string name="default_for_sms">Default for SMS</string>
+    <!-- Network & internet page. Summary indicating that a SIM is used by default for calls and SMS
+         messages when multiple SIMs are present. [CHAR LIMIT=50] -->
+    <string name="default_for_calls_and_sms">Default for calls &amp; SMS</string>
+    <!-- Network & internet page. Summary indicating that a SIM is used by default for mobile data
+         when multiple SIMs are present. [CHAR LIMIT=50] -->
+    <string name="default_for_mobile_data">Default for mobile data</string>
+    <!-- Network & internet page. Summary indicating that a SIM has an active mobile data connection
+         when multiple SIMs are present. [CHAR LIMIT=50] -->
+    <string name="mobile_data_active">Mobile data active</string>
+    <!-- Network & internet page. Summary indicating that a SIM is used by default for mobile data
+         when multiple SIMs are present, but mobile data is currently turned off.
+         [CHAR LIMIT=50] -->
+    <string name="mobile_data_off">Mobile data off</string>
+    <!-- Network & internet page. Summary indicating that a SIM is available to be used for services
+         such as calls, SMS, or data when multiple SIMs are present, but is not currently the
+          default SIM for any of those services. [CHAR LIMIT=50] -->
+    <string name="subscription_available">Available</string>
+    <!-- Network & internet page. Summary indicating that a SIM is configured and may be used for
+         some services, and that network is currently in range but not being used. For instance, it
+         may be able to provide a mobile data connection that we aren't using because we're already
+         connected to wifi. [CHAR LIMIT=50] -->
+    <string name="mobile_network_in_range">In range</string>
+    <!-- Network & internet page. Summary indicating that a SIM is configured and may be used for
+         some services, but the network not currently in range. [CHAR LIMIT=50] -->
+    <string name="mobile_network_not_in_range">Not in range</string>
+
+    <!-- Title of item shown at the bottom of the page listing multiple mobile service
+         subscriptions; tapping it leads to a UI to add more [CHAR LIMIT=40] -->
+    <string name="mobile_network_list_add_more">Add more</string>
+    <!-- Summary for an item in the page listing multiple mobile service subscriptions, indicating
+         that service is active and is tied to a physical SIM card [CHAR LIMIT=40] -->
+    <string name="mobile_network_active_sim">Active / SIM</string>
+    <!-- Summary for an item in the page listing multiple mobile service subscriptions, indicating
+         that service is inactive and is tied to a physical SIM card [CHAR LIMIT=40] -->
+    <string name="mobile_network_inactive_sim">Inactive / SIM</string>
+    <!-- Summary for an item in the page listing multiple mobile service subscriptions, indicating
+         that service is active and is tied to an eSIM profile [CHAR LIMIT=40] -->
+    <string name="mobile_network_active_esim">Active / Downloaded SIM</string>
+    <!-- Summary for an item in the page listing multiple mobile service subscriptions, indicating
+         that service is inactive and is tied to an eSIM profile [CHAR LIMIT=40] -->
+    <string name="mobile_network_inactive_esim">Inactive / Downloaded SIM</string>
+    <!-- Title of a dialog that lets a user modify the display name used for a mobile network
+         subscription in various places in the Settings app. The default name is typically just the
+         carrier name, but especially in multi-SIM configurations users may want to use a different
+         name. [CHAR LIMIT=40] -->
+    <string name="mobile_network_sim_name">SIM name &amp; color</string>
+    <!-- Label for an item listing the name of the SIM that the user has specified. [CHAR LIMIT=40] -->
+    <string name="mobile_network_sim_name_label">Name</string>
+    <!-- Label for an item listing the color of the SIM that the user has specified. [CHAR LIMIT=40] -->
+    <string name="mobile_network_sim_color_label">Color (used by compatible apps)</string>
+    <!-- Label on the confirmation button of a dialog that lets a user set the display name and
+         color of a mobile network subscription [CHAR LIMIT=20] -->
+    <string name="mobile_network_sim_name_rename">Save</string>
+    <!-- Label for the on position of a switch on the mobile network details page which allows
+         disabling/enabling a SIM. The SIM is enabled in this state. [CHAR LIMIT=40] -->
+    <string name="mobile_network_use_sim_on">Use SIM</string>
+    <!-- Label for the off position of a switch on the mobile network details page which allows
+         disabling/enabling a SIM. The SIM is disabled in this state. [CHAR LIMIT=40] -->
+    <string name="mobile_network_use_sim_off">Off</string>
+    <!-- Text shown in an information footer on the SIM details page for a physical SIM notifying
+         the user that the way to disable this SIM is to physically remove it. This is in contrast
+         to eSIM's, which can disabled using an on/off toggle switch. [CHAR LIMIT=NONE] -->
+    <string name="mobile_network_disable_sim_explanation">
+        To disable this SIM, remove the SIM card
+    </string>
+
+    <!--Summary used when a physical SIM is disabled, indicating that tapping on the preference will
+        enable the SIM. This may be used as the summary of the 'Mobile network' item on the
+        Network & internet page (if there are no other SIMs), or on the mobile network list page.
+        [CHAR LIMIT=50] -->
+    <string name="mobile_network_tap_to_activate">
+        Tap to activate <xliff:g id="carrier" example="T-mobile">%1$s</xliff:g>
+    </string>
+
+    <!-- Title for a confirmation dialog when the user is enabling an eSIM subscription and there
+         is already another active eSIM subscription which will need to be disabled if they proceed.
+         [CHAR LIMIT=60] -->
+    <string name="mobile_network_esim_swap_confirm_title">
+        Switch to <xliff:g id="carrier" example="T-mobile">%1$s</xliff:g>?
+    </string>
+    <!-- Body of a confirmation dialog when the user is enabling an eSIM subscription and there
+         is already another active eSIM subscription which will need to be disabled if they proceed.
+         [CHAR LIMIT=NONE] -->
+    <string name="mobile_network_esim_swap_confirm_body">
+        Only one downloaded SIM can be active at a time.\n\nSwitching to
+        <xliff:g id="carrier1" example="T-mobile">%1$s</xliff:g> won\u0027t cancel your
+        <xliff:g id="carrier2" example="Verizon">%2$s</xliff:g> service.
+    </string>
+    <!-- Ok button label on confirmation dialog when the user is enabling an eSIM subscription and
+         there is already another active eSIM subscription which will need to be disabled if they
+         proceed. [CHAR LIMIT=25] -->
+    <string name="mobile_network_esim_swap_confirm_ok">
+        Switch to <xliff:g id="carrier" example="T-mobile">%1$s</xliff:g>
+    </string>
+
+    <!-- Mobile network details page. Label for an option that lets the user delete an eSIM from
+         the device. [CHAR LIMIT=60] -->
+    <string name="mobile_network_erase_sim">Erase SIM</string>
+    <!-- Title of a confirmation dialog for deleting an eSIM from the device.
+         [CHAR LIMIT=60] -->
+    <string name="mobile_network_erase_sim_dialog_title">Erase this downloaded SIM?</string>
+    <!-- Body text of of a confirmation dialog for deleting an eSIM from the device.
+         [CHAR LIMIT=NONE] -->
+    <string name="mobile_network_erase_sim_dialog_body">
+        Erasing this SIM removes <xliff:g id="carrier" example="Verizon">%1$s</xliff:g> service
+        from this device.\n\nService for <xliff:g id="carrier" example="Verizon">%2$s</xliff:g>
+        won\u2019t be canceled.
+    </string>
+    <!-- OK button on a confirmation dialog for deleting an eSIM from the device.
+         [CHAR LIMIT=30] -->
+    <string name="mobile_network_erase_sim_dialog_ok">Erase</string>
+    <!-- Body text of the progress dialog we show while deleting an eSIM from the device.
+         [CHAR LIMIT=NONE] -->
+    <string name="mobile_network_erase_sim_dialog_progress">Erasing SIM\u2026</string>
+
+    <!-- Title of a dialog indicating that an error ocurred when deleting an eSIM from the device
+         [CHAR LIMIT=60] -->
+    <string name="mobile_network_erase_sim_error_dialog_title">Can\u2019t erase SIM</string>
+    <!-- Body of a dialog indicating that an error ocurred when deleting an eSIM from the device
+         [CHAR LIMIT=NONE] -->
+    <string name="mobile_network_erase_sim_error_dialog_body">
+        This SIM can\u2019t be erased due to an error.\n\nRestart your device and try again.
+    </string>
+
+    <!-- Title for preferred network type [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_title">Preferred network type</string>
+    <!-- Summary for preferred network type [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_summary">Change the network operating mode</string>
+    <!-- Dialog title for preferred network type [CHAR LIMIT=NONE] -->
+    <string name="preferred_network_mode_dialogtitle">Preferred network type</string>
+    <!-- Mobile network settings screen, name of the option to manage carrier profiles on devices which support embedded carrier profiles [CHAR LIMIT=NONE] -->
+    <string name="carrier_settings_euicc">Carrier</string>
+    <!-- Mobile network settings screen, a string showing the version of carrier settings for this
+         subscription [CHAR LIMIT=NONE] -->
+    <string name="carrier_settings_version">Settings version</string>
+
+    <!-- Mobile network settings screen, name for call settings category [CHAR LIMIT=NONE] -->
+    <string name="call_category">Calling</string>
+    <!-- Mobile network settings screen, title of Video calling setting [CHAR LIMIT=NONE] -->
+    <string name="video_calling_settings_title">Carrier video calling</string>
+
+    <!-- Mobile network settings screen, setting option name [CHAR LIMIT=NONE] -->
+    <string name="cdma_system_select_title">System select</string>
+    <!-- Mobile network settings screen, setting summary text [CHAR LIMIT=NONE] -->
+    <string name="cdma_system_select_summary">Change the CDMA roaming mode</string>
+    <!-- System select settings screen title [CHAR LIMIT=NONE] -->
+    <string name="cdma_system_select_dialogtitle">System select</string>
+
+    <!-- Mobile network settings screen, name for network operator category [CHAR LIMIT=NONE] -->
+    <string name="network_operator_category">Network</string>
+    <!-- Available networks screen, name of button when user wants to select network manually [CHAR LIMIT=NONE] -->
+    <string name="network_select_title">Network</string>
+
+    <!-- Title for CDMA subscription [CHAR LIMIT=50] -->
+    <string name="cdma_subscription_title">CDMA subscription</string>
+    <!-- Summary for CDMA subscription [CHAR LIMIT=NONE] -->
+    <string name="cdma_subscription_summary">Change between RUIM/SIM and NV</string>
+    <!-- Dialog title for CDMA subscription [CHAR LIMIT=30] -->
+    <string name="cdma_subscription_dialogtitle">subscription</string>
+
+    <!-- Title to register automatically [CHAR LIMIT=NONE] -->
+    <string name="register_automatically">Automatic registration\u2026</string>
+    <!-- Mobile network settings screen, dialog message title when user selects the Data roaming check box [CHAR LIMIT=120] -->
+    <string name="roaming_alert_title">Allow data roaming?</string>
+    <!-- Mobile network settings screen, message asking the user to check their pricing with their Carrier, when enabling Data roaming. [CHAR LIMIT=NONE] -->
+    <string name="roaming_check_price_warning">Check with your network provider for pricing.</string>
+
+    <!-- Title for mobile data preference, to display the mobile data usage for each app. [CHAR LIMIT=NONE]-->
+    <string name="mobile_data_usage_title">App data usage</string>
+    <!-- Summary to show the current network mode is invalid. [CHAR LIMIT=NONE]-->
+    <string name="mobile_network_mode_error">Invalid Network Mode <xliff:g id="networkModeId" example="0">%1$d</xliff:g>. Ignore.</string>
+    <!-- Title for Apn settings in mobile network settings [CHAR LIMIT=60] -->
+    <string name="mobile_network_apn_title">Access Point Names</string>
+
+    <!-- Available networks screen, summary when button disallowed due to permanent automatic mode [CHAR LIMIT=NONE] -->
+    <string name="manual_mode_disallowed_summary">Unavailable when connected to <xliff:g id="carrier" example="verizon">%1$s</xliff:g></string>
+
+    <!-- Used for EmergencyInfoSlice slice helper class [CHAR LIMIT=NONE]-->
+    <string name="emergency_info_contextual_card_summary">Medical info, emergency contacts</string>
+
+    <!-- See more items in contextual homepage [CHAR LIMIT=30]-->
+    <string name="see_more">See more</string>
+    <!-- See less items in contextual homepage [CHAR LIMIT=30]-->
+    <string name="see_less">See less</string>
+
+    <!-- Title for Network connection request Dialog [CHAR LIMIT=60] -->
+    <string name="network_connection_request_dialog_title">Device to use with <xliff:g id="appName" example="ThirdPartyAppName">%1$s</xliff:g></string>
+    <!-- Message for Network connection timeout Dialog [CHAR LIMIT=NONE] -->
+    <string name="network_connection_timeout_dialog_message">No devices found. Make sure devices are turned on and available to connect.</string>
+    <!-- OK button for Network connection timeout Dialog [CHAR LIMIT=30] -->
+    <string name="network_connection_timeout_dialog_ok">Try again</string>
+    <!-- Message for Network connection error state Dialog [CHAR LIMIT=NONE] -->
+    <string name="network_connection_errorstate_dialog_message">Something came up. The application has cancelled the request to choose a device.</string>
+    <!-- Toast message when connection is successful [CHAR LIMIT=30] -->
+    <string name="network_connection_connect_successful">Connection successful</string>
+    <!-- Neutral button for Network connection request Dialog [CHAR LIMIT=30] -->
+    <string name="network_connection_request_dialog_showall">Show all</string>
+
+    <!-- Summary for bluetooth devices count in Bluetooth devices slice. [CHAR LIMIT=NONE] -->
+    <plurals name="show_bluetooth_devices">
+        <item quantity="one"><xliff:g id="number_device_count">%1$d</xliff:g> device connected</item>
+        <item quantity="other"><xliff:g id="number_device_count">%1$d</xliff:g> devices connected</item>
+    </plurals>
+    <!-- Title for no bluetooth devices in Bluetooth devices slice. [CHAR LIMIT=NONE] -->
+    <string name="no_bluetooth_devices">No Bluetooth devices</string>
+
+    <!-- Title for left bluetooth device. [CHAR LIMIT=NONE] -->
+    <string name="bluetooth_left_name">Left</string>
+    <!-- Title for right bluetooth device. [CHAR LIMIT=NONE] -->
+    <string name="bluetooth_right_name">Right</string>
+    <!-- Title for middle bluetooth device. [CHAR LIMIT=NONE] -->
+    <string name="bluetooth_middle_name">Case</string>
+
+    <!-- Default title for the settings panel [CHAR LIMIT=NONE] -->
+    <string name="settings_panel_title">Settings Panel</string>
+
+    <!-- Title for the Internet Connectivity dialog (settings panel) with Internet related settings [CHAR LIMIT=50] -->
+    <string name="internet_connectivity_panel_title">Internet Connectivity</string>
+
+    <!-- Title for the Volume dialog (settings panel) with all volume streams[CHAR LIMIT=50] -->
+    <string name="volume_connectivity_panel_title">Volume</string>
+
+    <!-- Subtitle explaining that mobile data cannot be used while airplane mode is on [CHAR LIMIT=50] -->
+    <string name="mobile_data_ap_mode_disabled">Unavailable during airplane mode</string>
+
+    <!-- UI debug setting: force desktop mode [CHAR LIMIT=50] -->
+    <string name="force_desktop_mode">Force desktop mode</string>
+    <!-- UI debug setting: force desktop mode summary [CHAR LIMIT=NONE] -->
+    <string name="force_desktop_mode_summary">Force experimental desktop mode on secondary displays</string>
+
+    <!-- UI debug setting: Force enable "smart dark" UI rendering feature [CHAR LIMIT=60] -->
+    <string name="hwui_force_dark_title">Override force-dark</string>
+    <!-- UI debug setting: Force enable "smart dark" UI rendering feature summary [CHAR LIMIT=NONE] -->
+    <string name="hwui_force_dark_summary">Overrides the force-dark feature to be always-on</string>
+
+    <!-- Title for the top level Privacy Settings [CHAR LIMIT=30]-->
+    <string name="privacy_dashboard_title">Privacy</string>
+    <!-- Summary for the top level Privacy Settings [CHAR LIMIT=NONE]-->
+    <string name="privacy_dashboard_summary">Permissions, account activity, personal data</string>
+
+    <!-- Label for button in contextual card for users to remove the card [CHAR LIMIT=30] -->
+    <string name="contextual_card_dismiss_remove">Remove</string>
+    <!-- Label for button in contextual card for users to keep the card [CHAR LIMIT=30] -->
+    <string name="contextual_card_dismiss_keep">Keep</string>
+    <!-- String for contextual card dismissal [CHAR LIMIT=NONE] -->
+    <string name="contextual_card_dismiss_confirm_message">Remove this suggestion?</string>
+    <!-- String for snack bar message when users swipe to dismiss a contextual card [CHAR LIMIT=60]-->
+    <string name="contextual_card_removed_message">Suggestion removed</string>
+    <!-- Label for snack bar action allowing users to undo contextual card dismissal [CHAR LIMIT=30]-->
+    <string name="contextual_card_undo_dismissal_text">Undo</string>
+
+    <!-- Summary for low storage slice. [CHAR LIMIT=NONE] -->
+    <string name="low_storage_summary">Storage is low. <xliff:g id="percentage" example="54%">%1$s</xliff:g> used - <xliff:g id="free_space" example="32GB">%2$s</xliff:g> free</string>
+
+    <!-- Label for button in contextual card feedback dialog for users to send feedback [CHAR LIMIT=30] -->
+    <string name="contextual_card_feedback_send">Send feedback</string>
+    <!-- String for contextual card feedback dialog [CHAR LIMIT=NONE] -->
+    <string name="contextual_card_feedback_confirm_message">Would you like to give us feedback on this suggestion?</string>
+
+    <!-- Toast message for copy action of Copyable Slice [CHAR LIMIT=NONE] -->
+    <string name="copyable_slice_toast"><xliff:g id="copy_content" example="Phone number">%1$s</xliff:g> copied to clipboard.</string>
+
+    <!-- String for talkback on the account avatar of the search bar.  [CHAR LIMIT=NONE] -->
+    <string name="search_bar_account_avatar_content_description"></string>
+
+    <!-- Text to display when no app used permission.  [CHAR LIMIT=NONE] -->
+    <string name="permission_bar_chart_empty_text">0 apps used permissions</string>
+
+    <!-- Text for permission bar chart title in Privacy page.  [CHAR LIMIT=NONE] -->
+    <string name="permission_bar_chart_title">Permission usage in last 24 hours</string>
+
+    <!-- Text for permission bar chart details in Privacy page.  [CHAR LIMIT=NONE] -->
+    <string name="permission_bar_chart_details">See all in Dashboard</string>
+
+    <plurals name="permission_bar_chart_label">
+        <item quantity="one">1 app</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
+    </plurals>
+
+    <!-- Title for the accessibility usage preference in the Privacy page.  [CHAR LIMIT=NONE] -->
+    <string name="accessibility_usage_title">Accessibility usage</string>
+
+    <!-- Summary for the accessibility usage preference in the Privacy page.  [CHAR LIMIT=NONE] -->
+    <plurals name="accessibility_usage_summary">
+        <item quantity="one">1 app has full access to your device</item>
+        <item quantity="other"><xliff:g id="service_count">%1$d</xliff:g> apps have full access to your device</item>
+    </plurals>
+
+    <!-- Title for notification channel slice. [CHAR LIMIT=NONE] -->
+    <string name="manage_app_notification">Manage <xliff:g id="app_name" example="Settings">%1$s</xliff:g> notifications</string>
+    <!-- Title for no suggested app in notification channel slice. [CHAR LIMIT=NONE] -->
+    <string name="no_suggested_app">No suggested application</string>
+    <!-- Summary for the channels count is equal or less than 3 in notification channel slice. [CHAR LIMIT=NONE] -->
+    <plurals name="notification_few_channel_count_summary">
+        <item quantity="one"><xliff:g id="notification_channel_count" example="1">%1$d</xliff:g> notification channel.</item>
+        <item quantity="other"><xliff:g id="notification_channel_count" example="3">%1$d</xliff:g> notification channels.</item>
+    </plurals>
+    <!-- Summary for the channels count is more than 3 in notification channel slice. [CHAR LIMIT=NONE] -->
+    <string name="notification_many_channel_count_summary"><xliff:g id="notification_channel_count" example="4">%1$d</xliff:g> notification channels. Tap to manage all.</string>
+    <!-- Summary for recently installed app in contextual notification channel slice. [CHAR LIMIT=NONE] -->
+    <string name="recently_installed_app">You recently installed this app.</string>
+
+    <!-- Title for the Switch output dialog (settings panel) with media related devices [CHAR LIMIT=50] -->
+    <string name="media_output_panel_title">Switch output</string>
+    <!-- Summary for represent which device is playing media [CHAR LIMIT=NONE] -->
+    <string name="media_output_panel_summary_of_playing_device">Currently playing on <xliff:g id="device_name" example="Bose headphone">%1$s</xliff:g></string>
+
+    <!-- Label for the title on wfc disclaimer fragment. [CHAR LIMIT=40] -->
+    <string name="wfc_disclaimer_title_text">Important information</string>
+
+    <!-- Label for the agree button on wfc disclaimer fragment. [CHAR LIMIT=30] -->
+    <string name="wfc_disclaimer_agree_button_text">CONTINUE</string>
+
+    <!-- Label for the disagree button on wfc disclaimer fragment. [CHAR LIMIT=30] -->
+    <string name="wfc_disclaimer_disagree_text">NO THANKS</string>
+
+    <!-- Label for the title on wfc disclaimer location. [CHAR LIMIT=30] -->
+    <string name="wfc_disclaimer_location_title_text">Location</string>
+
+    <!-- Warn the user that the phone may share its location with the service provider. [CHAR LIMIT=NONE] -->
+    <string name="wfc_disclaimer_location_desc_text">Your service provider may collect your location in order to provide this service.\n\nPlease review your service provider\u2019s privacy policy.</string>
+
+    <!-- Message for forget passpoint dialog [CHAR LIMIT=none] -->
+    <string name="forget_passpoint_dialog_message">You may lose access to any remaining time or data. Check with your provider before removing.</string>
+
+    <!-- Keywords for Content Capture feature [CHAR_LIMIT=none] -->
+    <string name="keywords_content_capture">content capture, app content</string>
+    <!-- Title of the 'Content Capture' feature toggle in the Settings -> Privacy screen [CHAR LIMIT=none]-->
+    <string name="content_capture">App content</string>
+    <!-- Description of the 'Content Capture' feature toggle in the Settings -> Privacy screen [CHAR LIMIT=NONE]-->
+    <string name="content_capture_summary">Allow apps to send content to the Android system</string>
+
+    <!-- Title for the button to initiate a heap dump for the system server. [CHAR LIMIT=NONE] -->
+    <string name="capture_system_heap_dump_title">Capture system heap dump</string>
+    <!-- Toast that is shown when the user initiates capturing a heap dump for the system server. [CHAR LIMIT=NONE] -->
+    <string name="capturing_system_heap_dump_message">Capturing system heap dump</string>
+    <!-- Toast that is shown if there's an error capturing the user initiated heap dump. [CHAR LIMIT=NONE] -->
+    <string name="error_capturing_system_heap_dump_message">Couldn\u2019t capture system heap dump</string>
+    <!-- Title of toggle for whether to enable automatic heap dumps for the system server or not. [CHAR LIMIT=NONE] -->
+    <string name="automatic_system_heap_dump_title">Automatically capture system heap dumps</string>
+    <!-- Summary of toggle for whether to enable automatic heap dumps for the system server or not. [CHAR LIMIT=NONE] -->
+    <string name="automatic_system_heap_dump_summary">Automatically capture a heap dump for Android System when it uses too much memory</string>
+
+    <!-- Button label to disconnect a Wi-Fi network. [CHAR LIMIT=40] -->
+    <string name="wifi_disconnect_button_text">Disconnect</string>
+
+    <!-- Label for the title on wfc disclaimer location. [CHAR LIMIT=30] -->
+    <string name="wfc_disclaimer_emergency_limitation_title_text">Emergency calls</string>
+
+    <!-- Warn the user that the phone have emergency call limitation. [CHAR LIMIT=NONE] -->
+    <string name="wfc_disclaimer_emergency_limitation_desc_text">Emergency calls over Wi\u2011Fi Calling are not supported by your carrier.\nThe device switches automatically to a cellular network to place an emergency call.\nEmergency calls are only possible in areas with cellular coverage.</string>
+
+    <!-- Summary for Wi-Fi calling to explain this feature [CHAR LIMIT=NONE] -->
+    <string name="wifi_calling_summary">Use Wi\u2011Fi for calls to improve quality</string>
+
+    <!-- Title for enable MMS notification when trying to receive MMS.  [CHAR LIMIT=40] -->
+    <string name="enable_receiving_mms_notification_title">Incoming MMS message</string>
+    <!-- Title for enable MMS notification when trying to send MMS.  [CHAR LIMIT=40] -->
+    <string name="enable_sending_mms_notification_title">Can\u2019t send MMS message</string>
+    <!-- Message under title informing the user to touch to go to SIM Cards in Settings.  [CHAR LIMIT=100] -->
+    <string name="enable_mms_notification_summary">Tap to allow MMS messaging on <xliff:g id="operator_name" example="T-Mobile">%1$s</xliff:g> when mobile data is off</string>
+
+    <!-- Title for enable MMS notification channel.  [CHAR LIMIT=40] -->
+    <string name="enable_mms_notification_channel_title">MMS message</string>
+
+    <!-- Title for SIM combination warning. [CHAR LIMIT=80] -->
+    <string name="sim_combination_warning_notification_title">Issue with SIM combination</string>
+    <!-- Message for DSDS dual CDMA SIM combination warning. [CHAR LIMIT=100] -->
+    <string name="dual_cdma_sim_warning_notification_summary">Using <xliff:g id="operator_names" example="T-Mobile &amp; Verizon">%1$s</xliff:g> may limit functionality. Tap to learn more.</string>
+
+    <!-- Title for enable MMS notification channel.  [CHAR LIMIT=40] -->
+    <string name="dual_cdma_sim_warning_notification_channel_title">SIM combination</string>
+
+    <!-- Title of setting on privacy settings screen that will show work policy info. [CHAR LIMIT=NONE] -->
+    <string name="work_policy_privacy_settings">Your work policy info</string>
+    <!-- Summary for Enterprise Privacy settings, explaining what the user can expect to find under it [CHAR LIMIT=NONE]-->
+    <string name="work_policy_privacy_settings_summary">Settings managed by your IT admin</string>
+
+</resources>
+>>>>>>> CHANGE (e1aed8 Settings: Bring back lock screen short Bringing back lock sc)
