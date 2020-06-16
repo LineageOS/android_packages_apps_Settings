@@ -125,6 +125,9 @@
         android:key="long_screen_settings"
         lineage:requiresConfig="@*lineageos.platform:bool/config_haveHigherAspectRatioScreen" />
 
+    <org.lineageos.internal.lineageparts.LineagePartsPreference
+        android:key="force_dark_settings" />
+
     <Preference
         android:key="screensaver"
         android:title="@string/screensaver_settings_title"
