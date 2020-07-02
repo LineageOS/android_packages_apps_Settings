@@ -27,7 +27,6 @@ import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
 import android.os.Bundle;
-import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
@@ -35,6 +34,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.android.settings.R;
 import com.android.settings.notification.EmptyTextSettings;
+import com.android.settings.widget.FilterTouchesSwitchPreference;
 
 import java.util.Collections;
 import java.util.List;
@@ -95,7 +95,8 @@ public abstract class ManagedServiceSettings extends EmptyTextSettings {
         for (ServiceInfo service : services) {
             final ComponentName cn = new ComponentName(service.packageName, service.name);
             final String title = service.loadLabel(mPM).toString();
-            final SwitchPreference pref = new SwitchPreference(getPrefContext());
+            final FilterTouchesSwitchPreference pref = new FilterTouchesSwitchPreference(
+                    getPrefContext());
             pref.setPersistent(false);
             pref.setIcon(service.loadIcon(mPM));
             pref.setTitle(title);
