@@ -54,4 +54,11 @@
         android:title="@string/unlock_scramble_pin_layout_title"
         android:summary="@string/unlock_scramble_pin_layout_summary" />
 
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="fod_gesture"
+        android:title="@string/fod_gesture_title"
+        android:summary="@string/fod_gesture_summary"
+        android:defaultValue="false"
+        settings:controller="com.android.settings.security.screenlock.ScreenOffFodPreferenceController" />
+
 </PreferenceScreen>
