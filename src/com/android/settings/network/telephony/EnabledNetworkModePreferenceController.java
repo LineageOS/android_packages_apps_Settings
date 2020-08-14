@@ -516,15 +516,22 @@ public class EnabledNetworkModePreferenceController extends
                     }
                 }
                 break;
+            case TelephonyManager.NETWORK_MODE_NR_ONLY:
+            case TelephonyManager.NETWORK_MODE_NR_LTE:
+            case TelephonyManager.NETWORK_MODE_NR_LTE_GSM_WCDMA:
+            case TelephonyManager.NETWORK_MODE_NR_LTE_WCDMA:
+                preference.setValue(
+                        Integer.toString(TelephonyManager.NETWORK_MODE_NR_LTE_GSM_WCDMA));
+                preference.setSummary(mContext.getString(R.string.network_5G)
+                        + mContext.getString(R.string.network_recommended));
+                break;
             case TelephonyManager.NETWORK_MODE_NR_LTE_CDMA_EVDO:
-            case TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
                 preference.setValue(Integer.toString(networkMode));
                 preference.setSummary(mContext.getString(R.string.network_5G)
                         + mContext.getString(R.string.network_recommended));
                 break;
             case TelephonyManager.NETWORK_MODE_NR_LTE_CDMA_EVDO_GSM_WCDMA:
-                preference.setValue(
-                        Integer.toString(TelephonyManager.NETWORK_MODE_NR_LTE_CDMA_EVDO_GSM_WCDMA));
+                preference.setValue(Integer.toString(networkMode));
                 if (mTelephonyManager.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA
                         || mIsGlobalCdma
                         || MobileNetworkUtils.isWorldMode(mContext, mSubId)) {
@@ -533,6 +540,16 @@ public class EnabledNetworkModePreferenceController extends
                     preference.setSummary(mContext.getString(R.string.network_5G)
                             + mContext.getString(R.string.network_recommended));
                 }
+                break;
+            case TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA:
+            case TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_GSM:
+            case TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_WCDMA:
+            case TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_GSM_WCDMA:
+            case TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
+                preference.setValue(
+                        Integer.toString(TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA));
+                preference.setSummary(mContext.getString(R.string.network_5G)
+                        + mContext.getString(R.string.network_recommended));
                 break;
             default:
                 preference.setSummary(
