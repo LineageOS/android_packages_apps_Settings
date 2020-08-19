@@ -38,17 +38,6 @@ public class DisableSimFooterPreferenceController extends BasePreferenceControll
 
     @Override
     public int getAvailabilityStatus() {
-        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            return CONDITIONALLY_UNAVAILABLE;
-        }
-        for (SubscriptionInfo info : SubscriptionUtil.getAvailableSubscriptions(mContext)) {
-            if (info.getSubscriptionId() == mSubId) {
-                if (info.isEmbedded()) {
-                    return CONDITIONALLY_UNAVAILABLE;
-                }
-                break;
-            }
-        }
-        return AVAILABLE;
+        return CONDITIONALLY_UNAVAILABLE;
     }
 }
