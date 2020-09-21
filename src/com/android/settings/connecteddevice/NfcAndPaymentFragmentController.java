@@ -16,21 +16,47 @@
 
 package com.android.settings.connecteddevice;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
 import android.os.UserManager;
 
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
+
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
+import com.android.settingslib.core.lifecycle.LifecycleObserver;
+import com.android.settingslib.core.lifecycle.events.OnResume;
+import com.android.settingslib.core.lifecycle.events.OnStop;
 
 /**
  * Controller that used to show NFC and payment features
  */
-public class NfcAndPaymentFragmentController extends BasePreferenceController {
+public class NfcAndPaymentFragmentController extends BasePreferenceController
+        implements LifecycleObserver, OnResume, OnStop {
     private final NfcAdapter mNfcAdapter;
     private final PackageManager mPackageManager;
     private final UserManager mUserManager;
+    private final IntentFilter mIntentFilter;
+    private Preference mPreference;
+
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (mPreference == null) {
+                return;
+            }
+
+            final String action = intent.getAction();
+            if (NfcAdapter.ACTION_ADAPTER_STATE_CHANGED.equals(action)) {
+                refreshSummary(mPreference);
+            }
+        }
+    };
 
     public NfcAndPaymentFragmentController(Context context, String preferenceKey) {
         super(context, preferenceKey);
@@ -38,6 +64,15 @@ public class NfcAndPaymentFragmentController extends BasePreferenceController {
         mPackageManager = context.getPackageManager();
         mUserManager = context.getSystemService(UserManager.class);
         mNfcAdapter = NfcAdapter.getDefaultAdapter(context);
+
+        mIntentFilter = isNfcAvailable()
+                ? new IntentFilter(NfcAdapter.ACTION_ADAPTER_STATE_CHANGED) : null;
+    }
+
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        mPreference = screen.findPreference(getPreferenceKey());
     }
 
     @Override
@@ -60,5 +95,27 @@ public class NfcAndPaymentFragmentController extends BasePreferenceController {
             }
         }
         return null;
+    }
+
+    @Override
+    public void onStop() {
+        if (!isNfcAvailable()) {
+            return;
+        }
+
+        mContext.unregisterReceiver(mReceiver);
+    }
+
+    @Override
+    public void onResume() {
+        if (!isNfcAvailable()) {
+            return;
+        }
+
+        mContext.registerReceiver(mReceiver, mIntentFilter);
+    }
+
+    private boolean isNfcAvailable() {
+        return mNfcAdapter != null;
     }
 }
