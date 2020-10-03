@@ -18,6 +18,9 @@ package com.android.settings.fuelgauge;
 
 import static com.android.settings.fuelgauge.BatteryBroadcastReceiver.BatteryUpdateType;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
+import android.annotation.Nullable;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.database.ContentObserver;
@@ -25,9 +28,13 @@ import android.net.Uri;
 import android.os.BatteryStats;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.SearchIndexableResource;
+import android.os.PowerManager;
+import android.os.SystemClock;
+import android.os.UserHandle;
 import android.provider.Settings.Global;
 import android.text.format.Formatter;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -55,7 +62,11 @@ import com.android.settingslib.utils.PowerUtil;
 import com.android.settingslib.utils.StringUtil;
 import com.android.settingslib.widget.LayoutPreference;
 
-import java.util.Collections;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.Integer;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,6 +86,14 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
     private static final String KEY_TIME_SINCE_LAST_FULL_CHARGE = "last_full_charge";
     private static final String KEY_BATTERY_SAVER_SUMMARY = "battery_saver_summary";
 
+    private static final String KEY_CURRENT_BATTERY_CAPACITY = "current_battery_capacity";
+    private static final String KEY_DESIGNED_BATTERY_CAPACITY = "designed_battery_capacity";
+
+    private static final String FILENAME_BATTERY_DESIGN_CAPACITY =
+            "/sys/class/power_supply/bms/charge_full_design";
+    private static final String FILENAME_BATTERY_CURRENT_CAPACITY =
+            "/sys/class/power_supply/bms/charge_full";
+
     @VisibleForTesting
     static final int BATTERY_INFO_LOADER = 1;
     @VisibleForTesting
@@ -87,6 +106,10 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
 
     @VisibleForTesting
     PowerGaugePreference mScreenUsagePref;
+    @VisibleForTesting
+    PowerGaugePreference mCurrentBatteryCapacity;
+    @VisibleForTesting
+    PowerGaugePreference mDesignedBatteryCapacity;
     @VisibleForTesting
     PowerGaugePreference mLastFullChargePref;
     @VisibleForTesting
@@ -224,6 +247,10 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         mBatteryLayoutPref = (LayoutPreference) findPreference(KEY_BATTERY_HEADER);
 
         mScreenUsagePref = (PowerGaugePreference) findPreference(KEY_SCREEN_USAGE);
+        mCurrentBatteryCapacity = (PowerGaugePreference) findPreference(
+                KEY_CURRENT_BATTERY_CAPACITY);
+        mDesignedBatteryCapacity = (PowerGaugePreference) findPreference(
+                KEY_DESIGNED_BATTERY_CAPACITY);
         mLastFullChargePref = (PowerGaugePreference) findPreference(
                 KEY_TIME_SINCE_LAST_FULL_CHARGE);
         mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.battery_footer_summary);
@@ -324,6 +351,19 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         updateLastFullChargePreference();
         mScreenUsagePref.setSubtitle(StringUtil.formatElapsedTime(getContext(),
                 mBatteryUtils.calculateScreenUsageTime(mStatsHelper), false));
+        mBatteryTemp.setSummary(
+                com.android.internal.util.octavi.OctaviUtils.mccCheck(getContext()) ?
+                com.android.internal.util.octavi.OctaviUtils.batteryTemperature(getContext(), true) + "°F" :
+                com.android.internal.util.octavi.OctaviUtils.batteryTemperature(getContext(), false) + "°C");
+
+        mCurrentBatteryCapacity.setSubtitle(parseBatterymAhText(FILENAME_BATTERY_CURRENT_CAPACITY));
+        mDesignedBatteryCapacity.setSubtitle(parseBatterymAhText(FILENAME_BATTERY_DESIGN_CAPACITY));
+        final long elapsedRealtimeUs = SystemClock.elapsedRealtime() * 1000;
+        Intent batteryBroadcast = context.registerReceiver(null,
+                new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        BatteryInfo batteryInfo = BatteryInfo.getBatteryInfoOld(context, batteryBroadcast,
+                mStatsHelper.getStats(), elapsedRealtimeUs, false);
+        updateHeaderPreference(batteryInfo);
     }
 
     @VisibleForTesting
@@ -415,6 +455,45 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         restartBatteryTipLoader();
     }
 
+    private String parseBatterymAhText(String file) {
+        try {
+            return Integer.parseInt(readLine(file)) / 1000 + " mAh";
+        } catch (IOException ioe) {
+            Log.e(TAG, "Cannot read battery capacity from "
+                    + file, ioe);
+        } catch (NumberFormatException nfe) {
+            Log.e(TAG, "Read a badly formatted battery capacity from "
+                    + file, nfe);
+        }
+        return getResources().getString(R.string.status_unavailable);
+    }
+
+    /**
+    * Reads a line from the specified file.
+    *
+    * @param filename The file to read from.
+    * @return The first line up to 256 characters, or <code>null</code> if file is empty.
+    * @throws IOException If the file couldn't be read.
+    */
+    @Nullable
+    private String readLine(String filename) throws IOException {
+        final BufferedReader reader = new BufferedReader(new FileReader(filename), 256);
+        try {
+            return reader.readLine();
+        } finally {
+            reader.close();
+        }
+    }
+
+    private CharSequence formatBatteryPercentageText(int batteryLevel) {
+        try {
+            return TextUtils.expandTemplate(getContext().getText(R.string.battery_header_title_alternate),
+                  NumberFormat.getIntegerInstance().format(batteryLevel));
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
