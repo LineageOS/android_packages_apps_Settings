@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="advanced_reboot_title">Ath-thòiseachadh adhartach</string>
     <string name="advanced_reboot_summary">Mur eil e glaiste, gabh a-steach roghainnean air clàr-taice na cumhachd airson ath-thòiseachadh gun mhodh aisig no bootloader</string>
     <string name="app_ops_permissions_allowed">Ceadaichte</string>
     <string name="app_ops_permissions_ignored">Air a leigeil seachad</string>
@@ -24,6 +25,7 @@
     <string name="app_ops_allowed_count">Air a cheadachadh <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Air a dhiùltadh <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Air a cheadachadh <xliff:g id="count">%1$s</xliff:g>, air a dhiùltadh <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_no_blockable_permissions">Chan eil cead ri bhacadh ann</string>
     <string name="app_ops_show_user_apps">Seall aplacaidean a’ chleachdaiche</string>
     <string name="app_ops_show_system_apps">Seall na h-aplacaidean tùsail</string>
     <string name="app_ops_reset_counters">Ath-shuidheachadh nan cunntairean ceadachaidh/diùltaidh</string>
@@ -35,9 +37,11 @@
     <string name="app_ops_categories_messaging">Grad-theachdaireachdan</string>
     <string name="app_ops_categories_media">Meadhanan</string>
     <string name="app_ops_categories_device">Uidheam</string>
+    <string name="app_ops_categories_run_in_background">Ruith sa chùlaibh</string>
     <string name="app_ops_categories_bootup">Bùtadh</string>
     <string name="app_ops_categories_su">Inntrigeadh root</string>
     <string name="app_ops_categories_other">Eile</string>
+    <string name="app_ops_summaries_accept_handover">tar-chur air gairm o aplacaid eile</string>
     <string name="app_ops_summaries_access_camera">cothrom air a’ chamara</string>
     <string name="app_ops_summaries_access_notifications">cothrom fhaighinn air brathan</string>
     <string name="app_ops_summaries_activate_vpn">VPN a ghnìomhachadh</string>
@@ -59,9 +63,11 @@
     <string name="app_ops_summaries_fine_location">ionad pongail</string>
     <string name="app_ops_summaries_get_accounts">cunntasan fhaighinn</string>
     <string name="app_ops_summaries_get_usage_stats">stadastaireachd air caitheamh aplacaidean fhaighinn</string>
+    <string name="app_ops_summaries_gps">GPS</string>
     <string name="app_ops_summaries_install_packages">pacaidean a stàladh</string>
     <string name="app_ops_summaries_keep_device_awake">an t-uidheam agad a chumail ’na dhùisg</string>
     <string name="app_ops_summaries_make_phone_call">gairm fòn a dhèanamh</string>
+    <string name="app_ops_summaries_manage_ipsec_tunnels">tunailean ipsec a stiùireadh</string>
     <string name="app_ops_summaries_mock_location">ionad mas-fhìor a leigeil air</string>
     <string name="app_ops_summaries_modify_calendar">am mìosachan atharrachadh</string>
     <string name="app_ops_summaries_modify_call_log">loga nan gairmean atharrachadh</string>
@@ -71,6 +77,7 @@
     <string name="app_ops_summaries_monitor_high_power_location">sùil a chumail air ionad àrd-chumhachd</string>
     <string name="app_ops_summaries_monitor_location">sùil a chumail air an ionad</string>
     <string name="app_ops_summaries_mute_unmute_microphone">fuaim a’ mhicreofon a mhùchadh/thilleadh</string>
+    <string name="app_ops_summaries_neighboring_cells">ceallan nàbaidh</string>
     <string name="app_ops_summaries_phone_calls">gairm fòn a fhreagairt</string>
     <string name="app_ops_summaries_picture_in_picture">dealbh am broinn deilbh a chleachdadh</string>
     <string name="app_ops_summaries_play_audio">fuaim a chluich</string>
@@ -86,13 +93,17 @@
     <string name="app_ops_summaries_read_phone_numbers">àireamhan fòn a leughadh</string>
     <string name="app_ops_summaries_read_phone_state">staid an fhòn a leughadh</string>
     <string name="app_ops_summaries_read_sms">SMS a leughadh</string>
+    <string name="app_ops_summaries_receive_emergency_broadcast">teachdaireachd craolaidh-èiginn fhaighinn</string>
     <string name="app_ops_summaries_receive_sms">SMS fhaighinn</string>
     <string name="app_ops_summaries_record_audio">fuaim a chlàradh</string>
+    <string name="app_ops_summaries_request_delete_packages">sguabadh às phacaidean iarraidh</string>
+    <string name="app_ops_summaries_run_any_in_background">ruith sa chùlaibh</string>
     <string name="app_ops_summaries_run_in_background">ruith sa chùlaibh</string>
     <string name="app_ops_summaries_scan_wifi">na lìonraidhean WiFi a sganadh</string>
     <string name="app_ops_summaries_send_mms">teachdaireachd MMS a chur</string>
     <string name="app_ops_summaries_send_sms">SMS a chur</string>
     <string name="app_ops_summaries_start_at_bootup">tòiseachaidh nuair a thòisicheas an t-uidheam</string>
+    <string name="app_ops_summaries_start_foreground">tòiseachadh sa bheulaibh</string>
     <string name="app_ops_summaries_su">inntrigeadh root fhaighinn</string>
     <string name="app_ops_summaries_toast_window">toasts a shealltainn</string>
     <string name="app_ops_summaries_toggle_bluetooth">Bluetooth a thoglachadh</string>
@@ -116,6 +127,8 @@
     <string name="app_ops_summaries_write_external_storage">sgrìobhadh gu stòras air an taobh a-muigh</string>
     <string name="app_ops_summaries_write_mms">teachdaireachd MMS a sgrìobhadh</string>
     <string name="app_ops_summaries_write_sms">SMS a sgrìobhadh</string>
+    <string name="app_ops_labels_accept_handover">Tar-chur air gairm o aplacaid eile</string>
+    <string name="app_ops_labels_access_camera">Cothrom air a’ chamara</string>
     <string name="app_ops_labels_access_notifications">Cothrom fhaighinn air brathan</string>
     <string name="app_ops_labels_activate_vpn">VPN a ghnìomhachadh</string>
     <string name="app_ops_labels_add_voicemail">Post-gutha a chur ris</string>
@@ -123,12 +136,24 @@
     <string name="app_ops_labels_assist_screenshot">Taic a chumail ri glacadh-sgrìn</string>
     <string name="app_ops_labels_assist_structure">Taic a chumail ri structar</string>
     <string name="app_ops_labels_audio_accessibility_volume">Àirde fuaime na so-ruigsinneachd</string>
+    <string name="app_ops_labels_auto_start">Tòiseachaidh nuair a thòisicheas an t-uidheam</string>
     <string name="app_ops_labels_bind_accessibility_service">So-ruigsinneachd a sholar ’na seirbheis</string>
+    <string name="app_ops_labels_bluetooth_scan">Sganadh Bluetooth</string>
+    <string name="app_ops_labels_change_wallpaper">Am pàipear-balla atharrachadh</string>
     <string name="app_ops_labels_coarse_location">Ionad neo-phongail</string>
+    <string name="app_ops_labels_delete_call_log">Loga nan gairmean agad a sguabadh às</string>
+    <string name="app_ops_labels_delete_contacts">An luchd-aithne agad a sguabadh às</string>
+    <string name="app_ops_labels_delete_mms">Na teachdaireachdan MMS agad a sguabadh às</string>
+    <string name="app_ops_labels_delete_sms">Na teachdaireachdan SMS agad a sguabadh às</string>
     <string name="app_ops_labels_draw_on_top">Tarraing os a chionn</string>
     <string name="app_ops_labels_fine_location">Ionad pongail</string>
     <string name="app_ops_labels_get_accounts">Cunntasan fhaighinn</string>
     <string name="app_ops_labels_get_usage_stats">Stadastaireachd caitheimh fhaighinn</string>
+    <string name="app_ops_labels_gps">GPS</string>
+    <string name="app_ops_labels_install_packages">Pacaidean a stàladh</string>
+    <string name="app_ops_labels_keep_device_awake">An t-uidheam agad a chumail ’na dhùisg</string>
+    <string name="app_ops_labels_make_phone_call">Gairm fòn a dhèanamh</string>
+    <string name="app_ops_labels_manage_ipsec_tunnels">Tunailean ipsec a stiùireadh</string>
     <string name="app_ops_labels_mock_location">Ionad mas-fhìor a leigeil air</string>
     <string name="app_ops_labels_modify_calendar">Am mìosachan atharrachadh</string>
     <string name="app_ops_labels_modify_call_log">Loga nan gairmean atharrachadh</string>
@@ -138,9 +163,11 @@
     <string name="app_ops_labels_monitor_high_power_location">Sùil a chumail air ionad àrd-chumhachd</string>
     <string name="app_ops_labels_monitor_location">Sùil a chumail air an ionad</string>
     <string name="app_ops_labels_mute_unmute_microphone">Fuaim a’ mhicreofon a mhùchadh/thilleadh</string>
+    <string name="app_ops_labels_neighboring_cells">Ceallan nàbaidh</string>
     <string name="app_ops_labels_phone_calls">Freagair ri gairmean fòn</string>
     <string name="app_ops_labels_picture_in_picture">Cleachd dealbh am broinn deilbh</string>
     <string name="app_ops_labels_play_audio">Fuaim a chluich</string>
+    <string name="app_ops_labels_post_notification">Brath a phostadh</string>
     <string name="app_ops_labels_project_media">Meadhanan a thilgeil</string>
     <string name="app_ops_labels_read_calendar">Am mìosachan a leughadh</string>
     <string name="app_ops_labels_read_call_log">Loga nan gairmean a leughadh</string>
@@ -148,25 +175,51 @@
     <string name="app_ops_labels_read_clipboard">An stòr-bhòrd a leughadh</string>
     <string name="app_ops_labels_read_contacts">Luchd-aithne a leughadh</string>
     <string name="app_ops_labels_read_external_storage">Stòras air an taobh a-muigh a leughadh</string>
+    <string name="app_ops_labels_read_mms">Na teachdaireachdan MMS agad a leughadh</string>
     <string name="app_ops_labels_read_phone_numbers">Leugh na h-àireamhan fòn</string>
     <string name="app_ops_labels_read_phone_state">Staid an fhòn a leughadh</string>
     <string name="app_ops_labels_read_sms">SMS a leughadh</string>
+    <string name="app_ops_labels_receive_emergency_broadcast">Teachdaireachd craolaidh-èiginn fhaighinn</string>
     <string name="app_ops_labels_receive_sms">SMS fhaighinn</string>
     <string name="app_ops_labels_record_audio">Fuaim a chlàradh</string>
+    <string name="app_ops_labels_request_delete_packages">Sguabadh às phacaidean iarraidh</string>
+    <string name="app_ops_labels_run_any_in_background">Ruith sa chùlaibh</string>
+    <string name="app_ops_labels_run_in_background">Ruith sa chùlaibh</string>
+    <string name="app_ops_labels_scan_wifi">Na lìonraidhean WiFi a sganadh</string>
+    <string name="app_ops_labels_send_mms">Teachdaireachd MMS a chur</string>
     <string name="app_ops_labels_send_sms">SMS a chur</string>
+    <string name="app_ops_labels_start_at_bootup">Tòiseachaidh nuair a thòisicheas an t-uidheam</string>
+    <string name="app_ops_labels_start_foreground">Tòiseachadh sa bheulaibh</string>
+    <string name="app_ops_labels_su">Inntrigeadh root fhaighinn</string>
     <string name="app_ops_labels_toast_window">Toasts a shealltainn</string>
     <string name="app_ops_labels_toggle_bluetooth">Toglaich Bluetooth</string>
     <string name="app_ops_labels_toggle_mobile_data">Dàta mobile a thoglachadh</string>
     <string name="app_ops_labels_toggle_nfc">NFC a thoglachadh</string>
     <string name="app_ops_labels_toggle_wifi">WiFi a thoglachadh</string>
+    <string name="app_ops_labels_turn_on_screen">An sgrìn a chur air</string>
+    <string name="app_ops_labels_use_alarm_volume">Smachd fhaighinn air àirde fuaim nan caismeachdan</string>
+    <string name="app_ops_labels_use_audio_focus">Smachd fhaighinn air fòcas na fuaime</string>
+    <string name="app_ops_labels_use_bluetooth_volume">Smachd fhaighinn air àirde fuaim Bluetooth</string>
     <string name="app_ops_labels_use_body_sensors">Na mothaichearan bodhaig a chleachdadh</string>
     <string name="app_ops_labels_use_fingerprint">Lorg do mheòir a chleachdadh</string>
+    <string name="app_ops_labels_use_master_volume">Smachd fhaighinn air prìomh-àirde na fuaime</string>
+    <string name="app_ops_labels_use_media_buttons">Putanan nam meadhanan a chleachdadh</string>
+    <string name="app_ops_labels_use_media_volume">Smachd fhaighinn air àirde fuaim nam meadhanan</string>
+    <string name="app_ops_labels_use_notification_volume">Smachd fhaighinn air àirde fuaim nam brathan</string>
+    <string name="app_ops_labels_use_ring_volume">Smachd fhaighinn air àirde fuaim nan seirmean</string>
+    <string name="app_ops_labels_use_vibrate">D’ aire a tharraing le bhith a’ crith</string>
+    <string name="app_ops_labels_use_voice_volume">Smachd fhaighinn air àirde fuaim nan gairmean gutha</string>
+    <string name="app_ops_labels_wifi_change">An staid WiFi atharrachadh</string>
     <string name="app_ops_labels_write_external_storage">Sgrìobhadh gu stòras air an taobh a-muigh</string>
+    <string name="app_ops_labels_write_mms">Teachdaireachd MMS a sgrìobhadh</string>
     <string name="app_ops_labels_write_sms">SMS a sgrìobhadh</string>
+    <string name="lock_settings_picker_pattern_size_message">Tagh meud a’ phàtrain</string>
     <string name="lockpattern_settings_enable_error_path_title">Seall mearachd a’ phàtrain</string>
     <string name="lockpattern_settings_enable_dots_title">Seall dotagan a’ phàtrain</string>
     <string name="lockscreen_vibrate_enabled_title">Crith</string>
+    <string name="lockscreen_vibrate_enabled_head">Dèan crith rè an neo-ghlasaidh</string>
     <string name="adb_enable">Dì-bhugachadh Android</string>
+    <string name="adb_enable_summary">Cuir an comas eadar-aghaidh Android Debug Bridge (ADB)</string>
     <string name="adb_notify">Brath dì-bhugachaidh</string>
     <string name="adb_notify_summary">Seall brath nuair a bhios dì-bhugachadh USB no lìonraidh an comas</string>
     <string name="adb_over_network">ADB thar lìonra</string>
@@ -180,8 +233,11 @@
     </plurals>
     <string name="show_dev_on_cm">Chuir thu roghainnean an luchd-leasachaidh an comas!</string>
     <string name="show_dev_already_cm">Cha leig thu leas, chuir thu roghainnean an luchd-leasachaidh an comas mu thràth.</string>
+    <string name="lineagelicense_title">Sgrìobhainnean laghail LineageOS</string>
     <string name="status_bar_double_tap_to_sleep_title">Thoir gnogag airson cadal</string>
     <string name="status_bar_double_tap_to_sleep_summary">Thoir gnogag dhùbailte air bàr na staid no air an sgrìn-ghlasaidh gus an uidheam-taisbeanaidh a chur dheth</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Log mothaichear nan lorg-mheòir air <xliff:g id="sensor_location">%1$s</xliff:g> na tablaid agad.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Log mothaichear nan lorg-mheòir air <xliff:g id="sensor_location">%1$s</xliff:g> an uidheim agad.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Log mothaichear nan lorg-mheòir air <xliff:g id="sensor_location">%1$s</xliff:g> an fhòn agad.</string>
     <string name="security_settings_fingerprint_sensor_location_back">cùlaibh</string>
     <string name="security_settings_fingerprint_sensor_location_front">beulaibh</string>
@@ -195,6 +251,7 @@
     <string name="kill_app_longpress_back">Marbh aplacaid leis a’ phutan “Air ais”</string>
     <string name="kill_app_longpress_back_summary">Marbh an aplacaid sa bheulaibh le brùthadh fada air a’ phutan “Air ais”</string>
     <string name="development_tools_title">Innealan luchd-leasachaidh</string>
+    <string name="lockscreen_media_art_title">Seall obair-ealain còmhdachaidh nam meadhanan</string>
     <string name="lockscreen_visualizer_title">Seall fir-chlis a’ chiùil</string>
     <string name="sim_enabler_summary">Tha <xliff:g id="displayName">%1$s</xliff:g> <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
     <string name="sim_disabled">à comas</string>
@@ -211,6 +268,8 @@
     <string name="sub_deactivate_failed">Dh’fhàillig leis a’ neo-ghnìomhachadh.</string>
     <string name="data_usage_app_restrict_data">Dàta mobile</string>
     <string name="data_usage_app_restrict_data_summary">Cuir an comas cleachdadh dàta mobile</string>
+    <string name="data_usage_app_restrict_vpn">Dàta VPN</string>
+    <string name="data_usage_app_restrict_vpn_summary">Cuir an comas cleachdadh dàta VPN</string>
     <string name="data_usage_app_restrict_wifi">Dàta WiFi</string>
     <string name="data_usage_app_restrict_wifi_summary">Cuir an comas cleachdadh dàta WiFi</string>
     <string name="unlock_scramble_pin_layout_title">Cuir a’ cho-dhealbhachd tro chèile</string>
@@ -234,6 +293,11 @@
     <string name="high_touch_sensitivity_summary">Meudaich mothalachd na sgrìn-suathaidh ach an gabh a cleachdadh le miotagan</string>
     <string name="touchscreen_hovering_title">Fantainn os cionn na sgrìn</string>
     <string name="touchscreen_hovering_summary">Bheir seo comas dhut fantainn os cionn na sgrìn, mar luchag ann am brabhsairean-lìn, desktops cèin is msaa</string>
+    <string name="directly_show_lock">Neo-ghlasadh sa bhad</string>
+    <string name="directly_show_lock_summary">Leum seachad air a’ ghrad-shlaighdeadh airson a’ ghlas a thoirt far na sgrìn is tòisich air an iuchair a chur ann sa bhad</string>
+    <string name="open_lockscreen_tuner">Atharraich ath-ghoiridean</string>
+    <string name="location_mode_battery_saving_title">Modh caomhnadh a’ bhataraidh</string>
+    <string name="location_mode_battery_saving_summary">Na cleachd ach WiFi, Bluetooth no lìonraidhean mobile a mhothachadh dhan ionad (chan eil sin cho pongail)</string>
     <string name="app_notification_sound_timeout_title">An ùine as lugha eadar fuaimean bhrathan</string>
     <string name="app_notification_sound_timeout_summary_template">Na ceadaich fuaim no brath nas trice na gach <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Gun chuingeachadh</string>
@@ -243,4 +307,7 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 mionaidean</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 mionaidean</string>
     <string name="app_notification_sound_timeout_value_30_minutes">Leth-uair a thìde</string>
+    <string name="tethering_allow_vpn_upstreams_title">Leig le cliantan VPN a chleachdadh</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Thoir cead do chliantan hotspot gun cleachd iad ceanglaichean VPN an uidheim seo airson ceangal upstream a dhèanamh</string>
+    <string name="network_settings_shortcut_title">Lìonra mobile</string>
 </resources>
