@@ -24,12 +24,15 @@ import android.text.TextUtils;
 
 import com.android.settings.core.TogglePreferenceController;
 
+import org.lineageos.internal.util.PackageManagerUtils;
+
 public class AmbientDisplayAlwaysOnPreferenceController extends TogglePreferenceController {
 
     private final int ON = 1;
     private final int OFF = 0;
 
     private static final int MY_USER = UserHandle.myUserId();
+    private static final String DOZE_PACKAGE = "org.lineageos.settings.doze";
     private static final String PROP_AWARE_AVAILABLE = "ro.vendor.aware_available";
 
     private AmbientDisplayConfiguration mConfig;
@@ -46,6 +49,7 @@ public class AmbientDisplayAlwaysOnPreferenceController extends TogglePreference
     @Override
     public int getAvailabilityStatus() {
         return isAvailable(getConfig())
+                && !PackageManagerUtils.isAppInstalled(mContext, DOZE_PACKAGE)
                 && !SystemProperties.getBoolean(PROP_AWARE_AVAILABLE, false) ?
                 AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
