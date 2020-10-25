@@ -110,12 +110,6 @@
             android:title="@string/notification_pulse_title"
             settings:controller="com.android.settings.notification.PulseNotificationPreferenceController"/>
 
-        <!-- Battery light -->
-        <org.lineageos.internal.lineageparts.LineagePartsPreference
-            android:key="battery_lights"
-            lineage:requiresConfig="@*lineageos.platform:integer/config_deviceLightCapabilities"
-            lineage:requiresConfigMask="64" />
-
         <!-- Notification lights -->
         <org.lineageos.internal.lineageparts.LineagePartsPreference
             android:key="notification_lights"
