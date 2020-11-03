@@ -15,6 +15,20 @@
 
 <resources>
 
+    <style name="oneplus_contorl_text_style_base">
+        <item name="android:breakStrategy">simple</item>
+    </style>
+    <style name="oneplus_contorl_text_style_body1" parent="@style/oneplus_contorl_text_style_base">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_body1</item>
+        <item name="android:lineSpacingMultiplier">@dimen/oneplus_contorl_row_space_1</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_body1</item>
+        <item name="android:letterSpacing">@dimen/op_control_letter_space_body1</item>
+    </style>
+    <style name="oneplus_contorl_text_style_subtitle" parent="@style/oneplus_contorl_text_style_base">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_subtitle</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_subtitle</item>
+        <item name="android:letterSpacing">@dimen/op_control_letter_space_subtitle</item>
+    </style>
     <style name="Widget.ActionBar.Base"
            parent="@android:style/Widget.DeviceDefault.Light.ActionBar.Solid"/>
 
