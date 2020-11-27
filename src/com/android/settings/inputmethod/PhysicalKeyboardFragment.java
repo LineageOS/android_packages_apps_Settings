@@ -60,6 +60,7 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
         KeyboardLayoutDialogFragment.OnSetupKeyboardLayoutsListener {
 
     private static final String KEYBOARD_ASSISTANCE_CATEGORY = "keyboard_assistance_category";
+    private static final String KEYBOARD_EXTRAS_CATEGORY = "keyboard_extras_category";
     private static final String SHOW_VIRTUAL_KEYBOARD_SWITCH = "show_virtual_keyboard_switch";
     private static final String KEYBOARD_SHORTCUTS_HELPER = "keyboard_shortcuts_helper";
 
@@ -69,6 +70,8 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
     private InputManager mIm;
     @NonNull
     private PreferenceCategory mKeyboardAssistanceCategory;
+    @NonNull
+    private PreferenceCategory mKeyboardExtrasCategory;
     @NonNull
     private SwitchPreference mShowVirtualKeyboardSwitch;
 
@@ -81,6 +84,8 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
         mIm = Preconditions.checkNotNull(activity.getSystemService(InputManager.class));
         mKeyboardAssistanceCategory = Preconditions.checkNotNull(
                 (PreferenceCategory) findPreference(KEYBOARD_ASSISTANCE_CATEGORY));
+        mKeyboardExtrasCategory = Preconditions.checkNotNull(
+                (PreferenceCategory) findPreference(KEYBOARD_EXTRAS_CATEGORY));
         mShowVirtualKeyboardSwitch = Preconditions.checkNotNull(
                 (SwitchPreference) mKeyboardAssistanceCategory.findPreference(
                         SHOW_VIRTUAL_KEYBOARD_SWITCH));
@@ -176,6 +181,8 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
 
         mKeyboardAssistanceCategory.setOrder(1);
         preferenceScreen.addPreference(mKeyboardAssistanceCategory);
+        mKeyboardExtrasCategory.setOrder(99);
+        preferenceScreen.addPreference(mKeyboardExtrasCategory);
         updateShowVirtualKeyboardSwitch();
     }
 
