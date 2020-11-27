@@ -74,4 +74,20 @@
             android:defaultValue="false" />
 
     </PreferenceCategory>
+
+    <!-- Device-specific keyboard settings. -->
+    <PreferenceCategory
+        android:key="keyboard_extras_category"
+        android:title="@string/keyboard_extras_title" >
+
+        <lineageos.preference.RemotePreference
+            android:key="advanced_keyboard_settings"
+            android:title="@string/advanced_keyboard_settings_title"
+            settings:requiresAction="org.lineageos.settings.device.ADVANCED_KEYBOARD_SETTINGS">
+            <intent
+                android:action="org.lineageos.settings.device.ADVANCED_KEYBOARD_SETTINGS" />
+        </lineageos.preference.RemotePreference>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
