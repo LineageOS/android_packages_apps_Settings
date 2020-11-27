@@ -65,6 +65,7 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
         KeyboardLayoutDialogFragment.OnSetupKeyboardLayoutsListener {
 
     private static final String KEYBOARD_OPTIONS_CATEGORY = "keyboard_options_category";
+    private static final String KEYBOARD_EXTRAS_CATEGORY = "keyboard_extras_category";
     private static final String SHOW_VIRTUAL_KEYBOARD_SWITCH = "show_virtual_keyboard_switch";
     private static final String KEYBOARD_SHORTCUTS_HELPER = "keyboard_shortcuts_helper";
     private static final String MODIFIER_KEYS_SETTINGS = "modifier_keys_settings";
@@ -79,6 +80,8 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
     private KeyboardSettingsFeatureProvider mFeatureProvider;
     @NonNull
     private PreferenceCategory mKeyboardAssistanceCategory;
+    @NonNull
+    private PreferenceCategory mKeyboardExtrasCategory;
     @NonNull
     private SwitchPreference mShowVirtualKeyboardSwitch;
 
@@ -103,6 +106,8 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
         mImm = Preconditions.checkNotNull(activity.getSystemService(InputMethodManager.class));
         mKeyboardAssistanceCategory = Preconditions.checkNotNull(
                 (PreferenceCategory) findPreference(KEYBOARD_OPTIONS_CATEGORY));
+        mKeyboardExtrasCategory = Preconditions.checkNotNull(
+                (PreferenceCategory) findPreference(KEYBOARD_EXTRAS_CATEGORY));
         mShowVirtualKeyboardSwitch = Preconditions.checkNotNull(
                 (SwitchPreference) mKeyboardAssistanceCategory.findPreference(
                         SHOW_VIRTUAL_KEYBOARD_SWITCH));
@@ -257,6 +262,8 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
         }
         mKeyboardAssistanceCategory.setOrder(1);
         preferenceScreen.addPreference(mKeyboardAssistanceCategory);
+        mKeyboardExtrasCategory.setOrder(99);
+        preferenceScreen.addPreference(mKeyboardExtrasCategory);
         if (mSupportsFirmwareUpdate) {
             mFeatureProvider.addFirmwareUpdateCategory(getPrefContext(), preferenceScreen);
         }
