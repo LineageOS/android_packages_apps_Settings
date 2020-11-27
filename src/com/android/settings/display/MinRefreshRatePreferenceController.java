@@ -31,6 +31,7 @@ import com.android.settings.core.BasePreferenceController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MinRefreshRatePreferenceController extends BasePreferenceController implements
         Preference.OnPreferenceChangeListener {
@@ -67,7 +68,7 @@ public class MinRefreshRatePreferenceController extends BasePreferenceController
                     m.getPhysicalHeight() == mode.getPhysicalHeight()) {
                 entries.add(String.format("%.02fHz", m.getRefreshRate())
                         .replace(".00", ""));
-                values.add(String.format("%.02f", m.getRefreshRate()));
+                values.add(String.format(Locale.US, "%.02f", m.getRefreshRate()));
             }
         }
         mListPreference.setEntries(entries.toArray(new String[entries.size()]));
@@ -80,7 +81,8 @@ public class MinRefreshRatePreferenceController extends BasePreferenceController
     public void updateState(Preference preference) {
         final float currentValue = Settings.System.getFloat(mContext.getContentResolver(),
                 MIN_REFRESH_RATE, 60.00f);
-        int index = mListPreference.findIndexOfValue(String.format("%.02f", currentValue));
+        int index = mListPreference.findIndexOfValue(
+                String.format(Locale.US, "%.02f", currentValue));
         if (index < 0) index = 0;
         mListPreference.setValueIndex(index);
         mListPreference.setSummary(mListPreference.getEntries()[index]);
