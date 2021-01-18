@@ -34,7 +34,8 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     androidx.recyclerview_recyclerview \
     com.google.android.material_material \
     setupcompat \
-    setupdesign
+    setupdesign \
+    vendor.lineage.fastcharge-V1.0-java
 
 LOCAL_JAVA_LIBRARIES := \
     telephony-common \
