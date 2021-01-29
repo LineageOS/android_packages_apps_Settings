@@ -59,6 +59,7 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
         implements InputManager.InputDeviceListener,
         KeyboardLayoutDialogFragment.OnSetupKeyboardLayoutsListener {
 
+    private static final String PHYSICAL_KEYBOARD_KEY = "physical_keyboard_key";
     private static final String KEYBOARD_ASSISTANCE_CATEGORY = "keyboard_assistance_category";
     private static final String KEYBOARD_EXTRAS_CATEGORY = "keyboard_extras_category";
     private static final String SHOW_VIRTUAL_KEYBOARD_SWITCH = "show_virtual_keyboard_switch";
@@ -71,6 +72,8 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
     @NonNull
     private PreferenceCategory mKeyboardAssistanceCategory;
     @NonNull
+    private Preference mPhysicalLayoutPreference;
+    @NonNull
     private PreferenceCategory mKeyboardExtrasCategory;
     @NonNull
     private SwitchPreference mShowVirtualKeyboardSwitch;
@@ -82,6 +85,9 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
         Activity activity = Preconditions.checkNotNull(getActivity());
         addPreferencesFromResource(R.xml.physical_keyboard_settings);
         mIm = Preconditions.checkNotNull(activity.getSystemService(InputManager.class));
+        mPhysicalLayoutPreference = Preconditions.checkNotNull(
+                (Preference) findPreference(PHYSICAL_KEYBOARD_KEY));
+        mPhysicalLayoutPreference.setOrder(0);
         mKeyboardAssistanceCategory = Preconditions.checkNotNull(
                 (PreferenceCategory) findPreference(KEYBOARD_ASSISTANCE_CATEGORY));
         mKeyboardExtrasCategory = Preconditions.checkNotNull(
@@ -161,11 +167,23 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
         mLastHardKeyboards.addAll(newHardKeyboards);
 
         final PreferenceScreen preferenceScreen = getPreferenceScreen();
+
+        // If mPhysicalLayoutPreference was already part of a category, determine which one
+        // and clear it, otherwise we can't assign it to the newly created category (created below)
+        if (mPhysicalLayoutPreference.getParent() != preferenceScreen) {
+            PreferenceCategory cat = (PreferenceCategory)  mPhysicalLayoutPreference.getParent();
+            cat.removeAll();
+        }
+
         preferenceScreen.removeAll();
         final PreferenceCategory category = new PreferenceCategory(getPrefContext());
         category.setTitle(R.string.builtin_keyboard_settings_title);
         category.setOrder(0);
         preferenceScreen.addPreference(category);
+
+        mPhysicalLayoutPreference.setOrder(0);
+        category.addPreference(mPhysicalLayoutPreference);
+        int order = 1;
 
         for (HardKeyboardDeviceInfo hardKeyboardDeviceInfo : newHardKeyboards) {
             // TODO(yukawa): Consider using com.android.settings.widget.GearPreference
@@ -176,6 +194,8 @@ public final class PhysicalKeyboardFragment extends SettingsPreferenceFragment
                 showKeyboardLayoutDialog(hardKeyboardDeviceInfo.mDeviceIdentifier);
                 return true;
             });
+            pref.setOrder(order);
+            order++;
             category.addPreference(pref);
         }
 
