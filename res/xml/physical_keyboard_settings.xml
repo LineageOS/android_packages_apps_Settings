@@ -17,6 +17,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     android:title="@string/physical_keyboard_title">
+
+    <lineageos.preference.RemotePreference
+        android:key="physical_keyboard_key"
+        android:title="@string/physical_layout_title"
+        lineage:requiresAction="org.lineageos.settings.device.PHYSICAL_LAYOUT_SETTINGS">
+        <intent
+            android:action="org.lineageos.settings.device.PHYSICAL_LAYOUT_SETTINGS" />
+    </lineageos.preference.RemotePreference>
+
     <!-- Additional preference screens are inserted here programmatically
          with low order values to set the key map of each attached keyboard. -->
     <PreferenceCategory
