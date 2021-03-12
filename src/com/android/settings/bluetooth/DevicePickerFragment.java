@@ -16,6 +16,10 @@
 
 package com.android.settings.bluetooth;
 
+import static android.os.UserManager.DISALLOW_CONFIG_BLUETOOTH;
+import com.android.internal.annotations.VisibleForTesting;
+
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothDevicePicker;
@@ -31,22 +35,22 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settingslib.bluetooth.CachedBluetoothDevice;
 
-import static android.os.UserManager.DISALLOW_CONFIG_BLUETOOTH;
-
 /**
  * BluetoothSettings is the Settings screen for Bluetooth configuration and
  * connection management.
  */
 public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     private static final int MENU_ID_REFRESH = Menu.FIRST;
+    private static final String TAG = "DevicePickerFragment";
 
     public DevicePickerFragment() {
         super(null /* Not tied to any user restrictions. */);
     }
 
+    @VisibleForTesting
+    Context mContext;
+
     private boolean mNeedAuth;
-    private String mLaunchPackage;
-    private String mLaunchClass;
     private boolean mStartScanOnResume;
     private boolean mDeviceSelected;
 
@@ -58,8 +62,6 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         mNeedAuth = intent.getBooleanExtra(BluetoothDevicePicker.EXTRA_NEED_AUTH, false);
         setFilter(intent.getIntExtra(BluetoothDevicePicker.EXTRA_FILTER_TYPE,
                 BluetoothDevicePicker.FILTER_TYPE_ALL));
-        mLaunchPackage = intent.getStringExtra(BluetoothDevicePicker.EXTRA_LAUNCH_PACKAGE);
-        mLaunchClass = intent.getStringExtra(BluetoothDevicePicker.EXTRA_LAUNCH_CLASS);
     }
 
     @Override
@@ -97,6 +99,7 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
         mStartScanOnResume = !um.hasUserRestriction(DISALLOW_CONFIG_BLUETOOTH)
                 && (savedInstanceState == null);  // don't start scan after rotation
+        mContext = getContext();
         setHasOptionsMenu(true);
     }
 
@@ -164,9 +167,7 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         mDeviceSelected = true;
         Intent intent = new Intent(BluetoothDevicePicker.ACTION_DEVICE_SELECTED);
         intent.putExtra(BluetoothDevice.EXTRA_DEVICE, device);
-        if (mLaunchPackage != null && mLaunchClass != null) {
-            intent.setClassName(mLaunchPackage, mLaunchClass);
-        }
-        getActivity().sendBroadcast(intent);
+
+        mContext.sendBroadcast(intent, Manifest.permission.BLUETOOTH_ADMIN);
     }
 }
