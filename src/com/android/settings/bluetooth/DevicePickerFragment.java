@@ -20,13 +20,19 @@ import static android.os.UserManager.DISALLOW_CONFIG_BLUETOOTH;
 import com.android.internal.annotations.VisibleForTesting;
 
 import android.Manifest;
+import android.app.ActivityManagerNative;
+import android.app.IActivityManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothDevicePicker;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.os.UserManager;
+import android.util.Log;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -49,6 +55,12 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
 
     @VisibleForTesting
     Context mContext;
+    @VisibleForTesting
+    String mLaunchPackage;
+    @VisibleForTesting
+    String mLaunchClass;
+    @VisibleForTesting
+    String mCallingAppPackageName;
 
     private boolean mNeedAuth;
     private boolean mStartScanOnResume;
@@ -62,6 +74,8 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         mNeedAuth = intent.getBooleanExtra(BluetoothDevicePicker.EXTRA_NEED_AUTH, false);
         setFilter(intent.getIntExtra(BluetoothDevicePicker.EXTRA_FILTER_TYPE,
                 BluetoothDevicePicker.FILTER_TYPE_ALL));
+        mLaunchPackage = intent.getStringExtra(BluetoothDevicePicker.EXTRA_LAUNCH_PACKAGE);
+        mLaunchClass = intent.getStringExtra(BluetoothDevicePicker.EXTRA_LAUNCH_CLASS);
     }
 
     @Override
@@ -99,6 +113,11 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
         mStartScanOnResume = !um.hasUserRestriction(DISALLOW_CONFIG_BLUETOOTH)
                 && (savedInstanceState == null);  // don't start scan after rotation
+        mCallingAppPackageName = getCallingAppPackageName(getActivity().getActivityToken());
+        if (!TextUtils.equals(mCallingAppPackageName, mLaunchPackage)) {
+            Log.w(TAG, "sendDevicePickedIntent() launch package name is not equivalent to"
+                    + " calling package name!");
+        }
         mContext = getContext();
         setHasOptionsMenu(true);
     }
@@ -167,7 +186,23 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         mDeviceSelected = true;
         Intent intent = new Intent(BluetoothDevicePicker.ACTION_DEVICE_SELECTED);
         intent.putExtra(BluetoothDevice.EXTRA_DEVICE, device);
+        if (mLaunchPackage != null && mLaunchClass != null) {
+            if (TextUtils.equals(mCallingAppPackageName, mLaunchPackage)) {
+                intent.setClassName(mLaunchPackage, mLaunchClass);
+            }
+        }
 
         mContext.sendBroadcast(intent, Manifest.permission.BLUETOOTH_ADMIN);
+    }
+
+    private String getCallingAppPackageName(IBinder activityToken) {
+        String pkg = null;
+        try {
+            IActivityManager am = ActivityManagerNative.getDefault();
+            pkg = am.getLaunchedFromPackage(activityToken);
+        } catch (RemoteException e) {
+            Log.v(TAG, "Could not talk to activity manager.", e);
+        }
+        return pkg;
     }
 }
