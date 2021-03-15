@@ -22,6 +22,30 @@
       "revId": "be981c41c50a899f6881ae0750aae52b25368a98",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6719ad_dc7ef5ef",
+        "filename": "src/com/android/settings/panel/MediaOutputPanel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2021-03-15T19:57:46Z",
+      "side": 1,
+      "message": "The point of the null check here is to prevent a NPE because in isEmpty getPackageName is called on this object (mediaController) which can be null.",
+      "parentUuid": "4dfe21d0_e565c48a",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 50
+      },
+      "revId": "be981c41c50a899f6881ae0750aae52b25368a98",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
