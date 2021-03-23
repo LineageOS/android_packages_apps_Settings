@@ -17,6 +17,7 @@
 package com.android.settings.security;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.UserHandle;
 import android.provider.Settings;
 
@@ -51,6 +52,9 @@ public class LockdownButtonPreferenceController extends TogglePreferenceControll
     public boolean setChecked(boolean isChecked) {
         Settings.Secure.putInt(mContext.getContentResolver(),
                 Settings.Secure.LOCKDOWN_IN_POWER_MENU, isChecked ? 1 : 0);
+        Intent u = new Intent();
+        u.setAction(lineageos.content.Intent.ACTION_UPDATE_POWER_MENU_LOCKDOWN);
+        mContext.sendBroadcastAsUser(u, UserHandle.ALL);
         return true;
     }
 }

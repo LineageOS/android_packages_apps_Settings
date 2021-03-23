@@ -17,6 +17,8 @@
 package com.android.settings.development;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
 
@@ -26,6 +28,8 @@ import androidx.preference.SwitchPreference;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
+
+import static org.lineageos.internal.util.PowerMenuConstants.*;
 
 public class BugReportInPowerPreferenceController extends
         DeveloperOptionsPreferenceController implements Preference.OnPreferenceChangeListener,
@@ -61,6 +65,9 @@ public class BugReportInPowerPreferenceController extends
         Settings.Secure.putInt(mContext.getContentResolver(),
                 Settings.Global.BUGREPORT_IN_POWER_MENU,
                 isEnabled ? SETTING_VALUE_ON : SETTING_VALUE_OFF);
+        Intent u = new Intent();
+        u.setAction(lineageos.content.Intent.ACTION_UPDATE_POWER_MENU_BUGREPORT);
+        mContext.sendBroadcastAsUser(u, UserHandle.ALL);
         return true;
     }
 
