@@ -20,13 +20,11 @@ import static com.android.settings.development.AdbPreferenceController.ADB_SETTI
 import static com.android.settings.development.AdbPreferenceController.ADB_SETTING_ON;
 
 import android.app.KeyguardManager;
-import android.app.settings.SettingsEnums;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
-import android.hardware.SensorPrivacyManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
@@ -51,8 +49,6 @@ import com.android.internal.app.LocalePicker;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.settings.R;
 import com.android.settings.development.WirelessDebuggingPreferenceController;
-import com.android.settings.overlay.FeatureFactory;
-import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.development.DevelopmentSettingsEnabler;
 import com.android.settingslib.development.SystemPropPoker;
 
@@ -316,47 +312,6 @@ public abstract class DevelopmentTiles extends TileService {
             if (!isEnabled) {
                 mToast.show();
             }
-        }
-    }
-
-    /**
-     * Tile to toggle sensors off to control camera, mic, and sensors managed by the SensorManager.
-     */
-    public static class SensorsOff extends DevelopmentTiles {
-        private Context mContext;
-        private SensorPrivacyManager mSensorPrivacyManager;
-        private KeyguardManager mKeyguardManager;
-        private MetricsFeatureProvider mMetricsFeatureProvider;
-        private boolean mIsEnabled;
-
-        @Override
-        public void onCreate() {
-            super.onCreate();
-            mContext = getApplicationContext();
-            mSensorPrivacyManager = (SensorPrivacyManager) mContext.getSystemService(
-                    Context.SENSOR_PRIVACY_SERVICE);
-            mIsEnabled = mSensorPrivacyManager.isSensorPrivacyEnabled();
-            mMetricsFeatureProvider = FeatureFactory.getFactory(
-                    mContext).getMetricsFeatureProvider();
-            mKeyguardManager = (KeyguardManager) mContext.getSystemService(
-                    Context.KEYGUARD_SERVICE);
-        }
-
-        @Override
-        protected boolean isEnabled() {
-            return mIsEnabled;
-        }
-
-        @Override
-        public void setIsEnabled(boolean isEnabled) {
-            // Don't allow sensors to be reenabled from the lock screen.
-            if (mIsEnabled && mKeyguardManager.isKeyguardLocked()) {
-                return;
-            }
-            mMetricsFeatureProvider.action(getApplicationContext(), SettingsEnums.QS_SENSOR_PRIVACY,
-                    isEnabled);
-            mIsEnabled = isEnabled;
-            mSensorPrivacyManager.setSensorPrivacy(isEnabled);
         }
     }
 
