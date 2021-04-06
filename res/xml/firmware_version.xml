@@ -54,6 +54,15 @@
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.BasebandVersionPreferenceController"/>
 
+    <!-- Bootloader -->
+    <Preference
+        android:key="boot_loader"
+        android:title="@string/bootloader_version"
+        android:summary="@string/summary_placeholder"
+        android:selectable="false"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.BootloaderVersionPreferenceController"/>
+
     <!-- Kernel -->
     <Preference
         android:key="kernel_version"
