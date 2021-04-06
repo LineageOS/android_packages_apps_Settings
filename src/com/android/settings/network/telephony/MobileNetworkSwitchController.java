@@ -43,6 +43,7 @@ public class MobileNetworkSwitchController extends BasePreferenceController impl
     private int mSubId;
     private SubscriptionsChangeListener mChangeListener;
     private SubscriptionManager mSubscriptionManager;
+    private SubscriptionInfo mSubInfo = null;
 
     public MobileNetworkSwitchController(Context context, String preferenceKey) {
         super(context, preferenceKey);
@@ -78,7 +79,7 @@ public class MobileNetworkSwitchController extends BasePreferenceController impl
         mSwitchBar.getSwitch().setOnBeforeCheckedChangeListener((toggleSwitch, isChecked) -> {
             // TODO b/135222940: re-evaluate whether to use
             // mSubscriptionManager#isSubscriptionEnabled
-            if (mSubscriptionManager.isActiveSubscriptionId(mSubId) != isChecked
+            if (mSubInfo != null && (mSubInfo.areUiccApplicationsEnabled() != isChecked)
                     && (!mSubscriptionManager.setSubscriptionEnabled(mSubId, isChecked))) {
                 return true;
             }
@@ -92,22 +93,21 @@ public class MobileNetworkSwitchController extends BasePreferenceController impl
             return;
         }
 
-        SubscriptionInfo subInfo = null;
         for (SubscriptionInfo info : SubscriptionUtil.getAvailableSubscriptions(mContext)) {
             if (info.getSubscriptionId() == mSubId) {
-                subInfo = info;
+                mSubInfo = info;
                 break;
             }
         }
 
         // For eSIM, we always want the toggle. If telephony stack support disabling a pSIM
         // directly, we show the toggle.
-        if (subInfo == null || (!subInfo.isEmbedded() && !SubscriptionUtil.showToggleForPhysicalSim(
+        if (mSubInfo == null || (!mSubInfo.isEmbedded() && !SubscriptionUtil.showToggleForPhysicalSim(
                 mSubscriptionManager))) {
             mSwitchBar.hide();
         } else {
             mSwitchBar.show();
-            mSwitchBar.setCheckedInternal(mSubscriptionManager.isActiveSubscriptionId(mSubId));
+            mSwitchBar.setCheckedInternal(mSubInfo.areUiccApplicationsEnabled());
         }
     }
 
