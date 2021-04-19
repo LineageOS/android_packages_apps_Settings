@@ -61,4 +61,10 @@
         android:summaryOn="@string/fingerprint_wake_unlock_touch"
         android:summaryOff="@string/fingerprint_wake_unlock_press" />
 
+    <!-- available in pin/pattern/password/slide -->
+    <SwitchPreference
+        android:key="status_bar_shown_on_secure_keyguard"
+        android:title="@string/show_qs_on_secure_keyguard_title"
+        android:summary="@string/show_qs_on_secure_keyguard_summary" />
+
 </PreferenceScreen>
