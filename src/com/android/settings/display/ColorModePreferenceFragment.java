@@ -34,6 +34,8 @@ import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.widget.CandidateInfo;
 import com.android.settingslib.widget.LayoutPreference;
 
+import com.google.common.primitives.Ints;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +51,8 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
     static final String KEY_COLOR_MODE_SATURATED = "color_mode_saturated";
     @VisibleForTesting
     static final String KEY_COLOR_MODE_AUTOMATIC = "color_mode_automatic";
+
+    static final String KEY_COLOR_MODE_VENDOR = "color_mode_vendor_";
 
     private ContentObserver mContentObserver;
     private ColorDisplayManager mColorDisplayManager;
@@ -111,9 +115,17 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
         final Context c = getContext();
         final int[] availableColorModes = c.getResources().getIntArray(
                 com.android.internal.R.array.config_availableColorModes);
+        final String[] availableVendorColorModes = c.getResources().getStringArray(
+                R.array.available_vendor_color_modes);
 
         List<ColorModeCandidateInfo> candidates = new ArrayList<>();
-        if (availableColorModes != null) {
+        if (availableVendorColorModes != null && availableVendorColorModes.length > 0) {
+            for (int i = 0; i < availableVendorColorModes.length; i++) {
+                candidates.add(new ColorModeCandidateInfo(
+                            availableVendorColorModes[i],
+                            KEY_COLOR_MODE_VENDOR + availableColorModes[i], true /* enabled */));
+            }
+        } else if (availableColorModes != null) {
             for (int colorMode : availableColorModes) {
                 if (colorMode == ColorDisplayManager.COLOR_MODE_NATURAL) {
                     candidates.add(new ColorModeCandidateInfo(
@@ -139,8 +151,13 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
 
     @Override
     protected String getDefaultKey() {
+        final Context c = getContext();
         final int colorMode = mColorDisplayManager.getColorMode();
-        if (colorMode == ColorDisplayManager.COLOR_MODE_AUTOMATIC) {
+        final String[] availableVendorColorModes = c.getResources().getStringArray(
+                R.array.available_vendor_color_modes);
+        if (availableVendorColorModes.length > 0) {
+            return KEY_COLOR_MODE_VENDOR + colorMode;
+        } else if (colorMode == ColorDisplayManager.COLOR_MODE_AUTOMATIC) {
             return KEY_COLOR_MODE_AUTOMATIC;
         } else if (colorMode == ColorDisplayManager.COLOR_MODE_SATURATED) {
             return KEY_COLOR_MODE_SATURATED;
@@ -152,6 +169,11 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
 
     @Override
     protected boolean setDefaultKey(String key) {
+        if (key.startsWith(KEY_COLOR_MODE_VENDOR)) {
+            mColorDisplayManager.setColorMode(
+                    Integer.parseInt(key.substring(KEY_COLOR_MODE_VENDOR.length())));
+            return true;
+        }
         switch (key) {
             case KEY_COLOR_MODE_NATURAL:
                 mColorDisplayManager.setColorMode(ColorDisplayManager.COLOR_MODE_NATURAL);
