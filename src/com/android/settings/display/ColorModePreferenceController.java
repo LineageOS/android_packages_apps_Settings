@@ -21,6 +21,8 @@ import androidx.annotation.VisibleForTesting;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
+import com.google.common.primitives.Ints;
+
 public class ColorModePreferenceController extends BasePreferenceController {
 
     private ColorDisplayManager mColorDisplayManager;
@@ -43,6 +45,17 @@ public class ColorModePreferenceController extends BasePreferenceController {
     @Override
     public CharSequence getSummary() {
         final int colorMode = getColorDisplayManager().getColorMode();
+        final int[] availableColorModes = mContext.getResources().getIntArray(
+                com.android.internal.R.array.config_availableColorModes);
+        final String[] availableVendorColorModes = mContext.getResources().getStringArray(
+                R.array.available_vendor_color_modes);
+        if (availableVendorColorModes.length == availableColorModes.length) {
+            int index = Ints.indexOf(availableColorModes, colorMode);
+            if (index != -1) {
+                return availableVendorColorModes[index];
+            }
+            return mContext.getText(R.string.summary_empty);
+        }
         if (colorMode == ColorDisplayManager.COLOR_MODE_AUTOMATIC) {
             return mContext.getText(R.string.color_mode_option_automatic);
         }
