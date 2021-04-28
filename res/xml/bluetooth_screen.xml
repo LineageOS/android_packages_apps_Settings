@@ -24,6 +24,11 @@
         android:summary="@string/summary_placeholder"
         settings:controller="com.android.settings.bluetooth.BluetoothDeviceRenamePreferenceController"/>
 
+    <Preference
+        android:key="bluetooth_screen_bt_pair_change_device_class"
+        android:title="@string/bluetooth_device_class"
+        settings:controller="com.github.teamjcd.android.settings.bluetooth.BluetoothDeviceClassPreferenceController"/>
+
     <com.android.settingslib.RestrictedPreference
         android:key="bluetooth_screen_add_bt_devices"
         android:title="@string/bluetooth_pairing_pref_title"

@@ -3187,6 +3187,40 @@
                        android:value="true" />
         </activity>
 
+        <activity android:name="com.github.teamjcd.android.settings.bluetooth.BluetoothDeviceClassSettingsActivity"
+                android:label="@string/bluetooth_device_class_settings"
+                android:launchMode="singleTask"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:parentActivityName="Settings$AdvancedConnectedDeviceActivity">
+            <intent-filter android:priority="1">
+                <action android:name="com.github.teamjcd.android.settings.BLUETOOTH_DEVICE_CLASS_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.github.teamjcd.android.settings.bluetooth.BluetoothDeviceClassSettings" />
+        </activity>
+
+        <activity android:name="com.github.teamjcd.android.settings.bluetooth.BluetoothDeviceClassEditorActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:label="@string/bluetooth_device_class_edit">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.github.teamjcd.android.settings.bluetooth.BluetoothDeviceClassEditor" />
+        </activity>
+
         <activity android:name="Settings$BluetoothDeviceDetailActivity"
                   android:label="@string/device_details_title"
                   android:permission="android.permission.BLUETOOTH_ADMIN">
