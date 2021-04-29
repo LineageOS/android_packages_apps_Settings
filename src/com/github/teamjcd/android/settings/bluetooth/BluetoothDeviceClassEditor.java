@@ -1,7 +1,12 @@
 package com.github.teamjcd.android.settings.bluetooth;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.View;
 import android.view.View.OnKeyListener;
 
 import com.android.settings.R;
@@ -9,10 +14,13 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassData;
 
 import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 
 public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener, OnKeyListener {
+    public static final int METRICS_CATEGORY_BLUETOOTH_DEVICE_CLASS_EDITOR = 26;
+
     private final static String TAG = BluetoothDeviceClassEditor.class.getSimpleName();
 
     private static final int MENU_DELETE = Menu.FIRST;
@@ -61,6 +69,35 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
         } else {
             // entry is read-only
         }
+    }
+
+    @Override
+    public int getMetricsCategory() {
+        return METRICS_CATEGORY_BLUETOOTH_DEVICE_CLASS_EDITOR;
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        // TODO
+        return true;
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        if (event.getAction() != KeyEvent.ACTION_DOWN) {
+            return false;
+        }
+
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK: {
+                //if (validateAndSaveApnData()) {
+                    finish();
+                //}
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void initBluetoothDeviceClassEditorUi() {
