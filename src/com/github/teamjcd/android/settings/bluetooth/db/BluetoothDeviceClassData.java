@@ -73,7 +73,7 @@ public class BluetoothDeviceClassData implements BaseColumns {
                 cursor.getInt(ID_INDEX),
                 cursor.getString(DEVICE_CLASS_NAME_INDEX),
                 cursor.getInt(DEVICE_CLASS_VALUE_INDEX),
-                cursor.getInt(DEVICE_CLASS_USER_EDITABLE_INDEX));
+                cursor.getInt(DEVICE_CLASS_USER_EDITABLE_INDEX) != 0);
     }
 
     public ContentValues toContentValues() {
