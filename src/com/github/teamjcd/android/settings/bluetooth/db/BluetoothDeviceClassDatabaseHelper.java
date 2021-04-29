@@ -41,7 +41,7 @@ public class BluetoothDeviceClassDatabaseHelper extends SQLiteOpenHelper {
                 DEVICE_CLASS_VALUE + " INTEGER NOT NULL," +
                 DEVICE_CLASS_USER_EDITABLE + " INTEGER NOT NULL" +
                 ");");
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (" +
+        db.execSQL("CREATE TABLE " + DEFAULT_TABLE_NAME + " (" +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 DEVICE_CLASS_NAME + " TEXT NOT NULL," +
                 DEVICE_CLASS_VALUE + " INTEGER NOT NULL," +

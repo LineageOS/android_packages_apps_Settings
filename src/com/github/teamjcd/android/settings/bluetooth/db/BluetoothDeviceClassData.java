@@ -8,6 +8,8 @@ import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceCl
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_NAME_INDEX;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_VALUE;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_VALUE_INDEX;
+import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_USER_EDITABLE;
+import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_USER_EDITABLE_INDEX;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassDatabaseHelper.ID_INDEX;
 
 public class BluetoothDeviceClassData implements BaseColumns {
@@ -70,13 +72,15 @@ public class BluetoothDeviceClassData implements BaseColumns {
         return new BluetoothDeviceClassData(
                 cursor.getInt(ID_INDEX),
                 cursor.getString(DEVICE_CLASS_NAME_INDEX),
-                cursor.getInt(DEVICE_CLASS_VALUE_INDEX));
+                cursor.getInt(DEVICE_CLASS_VALUE_INDEX),
+                cursor.getInt(DEVICE_CLASS_USER_EDITABLE_INDEX));
     }
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
         values.put(DEVICE_CLASS_NAME, name);
         values.put(DEVICE_CLASS_VALUE, deviceClass);
+        values.put(DEVICE_CLASS_USER_EDITABLE, userEditable);
         return values;
     }
 }

@@ -11,7 +11,9 @@ import android.view.View.OnKeyListener;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider;
 import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassData;
+import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassStore;
 
 import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
@@ -34,6 +36,8 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
 
     private boolean mNewBluetoothDeviceClass;
 
+    private Uri mBluetoothDeviceClassUri;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +55,18 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
         Uri uri = null;
         if (action.equals(Intent.ACTION_EDIT)) {
             uri = intent.getData();
+            if (!uri.isPathPrefixMatch(BluetoothDeviceClassContentProvider.DEVICE_CLASS_URI)) {
+                Log.e(TAG, "Edit request not for device class table. Uri: " + uri);
+                finish();
+                return;
+            }
         } else if (action.equals(Intent.ACTION_INSERT)) {
+            mBluetoothDeviceClassUri = intent.getData();
+            if (!mBluetoothDeviceClassUri.isPathPrefixMatch(BluetoothDeviceClassContentProvider.DEVICE_CLASS_URI)) {
+                Log.e(TAG, "Insert request not for device class table. Uri: " + mBluetoothDeviceClassUri);
+                finish();
+                return;
+            }
             mNewBluetoothDeviceClass = true;
         } else {
             finish();
@@ -59,7 +74,8 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
         }
 
         if (uri != null) {
-            //mBluetoothDeviceClassData = getBluetoothDeviceClassDataFromUri(uri);
+            BluetoothDeviceClassStore store = BluetoothDeviceClassStore.getBluetoothDeviceClassStore(getPrefContext());
+            mBluetoothDeviceClassData = store.get(uri);
         } else {
             mBluetoothDeviceClassData = new BluetoothDeviceClassData();
         }
