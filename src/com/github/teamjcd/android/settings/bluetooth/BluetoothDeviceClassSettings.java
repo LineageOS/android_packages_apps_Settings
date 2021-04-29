@@ -67,8 +67,7 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
 //            BluetoothClass bluetoothClass = adapter.getBluetoothClass();
 //            bluetoothDeviceClassStore.saveDefault(new BluetoothDeviceClassData(
 //                    "Default",
-//                    bluetoothClass.getDeviceClass(),
-//                    false
+//                    bluetoothClass.getDeviceClass()
 //            ));
 //        }
     }

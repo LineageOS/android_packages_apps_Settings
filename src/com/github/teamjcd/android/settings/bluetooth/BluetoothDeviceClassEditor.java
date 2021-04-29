@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View.OnKeyListener;
 
+import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassData;
 
 import androidx.preference.EditTextPreference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
@@ -51,7 +53,7 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
         if (uri != null) {
             //mBluetoothDeviceClassData = getBluetoothDeviceClassDataFromUri(uri);
         } else {
-            //mBluetoothDeviceClassData = new BluetoothDeviceClassData();
+            mBluetoothDeviceClassData = new BluetoothDeviceClassData();
         }
 
         if (mBluetoothDeviceClassData.isUserEditable()) {
@@ -59,5 +61,12 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
         } else {
             // entry is read-only
         }
+    }
+
+    private void initBluetoothDeviceClassEditorUi() {
+        addPreferencesFromResource(R.xml.bluetooth_device_class_editor);
+
+        mName = (EditTextPreference) findPreference("bluetooth_device_class_name");
+        mClass = (EditTextPreference) findPreference("bluetooth_device_class_class");
     }
 }
