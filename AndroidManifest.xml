@@ -3187,6 +3187,11 @@
                        android:value="true" />
         </activity>
 
+        <provider
+            android:name="com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider"
+            android:authorities="com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider"
+            android:enabled="true"/>
+
         <activity android:name="com.github.teamjcd.android.settings.bluetooth.BluetoothDeviceClassSettingsActivity"
                 android:label="@string/bluetooth_device_class_settings"
                 android:launchMode="singleTask"

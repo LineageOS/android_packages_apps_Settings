@@ -1,6 +1,9 @@
 package com.github.teamjcd.android.settings.bluetooth;
 
+import android.annotation.SuppressLint;
 import android.app.settings.SettingsEnums;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.util.Log;
@@ -12,6 +15,10 @@ import androidx.preference.Preference;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassData;
+import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassStore;
+
+import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassStore.getBluetoothDeviceClassStore;
 
 public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -28,14 +35,41 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
 
     private HandlerThread mRestoreDefaultBluetoothDeviceClassThread;
 
+    private BluetoothAdapter adapter;
+
     @Override
     public int getMetricsCategory() {
         return SettingsEnums.BLUETOOTH_DEVICE_PICKER;
     }
 
+    @SuppressLint("NewApi")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        adapter = BluetoothAdapter.getDefaultAdapter();
+
+        //Register Broadcast to wait enable bluetooth
+        if (!adapter.isEnabled()) {
+            adapter.enable();
+        } else {
+            saveInitialValue();
+        }
+    }
+
+    @SuppressLint("NewApi")
+    private void saveInitialValue() {
+        //TODO Provider does not register
+        // Error : Failed to find provider info for com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider
+//        BluetoothDeviceClassStore bluetoothDeviceClassStore = getBluetoothDeviceClassStore(this.getPrefContext());
+//        BluetoothDeviceClassData defaultClass = bluetoothDeviceClassStore.getDefault();
+//        if (defaultClass == null) {
+//            BluetoothClass bluetoothClass = adapter.getBluetoothClass();
+//            bluetoothDeviceClassStore.saveDefault(new BluetoothDeviceClassData(
+//                    "Default",
+//                    bluetoothClass.getDeviceClass()
+//            ));
+//        }
     }
 
     @Override
