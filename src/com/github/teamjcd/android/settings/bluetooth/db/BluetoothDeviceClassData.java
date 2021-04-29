@@ -14,6 +14,7 @@ public class BluetoothDeviceClassData implements BaseColumns {
     private int id;
     private String name;
     private int deviceClass;
+    private int userEditable;
 
     public BluetoothDeviceClassData(String name, int deviceClass) {
         this.name = name;
@@ -22,7 +23,15 @@ public class BluetoothDeviceClassData implements BaseColumns {
 
     public BluetoothDeviceClassData(int id, String name, int deviceClass) {
         this(name, deviceClass);
-        this.id = id;
+        setId(id);
+    }
+
+    public BluetoothDeviceClassData(int id, String name, int deviceClass, boolean userEditable) {
+        this(id, name, deviceClass);
+        setUserEditable(userEditable);
+    }
+
+    public BluetoothDeviceClassData() {
     }
 
     public int getId() {
@@ -47,6 +56,14 @@ public class BluetoothDeviceClassData implements BaseColumns {
 
     public void setDeviceClass(int deviceClass) {
         this.deviceClass = deviceClass;
+    }
+
+    public boolean isUserEditable() {
+        return userEditable != 0;
+    }
+
+    public void setUserEditable(boolean userEditable) {
+        this.userEditable = userEditable ? 1 : 0;
     }
 
     public static BluetoothDeviceClassData readFromCursor(Cursor cursor) {

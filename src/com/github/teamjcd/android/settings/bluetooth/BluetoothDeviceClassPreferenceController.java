@@ -45,8 +45,8 @@ public class BluetoothDeviceClassPreferenceController extends BasePreferenceCont
 
     @Override
     public void displayPreference(PreferenceScreen screen) {
-        mPreference = screen.findPreference(getPreferenceKey());
         super.displayPreference(screen);
+        mPreference = screen.findPreference(getPreferenceKey());
     }
 
     @Override
