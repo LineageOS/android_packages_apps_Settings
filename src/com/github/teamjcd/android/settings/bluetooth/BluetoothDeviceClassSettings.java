@@ -61,8 +61,10 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
     @SuppressLint("NewApi")
     private void saveInitialValue() {
         BluetoothDeviceClassData defaultClass = mStore.getDefault();
+        Log.d(TAG, "saveInitialValue(): defaultClass - " + defaultClass);
         if (defaultClass == null) {
             BluetoothClass bluetoothClass = mAdapter.getBluetoothClass();
+            Log.d(TAG, "saveInitialValue(): bluetoothClass - " + bluetoothClass);
             mStore.saveDefault(new BluetoothDeviceClassData(
                     "Default",
                     bluetoothClass.getDeviceClass()
