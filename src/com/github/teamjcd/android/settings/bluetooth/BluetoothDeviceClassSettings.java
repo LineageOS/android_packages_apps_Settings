@@ -12,11 +12,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.preference.Preference;
+import androidx.preference.PreferenceGroup;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassData;
 import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassStore;
+
+import java.util.List;
 
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassStore.getBluetoothDeviceClassStore;
 
@@ -24,18 +27,14 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
     public static final String ACTION_BLUETOOTH_DEVICE_CLASS_SETTINGS = "com.github.teamjcd.android.settings.BLUETOOTH_DEVICE_CLASS_SETTINGS";
 
-    public static final String BLUETOOTH_DEVICE_CLASS_ID = "bluetooth_device_class_id";
-
     private static final String TAG = "BluetoothDeviceClassSettings";
 
     private static final int MENU_NEW = Menu.FIRST;
-    private static final int MENU_RESTORE = Menu.FIRST + 1;
 
-    private static boolean mRestoreDefaultBluetoothDeviceClassMode;
+    private BluetoothAdapter mAdapter;
+    private BluetoothDeviceClassStore mStore;
 
-    private HandlerThread mRestoreDefaultBluetoothDeviceClassThread;
-
-    private BluetoothAdapter adapter;
+    private Integer mSelectedKey;
 
     @Override
     public int getMetricsCategory() {
@@ -47,11 +46,12 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adapter = BluetoothAdapter.getDefaultAdapter();
+        mAdapter = BluetoothAdapter.getDefaultAdapter();
+        mStore = getBluetoothDeviceClassStore(getPrefContext());
 
         //Register Broadcast to wait enable bluetooth
-        if (!adapter.isEnabled()) {
-            adapter.enable();
+        if (!mAdapter.isEnabled()) {
+            mAdapter.enable();
         } else {
             saveInitialValue();
         }
@@ -59,13 +59,10 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
 
     @SuppressLint("NewApi")
     private void saveInitialValue() {
-        //TODO Provider does not register
-        // Error : Failed to find provider info for com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider
-        BluetoothDeviceClassStore bluetoothDeviceClassStore = getBluetoothDeviceClassStore(this.getPrefContext());
-        BluetoothDeviceClassData defaultClass = bluetoothDeviceClassStore.getDefault();
+        BluetoothDeviceClassData defaultClass = mStore.getDefault();
         if (defaultClass == null) {
-            BluetoothClass bluetoothClass = adapter.getBluetoothClass();
-            bluetoothDeviceClassStore.saveDefault(new BluetoothDeviceClassData(
+            BluetoothClass bluetoothClass = mAdapter.getBluetoothClass();
+            mStore.saveDefault(new BluetoothDeviceClassData(
                     "Default",
                     bluetoothClass.getDeviceClass()
             ));
@@ -75,26 +72,18 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         addPreferencesFromResource(R.xml.bluetooth_device_class_settings);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-        if (!mRestoreDefaultBluetoothDeviceClassMode) {
-            fillList();
-        }
+        fillList();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        if (mRestoreDefaultBluetoothDeviceClassThread != null) {
-            mRestoreDefaultBluetoothDeviceClassThread.quit();
-        }
     }
 
     @Override
@@ -104,10 +93,6 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
                 .setIcon(R.drawable.ic_add_24dp)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
-        /*menu.add(0, MENU_RESTORE, 0,
-                getResources().getString(R.string.menu_restore))
-                .setIcon(android.R.drawable.ic_menu_upload);*/
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -116,9 +101,6 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
         switch (item.getItemId()) {
             case MENU_NEW:
                 addNewBluetoothDeviceClass();
-                return true;
-            case MENU_RESTORE:
-                restoreDefaultBluetoothDeviceClass();
                 return true;
         }
 
@@ -139,7 +121,35 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
     }
 
     private void fillList() {
+        List<BluetoothDeviceClassData> codDataList = mStore.getAll();
+
+        if (!codDataList.isEmpty()) {
+            final PreferenceGroup codPrefList = (PreferenceGroup) findPreference("bluetooth_device_class_list");
+            codPrefList.removeAll();
+
+            mSelectedKey = getSelectedBluetoothDeviceClassKey();
+
+            for (BluetoothDeviceClassData codData : codDataList) {
+                final BluetoothDeviceClassPreference pref = new BluetoothDeviceClassPreference(getPrefContext());
+
+                pref.setKey(Integer.toString(codData.getId()));
+                pref.setTitle(codData.getName());
+                pref.setPersistent(false);
+                pref.setOnPreferenceChangeListener(this);
+                pref.setSummary(Integer.toHexString(codData.getDeviceClass()));
+
+                if ((mSelectedKey != null) && mSelectedKey.equals(codData.getId())) {
+                    pref.setChecked();
+                }
+
+                codPrefList.addPreference(pref);
+            }
+        }
+    }
+
+    private Integer getSelectedBluetoothDeviceClassKey() {
         // TODO
+        return null;
     }
 
     private void setSelectedBluetoothDeviceClassKey(String key) {
