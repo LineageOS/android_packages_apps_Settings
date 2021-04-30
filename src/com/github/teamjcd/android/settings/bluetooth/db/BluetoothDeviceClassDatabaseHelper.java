@@ -13,19 +13,16 @@ public class BluetoothDeviceClassDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DEVICE_CLASS_NAME = "name";
     public static final String DEVICE_CLASS_VALUE = "class";
-    public static final String DEVICE_CLASS_USER_EDITABLE = "userEditable";
 
     public static final String[] PROJECTION = new String[]{
             _ID,
             DEVICE_CLASS_NAME,
             DEVICE_CLASS_VALUE,
-            DEVICE_CLASS_USER_EDITABLE
     };
 
     public static final int ID_INDEX = 0;
     public static final int DEVICE_CLASS_NAME_INDEX = 1;
     public static final int DEVICE_CLASS_VALUE_INDEX = 2;
-    public static final int DEVICE_CLASS_USER_EDITABLE_INDEX = 3;
 
     public BluetoothDeviceClassDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,8 +33,7 @@ public class BluetoothDeviceClassDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (" +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 DEVICE_CLASS_NAME + " TEXT NOT NULL," +
-                DEVICE_CLASS_VALUE + " INTEGER NOT NULL," +
-                DEVICE_CLASS_USER_EDITABLE + " INTEGER NOT NULL" +
+                DEVICE_CLASS_VALUE + " INTEGER NOT NULL" +
                 ");");
     }
 

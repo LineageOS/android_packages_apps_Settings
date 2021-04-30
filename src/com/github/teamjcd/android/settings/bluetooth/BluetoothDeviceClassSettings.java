@@ -12,14 +12,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassData;
 import com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassStore;
-
-import java.util.List;
 
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassStore.getBluetoothDeviceClassStore;
 
@@ -27,14 +24,18 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
     public static final String ACTION_BLUETOOTH_DEVICE_CLASS_SETTINGS = "com.github.teamjcd.android.settings.BLUETOOTH_DEVICE_CLASS_SETTINGS";
 
+    public static final String BLUETOOTH_DEVICE_CLASS_ID = "bluetooth_device_class_id";
+
     private static final String TAG = "BluetoothDeviceClassSettings";
 
     private static final int MENU_NEW = Menu.FIRST;
+    private static final int MENU_RESTORE = Menu.FIRST + 1;
 
-    private BluetoothAdapter mAdapter;
-    private BluetoothDeviceClassStore mStore;
+    private static boolean mRestoreDefaultBluetoothDeviceClassMode;
 
-    private Integer mSelectedKey;
+    private HandlerThread mRestoreDefaultBluetoothDeviceClassThread;
+
+    private BluetoothAdapter adapter;
 
     @Override
     public int getMetricsCategory() {

@@ -8,7 +8,7 @@ import android.net.Uri;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.provider.BaseColumns._ID;
+import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider.DEFAULT_ID;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider.DEVICE_CLASS_URI;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassData.readFromCursor;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassDatabaseHelper.PROJECTION;
@@ -50,8 +50,7 @@ public class BluetoothDeviceClassStore {
     }
 
     public BluetoothDeviceClassData getDefault() {
-        // TODO return get(DEVICE_DEFAULT_CLASS_URI);
-        return null;
+        return get(DEFAULT_ID);
     }
 
     public BluetoothDeviceClassData get(Uri btDeviceClassUri) {
@@ -82,7 +81,6 @@ public class BluetoothDeviceClassStore {
     }
 
     public Uri saveDefault(BluetoothDeviceClassData btDeviceClass) {
-        btDeviceClass.setUserEditable(false);
         return save(btDeviceClass);
     }
 
@@ -96,6 +94,9 @@ public class BluetoothDeviceClassStore {
     }
 
     public int update(int id, BluetoothDeviceClassData btDeviceClass) {
+        if (id == DEFAULT_ID) {
+            return 0;
+        }
         return update(Uri.withAppendedPath(DEVICE_CLASS_URI, String.valueOf(id)), btDeviceClass);
     }
 
@@ -109,6 +110,9 @@ public class BluetoothDeviceClassStore {
     }
 
     public int delete(int id) {
+        if (id == DEFAULT_ID) {
+            return 0;
+        }
         return delete(Uri.withAppendedPath(DEVICE_CLASS_URI, Integer.toString(id)));
     }
 

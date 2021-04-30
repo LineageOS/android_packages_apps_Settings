@@ -16,9 +16,14 @@ public class BluetoothDeviceClassContentProvider extends ContentProvider {
     private static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
     private static final String DEVICE_CLASS_TABLE = "device_class";
     public static final Uri DEVICE_CLASS_URI = Uri.withAppendedPath(BASE_URI, DEVICE_CLASS_TABLE);
+    public static final int DEFAULT_ID = 1;
+
+    private static final int ROOT = 0;
+    private static final int ID = 1;
 
     static {
-        uriMatcher.addURI(AUTHORITY, DEVICE_CLASS_TABLE, 1);
+        uriMatcher.addURI(AUTHORITY, DEVICE_CLASS_TABLE, ROOT);
+        uriMatcher.addURI(AUTHORITY, DEVICE_CLASS_TABLE + "/#", ID);
     }
 
     private SQLiteDatabase database;
@@ -33,12 +38,16 @@ public class BluetoothDeviceClassContentProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         int match = uriMatcher.match(uri);
-        String lastPathSegment = uri.getLastPathSegment();
-        if (match != 1) {
+
+        String where = null;
+        String[] whereArgs = null;
+        if (match < 0) {
             return null;
+        } else if (match == ID) {
+            String lastPathSegment = uri.getLastPathSegment();
+            where = _ID + " = ?";
+            whereArgs = new String[]{lastPathSegment};
         }
-        String where = lastPathSegment == null ? null : _ID + " = ?";
-        String[] whereArgs = lastPathSegment == null ? null : new String[]{lastPathSegment};
 
         return database.query(TABLE_NAME,
                 projection,
@@ -57,7 +66,7 @@ public class BluetoothDeviceClassContentProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         int match = uriMatcher.match(uri);
-        if (match != 1) {
+        if (match != ROOT) {
             return null;
         }
         return Uri.withAppendedPath(
@@ -68,9 +77,10 @@ public class BluetoothDeviceClassContentProvider extends ContentProvider {
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         int match = uriMatcher.match(uri);
         String lastPathSegment = uri.getLastPathSegment();
-        if (match != 1 || lastPathSegment == null) {
+        if (match != ID || String.valueOf(DEFAULT_ID).equals(lastPathSegment)) {
             return 0;
         }
+
         return database.delete(TABLE_NAME, _ID + " = ?", new String[]{lastPathSegment});
     }
 
@@ -78,9 +88,10 @@ public class BluetoothDeviceClassContentProvider extends ContentProvider {
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         int match = uriMatcher.match(uri);
         String lastPathSegment = uri.getLastPathSegment();
-        if (match != 1 || lastPathSegment == null) {
+        if (match != ID || String.valueOf(DEFAULT_ID).equals(lastPathSegment)) {
             return 0;
         }
+
         return database.update(TABLE_NAME, values, _ID + " = ?", new String[]{lastPathSegment});
     }
 }

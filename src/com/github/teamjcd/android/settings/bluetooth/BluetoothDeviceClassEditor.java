@@ -124,14 +124,14 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
 
         if (!mNewBluetoothDeviceClass && !mReadOnlyBluetoothDeviceClass) {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
-                .setIcon(R.drawable.ic_delete);
+                    .setIcon(R.drawable.ic_delete);
         }
 
         menu.add(0, MENU_SAVE, 0, R.string.menu_save)
-            .setIcon(android.R.drawable.ic_menu_save);
+                .setIcon(android.R.drawable.ic_menu_save);
 
         menu.add(0, MENU_CANCEL, 0, R.string.menu_cancel)
-            .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+                .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
     }
 
     @Override
@@ -235,8 +235,6 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
                 Integer.parseUnsignedInt(cod, 16),
                 callUpdate,
                 mBluetoothDeviceClassData.getDeviceClass());
-
-        values.put(BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_USER_EDITABLE, 1);
 
         if (callUpdate) {
             // TODO
