@@ -61,16 +61,15 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
     private void saveInitialValue() {
         //TODO Provider does not register
         // Error : Failed to find provider info for com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider
-//        BluetoothDeviceClassStore bluetoothDeviceClassStore = getBluetoothDeviceClassStore(this.getPrefContext());
-//        BluetoothDeviceClassData defaultClass = bluetoothDeviceClassStore.getDefault();
-//        if (defaultClass == null) {
-//            BluetoothClass bluetoothClass = adapter.getBluetoothClass();
-//            bluetoothDeviceClassStore.saveDefault(new BluetoothDeviceClassData(
-//                    "Default",
-//                    bluetoothClass.getDeviceClass(),
-//                    0
-//            ));
-//        }
+        BluetoothDeviceClassStore bluetoothDeviceClassStore = getBluetoothDeviceClassStore(this.getPrefContext());
+        BluetoothDeviceClassData defaultClass = bluetoothDeviceClassStore.getDefault();
+        if (defaultClass == null) {
+            BluetoothClass bluetoothClass = adapter.getBluetoothClass();
+            bluetoothDeviceClassStore.saveDefault(new BluetoothDeviceClassData(
+                    "Default",
+                    bluetoothClass.getDeviceClass()
+            ));
+        }
     }
 
     @Override

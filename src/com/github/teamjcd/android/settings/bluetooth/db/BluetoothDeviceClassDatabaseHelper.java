@@ -9,7 +9,6 @@ import static android.provider.BaseColumns._ID;
 public class BluetoothDeviceClassDatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Bluetooth";
     public static final String TABLE_NAME = "DeviceClass";
-    public static final String DEFAULT_TABLE_NAME = "DefaultClass";
     public static final int DATABASE_VERSION = 1;
 
     public static final String DEVICE_CLASS_NAME = "name";
@@ -28,7 +27,6 @@ public class BluetoothDeviceClassDatabaseHelper extends SQLiteOpenHelper {
     public static final int DEVICE_CLASS_VALUE_INDEX = 2;
     public static final int DEVICE_CLASS_USER_EDITABLE_INDEX = 3;
 
-
     public BluetoothDeviceClassDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -36,12 +34,6 @@ public class BluetoothDeviceClassDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (" +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                DEVICE_CLASS_NAME + " TEXT NOT NULL," +
-                DEVICE_CLASS_VALUE + " INTEGER NOT NULL," +
-                DEVICE_CLASS_USER_EDITABLE + " INTEGER NOT NULL" +
-                ");");
-        db.execSQL("CREATE TABLE " + DEFAULT_TABLE_NAME + " (" +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 DEVICE_CLASS_NAME + " TEXT NOT NULL," +
                 DEVICE_CLASS_VALUE + " INTEGER NOT NULL," +

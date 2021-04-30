@@ -199,10 +199,11 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
     }
 
     private void deleteBluetoothDeviceClass() {
-        if (mBluetoothDeviceClassData.getUri() != null) {
-            getContentResolver().delete(mBluetoothDeviceClassData.getUri(), null, null);
-            mBluetoothDeviceClassData = new BluetoothDeviceClassData();
-        }
+        // TODO
+        //if (mBluetoothDeviceClassData.getUri() != null) {
+        //    getContentResolver().delete(mBluetoothDeviceClassData.getUri(), null, null);
+        //    mBluetoothDeviceClassData = new BluetoothDeviceClassData();
+        //}
     }
 
     private boolean validateAndSaveBluetoothDeviceClassData() {
@@ -226,18 +227,21 @@ public class BluetoothDeviceClassEditor extends SettingsPreferenceFragment
         callUpdate = setStringValueAndCheckIfDiff(values,
                 BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_NAME,
                 name,
+                callUpdate,
                 mBluetoothDeviceClassData.getName());
 
         callUpdate = setIntValueAndCheckIfDiff(values,
                 BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_VALUE,
-                cod,
+                Integer.parseUnsignedInt(cod, 16),
+                callUpdate,
                 mBluetoothDeviceClassData.getDeviceClass());
 
         values.put(BluetoothDeviceClassDatabaseHelper.DEVICE_CLASS_USER_EDITABLE, 1);
 
         if (callUpdate) {
-            final Uri uri = mBluetoothDeviceClassData.getUri() == null ? mBluetoothDeviceClassUri : mBluetoothDeviceClassData.getUri();
-            updateBluetoothDeviceClassDataToDatabase(uri, values);
+            // TODO
+            //final Uri uri = mBluetoothDeviceClassData.getUri() == null ? mBluetoothDeviceClassUri : mBluetoothDeviceClassData.getUri();
+            //updateBluetoothDeviceClassDataToDatabase(uri, values);
         }
 
         return true;

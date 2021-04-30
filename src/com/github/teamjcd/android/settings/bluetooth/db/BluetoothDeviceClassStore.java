@@ -10,7 +10,6 @@ import java.util.List;
 
 import static android.provider.BaseColumns._ID;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider.DEVICE_CLASS_URI;
-import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassContentProvider.DEVICE_DEFAULT_CLASS_URI;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassData.readFromCursor;
 import static com.github.teamjcd.android.settings.bluetooth.db.BluetoothDeviceClassDatabaseHelper.PROJECTION;
 
@@ -51,7 +50,8 @@ public class BluetoothDeviceClassStore {
     }
 
     public BluetoothDeviceClassData getDefault() {
-        return get(DEVICE_DEFAULT_CLASS_URI);
+        // TODO return get(DEVICE_DEFAULT_CLASS_URI);
+        return null;
     }
 
     public BluetoothDeviceClassData get(Uri btDeviceClassUri) {
@@ -82,8 +82,11 @@ public class BluetoothDeviceClassStore {
     }
 
     public Uri saveDefault(BluetoothDeviceClassData btDeviceClass) {
-        ContentValues values = btDeviceClass.toContentValues();
-        return context.getContentResolver().insert(DEVICE_DEFAULT_CLASS_URI, values);
+        btDeviceClass.setUserEditable(false);
+        // TODO
+        // ContentValues values = btDeviceClass.toContentValues();
+        // return context.getContentResolver().insert(DEVICE_CLASS_URI, values);
+        return null;
     }
 
     public Uri save(BluetoothDeviceClassData btDeviceClass) {

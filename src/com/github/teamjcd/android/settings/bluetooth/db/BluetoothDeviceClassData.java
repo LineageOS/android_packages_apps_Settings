@@ -16,7 +16,7 @@ public class BluetoothDeviceClassData implements BaseColumns {
     private int id;
     private String name;
     private int deviceClass;
-    private int userEditable;
+    private int userEditable = 1;
 
     public BluetoothDeviceClassData(String name, int deviceClass) {
         this.name = name;
