@@ -83,10 +83,7 @@ public class BluetoothDeviceClassStore {
 
     public Uri saveDefault(BluetoothDeviceClassData btDeviceClass) {
         btDeviceClass.setUserEditable(false);
-        // TODO
-        // ContentValues values = btDeviceClass.toContentValues();
-        // return context.getContentResolver().insert(DEVICE_CLASS_URI, values);
-        return null;
+        return save(btDeviceClass);
     }
 
     public Uri save(BluetoothDeviceClassData btDeviceClass) {
