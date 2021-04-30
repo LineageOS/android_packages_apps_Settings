@@ -54,6 +54,7 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
             mAdapter.enable();
         } else {
             saveInitialValue();
+            fillList();
         }
     }
 
@@ -122,6 +123,7 @@ public class BluetoothDeviceClassSettings extends SettingsPreferenceFragment
 
     private void fillList() {
         List<BluetoothDeviceClassData> codDataList = mStore.getAll();
+        Log.d(TAG, "fillList(): codDataList - " + codDataList);
 
         if (!codDataList.isEmpty()) {
             final PreferenceGroup codPrefList = (PreferenceGroup) findPreference("bluetooth_device_class_list");
