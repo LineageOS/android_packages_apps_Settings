@@ -16,12 +16,15 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="mobile_data_settings_summary_unavailable">Nessuna SIM disponibile</string>
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Ora sei ad <xliff:g id="step_count">%1$d</xliff:g> passo dall\'attivare le impostazioni di sviluppo.</item>
         <item quantity="other">Ora sei a <xliff:g id="step_count">%1$d</xliff:g> passi dall\'attivare le impostazioni di sviluppo.</item>
     </plurals>
     <string name="show_dev_on_cm">Hai attivato le impostazioni di sviluppo!</string>
     <string name="show_dev_already_cm">Non è necessario, hai già attivato le impostazioni di sviluppo.</string>
+    <string name="keyboard_extras_title">Extra</string>
+    <string name="advanced_keyboard_settings_title">Impostazioni avanzate</string>
     <string name="advanced_reboot_title">Riavvio avanzato</string>
     <string name="advanced_reboot_summary">Quando sbloccato, mostra le opzioni per il riavvio in recovery o bootloader nel menù di accensione</string>
     <string name="adb_enable_root">Debug con accesso root</string>
@@ -53,6 +56,7 @@
     <string name="lockpattern_settings_enable_dots_title">Mostra punti sequenza</string>
     <string name="lockscreen_media_art_title">Mostra copertina album</string>
     <string name="lockscreen_visualizer_title">Mostra visualizzatore musicale</string>
+    <string name="min_refresh_rate_title">Frequenza di aggiornamento minima</string>
     <string name="show_navbar_hint_title">Indicatore navigazione</string>
     <string name="show_navbar_hint_summary">Mostra l\'indicatore di navigazione in fondo allo schermo</string>
     <string name="app_notification_sound_timeout_title">Tempo minimo tra suoni di notifica</string>
@@ -66,6 +70,8 @@
     <string name="app_notification_sound_timeout_value_30_minutes">30 minuti</string>
     <string name="data_usage_app_restrict_all">Consenti accesso alla rete</string>
     <string name="data_usage_app_restrict_all_summary">Abilita l\'utilizzo della rete</string>
+    <string name="data_usage_app_restrict_mobile">Dati mobili</string>
+    <string name="data_usage_app_restrict_mobile_summary">Abilita l\'utilizzo dei dati mobili</string>
     <string name="data_usage_app_restrict_vpn">Dati VPN</string>
     <string name="data_usage_app_restrict_vpn_summary">Abilita utilizzo dati VPN</string>
     <string name="data_usage_app_restrict_wifi">Dati Wi\u2011Fi</string>
@@ -84,4 +90,6 @@
     <string name="backup_transport_setting_label">Cambia gestore di backup</string>
     <string name="backup_transport_title">Seleziona un gestore di backup</string>
     <string name="connected_tws_device_saved_title">Auricolari salvati</string>
+    <string name="fast_charging_title">Ricarica rapida</string>
+    <string name="fast_charging_summary">Disabilita per ridurre il calore prodotto dal dispositivo durante la carica o per prolungare la durata della batteria</string>
 </resources>

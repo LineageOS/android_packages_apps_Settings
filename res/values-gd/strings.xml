@@ -57,6 +57,7 @@
     <string name="font_size_save">Ceart ma-thà</string>
     <string name="sdcard_setting" product="nosdcard">Stòras USB</string>
     <string name="sdcard_setting" product="default">Cairt SD</string>
+    <string name="bluetooth">Bluetooth</string>
     <string name="bluetooth_is_discoverable">Chì gach uidheam Bluetooth am fagas e (<xliff:g id="discoverable_time_period">%1$s</xliff:g>)</string>
     <string name="bluetooth_is_discoverable_always">Chì gach uidheam Bluetooth am fagas e</string>
     <string name="bluetooth_not_visible_to_other_devices">Chan fhaic uidheaman Bluetooth eile e</string>
@@ -186,6 +187,7 @@
     <string name="action_drag_label_move_bottom">Gluais gun bhonn</string>
     <string name="action_drag_label_remove">Thoir an cànan air falbh</string>
     <string name="activity_picker_label">Tagh gnìomhachd</string>
+    <string name="debug_intent_sender_label">Debug intent sender</string>
     <string name="display_label">Sgrìn</string>
     <string name="sd_card_settings_label" product="nosdcard">Stòras USB</string>
     <string name="sd_card_settings_label" product="default">Cairt SD</string>
@@ -250,6 +252,7 @@
     <string name="trust_lost_locks_screen_title">Glais an sgrìn nuair a chaillear an t-earbsa</string>
     <string name="trust_lost_locks_screen_summary">Ma tha seo an comas, thèid an t-uidheam a ghlasadh nuair a chailleas an t-àidseant earbsa mu dheireadh earbsa</string>
     <string name="owner_info_settings_summary">Chan eil gin</string>
+    <string name="owner_info_settings_status"><xliff:g id="count" example="90">%1$d</xliff:g> / <xliff:g id="count" example="100">%2$d</xliff:g></string>
     <string name="owner_info_settings_edit_text_hint">Can, Android Dhòmhnaill.</string>
     <string name="show_profile_info_on_lockscreen_label">Seall fiosrachadh na pròifil air an sgrìn-ghlasaidh</string>
     <string name="Accounts_settings_title">Cunntasan</string>
@@ -476,6 +479,7 @@
     <string name="unlock_set_unlock_none_summary">Gun tèarainteachd</string>
     <string name="unlock_set_unlock_pattern_title">Pàtran</string>
     <string name="unlock_set_unlock_pattern_summary">Tèarainteachd mheadhanach</string>
+    <string name="unlock_set_unlock_pin_title">PIN</string>
     <string name="unlock_set_unlock_pin_summary">Tèarainteachd mheadhanach no àrd</string>
     <string name="unlock_set_unlock_password_title">Facal-faire</string>
     <string name="unlock_set_unlock_password_summary">Tèarainteachd àrd</string>
@@ -494,6 +498,7 @@
     <string name="unlock_set_unlock_mode_off">Na glais</string>
     <string name="unlock_set_unlock_mode_none">Grad-shlaighd</string>
     <string name="unlock_set_unlock_mode_pattern">Pàtran</string>
+    <string name="unlock_set_unlock_mode_pin">PIN</string>
     <string name="unlock_set_unlock_mode_password">Facal-faire</string>
     <string name="unlock_setup_wizard_fingerprint_details">Nuair a bhios tu air glas na sgrìn a shuidheachadh, ’s urrainn dhut an lorg-mheòir agad a shuidheachadh cuideachd ann an Roghainnean &gt; Tèarainteachd.</string>
     <string name="unlock_disable_lock_title">Cuir glas na sgrìn dheth</string>
@@ -565,7 +570,10 @@
     <string name="manage_trust_agents">Àidseantan earbsa</string>
     <string name="disabled_because_no_backup_security">Suidhich glas na sgrìn mus cleachd thu seo</string>
     <string name="manage_trust_agents_summary">Chan eil gin</string>
+    <string name="bluetooth_quick_toggle_title">Bluetooth</string>
     <string name="bluetooth_quick_toggle_summary">Cuir Bluetooth air</string>
+    <string name="bluetooth_settings">Bluetooth</string>
+    <string name="bluetooth_settings_title">Bluetooth</string>
     <string name="bluetooth_settings_summary">Stiùir na ceanglaichean, suidhich ainm an uidheim ⁊ an so-lorgadh</string>
     <string name="bluetooth_pairing_request">An dèan thu paidhreachadh le <xliff:g id="device_name">%1$s</xliff:g>?</string>
     <string name="bluetooth_pairing_key_msg">Còd paidhreachadh Bluetooth</string>
@@ -575,6 +583,7 @@
     <string name="bluetooth_pin_values_hint_16_digits">Feumaidh 16 àireamh a bhith sa PIN</string>
     <string name="bluetooth_enter_pin_other_device">Dh’fhaoidte gu bheil agad ris a’ PIN seo a chur a-steach air an uidheam eile cuideachd.</string>
     <string name="bluetooth_enter_passkey_other_device">Dh’fhaoidte gu bheil agad ris an iuchair-fhaire seo a chur a-steach air an uidheam eile cuideachd.</string>
+    <string name="bluetooth_confirm_passkey_msg">Airson paidhreachadh le:&lt;br&gt;&lt;b&gt;<xliff:g id="device_name">%1$s</xliff:g>&lt;/b&gt;&lt;br&gt;&lt;br&gt;Dèan cinnteach gu bheil e a’ sealltainn an iuchair-fhaire seo:&lt;br&gt;&lt;b&gt;<xliff:g id="passkey">%2$s</xliff:g>&lt;/b&gt;</string>
     <string name="bluetooth_incoming_pairing_msg">O:&lt;br&gt;&lt;b&gt;<xliff:g id="device_name">%1$s</xliff:g>&lt;/b&gt;&lt;br&gt;&lt;br&gt;An dèan thu paidhreachadh leis an uidheam ud?</string>
     <string name="bluetooth_display_passkey_pin_msg">Airson paidhreachadh le:<xliff:g id="bold1">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="device_name">%1$s</xliff:g><xliff:g id="end_bold1">&lt;/b&gt;&lt;br&gt;&lt;br&gt;</xliff:g>Sgrìobh seo air-san:<xliff:g id="bold2">&lt;br&gt;&lt;b&gt;</xliff:g><xliff:g id="passkey">%2$s</xliff:g><xliff:g id="end_bold2">&lt;/b&gt;</xliff:g> ’s brùth air Return no Enter an uairsin.</string>
     <string name="bluetooth_connecting_error_message">Cha b’ urrainn dhuinn ceangal ri <xliff:g id="device_name">%1$s</xliff:g>.</string>
@@ -641,10 +650,13 @@
     <string name="wifi_display_options_forget">Dìochuimhnich</string>
     <string name="wifi_display_options_done">Deiseil</string>
     <string name="wifi_display_options_name">Ainm</string>
+    <string name="wifi_band_24ghz">2.4 GHz</string>
+    <string name="wifi_band_5ghz">5 GHz</string>
     <string name="wifi_sign_in_button_text">Clàraich a-steach</string>
     <string name="wifi_tap_to_sign_in">Thoir gnogag an-seo airson clàradh a-steach dhan lìonra</string>
     <string name="art_verifier_for_debuggable_title">Dearbh bytecode nan aplacaidean a ghabhas dì-bhugachadh</string>
     <string name="art_verifier_for_debuggable_summary">Leig le ART bytecode a dhearbhadh do dh’aplacaidean a ghabhas dì-bhugachadh</string>
+    <string name="nfc_quick_toggle_title">NFC</string>
     <string name="nfc_disclaimer_title">Cuir air NFC</string>
     <string name="nfc_disclaimer_content">Nì NFC iomaid dàta eadar an uidheam seo agus uidheaman no cinn-uidhe eile am fagas, can tèirmineal pàighidh, leughadair inntrigidh agus sanasachd no tagaichean eadar-ghnìomhach.</string>
     <string name="nfc_secure_toggle_summary" product="default">Na ceadaich pàigheadh no tar-chur NFC ach nuair a bhios an sgrìn neo-ghlaiste</string>
@@ -733,6 +745,7 @@
     <string name="wifi_ap_choose_2G">Bann 2.4 GHz</string>
     <string name="wifi_ap_choose_5G">Bann 5.0 GHz</string>
     <string name="wifi_ap_prefer_5G">Prìomhachas air bann 5.0 GHz</string>
+    <string name="wifi_ap_2G">2.4 GHz</string>
     <string name="wifi_ap_5G">5.0 GHz</string>
     <string name="wifi_ap_band_select_one">Tagh bann no dhà airson WiFi hotspot:</string>
     <string name="wifi_ip_settings">Roghainnean IP</string>
@@ -829,6 +842,8 @@
     <string name="wifi_ip_settings_invalid_gateway">Cuir a-steach seòladh bealaich dligheach.</string>
     <string name="wifi_ip_settings_invalid_dns">Cuir a-steach seòladh DNS dligheach.</string>
     <string name="wifi_ip_settings_invalid_network_prefix_length">Cuir a-steach ro-leasachan lìonraidh a tha eadar 0 is 32 a dh’fhaid.</string>
+    <string name="wifi_dns1">DNS 1</string>
+    <string name="wifi_dns2">DNS 2</string>
     <string name="wifi_gateway">Bealach</string>
     <string name="wifi_network_prefix_length">Faid ro-leasachan an lìonraidh</string>
     <string name="wifi_p2p_settings_title">WiFi Direct</string>
@@ -1079,17 +1094,25 @@
     <string name="storage_settings_summary" product="nosdcard">Dì-mhunntaich an stòras USB, seall na th’ agad de stòras</string>
     <string name="storage_settings_summary" product="default">Dì-mhunntaich a’ chairt SD, seall na th’ agad de stòras</string>
     <string name="imei_multi_sim">IMEI (slot SIM %1$d)</string>
+    <string name="status_imei">IMEI</string>
+    <string name="status_imei_sv">IMEI SV</string>
+    <string name="status_iccid">ICCID</string>
+    <string name="status_number" product="tablet">MDN</string>
     <string name="status_number" product="default">Àireamh fòn</string>
     <string name="status_number_sim_slot" product="tablet">MDN (slot SIM %1$d)</string>
     <string name="status_number_sim_slot" product="default">Àireamh fòn (slot SIM %1$d)</string>
     <string name="status_number_sim_status" product="tablet">MDN air SIM</string>
     <string name="status_number_sim_status" product="default">Àireamh fòn air SIM</string>
+    <string name="status_min_number">MIN</string>
+    <string name="status_msid_number">MSID</string>
     <string name="status_prl_version">Tionndadh PRL</string>
     <string name="meid_multi_sim">MEID (slot SIM %1$d)</string>
     <string name="scanning_status_text_wifi_on_ble_on">Tha an dà chuid sganadh WiFi is Bluetooth air</string>
     <string name="scanning_status_text_wifi_on_ble_off">Tha sganadh WiFi air ⁊ sganadh Bluetooth dheth</string>
     <string name="scanning_status_text_wifi_off_ble_on">Tha sganadh Bluetooth air ⁊ sganadh WiFi dheth</string>
     <string name="scanning_status_text_wifi_off_ble_off">Tha an dà chuid sganadh WiFi is Bluetooth dheth</string>
+    <string name="status_meid_number">MEID</string>
+    <string name="status_icc_id">ICCID</string>
     <string name="status_data_network_type">Seòrsa an lìonraidh dàta mobile</string>
     <string name="status_voice_network_type">Seòrsa an lìonraidh gutha mobile</string>
     <string name="status_latest_area_info">Fiosrachadh a’ ghùlanair</string>
@@ -1168,6 +1191,7 @@
     <string name="storage_internal_title">Stòras air an uidheam</string>
     <string name="storage_external_title">Stòras so-ghiùlan</string>
     <string name="storage_volume_summary">Tha <xliff:g id="used" example="1.2GB">%1$s</xliff:g> à <xliff:g id="total" example="32GB">%2$s</xliff:g> ’ga chleachdadh</string>
+    <string name="storage_size_large"><xliff:g id="number" example="128">^1</xliff:g><small><small> <xliff:g id="unit" example="KB">^2</xliff:g></small></small></string>
     <string name="storage_volume_used">’Ga chleachdadh de <xliff:g id="total" example="32GB">%1$s</xliff:g></string>
     <string name="storage_volume_used_total">’Ga chleachdadh gu h-iomlan de <xliff:g id="total" example="32GB">%1$s</xliff:g></string>
     <string name="storage_mount_success">Chaidh <xliff:g id="name" example="SD card">%1$s</xliff:g> a mhunntachadh</string>
@@ -1300,14 +1324,21 @@
     <string name="apn_edit">Deasaich a’ phuing-inntrigidh</string>
     <string name="apn_not_set">Cha deach a shuidheachadh</string>
     <string name="apn_name">Ainm</string>
+    <string name="apn_apn">APN</string>
     <string name="apn_http_proxy">Progsaidh</string>
+    <string name="apn_http_port">Port</string>
     <string name="apn_user">Ainm-cleachdaiche</string>
     <string name="apn_password">Facal-faire</string>
     <string name="apn_server">Frithealaiche</string>
+    <string name="apn_mmsc">MMSC</string>
     <string name="apn_mms_proxy">Progsaidh MMS</string>
     <string name="apn_mms_port">Port MMS</string>
+    <string name="apn_mcc">MCC</string>
+    <string name="apn_mnc">MNC</string>
     <string name="apn_auth_type">Seòrsa an dearbhaidh</string>
     <string name="apn_auth_type_none">Gun dearbhadh</string>
+    <string name="apn_auth_type_pap">PAP</string>
+    <string name="apn_auth_type_chap">CHAP</string>
     <string name="apn_auth_type_pap_chap">PAP no CHAP</string>
     <string name="apn_type">Seòrsa APN</string>
     <string name="apn_protocol">Pròtacal APN</string>
@@ -1371,6 +1402,7 @@
     <string name="tether_settings_summary_hotspot_off_tether_on">Teadhrachadh</string>
     <string name="tether_settings_disabled_on_data_saver">"Chan urrainn dhut a theadhrachadh no hotspots so-ghiùlan a chleachdadh nuair a bhios caomhnaiche an dàta air"</string>
     <string name="tethering_interface_options">Teadhrachadh</string>
+    <string name="usb_title">USB</string>
     <string name="usb_tethering_button_text">Teadhrachadh USB</string>
     <string name="usb_tethering_subtext" product="default">Co-roinn an ceangal ris an eadar-lìon aig an fhòn slighe USB</string>
     <string name="usb_tethering_subtext" product="tablet">Co-roinn an ceangal ris an eadar-lìon aig an tablaid slighe USB</string>
@@ -1636,8 +1668,11 @@
     <string name="cached">Pròiseasan cùlaibh san tasgadan</string>
     <string name="no_running_services">Chan eil dad ’ga ruith.</string>
     <string name="service_started_by_app">Chaidh a thòiseachadh le aplacaid.</string>
+    <string name="service_client_name"><xliff:g id="client_name">%1$s</xliff:g></string>
     <string name="service_background_processes"><xliff:g id="memory">%1$s</xliff:g> saor</string>
     <string name="service_foreground_processes"><xliff:g id="memory">%1$s</xliff:g> ’ga chleachdadh</string>
+    <string name="memory">RAM</string>
+    <string name="service_process_name"><xliff:g id="process">%1$s</xliff:g></string>
     <string name="running_process_item_user_label">Cleachdaiche: <xliff:g id="user_name">%1$s</xliff:g></string>
     <string name="running_process_item_removed_user_label">Cleachdaiche a chaidh a thoirt air falbh</string>
     <string name="running_processes_item_description_s_s"><xliff:g id="numprocess">%1$d</xliff:g>
@@ -1845,6 +1880,7 @@
     <string name="color_blue">Gorm</string>
     <string name="color_cyan">Saidhean</string>
     <string name="color_yellow">Buidhe</string>
+    <string name="color_magenta">Magenta</string>
     <string name="enable_service_title">Am faigh
          <xliff:g id="service" example="TalkBack">%1$s</xliff:g> làn-smachd air an
         uidheam agad?</string>
@@ -2139,6 +2175,7 @@
     <string name="connected_devices_dashboard_summary">Bluetooth, modh draibhidh, NFC</string>
     <string name="connected_devices_dashboard_no_nfc_summary">Bluetooth, modh draibhidh</string>
     <string name="connected_devices_dashboard_no_driving_mode_summary">Bluetooth, NFC</string>
+    <string name="connected_devices_dashboard_no_driving_mode_no_nfc_summary">Bluetooth</string>
     <string name="account_dashboard_title">Cunntasan</string>
     <string name="account_dashboard_default_summary">Cha deach cunntas a chur ris</string>
     <string name="search_results_title">Roghainnean</string>
@@ -2455,6 +2492,7 @@
     <string name="usb_use_MIDI_desc">Cleachd an t-uidheam seo mar MhIDI</string>
     <string name="usb_default_label">Rèiteachadh USB tùsail</string>
     <string name="usb_default_info">Nuair a thèid uidheam eile a cheangal ris agus am fòn air a neo-ghlasadh, thèid na roghainnean seo a chur an sàs. Na dèan ceangal ach ri uidheaman sa bheil earbsa agad.</string>
+    <string name="usb_pref">USB</string>
     <string name="usb_preference">Roghainnean USB</string>
     <string name="usb_control_title">Tha USB fo smachd</string>
     <string name="usb_control_host">Uidheam ceangailte</string>
