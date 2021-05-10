@@ -96,8 +96,10 @@ public class ChooseLockPatternSize extends SettingsActivity {
                 patternSize = 3;
             }
 
-            Intent intent = new Intent(getActivity(), ChooseLockPattern.class);
-            intent.putExtras(getActivity().getIntent().getExtras());
+            Bundle extras = getActivity().getIntent().getExtras();
+            Intent intent = new Intent();
+            intent.setClassName(getActivity(), extras.getString("className"));
+            intent.putExtras(extras);
             intent.putExtra("pattern_size", patternSize);
             intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
             startActivity(intent);
