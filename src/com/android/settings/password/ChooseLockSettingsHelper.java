@@ -377,6 +377,9 @@ public final class ChooseLockSettingsHelper {
 
     public boolean launchFrpConfirmationActivity(int request, @Nullable CharSequence header,
             @Nullable CharSequence description, @Nullable CharSequence alternateButton) {
+        Bundle extras = new Bundle();
+        extras.putString("className", ConfirmLockPattern.class.getName());
+
         return launchConfirmationActivity(
                 request /* request */,
                 null /* title */,
@@ -388,7 +391,7 @@ public final class ChooseLockSettingsHelper {
                 0 /* challenge */,
                 LockPatternUtils.USER_FRP /* userId */,
                 alternateButton /* alternateButton */,
-                null /* extras */,
+                extras /* extras */,
                 false /* foregroundOnly */);
     }
 
@@ -403,7 +406,9 @@ public final class ChooseLockSettingsHelper {
         switch (mLockPatternUtils.getKeyguardStoredPasswordQuality(effectiveUserId)) {
             case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:
                 launched = launchConfirmationActivity(request, title, header, description,
-                        returnCredentials || hasChallenge
+                        extras != null && userId == LockPatternUtils.USER_FRP
+                                ? ChooseLockPatternSize.class
+                                : returnCredentials || hasChallenge
                                 ? ConfirmLockPattern.InternalActivity.class
                                 : ConfirmLockPattern.class, returnCredentials, external,
                                 hasChallenge, challenge, userId, alternateButton, extras,

@@ -104,6 +104,7 @@ public class ChooseLockPattern extends SettingsActivity {
 
         public IntentBuilder(Context context) {
             mIntent = new Intent(context, ChooseLockPatternSize.class);
+            mIntent.putExtra("className", ChooseLockPattern.class.getName());
             mIntent.putExtra(EncryptionInterstitial.EXTRA_REQUIRE_PASSWORD, false);
             mIntent.putExtra(ChooseLockGeneric.CONFIRM_CREDENTIALS, false);
             mIntent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_HAS_CHALLENGE, false);
