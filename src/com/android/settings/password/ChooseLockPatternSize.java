@@ -96,35 +96,9 @@ public class ChooseLockPatternSize extends SettingsActivity {
                 patternSize = 3;
             }
 
-            final boolean isFallback = getActivity().getIntent()
-                .getBooleanExtra(LockPatternUtils.LOCKSCREEN_BIOMETRIC_WEAK_FALLBACK, false);
-
             Intent intent = new Intent(getActivity(), ChooseLockPattern.class);
+            intent.putExtras(getActivity().getIntent().getExtras());
             intent.putExtra("pattern_size", patternSize);
-            intent.putExtra("key_lock_method", "pattern");
-            intent.putExtra("confirm_credentials", false);
-            intent.putExtra(LockPatternUtils.LOCKSCREEN_BIOMETRIC_WEAK_FALLBACK,
-                    isFallback);
-
-            Intent originatingIntent = getActivity().getIntent();
-            // Forward the challenge extras if available in originating intent.
-            if (originatingIntent.hasExtra(ChooseLockSettingsHelper.EXTRA_KEY_HAS_CHALLENGE)) {
-                intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_HAS_CHALLENGE,
-                        originatingIntent.getBooleanExtra(
-                                ChooseLockSettingsHelper.EXTRA_KEY_HAS_CHALLENGE, false));
-
-                intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE,
-                        originatingIntent.getLongExtra(
-                                ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE, 0));
-            }
-            // Forward the Encryption interstitial required password selection
-            if (originatingIntent.hasExtra(EncryptionInterstitial.EXTRA_REQUIRE_PASSWORD)) {
-                intent.putExtra(EncryptionInterstitial.EXTRA_REQUIRE_PASSWORD, originatingIntent
-                        .getBooleanExtra(EncryptionInterstitial.EXTRA_REQUIRE_PASSWORD, true));
-            }
-            intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_PASSWORD,
-                    (LockscreenCredential) originatingIntent.getParcelableExtra(
-                            ChooseLockSettingsHelper.EXTRA_KEY_PASSWORD));
             intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
             startActivity(intent);
 
