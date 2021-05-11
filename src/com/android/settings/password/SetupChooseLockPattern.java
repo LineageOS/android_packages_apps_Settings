@@ -40,7 +40,8 @@ import com.android.settings.SetupRedactionInterstitial;
 public class SetupChooseLockPattern extends ChooseLockPattern {
 
     public static Intent modifyIntentForSetup(Context context, Intent chooseLockPatternIntent) {
-        chooseLockPatternIntent.setClass(context, SetupChooseLockPattern.class);
+        chooseLockPatternIntent.setClass(context, ChooseLockPatternSize.class);
+        chooseLockPatternIntent.putExtra("className", SetupChooseLockPattern.class.getName());
         return chooseLockPatternIntent;
     }
 
