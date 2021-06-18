@@ -98,9 +98,21 @@
             android:summary="@string/lock_screen_notifs_redact_work_summary"
             settings:controller="com.android.settings.notification.RedactNotificationPreferenceController" />
 
+        <lineageos.preference.LineageSecureSettingListPreference
+            android:key="face_unlock_method"
+            android:order="16"
+            android:title="@string/face_unlock_method_title"
+            android:summary="%s"
+            android:dialogTitle="@string/face_unlock_method_title"
+            android:entries="@array/face_unlock_method_entries"
+            android:entryValues="@array/face_unlock_method_values"
+            android:defaultValue="0"
+            settings:searchable="false"
+            settings:controller="com.android.settings.biometrics.face.FaceSettingsLockscreenUnlockMethodPreferenceController" />
+
         <SwitchPreference
             android:key="notification_lockscreen_bypass"
-            android:order="16"
+            android:order="17"
             android:title="@string/lockscreen_bypass_title"
             android:summary="@string/lockscreen_bypass_summary"
             settings:searchable="false"
