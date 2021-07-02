@@ -90,15 +90,9 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
     private static final String KEY_CHARGE_TYPE = "charge_type";
     private static final String KEY_CYCLE_COUNT = "cycle_count";
 
-    private static final String FILENAME_HEALTH =
-    
-            "/sys/class/power_supply/battery/health";
-    private static final String FILENAME_CHARGE_TYPE =
-    
-            "/sys/class/power_supply/battery/charge_type";
-    private static final String FILENAME_CYCLE_COUNT =
-    
-            "/sys/class/power_supply/battery/cycle_count";
+    private static final String FILENAME_HEALTH = "/sys/class/power_supply/battery/health";
+    private static final String FILENAME_CHARGE_TYPE = "/sys/class/power_supply/battery/charge_type";
+    private static final String FILENAME_CYCLE_COUNT = "/sys/class/power_supply/battery/cycle_count";
 
     @VisibleForTesting
     static final int BATTERY_INFO_LOADER = 1;
@@ -256,14 +250,10 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
 
         mScreenUsagePref = (PowerGaugePreference) findPreference(KEY_SCREEN_USAGE);
         mBatteryTempPref = (PowerGaugePreference) findPreference(KEY_BATTERY_TEMP);
-        mHealth = (PowerGaugePreference) findPreference(
-                KEY_HEALTH);
-        mCycleCount = (PowerGaugePreference) findPreference(
-                KEY_CYCLE_COUNT);
-        mChargeType = (PowerGaugePreference) findPreference(
-                KEY_CHARGE_TYPE);
-        mLastFullChargePref = (PowerGaugePreference) findPreference(
-                KEY_TIME_SINCE_LAST_FULL_CHARGE);
+        mHealth = (PowerGaugePreference) findPreference(KEY_HEALTH);
+        mCycleCount = (PowerGaugePreference) findPreference(KEY_CYCLE_COUNT);
+        mChargeType = (PowerGaugePreference) findPreference(KEY_CHARGE_TYPE);
+        mLastFullChargePref = (PowerGaugePreference) findPreference(KEY_TIME_SINCE_LAST_FULL_CHARGE);
         mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.battery_footer_summary);
         mBatteryUtils = BatteryUtils.getInstance(getContext());
 
@@ -363,12 +353,10 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         mScreenUsagePref.setSubtitle(StringUtil.formatElapsedTime(getContext(),
                 mBatteryUtils.calculateScreenUsageTime(mStatsHelper), false));
         mBatteryTempPref.setSubtitle(BatteryInfo.batteryTemp+" "+Character.toString ((char) 176) + "C");
-        mHealth.setSubtitle(parseBatterymAhText(FILENAME_HEALTH));
-        
-        mCycleCount.setSubtitle(parseBatterymAhText(FILENAME_CYCLE_COUNT));
-        
-        mChargeType.setSubtitle(parseBatterymAhText(FILENAME_CHARGE_TYPE));
-        
+        mHealth.setSubtitle(parseBatteryStatus(FILENAME_HEALTH));
+        mCycleCount.setSubtitle(parseBatteryCycle(FILENAME_CYCLE_COUNT));
+        mChargeType.setSubtitle(parseBatteryStatus(FILENAME_CHARGE_TYPE));
+
         final long elapsedRealtimeUs = SystemClock.elapsedRealtime() * 1000;
         Intent batteryBroadcast = context.registerReceiver(null,
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -525,14 +513,24 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         restartBatteryTipLoader();
     }
 
-    private String parseBatterymAhText(String file) {
+	private String parseBatteryStatus(String file) {
         try {
-            return Integer.parseInt(readLine(file)) / 1000 + " mAh";
+            return readLine(file);
         } catch (IOException ioe) {
-            Log.e(TAG, "Cannot read battery capacity from "
+            Log.e(TAG, "Cannot read battery status from "
+                    + file, ioe);
+        }
+        return getResources().getString(R.string.status_unavailable);
+    }
+
+    private String parseBatteryCycle(String file) {
+        try {
+            return Integer.parseInt(readLine(file)) + " Cycles";
+        } catch (IOException ioe) {
+            Log.e(TAG, "Cannot read battery cycle from "
                     + file, ioe);
         } catch (NumberFormatException nfe) {
-            Log.e(TAG, "Read a badly formatted battery capacity from "
+            Log.e(TAG, "Read a badly formatted battery cycle from "
                     + file, nfe);
         }
         return getResources().getString(R.string.status_unavailable);
@@ -546,7 +544,7 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
     * @throws IOException If the file couldn't be read.
     */
     @Nullable
-    private String readLine(String filename) throws IOException {
+	private String readLine(String filename) throws IOException {
         final BufferedReader reader = new BufferedReader(new FileReader(filename), 256);
         try {
             return reader.readLine();
