@@ -86,13 +86,19 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
     private static final String KEY_TIME_SINCE_LAST_FULL_CHARGE = "last_full_charge";
     private static final String KEY_BATTERY_SAVER_SUMMARY = "battery_saver_summary";
 
-    private static final String KEY_CURRENT_BATTERY_CAPACITY = "current_battery_capacity";
-    private static final String KEY_DESIGNED_BATTERY_CAPACITY = "designed_battery_capacity";
+    private static final String KEY_HEALTH = "health";
+    private static final String KEY_CHARGE_TYPE = "charge_type";
+    private static final String KEY_CYCLE_COUNT = "cycle_count";
 
-    private static final String FILENAME_BATTERY_DESIGN_CAPACITY =
-            "/sys/class/power_supply/bms/charge_full_design";
-    private static final String FILENAME_BATTERY_CURRENT_CAPACITY =
-            "/sys/class/power_supply/bms/charge_full";
+    private static final String FILENAME_HEALTH =
+    
+            "/sys/class/power_supply/battery/health";
+    private static final String FILENAME_CHARGE_TYPE =
+    
+            "/sys/class/power_supply/battery/charge_type";
+    private static final String FILENAME_CYCLE_COUNT =
+    
+            "/sys/class/power_supply/battery/cycle_count";
 
     @VisibleForTesting
     static final int BATTERY_INFO_LOADER = 1;
@@ -107,9 +113,13 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
     @VisibleForTesting
     PowerGaugePreference mScreenUsagePref;
     @VisibleForTesting
-    PowerGaugePreference mCurrentBatteryCapacity;
+    PowerGaugePreference mBatteryTempPref;
     @VisibleForTesting
-    PowerGaugePreference mDesignedBatteryCapacity;
+    PowerGaugePreference mHealth;
+    @VisibleForTesting
+    PowerGaugePreference mCycleCount;
+    @VisibleForTesting
+    PowerGaugePreference mChargeType;
     @VisibleForTesting
     PowerGaugePreference mLastFullChargePref;
     @VisibleForTesting
@@ -245,10 +255,13 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         mBatteryLayoutPref = (LayoutPreference) findPreference(KEY_BATTERY_HEADER);
 
         mScreenUsagePref = (PowerGaugePreference) findPreference(KEY_SCREEN_USAGE);
-        mCurrentBatteryCapacity = (PowerGaugePreference) findPreference(
-                KEY_CURRENT_BATTERY_CAPACITY);
-        mDesignedBatteryCapacity = (PowerGaugePreference) findPreference(
-                KEY_DESIGNED_BATTERY_CAPACITY);
+        mBatteryTempPref = (PowerGaugePreference) findPreference(KEY_BATTERY_TEMP);
+        mHealth = (PowerGaugePreference) findPreference(
+                KEY_HEALTH);
+        mCycleCount = (PowerGaugePreference) findPreference(
+                KEY_CYCLE_COUNT);
+        mChargeType = (PowerGaugePreference) findPreference(
+                KEY_CHARGE_TYPE);
         mLastFullChargePref = (PowerGaugePreference) findPreference(
                 KEY_TIME_SINCE_LAST_FULL_CHARGE);
         mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.battery_footer_summary);
@@ -349,13 +362,13 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         updateLastFullChargePreference();
         mScreenUsagePref.setSubtitle(StringUtil.formatElapsedTime(getContext(),
                 mBatteryUtils.calculateScreenUsageTime(mStatsHelper), false));
-        mBatteryTemp.setSummary(
-                com.android.internal.util.octavi.OctaviUtils.mccCheck(getContext()) ?
-                com.android.internal.util.octavi.OctaviUtils.batteryTemperature(getContext(), true) + "°F" :
-                com.android.internal.util.octavi.OctaviUtils.batteryTemperature(getContext(), false) + "°C");
+        mBatteryTempPref.setSubtitle(BatteryInfo.batteryTemp+" "+Character.toString ((char) 176) + "C");
+        mHealth.setSubtitle(parseBatterymAhText(FILENAME_HEALTH));
+        
+        mCycleCount.setSubtitle(parseBatterymAhText(FILENAME_CYCLE_COUNT));
 
-        mCurrentBatteryCapacity.setSubtitle(parseBatterymAhText(FILENAME_BATTERY_CURRENT_CAPACITY));
-        mDesignedBatteryCapacity.setSubtitle(parseBatterymAhText(FILENAME_BATTERY_DESIGN_CAPACITY));
+        mChargeType.setSubtitle(parseBatterymAhText(FILENAME_CHARGE_TYPE));
+        
         final long elapsedRealtimeUs = SystemClock.elapsedRealtime() * 1000;
         Intent batteryBroadcast = context.registerReceiver(null,
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
