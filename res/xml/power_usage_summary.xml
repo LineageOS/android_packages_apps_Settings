@@ -80,26 +80,28 @@
         android:key="screen_usage"
         android:title="@string/device_screen_usage"
         android:selectable="false" />
+	
 
-    <com.android.settings.fuelgauge.PowerGaugePreference
-        android:key="designed_battery_capacity"
-        android:title="@string/designed_battery_capacity"
-        android:selectable="false" />
+    <PreferenceCategory
+        android:title="@string/battery_health_title">
+        <com.android.settings.fuelgauge.PowerGaugePreference
+            android:key="health"
+            android:title="@string/battery_health_status_title"
+            android:selectable="false" />
 
-    <com.android.settings.fuelgauge.PowerGaugePreference
-        android:key="current_battery_capacity"
-        android:title="@string/current_battery_capacity"
-        android:selectable="false" />
+        <com.android.settings.fuelgauge.PowerGaugePreference
+            android:key="cycle_count"
+            android:title="@string/battery_cycle_count_title"
+            android:selectable="false" />
+        
+        <com.android.settings.fuelgauge.PowerGaugePreference
+            android:key="charge_type"
+            android:title="@string/battery_charge_type_title"
+            android:selectable="false" />
 
-    <com.android.settings.fuelgauge.PowerGaugePreference
-        android:key="battery_temp"
-        android:title="@string/battery_temp_title"
-        android:selectable="false" />
-
-    <com.android.settingslib.widget.FooterPreference
-        android:key="power_usage_footer"
-        android:title="@string/battery_footer_summary"
-        android:selectable="false"
-        settings:searchable="false"/>
-
+        <com.android.settings.fuelgauge.PowerGaugePreference
+            android:key="battery_temp"
+            android:title="@string/battery_temp"
+            android:selectable="false" />
+    </PreferenceCategory>
 </PreferenceScreen>
