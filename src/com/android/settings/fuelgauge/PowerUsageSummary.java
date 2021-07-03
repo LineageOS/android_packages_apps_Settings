@@ -353,9 +353,10 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         mScreenUsagePref.setSubtitle(StringUtil.formatElapsedTime(getContext(),
                 mBatteryUtils.calculateScreenUsageTime(mStatsHelper), false));
         mBatteryTempPref.setSubtitle(BatteryInfo.batteryTemp+" "+Character.toString ((char) 176) + "C");
-        mHealth.setSubtitle(parseBatteryStatus(FILENAME_HEALTH));
-        mCycleCount.setSubtitle(parseBatteryCycle(FILENAME_CYCLE_COUNT));
-        mChargeType.setSubtitle(parseBatteryStatus(FILENAME_CHARGE_TYPE));
+
+        checkBatteryStatus(mHealth, FILENAME_HEALTH);
+        checkBatteryStatus(mCycleCount, FILENAME_CYCLE_COUNT);
+        checkBatteryStatus(mChargeType, FILENAME_CHARGE_TYPE);
 
         final long elapsedRealtimeUs = SystemClock.elapsedRealtime() * 1000;
         Intent batteryBroadcast = context.registerReceiver(null,
@@ -516,24 +517,30 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
     private String parseBatteryStatus(String file) {
         try {
             return readLine(file);
-        } catch (IOException ioe) {
+        } catch (IOException ioes) {
             Log.e(TAG, "Cannot read battery status from "
-                    + file, ioe);
+                    + file + " as string trying to read battery status  from " + file + "as int", ioes);
+            try {
+                return Integer.parseInt(readLine(file)) + " Cycles";
+            } catch (IOException ioei) {
+                Log.e(TAG, "Cannot read battery status from "
+                        + file + " as int trying to read battery status  from " + file + "as float", ioei);
+            } catch (NumberFormatException nfe) {
+                Log.e(TAG, "Read a badly formatted battery status from "
+                        + file, nfe);
+            }
+            return null;
         }
-        return getResources().getString(R.string.status_unavailable);
     }
 
-    private String parseBatteryCycle(String file) {
-        try {
-            return Integer.parseInt(readLine(file)) + " Cycles";
-        } catch (IOException ioe) {
-            Log.e(TAG, "Cannot read battery cycle from "
-                    + file, ioe);
-        } catch (NumberFormatException nfe) {
-            Log.e(TAG, "Read a badly formatted battery cycle from "
-                    + file, nfe);
-        }
-        return getResources().getString(R.string.status_unavailable);
+    private void checkBatteryStatus(PowerGaugePreference powerGaugePref, String filename) {
+        final String batteryStatus = parseBatteryStatus(filename);
+            if (batteryStatus!= null && !batteryStatus.isEmpty()) {
+                powerGaugePref.setSubtitle(batteryStatus);
+                powerGaugePref.setVisible(true);
+            } else {
+                powerGaugePref.setVisible(false);
+            }
     }
 
     /**
