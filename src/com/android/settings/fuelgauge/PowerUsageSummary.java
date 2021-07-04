@@ -89,7 +89,7 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
     private static final String KEY_HEALTH = "health";
     private static final String KEY_CHARGE_TYPE = "charge_type";
     private static final String KEY_CYCLE_COUNT = "cycle_count";
-
+          
     private static final String FILENAME_HEALTH = "/sys/class/power_supply/battery/health";
     private static final String FILENAME_CHARGE_TYPE = "/sys/class/power_supply/battery/charge_type";
     private static final String FILENAME_CYCLE_COUNT = "/sys/class/power_supply/battery/cycle_count";
