@@ -33,6 +33,12 @@
         android:key="battery_tip"
         android:title="@string/summary_placeholder"
         settings:controller="com.android.settings.fuelgauge.batterytip.BatteryTipPreferenceController" />
+    
+    <!-- Battery percent -->
+    <lineageos.preference.SystemSettingSwitchPreference
+        android:key="status_bar_show_battery_percent"
+        android:title="@string/battery_percentage"
+        android:summary="@string/battery_percentage_description" />
 
     <Preference
         android:fragment="com.android.settings.fuelgauge.batterysaver.BatterySaverSettings"
@@ -57,12 +63,6 @@
     <org.lineageos.internal.lineageparts.LineagePartsPreference
         android:key="perf_profile_settings"
         lineage:replacesKey="battery_saver_summary" />
-
-    <SwitchPreference
-        android:key="battery_percentage"
-        android:title="@string/battery_percentage"
-        android:summary="@string/battery_percentage_description"
-        settings:controller="com.android.settings.display.BatteryPercentagePreferenceController" />
 
     <SwitchPreference
         android:key="fast_charging"
