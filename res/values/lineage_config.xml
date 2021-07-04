@@ -28,4 +28,10 @@
     <string-array name="config_ignored_backup_transports" translatable="false">
         <item>com.android.localtransport/.LocalTransport</item>
     </string-array>
+    
+    <!-- Battery Health -->
+    <string name="config_health">/sys/class/power_supply/battery/health</string>
+    <string name="config_charge_type">/sys/class/power_supply/battery/charge_type</string>
+    <string name="config_cycle_count">/sys/class/power_supply/battery/cycle_count</string>
+
 </resources>

@@ -90,9 +90,9 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
     private static final String KEY_CHARGE_TYPE = "charge_type";
     private static final String KEY_CYCLE_COUNT = "cycle_count";
 
-    private static final String FILENAME_HEALTH = "/sys/class/power_supply/battery/health";
-    private static final String FILENAME_CHARGE_TYPE = "/sys/class/power_supply/battery/charge_type";
-    private static final String FILENAME_CYCLE_COUNT = "/sys/class/power_supply/battery/cycle_count";
+    private String mHealthPath;
+    private String mChargeTypePath;
+    private String mCycleCountPath;
 
     @VisibleForTesting
     static final int BATTERY_INFO_LOADER = 1;
@@ -346,6 +346,10 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         } else {
             mNeedUpdateBatteryTip = true;
         }
+		
+		mHealthPath = getResources().getString(R.string.config_health);
+        mChargeTypePath = getResources().getString(R.string.config_charge_type);
+		mCycleCountPath = getResources().getString(R.string.config_cycle_count);
 
         // reload BatteryInfo and updateUI
         restartBatteryInfoLoader();
@@ -354,9 +358,10 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
                 mBatteryUtils.calculateScreenUsageTime(mStatsHelper), false));
         mBatteryTempPref.setSubtitle(BatteryInfo.batteryTemp+" "+Character.toString ((char) 176) + "C");
 		
-        checkBatteryStatus(mHealth, FILENAME_HEALTH);
-        checkBatteryStatus(mCycleCount, FILENAME_CYCLE_COUNT);
-        checkBatteryStatus(mChargeType, FILENAME_CHARGE_TYPE);
+		
+        checkBatteryStatus(mHealth, mHealthPath);
+        checkBatteryStatus(mCycleCount, mCycleCountPath);
+        checkBatteryStatus(mChargeType, mChargeTypePath);
         
         final long elapsedRealtimeUs = SystemClock.elapsedRealtime() * 1000;
         Intent batteryBroadcast = context.registerReceiver(null,
