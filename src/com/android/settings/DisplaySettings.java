@@ -49,6 +49,7 @@ public class DisplaySettings extends DashboardFragment {
     public static final String KEY_PROXIMITY_ON_WAKE = "proximity_on_wake";
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
+    private static final String KEY_HIGH_TOUCH_POLLING_RATE = "high_touch_polling_rate_enable";
     private static final String KEY_HIGH_TOUCH_SENSITIVITY = "high_touch_sensitivity_enable";
 
     @Override
@@ -112,6 +113,10 @@ public class DisplaySettings extends DashboardFragment {
                     if (!hardware.isSupported(
                             LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
                         keys.add(KEY_HIGH_TOUCH_SENSITIVITY);
+                    }
+                   if (!hardware.isSupported(
+                            LineageHardwareManager.FEATURE_HIGH_TOUCH_POLLING_RATE)) {
+                        keys.add(KEY_HIGH_TOUCH_POLLING_RATE);
                     }
                     return keys;
                 }
