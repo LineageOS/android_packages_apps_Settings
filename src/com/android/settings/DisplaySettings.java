@@ -50,6 +50,7 @@ public class DisplaySettings extends DashboardFragment {
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_HIGH_TOUCH_SENSITIVITY = "high_touch_sensitivity_enable";
+    private static final String KEY_HIGH_TOUCH_SAMPLE_RATE = "high_touch_sample_rate_enable";
 
     @Override
     public int getMetricsCategory() {
@@ -113,6 +114,10 @@ public class DisplaySettings extends DashboardFragment {
                             LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
                         keys.add(KEY_HIGH_TOUCH_SENSITIVITY);
                     }
+                   if (!hardware.isSupported(
+                            LineageHardwareManager.FEATURE_HIGH_TOUCH_SAMPLE_RATE)) {
+                        keys.add(KEY_HIGH_TOUCH_SAMPLE_RATE);
+		    }
                     return keys;
                 }
 

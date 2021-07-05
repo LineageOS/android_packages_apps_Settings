@@ -193,6 +193,13 @@
         android:defaultValue="false"
         lineage:requiresFeature="lineagehardware:FEATURE_HIGH_TOUCH_SENSITIVITY" />
 
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="high_touch_sample_rate_enable"
+        android:title="@string/high_touch_sample_rate_title"
+        android:summary="@string/high_touch_sample_rate_summary"
+        android:defaultValue="false"
+        lineage:requiresFeature="lineagehardware:FEATURE_HIGH_TOUCH_SAMPLE_RATE" />
+
     <ListPreference
         android:key="theme"
         android:title="@string/device_theme"
