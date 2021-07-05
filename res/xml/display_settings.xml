@@ -229,6 +229,13 @@
             settings:requiresConfig="@bool/config_show_top_level_battery" />
 
         <lineageos.preference.LineageSystemSettingSwitchPreference
+            android:key="high_touch_polling_rate_enable"
+            android:title="@string/high_touch_polling_rate_title"
+            android:summary="@string/high_touch_polling_rate_summary"
+            android:defaultValue="false"
+            settings:requiresFeature="lineagehardware:FEATURE_HIGH_TOUCH_POLLING_RATE" />
+
+        <lineageos.preference.LineageSystemSettingSwitchPreference
             android:key="high_touch_sensitivity_enable"
             android:title="@string/high_touch_sensitivity_title"
             android:summary="@string/high_touch_sensitivity_summary"
