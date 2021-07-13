@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PreferenceTheme" parent="@style/PreferenceThemeOverlay.SettingsBase">
+        <item name="bluetoothDeviceClassPreferenceStyle">@style/BluetoothDeviceClassPreference</item>
+    </style>
+
+    <style name="BluetoothDeviceClassPreference" parent="@style/Preference.Material">
+        <item name="android:layout">@layout/bluetooth_device_class_preference_layout</item>
+    </style>
+</resources>
