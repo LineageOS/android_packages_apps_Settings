@@ -89,6 +89,11 @@ public class PeakRefreshRatePreferenceController extends TogglePreferenceControl
         super.displayPreference(screen);
 
         mPreference = screen.findPreference(getPreferenceKey());
+
+        final String summary = mContext.getString(
+                R.string.peak_refresh_rate_generic_summary, 
+                getDefaultPeakRefreshRate());
+        mPreference.setSummary(summary);
     }
 
     @Override
