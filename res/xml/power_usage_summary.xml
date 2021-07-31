@@ -72,6 +72,12 @@
         settings:controller="com.android.settings.display.BatteryPercentagePreferenceController" />
 
     <SwitchPreference
+        android:key="battery_life_extender"
+        android:title="@string/battery_life_extender_title"
+        android:summary="@string/battery_life_extender_summary"
+        settings:controller="com.android.settings.fuelgauge.BatteryLifeExtenderPreferenceController"/>
+
+    <SwitchPreference
         android:key="fast_charging"
         android:title="@string/fast_charging_title"
         android:summary="@string/fast_charging_summary"
