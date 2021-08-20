@@ -221,12 +221,18 @@ public abstract class AbstractBluetoothDialogPreferenceController extends
      */
     public void onHDAudioEnabled(boolean enabled) {}
 
-    static int getHighestCodec(BluetoothCodecConfig[] configs) {
+    static int getHighestCodec(BluetoothA2dp bluetoothA2dp, BluetoothDevice activeDevice,
+            BluetoothCodecConfig[] configs) {
         if (configs == null) {
             Log.d(TAG, "Unable to get highest codec. Configs are empty");
             return BluetoothCodecConfig.SOURCE_CODEC_TYPE_INVALID;
         }
         Log.d(TAG, "CODEC_TYPES len: " + CODEC_TYPES.length + " codec_config len: " + configs.length);
+        // If HD audio is not enabled, SBC is the only one available codec.
+        if (bluetoothA2dp.isOptionalCodecsEnabled(activeDevice)
+                != BluetoothA2dp.OPTIONAL_CODECS_PREF_ENABLED) {
+            return BluetoothCodecConfig.SOURCE_CODEC_TYPE_SBC;
+        }
         for (int i = 0; i < CODEC_TYPES.length; i++) {
             for (int j = 0; j < configs.length; j++) {
                 if ((configs[j].getCodecType() == CODEC_TYPES[i])) {
