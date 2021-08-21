@@ -545,9 +545,9 @@ public class ConfirmLockPassword extends ConfirmDeviceCredentialBaseActivity {
         }
 
         public void onClick(View v) {
-            if (v.getId() == R.id.next_button) {
+            if (v.getId() == R.id.sud_navbar_next) {
                 handleNext();
-            } else if (v.getId() == R.id.cancel_button) {
+            } else if (v.getId() == R.id.sud_navbar_back) {
                 getActivity().setResult(RESULT_CANCELED);
                 getActivity().finish();
             }

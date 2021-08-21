@@ -68,6 +68,7 @@ import com.android.settingslib.development.DevelopmentSettingsEnabler;
 import com.android.settingslib.drawer.DashboardCategory;
 
 import com.google.android.setupcompat.util.WizardManagerHelper;
+import com.google.android.setupdesign.view.NavigationBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -298,21 +299,21 @@ public class SettingsActivity extends SettingsBaseActivity
         // see if we should show Back/Next buttons
         if (intent.getBooleanExtra(EXTRA_PREFS_SHOW_BUTTON_BAR, false)) {
 
-            View buttonBar = findViewById(R.id.button_bar);
+            NavigationBar buttonBar = findViewById(R.id.navigation_bar);
             if (buttonBar != null) {
                 buttonBar.setVisibility(View.VISIBLE);
 
-                Button backButton = findViewById(R.id.back_button);
+                Button backButton = buttonBar.getBackButton();
                 backButton.setOnClickListener(v -> {
                     setResult(RESULT_CANCELED, null);
                     finish();
                 });
-                Button skipButton = findViewById(R.id.skip_button);
+                Button skipButton = buttonBar.getMoreButton();
                 skipButton.setOnClickListener(v -> {
                     setResult(RESULT_OK, null);
                     finish();
                 });
-                mNextButton = findViewById(R.id.next_button);
+                mNextButton = buttonBar.getNextButton();
                 mNextButton.setOnClickListener(v -> {
                     setResult(RESULT_OK, null);
                     finish();
@@ -329,9 +330,7 @@ public class SettingsActivity extends SettingsBaseActivity
                 }
                 if (intent.hasExtra(EXTRA_PREFS_SET_BACK_TEXT)) {
                     String buttonText = intent.getStringExtra(EXTRA_PREFS_SET_BACK_TEXT);
-                    if (TextUtils.isEmpty(buttonText)) {
-                        backButton.setVisibility(View.GONE);
-                    } else {
+                    if (!TextUtils.isEmpty(buttonText)) {
                         backButton.setText(buttonText);
                     }
                 }
