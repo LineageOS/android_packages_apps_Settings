@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="mobile_data_settings_summary_unavailable">لا تتوفر بطاقة SIM</string>
     <plurals name="show_dev_countdown_cm">
         <item quantity="zero">أنت الآن على بُعد <xliff:g id="step_count">%1$d</xliff:g> خطوة من تمكين خيارات المطور.</item>
         <item quantity="one">أنت الآن على بُعد خطوة واحدة من تمكين خيارات المطور.</item>
@@ -26,8 +27,14 @@
     </plurals>
     <string name="show_dev_on_cm">مكّنتَ خيارات المطور!</string>
     <string name="show_dev_already_cm">لا داعي، فخيارات المطور مفعّلة.</string>
+    <string name="keyboard_extras_title">الإضافات</string>
+    <string name="advanced_keyboard_settings_title">الإعدادات المتقدمة</string>
     <string name="advanced_reboot_title">إعادة تشغيل متقدمة</string>
     <string name="advanced_reboot_summary">عند إلغاء القفل، ستتضمن خيارات قائمة إعادة التشغيل الذهاب الى وضع الاسترداد او وضع محمل الاقلاع</string>
+    <string name="adb_enable_root">تصحيح بالروت</string>
+    <string name="adb_enable_summary_root">السماح بتشغيل مصحح أخطاء أندرويد بصلاحية روت</string>
+    <string name="berry_black_theme_title">أسود خالص</string>
+    <string name="berry_black_theme_summary">خلفية سوداء خالصة للوضع المظلم</string>
     <string name="lineagelicense_title">قانون LineageOS</string>
     <string name="status_bar_double_tap_to_sleep_title">اضغط للنوم</string>
     <string name="status_bar_double_tap_to_sleep_summary">الضغط مرتين فوق شريط الحالة لإطفاء الشاشة</string>
@@ -42,7 +49,6 @@
     <string name="heads_up_notifications_enabled_summary">عرض الإشعارات ذات الأولوية في إطار عائم صغير</string>
     <string name="high_touch_sensitivity_title">حساسية ذات لمس عالي</string>
     <string name="high_touch_sensitivity_summary">زيادة حساسية شاشة اللمس حتى يمكن استخدامها أثناء ارتداء القفازات</string>
-    <string name="device_hostname">اسم مضيف الجهاز</string>
     <string name="increasing_ring_volume_option_title">حجم الصوت متزايد</string>
     <string name="increasing_ring_min_volume_title">حجم الصوت البدئيّ</string>
     <string name="increasing_ring_ramp_up_time_title">زمن التدرج</string>
@@ -53,6 +59,9 @@
     <string name="lockpattern_settings_enable_dots_title">إظهار نقاط النمط</string>
     <string name="lockscreen_media_art_title">عرض الغلاف الفني للوسائط</string>
     <string name="lockscreen_visualizer_title">عرض صورة الغلاف للموسيقى</string>
+    <string name="min_refresh_rate_title">معدل تحديث الشاشة الأدنى</string>
+    <string name="show_navbar_hint_title">تلميح عن التنقل</string>
+    <string name="show_navbar_hint_summary">إظهار شريط تنقل التلميح أسفل الشاشة</string>
     <string name="app_notification_sound_timeout_title">الحد الأدنى من الوقت بين أصوات الإشعار</string>
     <string name="app_notification_sound_timeout_summary_template">السماح بالصوت أو الاهتزاز ليس لأكثر من مرة واحدة كل <xliff:g id="duration">%1$s </xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">لا توجد قيود</string>
@@ -62,6 +71,10 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 دقائق</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 دقائق</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 دقيقة</string>
+    <string name="data_usage_app_restrict_all">السماح بالوصول إلى الشبكة</string>
+    <string name="data_usage_app_restrict_all_summary">تمكين استخدام الشبكة</string>
+    <string name="data_usage_app_restrict_mobile">بيانات الجوال</string>
+    <string name="data_usage_app_restrict_mobile_summary">تمكين استخدام بيانات الجوال</string>
     <string name="data_usage_app_restrict_vpn">بيانات الـ VPN</string>
     <string name="data_usage_app_restrict_vpn_summary">تمكين استخدام بيانات الـ VPN</string>
     <string name="data_usage_app_restrict_wifi">بيانات WiFi</string>
@@ -77,4 +90,9 @@
     <string name="volume_link_notification_title">ربط حجم صوت النغمة وصوت الإشعارات</string>
     <string name="wake_when_plugged_or_unplugged_title">الإيقاظ عند التوصيل</string>
     <string name="wake_when_plugged_or_unplugged_summary">تشغيل الشاشة عند الاتصال أو قطع الاتصال بمصدر الطاقة</string>
+    <string name="backup_transport_setting_label">تغيير موفر النسخ الاحتياطي</string>
+    <string name="backup_transport_title">حدد موفر النسخ الاحتياطي</string>
+    <string name="connected_tws_device_saved_title">سماعات الأذن المحفوظة</string>
+    <string name="fast_charging_title">الشحن السريع</string>
+    <string name="fast_charging_summary">قم بتعطيله لتقليل الحرارة التي ينتجها الجهاز أثناء الشحن أو لتمديد عمر البطارية</string>
 </resources>
