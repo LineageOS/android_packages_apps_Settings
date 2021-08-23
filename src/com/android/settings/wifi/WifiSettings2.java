@@ -46,9 +46,11 @@ import android.util.FeatureFlagUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.VisibleForTesting;
@@ -80,6 +82,9 @@ import com.android.settingslib.wifi.WifiSavedConfigUtils;
 import com.android.wifitrackerlib.WifiEntry;
 import com.android.wifitrackerlib.WifiEntry.ConnectCallback;
 import com.android.wifitrackerlib.WifiPickerTracker;
+
+import com.google.android.setupcompat.util.WizardManagerHelper;
+import com.google.android.setupdesign.GlifPreferenceLayout;
 
 import java.time.Clock;
 import java.time.ZoneOffset;
@@ -146,6 +151,8 @@ public class WifiSettings2 extends RestrictedSettingsFragment
 
     // Enable the Next button when a Wi-Fi network is connected.
     private boolean mEnableNextOnConnection;
+
+    private boolean mIsInSetupWizard;
 
     // This string extra specifies a network to open the connect dialog on, so the user can enter
     // network credentials.  This is used by quick settings for secured networks, among other
@@ -215,8 +222,20 @@ public class WifiSettings2 extends RestrictedSettingsFragment
         super.onViewCreated(view, savedInstanceState);
         final Activity activity = getActivity();
         if (activity != null) {
-            mProgressHeader = setPinnedHeaderView(R.layout.progress_header)
-                    .findViewById(R.id.progress_bar_animation);
+            if (mIsInSetupWizard) {
+                mProgressHeader = null;
+
+                GlifPreferenceLayout layout = (GlifPreferenceLayout) view;
+                layout.setDividerInsets(Integer.MAX_VALUE, 0);
+
+                layout.setIcon(getContext().getDrawable(R.drawable.ic_wifi_setup));
+                layout.setHeaderText(R.string.wifi_setup_wizard_title);
+
+                return;
+            } else {
+                mProgressHeader = setPinnedHeaderView(R.layout.progress_header)
+                        .findViewById(R.id.progress_bar_animation);
+            }
             setProgressBarVisible(false);
         }
         ((SettingsActivity) activity).getSwitchBar().setSwitchBarText(
@@ -235,6 +254,20 @@ public class WifiSettings2 extends RestrictedSettingsFragment
         addPreferences();
 
         mIsRestricted = isUiRestricted();
+
+        final Intent intent = this.getIntent();
+        mIsInSetupWizard = WizardManagerHelper.isAnySetupWizard(intent);
+    }
+
+    @Override
+    public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent,
+            Bundle savedInstanceState) {
+        if (mIsInSetupWizard) {
+            GlifPreferenceLayout layout = (GlifPreferenceLayout) parent;
+            return layout.onCreateRecyclerView(inflater, parent, savedInstanceState);
+        } else {
+            return super.onCreateRecyclerView(inflater, parent, savedInstanceState);
+        }
     }
 
     private void addPreferences() {
@@ -318,8 +351,13 @@ public class WifiSettings2 extends RestrictedSettingsFragment
                 }
             }
         };
-        registerForContextMenu(getListView());
-        setHasOptionsMenu(true);
+        if (mIsInSetupWizard) {
+            mConfigureWifiSettingsPreference.setVisible(false);
+            mDataUsagePreference.setVisible(false);
+        } else {
+            registerForContextMenu(getListView());
+            setHasOptionsMenu(true);
+        }
 
         if (savedInstanceState != null) {
             mDialogMode = savedInstanceState.getInt(SAVE_DIALOG_MODE);
@@ -368,9 +406,13 @@ public class WifiSettings2 extends RestrictedSettingsFragment
      * @return new WifiEnabler
      */
     private WifiEnabler createWifiEnabler() {
-        final SettingsActivity activity = (SettingsActivity) getActivity();
-        return new WifiEnabler(activity, new SwitchBarController(activity.getSwitchBar()),
-                mMetricsFeatureProvider);
+        if (mIsInSetupWizard) {
+            return null;
+        } else {
+            final SettingsActivity activity = (SettingsActivity) getActivity();
+            return new WifiEnabler(activity, new SwitchBarController(activity.getSwitchBar()),
+                    mMetricsFeatureProvider);
+        }
     }
 
     @Override
@@ -746,7 +788,9 @@ public class WifiSettings2 extends RestrictedSettingsFragment
 
                 if (mClickedConnect) {
                     mClickedConnect = false;
-                    scrollToPreference(mConnectedWifiEntryPreferenceCategory);
+                    if (!mIsInSetupWizard) {
+                        scrollToPreference(mConnectedWifiEntryPreferenceCategory);
+                    }
                 }
             }
         } else {
