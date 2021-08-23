@@ -276,6 +276,7 @@
             android:name="Settings$WifiSettings2Activity"
             android:label="@string/wifi_settings"
             android:icon="@drawable/ic_homepage_network"
+            android:theme="@style/GlifV3Theme.Light"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter android:priority="1">
                 <action android:name="android.settings.WIFI_SETTINGS2" />
@@ -292,7 +293,8 @@
         </activity>
 
         <activity
-            android:name=".wifi.WifiPickerActivity">
+            android:name=".wifi.WifiPickerActivity"
+            android:theme="@style/GlifV3Theme.Light">
             <intent-filter android:priority="1">
                 <action android:name="android.net.wifi.PICK_WIFI_NETWORK" />
                 <category android:name="android.intent.category.DEFAULT" />
