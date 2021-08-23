@@ -35,6 +35,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.net.EthernetManager;
 import android.net.NetworkTemplate;
@@ -55,10 +56,12 @@ import android.util.EventLog;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -77,6 +80,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.settings.AirplaneModeEnabler;
 import com.android.settings.R;
 import com.android.settings.Utils;
+import com.android.settings.accessibility.AccessibilitySetupWizardUtils;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.dashboard.RestrictedDashboardFragment;
 import com.android.settings.datausage.DataUsagePreference;
@@ -120,6 +124,10 @@ import com.android.wifi.flags.Flags;
 import com.android.wifitrackerlib.WifiEntry;
 import com.android.wifitrackerlib.WifiEntry.ConnectCallback;
 import com.android.wifitrackerlib.WifiPickerTracker;
+
+import com.google.android.setupcompat.template.FooterButtonStyleUtils;
+import com.google.android.setupcompat.util.WizardManagerHelper;
+import com.google.android.setupdesign.GlifPreferenceLayout;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -196,6 +204,8 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
 
     // Enable the Next button when a Wi-Fi network is connected.
     private boolean mEnableNextOnConnection;
+
+    private boolean mIsInSetupWizard;
 
     // This string extra specifies a network to open the connect dialog on, so the user can enter
     // network credentials.  This is used by quick settings for secured networks, among other
@@ -403,6 +413,17 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
             return;
         }
 
+        if (view instanceof GlifPreferenceLayout layout) {
+            final Drawable icon = getContext().getDrawable(R.drawable.ic_network_setup);
+            final String title = getContext().getString(R.string.provider_internet_settings);
+            AccessibilitySetupWizardUtils.updateGlifPreferenceLayout(getContext(), layout,
+                    title, "" /* description */, icon);
+            FooterButtonStyleUtils.applyPrimaryButtonPartnerResource(activity, getNextButton(),
+                    true);
+
+            return;
+        }
+
         setPinnedHeaderView(com.android.settingslib.widget.progressbar.R.layout.progress_header);
         setProgressBarVisible(false);
 
@@ -485,6 +506,9 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
         resultReceivers.put(ITroubleshootingInfoProviderService.ISSUE_SUBJECT_IS_CELLULAR,
                 mMobileTroubleshootingReceiver);
         mTroubleshootingServiceConnection = new TroubleshootingServiceConnection(resultReceivers);
+
+        final Intent intent = this.getIntent();
+        mIsInSetupWizard = WizardManagerHelper.isAnySetupWizard(intent);
     }
 
     private void updateUserType() {
@@ -497,6 +521,16 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    @Override
+    public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent,
+            Bundle savedInstanceState) {
+        if (parent instanceof GlifPreferenceLayout layout) {
+            return layout.onCreateRecyclerView(inflater, parent, savedInstanceState);
+        } else {
+            return super.onCreateRecyclerView(inflater, parent, savedInstanceState);
+        }
     }
 
     @Override
@@ -635,6 +669,13 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
                 }
             }
         };
+
+        if (mIsInSetupWizard) {
+            mConfigureWifiSettingsPreference.setVisible(false);
+            if (!isCatalystEnabled()) {
+                mDataUsagePreference.setVisible(false);
+            }
+        }
 
         if (savedInstanceState != null) {
             mDialogMode = savedInstanceState.getInt(SAVE_DIALOG_MODE);
@@ -1194,7 +1235,9 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
 
                 if (mClickedConnect) {
                     mClickedConnect = false;
-                    scrollToPreference(connectedWifiPreferenceCategory);
+                    if (!mIsInSetupWizard) {
+                        scrollToPreference(connectedWifiPreferenceCategory);
+                    }
                 }
             }
         } else {
@@ -1342,10 +1385,12 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
 
     @VisibleForTesting
     void setAdditionalSettingsSummaries() {
-        mConfigureWifiSettingsPreference.setSummary(getString(
-                isWifiWakeupEnabled()
-                        ? R.string.wifi_configure_settings_preference_summary_wakeup_on
-                        : R.string.wifi_configure_settings_preference_summary_wakeup_off));
+        if (!mIsInSetupWizard) {
+            mConfigureWifiSettingsPreference.setSummary(getString(
+                    isWifiWakeupEnabled()
+                            ? R.string.wifi_configure_settings_preference_summary_wakeup_on
+                            : R.string.wifi_configure_settings_preference_summary_wakeup_off));
+        }
 
         if (!isCatalystEnabled()) {
             final int numSavedNetworks = mWifiPickerTracker == null ? 0 :
@@ -1396,7 +1441,9 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
     }
 
     protected void setProgressBarVisible(boolean visible) {
-        showPinnedHeader(visible);
+        if (!mIsInSetupWizard) {
+            showPinnedHeader(visible);
+        }
     }
 
     @VisibleForTesting
