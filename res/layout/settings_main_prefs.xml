@@ -38,35 +38,37 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_weight="0"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    style="@style/SudGlifButtonBar">
 
         <Button android:id="@+id/back_button"
-                android:layout_width="150dip"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dip"
-                android:layout_alignParentStart="true"
-                android:text="@*android:string/back_button_label"/>
-
-        <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true">
+                android:layout_alignParentStart="true"
+                android:text="@*android:string/back_button_label"
+                style="@style/SudGlifButton.Secondary"/>
+
+        <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             <Button android:id="@+id/skip_button"
-                    android:layout_width="150dip"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dip"
+                    android:layout_alignParentStart="true"
                     android:text="@*android:string/skip_button_label"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    style="@style/SudGlifButton.Secondary"/>
 
             <Button android:id="@+id/next_button"
-                    android:layout_width="150dip"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dip"
-                    android:text="@*android:string/next_button_label"/>
+                    android:layout_alignParentEnd="true"
+                    android:text="@*android:string/next_button_label"
+                    style="@style/SudGlifButton.Primary"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 
