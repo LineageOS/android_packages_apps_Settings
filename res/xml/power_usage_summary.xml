@@ -16,7 +16,6 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="power_usage_summary_screen"
     android:title="@string/power_usage_summary_title"
@@ -51,11 +50,6 @@
         android:key="battery_lights"
         lineage:requiresConfig="@*lineageos.platform:integer/config_deviceLightCapabilities"
         lineage:requiresConfigMask="64" />
-
-    <!-- Custom perf profiles settings -->
-    <org.lineageos.internal.lineageparts.LineagePartsPreference
-        android:key="perf_profile_settings"
-        lineage:replacesKey="battery_saver_summary" />
 
     <SwitchPreference
         android:key="battery_percentage"
