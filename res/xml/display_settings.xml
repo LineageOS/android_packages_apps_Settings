@@ -119,6 +119,11 @@
         android:summary="@string/peak_refresh_rate_summary"
         settings:controller="com.android.settings.display.PeakRefreshRatePreferenceController" />
 
+    <SwitchPreference
+        android:key="enable_blurs_on_windows"
+        android:title="@string/enable_blurs_on_windows_title"
+        android:summary="@string/enable_blurs_on_windows_summary" />
+
     <Preference
         android:key="font_size"
         android:title="@string/title_font_size"
