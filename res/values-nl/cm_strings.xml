@@ -16,15 +16,26 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="mobile_data_settings_summary_unavailable">Geen simkaart beschikbaar</string>
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">U bent nog <xliff:g id="step_count">%1$d</xliff:g> stap verwijderd van de opties voor ontwikkelaars.</item>
         <item quantity="other">U bent nog <xliff:g id="step_count">%1$d</xliff:g> stappen verwijderd van de opties voor ontwikkelaars.</item>
     </plurals>
     <string name="show_dev_on_cm">U hebt de opties voor ontwikkelaars ingeschakeld!</string>
     <string name="show_dev_already_cm">Niet nodig, u hebt de opties voor ontwikkelaars al ingeschakeld.</string>
+    <string name="keyboard_extras_title">Extra\'s</string>
+    <string name="advanced_keyboard_settings_title">Geavanceerde instellingen</string>
     <string name="advanced_reboot_title">Geavanceerd herstarten</string>
     <string name="advanced_reboot_summary">Indien ontgrendeld, opties tonen in het aan/uit-knopmenu voor herstarten naar recovery of bootloader</string>
+    <string name="adb_enable_root">Geroote foutopsporing</string>
+    <string name="adb_enable_summary_root">Uitvoeren van Android foutopsporing als root toestaan</string>
+    <string name="berry_black_theme_title">Puur zwart</string>
+    <string name="berry_black_theme_summary">Puur zwarte achtergrond voor donker thema</string>
     <string name="lineagelicense_title">Juridische informatie van LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Tikken om te slapen</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Dubbeltikken op de statusbalk of schermvergrendeling om het scherm uit te schakelen</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Vind de vingerafdruksensor op de <xliff:g id="sensor_location">%1$s</xliff:g> van uw tablet.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Vind de vingerafdruksensor op de <xliff:g id="sensor_location">%1$s</xliff:g> van uw apparaat.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Vind de vingerafdruksensor op de <xliff:g id="sensor_location">%1$s</xliff:g> van uw telefoon.</string>
     <string name="security_settings_fingerprint_sensor_location_back">achterkant</string>
     <string name="security_settings_fingerprint_sensor_location_front">voorkant</string>
@@ -44,6 +55,9 @@
     <string name="lockpattern_settings_enable_dots_title">Patroonknoppen weergeven</string>
     <string name="lockscreen_media_art_title">Albumhoezen weergeven</string>
     <string name="lockscreen_visualizer_title">Muziekvisualisaties weergeven</string>
+    <string name="min_refresh_rate_title">Minimale verversingsfrequentie</string>
+    <string name="show_navbar_hint_title">Navigatie hint</string>
+    <string name="show_navbar_hint_summary">Toon navigatiehintbalk aan de onderkant van het scherm</string>
     <string name="app_notification_sound_timeout_title">Minimale tijd tussen meldingsgeluiden</string>
     <string name="app_notification_sound_timeout_summary_template">Geluid of trillen niet meer dan één keer per <xliff:g id="duration">%1$s</xliff:g> toestaan</string>
     <string name="app_notification_sound_timeout_value_none">Geen beperking</string>
@@ -53,14 +67,33 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 minuten</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 minuten</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minuten</string>
+    <string name="auto_brightness_one_shot_title">Eén schot automatische helderheid</string>
+    <string name="auto_brightness_one_shot_summary">Helderheid aanpassing zal alleen plaatsvinden op het moment dat het scherm is ingeschakeld</string>
+    <string name="data_usage_app_restrict_all">Netwerktoegang toestaan</string>
+    <string name="data_usage_app_restrict_all_summary">Schakel netwerkgebruik in</string>
+    <string name="data_usage_app_restrict_mobile">Mobiele data</string>
+    <string name="data_usage_app_restrict_mobile_summary">Gebruik van mobiele data inschakelen</string>
+    <string name="data_usage_app_restrict_vpn">VPN-gegevens</string>
+    <string name="data_usage_app_restrict_vpn_summary">Toegang tot VPN-gegevens toestaan</string>
     <string name="data_usage_app_restrict_wifi">Gegevens via wifi</string>
     <string name="data_usage_app_restrict_wifi_summary">Gebruik van gegevens via wifi inschakelen</string>
     <string name="unlock_scramble_pin_layout_title">Lay-out husselen</string>
     <string name="unlock_scramble_pin_layout_summary">PIN-lay-out door elkaar husselen bij apparaat ontgrendelen</string>
     <string name="proximity_wake_title">Per ongeluk ontwaken voorkomen</string>
+    <string name="proximity_wake_summary">Nabijheidssensor gebruiken voorafgaand aan ontwaken van scherm</string>
     <string name="touchscreen_hovering_title">Zweven boven scherm</string>
     <string name="touchscreen_hovering_summary">Met uw vinger boven het zwerm zweven, zoals een muis in browsers, bureaublad op afstand, etc.</string>
+    <string name="touchscreen_gesture_settings_title">Schermgebaren</string>
+    <string name="touchscreen_gesture_settings_summary">Diverse schermgebaren gebruiken voor snelle acties</string>
     <string name="volume_link_notification_title">Volume beltoon en meldingen koppelen</string>
     <string name="wake_when_plugged_or_unplugged_title">Ontwaken door lader</string>
     <string name="wake_when_plugged_or_unplugged_summary">Scherm aan bij het aansluiten of loskoppelen van een lader</string>
+    <string name="backup_transport_setting_label">Wijzig back-up provider</string>
+    <string name="backup_transport_title">Kies back-up provider</string>
+    <string name="connected_tws_device_saved_title">Opgeslagen oordopjes</string>
+    <string name="fast_charging_title">Snelladen</string>
+    <string name="fast_charging_summary">Schakel uit om de warmteproductie van het apparaat te verminderen tijdens het opladen of om de levensduur van de batterij te verlengen</string>
+    <string name="wifi_setup_wizard_title">Selecteer Wi\u2011Fi netwerk</string>
+    <string name="advanced_notifications_title">Geavanceerde meldingsinstellingen</string>
+    <string name="peak_refresh_rate_summary_custom">Hiermee wordt de vernieuwingssnelheid automatisch verhoogd van 60 naar %1$d Hz voor bepaalde content. Het batterijgebruik neemt toe.</string>
 </resources>
