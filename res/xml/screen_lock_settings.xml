@@ -54,4 +54,15 @@
         android:title="@string/unlock_scramble_pin_layout_title"
         android:summary="@string/unlock_scramble_pin_layout_summary" />
 
+    <SwitchPreference
+        android:key="security_setting_trust_agents_extend_unlock"
+        android:title="@string/trust_agents_extend_unlock_title"
+        android:summary="@string/trust_agents_extend_unlock_summary" />
+
+    <SwitchPreference
+        android:key="security_setting_trust_lost_locks_screen"
+        android:title="@string/trust_lost_locks_screen_title"
+        android:summary="@string/trust_lost_locks_screen_summary" />
+    </PreferenceCategory>
+
 </PreferenceScreen>
