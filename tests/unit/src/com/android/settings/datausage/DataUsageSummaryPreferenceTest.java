@@ -180,7 +180,6 @@ public class DataUsageSummaryPreferenceTest {
         assertThat(carrierInfo.getVisibility()).isEqualTo(View.VISIBLE);
         assertThat(carrierInfo.getCurrentTextColor()).isEqualTo(
                 Utils.getColorAttrDefaultColor(mContext, android.R.attr.textColorSecondary));
-        assertThat(carrierInfo.getTypeface()).isEqualTo(Typeface.SANS_SERIF);
     }
 
     @Test
@@ -193,8 +192,6 @@ public class DataUsageSummaryPreferenceTest {
         assertThat(carrierInfo.getVisibility()).isEqualTo(View.VISIBLE);
         assertThat(carrierInfo.getCurrentTextColor()).isEqualTo(
                 Utils.getColorAttrDefaultColor(mContext, android.R.attr.colorError));
-        assertThat(carrierInfo.getTypeface()).isEqualTo(
-                DataUsageSummaryPreference.SANS_SERIF_MEDIUM);
     }
 
     @Test

@@ -57,9 +57,6 @@ import java.util.concurrent.TimeUnit;
 public class DataUsageSummaryPreference extends Preference implements GroupSectionDividerMixin {
     private static final long MILLIS_IN_A_DAY = TimeUnit.DAYS.toMillis(1);
     private static final long WARNING_AGE = TimeUnit.HOURS.toMillis(6L);
-    @VisibleForTesting
-    static final Typeface SANS_SERIF_MEDIUM =
-            Typeface.create("sans-serif-medium", Typeface.NORMAL);
 
     private boolean mChartEnabled = true;
     private CharSequence mStartLabel;
@@ -283,10 +280,14 @@ public class DataUsageSummaryPreference extends Preference implements GroupSecti
                     updateTime));
 
             if (updateAgeMillis <= WARNING_AGE) {
-                setCarrierInfoTextStyle(
-                        carrierInfo, android.R.attr.textColorSecondary, Typeface.SANS_SERIF);
+                setCarrierInfoTextStyle(carrierInfo, android.R.attr.textColorSecondary,
+                        Typeface.create(getContext().getString(
+                        com.android.internal.R.string.config_bodyFontFamily), Typeface.NORMAL));
             } else {
-                setCarrierInfoTextStyle(carrierInfo, android.R.attr.colorError, SANS_SERIF_MEDIUM);
+                setCarrierInfoTextStyle(carrierInfo, android.R.attr.colorError,
+                        Typeface.create(getContext().getString(
+                        com.android.internal.R.string.config_bodyFontFamilyMedium),
+                        Typeface.NORMAL));
             }
         } else {
             carrierInfo.setVisibility(View.GONE);

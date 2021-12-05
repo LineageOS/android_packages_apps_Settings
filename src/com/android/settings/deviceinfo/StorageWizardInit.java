@@ -178,7 +178,8 @@ public class StorageWizardInit extends StorageWizardBase {
     private Spannable styleFont(String text) {
         Spannable s = (Spannable) Html.fromHtml(text);
         for (URLSpan span : s.getSpans(0, s.length(), URLSpan.class)) {
-            TypefaceSpan typefaceSpan = new TypefaceSpan("sans-serif-medium");
+            TypefaceSpan typefaceSpan = new TypefaceSpan(getApplicationContext().getString(
+                    com.android.internal.R.string.config_bodyFontFamilyMedium));
             s.setSpan(typefaceSpan, s.getSpanStart(span), s.getSpanEnd(span), 0);
         }
         return s;

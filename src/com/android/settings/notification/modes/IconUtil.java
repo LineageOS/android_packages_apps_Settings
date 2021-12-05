@@ -189,7 +189,8 @@ class IconUtil {
         Paint textPaint = new Paint();
         textPaint.setColor(context.getColor(
                 com.android.internal.R.color.materialColorOnTertiaryContainer));
-        textPaint.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
+        textPaint.setTypeface(Typeface.create(context.getString(
+                com.android.internal.R.string.config_bodyFontFamily), Typeface.NORMAL));
         textPaint.setTextAlign(Paint.Align.LEFT);
         textPaint.setTextSize(res.getDimensionPixelSize(R.dimen.zen_mode_circular_icon_text_size));
 
