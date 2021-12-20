@@ -16,6 +16,24 @@
       "message": "I don\u0027t add space, I only fix some spelling errors and typing errors. It may be due to the default file that is encode based on the Windows-1258 (or something else) encoding, so when I open with Notepad++, it has replaced that white space character with the same white space character as the UTF-8.\nBut that alternative doesn\u0027t affect compilation as well as showing because it\u0027s the same, that alternative sometimes helps avoid errors displayed on some UVN fonts of Vietnamese.\nI have updated the file again (and also overcome a few more errors), please review it!",
       "revId": "a4038c1740843ac287e492e7e1488f1ece03f9d1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbc0e48_f7968065",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 15734
+      },
+      "writtenOn": "2021-12-20T16:57:32Z",
+      "side": 1,
+      "message": "Again, this change does not contain all the fixes that you wanted to make. Most of them are contained in this commits parent change (https://review.lineageos.org/c/LineageOS/android_packages_apps_Settings/+/320602), which you abandoned. The reason why it _appears_ correct because applying this change assumes that the parent change is already applied.\n\nPlease merge this change and 320602 (using either of the existing Change-Ids), after that it can maybe be reviewed.",
+      "parentUuid": "45bc09b9_f6bba5ad",
+      "revId": "a4038c1740843ac287e492e7e1488f1ece03f9d1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
