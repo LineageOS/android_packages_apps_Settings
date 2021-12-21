@@ -18,6 +18,7 @@ package com.android.settings.security.screenlock;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
+import android.os.UserHandle;
 import androidx.preference.Preference;
 import androidx.preference.TwoStatePreference;
 
@@ -54,10 +55,10 @@ public class PinScramblePreferenceController extends AbstractPreferenceControlle
 
     @Override
     public void updateState(Preference preference) {
-        ((TwoStatePreference) preference).setChecked(LineageSettings.System.getInt(
+        ((TwoStatePreference) preference).setChecked(LineageSettings.System.getIntForUser(
                 mContext.getContentResolver(),
                 LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
-                0) == 1);
+                0, UserHandle.USER_CURRENT) == 1);
     }
 
     private boolean isPinLock() {
@@ -69,10 +70,10 @@ public class PinScramblePreferenceController extends AbstractPreferenceControlle
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        LineageSettings.System.putInt(
+        LineageSettings.System.putIntForUser(
                 mContext.getContentResolver(),
                 LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
-                (Boolean) newValue ? 1 : 0);
+                (Boolean) newValue ? 1 : 0, UserHandle.USER_CURRENT);
         return true;
     }
 }
