@@ -50,6 +50,24 @@
       "message": "LineageSettings.getIntForUser should only be required frameworks side. Reason is that LineageSettings.getInt relies on the user ID of the current process and therefore frameworks always returns 0.\nNote that Settings.getInt relies on the contentresolver\u0027s user ID which is why getInt returns the expected value even in frameworks.\nMay need to check other lineage settings for this discrepancy",
       "revId": "1b4520bc08f97d6bf6066eba9fe40c73d84302bc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d70a2d51_cad5fb61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2021-12-27T17:08:16Z",
+      "side": 1,
+      "message": "It\u0027s better to be explicit and switch user specific settings to getIntForUser everywhere",
+      "parentUuid": "711784ae_c4480546",
+      "revId": "1b4520bc08f97d6bf6066eba9fe40c73d84302bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
