@@ -138,6 +138,15 @@
         android:key="security_category"
         android:title="@string/security_header" />
 
+    <ListPreference
+        android:order="225"
+        android:key="trust_restrict_usb"
+        android:entries="@array/security_restrict_usb_entries"
+        android:entryValues="@array/security_restrict_usb_values"
+        android:summary="@string/security_restrict_usb_summary"
+        android:title="@string/security_restrict_usb_title"
+        settings:controller="com.android.settings.security.RestrictUsbPreferenceController" />
+
     <Preference
         android:order="230"
         android:key="content_protection_preference"
