@@ -42,4 +42,9 @@
             android:title="@string/emergency_address_title"
             android:summary="@string/emergency_address_summary" />
 
+    <com.android.settingslib.widget.FooterPreference
+            android:key="wfc_screen_footer"
+            android:selectable="false"
+            settings:searchable="false"/>
+
 </PreferenceScreen>

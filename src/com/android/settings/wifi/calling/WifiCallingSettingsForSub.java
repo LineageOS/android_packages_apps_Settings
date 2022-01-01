@@ -40,7 +40,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.Preference;
@@ -57,6 +56,7 @@ import com.android.settings.Utils;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.network.ims.WifiCallingQueryImsState;
 import com.android.settings.widget.SettingsMainSwitchBar;
+import com.android.settingslib.widget.FooterPreference;
 import com.android.settingslib.widget.OnMainSwitchChangeListener;
 
 /**
@@ -72,6 +72,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     private static final String BUTTON_WFC_MODE = "wifi_calling_mode";
     private static final String BUTTON_WFC_ROAMING_MODE = "wifi_calling_roaming_mode";
     private static final String PREFERENCE_EMERGENCY_ADDRESS = "emergency_address_key";
+    private static final String FOOTER_WFC_SCREEN = "wfc_screen_footer";
 
     @VisibleForTesting
     static final int REQUEST_CHECK_WFC_EMERGENCY_ADDRESS = 1;
@@ -91,7 +92,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     private ListWithEntrySummaryPreference mButtonWfcMode;
     private ListWithEntrySummaryPreference mButtonWfcRoamingMode;
     private Preference mUpdateAddress;
-    private TextView mEmptyView;
+    private FooterPreference mFooterPreference;
 
     private boolean mValidListener = false;
     private boolean mEditableWfcMode = true;
@@ -184,13 +185,6 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        mEmptyView = getView().findViewById(android.R.id.empty);
-        setEmptyView(mEmptyView);
-        final Resources res = getResourcesForSubId();
-        final String emptyViewText = res.getString(R.string.wifi_calling_off_explanation,
-                res.getString(R.string.wifi_calling_off_explanation_2));
-        mEmptyView.setText(emptyViewText);
 
         mSwitchBar = getView().findViewById(R.id.switch_bar);
         mSwitchBar.show();
@@ -304,6 +298,12 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
 
         mUpdateAddress = findPreference(PREFERENCE_EMERGENCY_ADDRESS);
         mUpdateAddress.setOnPreferenceClickListener(mUpdateAddressListener);
+
+        mFooterPreference = findPreference(FOOTER_WFC_SCREEN);
+        final Resources res = getResourcesForSubId();
+        final String footerText = res.getString(R.string.wifi_calling_off_explanation,
+                res.getString(R.string.wifi_calling_off_explanation_2));
+        mFooterPreference.setTitle(footerText);
 
         mIntentFilter = new IntentFilter();
         mIntentFilter.addAction(ImsManager.ACTION_WFC_IMS_REGISTRATION_ERROR);
