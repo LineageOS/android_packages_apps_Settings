@@ -47,6 +47,7 @@ import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 import com.android.settings.search.actionbar.SearchMenuController;
 import com.android.settings.support.actionbar.HelpMenuController;
 import com.android.settings.support.actionbar.HelpResourceProvider;
+import com.android.settings.Utils;
 import com.android.settings.widget.HighlightablePreferenceGroupAdapter;
 import com.android.settings.widget.LoadingViewController;
 import com.android.settingslib.CustomDialogPreference;
@@ -62,7 +63,7 @@ import java.util.UUID;
 public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceFragment
         implements DialogCreatable, HelpResourceProvider {
 
-    private static final String TAG = "SettingsPreference";
+    private static final String TAG = "SettingsPreferenceFragment";
 
     private static final String SAVE_HIGHLIGHTED_KEY = "android:preference_highlighted";
 
@@ -125,6 +126,15 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
     public HighlightablePreferenceGroupAdapter mAdapter;
     @VisibleForTesting
     public boolean mPreferenceHighlighted = false;
+
+    @Override
+    public void onAttach(Context context) {
+        if (shouldSkipForInitialSUW() && !Utils.isDeviceProvisioned(getContext())) {
+            Log.w(TAG, "Skip " + getClass().getSimpleName() + " before SUW completed.");
+            finish();
+        }
+        super.onAttach(context);
+    }
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -259,6 +269,16 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
      */
     public int getInitialExpandedChildCount() {
         return 0;
+    }
+
+    /**
+     * Whether UI should be skipped in the initial SUW flow.
+     *
+     * @return {@code true} when UI should be skipped in the initial SUW flow.
+     * {@code false} when UI should not be skipped in the initial SUW flow.
+     */
+    protected boolean shouldSkipForInitialSUW() {
+        return false;
     }
 
     protected void onDataSetChanged() {

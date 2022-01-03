@@ -65,6 +65,11 @@ public class AccountDashboardFragment extends DashboardFragment {
     }
 
     @Override
+    protected boolean shouldSkipForInitialSUW() {
+        return true;
+    }
+
+    @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         final String[] authorities = getIntent().getStringArrayExtra(EXTRA_AUTHORITIES);
