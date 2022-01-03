@@ -58,6 +58,11 @@ public class ResetDashboardFragment extends DashboardFragment {
         return buildPreferenceControllers(context, getSettingsLifecycle());
     }
 
+    @Override
+    protected boolean shouldSkipForInitialSUW() {
+        return true;
+    }
+
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
