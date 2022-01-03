@@ -27,13 +27,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.core.text.util.LinkifyCompat;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
+import com.android.settingslib.widget.FooterPreference;
 
 /** A preference which supports linkify text as a description in the summary **/
-public class LinkifyDescriptionPreference extends Preference {
+public class LinkifyDescriptionPreference extends FooterPreference {
 
     public LinkifyDescriptionPreference(Context context) {
         this(context, null);
@@ -47,8 +47,8 @@ public class LinkifyDescriptionPreference extends Preference {
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        final TextView summaryView = (TextView) holder.findViewById(android.R.id.summary);
-        if (summaryView == null || summaryView.getVisibility() != View.VISIBLE) {
+        final TextView titleView = holder.itemView.findViewById(android.R.id.title);
+        if (titleView == null || titleView.getVisibility() != View.VISIBLE) {
             return;
         }
 
@@ -57,14 +57,14 @@ public class LinkifyDescriptionPreference extends Preference {
             return;
         }
 
-        summaryView.setMaxLines(Integer.MAX_VALUE);
+        titleView.setMaxLines(Integer.MAX_VALUE);
 
         final SpannableString spannableSummary = new SpannableString(summary);
         if (spannableSummary.getSpans(0, spannableSummary.length(), ClickableSpan.class)
                 .length > 0) {
-            summaryView.setMovementMethod(LinkMovementMethod.getInstance());
+            titleView.setMovementMethod(LinkMovementMethod.getInstance());
         }
-        LinkifyCompat.addLinks(summaryView,
+        LinkifyCompat.addLinks(titleView,
                 Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES | Linkify.PHONE_NUMBERS);
     }
 }
