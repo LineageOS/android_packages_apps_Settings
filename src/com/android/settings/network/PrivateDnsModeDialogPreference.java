@@ -74,11 +74,13 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
 
     // Only used in Settings, update on additions to ConnectivitySettingsUtils
     private static final int PRIVATE_DNS_MODE_CLOUDFLARE = 4;
+    private static final int PRIVATE_DNS_MODE_ADGUARD = 5;
 
     static {
         PRIVATE_DNS_MAP = new HashMap<>();
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_OFF, R.id.private_dns_mode_off);
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_CLOUDFLARE, R.id.private_dns_mode_cloudflare);
+        PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_ADGUARD, R.id.private_dns_mode_adguard);
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_OPPORTUNISTIC, R.id.private_dns_mode_opportunistic);
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME, R.id.private_dns_mode_provider);
     }
@@ -153,8 +155,12 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
                     ConnectivitySettingsManager.getPrivateDnsHostname(context);
             final String cloudflareHostname =
                     context.getString(R.string.private_dns_hostname_cloudflare);
+            final String adguardHostname =
+                    context.getString(R.string.private_dns_hostname_adguard);
             if (privateDnsHostname.equals(cloudflareHostname)) {
                 mMode = PRIVATE_DNS_MODE_CLOUDFLARE;
+            } else if (privateDnsHostname.equals(adguardHostname)) {
+                mMode = PRIVATE_DNS_MODE_ADGUARD;
             }
         }
 
@@ -172,6 +178,9 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         final RadioButton cloudflareRadioButton =
                 view.findViewById(R.id.private_dns_mode_cloudflare);
         cloudflareRadioButton.setText(R.string.private_dns_mode_cloudflare);
+        final RadioButton adguardRadioButton =
+                view.findViewById(R.id.private_dns_mode_adguard);
+        adguardRadioButton.setText(R.string.private_dns_mode_adguard);
         final RadioButton opportunisticRadioButton =
                 view.findViewById(R.id.private_dns_mode_opportunistic);
         opportunisticRadioButton.setText(R.string.private_dns_mode_opportunistic);
@@ -207,6 +216,11 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
                         context.getString(R.string.private_dns_hostname_cloudflare);
                 ConnectivitySettingsManager.setPrivateDnsHostname(context, cloudflareHostname);
                 modeToSet = PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
+            } else if (mMode == PRIVATE_DNS_MODE_ADGUARD) {
+                final String adguardHostname =
+                        context.getString(R.string.private_dns_hostname_adguard);
+                ConnectivitySettingsManager.setPrivateDnsHostname(context, adguardHostname);
+                modeToSet = PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
             }
 
             FeatureFactory.getFactory(context).getMetricsFeatureProvider().action(context,
@@ -221,6 +235,8 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
             mMode = PRIVATE_DNS_MODE_OFF;
         } else if (checkedId == R.id.private_dns_mode_cloudflare) {
             mMode = PRIVATE_DNS_MODE_CLOUDFLARE;
+        } else if (checkedId == R.id.private_dns_mode_adguard) {
+            mMode = PRIVATE_DNS_MODE_ADGUARD;
         } else if (checkedId == R.id.private_dns_mode_opportunistic) {
             mMode = PRIVATE_DNS_MODE_OPPORTUNISTIC;
         } else if (checkedId == R.id.private_dns_mode_provider) {
