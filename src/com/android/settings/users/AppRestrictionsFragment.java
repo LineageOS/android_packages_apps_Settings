@@ -17,6 +17,7 @@
 package com.android.settings.users;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -44,6 +45,7 @@ import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.Preference.OnPreferenceClickListener;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceViewHolder;
+import android.util.EventLog;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -634,7 +636,15 @@ public class AppRestrictionsFragment extends SettingsPreferenceFragment implemen
             } else if (restrictionsIntent != null) {
                 preference.setRestrictions(restrictions);
                 if (invokeIfCustom && AppRestrictionsFragment.this.isResumed()) {
-                    assertSafeToStartCustomActivity(restrictionsIntent);
+                    try {
+                        assertSafeToStartCustomActivity(restrictionsIntent);
+                    } catch (ActivityNotFoundException | SecurityException e) {
+                        // return without startActivity
+                        Log.e(TAG, "Cannot start restrictionsIntent " + e);
+                        EventLog.writeEvent(0x534e4554, "200688991", -1 /* UID */, "");
+                        return;
+                    }
+
                     int requestCode = generateCustomActivityRequestCode(
                             RestrictionsResultReceiver.this.preference);
                     AppRestrictionsFragment.this.startActivityForResult(
@@ -648,14 +658,14 @@ public class AppRestrictionsFragment extends SettingsPreferenceFragment implemen
             if (intent.getPackage() != null && intent.getPackage().equals(packageName)) {
                 return;
             }
-            // Activity can be started if intent resolves to multiple activities
-            List<ResolveInfo> resolveInfos = AppRestrictionsFragment.this.mPackageManager
-                    .queryIntentActivities(intent, 0 /* no flags */);
-            if (resolveInfos.size() != 1) {
-                return;
+            ResolveInfo resolveInfo = mPackageManager.resolveActivity(
+                    intent, PackageManager.MATCH_DEFAULT_ONLY);
+
+            if (resolveInfo == null) {
+                throw new ActivityNotFoundException("No result for resolving " + intent);
             }
             // Prevent potential privilege escalation
-            ActivityInfo activityInfo = resolveInfos.get(0).activityInfo;
+            ActivityInfo activityInfo = resolveInfo.activityInfo;
             if (!packageName.equals(activityInfo.packageName)) {
                 throw new SecurityException("Application " + packageName
                         + " is not allowed to start activity " + intent);
