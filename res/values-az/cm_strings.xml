@@ -16,48 +16,74 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Mobile network setting screen, summary of Mobile data switch preference when the network
+         is unavailable, the preference selection will be disabled. [CHAR LIMIT=NONE] -->
     <string name="mobile_data_settings_summary_unavailable">Mövcud SIM kart yoxdur</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Tərtibatçı tənzimləmələrinin fəallaşdırılmasına <xliff:g id="step_count">%1$d</xliff:g> addım qaldı.</item>
         <item quantity="other">Tərtibatçı tənzimləmələrinin fəallaşdırılmasına <xliff:g id="step_count">%1$d</xliff:g> addım qaldı.</item>
     </plurals>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
     <string name="show_dev_on_cm">Tərtibatçı tənzimləmələrini fəallaşdırdınız!</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">Artıq tərtibatçı tənzimləmələrini fəallaşdırmısınız.</string>
+    <!-- Advanced keyboard settings -->
     <string name="keyboard_extras_title">Əlavələr</string>
     <string name="advanced_keyboard_settings_title">Qabaqcıl tənzimləmələr</string>
+    <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Qabaqcıl yenidən başlatma</string>
     <string name="advanced_reboot_summary">Kilid açılanda, bərpa və ya ön yükləmə rejimində yenidən başlatmaq üçün güc düyməsinə seçimlər əlavə edir</string>
+    <!-- Android debugging as root -->
     <string name="adb_enable_root">Rootlu sazlama</string>
     <string name="adb_enable_summary_root">Android sazlamanın rootlu olaraq işləməsinə icazə ver</string>
+    <!-- Black theme for dark mode -->
     <string name="berry_black_theme_title">Təmiz qara</string>
     <string name="berry_black_theme_summary">Tünd tema üçün təmiz qara arxaplan</string>
+    <!-- Device Info screen. LineageOS legal. -->
     <string name="lineagelicense_title">LineageOS qanuni</string>
+    <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Yuxlatmaq üçün toxun</string>
     <string name="status_bar_double_tap_to_sleep_summary">Ekranı söndürmək üçün vəziyyət sətrinə və ya kilid ekranına cüt toxunun</string>
+    <!-- Format string for fingerprint location message -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Planşetinizdəki <xliff:g id="sensor_location">%1$s</xliff:g> barmaq izi sensorunu tapın.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Telefonunuzdakı <xliff:g id="sensor_location">%1$s</xliff:g> barmaq izi sensorunu tapın.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Telefonunuzdakı <xliff:g id="sensor_location">%1$s</xliff:g> barmaq izi sensorunu tapın.</string>
+    <!-- Fingerprint sensor locations -->
     <string name="security_settings_fingerprint_sensor_location_back">arxa</string>
     <string name="security_settings_fingerprint_sensor_location_front">ön</string>
     <string name="security_settings_fingerprint_sensor_location_left">sol tərəf</string>
     <string name="security_settings_fingerprint_sensor_location_right">sağ tərəf</string>
+    <!-- Heads-up -->
     <string name="heads_up_notifications_enabled_title">Açılan başlıqlar</string>
     <string name="heads_up_notifications_enabled_summary">Kiçik bir üzən pəncərədə əhəmiyyətli bildirişləri görüntülə</string>
+    <!-- High touch sensitivity -->
     <string name="high_touch_sensitivity_title">Yüksək toxunuş həssaslığı</string>
     <string name="high_touch_sensitivity_summary">Toxunuş həssaslığını artıraraq əlcəklə istifadəni mümkün edər</string>
+    <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Artan zəng səsi</string>
     <string name="increasing_ring_min_volume_title">Başlanğıc səsi</string>
     <string name="increasing_ring_ramp_up_time_title">Artma vaxtı</string>
+    <!-- Hotspot lineage extras -->
     <string name="tethering_allow_vpn_upstreams_title">Müştərilərin VPN istifadəsinə icazə ver</string>
     <string name="tethering_allow_vpn_upstreams_summary">Hotspot istifadəçilərinin bağlantıları arasında bu cihazın VPN bağlantısını istifadə etməsinə icazə ver</string>
+    <!-- Lock screen pattern size -->
     <string name="lock_settings_picker_pattern_size_message">Forma ölçüsünü seçin</string>
+    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Forma xətalarını göstər</string>
+    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Forma nöqtələrini göstər</string>
+    <!-- Lock screen cover art -->
     <string name="lockscreen_media_art_title">Medianın qapaq üzünü göstər</string>
+    <!-- Lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Musiqi vizuallaşdırıcını görüntülə</string>
+    <!-- Min refresh rate -->
     <string name="min_refresh_rate_title">Minimum təzələmə əmsalı</string>
+    <!-- Max refresh rate -->
+    <!-- Navigation bar hint -->
     <string name="show_navbar_hint_title">Hərəkət məsləhəti</string>
     <string name="show_navbar_hint_summary">Ekranın altında hərəkət məsləhət sətrini göstər</string>
+    <!-- Notification sound timeout -->
     <string name="app_notification_sound_timeout_title">Bildiriş səsləri arası ən az vaxt</string>
     <string name="app_notification_sound_timeout_summary_template">Bir dəfədən çox olmayaraq hər <xliff:g id="duration">%1$s</xliff:g> də bir titrəmə və ya səsə icazə ver</string>
     <string name="app_notification_sound_timeout_value_none">Məhdudiyyət yoxdur</string>
@@ -67,8 +93,10 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 dəqiqə</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 dəqiqə</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 dəqiqə</string>
+    <!-- One shot automatic brightness -->
     <string name="auto_brightness_one_shot_title">Tək çəkilişdə avto-parlaqlıq</string>
     <string name="auto_brightness_one_shot_summary">Parlaqlıq nizamı yalnız ekran açılanda icra edilir</string>
+    <!-- Per-app data restrictions -->
     <string name="data_usage_app_restrict_all">Şəbəkə müraciətinə icazə ver</string>
     <string name="data_usage_app_restrict_all_summary">Şəbəkə istifadəsini fəallaşdır</string>
     <string name="data_usage_app_restrict_mobile">Mobil verilənlər</string>
@@ -77,23 +105,35 @@
     <string name="data_usage_app_restrict_vpn_summary">VPN verilənlər istifadəsini fəallaşdır</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi verilənləri</string>
     <string name="data_usage_app_restrict_wifi_summary">Wi\u2011Fi verilənlərinin istifadəsini fəallaşdır</string>
+    <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Düzümü qarışdır</string>
     <string name="unlock_scramble_pin_layout_summary">Cihaz kilidini açarkən PIN düzümünü qarışdır</string>
+    <!-- Proximity wake -->
     <string name="proximity_wake_title">Təsadüfi oyanmaların qarşısını al</string>
     <string name="proximity_wake_summary">Ekranı oyandırmamışdan qabaq yaxınlıq sensorunu yoxlayın</string>
+    <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Toxunuşlu ekranda toxunmadan hərəkət</string>
     <string name="touchscreen_hovering_summary">Ekrana toxunmadan barmağınızı yaxınlaşdıraraq siçan (maus) kimi veb səyyahlarda, uzaq masaüstlərində və s. hərəkətinizi təmin edər</string>
+    <!-- Touchscreen gesture settings -->
     <string name="touchscreen_gesture_settings_title">Ekran toxunuş jestləri</string>
     <string name="touchscreen_gesture_settings_summary">Cəld hərəkətlər üçün cürbəcür toxunaqlı ekran jestlərini həyata keçirin</string>
+    <!-- Volume link notification -->
     <string name="volume_link_notification_title">Zəng səsi və bildiriş səs səviyyələrini birləşdir</string>
+    <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Taxıb çıxaranda oyan</string>
     <string name="wake_when_plugged_or_unplugged_summary">Cərəyan mənbəyinə taxarkən və ya çıxararkən bir səs oynat</string>
+    <!-- Backup Transport selection settings menu and activity title -->
     <string name="backup_transport_setting_label">Nüsxələmə təchizatçısını dəyişdir</string>
     <string name="backup_transport_title">Nüsxələmə təchizatçısını seç</string>
+    <!-- Title for connected TWS device group [CHAR LIMIT=none]-->
     <string name="connected_tws_device_saved_title">Saxlanılmış Qulaqcıqlar</string>
+    <!-- FastCharge feature -->
     <string name="fast_charging_title">Sürətli enerji yığma</string>
     <string name="fast_charging_summary">Cihazın enerji yığarkən istehsal etdiyi istiliyi azaltmaq və ya batereyanın ömrünü uzatmaq üçün sıradan çıxardın</string>
+    <!-- Used in SetupWizard Wi-Fi network selection page [CHAR LIMIT=60] -->
     <string name="wifi_setup_wizard_title">Wi\u2011Fi şəbəkəsini seçin</string>
+    <!-- Configure notifications: Title for advanced notification settings pane -->
     <string name="advanced_notifications_title">Qabaqcıl bildiriş tənzimləmələri</string>
+    <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
     <string name="peak_refresh_rate_summary_custom">Bəzi məzmun üçün yeniləmə dərəcəsini 60 Hs-dən %1$d Hs-ə avtomatik yüksəldir. Batareya istifadəsini artırır.</string>
 </resources>

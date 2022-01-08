@@ -16,50 +16,76 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Mobile network setting screen, summary of Mobile data switch preference when the network
+         is unavailable, the preference selection will be disabled. [CHAR LIMIT=NONE] -->
     <string name="mobile_data_settings_summary_unavailable">Chan eil cairt SIM ri làimh</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Tha thu <xliff:g id="step_count">%1$d</xliff:g> cheum air falbh o bhith a’ cur an comas roghainnean an luchd-leasachaidh.</item>
         <item quantity="two">Tha thu <xliff:g id="step_count">%1$d</xliff:g> cheum air falbh o bhith a’ cur an comas roghainnean an luchd-leasachaidh.</item>
         <item quantity="few">Tha thu <xliff:g id="step_count">%1$d</xliff:g> ceuman air falbh o bhith a’ cur an comas roghainnean an luchd-leasachaidh.</item>
         <item quantity="other">Tha thu <xliff:g id="step_count">%1$d</xliff:g> ceum air falbh o bhith a’ cur an comas roghainnean an luchd-leasachaidh.</item>
     </plurals>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
     <string name="show_dev_on_cm">Chuir thu roghainnean an luchd-leasachaidh an comas!</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">Cha leig thu leas, chuir thu roghainnean an luchd-leasachaidh an comas mu thràth.</string>
+    <!-- Advanced keyboard settings -->
     <string name="keyboard_extras_title">Rudan a bharrachd</string>
     <string name="advanced_keyboard_settings_title">Roghainnean adhartach</string>
+    <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Ath-thòiseachadh adhartach</string>
     <string name="advanced_reboot_summary">Mur eil e glaiste, gabh a-steach roghainnean air clàr-taice na cumhachd airson ath-thòiseachadh gun mhodh aisig no bootloader</string>
+    <!-- Android debugging as root -->
     <string name="adb_enable_root">Dì-bhugachadh root</string>
     <string name="adb_enable_summary_root">Ceadaich gun dèid dì-bhugachadh Android a ruith ’na root</string>
+    <!-- Black theme for dark mode -->
     <string name="berry_black_theme_title">Dubh</string>
     <string name="berry_black_theme_summary">Cleachd cùlaibh dubh leis an ùrlar dhorcha</string>
+    <!-- Device Info screen. LineageOS legal. -->
     <string name="lineagelicense_title">Sgrìobhainnean laghail LineageOS</string>
+    <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Thoir gnogag airson cadal</string>
     <string name="status_bar_double_tap_to_sleep_summary">Thoir gnogag dhùbailte air bàr na staid no air an sgrìn-ghlasaidh gus an uidheam-taisbeanaidh a chur dheth</string>
+    <!-- Format string for fingerprint location message -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Lorg mothaichear nan lorgan-meòir air <xliff:g id="sensor_location">%1$s</xliff:g> na tablaid agad.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Lorg mothaichear nan lorgan-meòir air <xliff:g id="sensor_location">%1$s</xliff:g> an uidheim agad.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Lorg mothaichear nan lorgan-meòir air <xliff:g id="sensor_location">%1$s</xliff:g> an fhòn agad.</string>
+    <!-- Fingerprint sensor locations -->
     <string name="security_settings_fingerprint_sensor_location_back">cùlaibh</string>
     <string name="security_settings_fingerprint_sensor_location_front">beulaibh</string>
     <string name="security_settings_fingerprint_sensor_location_left">taobh clì</string>
     <string name="security_settings_fingerprint_sensor_location_right">taobh deas</string>
+    <!-- Heads-up -->
     <string name="heads_up_notifications_enabled_title">An aire</string>
     <string name="heads_up_notifications_enabled_summary">Seall brathan le prìomhachas ann an uinneag bheag air fleòd</string>
+    <!-- High touch sensitivity -->
     <string name="high_touch_sensitivity_title">Mothalachd àrd air an t-suathadh</string>
     <string name="high_touch_sensitivity_summary">Meudaich mothalachd na sgrìn-shuathaidh ach an gabh a cleachdadh le miotagan</string>
+    <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Cur an àirde fuaim na seirme</string>
     <string name="increasing_ring_min_volume_title">Àirde na fuaime thòiseachail</string>
     <string name="increasing_ring_ramp_up_time_title">Àm ramp-up</string>
+    <!-- Hotspot lineage extras -->
     <string name="tethering_allow_vpn_upstreams_title">Leig le cliantan VPN a chleachdadh</string>
     <string name="tethering_allow_vpn_upstreams_summary">Thoir cead do chliantan hotspot gun cleachd iad ceanglaichean VPN an uidheim seo airson ceangal upstream a dhèanamh</string>
+    <!-- Lock screen pattern size -->
     <string name="lock_settings_picker_pattern_size_message">Tagh meud a’ phàtrain</string>
+    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Seall mearachd a’ phàtrain</string>
+    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Seall dotagan a’ phàtrain</string>
+    <!-- Lock screen cover art -->
     <string name="lockscreen_media_art_title">Seall obair-ealain còmhdachaidh nam meadhanan</string>
+    <!-- Lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Seall fir-chlis a’ chiùil</string>
+    <!-- Min refresh rate -->
     <string name="min_refresh_rate_title">Reat as lugha an ath-nuadhachaidh</string>
+    <!-- Max refresh rate -->
+    <!-- Navigation bar hint -->
     <string name="show_navbar_hint_title">Oidheam na seòladaireachd</string>
     <string name="show_navbar_hint_summary">Seall bàr oidheam na seòladaireachd aig bonn na sgrìn</string>
+    <!-- Notification sound timeout -->
     <string name="app_notification_sound_timeout_title">An ùine as lugha eadar fuaimean bhrathan</string>
     <string name="app_notification_sound_timeout_summary_template">Na ceadaich fuaim no brath nas trice na gach <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Gun chuingeachadh</string>
@@ -69,6 +95,10 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 mionaidean</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 mionaidean</string>
     <string name="app_notification_sound_timeout_value_30_minutes">Leth-uair a thìde</string>
+    <!-- One shot automatic brightness -->
+    <string name="auto_brightness_one_shot_title">Soilleireachd fhèin-obrachail an aon losgaidh</string>
+    <string name="auto_brightness_one_shot_summary">Cha dèid gleus a chur air an t-soilleireachd ach aig an àm a thèid an sgrìn a chur air</string>
+    <!-- Per-app data restrictions -->
     <string name="data_usage_app_restrict_all">Ceadaich inntrigeadh dhan lìonra</string>
     <string name="data_usage_app_restrict_all_summary">Cuir an comas cleachdadh an lìonraidh</string>
     <string name="data_usage_app_restrict_mobile">Dàta mobile</string>
@@ -77,21 +107,35 @@
     <string name="data_usage_app_restrict_vpn_summary">Cuir an comas cleachdadh dàta VPN</string>
     <string name="data_usage_app_restrict_wifi">Dàta WiFi</string>
     <string name="data_usage_app_restrict_wifi_summary">Cuir an comas cleachdadh dàta WiFi</string>
+    <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Cuir a’ cho-dhealbhachd tro chèile</string>
     <string name="unlock_scramble_pin_layout_summary">Cuir co-dhealbhachd a’ PIN tro chèile nuair a bheirear a’ ghlas far an uidheim</string>
+    <!-- Proximity wake -->
     <string name="proximity_wake_title">Caisg dùsgadh air mhearachd</string>
     <string name="proximity_wake_summary">Dearbh le mothaichear na fagasachd mus dèid an sgrìn a dhùsgadh</string>
+    <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Fantainn os cionn na sgrìn</string>
     <string name="touchscreen_hovering_summary">Bheir seo comas dhut fantainn os cionn na sgrìn, mar luchag ann am brabhsairean-lìn, desktops cèin is msaa</string>
+    <!-- Touchscreen gesture settings -->
     <string name="touchscreen_gesture_settings_title">Gluasadan na sgrìn-shuathaidh</string>
     <string name="touchscreen_gesture_settings_summary">Cleachd gluasadan sgrìn-shuathaidh airson gnìomhan luatha</string>
+    <!-- Volume link notification -->
     <string name="volume_link_notification_title">Co-cheangail àirde na seirme ⁊ nam brathan</string>
+    <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Dùisg nuair a cheanglar ri bun-dealain</string>
     <string name="wake_when_plugged_or_unplugged_summary">Cuir an sgrìn air nuair a thèid tùs cumhachd a cheangal ris no a dhì-cheangal</string>
+    <!-- Backup Transport selection settings menu and activity title -->
     <string name="backup_transport_setting_label">Atharraich solaraiche nan lethbhreacan-glèidhidh</string>
     <string name="backup_transport_title">Tagh solaraiche nan lethbhreacan-glèidhidh</string>
+    <!-- Title for connected TWS device group [CHAR LIMIT=none]-->
     <string name="connected_tws_device_saved_title">Cnapan-cluaise air an sàbhaladh</string>
+    <!-- FastCharge feature -->
     <string name="fast_charging_title">Teàirrdseadh luath</string>
     <string name="fast_charging_summary">Cuir à comas e ach nach adhbharaich an t-uidheam uiread de theas nuair a bhios e ’ga theàirrdseadh no ach am mair am bataraidh nas fhaide</string>
+    <!-- Used in SetupWizard Wi-Fi network selection page [CHAR LIMIT=60] -->
+    <string name="wifi_setup_wizard_title">Tagh lìonra WiFi</string>
+    <!-- Configure notifications: Title for advanced notification settings pane -->
+    <string name="advanced_notifications_title">Roghainnean adhartach nam brathan</string>
+    <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
     <string name="peak_refresh_rate_summary_custom">Àrdaichidh seo reat an ath-nuadhachaidh o 60 gu %1$d Hz do chuid a shusbaint gu fèin-obrachail. Caithidh seo barrachd dhen bhataraidh.</string>
 </resources>

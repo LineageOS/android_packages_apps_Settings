@@ -16,46 +16,72 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Mobile network setting screen, summary of Mobile data switch preference when the network
+         is unavailable, the preference selection will be disabled. [CHAR LIMIT=NONE] -->
     <string name="mobile_data_settings_summary_unavailable">Nenhum cartão SIM disponível</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Você agora está a <xliff:g id="step_count">%1$d </xliff:g> passo de ativar as configurações de desenvolvimento.</item>
         <item quantity="other">Você agora está a <xliff:g id="step_count">%1$d </xliff:g> passos de ativar as configurações de desenvolvimento.</item>
     </plurals>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
     <string name="show_dev_on_cm">Você ativou as configurações de desenvolvedor!</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">Não é preciso, você já ativou as configurações de desenvolvedor.</string>
+    <!-- Advanced keyboard settings -->
     <string name="keyboard_extras_title">Extras</string>
     <string name="advanced_keyboard_settings_title">Configurações avançadas</string>
+    <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Reinicialização avançada</string>
     <string name="advanced_reboot_summary">Quando desbloqueado, incluir opções no menu de desligamento para reiniciar o dispositivo em modo de recuperação ou bootloader</string>
+    <!-- Android debugging as root -->
     <string name="adb_enable_root">Depuração como superusuário</string>
     <string name="adb_enable_summary_root">Permitir a depuração do Android como superusuário</string>
+    <!-- Black theme for dark mode -->
     <string name="berry_black_theme_title">Preto puro</string>
     <string name="berry_black_theme_summary">Preto puro como cor de fundo para tema escuro</string>
+    <!-- Device Info screen. LineageOS legal. -->
     <string name="lineagelicense_title">Licença LineageOS</string>
+    <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Toque duplo para suspender</string>
     <string name="status_bar_double_tap_to_sleep_summary">Toque duas vezes na barra de status ou na tela de bloqueio para desligar a tela</string>
+    <!-- Format string for fingerprint location message -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Localize o sensor de impressão digital no(a) <xliff:g id="sensor_location">%1$s </xliff:g> do seu tablet.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Localize o sensor de impressão digital no(a) <xliff:g id="sensor_location">%1$s </xliff:g> do seu dispositivo.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Localize o sensor de impressão digital sobre o(a) <xliff:g id="sensor_location">%1$s </xliff:g> do seu telefone.</string>
+    <!-- Fingerprint sensor locations -->
     <string name="security_settings_fingerprint_sensor_location_back">traseira</string>
     <string name="security_settings_fingerprint_sensor_location_front">frente</string>
     <string name="security_settings_fingerprint_sensor_location_left">lado esquerdo</string>
     <string name="security_settings_fingerprint_sensor_location_right">lado direito</string>
+    <!-- Heads-up -->
     <string name="heads_up_notifications_enabled_title">Notificações pop-up</string>
     <string name="heads_up_notifications_enabled_summary">Mostrar notificações prioritárias numa pequena janela flutuante</string>
+    <!-- High touch sensitivity -->
     <string name="high_touch_sensitivity_title">Toque de alta sensibilidade</string>
     <string name="high_touch_sensitivity_summary">Aumenta a sensibilidade da tela para poder ser usada com luvas</string>
+    <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Aumentando volume do toque</string>
     <string name="increasing_ring_min_volume_title">Volume inicial</string>
     <string name="increasing_ring_ramp_up_time_title">Intervalo de aumento</string>
+    <!-- Hotspot lineage extras -->
     <string name="tethering_allow_vpn_upstreams_title">Permitir que clientes usem VPNs</string>
     <string name="tethering_allow_vpn_upstreams_summary">Permitir que os clientes de hotspot usem este dispositivo\u2019 para conexões VPN de alta velocidade</string>
+    <!-- Lock screen pattern size -->
     <string name="lock_settings_picker_pattern_size_message">Escolha um tamanho para o padrão</string>
+    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Exibir erro de padrão</string>
+    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Exibir pontos no padrão</string>
+    <!-- Lock screen cover art -->
     <string name="lockscreen_media_art_title">Exibir capa do álbum</string>
+    <!-- Lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Mostrar o visualizador de música</string>
+    <!-- Min refresh rate -->
     <string name="min_refresh_rate_title">Taxa de atualização mínima</string>
+    <!-- Max refresh rate -->
+    <!-- Navigation bar hint -->
+    <!-- Notification sound timeout -->
     <string name="app_notification_sound_timeout_title">Tempo mínimo entre sons de notificação</string>
     <string name="app_notification_sound_timeout_summary_template">Permitir sons ou vibrações apenas uma vez a cada <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Sem restrição</string>
@@ -65,6 +91,8 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 minutos</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
+    <!-- One shot automatic brightness -->
+    <!-- Per-app data restrictions -->
     <string name="data_usage_app_restrict_all">Permitir acesso à rede</string>
     <string name="data_usage_app_restrict_all_summary">Permitir o uso da rede</string>
     <string name="data_usage_app_restrict_mobile">Dados móveis</string>
@@ -73,21 +101,33 @@
     <string name="data_usage_app_restrict_vpn_summary">Permitir o uso de dados via VPN</string>
     <string name="data_usage_app_restrict_wifi">Dados Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">Permitir o uso de dados Wi\u2011Fi</string>
+    <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Embaralhar layout</string>
     <string name="unlock_scramble_pin_layout_summary">Embaralhar PIN ao desbloquear o dispositivo</string>
+    <!-- Proximity wake -->
     <string name="proximity_wake_title">Evitar despertar acidental</string>
     <string name="proximity_wake_summary">Verificar o sensor de proximidade antes de ligar a tela</string>
+    <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Flutuar o dedo na tela</string>
     <string name="touchscreen_hovering_summary">Permite que você flutue o dedo na tela como um mouse em navegadores web, desktops remotos, etc</string>
+    <!-- Touchscreen gesture settings -->
     <string name="touchscreen_gesture_settings_title">Gestos na tela</string>
     <string name="touchscreen_gesture_settings_summary">Faça vários gestos na tela para ações rápidas</string>
+    <!-- Volume link notification -->
     <string name="volume_link_notification_title">Associar volumes de toque e notificação</string>
+    <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Acordar ao plugar</string>
     <string name="wake_when_plugged_or_unplugged_summary">Ativar a tela ao ligar ou desligar do carregador</string>
+    <!-- Backup Transport selection settings menu and activity title -->
     <string name="backup_transport_setting_label">Alterar provedor de backup</string>
     <string name="backup_transport_title">Selecione o provedor de backup</string>
+    <!-- Title for connected TWS device group [CHAR LIMIT=none]-->
     <string name="connected_tws_device_saved_title">Fones de ouvido salvos</string>
+    <!-- FastCharge feature -->
     <string name="fast_charging_title">Carregamento rápido</string>
+    <!-- Used in SetupWizard Wi-Fi network selection page [CHAR LIMIT=60] -->
     <string name="wifi_setup_wizard_title">Selecionar rede Wi\u2011Fi</string>
+    <!-- Configure notifications: Title for advanced notification settings pane -->
+    <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
     <string name="peak_refresh_rate_summary_custom">Aumenta automaticamente a taxa de atualização de 60 para %1$d Hz para alguns conteúdos. Maior uso da bateria</string>
 </resources>

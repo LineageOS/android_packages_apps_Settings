@@ -16,40 +16,66 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Mobile network setting screen, summary of Mobile data switch preference when the network
+         is unavailable, the preference selection will be disabled. [CHAR LIMIT=NONE] -->
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Jo binne noch <xliff:g id="step_count">%1$d</xliff:g> stap fan de opsjes foar ûntwikkelers.</item>
         <item quantity="other">Jo binne noch <xliff:g id="step_count">%1$d</xliff:g> stappen fan de opsjes foar ûntwikkelers.</item>
     </plurals>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
     <string name="show_dev_on_cm">Jo hawwe de opsjes foar ûntwikkelers ynskeakele!</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">Net nedich jo hawwe de opsjes foar ûntwikkelers al ynskeakele.</string>
+    <!-- Advanced keyboard settings -->
+    <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Avansearre opnij starte</string>
     <string name="advanced_reboot_summary">Wannear ûntskoattele, opsjes toane yn it oan/út-knopmenu foar opnij starten nei recovery of bootloader</string>
+    <!-- Android debugging as root -->
     <string name="adb_enable_root">Root-debugging</string>
     <string name="adb_enable_summary_root">Android-debugging as root tastean</string>
+    <!-- Black theme for dark mode -->
+    <!-- Device Info screen. LineageOS legal. -->
     <string name="lineagelicense_title">Juridyske ynformaasje fan LineageOS</string>
+    <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Dûbeld tikke foar sliepstân</string>
     <string name="status_bar_double_tap_to_sleep_summary">Dûbeld tikke op de steatbalke of beskoattelskerm om it skerm út te skeakeljen</string>
+    <!-- Format string for fingerprint location message -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Fyn de fingerôfdruksensor op de <xliff:g id="sensor_location">%1$s</xliff:g> fan jo tablet.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Fyn de fingerôfdruksensor op de <xliff:g id="sensor_location">%1$s</xliff:g> fan jo apparaat.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Fyn de fingerôfdruksensor op de <xliff:g id="sensor_location">%1$s</xliff:g> fan jo telefoan.</string>
+    <!-- Fingerprint sensor locations -->
     <string name="security_settings_fingerprint_sensor_location_back">efterkant</string>
     <string name="security_settings_fingerprint_sensor_location_front">foarkant</string>
     <string name="security_settings_fingerprint_sensor_location_left">linkerkant</string>
     <string name="security_settings_fingerprint_sensor_location_right">rjochterkant</string>
+    <!-- Heads-up -->
     <string name="heads_up_notifications_enabled_title">Heads-up</string>
     <string name="heads_up_notifications_enabled_summary">Prioriteitsmeldingen toane yn lyts swevend finster</string>
+    <!-- High touch sensitivity -->
     <string name="high_touch_sensitivity_title">Hege gefoelichheid oanreitsjen</string>
     <string name="high_touch_sensitivity_summary">Gefoelichheid fan it skerm ferheegje, sadat it betsjinne wurde kin mei wanten</string>
+    <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Tanimmend belfolume</string>
     <string name="increasing_ring_min_volume_title">Startfolume</string>
     <string name="increasing_ring_ramp_up_time_title">Opheechtiid</string>
+    <!-- Hotspot lineage extras -->
     <string name="tethering_allow_vpn_upstreams_title">Clients tastean om VPN\'s te brûken</string>
     <string name="tethering_allow_vpn_upstreams_summary">Hotspot-brûkers tastean om de VPN-ferbiningen fan dit apparaat te brûken om te uploaden</string>
+    <!-- Lock screen pattern size -->
     <string name="lock_settings_picker_pattern_size_message">Grutte patroan kieze</string>
+    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Patroanflater toane</string>
+    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Patroanknoppen toane</string>
+    <!-- Lock screen cover art -->
     <string name="lockscreen_media_art_title">Albumhoezen toane</string>
+    <!-- Lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Muzykfisualisaasjes toane</string>
+    <!-- Min refresh rate -->
+    <!-- Max refresh rate -->
+    <!-- Navigation bar hint -->
+    <!-- Notification sound timeout -->
     <string name="app_notification_sound_timeout_title">Minimale tiid tusken meldingslûden</string>
     <string name="app_notification_sound_timeout_summary_template">Lûd of trillen net mear as ien kear yn de <xliff:g id="duration">%1$s</xliff:g> tastean</string>
     <string name="app_notification_sound_timeout_value_none">Gjin beheining</string>
@@ -59,19 +85,33 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 minuten</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 minuten</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minuten</string>
+    <!-- One shot automatic brightness -->
+    <!-- Per-app data restrictions -->
     <string name="data_usage_app_restrict_vpn">VPN-gegevens</string>
     <string name="data_usage_app_restrict_vpn_summary">Tagong ta VPN-gegevens tastean</string>
     <string name="data_usage_app_restrict_wifi">Gegevens fia wifi</string>
     <string name="data_usage_app_restrict_wifi_summary">Gebrûk fan gegevens fia wifi ynskeakelje</string>
+    <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Lay-out hutselje</string>
     <string name="unlock_scramble_pin_layout_summary">Pin-lay-out troch inoar hutselje by apparaat ûntskoatteljen</string>
+    <!-- Proximity wake -->
     <string name="proximity_wake_title">Troch fersin wekker meitsje opkeare</string>
     <string name="proximity_wake_summary">Tichtebysensor brûke foarôfgeand oan ûntweitsjen fan skerm</string>
+    <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Sweve boppe skerm</string>
     <string name="touchscreen_hovering_summary">Mei jo finger boppe it skerm sweve, lykas in mûs yn browsers, buroblêd op ôfstân, ensfh.</string>
+    <!-- Touchscreen gesture settings -->
     <string name="touchscreen_gesture_settings_title">fingergebearen</string>
     <string name="touchscreen_gesture_settings_summary">Skermgebearen brûke foar flugge aksjes</string>
+    <!-- Volume link notification -->
     <string name="volume_link_notification_title">Folume beltoan en meldingen keppelje</string>
+    <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Wekker meitsjen troch lader</string>
     <string name="wake_when_plugged_or_unplugged_summary">Skerm oan by it oansluten of loskeppeljen fan in lader</string>
+    <!-- Backup Transport selection settings menu and activity title -->
+    <!-- Title for connected TWS device group [CHAR LIMIT=none]-->
+    <!-- FastCharge feature -->
+    <!-- Used in SetupWizard Wi-Fi network selection page [CHAR LIMIT=60] -->
+    <!-- Configure notifications: Title for advanced notification settings pane -->
+    <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
 </resources>

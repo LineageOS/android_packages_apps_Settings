@@ -16,48 +16,74 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Mobile network setting screen, summary of Mobile data switch preference when the network
+         is unavailable, the preference selection will be disabled. [CHAR LIMIT=NONE] -->
     <string name="mobile_data_settings_summary_unavailable">Няма налична SIM карта</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Вече сте на <xliff:g id="step_count">%1$d </xliff:g> крачка от включването на \"Опции на програмиста\".</item>
         <item quantity="other">Вече сте на <xliff:g id="step_count">%1$d </xliff:g> крачки от включването на \"Опции на програмиста\".</item>
     </plurals>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
     <string name="show_dev_on_cm">Включихте менюто \"Опции на програмиста\"!</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">Няма нужда, вече сте включили менюто Опции на програмиста.</string>
+    <!-- Advanced keyboard settings -->
     <string name="keyboard_extras_title">Екстри</string>
     <string name="advanced_keyboard_settings_title">Разширени настройки</string>
+    <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Рестартиране за напреднали</string>
     <string name="advanced_reboot_summary">Когато е отключена, включете опциите в менюто за захранване, за да рестартирате във възстановяване или буутлоудър</string>
+    <!-- Android debugging as root -->
     <string name="adb_enable_root">Отстраняване на грешки с достъп на съперползвател (root)</string>
     <string name="adb_enable_summary_root">Разрешете отстраняване на грешки в Android с права на суперпотребител</string>
+    <!-- Black theme for dark mode -->
     <string name="berry_black_theme_title">Натурално черно</string>
     <string name="berry_black_theme_summary">Натурален черен фон за тъмна тема</string>
+    <!-- Device Info screen. LineageOS legal. -->
     <string name="lineagelicense_title">LineageOS правна информация</string>
+    <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Натиснете, за заспиване</string>
     <string name="status_bar_double_tap_to_sleep_summary">Докоснете двукратно лентата на състоянието или заключващия екран, за да изключите дисплея</string>
+    <!-- Format string for fingerprint location message -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Намерете сензора за пръстови отпечатъци <xliff:g id="sensor_location">%1$s </xliff:g> на вашия таблет.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Намерете сензора за пръстови отпечатъци <xliff:g id="sensor_location">%1$s </xliff:g> на вашето устройство.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Намерете сензора за пръстови отпечатъци <xliff:g id="sensor_location">%1$s </xliff:g> на вашия телефон.</string>
+    <!-- Fingerprint sensor locations -->
     <string name="security_settings_fingerprint_sensor_location_back">Отзад</string>
     <string name="security_settings_fingerprint_sensor_location_front">Отпред</string>
     <string name="security_settings_fingerprint_sensor_location_left">Лява страна</string>
     <string name="security_settings_fingerprint_sensor_location_right">Дясна страна</string>
+    <!-- Heads-up -->
     <string name="heads_up_notifications_enabled_title">Изскачащи известия</string>
     <string name="heads_up_notifications_enabled_summary">Покажи приоритетни известия в малък плаващ прозорец</string>
+    <!-- High touch sensitivity -->
     <string name="high_touch_sensitivity_title">Висока чувствителност на допир</string>
     <string name="high_touch_sensitivity_summary">Увеличи сензорната чувствителност, така че може да се използва докато носите ръкавици</string>
+    <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Увеличаване силата на звука при звънене</string>
     <string name="increasing_ring_min_volume_title">Начална сила на звука</string>
     <string name="increasing_ring_ramp_up_time_title">Време на увеличение</string>
+    <!-- Hotspot lineage extras -->
     <string name="tethering_allow_vpn_upstreams_title">Разрешете на клиентите да използват VPN</string>
     <string name="tethering_allow_vpn_upstreams_summary">Разрешете на клиентите на точка за достъп да използват VPN връзките на това устройство, за да се свържат с мрежата</string>
+    <!-- Lock screen pattern size -->
     <string name="lock_settings_picker_pattern_size_message">Изберете размера на шаблона</string>
+    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
     <string name="lockpattern_settings_enable_error_path_title">Покажи модела на грешката</string>
+    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
     <string name="lockpattern_settings_enable_dots_title">Покажи точките на модела</string>
+    <!-- Lock screen cover art -->
     <string name="lockscreen_media_art_title">Показване на артистична обложка</string>
+    <!-- Lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Покажи музикален визуализатор</string>
+    <!-- Min refresh rate -->
     <string name="min_refresh_rate_title">Минимална честота на опресняване</string>
+    <!-- Max refresh rate -->
+    <!-- Navigation bar hint -->
     <string name="show_navbar_hint_title">Подсказки за навигация</string>
     <string name="show_navbar_hint_summary">Показване на подсказки за навигация в долната част на екрана</string>
+    <!-- Notification sound timeout -->
     <string name="app_notification_sound_timeout_title">Минимално време между напомняния</string>
     <string name="app_notification_sound_timeout_summary_template">Разреши звуци или вибрации, но не повече от веднъж на всеки <xliff:g id="duration">%1$s </xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Без ограничение</string>
@@ -67,6 +93,8 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 минути</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 минути</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 минути</string>
+    <!-- One shot automatic brightness -->
+    <!-- Per-app data restrictions -->
     <string name="data_usage_app_restrict_all">Разреши достъп до мрежата</string>
     <string name="data_usage_app_restrict_all_summary">Активирай използване на мрежата</string>
     <string name="data_usage_app_restrict_mobile">Мобилни данни</string>
@@ -75,21 +103,33 @@
     <string name="data_usage_app_restrict_vpn_summary">Активиране използването на VPN данни</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi данни</string>
     <string name="data_usage_app_restrict_wifi_summary">Разреши използването на Wi\u2011Fi данни</string>
+    <!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Разбъркано оформление</string>
     <string name="unlock_scramble_pin_layout_summary">Разбъркано PIN оформление при отключване на устройството</string>
+    <!-- Proximity wake -->
     <string name="proximity_wake_title">Предотвратяване на случайно събуждане</string>
     <string name="proximity_wake_summary">Провери сензора за близост преди събуждане на екрана</string>
+    <!-- Touchscreen hovering -->
     <string name="touchscreen_hovering_title">Сочейки по сензорния екран</string>
     <string name="touchscreen_hovering_summary">Позволява ви да сочите по екрана като с мишка в уеб браузъри, отдалечени настолни компютри и др</string>
+    <!-- Touchscreen gesture settings -->
     <string name="touchscreen_gesture_settings_title">Тъчскрийн жестове</string>
     <string name="touchscreen_gesture_settings_summary">Изпълнява различни бързи действия чрез жестове върху сензорния екран</string>
+    <!-- Volume link notification -->
     <string name="volume_link_notification_title">Връзка между сила на звука при звънене&amp; и известия</string>
+    <!-- Wake on plug -->
     <string name="wake_when_plugged_or_unplugged_title">Събуждане при зареждане</string>
     <string name="wake_when_plugged_or_unplugged_summary">Включване на екрана, когато включвате или изключвате източник на захранване</string>
+    <!-- Backup Transport selection settings menu and activity title -->
     <string name="backup_transport_setting_label">Промяна на доставчика на резервни копия</string>
     <string name="backup_transport_title">Изберете доставчик на резервни копия</string>
+    <!-- Title for connected TWS device group [CHAR LIMIT=none]-->
     <string name="connected_tws_device_saved_title">Запазени Earbuds</string>
+    <!-- FastCharge feature -->
     <string name="fast_charging_title">Бързо зареждане</string>
     <string name="fast_charging_summary">Деактивирайте, за да намалите топлината, произведена от устройството по време на зареждане или да удължите живота на батерията</string>
+    <!-- Used in SetupWizard Wi-Fi network selection page [CHAR LIMIT=60] -->
+    <!-- Configure notifications: Title for advanced notification settings pane -->
+    <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
     <string name="peak_refresh_rate_summary_custom">Автоматично увеличава честотата на опресняване от 60 на %1$d Hz за част от съдържанието. По-интензивно използване на батерията.</string>
 </resources>
