@@ -1001,6 +1001,7 @@
     <string name="wifi_use_system_certs">Cleachd teisteanasan an t-siostaim</string>
     <string name="wifi_do_not_provide_eap_user_cert">Na dèan solar</string>
     <string name="wifi_do_not_validate_eap_server">Na dèan dearbhadh</string>
+    <string name="wifi_do_not_validate_eap_server_warning">Cha deach teisteanas a shònrachadh. Cha bhi an ceangal agad prìobhaideach.</string>
     <string name="wifi_ssid_too_long">Tha ainm an lìonraidh ro fhada.</string>
     <string name="wifi_no_domain_warning">Feumaidh tu àrainn a shònrachadh.</string>
     <string name="wifi_no_user_cert_warning">Tha teisteanas riatanach.</string>
@@ -1081,6 +1082,9 @@
     <string name="wifi_dns2">DNS 2</string>
     <string name="wifi_gateway">Bealach</string>
     <string name="wifi_network_prefix_length">Faid ro-leasachan an lìonraidh</string>
+    <string name="wifi_type_11AX">WiFi 6</string>
+    <string name="wifi_type_11AC">WiFi 5</string>
+    <string name="wifi_type_11N">WiFi 4</string>
     <string name="wifi_p2p_settings_title">WiFi Direct</string>
     <string name="wifi_p2p_device_info">Fiosrachadh mun uidheam</string>
     <string name="wifi_p2p_persist_network">Cuir an ceangal seo an cuimhne</string>
@@ -5365,7 +5369,21 @@
     <string name="keywords_media_controls">meadhanan</string>
     <string name="connected_device_see_all_summary">Thèid Bluetooth a chur air</string>
     <string name="aware_summary_when_bedtime_on">Chan eil seo ri fhaighinn air sgàth ’s gu bheil modh an ama-cadail air</string>
+    <string name="bluetooth_message_access_notification_content">Bu chaomh le uidheam inntrigeadh dha na teachdaireachdan agad. Thoir gnogag airson fiosrachaidh.</string>
     <string name="bluetooth_message_access_dialog_title">An ceadaich thu inntrigeadh dha na teachdaireachdan?</string>
+    <string name="bluetooth_message_access_dialog_content">Tha uidheam Bluetooth, <xliff:g id="device_name" example="My device">%1$s</xliff:g>, airson na teachdaireachdan agad inntrigeadh.\n\nCha do rinn thu ceangal ri <xliff:g id="device_name" example="My device">%2$s</xliff:g> a-riamh.</string>
+    <string name="bluetooth_phonebook_access_notification_content">Bu chaomh le uidheam inntrigeadh dhan luchd-aithne is loga nan gairmean agad. Thoir gnogag airson fiosrachaidh.</string>
     <string name="bluetooth_phonebook_access_dialog_title">An ceadaich thu inntrigeadh dhan luchd-aithne ’s gu loga nan gairmean?</string>
+    <string name="bluetooth_phonebook_access_dialog_content">Tha uidheam Bluetooth, <xliff:g id="device_name" example="My device">%1$s</xliff:g>, airson an luchd-aithne is loga nan gairmean agad inntrigeadh. Gabhaidh seo a-staigh dàta mu ghairmean a-steach is a-mach.\n\nCha do rinn thu ceangal ri <xliff:g id="device_name" example="My device">%2$s</xliff:g> a-riamh.</string>
+    <string name="request_manage_bluetooth_permission_dont_allow">Na ceadaich</string>
+    <string name="bluetooth_sim_card_access_notification_title">Chaidh cothrom air cairt SIM iarraidh</string>
+    <string name="bluetooth_sim_card_access_notification_content">Bu chaomh le uidheam inntrigeadh dhan chairt SIM agad. Thoir gnogag airson fiosrachaidh.</string>
+    <string name="bluetooth_sim_card_access_dialog_title">An ceadaich thu inntrigeadh dhan chairt SIM?</string>
+    <string name="bluetooth_sim_card_access_dialog_content">Tha uidheam Bluetooth, <xliff:g id="device_name" example="My device">%1$s</xliff:g>, airson dàta inntrigeadh air a’ chairt SIM agad. Tha seo a’ gabhail a-staigh an luchd-aithne agad.\n\nFhad ’s a bhios e ceangailte, gheibh <xliff:g id="device_name" example="My device">%2$s</xliff:g> a h-uile gairm a chuirear gu <xliff:g id="phone_number" example="0912345678">%3$s</xliff:g>.</string>
+    <string name="bluetooth_connect_access_notification_title">Tha uidheam Bluetooth ri fhaighinn</string>
+    <string name="bluetooth_connect_access_notification_content">Bu chaomh le uidheam ceangal a dhèanamh. Thoir gnogag airson fiosrachaidh.</string>
+    <string name="bluetooth_connect_access_dialog_title">An ceangail thu ris an uidheam Bluetooth?</string>
+    <string name="bluetooth_connect_access_dialog_content">Tha <xliff:g id="device_name" example="My device">%1$s</xliff:g> airson ceangal a dhèanamh ris an fhòn seo.\n\nCha do rinn thu ceangal ri <xliff:g id="device_name" example="My device">%2$s</xliff:g> roimhe riamh.</string>
+    <string name="bluetooth_connect_access_dialog_negative">Na ceangail</string>
     <string name="bluetooth_connect_access_dialog_positive">Ceangail</string>
 </resources>
