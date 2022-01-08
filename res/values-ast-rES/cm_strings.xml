@@ -16,33 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <plurals name="show_dev_countdown_cm">
-        <item quantity="one">Tas a <xliff:g id="step_count">%1$d</xliff:g> pasu d\'habilitar los axustes de desendolcu.</item>
-        <item quantity="other">Tas a <xliff:g id="step_count">%1$d</xliff:g> pasos d\'habilitar los axustes de desendolcu.</item>
-    </plurals>
-    <string name="show_dev_on_cm">¡Agora tán activaes les opciones de desendolcu!</string>
-    <string name="show_dev_already_cm">Nun fai falta, yá tán activaes los axustes de desendolcu.</string>
-    <string name="advanced_reboot_title">Reaniciu avanzáu</string>
-    <string name="advanced_reboot_summary">Destorgáu, inclúi opciones nel menú d\'apagáu pa reiniciar nel mou recuperación o cargador d\'arranque</string>
-    <string name="adb_enable">Depuración Android</string>
-    <string name="adb_enable_summary">Habilita la interfaz de depuración ADB</string>
-    <string name="adb_notify">Avisu de depuración</string>
-    <string name="adb_notify_summary">Amosar un avisu cuando tea activada la depuración per USB o rede</string>
-    <string name="adb_over_network">ADB sobre rede</string>
-    <string name="adb_over_network_summary">Activar la depuración TCP/IP sobre les interfaces de rede (Wi\u2011Fi, redes USB). Esta configuración restablezse al reaniciar el preséu</string>
-    <string name="adb_over_network_warning">AVISU: Cuando ta habilitáu ADB sobre rede, el teléfono ta abiertu pa intrusiones en toles redes coneutaes.\n\nUsa esta función namái coneutáu a redes de confianza.\n\n¿Daveres quies activar esta función?</string>
-    <string name="lineagelicense_title">Llicencia LineageOS</string>
-    <string name="kill_app_longpress_back">Botón Volver</string>
-    <string name="kill_app_longpress_back_summary">Matar l\'aplicación actual al caltener primíu\'l botón Volver</string>
-    <string name="device_hostname">Nome del preséu</string>
-    <string name="increasing_ring_volume_option_title">Volume de timbre ascendente</string>
-    <string name="increasing_ring_min_volume_title">Volume inicial</string>
-    <string name="increasing_ring_ramp_up_time_title">Duración d\'incrementu</string>
-    <string name="lockscreen_media_art_title">Amosar la portada del álbum</string>
-    <string name="lockscreen_visualizer_title">Amosar visualizador de música</string>
-    <string name="lock_settings_picker_pattern_size_message">Escueyi un tamañu de patrón</string>
-    <string name="lockpattern_settings_enable_error_path_title">Amosar fallu de patrón</string>
-    <string name="lockpattern_settings_enable_dots_title">Amosar puntos del patrón</string>
+    <string name="suggestion_button_close">Zarrar</string>
+    <string name="advanced_reboot_summary">Al desbloquiar, inclúi les opciones nel menú d\'apagáu pa reaniciar al recovery o al cargador d\'arrinque</string>
+    <string name="adb_enable_root">Depuración como root</string>
+    <string name="adb_enable_summary_root">Permite la execución de la depuración d\'Android como root</string>
+    <string name="tethering_allow_vpn_upstreams_title">Permitir que los veceros usen les VPNs</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Permite que los veceros del puntu Wi-Fi usen les conexones VPN d\u2019esti preséu pa la conectividá</string>
     <string name="app_notification_sound_timeout_title">Tiempu mínimo ente soníos d\'avisu</string>
     <string name="app_notification_sound_timeout_summary_template">Permite soníos o vibración namái una vegada cada <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Ensin torgues</string>
@@ -52,40 +31,40 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 minutos</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
-    <string name="unlock_scramble_pin_layout_title">Disposición al debalu</string>
-    <string name="unlock_scramble_pin_layout_summary">Cambiar la disposición de los númberos del PIN pa desbloquiar el preséu</string>
-    <string name="volume_link_notification_title">Venceyar tonu de llamada &amp; y volume de les notificaciones</string>
+    <string name="volume_link_notification_title">Enllaciar el volume de los avisos col del timbre</string>
     <string name="directly_show_lock">Desbloquéu direutu</string>
-    <string name="directly_show_lock_summary">Omitir l\'esbarie pa destorgar la pantalla y entamar darréu la introducción de la clave</string>
-    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Alluga\'l sensor de buelgues na parte <xliff:g id="sensor_location">%1$s</xliff:g> de la tableta.</string>
-    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Alluga\'l sensor de buelgues na parte <xliff:g id="sensor_location">%1$s</xliff:g> del preséu.</string>
-    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Alluga\'l sensor de buelgues na parte <xliff:g id="sensor_location">%1$s</xliff:g> del to teléfonu.</string>
-    <string name="security_settings_fingerprint_sensor_location_back">d\'atrás</string>
-    <string name="security_settings_fingerprint_sensor_location_front">frontal</string>
-    <string name="security_settings_fingerprint_sensor_location_left">llau esquierdu</string>
-    <string name="security_settings_fingerprint_sensor_location_right">llau drechu</string>
-    <string name="status_bar_double_tap_to_sleep_title">Calca pa suspender</string>
-    <string name="status_bar_double_tap_to_sleep_summary">Calca dos vegaes na barra d\'estáu o pantalla de bloquéu p\'apagar la pantalla</string>
-    <string name="touchscreen_gesture_settings_title">Xestos de pantalla táutil</string>
-    <string name="touchscreen_gesture_settings_summary">Fai dellos xestos táutiles p\'aiciones rápides</string>
+    <string name="directly_show_lock_summary">Omite l\'eslizamientu pa desbloquiar la pantalla y aniciar darréu la introducción de la clave</string>
+    <string name="status_bar_double_tap_to_sleep_title">Tocar pa dormir</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Toca dos vegaes na barra d\'estáu o na pantalla de bloquéu p\'apagar la pantalla</string>
+    <string name="touchscreen_gesture_settings_title">Xestos de la pantalla táctil</string>
+    <string name="touchscreen_gesture_settings_summary">Permítete facer dellos xestos na pantalla táctil pa executar aiciones rápides</string>
+    <string name="data_usage_app_restrict_all">Permitir l\'accesu a la rede</string>
+    <string name="data_usage_app_restrict_all_summary">Activa l\'usu de la rede</string>
     <string name="data_usage_app_restrict_data">Datos móviles</string>
-    <string name="data_usage_app_restrict_data_summary">Activar l\'usu de los datos móviles</string>
-    <string name="data_usage_app_restrict_vpn">Datos de VPN</string>
-    <string name="data_usage_app_restrict_vpn_summary">Activa l\'usu de datos de VPN</string>
+    <string name="data_usage_app_restrict_data_summary">Activa l\'usu de los datos móviles</string>
+    <string name="data_usage_app_restrict_vpn">Datos per VPN</string>
+    <string name="data_usage_app_restrict_vpn_summary">Activa l\'usu de los datos per VPN</string>
     <string name="data_usage_app_restrict_wifi">Datos Wi\u2011Fi</string>
-    <string name="data_usage_app_restrict_wifi_summary">Activar l\'usu de los datos Wi\u2011Fi</string>
-    <string name="proximity_wake_title">Evitar esconsueñu accidental</string>
+    <string name="data_usage_app_restrict_wifi_summary">Activa l\'usu de los datos Wi\u2011Fi</string>
     <string name="proximity_wake_summary">Comprueba\'l sensor de proximidá enantes de prender la pantalla</string>
-    <string name="wake_when_plugged_or_unplugged_title">Esconsoñar al enchufar</string>
-    <string name="wake_when_plugged_or_unplugged_summary">Prender la pantalla al coneutar o desconeutar el cargador</string>
-    <string name="high_touch_sensitivity_title">Sensibilidá alta al tactu</string>
-    <string name="high_touch_sensitivity_summary">Incrementar la sensibilidá del panel táctil pa que pueda usase llevando guantes</string>
-    <string name="touchscreen_hovering_title">Pantalla táctil eslizante</string>
-    <string name="touchscreen_hovering_summary">Permite eslizase pela pantalla como un mur en navegadores, escritorios remotos, etc.</string>
     <string name="update_recovery_title">Anovar recovery</string>
     <string name="update_recovery_summary">Anueva\'l recovery integráu colos anovamientos del sistema</string>
     <string name="update_recovery_on_warning">AVISU: Cuando esta función ta activada, el recovery instaláu va sustituyise por ún incluyíu cola versión actual del SO.\n\nEl recovery va anovase xunto con meyores del sistema, ayudando a garantizar la compatibilidá con futures versiones.\n\n¿Quies activar esta función?</string>
     <string name="update_recovery_off_warning">AVISU: Cuando esta función está desactivada, el recovery instaláu nun s\'anueva con anovamientos del SO.\n\nVersiones futures del SO podríen non instalase con recoverys non anovaos.\n\n¿Daveres quies deshabilitar esta función?</string>
-    <string name="heads_up_notifications_enabled_title">Avisos emerxentes</string>
-    <string name="heads_up_notifications_enabled_summary">Amuesa los avisos prioritarios nuna ventana pequeña flotante</string>
+    <string name="berry_black_theme_title">Prietu puro</string>
+    <string name="berry_black_theme_summary">Un fondu en prieto puro pal estilu escuru</string>
+    <string name="back_sensitivity_title">Sensibilidá del xestu «Atrás»</string>
+    <string name="back_sensitivity_message">Una sensibilidá alta pue facer conflictu con cualesquier xestu a lo llongo de los berbesos de la pantalla.</string>
+    <string name="back_exclusion_title">Esclusión del xestu «Atrás» no cimero</string>
+    <string name="back_exclusion_summary">Esclúi parte de la zona cimera de la pantalla del área de xestos trasera</string>
+    <string name="min_label">Mín</string>
+    <string name="max_label">Máx</string>
+    <string name="show_navbar_hint_title">Indicador de navegación</string>
+    <string name="show_navbar_hint_summary">Amuesa una barra indicadora de navegación no baxero de la pantalla</string>
+    <string name="keywords_notification_log">avisos, rexistru d\'avisos</string>
+    <string name="connected_tws_device_saved_title">Auriculares inalámbricos guardaos</string>
+    <string name="backup_transport_setting_label">Camudar el fornidor de copies de seguranza</string>
+    <string name="backup_transport_title">Esbilla d\'un fornidor de copies de seguranza</string>
+    <string name="fast_charging_title">Carga rápida</string>
+    <string name="fast_charging_summary">Desactiva esta opción p\'amenorgar la calor producida pol preséu mentanto carga y aumentar la duración útil de la batería</string>
 </resources>
