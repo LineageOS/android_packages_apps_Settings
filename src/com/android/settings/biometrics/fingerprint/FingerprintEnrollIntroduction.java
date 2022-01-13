@@ -24,6 +24,7 @@ import android.hardware.biometrics.BiometricAuthenticator;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintSensorPropertiesInternal;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -82,6 +83,7 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
         final TextView footerMessage3 = findViewById(R.id.footer_message_3);
         final TextView footerMessage4 = findViewById(R.id.footer_message_4);
         final TextView footerMessage5 = findViewById(R.id.footer_message_5);
+        final TextView footerLearnMore = findViewById(R.id.footer_learn_more);
         footerMessage2.setText(getFooterMessage2());
         footerMessage3.setText(getFooterMessage3());
         footerMessage4.setText(getFooterMessage4());
@@ -91,6 +93,10 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
         final TextView footerTitle2 = findViewById(R.id.footer_title_2);
         footerTitle1.setText(getFooterTitle1());
         footerTitle2.setText(getFooterTitle2());
+
+        if (TextUtils.isEmpty(footerLearnMore.getText())) {
+            iconLink.setVisibility(View.GONE);
+        }
     }
 
     @Override
