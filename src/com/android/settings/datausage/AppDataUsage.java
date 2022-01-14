@@ -19,6 +19,7 @@ import static android.net.NetworkPolicyManager.POLICY_REJECT_CELLULAR;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_VPN;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_WIFI;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
@@ -322,7 +323,8 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     @VisibleForTesting
     void updatePrefs() {
         updatePrefs(getAppRestrictBackground(), getUnrestrictData(), getAppRestrictAll(),
-                getAppRestrictCellular(), getAppRestrictVpn(), getAppRestrictWifi());
+                getAppRestrictCellular(), getAppRestrictVpn(), getAppRestrictWifi(),
+                hasInternetPermission());
     }
 
     @VisibleForTesting
@@ -332,37 +334,40 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
 
     private void updatePrefs(boolean restrictBackground, boolean unrestrictData,
             boolean restrictAll, boolean restrictCellular, boolean restrictVpn,
-            boolean restrictWifi) {
+            boolean restrictWifi, boolean hasInternetPermission) {
         final EnforcedAdmin admin = RestrictedLockUtilsInternal.checkIfMeteredDataRestricted(
                 mContext, mPackageName, UserHandle.getUserId(mAppItem.key));
         if (mRestrictAll != null) {
+            mRestrictAll.setEnabled(hasInternetPermission);
             mRestrictAll.setChecked(!restrictAll);
         }
         if (mRestrictBackground != null) {
             mRestrictBackground.setDisabledByAdmin(admin);
-            mRestrictBackground.setEnabled(!mRestrictBackground.isDisabledByAdmin() && !restrictAll
-                    && !restrictCellular);
+            mRestrictBackground.setEnabled(hasInternetPermission &&
+                    !mRestrictBackground.isDisabledByAdmin() && !restrictAll &&
+                    !restrictCellular);
             mRestrictBackground.setChecked(!restrictBackground && !restrictAll &&
                     !restrictCellular);
         }
         if (mRestrictCellular != null) {
-            mRestrictCellular.setEnabled(!restrictAll);
+            mRestrictCellular.setEnabled(hasInternetPermission && !restrictAll);
             mRestrictCellular.setChecked(!restrictAll && !restrictCellular);
         }
         if (mRestrictVpn != null) {
-            mRestrictVpn.setEnabled(!restrictAll);
+            mRestrictVpn.setEnabled(hasInternetPermission && !restrictAll);
             mRestrictVpn.setChecked(!restrictAll && !restrictVpn);
         }
         if (mRestrictWifi != null) {
-            mRestrictWifi.setEnabled(!restrictAll);
+            mRestrictWifi.setEnabled(hasInternetPermission && !restrictAll);
             mRestrictWifi.setChecked(!restrictAll && !restrictWifi);
         }
         if (mUnrestrictedData != null) {
             mUnrestrictedData.setDisabledByAdmin(admin);
-            mUnrestrictedData.setEnabled(!mUnrestrictedData.isDisabledByAdmin() &&
-                    !restrictBackground && !restrictAll && !restrictCellular);
-            mUnrestrictedData.setChecked(unrestrictData && !restrictBackground && !restrictAll
-                    && !restrictCellular);
+            mUnrestrictedData.setEnabled(hasInternetPermission &&
+                    !mUnrestrictedData.isDisabledByAdmin() && !restrictBackground && !restrictAll &&
+                    !restrictCellular);
+            mUnrestrictedData.setChecked(unrestrictData && !restrictBackground && !restrictAll &&
+                    !restrictCellular);
         }
     }
 
@@ -426,6 +431,11 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         final int uid = mAppItem.key;
         final int uidPolicy = services.mPolicyManager.getUidPolicy(uid);
         return (uidPolicy & policy) != 0;
+    }
+
+    private boolean hasInternetPermission() {
+        return mPackageManager.checkPermission(Manifest.permission.INTERNET, mPackageName)
+                == PackageManager.PERMISSION_GRANTED;
     }
 
     private void setAppRestrictCellular(boolean restrict) {
@@ -581,7 +591,8 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     public void onAllowlistStatusChanged(int uid, boolean isAllowlisted) {
         if (mAppItem.uids.get(uid, false)) {
             updatePrefs(getAppRestrictBackground(), isAllowlisted, getAppRestrictAll(),
-                    getAppRestrictCellular(), getAppRestrictVpn(), getAppRestrictWifi());
+                    getAppRestrictCellular(), getAppRestrictVpn(), getAppRestrictWifi(),
+                    hasInternetPermission());
         }
     }
 
@@ -589,7 +600,8 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     public void onDenylistStatusChanged(int uid, boolean isDenylisted) {
         if (mAppItem.uids.get(uid, false)) {
             updatePrefs(isDenylisted, getUnrestrictData(), getAppRestrictAll(),
-                    getAppRestrictCellular(), getAppRestrictVpn(), getAppRestrictWifi());
+                    getAppRestrictCellular(), getAppRestrictVpn(), getAppRestrictWifi(),
+                    hasInternetPermission());
         }
     }
 }
