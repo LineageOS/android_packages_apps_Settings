@@ -19,6 +19,7 @@ import static android.net.NetworkPolicyManager.POLICY_REJECT_CELLULAR;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_VPN;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_WIFI;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
@@ -185,18 +186,28 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                     } catch (PackageManager.NameNotFoundException e) {
                     }
                 }
-                mRestrictAll = findPreference(KEY_RESTRICT_ALL);
-                mRestrictAll.setOnPreferenceChangeListener(this);
-                mRestrictBackground = findPreference(KEY_RESTRICT_BACKGROUND);
-                mRestrictBackground.setOnPreferenceChangeListener(this);
-                mRestrictCellular = findPreference(KEY_RESTRICT_CELLULAR);
-                mRestrictCellular.setOnPreferenceChangeListener(this);
-                mRestrictVpn = findPreference(KEY_RESTRICT_VPN);
-                mRestrictVpn.setOnPreferenceChangeListener(this);
-                mRestrictWifi = findPreference(KEY_RESTRICT_WIFI);
-                mRestrictWifi.setOnPreferenceChangeListener(this);
-                mUnrestrictedData = findPreference(KEY_UNRESTRICTED_DATA);
-                mUnrestrictedData.setOnPreferenceChangeListener(this);
+                if (mPackageManager.checkPermission(Manifest.permission.INTERNET, mPackageName)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    mRestrictAll = findPreference(KEY_RESTRICT_ALL);
+                    mRestrictAll.setOnPreferenceChangeListener(this);
+                    mRestrictBackground = findPreference(KEY_RESTRICT_BACKGROUND);
+                    mRestrictBackground.setOnPreferenceChangeListener(this);
+                    mRestrictCellular = findPreference(KEY_RESTRICT_CELLULAR);
+                    mRestrictCellular.setOnPreferenceChangeListener(this);
+                    mRestrictVpn = findPreference(KEY_RESTRICT_VPN);
+                    mRestrictVpn.setOnPreferenceChangeListener(this);
+                    mRestrictWifi = findPreference(KEY_RESTRICT_WIFI);
+                    mRestrictWifi.setOnPreferenceChangeListener(this);
+                    mUnrestrictedData = findPreference(KEY_UNRESTRICTED_DATA);
+                    mUnrestrictedData.setOnPreferenceChangeListener(this);
+                } else {
+                    removePreference(KEY_UNRESTRICTED_DATA);
+                    removePreference(KEY_RESTRICT_ALL);
+                    removePreference(KEY_RESTRICT_BACKGROUND);
+                    removePreference(KEY_RESTRICT_CELLULAR);
+                    removePreference(KEY_RESTRICT_VPN);
+                    removePreference(KEY_RESTRICT_WIFI);
+                }
             }
             mDataSaverBackend = new DataSaverBackend(mContext);
             mAppSettings = findPreference(KEY_APP_SETTINGS);
