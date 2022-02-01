@@ -33,6 +33,23 @@
       "message": "Works fine on Galaxy A52.",
       "revId": "2a0ddf00d2ea239c033abe0070360108faf22811",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212dc76c_6ac5a079",
+        "filename": "src/com/android/settings/display/MinRefreshRatePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 29914
+      },
+      "writtenOn": "2022-02-01T22:05:18Z",
+      "side": 1,
+      "message": "In peak refresh rate commit i made \"%.02fHz\" a string resource so it can be translated properly, also i got rid of .replaceAll and the regex, by badDaemon\u0027s  suggestions. Looks much cleaner. \n\nhttps://review.lineageos.org/c/LineageOS/android_packages_apps_Settings/+/322884",
+      "revId": "2a0ddf00d2ea239c033abe0070360108faf22811",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
