@@ -81,8 +81,13 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
                     .build()
             );
         } else {
+            final boolean isPowerbuttonFps = getResources().getBoolean(
+                    com.android.internal.R.bool.config_is_powerbutton_fps);
+
             setHeaderText(R.string.security_settings_fingerprint_enroll_find_sensor_title);
-            setDescriptionText(R.string.security_settings_fingerprint_enroll_find_sensor_message);
+            setDescriptionText(getString(isPowerbuttonFps
+                    ? R.string.security_settings_fingerprint_enroll_find_sensor_message_side
+                    : R.string.security_settings_fingerprint_enroll_find_sensor_message_rear));
         }
 
         // This is an entry point for SetNewPasswordController, e.g.
