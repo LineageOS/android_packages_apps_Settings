@@ -52,6 +52,24 @@
       "parentUuid": "d876d161_79decd70",
       "revId": "1d75041b6dea204706a7f00c13fd4234d21e0eab",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c577a54a_e90866fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-02-03T18:35:33Z",
+      "side": 1,
+      "message": "See:\n\n    \u003c!-- Message shown in fingerprint enrollment dialog to locate the sensor --\u003e\n    \u003cstring name\u003d\"security_settings_fingerprint_enroll_find_sensor_message\"\u003eIt\\u2019s on the back of your phone. Use your index finger.\u003c/string\u003e\n    \u003c!-- Message shown in fingerprint enrollment dialog to locate the sensor [CHAR LIMIT\u003dNONE]--\u003e\n    \u003cstring name\u003d\"security_settings_udfps_enroll_find_sensor_message\"\u003eThe fingerprint sensor is on your screen. You\\u2019ll capture your fingerprint on the next screen.\u003c/string\u003e\n\n\nSadly, while AOSP takes care o showing proper image during fingerprint enrollment on devices with fps in the power button, it shows string security_settings_fingerprint_enroll_find_sensor_message. I\u0027ll make a separate change and upload to AOSP to fix that.",
+      "parentUuid": "f6d23119_54002855",
+      "revId": "1d75041b6dea204706a7f00c13fd4234d21e0eab",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
