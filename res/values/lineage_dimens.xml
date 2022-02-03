@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2020-2022 The LineageOS Project
+     Copyright (C) 2019 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,11 +14,8 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <!-- Indicates whether device has a front facing fingerprint sensor (not udfps). -->
-    <bool name="config_is_front_facing_fps" translatable="false">false</bool>
 
-    <string-array name="config_ignored_backup_transports" translatable="false">
-        <item>com.android.localtransport/.LocalTransport</item>
-    </string-array>
+<resources>
+    <!-- Fingerprint -->
+    <dimen name="fingerprint_find_sensor_padding_top">16dp</dimen>
 </resources>
