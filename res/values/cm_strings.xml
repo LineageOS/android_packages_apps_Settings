@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -29,6 +29,16 @@
     <!-- Double tap to sleep on status bar or lockscreen -->
     <string name="status_bar_double_tap_to_sleep_title">Tap to sleep</string>
     <string name="status_bar_double_tap_to_sleep_summary">Double-tap on the status bar or lockscreen to turn off the display</string>
+
+    <!-- Format string for fingerprint location message -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_custom" product="tablet">It\u2019s on the <xliff:g id="sensor_location">%1$s</xliff:g> of your tablet. Use your index finger.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_custom" product="device">It\u2019s on the <xliff:g id="sensor_location">%1$s</xliff:g> of your device. Use your index finger.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_custom" product="default">It\u2019s on the <xliff:g id="sensor_location">%1$s</xliff:g> of your phone. Use your index finger.</string>
+
+    <!-- Fingerprint sensor locations -->
+    <string name="security_settings_fps_location_back">back</string>
+    <string name="security_settings_fps_location_front">front</string>
+    <string name="security_settings_fps_location_side">side</string>
 
     <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Increasing ring volume</string>
