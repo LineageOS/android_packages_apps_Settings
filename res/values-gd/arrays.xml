@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2007 The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="timezone_filters">
+        <item>Aimeireaga</item>
+        <item>An Roinn-Eòrpa</item>
+        <item>Afraga</item>
+        <item>Àisia</item>
+        <item>Astràilia</item>
+        <item>An Cuan Sèimh</item>
+        <item>Na h-uile</item>
+    </string-array>
+    <string-array name="screen_timeout_entries">
+        <item>Às dèidh 15 diogan</item>
+        <item>Às dèidh leth-mhionaid</item>
+        <item>Às dèidh mionaid</item>
+        <item>Às dèidh 2 mhionaid</item>
+        <item>Às dèidh 5 mionaidean</item>
+        <item>Às dèidh 10 mionaidean</item>
+        <item>Às dèidh leth-uair a thìde</item>
+    </string-array>
+    <string-array name="dream_timeout_entries">
+        <item>Chan ann idir</item>
+        <item>Às dèidh 15 diogan</item>
+        <item>Às dèidh leth-mhionaid</item>
+        <item>Às dèidh mionaid</item>
+        <item>Às dèidh 2 mhionaid</item>
+        <item>Às dèidh 5 mionaidean</item>
+        <item>Às dèidh 10 mionaidean</item>
+        <item>Às dèidh leth-uair a thìde</item>
+    </string-array>
+    <string-array name="lock_after_timeout_entries">
+        <item>Sa bhad</item>
+        <item>Às dèidh 5 diogan</item>
+        <item>Às dèidh 15 diogan</item>
+        <item>Às dèidh leth-mhionaid</item>
+        <item>Às dèidh mionaid</item>
+        <item>Às dèidh 2 mhionaid</item>
+        <item>Às dèidh 5 mionaidean</item>
+        <item>Às dèidh 10 mionaidean</item>
+        <item>Às dèidh leth-uair a thìde</item>
+    </string-array>
+    <string-array name="entries_font_size">
+        <item msgid="6490061470416867723">Beag</item>
+        <item msgid="3579015730662088893">Àbhaisteach</item>
+        <item msgid="1678068858001018666">Mòr</item>
+        <item msgid="490158884605093126">Glè mhòr</item>
+    </string-array>
+    <string-array name="tts_rate_entries">
+        <item>Glè shlaodach</item>
+        <item>Slaodach</item>
+        <item>Àbhaisteach</item>
+        <item>Luath</item>
+        <item>Nas luaithe</item>
+        <item>Glè luath</item>
+        <item>Glè glè luath</item>
+        <item>Ro luath</item>
+        <item>As luaithe buileach</item>
+    </string-array>
+    <string-array name="tts_rate_values">
+        <item>60</item>
+        <item>80</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>250</item>
+        <item>300</item>
+        <item>350</item>
+        <item>500</item>
+    </string-array>
+    <string-array name="tts_pitch_entries">
+        <item>Glè ìosal</item>
+        <item>Ìosal</item>
+        <item>Àbhaisteach</item>
+        <item>Àrd</item>
+        <item>Glè àrd</item>
+    </string-array>
+    <string-array name="tts_pitch_values">
+        <item>50</item>
+        <item>80</item>
+        <item>100</item>
+        <item>120</item>
+        <item>150</item>
+    </string-array>
+    <string-array name="wifi_status">
+        <item/>
+        <item>’Ga sganadh\u2026</item>
+        <item>’Ga cheangal\u2026</item>
+        <item>’Ga dhearbhadh\u2026</item>
+        <item>A’ faighinn seòladh IP\u2026</item>
+        <item>Ceangailte</item>
+        <item>’Na dhàil</item>
+        <item>A’ briseadh a’ cheangail\u2026</item>
+        <item>Gun cheangal</item>
+        <item>Cha deach leis</item>
+        <item>Chaidh a bhacadh</item>
+        <item>A’ seachnadh droch-cheangal gu sealach</item>
+    </string-array>
+    <string-array name="wifi_status_with_ssid">
+        <item/>
+        <item>’Ga sganadh\u2026</item>
+        <item>A’ ceangal ri <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>A’ dearbhadh le <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>A’ faighinn seòladh IP o <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Ceangailte ri <xliff:g id="network_name">%1$s</xliff:g></item>
+        <item>’Na dhàil</item>
+        <item>A’ briseadh a’ cheangail ri <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Gun cheangal</item>
+        <item>Cha deach leis</item>
+        <item>Chaidh a bhacadh</item>
+        <item>A’ seachnadh droch-cheangal gu sealach</item>
+    </string-array>
+    <string-array name="wifi_security">
+        <item>@string/wifi_security_none</item>
+        <item>@string/wifi_security_wep</item>
+        <item>@string/wifi_security_psk_generic</item>
+        <item>@string/wifi_security_eap</item>
+    </string-array>
+    <string-array name="wifi_security_no_eap">
+        <item>@string/wifi_security_none</item>
+        <item>@string/wifi_security_wep</item>
+        <item>@string/wifi_security_psk_generic</item>
+    </string-array>
+    <string-array name="wifi_ap_security">
+        <item>@string/wifi_security_none</item>
+        <item>@string/wifi_security_wpa2</item>
+    </string-array>
+    <string-array name="wifi_p2p_wps_setup">
+        <item>Putan putaidh</item>
+        <item>PIN o uidheam-seise</item>
+        <item>PIN on uidheam seo</item>
+    </string-array>
+    <string-array name="wifi_p2p_status">
+        <item>Ceangailte</item>
+        <item>Fhuaras cuireadh</item>
+        <item>Cha deach leis</item>
+        <item>Ri làimh</item>
+        <item>Ro fhad air falbh</item>
+    </string-array>
+    <string-array name="bluetooth_visibility_timeout_entries">
+        <item>Às dèidh 2 mhionaid</item>
+        <item>Às dèidh 5 mionaidean</item>
+        <item>Às dèidh uair a thìde</item>
+        <item>Chan fhalbh an ùine air</item>
+    </string-array>
+    <string-array name="wifi_signal">
+        <item>Bochd</item>
+        <item>Chan eil dona</item>
+        <item>Math</item>
+        <item>Fìor-mhath</item>
+    </string-array>
+    <string-array name="wifi_sleep_policy_entries">
+        <item>An-còmhnaidh</item>
+        <item>Nuair a bhios e plugte a-staigh a-mhàin</item>
+        <item>Na cùm air e</item>
+    </string-array>
+    <string-array name="wifi_sleep_policy_entries_wifi_only">
+        <item>An-còmhnaidh</item>
+        <item>Nuair a bhios e plugte a-staigh a-mhàin</item>
+        <item>Na cùm air e</item>
+    </string-array>
+    <string-array name="wifi_sleep_policy_values">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="data_usage_data_range">
+        <item>Na 30 latha seo chaidh</item>
+        <item>Suidhich cuairt a’ chaitheimh…</item>
+    </string-array>
+    <string-array name="wifi_frequency_band_entries">
+        <item>Gu fèin-obrachail</item>
+        <item>5 GHz a-mhàin</item>
+        <item>2.4 GHz a-mhàin</item>
+    </string-array>
+    <string-array name="wifi_frequency_band_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="usage_stats_display_order_types">
+        <item>Ùine a’ chleachdaidh</item>
+        <item>An cleachdadh mu dheireadh</item>
+        <item>Ainm na h-aplacaid</item>
+    </string-array>
+    <string-array name="wifi_peap_phase2_entries">
+        <item>Gun chrioptachadh</item>
+        <item>MSCHAPV2</item>
+        <item>GTC</item>
+    </string-array>
+    <string-array name="wifi_ip_settings">
+        <item>DHCP</item>
+        <item>Stadaigeach</item>
+    </string-array>
+    <string-array name="wifi_proxy_settings">
+        <item>Gun phrogsaidh</item>
+        <item>A làimh</item>
+        <item>Rèiteachadh fèin-obrachail a’ phrogsaidh</item>
+    </string-array>
+    <string-array name="apn_auth_entries">
+        <item>Gun dearbhadh</item>
+        <item>PAP</item>
+        <item>CHAP</item>
+        <item>PAP no CHAP</item>
+    </string-array>
+    <string-array name="apn_protocol_entries">
+        <item>IPv4</item>
+        <item>IPv6</item>
+        <item>IPv4/IPv6</item>
+    </string-array>
+    <string-array name="bearer_entries">
+        <item>Cha deach gin a shònrachadh</item>
+        <item>LTE</item>
+        <item>HSPAP</item>
+        <item>HSPA</item>
+        <item>HSUPA</item>
+        <item>HSDPA</item>
+        <item>UMTS</item>
+        <item>EDGE</item>
+        <item>GPRS</item>
+        <item>eHRPD</item>
+        <item>EVDO_B</item>
+        <item>EVDO_B</item>
+        <item>EVDO_B</item>
+        <item>1xRTT</item>
+        <item>IS95B</item>
+        <item>IS95A</item>
+    </string-array>
+    <string-array name="mvno_type_entries">
+        <item>Gun solaraiche</item>
+        <item>SPN</item>
+        <item>IMSI</item>
+        <item>GID</item>
+    </string-array>
+    <string-array name="app_install_location_entries">
+        <item>Stòras inntearnail an uidheim</item>
+        <item>Cairt SD so-ghiùlain</item>
+        <item>Taghadh an t-siostaim</item>
+    </string-array>
+    <string-array name="app_ops_categories">
+        <item>Ionad</item>
+        <item>Pearsanta</item>
+        <item>Grad-theachdaireachdan</item>
+        <item>Meadhanan</item>
+        <item>Uidheam</item>
+    </string-array>
+    <string-array name="app_ops_summaries">
+        <item>ionad neo-mhionaideach</item>
+        <item>ionad mionaideach</item>
+        <item>GPS</item>
+        <item>crith</item>
+        <item>luchd-aithne a leughadh</item>
+        <item>luchd-aithne atharrachadh</item>
+        <item>loga nan gairmean a leughadh</item>
+        <item>loga nan gairmean atharrachadh</item>
+        <item>am mìosachan a leughadh</item>
+        <item>am mìosachan atharrachadh</item>
+        <item>sganadh WiFi</item>
+        <item>brath</item>
+        <item>sganadh mobile</item>
+        <item>fòn a chur gu fòn</item>
+        <item>SMS a leughadh</item>
+        <item>SMS a sgrìobhadh</item>
+        <item>SMS fhaighinn</item>
+        <item>SMS-èiginn fhaighinn</item>
+        <item>MMS fhaighinn</item>
+        <item>putadh WAP fhaighinn</item>
+        <item>SMS a chur</item>
+        <item>SMS a leughadh on ICC</item>
+        <item>SMS a sgrìobhadh gun ICC</item>
+        <item>roghainnean atharrachadh</item>
+        <item>tarraing os a chionn</item>
+        <item>cothrom fhaighinn air brathan</item>
+        <item>an camara</item>
+        <item>fuaim a chlàradh</item>
+        <item>fuaim a chluich</item>
+        <item>an stòr-bhòrd a leughadh</item>
+        <item>an stòr-bhòrd atharrachadh</item>
+        <item>putanan mheadhanan</item>
+        <item>fòcas a chur air fuaim</item>
+        <item>maighstir àirde na fuaime</item>
+        <item>àirde fuaim a’ ghutha</item>
+        <item>àirde fuaim na seirme</item>
+        <item>àirde fuaim nam meadhanan</item>
+        <item>àirde fuaim nan caismeachdan</item>
+        <item>àirde fuaim nam brathan</item>
+        <item>àirde fuaim Bluetooth</item>
+        <item>cumail ’na dhùisg</item>
+        <item>sùil a chumail air an ionad</item>
+        <item>sùil a chumail air ionad àrd-chumhachd</item>
+        <item>stadastaireachd caitheimh fhaighinn</item>
+        <item>fuaim a’ mhicreofon a mhùchadh/thilleadh</item>
+        <item>meadhan a thilgeil</item>
+        <item>VPN a ghnìomhachadh</item>
+        <item>pàipear-balla a sgrìobhadh</item>
+        <item>taic a chumail ri structar</item>
+        <item>taic a chumail ri glacadh-sgrìn</item>
+    </string-array>
+    <string-array name="app_ops_labels">
+        <item>Ionad</item>
+        <item>Ionad</item>
+        <item>Ionad</item>
+        <item>Dèan crith</item>
+        <item>Luchd-aithne a leughadh</item>
+        <item>Luchd-aithne atharrachadh</item>
+        <item>Loga nan gairmean a leughadh</item>
+        <item>Loga nan gairmean atharrachadh</item>
+        <item>Am mìosachan a leughadh</item>
+        <item>Am mìosachan atharrachadh</item>
+        <item>Ionad</item>
+        <item>Brath puist</item>
+        <item>Ionad</item>
+        <item>Fòn a chur gu fòn</item>
+        <item>Leugh SMS/MMS</item>
+        <item>Sgrìobh SMS/MMS</item>
+        <item>Faigh SMS/MMS</item>
+        <item>Faigh SMS/MMS</item>
+        <item>Faigh SMS/MMS</item>
+        <item>Faigh SMS/MMS</item>
+        <item>Cuir SMS/MMS</item>
+        <item>Leugh SMS/MMS</item>
+        <item>Sgrìobh SMS/MMS</item>
+        <item>Roghainnean atharrachadh</item>
+        <item>Tarraing os a chionn</item>
+        <item>Cothrom fhaighinn air brathan</item>
+        <item>An camara</item>
+        <item>Fuaim a chlàradh</item>
+        <item>Fuaim a chluich</item>
+        <item>An stòr-bhòrd a leughadh</item>
+        <item>An stòr-bhòrd atharrachadh</item>
+        <item>Putanan mheadhanan</item>
+        <item>Fòcas a chur air fuaim</item>
+        <item>Maighstir àirde na fuaime</item>
+        <item>Àirde fuaim a’ ghutha</item>
+        <item>Àirde fuaim na seirme</item>
+        <item>Àirde fuaim nam meadhanan</item>
+        <item>Àirde fuaim nan caismeachdan</item>
+        <item>Àirde fuaim nam brathan</item>
+        <item>Àirde fuaim Bluetooth</item>
+        <item>Cumail ’na dhùisg</item>
+        <item>Ionad</item>
+        <item>Ionad</item>
+        <item>Stadastaireachd caitheimh fhaighinn</item>
+        <item>Fuaim a’ mhicreofon a mhùchadh/thilleadh</item>
+        <item>Meadhanan a thilgeil</item>
+        <item>VPN a ghnìomhachadh</item>
+        <item>Pàipear-balla a sgrìobhadh</item>
+        <item>Taic a chumail ri structar</item>
+        <item>Taic a chumail ri glacadh-sgrìn</item>
+    </string-array>
+    <string-array name="long_press_timeout_selector_titles">
+        <item>Goirid</item>
+        <item>Meadhanach</item>
+        <item>Fada</item>
+    </string-array>
+    <string-array name="captioning_typeface_selector_titles">
+        <item>Bun-roghainn</item>
+        <item>Sans-serif</item>
+        <item>Sans-serif condensed</item>
+        <item>Sans-serif monospace</item>
+        <item>Serif</item>
+        <item>Serif monospace</item>
+        <item>Fuasgailte</item>
+        <item>Eadailteach</item>
+        <item>Tùs-litrichean beaga</item>
+    </string-array>
+    <string-array name="captioning_font_size_selector_titles">
+        <item>Glè bheag</item>
+        <item>Beag</item>
+        <item>Àbhaisteach</item>
+        <item>Mòr</item>
+        <item>Glè mhòr</item>
+    </string-array>
+    <string-array name="captioning_edge_type_selector_titles">
+        <item>Bun-roghainn</item>
+        <item>Gun oir</item>
+        <item>Oir‑loidhne</item>
+        <item>Sgàil theàrnach</item>
+        <item>Àrdaichte</item>
+        <item>Air a bhrùthadh</item>
+    </string-array>
+    <string-array name="captioning_opacity_selector_titles">
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="captioning_preset_selector_titles">
+        <item>Cleachd bun-roghainnean na h-aplacaid</item>
+        <item>Geal air dubh</item>
+        <item>Dubh air geal</item>
+        <item>Buidhe air dubh</item>
+        <item>Buidhe air gorm</item>
+        <item>Gnàthaichte</item>
+    </string-array>
+    <string-array name="select_logd_size_titles">
+        <item>64K</item>
+        <item>256K</item>
+        <item>1M</item>
+        <item>4M</item>
+        <item>16M</item>
+    </string-array>
+    <string-array name="select_logd_size_lowram_titles">
+        <item>64K</item>
+        <item>256K</item>
+        <item>1M</item>
+    </string-array>
+    <string-array name="select_logd_size_summaries">
+        <item>64K gach bufair logaidh</item>
+        <item>256K gach bufair logaidh</item>
+        <item>1M gach bufair logaidh</item>
+        <item>4M gach bufair logaidh</item>
+        <item>16M gach bufair logaidh</item>
+    </string-array>
+    <string-array name="hdcp_checking_titles">
+        <item>Na doir sùil idir</item>
+        <item>Thoir sùil airson susbaint fo DRM a-mhàin</item>
+        <item>Thoir sùil an-còmhnaidh</item>
+    </string-array>
+    <string-array name="hdcp_checking_summaries">
+        <item>Na doir sùil le HDCP idir</item>
+        <item>Thoir sùil airson susbaint fo DRM le HDCP a-mhàin</item>
+        <item>Thoir sùil le HDCP an-còmhnaidh</item>
+    </string-array>
+    <string-array name="window_animation_scale_entries">
+        <item>Beòthachadh dheth</item>
+        <item>Sgèile 0.5x air na beòthachaidhean</item>
+        <item>Sgèile 1x air na beòthachaidhean</item>
+        <item>Sgèile 1.5x air na beòthachaidhean</item>
+        <item>Sgèile 2x air na beòthachaidhean</item>
+        <item>Sgèile 5x air na beòthachaidhean</item>
+        <item>Sgèile 10x air na beòthachaidhean</item>
+    </string-array>
+    <string-array name="transition_animation_scale_entries">
+        <item>Beòthachadh dheth</item>
+        <item>Sgèile 0.5x air na beòthachaidhean</item>
+        <item>Sgèile 1x air na beòthachaidhean</item>
+        <item>Sgèile 1.5x air na beòthachaidhean</item>
+        <item>Sgèile 2x air na beòthachaidhean</item>
+        <item>Sgèile 5x air na beòthachaidhean</item>
+        <item>Sgèile 10x air na beòthachaidhean</item>
+    </string-array>
+    <string-array name="animator_duration_scale_entries">
+        <item>Beòthachadh dheth</item>
+        <item>Sgèile 0.5x air na beòthachaidhean</item>
+        <item>Sgèile 1x air na beòthachaidhean</item>
+        <item>Sgèile 1.5x air na beòthachaidhean</item>
+        <item>Sgèile 2x air na beòthachaidhean</item>
+        <item>Sgèile 5x air na beòthachaidhean</item>
+        <item>Sgèile 10x air na beòthachaidhean</item>
+    </string-array>
+    <string-array name="overlay_display_devices_entries">
+        <item>Gun tar-chòmhdachadh</item>
+        <item>480p</item>
+        <item>480p (tèarainte)</item>
+        <item>720p</item>
+        <item>720p (tèarainte)</item>
+        <item>1080p</item>
+        <item>1080p (tèarainte)</item>
+        <item>4K</item>
+        <item>4K (tèarainte)</item>
+        <item>4K (sgèileadh suas)</item>
+        <item>4K (sgèileadh suas, tèarainte)</item>
+        <item>720p, 1080p (dà sgrìn)</item>
+    </string-array>
+    <string-array name="enable_opengl_traces_entries">
+        <item>Gun treus</item>
+        <item>Logcat</item>
+        <item>Systrace (grafaigeachd)</item>
+        <item>Staca ghairmean air glGetError</item>
+    </string-array>
+    <string-array name="show_non_rect_clip_entries">
+        <item>Dheth</item>
+        <item>Tarraing raon bearraidh nach eil ceart-cheàrnach ann an gorm</item>
+        <item>Soillsich àitheantan tarraing fo dheuchainn ann an uaine</item>
+    </string-array>
+    <string-array name="track_frame_time_entries">
+        <item>Dheth</item>
+        <item>Air an sgrìn ’na bhàraichean</item>
+        <item>Ann an adb shell dumpsys gfxinfo</item>
+    </string-array>
+    <string-array name="debug_hw_overdraw_entries">
+        <item>Dheth</item>
+        <item>Seall raointean tar-tharraing</item>
+        <item>Seall raointean airson Deuteranomaly</item>
+    </string-array>
+    <string-array name="app_process_limit_entries">
+        <item>Crìoch stannardach</item>
+        <item>Gun phròiseas sa chùlaibh</item>
+        <item>1 phròiseas air a char as àirde</item>
+        <item>2 phròiseas air a char as àirde</item>
+        <item>3 pròiseasan air a char as àirde</item>
+        <item>4 pròiseasan air a char as àirde</item>
+    </string-array>
+    <string-array name="vpn_types_long">
+        <item>PPTP VPN</item>
+        <item>VPN L2TP/IPsec le iuchraichean co-roinnte ro làimh</item>
+        <item>VPN L2TP/IPsec le teisteanasan</item>
+        <item>VPN IPsec le iuchraichean co-roinnte ro làimh is dearbhadh Xauth</item>
+        <item>VPN IPsec le teisteanasan is dearbhadh Xauth</item>
+        <item>VPN IPsec le teisteanasan is dearbhadh measgaichte</item>
+    </string-array>
+    <string-array name="vpn_states">
+        <item>Gun cheangal</item>
+        <item>’Ga thòiseachadh\u2026</item>
+        <item>’Ga cheangal\u2026</item>
+        <item>Ceangailte</item>
+        <item>Crìoch-ùine</item>
+        <item>Cha deach leis</item>
+    </string-array>
+    <string-array name="security_settings_premium_sms_values">
+        <item>Faighnich</item>
+        <item>Na ceadaich idir</item>
+        <item>Ceadaich an-còmhnaidh</item>
+    </string-array>
+    <string-array name="ram_states">
+        <item>Àbhaisteach</item>
+        <item>Meadhanach</item>
+        <item>Ìosal</item>
+        <item>Èiginneach</item>
+        <item>\?</item>
+    </string-array>
+    <string-array name="proc_stats_memory_states">
+        <item>Àbhaisteach</item>
+        <item>Meadhanach</item>
+        <item>Ìosal</item>
+        <item>Èiginneach</item>
+    </string-array>
+    <string-array name="proc_stats_process_states">
+        <item>Buan</item>
+        <item>A’ gnìomhachd as motha</item>
+        <item>Cudromach (air beulaibh)</item>
+        <item>Cudromach (sa chùlaibh)</item>
+        <item>Lethbhreac-glèidhidh</item>
+        <item>Trom</item>
+        <item>Seirbheis (a’ ruith)</item>
+        <item>Seirbheis (’ga ath-thòiseachadh)</item>
+        <item>Glacadair</item>
+        <item>Dachaigh</item>
+        <item>A’ ghnìomhachd mu dheireadh</item>
+        <item>San tasgadan (gnìomhachd)</item>
+        <item>San tasgadan (cliant gnìomhachd)</item>
+        <item>San tasgadan (falamh)</item>
+    </string-array>
+    <string-array name="color_picker">
+        <item>Dath a’ chrann-lacha</item>
+        <item>Gorm</item>
+        <item>Guirmean Innseanach</item>
+        <item>Purpaidh</item>
+        <item>Pinc</item>
+        <item>Dearg</item>
+    </string-array>
+    <string-array name="usb_configuration_titles">
+        <item>@string/usb_use_charging_only</item>
+        <item>MTP (pròtacal tar-chur mheadhanan)</item>
+        <item>PTP (pròtacal tar-chur dhealbhan)</item>
+        <item>RNDIS (USB Ethernet)</item>
+        <item>Tùs fuaime</item>
+        <item>MIDI</item>
+    </string-array>
+</resources>
