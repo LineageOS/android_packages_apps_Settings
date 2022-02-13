@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2007 The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="timezone_filters">
+        <item>Amèrica</item>
+        <item>Europa</item>
+        <item>Àfrica</item>
+        <item>Àsia</item>
+        <item>Austràlia</item>
+        <item>Patzìficu</item>
+        <item>Totu</item>
+    </string-array>
+    <string-array name="screen_timeout_entries">
+        <item>15 segundos</item>
+        <item>30 segundos</item>
+        <item>1 minutu</item>
+        <item>2 minutos</item>
+        <item>5 minutos</item>
+        <item>10 minutos</item>
+        <item>30 minutos</item>
+    </string-array>
+    <string-array name="dream_timeout_entries">
+        <item>Mai</item>
+        <item>15 segundos</item>
+        <item>30 segundos</item>
+        <item>1 minutu</item>
+        <item>2 minutos</item>
+        <item>5 minutos</item>
+        <item>10 minutos</item>
+        <item>30 minutos</item>
+    </string-array>
+    <string-array name="lock_after_timeout_entries">
+        <item>Immediatamente</item>
+        <item>5 segundos</item>
+        <item>15 segundos</item>
+        <item>30 segundos</item>
+        <item>1 minutu</item>
+        <item>2 minutos</item>
+        <item>5 minutos</item>
+        <item>10 minutos</item>
+        <item>30 minutos</item>
+    </string-array>
+    <string-array name="entries_font_size">
+        <item msgid="6490061470416867723">Piticu</item>
+        <item msgid="3579015730662088893">Predefinidu</item>
+        <item msgid="1678068858001018666">Mannu</item>
+        <item msgid="490158884605093126">Largest</item>
+    </string-array>
+    <string-array name="wifi_status">
+        <item/>
+        <item>Iscansionende\u2026</item>
+        <item>Connetende·si\u2026</item>
+        <item>Autentichende\u2026</item>
+        <item>Otenende s\'indiritzu IP\u2026</item>
+        <item>Connètidu</item>
+        <item>Suspesu</item>
+        <item>Iscolleghende·si\u2026</item>
+        <item>Disconnètidu</item>
+        <item>Errore</item>
+        <item>Blocadu</item>
+        <item>Pro immoe evitende sa connessione dèbile</item>
+    </string-array>
+    <string-array name="wifi_status_with_ssid">
+        <item/>
+        <item>Iscansionende\u2026</item>
+        <item>Connetende·si a <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Autentichende cun <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Otenende s\'indiritzu IP dae <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Collegadu a <xliff:g id="network_name">%1$s</xliff:g></item>
+        <item>Suspesu</item>
+        <item>Iscolleghende·si dae <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Disconnètidu</item>
+        <item>Errore</item>
+        <item>Blocadu</item>
+        <item>Temporarily avoiding poor connection</item>
+    </string-array>
+    <string-array name="wifi_tether_security">
+        <item>@string/wifi_security_sae</item>
+        <item>@string/wifi_security_psk_sae</item>
+        <item>@string/wifi_security_wpa2</item>
+        <item>@string/wifi_security_none</item>
+    </string-array>
+    <string-array name="wifi_p2p_status">
+        <item>Connètidu</item>
+        <item>Invitadu</item>
+        <item>Errore</item>
+        <item>A disponimentu</item>
+        <item>Foras de su lìmite</item>
+    </string-array>
+    <string-array name="bluetooth_visibility_timeout_entries">
+        <item>2 minutos</item>
+        <item>5 minutos</item>
+        <item>1 ora</item>
+        <item>Semper in bista</item>
+    </string-array>
+    <string-array name="bluetooth_max_connected_audio_devices">
+        <item>Use System Default: 
+            <xliff:g id="default_bluetooth_max_connected_audio_devices">%1$d</xliff:g>
+        </item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="wifi_signal">
+        <item>Pòbera</item>
+        <item>Pòbera</item>
+        <item>Discreta</item>
+        <item>Bona</item>
+        <item>Bona meda</item>
+    </string-array>
+    <string-array name="data_usage_data_range">
+        <item>Ùrtimas 30 dies</item>
+        <item>Imposta tziclu de impreu...</item>
+    </string-array>
+    <string-array name="usage_stats_display_order_types">
+        <item>Tempus de impreu</item>
+        <item>Impreadu pro s\'ùrtima borta</item>
+        <item>Nùmene de s\'aplicatzione</item>
+    </string-array>
+    <string-array name="wifi_ip_settings">
+        <item>DHCP</item>
+        <item>Istàtica</item>
+    </string-array>
+    <string-array name="wifi_proxy_settings">
+        <item>Perunu</item>
+        <item>Manuale</item>
+        <item>Cunfiguratzione automàtica</item>
+    </string-array>
+    <string-array name="apn_auth_entries">
+        <item>Perunu</item>
+        <item>PAP</item>
+        <item>CHAP</item>
+        <item>PAP o CHAP</item>
+    </string-array>
+    <string-array name="apn_protocol_entries">
+        <item>IPv4</item>
+        <item>IPv6</item>
+        <item>IPv4/IPv6</item>
+    </string-array>
+    <string-array name="bearer_entries">
+        <item>No ispetzificadu</item>
+        <item>LTE</item>
+        <item>HSPAP</item>
+        <item>HSPA</item>
+        <item>HSUPA</item>
+        <item>HSDPA</item>
+        <item>UMTS</item>
+        <item>EDGE</item>
+        <item>GPRS</item>
+        <item>eHRPD</item>
+        <item>EVDO_B</item>
+        <item>EVDO_A</item>
+        <item>EVDO_0</item>
+        <item>1xRTT</item>
+        <item>IS95B</item>
+        <item>IS95A</item>
+        <item>NR</item>
+    </string-array>
+    <string-array name="app_ops_summaries">
+        <item>coarse location</item>
+        <item>fine location</item>
+        <item>GPS</item>
+        <item>vibrate</item>
+        <item>read contacts</item>
+        <item>modify contacts</item>
+        <item>read call log</item>
+        <item>modify call log</item>
+        <item>read calendar</item>
+        <item>modify calendar</item>
+        <item>wi-fi scan</item>
+        <item>notìfica</item>
+        <item>incansione de rete mòbile</item>
+        <item>mutida telèfonu</item>
+        <item>leghidura SMS</item>
+        <item>iscritura SMS</item>
+        <item>retzidura SMS</item>
+        <item>retzidura SMS de emergèntzia</item>
+        <item>retzidura MMS</item>
+        <item>retzidura push WAP</item>
+        <item>imbiu SMS</item>
+        <item>leghidura SMS ICC</item>
+        <item>iscritura SMS ICC</item>
+        <item>modìfica de impostatziones</item>
+        <item>disinnu in subra</item>
+        <item>atzessu a is notìficas</item>
+        <item>càmera</item>
+        <item>registratzione àudio</item>
+        <item>riprodutzione àudio</item>
+        <item>leghidura de punta de billete</item>
+        <item>modìfica de punta de billete</item>
+        <item>butones multimediales</item>
+        <item>focus àudio</item>
+        <item>volùmene printzipale</item>
+        <item>volùmene de sa boghe</item>
+        <item>volùmene de su tonu</item>
+        <item>volùmene de is cuntenutos multimediales</item>
+        <item>volùmene de s\'isvèllia</item>
+        <item>volùmene de is notìficas</item>
+        <item>volùmene bluetooth</item>
+        <item>mantene ativu</item>
+        <item>controlla sa positzione</item>
+        <item>supervisione positzione de potèntzia arta</item>
+        <item>otène istatìsticas de impreu</item>
+        <item>Pone a sa muda/ativa su micròfonu</item>
+        <item>show toast</item>
+        <item>progetu mèdia</item>
+        <item>ativa VPN</item>
+        <item>iscrie fundu de s\'ischermu</item>
+        <item>istrutura de assistèntzia</item>
+        <item>assistèntzia catura ischermu</item>
+        <item>read phone state</item>
+        <item>add voicemail</item>
+        <item>use sip</item>
+        <item>process outgoing call</item>
+        <item>fingerprint</item>
+        <item>body sensors</item>
+        <item>read cell broadcasts</item>
+        <item>mock location</item>
+        <item>read storage</item>
+        <item>write storage</item>
+        <item>turn on screen</item>
+        <item>get accounts</item>
+        <item>run in background</item>
+        <item>accessibility volume</item>
+    </string-array>
+    <string-array name="app_ops_labels">
+        <item>Positzione</item>
+        <item>Positzione</item>
+        <item>Positzione</item>
+        <item>Vibra</item>
+        <item>Leghe cuntatos</item>
+        <item>Modìfica cuntatos</item>
+        <item>Leghe registru mutidas</item>
+        <item>Modìfica registru mutida</item>
+        <item>Leghe calendàriu</item>
+        <item>Modìfica calendàriu</item>
+        <item>Positzione</item>
+        <item>Pùblica notìfica</item>
+        <item>Positzione</item>
+        <item>Muti telèfonu</item>
+        <item>Leghe SMS/MMS</item>
+        <item>Iscrie SMS/MMS</item>
+        <item>Retzi SMS/MMS</item>
+        <item>Retzi SMS/MMS</item>
+        <item>Retzi SMS/MMS</item>
+        <item>Retzi SMS/MMS</item>
+        <item>Imbia SMS/MMS</item>
+        <item>Leghe SMS/MMS</item>
+        <item>Iscrie SMS/MMS</item>
+        <item>Modìfica impostatziones</item>
+        <item>Disinna in artu</item>
+        <item>Atzede a is notìficas</item>
+        <item>Fotocàmera</item>
+        <item>Registratzione àudio</item>
+        <item>Riprodutzione àudio</item>
+        <item>Leghe punta de billete</item>
+        <item>Modìfica punta de billete</item>
+        <item>Butones multimediales</item>
+        <item>Focus àudio</item>
+        <item>Volùmene printzipale</item>
+        <item>Volùmene boghe</item>
+        <item>Volùmene tonu</item>
+        <item>Volùmene de is cuntenutos multimediales</item>
+        <item>Volùmene de s\'isvèllia</item>
+        <item>Volùmene de is notìficas</item>
+        <item>Volùmene de su Bluetooth</item>
+        <item>Mantènnere ativu</item>
+        <item>Positzione</item>
+        <item>Positzione</item>
+        <item>Otènnere istatìsticas de impreu</item>
+        <item>Pònnere a sa muda/ativare su micròfonu</item>
+        <item>Show toast</item>
+        <item>Projetare elementos multimediales</item>
+        <item>Ativare VPN</item>
+        <item>Iscrìere in fundu de s\'ischermu</item>
+        <item>Istrutura de assistèntzia</item>
+        <item>Assistèntzia catura ischermu</item>
+        <item>Read phone state</item>
+        <item>Add voicemail</item>
+        <item>Use sip</item>
+        <item>Process outgoing call</item>
+        <item>Fingerprint</item>
+        <item>Body sensors</item>
+        <item>Read cell broadcasts</item>
+        <item>Mock location</item>
+        <item>Read storage</item>
+        <item>Write storage</item>
+        <item>Turn on screen</item>
+        <item>Get accounts</item>
+        <item>Run in background</item>
+        <item>Accessibility volume</item>
+    </string-array>
+    <string-array name="long_press_timeout_selector_titles">
+        <item>Curtza</item>
+        <item>Mesana</item>
+        <item>Longa</item>
+    </string-array>
+    <string-array name="captioning_typeface_selector_titles">
+        <item>Predefinidu</item>
+        <item>Sans-serif</item>
+        <item>Sans-serif cundensadu</item>
+        <item>Sans-serif monoispàtziu</item>
+        <item>Serif</item>
+        <item>Serif monospace</item>
+        <item>Casual</item>
+        <item>Cursive</item>
+        <item>Small capitals</item>
+    </string-array>
+    <string-array name="captioning_font_size_selector_titles">
+        <item>Very small</item>
+        <item>Small</item>
+        <item>Predefinidu</item>
+        <item>Large</item>
+        <item>Very large</item>
+    </string-array>
+    <string-array name="captioning_opacity_selector_titles">
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="captioning_preset_selector_titles">
+        <item>Set by app</item>
+        <item>Biancu subra nieddu</item>
+        <item>Nieddu subra biancu</item>
+        <item>Grogu subra nieddu</item>
+        <item>Grogu subra biaitu</item>
+        <item>Personaliza</item>
+    </string-array>
+    <string-array name="vpn_types_long">
+        <item>VPN PPTP</item>
+        <item>VPN IKEv2/IPSec cun craes pre-cumpartzidas</item>
+        <item>VPN IKEv2/IPSec cun tzertificados</item>
+        <item>VPN IPSec cun craes giai cumpartzidas e autenticatzione Xauth</item>
+        <item>VPN IPSec cun craes giai cumpartzidas e autenticatzione Xauth</item>
+        <item>VPN IPSec cun craes giai cumpartzidas e autenticatzione Xauth</item>
+        <item>IKEv2/IPSec VPN with certificates and username/password authentication</item>
+        <item>IKEv2/IPSec VPN with pre-shared keys</item>
+        <item>IKEv2/IPSec VPN with certificates</item>
+    </string-array>
+    <string-array name="vpn_proxy_settings">
+        <item>Perunu</item>
+        <item>Manuale</item>
+    </string-array>
+    <string-array name="vpn_states">
+        <item>Disconnètidu</item>
+        <item>Initzializende\u2026</item>
+        <item>Connetende·si\u2026</item>
+        <item>Connètidu</item>
+        <item>Agabbadu su tempus</item>
+        <item>Errore</item>
+    </string-array>
+    <string-array name="security_settings_premium_sms_values">
+        <item>Pedi</item>
+        <item>Non permitas mai</item>
+        <item>Permite semper</item>
+    </string-array>
+    <string-array name="ram_states">
+        <item>Normale</item>
+        <item>Moderadu</item>
+        <item>Bàsciu</item>
+        <item>Crìticu</item>
+        <item>\?</item>
+    </string-array>
+    <string-array name="proc_stats_memory_states">
+        <item>Normale</item>
+        <item>Moderadu</item>
+        <item>Bàsciu</item>
+        <item>Crìticu</item>
+    </string-array>
+    <string-array name="proc_stats_process_states">
+        <item>Persistente</item>
+        <item>Prus atividade</item>
+        <item>Important (foreground)</item>
+        <item>Important (background)</item>
+        <item>Còpia de seguresa</item>
+        <item>Heavy weight</item>
+        <item>Service (running)</item>
+        <item>Service (restarting)</item>
+        <item>Retzidore</item>
+        <item>Pàgina printzipale</item>
+        <item>Ùrtima atividade</item>
+        <item>Cached (activity)</item>
+        <item>Cached (activity client)</item>
+        <item>Cached (empty)</item>
+    </string-array>
+    <string-array name="color_picker">
+        <item>Turchesu</item>
+        <item>Biaitu</item>
+        <item>Indigo</item>
+        <item>Tanadu</item>
+        <item>Rosa</item>
+        <item>Ruju</item>
+    </string-array>
+    <string-array name="swipe_direction_values">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="autofill_logging_level_entries">
+        <item>Istudadu</item>
+        <item>Debug</item>
+        <item>Verbose</item>
+    </string-array>
+    <string-array name="cdma_system_select_choices">
+        <item>Home only</item>
+        <item>Automàticu</item>
+    </string-array>
+    <string-array name="preferred_network_mode_choices">
+        <item>GSM/WCDMA preferred</item>
+        <item>GSM only</item>
+        <item>WCDMA only</item>
+        <item>GSM/WCDMA auto</item>
+        <item>CDMA/EvDo auto</item>
+        <item>CDMA w/o EvDo</item>
+        <item>EvDo only</item>
+        <item>CDMA/EvDo/GSM/WCDMA</item>
+        <item>CDMA + LTE/EvDo</item>
+        <item>GSM/WCDMA/LTE</item>
+        <item>LTE/CDMA/EvDo/GSM/WCDMA</item>
+        <item>LTE</item>
+        <item>LTE / WCDMA</item>
+        <item>TDSCDMA only</item>
+        <item>TDSCDMA/WCDMA</item>
+        <item>LTE/TDSCDMA</item>
+        <item>TDSCDMA/GSM</item>
+        <item>LTE/TDSCDMA/GSM</item>
+        <item>TDSCDMA/GSM/WCDMA</item>
+        <item>LTE/TDSCDMA/WCDMA</item>
+        <item>LTE/TDSCDMA/GSM/WCDMA</item>
+        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
+        <item>NR only</item>
+        <item>NR/LTE</item>
+        <item>NR/LTE/CDMA/EvDo</item>
+        <item>NR/LTE/GSM/WCDMA</item>
+        <item>Global</item>
+        <item>NR/LTE/WCDMA</item>
+        <item>NR/LTE/TDSCDMA</item>
+        <item>NR/LTE/TDSCDMA/GSM</item>
+        <item>NR/LTE/TDSCDMA/WCDMA</item>
+        <item>NR/LTE/TDSCDMA/GSM/WCDMA</item>
+        <item>NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</item>
+    </string-array>
+</resources>
