@@ -91,8 +91,10 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         if (!getSystemService(ActivityManager.class).isLowRamDevice()) {
             // Only allow features on high ram devices.
             final ImageView avatarView = findViewById(R.id.account_avatar);
+            final View placeholder = findViewById(R.id.margin_placeholder);
             if (AvatarViewMixin.isAvatarSupported(this)) {
                 avatarView.setVisibility(View.VISIBLE);
+                placeholder.setVisibility(View.GONE);
                 getLifecycle().addObserver(new AvatarViewMixin(this, avatarView));
             }
 

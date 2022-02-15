@@ -72,9 +72,15 @@
                 android:layout_marginTop="@dimen/avatar_margin_top"
                 android:layout_marginEnd="@dimen/avatar_margin_end"
                 android:layout_gravity="end"
-                android:visibility="invisible"
+                android:visibility="gone"
                 android:accessibilityTraversalAfter="@id/homepage_title"
                 android:contentDescription="@string/search_bar_account_avatar_content_description"/>
+
+            <View
+                android:id="@+id/margin_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/homepage_top_margin"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/homepage_title"
