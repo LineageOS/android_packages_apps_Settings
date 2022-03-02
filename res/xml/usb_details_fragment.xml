@@ -18,11 +18,6 @@
     android:title="@string/usb_pref"
     android:key="usb_details_fragment">
 
-    <com.android.settingslib.widget.LayoutPreference
-        android:key="usb_device_header"
-        android:layout="@layout/settings_entity_header"
-        android:selectable="false"/>
-
     <PreferenceCategory
         android:key="usb_details_connected_devices"
         android:title="@string/usb_connected_devices"/>
