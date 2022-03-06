@@ -96,6 +96,7 @@ import com.android.wifitrackerlib.WifiEntry;
 import com.android.wifitrackerlib.WifiEntry.ConnectCallback;
 import com.android.wifitrackerlib.WifiPickerTracker;
 
+import com.google.android.setupcompat.template.FooterButtonStyleUtils;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 import com.google.android.setupdesign.GlifPreferenceLayout;
 
@@ -281,6 +282,8 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
             layout.setIcon(getContext().getDrawable(R.drawable.ic_network_setup));
             layout.setHeaderText(R.string.provider_internet_settings);
+            FooterButtonStyleUtils.applyPrimaryButtonPartnerResource(activity, getNextButton(),
+                    true);
 
             return;
         }
