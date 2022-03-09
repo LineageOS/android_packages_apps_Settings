@@ -34,6 +34,7 @@ import android.net.Network;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserManager;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
@@ -79,6 +80,8 @@ public class PrivateDnsPreferenceController extends BasePreferenceController
 
     @Override
     public int getAvailabilityStatus() {
+        final UserManager userManager = mContext.getSystemService(UserManager.class);
+        if (userManager.isGuestUser()) return DISABLED_FOR_USER;
         return AVAILABLE;
     }
 

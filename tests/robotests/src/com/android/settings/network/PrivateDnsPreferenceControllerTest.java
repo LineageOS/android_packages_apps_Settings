@@ -24,6 +24,9 @@ import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME
 import static android.provider.Settings.Global.PRIVATE_DNS_DEFAULT_MODE;
 import static android.provider.Settings.Global.PRIVATE_DNS_MODE;
 import static android.provider.Settings.Global.PRIVATE_DNS_SPECIFIER;
+import static com.android.settings.core.BasePreferenceController.AVAILABLE;
+import static com.android.settings.core.BasePreferenceController.DISABLED_FOR_USER;
+
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Matchers.any;
@@ -31,6 +34,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.CALLS_REAL_METHODS;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.spy;
@@ -96,6 +100,8 @@ public class PrivateDnsPreferenceControllerTest {
     private Network mNetwork;
     @Mock
     private Preference mPreference;
+    @Mock
+    private UserManager mUserManager;
     @Captor
     private ArgumentCaptor<NetworkCallback> mCallbackCaptor;
     private PrivateDnsPreferenceController mController;
@@ -113,6 +119,7 @@ public class PrivateDnsPreferenceControllerTest {
         mShadowContentResolver = Shadow.extract(mContentResolver);
         when(mContext.getSystemService(Context.CONNECTIVITY_SERVICE))
                 .thenReturn(mConnectivityManager);
+        when(mContext.getSystemService(UserManager.class)).thenReturn(mUserManager);
         doNothing().when(mConnectivityManager).registerDefaultNetworkCallback(
                 mCallbackCaptor.capture(), nullable(Handler.class));
 
@@ -144,6 +151,17 @@ public class PrivateDnsPreferenceControllerTest {
         nc = mock(nc.getClass(), withSettings().useConstructor().outerInstance(mController)
                 .defaultAnswer(CALLS_REAL_METHODS));
         nc.onLinkPropertiesChanged(mNetwork, lp);
+    }
+
+    @Test
+    public void getAvailibilityStatus_availableByDefault() {
+        assertThat(mController.getAvailabilityStatus()).isEqualTo(AVAILABLE);
+    }
+
+    @Test
+    public void getAvailabilityStatus_disabledForGuestUser() {
+        doReturn(true).when(mUserManager).isGuestUser();
+        assertThat(mController.getAvailabilityStatus()).isEqualTo(DISABLED_FOR_USER);
     }
 
     @Test
