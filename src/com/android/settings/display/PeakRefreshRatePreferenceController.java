@@ -124,6 +124,11 @@ public class PeakRefreshRatePreferenceController extends TogglePreferenceControl
     }
 
     @Override
+    public int getSliceHighlightMenuRes() {
+        return R.string.menu_key_display;
+    }
+
+    @Override
     public void onStart() {
         mDeviceConfigDisplaySettings.startListening();
     }
