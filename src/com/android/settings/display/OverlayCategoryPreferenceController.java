@@ -25,6 +25,8 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -38,6 +40,9 @@ import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -50,6 +55,7 @@ import java.util.List;
 public class OverlayCategoryPreferenceController extends AbstractPreferenceController
         implements Preference.OnPreferenceChangeListener, PreferenceControllerMixin {
     private static final String TAG = "OverlayCategoryPC";
+    private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
     @VisibleForTesting
     static final String PACKAGE_DEVICE_DEFAULT = "package_device_default";
     private static final String OVERLAY_TARGET_PACKAGE = "android";
@@ -120,14 +126,30 @@ public class OverlayCategoryPreferenceController extends AbstractPreferenceContr
             @Override
             protected Boolean doInBackground(Void... params) {
                 try {
-                    if (PACKAGE_DEVICE_DEFAULT.equals(packageName)) {
-                        return mOverlayManager.setEnabled(currentPackageName, false, USER_SYSTEM);
-                    } else {
-                        return mOverlayManager.setEnabledExclusiveInCategory(packageName,
-                                USER_SYSTEM);
+                    String overlayPackageJson = Settings.Secure.getStringForUser(
+                            mContext.getContentResolver(),
+                            Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES,
+                            UserHandle.USER_CURRENT);
+                    JSONObject jsonObject = (overlayPackageJson == null) ? new JSONObject()
+                            : new JSONObject(overlayPackageJson);
+                    if (jsonObject.has(mCategory)) {
+                        jsonObject.remove(mCategory);
                     }
-                } catch (SecurityException | IllegalStateException | RemoteException e) {
-                    Log.w(TAG, "Error enabling overlay.", e);
+
+                    if (!PACKAGE_DEVICE_DEFAULT.equals(packageName)) {
+                        jsonObject.put(mCategory, packageName);
+                    }
+
+                    if (DEBUG) {
+                        Log.d(TAG, "Updating theme setting from "
+                                + overlayPackageJson + " to " + jsonObject.toString());
+                    }
+                    Settings.Secure.putString(mContext.getContentResolver(),
+                            Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES,
+                            jsonObject.toString());
+                    return true;
+                } catch (JSONException e) {
+                    Log.w(TAG, "Failed to parse THEME_CUSTOMIZATION_OVERLAY_PACKAGES.", e);
                     return false;
                 }
             }
