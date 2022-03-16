@@ -18,6 +18,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="gesture_navigation_settings_page"
     android:title="@string/gesture_settings_activity_title"
@@ -27,7 +28,8 @@
         android:key="navigation_bar_hint"
         android:title="@string/show_navbar_hint_title"
         android:summary="@string/show_navbar_hint_summary"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        lineage:requiresPackage="org.lineageos.overlay.customization.navbar.nohint" />
 
     <PreferenceCategory
         android:key="assistant_gesture_category"
