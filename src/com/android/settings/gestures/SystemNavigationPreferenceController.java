@@ -23,13 +23,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.RemoteException;
-import android.view.Display;
-import android.view.IWindowManager;
-import android.view.WindowManagerGlobal;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
+import com.android.settings.Utils;
 
 public class SystemNavigationPreferenceController extends BasePreferenceController {
 
@@ -51,25 +48,24 @@ public class SystemNavigationPreferenceController extends BasePreferenceControll
             return mContext.getText(R.string.edge_to_edge_navigation_title);
         } else if (is2ButtonNavigationEnabled(mContext)) {
             return mContext.getText(R.string.swipe_up_to_switch_apps_title);
-        } else {
+        } else if (Utils.hasNavigationBar(mContext)) {
             return mContext.getText(R.string.legacy_navigation_title);
+        } else {
+            return mContext.getText(R.string.disable_navigation_title);
         }
     }
 
     static boolean isGestureAvailable(Context context) {
-        boolean hasNavigationBar = false;
-        final boolean configEnabled = context.getResources().getBoolean(
-                com.android.internal.R.bool.config_swipe_up_gesture_setting_available);
-
-        try {
-            IWindowManager windowManager = WindowManagerGlobal.getWindowManagerService();
-            hasNavigationBar = windowManager.hasNavigationBar(Display.DEFAULT_DISPLAY);
-        } catch (RemoteException ex) {
-            // no window manager? good luck with that
-        }
         // Skip if the swipe up settings are not available
-        // or if on-screen navbar is disabled (for devices with hardware keys)
-        if (!configEnabled || !hasNavigationBar) {
+        if (!context.getResources().getBoolean(
+                com.android.internal.R.bool.config_swipe_up_gesture_setting_available)) {
+            return false;
+        }
+
+        // Skip if the on-screen navbar is disabled (for devices with hardware keys)
+        // and the device does not allow gestures with active hardware keys
+        if (!(Utils.hasNavigationBar(context) || context.getResources().getBoolean(
+                R.bool.gestures_and_keys))) {
             return false;
         }
 
