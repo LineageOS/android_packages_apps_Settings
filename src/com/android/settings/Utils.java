@@ -18,6 +18,7 @@ package com.android.settings;
 
 import static android.content.Intent.EXTRA_USER;
 import static android.content.Intent.EXTRA_USER_ID;
+import static android.os.UserHandle.USER_CURRENT;
 import static android.text.format.DateUtils.FORMAT_ABBREV_MONTH;
 import static android.text.format.DateUtils.FORMAT_SHOW_DATE;
 
@@ -87,9 +88,12 @@ import android.text.style.TtsSpan;
 import android.util.ArraySet;
 import android.util.IconDrawableFactory;
 import android.util.Log;
+import android.view.Display;
+import android.view.IWindowManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManagerGlobal;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabWidget;
@@ -117,6 +121,8 @@ import com.android.settingslib.widget.AdaptiveIcon;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+
+import lineageos.providers.LineageSettings;
 
 public final class Utils extends com.android.settingslib.Utils {
 
@@ -1253,5 +1259,24 @@ public final class Utils extends com.android.settingslib.Utils {
             return input.toLowerCase();
         }
         return input;
+    }
+
+    public static boolean hasNavigationBar(Context mContext) {
+        int mForceNavbar;
+        boolean mHasNavigationBar;
+
+        mForceNavbar = LineageSettings.System.getIntForUser(
+                mContext.getContentResolver(),
+                LineageSettings.System.FORCE_SHOW_NAVBAR, 0, USER_CURRENT);
+
+        try {
+            IWindowManager windowManager = WindowManagerGlobal.getWindowManagerService();
+            mHasNavigationBar = windowManager.hasNavigationBar(Display.DEFAULT_DISPLAY);
+        } catch (RemoteException ex) {
+            // no window manager? good luck with that
+            mHasNavigationBar = mContext.getResources().getBoolean(com.android.internal.R.bool.config_showNavigationBar);
+        }
+
+        return mHasNavigationBar || mForceNavbar == 1;
     }
 }
