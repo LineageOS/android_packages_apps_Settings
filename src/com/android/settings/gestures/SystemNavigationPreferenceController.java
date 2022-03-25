@@ -61,15 +61,8 @@ public class SystemNavigationPreferenceController extends BasePreferenceControll
         final boolean configEnabled = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_swipe_up_gesture_setting_available);
 
-        try {
-            IWindowManager windowManager = WindowManagerGlobal.getWindowManagerService();
-            hasNavigationBar = windowManager.hasNavigationBar(Display.DEFAULT_DISPLAY);
-        } catch (RemoteException ex) {
-            // no window manager? good luck with that
-        }
         // Skip if the swipe up settings are not available
-        // or if on-screen navbar is disabled (for devices with hardware keys)
-        if (!configEnabled || !hasNavigationBar) {
+        if (!configEnabled) {
             return false;
         }
 

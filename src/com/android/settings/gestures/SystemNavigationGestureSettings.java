@@ -173,19 +173,21 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                     c.getText(R.string.edge_to_edge_navigation_summary),
                     KEY_SYSTEM_NAV_GESTURAL, true /* enabled */));
         }
-        if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
-                NAV_BAR_MODE_2BUTTON_OVERLAY)) {
-            candidates.add(new CandidateInfoExtra(
-                    c.getText(R.string.swipe_up_to_switch_apps_title),
-                    c.getText(R.string.swipe_up_to_switch_apps_summary),
-                    KEY_SYSTEM_NAV_2BUTTONS, true /* enabled */));
-        }
-        if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
-                NAV_BAR_MODE_3BUTTON_OVERLAY)) {
-            candidates.add(new CandidateInfoExtra(
-                    c.getText(R.string.legacy_navigation_title),
-                    c.getText(R.string.legacy_navigation_summary),
-                    KEY_SYSTEM_NAV_3BUTTONS, true /* enabled */));
+        if (c.getResources().getBoolean(com.android.internal.R.bool.config_showNavigationBar)) {
+            if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
+                    NAV_BAR_MODE_2BUTTON_OVERLAY)) {
+                candidates.add(new CandidateInfoExtra(
+                        c.getText(R.string.swipe_up_to_switch_apps_title),
+                        c.getText(R.string.swipe_up_to_switch_apps_summary),
+                        KEY_SYSTEM_NAV_2BUTTONS, true /* enabled */));
+            }
+            if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
+                    NAV_BAR_MODE_3BUTTON_OVERLAY)) {
+                candidates.add(new CandidateInfoExtra(
+                        c.getText(R.string.legacy_navigation_title),
+                        c.getText(R.string.legacy_navigation_summary),
+                        KEY_SYSTEM_NAV_3BUTTONS, true /* enabled */));
+            }
         }
 
         return candidates;
