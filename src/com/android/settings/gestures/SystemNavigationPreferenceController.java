@@ -51,8 +51,10 @@ public class SystemNavigationPreferenceController extends BasePreferenceControll
             return mContext.getText(R.string.edge_to_edge_navigation_title);
         } else if (is2ButtonNavigationEnabled(mContext)) {
             return mContext.getText(R.string.swipe_up_to_switch_apps_title);
-        } else {
+        } else if (mContext.getResources().getBoolean(com.android.internal.R.bool.config_showNavigationBar)) {
             return mContext.getText(R.string.legacy_navigation_title);
+        } else {
+            return mContext.getText(R.string.disable_navigation_title);
         }
     }
 
@@ -61,15 +63,8 @@ public class SystemNavigationPreferenceController extends BasePreferenceControll
         final boolean configEnabled = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_swipe_up_gesture_setting_available);
 
-        try {
-            IWindowManager windowManager = WindowManagerGlobal.getWindowManagerService();
-            hasNavigationBar = windowManager.hasNavigationBar(Display.DEFAULT_DISPLAY);
-        } catch (RemoteException ex) {
-            // no window manager? good luck with that
-        }
         // Skip if the swipe up settings are not available
-        // or if on-screen navbar is disabled (for devices with hardware keys)
-        if (!configEnabled || !hasNavigationBar) {
+        if (!configEnabled) {
             return false;
         }
 
