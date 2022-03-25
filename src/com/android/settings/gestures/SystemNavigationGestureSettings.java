@@ -47,6 +47,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.actionbar.SearchMenuController;
 import com.android.settings.support.actionbar.HelpMenuController;
 import com.android.settings.support.actionbar.HelpResourceProvider;
+import com.android.settings.Utils;
 import com.android.settings.utils.CandidateInfoExtra;
 import com.android.settings.widget.RadioButtonPickerFragment;
 import com.android.settings.widget.RadioButtonPreferenceWithExtraWidget;
@@ -165,18 +166,25 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                     c.getText(R.string.edge_to_edge_navigation_summary),
                     KEY_SYSTEM_NAV_GESTURAL, true /* enabled */));
         }
-        if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
-                NAV_BAR_MODE_2BUTTON_OVERLAY)) {
+        if (Utils.hasNavigationBar(c)) {
+            if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
+                    NAV_BAR_MODE_2BUTTON_OVERLAY)) {
+                candidates.add(new CandidateInfoExtra(
+                        c.getText(R.string.swipe_up_to_switch_apps_title),
+                        c.getText(R.string.swipe_up_to_switch_apps_summary),
+                        KEY_SYSTEM_NAV_2BUTTONS, true /* enabled */));
+            }
+            if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
+                    NAV_BAR_MODE_3BUTTON_OVERLAY)) {
+                candidates.add(new CandidateInfoExtra(
+                        c.getText(R.string.legacy_navigation_title),
+                        c.getText(R.string.legacy_navigation_summary),
+                        KEY_SYSTEM_NAV_3BUTTONS, true /* enabled */));
+            }
+        } else {
             candidates.add(new CandidateInfoExtra(
-                    c.getText(R.string.swipe_up_to_switch_apps_title),
-                    c.getText(R.string.swipe_up_to_switch_apps_summary),
-                    KEY_SYSTEM_NAV_2BUTTONS, true /* enabled */));
-        }
-        if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
-                NAV_BAR_MODE_3BUTTON_OVERLAY)) {
-            candidates.add(new CandidateInfoExtra(
-                    c.getText(R.string.legacy_navigation_title),
-                    c.getText(R.string.legacy_navigation_summary),
+                    c.getText(R.string.disable_navigation_title),
+                    c.getText(R.string.disable_navigation_summary),
                     KEY_SYSTEM_NAV_3BUTTONS, true /* enabled */));
         }
 
