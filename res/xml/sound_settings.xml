@@ -234,6 +234,14 @@
         settings:keywords="@string/keywords_vibrate_on_touch"
         android:order="-25"/>
 
+    <!-- Vibrate on biometrics success authentication -->
+    <lineageos.preference.LineageSystemSettingSwitchPreference
+        android:key="biometrics_success_haptic_feedback"
+        android:title="@string/biometrics_success_haptic_feedback_title"
+        android:summary="@string/biometrics_success_haptic_feedback_summary"
+        android:defaultValue="@*lineageos.platform:bool/config_biometricsVibrateOnSuccess"
+        android:order="-23"/>
+
     <!-- Dock speaker plays -->
     <DropDownPreference
         android:key="dock_audio_media"
