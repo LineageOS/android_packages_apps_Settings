@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,34 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Du bist <xliff:g id="step_count">%1$d</xliff:g> Schritt vom Aktivieren der Entwicklereinstellungen entfernt.</item>
+        <item quantity="other">Du bist <xliff:g id="step_count">%1$d</xliff:g> Schritte vom Aktivieren der Entwicklereinstellungen entfernt.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Du hast die Entwicklereinstellungen aktiviert!</string>
+    <string name="show_dev_already_cm">Nicht nötig, du hast die Entwicklereinstellungen bereits aktiviert.</string>
+    <string name="keyboard_extras_title">Extras</string>
+    <string name="advanced_keyboard_settings_title">Erweiterte Einstellungen</string>
     <string name="adb_enable_root">Root-Debugging</string>
     <string name="adb_enable_summary_root">Android-Debugging als Root erlauben</string>
     <string name="backup_transport_setting_label">Backup-Anbieter ändern</string>
     <string name="backup_transport_title">Backup-Anbieter auswählen</string>
     <string name="lineagelicense_title">Rechtliche Hinweise zu LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Tippen für Standby</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Doppeltippe auf Statusleiste oder Sperrbildschirm, um das Display auszuschalten</string>
+    <string name="increasing_ring_volume_option_title">Ansteigende Klingeltonlautstärke</string>
+    <string name="increasing_ring_min_volume_title">Anfangslautstärke</string>
+    <string name="increasing_ring_ramp_up_time_title">Anstiegszeit</string>
     <string name="volume_link_notification_title">Klingelton- und Benachrichtigungslautstärke verknüpfen</string>
     <string name="unlock_scramble_pin_layout_title">Zufällige Anordnung</string>
     <string name="unlock_scramble_pin_layout_summary">Bei jedem Entsperrversuch die Ziffernanordnung zufällig neu wählen</string>
     <string name="lock_settings_picker_pattern_size_message">Größe des Musters auswählen</string>
     <string name="lockpattern_settings_enable_error_path_title">Sperrmuster-Fehler anzeigen</string>
     <string name="lockpattern_settings_enable_dots_title">Sperrmuster-Punkte anzeigen</string>
+    <string name="lockscreen_media_art_title">Albumcover anzeigen</string>
+    <string name="lockscreen_visualizer_title">Musikvisualisierung anzeigen</string>
+    <string name="high_touch_sensitivity_title">Hohe Touch-Empfindlichkeit</string>
+    <string name="high_touch_sensitivity_summary">Touch-Empfindlichkeit erhöhen, um den Touchscreen auch mit Handschuhen bedienen zu können</string>
     <string name="tethering_allow_vpn_upstreams_title">Clients erlauben VPN zu verwenden</string>
     <string name="tethering_allow_vpn_upstreams_summary">Erlaubt Hotspot-Clients die VPN-Verbindungen dieses Gerätes für die Upstream-Konnektivität zu verwenden</string>
     <string name="data_usage_app_restrict_all">Netzwerkzugriff erlauben</string>
@@ -36,6 +53,29 @@
     <string name="data_usage_app_restrict_vpn_summary">VPN-Datennutzung erlauben</string>
     <string name="data_usage_app_restrict_wifi">WLAN-Daten</string>
     <string name="data_usage_app_restrict_wifi_summary">WLAN-Datenzugriff erlauben</string>
+    <string name="app_notification_sound_timeout_title">Minimale Zeit zwischen Benachrichtigungstönen</string>
+    <string name="app_notification_sound_timeout_summary_template">Töne und Vibrationen nur alle <xliff:g id="duration">%1$s</xliff:g> zulassen</string>
+    <string name="app_notification_sound_timeout_value_none">Keine Beschränkung</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 Sekunden</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 Sekunden</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 Minute</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 Minuten</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 Minuten</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 Minuten</string>
+    <string name="proximity_wake_title">Unbeabsichtigtes Aufwecken verhindern</string>
+    <string name="proximity_wake_summary">Vor dem Aufwecken des Gerätes Näherungssensor überprüfen</string>
+    <string name="max_refresh_rate_title">Maximale Aktualisierungsrate</string>
+    <string name="min_refresh_rate_title">Minimale Aktualisierungsrate</string>
     <string name="show_navbar_hint_title">Angedeutete Navigationsleiste</string>
     <string name="show_navbar_hint_summary">Deutet Navigationsleiste am unteren Bildschirmrand an</string>
+    <string name="connected_tws_device_saved_title">Gespeicherte Kopfhörer</string>
+    <string name="touchscreen_hovering_title">Touchscreen als Maus verwenden</string>
+    <string name="touchscreen_hovering_summary">Erlaubt es, den über dem Touchscreen schwebenden Finger im Browser, Remote Desktop usw. als Mauszeiger zu verwenden.</string>
+    <string name="peak_refresh_rate_summary_custom">Setzt die Aktualisierungsrate für einige Inhalte automatisch von 60 auf %1$d Hz herauf. Erhöhter Akkuverbrauch.</string>
+    <string name="touchscreen_gesture_settings_title">Bildschirmgesten</string>
+    <string name="touchscreen_gesture_settings_summary">Führe durch verschiedene Bildschirmgesten einige schnelle Aktionen aus</string>
+    <string name="wake_when_plugged_or_unplugged_title">Beim Einstecken aufwecken</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Beim Anschließen oder Trennen einer Stromquelle den Bildschirm einschalten</string>
+    <string name="fast_charging_title">Schnelles Laden</string>
+    <string name="fast_charging_summary">Deaktivieren, um die vom Gerät beim Laden erzeugte Wärme zu reduzieren oder die Lebensdauer des Akkus zu verlängern</string>
 </resources>

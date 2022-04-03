@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,33 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="other">개발자 설정을 활성화하려면 <xliff:g id="step_count">%1$d</xliff:g>회 더 누르세요.</item>
+    </plurals>
+    <string name="show_dev_on_cm">개발자 설정이 활성화되었습니다.</string>
+    <string name="show_dev_already_cm">이미 개발자 설정이 활성화되어 있습니다.</string>
+    <string name="keyboard_extras_title">추가 기능</string>
+    <string name="advanced_keyboard_settings_title">고급 설정</string>
     <string name="adb_enable_root">디버깅 시 루트 권한 사용</string>
     <string name="adb_enable_summary_root">ADB와 같은 디버깅 모드 사용시 루트 권한을 사용합니다.</string>
     <string name="backup_transport_setting_label">백업 제공자 변경</string>
     <string name="backup_transport_title">백업 제공자 선택</string>
     <string name="lineagelicense_title">LineageOS 법적 고지</string>
+    <string name="status_bar_double_tap_to_sleep_title">두드려 화면 끄기</string>
+    <string name="status_bar_double_tap_to_sleep_summary">상태 표시줄이나 잠금 화면을 두 번 두드려 화면 끄기</string>
+    <string name="increasing_ring_volume_option_title">점점 커지는 벨 소리</string>
+    <string name="increasing_ring_min_volume_title">시작 벨소리</string>
+    <string name="increasing_ring_ramp_up_time_title">소리 커짐 시간</string>
     <string name="volume_link_notification_title">벨소리 볼륨과 알림 볼륨 연결</string>
     <string name="unlock_scramble_pin_layout_title">레이아웃 섞기</string>
     <string name="unlock_scramble_pin_layout_summary">장치를 잠금 해제할 때 PIN 레이아웃 섞기</string>
     <string name="lock_settings_picker_pattern_size_message">패턴의 크기를 선택하세요</string>
     <string name="lockpattern_settings_enable_error_path_title">패턴 오류 표시</string>
     <string name="lockpattern_settings_enable_dots_title">패턴 점 표시</string>
+    <string name="lockscreen_media_art_title">앨범 커버 이미지 표시</string>
+    <string name="lockscreen_visualizer_title">음악 시각화 표시</string>
+    <string name="high_touch_sensitivity_title">터치 감도 높이기</string>
+    <string name="high_touch_sensitivity_summary">장갑을 착용해도 터치할 수 있도록 터치스크린 감도를 향상</string>
     <string name="tethering_allow_vpn_upstreams_title">클라이언트가 VPN을 사용하도록 허용</string>
     <string name="tethering_allow_vpn_upstreams_summary">핫스팟이나 테더링 클라이언트가 연결성 향상을 위해 내 장치의 VPN 연결을 사용하도록 허용합니다.</string>
     <string name="data_usage_app_restrict_all">네트워크 액세스 허용</string>
@@ -36,6 +52,29 @@
     <string name="data_usage_app_restrict_vpn_summary">VPN 데이터 사용 허용</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi 데이터</string>
     <string name="data_usage_app_restrict_wifi_summary">Wi\u2011Fi 데이터 사용 허용</string>
+    <string name="app_notification_sound_timeout_title">알림 소리 최소 간격</string>
+    <string name="app_notification_sound_timeout_summary_template">매 <xliff:g id="duration">%1$s</xliff:g>마다 한 번씩만 소리 또는 진동을 허용합니다</string>
+    <string name="app_notification_sound_timeout_value_none">제한 없음</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10초</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30초</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1분</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5분</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10분</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30분</string>
+    <string name="proximity_wake_title">실수로 화면 켜기 방지</string>
+    <string name="proximity_wake_summary">화면을 켜기 전에 근접 센서 확인</string>
+    <string name="max_refresh_rate_title">최대 화면 재생률</string>
+    <string name="min_refresh_rate_title">최소 재생률</string>
     <string name="show_navbar_hint_title">내비게이션 힌트</string>
     <string name="show_navbar_hint_summary">화면 아래에 내비게이션 힌트 바를 표시합니다.</string>
+    <string name="connected_tws_device_saved_title">저장된 무선 이어폰</string>
+    <string name="touchscreen_hovering_title">터치스크린 호버링</string>
+    <string name="touchscreen_hovering_summary">웹 브라우저나 원격 데스크톱과 같은 앱에서 마우스처럼 화면에 호버링하여 사용할 수 있습니다.</string>
+    <string name="peak_refresh_rate_summary_custom">일부 콘텐츠의 새로고침 빈도를 자동으로 60Hz에서 %1$dHz로 늘립니다. 이렇게 하면 배터리 사용량이 증가합니다.</string>
+    <string name="touchscreen_gesture_settings_title">터치스크린 제스처</string>
+    <string name="touchscreen_gesture_settings_summary">다양한 터치스크린 제스처를 사용하여 빠른 작업 실행</string>
+    <string name="wake_when_plugged_or_unplugged_title">충전 시 켜짐</string>
+    <string name="wake_when_plugged_or_unplugged_summary">전원이 연결되거나 분리될 때 화면 켜기</string>
+    <string name="fast_charging_title">고속 충전</string>
+    <string name="fast_charging_summary">충전 중에 발생하는 열을 줄여 배터리 수명을 연장하려면 비활성화</string>
 </resources>

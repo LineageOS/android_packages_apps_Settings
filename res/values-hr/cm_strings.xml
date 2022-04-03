@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,13 +15,52 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Sada ste <xliff:g id="step_count">%1$d</xliff:g> korak od omogućavanja razvojnih postavki.</item>
+        <item quantity="few">Sada ste <xliff:g id="step_count">%1$d</xliff:g> koraka od omogućavanja razvojnih postavki.</item>
+        <item quantity="other">Sada ste <xliff:g id="step_count">%1$d</xliff:g> koraka od omogućavanja razvojnih postavki.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Omogućili ste razvojne postavke!</string>
+    <string name="show_dev_already_cm">Nema potrebe, već ste omogućili postavke za razvoj.</string>
+    <string name="keyboard_extras_title">Dodatno</string>
+    <string name="advanced_keyboard_settings_title">Napredne postavke</string>
     <string name="lineagelicense_title">LineageOS licenca</string>
+    <string name="status_bar_double_tap_to_sleep_title">Dodir za spavanje</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Dvaput dodirnite traku statusa na zaključanom zaslonu za isključivanje zaslona</string>
+    <string name="increasing_ring_volume_option_title">Pojačavanje glasnoće zvona</string>
+    <string name="increasing_ring_min_volume_title">Početna jačina zvuka</string>
+    <string name="increasing_ring_ramp_up_time_title">Vrijeme podizanja</string>
     <string name="volume_link_notification_title">Spoji glasnoće tona zvona &amp; obavijesti</string>
     <string name="unlock_scramble_pin_layout_title">Nasumičan raspored</string>
     <string name="unlock_scramble_pin_layout_summary">Nasumičan PIN raspored pri otključavanju uređaja</string>
     <string name="lock_settings_picker_pattern_size_message">Odaberite veličinu uzorka</string>
     <string name="lockpattern_settings_enable_error_path_title">Pokaži grešku uzorka</string>
     <string name="lockpattern_settings_enable_dots_title">Pokaži točke uzorka</string>
+    <string name="lockscreen_media_art_title">Prikaži omot medija</string>
+    <string name="lockscreen_visualizer_title">Prikaži vizualizator glazbe</string>
+    <string name="high_touch_sensitivity_title">Visoka osjetljivost na dodir</string>
+    <string name="high_touch_sensitivity_summary">Povećaj osjetljivost na dodir tako da se mogu koristiti rukavice</string>
     <string name="data_usage_app_restrict_mobile">Mobilni podaci</string>
     <string name="data_usage_app_restrict_mobile_summary">Omogući upotrebu mobilnih podataka</string>
+    <string name="app_notification_sound_timeout_title">Minimalno vrijeme između zvukova obavijesti</string>
+    <string name="app_notification_sound_timeout_summary_template">Dopusti zvukove ili vibraciju ne više od jednom svakih <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Bez ograničenja</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 sekundi</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 sekundi</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minuta</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minuta</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minuta</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minuta</string>
+    <string name="proximity_wake_title">Sprječavanje slučajnog buđenja</string>
+    <string name="proximity_wake_summary">Provjera senzora blizine prije buđenja zaslona</string>
+    <string name="min_refresh_rate_title">Minimalna brzina osvježavanja</string>
+    <string name="touchscreen_hovering_title">Lebdenje zaslonom</string>
+    <string name="touchscreen_hovering_summary">Dopušta vam da lebdite zaslonom kao miš u web pretraživaču, udaljenom desktopu, itd</string>
+    <string name="peak_refresh_rate_summary_custom">Automatski povećava učestalost osvježavanja sa 60 na %1$d Hz za određeni sadržaj. Povećava potrošnju baterije.</string>
+    <string name="touchscreen_gesture_settings_title">Geste zaslona</string>
+    <string name="touchscreen_gesture_settings_summary">Razne geste zaslona za brze radnje</string>
+    <string name="wake_when_plugged_or_unplugged_title">Buđenje pri priključivanju</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Uključite zaslon prilikom spajanja ili odspajanja izvora napajanja</string>
+    <string name="fast_charging_title">Brzo punjenje</string>
+    <string name="fast_charging_summary">Onemogućite kako biste smanjili toplinu koju uređaj proizvodi tijekom punjenja ili produljili vijek trajanja baterije</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,34 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Está agora a <xliff:g id="step_count">%1$d</xliff:g> passo de ativar as opções de programador.</item>
+        <item quantity="other">Está agora a <xliff:g id="step_count">%1$d</xliff:g> passos de ativar as opções de programador.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Ativou as opções de programador!</string>
+    <string name="show_dev_already_cm">Não é necessário, já ativou as opções de programador.</string>
+    <string name="keyboard_extras_title">Extras</string>
+    <string name="advanced_keyboard_settings_title">Definições avançadas</string>
     <string name="adb_enable_root">Depuração root</string>
     <string name="adb_enable_summary_root">Permitir a execução da depuração Android como root</string>
     <string name="backup_transport_setting_label">Alterar provedor de cópia de segurança</string>
     <string name="backup_transport_title">Selecionar provedor de cópia de segurança</string>
     <string name="lineagelicense_title">Licença LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Toque duplo para desligar o ecrã</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Dê um toque duplo na barra de estado ou ecrã de bloqueio para desligar o ecrã</string>
+    <string name="increasing_ring_volume_option_title">Toque crescente</string>
+    <string name="increasing_ring_min_volume_title">Volume inicial</string>
+    <string name="increasing_ring_ramp_up_time_title">Intervalo de aumento</string>
     <string name="volume_link_notification_title">Associar volumes de toque e notificação</string>
     <string name="unlock_scramble_pin_layout_title">Disposição aleatória</string>
     <string name="unlock_scramble_pin_layout_summary">Apresentar aleatoriamente a disposição do teclado numérico, quando desbloquear com PIN</string>
     <string name="lock_settings_picker_pattern_size_message">Escolha um tamanho para o padrão</string>
     <string name="lockpattern_settings_enable_error_path_title">Mostrar erro no padrão</string>
     <string name="lockpattern_settings_enable_dots_title">Mostrar os pontos do padrão</string>
+    <string name="lockscreen_media_art_title">Mostrar capa do álbum</string>
+    <string name="lockscreen_visualizer_title">Mostrar o visualizador de música</string>
+    <string name="high_touch_sensitivity_title">Alta sensibilidade</string>
+    <string name="high_touch_sensitivity_summary">Aumentar a sensibilidade do ecrã para ser manuseado quando estiver a usar luvas</string>
     <string name="tethering_allow_vpn_upstreams_title">Permitir que os clientes usem VPNs</string>
     <string name="tethering_allow_vpn_upstreams_summary">Permitir que os clientes de hotspot usem as ligações VPN deste dispositivo</string>
     <string name="data_usage_app_restrict_all">Permitir acesso à rede</string>
@@ -36,6 +53,29 @@
     <string name="data_usage_app_restrict_vpn_summary">Ativar a utilização de dados VPN</string>
     <string name="data_usage_app_restrict_wifi">Dados Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">Ativar a utilização de dados Wi\u2011Fi</string>
+    <string name="app_notification_sound_timeout_title">Tempo mínimo entre sons de notificação</string>
+    <string name="app_notification_sound_timeout_summary_template">Permitir sons ou vibrações, apenas uma vez, a cada <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Sem restrição</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 segundos</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 segundos</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minuto</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minutos</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
+    <string name="proximity_wake_title">Impedir que o ecrã se ligue acidentalmente</string>
+    <string name="proximity_wake_summary">Verificar o sensor de proximidade antes de ligar o ecrã</string>
+    <string name="max_refresh_rate_title">Taxa de atualização máxima</string>
+    <string name="min_refresh_rate_title">Taxa mínima de atualização</string>
     <string name="show_navbar_hint_title">Dica de navegação</string>
     <string name="show_navbar_hint_summary">Mostrar a barra de dicas de navegação na parte inferior do ecrã</string>
+    <string name="connected_tws_device_saved_title">Auriculares Bluetooth guardados</string>
+    <string name="touchscreen_hovering_title">Flutuar sobre o ecrã</string>
+    <string name="touchscreen_hovering_summary">Permite que flutue o dedo sobre o ecrã como um rato nos navegadores de internet, áreas de trabalho remotas, etc</string>
+    <string name="peak_refresh_rate_summary_custom">Aumenta automaticamente a taxa de atualização de 60 para %1$d Hz em certos conteúdos. Aumenta a utilização da bateria.</string>
+    <string name="touchscreen_gesture_settings_title">Gestos do ecrã</string>
+    <string name="touchscreen_gesture_settings_summary">Executar vários gestos no ecrã para ações rápidas</string>
+    <string name="wake_when_plugged_or_unplugged_title">Ligar ecrã ao detetar carregador</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Ativar o ecrã quando conectar ou desconectar uma fonte de energia</string>
+    <string name="fast_charging_title">Carregamento rápido</string>
+    <string name="fast_charging_summary">Desative para reduzir a temperatura produzida pelo dispositivo enquanto carrega ou para aumentar a duração da bateria</string>
 </resources>

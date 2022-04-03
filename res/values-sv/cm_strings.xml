@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,9 +15,37 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Du är nu <xliff:g id="step_count">%1$d</xliff:g> steg från att aktivera utvecklingsinställningar.</item>
+        <item quantity="other">Du är nu <xliff:g id="step_count">%1$d</xliff:g> steg från att aktivera utvecklingsinställningar.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Du har aktiverat utvecklingsinställningar!</string>
+    <string name="show_dev_already_cm">Det behövs inte, du har redan aktiverat utvecklingsinställningar.</string>
     <string name="lineagelicense_title">LineageOS Juridik</string>
+    <string name="status_bar_double_tap_to_sleep_title">Dubbeltryck för att släcka skärmen</string>
+    <string name="increasing_ring_volume_option_title">Ökande ljudvolym</string>
+    <string name="increasing_ring_min_volume_title">Startvolym</string>
+    <string name="increasing_ring_ramp_up_time_title">Upprampningstid</string>
     <string name="unlock_scramble_pin_layout_title">Kasta om layout</string>
     <string name="unlock_scramble_pin_layout_summary">Kasta om PIN-layout vid upplåsning av enheten</string>
     <string name="lockpattern_settings_enable_error_path_title">Visa mönster vid fel</string>
     <string name="lockpattern_settings_enable_dots_title">Visa mönsterpunkter</string>
+    <string name="lockscreen_visualizer_title">Visa musikvisualisering</string>
+    <string name="high_touch_sensitivity_title">Hög fingerkänslighet</string>
+    <string name="high_touch_sensitivity_summary">Öka tryckskärmens känslighet så att den kan användas samtidigt som du bär handskar</string>
+    <string name="app_notification_sound_timeout_title">Minsta tid mellan aviseringsljud</string>
+    <string name="app_notification_sound_timeout_value_none">Ingen begränsning</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 sekunder</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 sekunder</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minut</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minuter</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minuter</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minuter</string>
+    <string name="proximity_wake_title">Förhindra oavsiktlig väckning</string>
+    <string name="touchscreen_hovering_title">Tryckskärm-hovring</string>
+    <string name="touchscreen_hovering_summary">Låter dig hovra över skärmen som en mus i webbläsare, fjärrskrivbord, etc</string>
+    <string name="peak_refresh_rate_summary_custom">Höjer uppdateringsfrekvensen dynamiskt från 60 till %1$d Hz för visst innehåll. Ökar batteriförbrukningen.</string>
+    <string name="touchscreen_gesture_settings_title">Skärmgester</string>
+    <string name="wake_when_plugged_or_unplugged_title">Vakna vid koppling</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Starta skärmen vid anslutning till eller frånkoppling från strömkälla</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,34 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Kehittäjäasetukset otetaan käyttöön <xliff:g id="step_count">%1$d</xliff:g> vaiheen päästä.</item>
+        <item quantity="other">Kehittäjäasetukset otetaan käyttöön <xliff:g id="step_count">%1$d</xliff:g> vaiheen päästä.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Kehittäjäasetukset ovat nyt käytössä!</string>
+    <string name="show_dev_already_cm">Olet jo ottanut kehittäjäasetukset käyttöön.</string>
+    <string name="keyboard_extras_title">Ekstrat</string>
+    <string name="advanced_keyboard_settings_title">Lisäasetukset</string>
     <string name="adb_enable_root">Vianetsintä root-tilassa</string>
     <string name="adb_enable_summary_root">Sallii Androidin virheenkorjauksen root-tilassa</string>
     <string name="backup_transport_setting_label">Vaihda varmuuskopiopalvelua</string>
     <string name="backup_transport_title">Valitse varmuuskopiopalvelu</string>
     <string name="lineagelicense_title">LineageOSin lakiasiat</string>
+    <string name="status_bar_double_tap_to_sleep_title">Sammuta näyttö napauttamalla</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Sulje laitteen näyttö tuplanapauttamalla tilapalkkia tai lukitusnäyttöä</string>
+    <string name="increasing_ring_volume_option_title">Voimistuva soittoääni</string>
+    <string name="increasing_ring_min_volume_title">Aloitusvoimakkuus</string>
+    <string name="increasing_ring_ramp_up_time_title">Nousun aika</string>
     <string name="volume_link_notification_title">Yhdistä soittoääni &amp; ilmoitusäänet</string>
     <string name="unlock_scramble_pin_layout_title">Sekoitettu asettelu</string>
     <string name="unlock_scramble_pin_layout_summary">Sekoita PIN-numerot poistettaessa lukitusta</string>
     <string name="lock_settings_picker_pattern_size_message">Valitse ruudukon koko</string>
     <string name="lockpattern_settings_enable_error_path_title">Näytä kuvion virhe</string>
     <string name="lockpattern_settings_enable_dots_title">Näytä kuvion pisteet</string>
+    <string name="lockscreen_media_art_title">Näytä median kansikuva</string>
+    <string name="lockscreen_visualizer_title">Näytä musiikin visualisointi</string>
+    <string name="high_touch_sensitivity_title">Korkea kosketusherkkyys</string>
+    <string name="high_touch_sensitivity_summary">Lisää kosketusnäytön herkkyyttä käyttääksesi laitetta käsineiden kanssa</string>
     <string name="tethering_allow_vpn_upstreams_title">Salli laitteiden käyttää VPN:ää</string>
     <string name="tethering_allow_vpn_upstreams_summary">Salli hotspot-yhteyksien kayttää tämän laitteen VPN-yhteyksiä yhteyden muodostamiseen</string>
     <string name="data_usage_app_restrict_all">Salli verkkoyhteys</string>
@@ -36,6 +53,28 @@
     <string name="data_usage_app_restrict_vpn_summary">Ota käyttöön VPN data</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi data</string>
     <string name="data_usage_app_restrict_wifi_summary">Ota Wi\u2011Fi data käyttöön</string>
+    <string name="app_notification_sound_timeout_title">Vähimmäisväli ilmoitusäänissä</string>
+    <string name="app_notification_sound_timeout_summary_template">Sallii äänen tai värinän vain seuraavin välein: <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Ei rajoitusta</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 sekuntia</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 sekuntia</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minuutti</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minuuttia</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minuuttia</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minuuttia</string>
+    <string name="proximity_wake_title">Estä herätys vahingossa</string>
+    <string name="proximity_wake_summary">Tarkista lähesyysanturi ennen laitteen herättämistä</string>
+    <string name="min_refresh_rate_title">Minimi virkistystaajuus</string>
     <string name="show_navbar_hint_title">Alapalkki</string>
     <string name="show_navbar_hint_summary">Näytä alapalkki näytön alareunassa</string>
+    <string name="connected_tws_device_saved_title">Tallennetut kuulokkeet</string>
+    <string name="touchscreen_hovering_title">Kosketusnäytön leijunta</string>
+    <string name="touchscreen_hovering_summary">Sallii näytön leijuttamisen kuten hiiri selaimessa, etätyöpöytäyhteyksissä, jne.</string>
+    <string name="peak_refresh_rate_summary_custom">Nostaa tietyn sisällön päivitysvälin automaattisesti 60 hertsistä %1$d:een. Lisää akun käyttöä.</string>
+    <string name="touchscreen_gesture_settings_title">Kosketusnäytön eleet</string>
+    <string name="touchscreen_gesture_settings_summary">Tee erilaisia kosketusnäytön eleitä käyttääksesi pikatoimintoja</string>
+    <string name="wake_when_plugged_or_unplugged_title">Herää laturista</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Käynnistä näyttö kun virtalähde liitetään tai irrotetaan</string>
+    <string name="fast_charging_title">Pikalataus</string>
+    <string name="fast_charging_summary">Poista käytöstä vähentääksesi laitteen tuottamaa lämpöä latauksen aikana tai pidentääksesi akun käyttöikää</string>
 </resources>

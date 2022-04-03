@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,15 +15,31 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="other"><xliff:g id="step_count">%1$d</xliff:g> langkah lagi untuk mengaktifkan opsi pengembang.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Anda adalah seorang pengembang!</string>
+    <string name="show_dev_already_cm">Tidak perlu, Anda telah mengaktifkan opsi pengembang.</string>
+    <string name="keyboard_extras_title">Tambahan</string>
+    <string name="advanced_keyboard_settings_title">Setelan lanjutan</string>
     <string name="backup_transport_setting_label">Ubah penyedia cadangan</string>
     <string name="backup_transport_title">Pilih penyedia cadangan</string>
     <string name="lineagelicense_title">Hukum LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Ketuk untuk tidur</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Ketukan ganda pada bilah status atau layar kunci untuk mematikan layar</string>
+    <string name="increasing_ring_volume_option_title">Meningkatkan volume dering</string>
+    <string name="increasing_ring_min_volume_title">Volume awal</string>
+    <string name="increasing_ring_ramp_up_time_title">Waktu penguatan</string>
     <string name="volume_link_notification_title">Hubungkan volume dering &amp; pemberitahuan</string>
     <string name="unlock_scramble_pin_layout_title">Tata letak acak</string>
     <string name="unlock_scramble_pin_layout_summary">Acak tata letak PIN saat membuka perangkat</string>
     <string name="lock_settings_picker_pattern_size_message">Pilih ukuran pola</string>
     <string name="lockpattern_settings_enable_error_path_title">Tunjukkan galat pola</string>
     <string name="lockpattern_settings_enable_dots_title">Tunjukkan titik-titik pola</string>
+    <string name="lockscreen_media_art_title">Tampilkan sampul media</string>
+    <string name="lockscreen_visualizer_title">Tampilkan visualisasi musik</string>
+    <string name="high_touch_sensitivity_title">Kepekaan sentuh tinggi</string>
+    <string name="high_touch_sensitivity_summary">Tingkatkan kepekaan layar sentuh sehingga dapat digunakan saat mengenakan sarung tangan</string>
     <string name="tethering_allow_vpn_upstreams_title">Izinkan klien menggunakan VPN</string>
     <string name="data_usage_app_restrict_all">Izinkan akses jaringan</string>
     <string name="data_usage_app_restrict_all_summary">Aktifkan penggunaan jaringan</string>
@@ -33,4 +49,25 @@
     <string name="data_usage_app_restrict_vpn_summary">Aktifkan penggunaan data VPN</string>
     <string name="data_usage_app_restrict_wifi">Data Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">Aktifkan penggunaan data Wi\u2011Fi</string>
+    <string name="app_notification_sound_timeout_title">Waktu minimum antara suara pemberitahuan</string>
+    <string name="app_notification_sound_timeout_summary_template">Memungkinkan suara atau getaran tidak lebih dari sekali setiap <xliff:g id="duration">%1$s </xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Tidak ada pembatasan</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 detik</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 detik</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 menit</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 menit</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 menit</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 menit</string>
+    <string name="proximity_wake_title">Mencegah bangun yang tidak disengaja</string>
+    <string name="proximity_wake_summary">Periksa sensor proximity sebelum membangunkan layar</string>
+    <string name="min_refresh_rate_title">Kecepatan refresh minimum</string>
+    <string name="connected_tws_device_saved_title">Earbud tersimpan</string>
+    <string name="touchscreen_hovering_title">Ambang jari di layar sentuh</string>
+    <string name="touchscreen_hovering_summary">Mengizinkan Anda mengambang jari di atas layar seperti menggunakan tetikus dalam peramban web, destop jarak jauh, dll</string>
+    <string name="peak_refresh_rate_summary_custom">Otomatis meningkatkan rasio pembaruan dari 60 menjadi %1$d Hz untuk beberapa konten. Meningkatkan penggunaan baterai.</string>
+    <string name="touchscreen_gesture_settings_title">Gerakan layar sentuh</string>
+    <string name="touchscreen_gesture_settings_summary">Melakukan berbagai gerakan layar sentuh untuk tindakan cepat</string>
+    <string name="wake_when_plugged_or_unplugged_title">Bangun saat pengisi daya di pasang</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Aktifkan layar ketika menghubungkan atau melepaskan sumber daya</string>
+    <string name="fast_charging_title">Pengisian daya cepat</string>
 </resources>
