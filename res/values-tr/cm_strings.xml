@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,34 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Geliştirici ayarlarının etkinleştirilmesi için <xliff:g id="step_count">%1$d</xliff:g> adım kaldı.</item>
+        <item quantity="other">Geliştirici ayarlarının etkinleştirilmesi için <xliff:g id="step_count">%1$d</xliff:g> adım kaldı.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Geliştirici ayarlarını etkinleştirdiniz!</string>
+    <string name="show_dev_already_cm">Gerek yok, zaten geliştirme ayarlarını etkinleştirdiniz.</string>
+    <string name="keyboard_extras_title">Ekstralar</string>
+    <string name="advanced_keyboard_settings_title">Gelişmiş ayarlar</string>
     <string name="adb_enable_root">Rootlu hata ayıklama</string>
     <string name="adb_enable_summary_root">Android hata ayıklamanın rootlu olarak çalışmasına izin verin</string>
     <string name="backup_transport_setting_label">Yedekleme sağlayıcısını değiştir</string>
     <string name="backup_transport_title">Yedekleme sağlayıcısını seçin</string>
     <string name="lineagelicense_title">LineageOS yasal</string>
+    <string name="status_bar_double_tap_to_sleep_title">Uyutmak için dokunun</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Ekranı kapatmak için durum çubuğuna veya kilit ekranına çift dokunun</string>
+    <string name="increasing_ring_volume_option_title">Artan zil sesi</string>
+    <string name="increasing_ring_min_volume_title">Başlangıç sesi</string>
+    <string name="increasing_ring_ramp_up_time_title">Yükselme zamanı</string>
     <string name="volume_link_notification_title">Zil sesi ve bildirim ses düzeyini bağla</string>
     <string name="unlock_scramble_pin_layout_title">Düzeni karıştır</string>
     <string name="unlock_scramble_pin_layout_summary">Cihaz kilidini açarken PIN düzenini karıştırır</string>
     <string name="lock_settings_picker_pattern_size_message">Bir desen boyutu seçin</string>
     <string name="lockpattern_settings_enable_error_path_title">Desen hatasını göster</string>
     <string name="lockpattern_settings_enable_dots_title">Desen noktalarını göster</string>
+    <string name="lockscreen_media_art_title">Medya kapak resmini göster</string>
+    <string name="lockscreen_visualizer_title">Müzik görselleştiriciyi görüntüle</string>
+    <string name="high_touch_sensitivity_title">Yüksek dokunma hassasiyeti</string>
+    <string name="high_touch_sensitivity_summary">Dokunmatik ekran hassasiyetini arttırarak eldiven ile kullanıma olanak verir</string>
     <string name="tethering_allow_vpn_upstreams_title">İstemcilerin VPN kullanmasına izin ver</string>
     <string name="tethering_allow_vpn_upstreams_summary">Hotspot kullanıcılarının bağlantıları sırasında bu cihazın \u2019s VPN bağlantısını kullanmasına izin ver</string>
     <string name="data_usage_app_restrict_all">Ağ erişimine izin ver</string>
@@ -36,6 +53,29 @@
     <string name="data_usage_app_restrict_vpn_summary">VPN veri kullanımını etkinleştir</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi veri</string>
     <string name="data_usage_app_restrict_wifi_summary">Wi\u2011Fi veri kullanımını etkinleştir</string>
+    <string name="app_notification_sound_timeout_title">Bildirim sesleri arasında en az zaman</string>
+    <string name="app_notification_sound_timeout_summary_template">Bir defadan fazla olmayacak şekilde her <xliff:g id="duration">%1$s</xliff:g>\'da bir titreme veya sese izin ver</string>
+    <string name="app_notification_sound_timeout_value_none">Kısıtlama yok</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 saniye</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 Saniye</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 dakika</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 dakika</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 dakika</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 dakika</string>
+    <string name="proximity_wake_title">Yanlış uyandırmaları önle</string>
+    <string name="proximity_wake_summary">Ekranı uyandırmadan önce yakınlık sensörünü kontrol et</string>
+    <string name="max_refresh_rate_title">En yüksek yenileme hızı</string>
+    <string name="min_refresh_rate_title">Minimum yenileme hızı</string>
     <string name="show_navbar_hint_title">Gezinme ipucu</string>
     <string name="show_navbar_hint_summary">Ekranın altında gezinme ipucu çubuğunu göster</string>
+    <string name="connected_tws_device_saved_title">Kaydedilmiş Kulaklıklar</string>
+    <string name="touchscreen_hovering_title">Dokunmatik ekrana dokunmadan gezinme</string>
+    <string name="touchscreen_hovering_summary">Ekrana dokunmadan parmağınızı yakınlaştırarak bir fare kullanıyormuş gibi web tarayıcılarında, uzak masaüstlerinde, vb. dolaşmanızı sağlar</string>
+    <string name="peak_refresh_rate_summary_custom">Bazı içerikler için yenileme hızını otomatik olarak 60 Hz\'den %1$d Hz\'e yükseltir. Pil kullanımını artırır.</string>
+    <string name="touchscreen_gesture_settings_title">Ekran hareketleri</string>
+    <string name="touchscreen_gesture_settings_summary">Hızlı işlemler için çeşitli dokunmatik ekran hareketleri gerçekleştirin</string>
+    <string name="wake_when_plugged_or_unplugged_title">Takıp çıkarmada uyan</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Bir güç kaynağına bağlanırken ya da bağlantısını keserken ekranı aç</string>
+    <string name="fast_charging_title">Hızlı şarj oluyor</string>
+    <string name="fast_charging_summary">Cihazın şarj ederken ürettiği ısıyı azaltmak veya pilin ömrünü uzatmak için devre dışı bırakın</string>
 </resources>

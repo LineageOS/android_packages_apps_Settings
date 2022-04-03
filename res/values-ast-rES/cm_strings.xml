@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,11 +15,16 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Quédate <xliff:g id="step_count">%1$d</xliff:g> toque p\'activar los axustes de desendolcu.</item>
+        <item quantity="other">Quédente <xliff:g id="step_count">%1$d</xliff:g> toques p\'activar los axustes de desendolcu.</item>
+    </plurals>
+    <string name="keyboard_extras_title">Axustes adicionales</string>
+    <string name="advanced_keyboard_settings_title">Axustes avanzaos</string>
     <string name="adb_enable_root">Depuración como root</string>
     <string name="adb_enable_summary_root">Permite la execución de la depuración d\'Android como root</string>
-    <string name="backup_transport_setting_label">Camudar el fornidor de copies de seguranza</string>
-    <string name="backup_transport_title">Esbilla d\'un fornidor de copies de seguranza</string>
-    <string name="volume_link_notification_title">Enllaciar el volume de los avisos col del timbre</string>
+    <string name="high_touch_sensitivity_title">Sensibilidá alta al tactu</string>
+    <string name="high_touch_sensitivity_summary">Aumenta la sensibilidá de la pantalla táctil pa que puedas usala mentanto lleves guantes</string>
     <string name="tethering_allow_vpn_upstreams_title">Permitir que los veceros usen les VPNs</string>
     <string name="tethering_allow_vpn_upstreams_summary">Permite que los veceros del puntu Wi-Fi usen les conexones VPN d\u2019esti preséu pa la conectividá</string>
     <string name="data_usage_app_restrict_all">Permitir l\'accesu a la rede</string>
@@ -28,8 +33,17 @@
     <string name="data_usage_app_restrict_mobile_summary">Activa l\'usu de los datos móviles</string>
     <string name="data_usage_app_restrict_vpn">Datos per VPN</string>
     <string name="data_usage_app_restrict_vpn_summary">Activa l\'usu de los datos per VPN</string>
-    <string name="data_usage_app_restrict_wifi">Datos Wi\u2011Fi</string>
-    <string name="data_usage_app_restrict_wifi_summary">Activa l\'usu de los datos Wi\u2011Fi</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 segundos</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 segundos</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minutu</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minutos</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
+    <string name="max_refresh_rate_title">Tasa de refrescu máxima</string>
+    <string name="min_refresh_rate_title">Tasa de refrescu mínima</string>
     <string name="show_navbar_hint_title">Indicador de navegación</string>
     <string name="show_navbar_hint_summary">Amuesa una barra indicadora de navegación no baxero de la pantalla</string>
+    <string name="peak_refresh_rate_summary_custom">Incrementa automáticamente la frecuencia d\'anovamientu de 60 a %1$d Hz en dalgún tipu de conteníu. Esta opción aumenta l\'usu de la batería.</string>
+    <string name="fast_charging_title">Carga rápida</string>
+    <string name="fast_charging_summary">Desactiva esta opción p\'amenorgar la calor producida pol preséu mentanto carga y aumentar la vida útil de la batería</string>
 </resources>

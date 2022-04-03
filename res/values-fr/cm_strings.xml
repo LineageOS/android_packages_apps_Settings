@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,35 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étape de l\'activation des paramètres de développement.
+Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'activation des paramètres de développement.</item>
+        <item quantity="other">Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'activation des paramètres de développement.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Vous avez activé les paramètres de développement !</string>
+    <string name="show_dev_already_cm">Inutile, vous avez déjà activé les paramètres de développement.</string>
+    <string name="keyboard_extras_title">Extras</string>
+    <string name="advanced_keyboard_settings_title">Paramètres avancés</string>
     <string name="adb_enable_root">Débogage rooté</string>
     <string name="adb_enable_summary_root">Autoriser le débogage Android en tant que root</string>
     <string name="backup_transport_setting_label">Modifier le fournisseur de sauvegarde</string>
     <string name="backup_transport_title">Sélectionner un fournisseur de sauvegarde</string>
     <string name="lineagelicense_title">Infos légales LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Appuyer pour mettre en veille</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Appuyer deux fois sur la barre d\'état ou sur l\'écran de verrouillage pour éteindre l\'écran</string>
+    <string name="increasing_ring_volume_option_title">Sonnerie progressive</string>
+    <string name="increasing_ring_min_volume_title">Volume de démarrage</string>
+    <string name="increasing_ring_ramp_up_time_title">Durée de progression</string>
     <string name="volume_link_notification_title">Lier les volumes de la sonnerie &amp; des notifications</string>
     <string name="unlock_scramble_pin_layout_title">Disposition aléatoire</string>
     <string name="unlock_scramble_pin_layout_summary">Disposer aléatoirement les touches lors du déverrouillage</string>
     <string name="lock_settings_picker_pattern_size_message">Choisissez une taille de modèle</string>
     <string name="lockpattern_settings_enable_error_path_title">Afficher l\'erreur de schéma</string>
     <string name="lockpattern_settings_enable_dots_title">Afficher les points du schéma</string>
+    <string name="lockscreen_media_art_title">Afficher la couverture du média</string>
+    <string name="lockscreen_visualizer_title">Afficher le visualiseur de musique</string>
+    <string name="high_touch_sensitivity_title">Haute sensibilité tactile</string>
+    <string name="high_touch_sensitivity_summary">Augmenter la sensibilité de l\'écran permettant ainsi le port de gants</string>
     <string name="tethering_allow_vpn_upstreams_title">Autoriser les clients à utiliser des VPNs</string>
     <string name="tethering_allow_vpn_upstreams_summary">Permettre aux clients de point d\'accès d\'utiliser les connexions VPN de cet appareil pour la connectivité en amont</string>
     <string name="data_usage_app_restrict_all">Autoriser l\'accès au réseau</string>
@@ -36,6 +54,28 @@
     <string name="data_usage_app_restrict_vpn_summary">Activer l\'utilisation des données VPN</string>
     <string name="data_usage_app_restrict_wifi">Données Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">Activer l\'utilisation des données Wi\u2011Fi</string>
+    <string name="app_notification_sound_timeout_title">Temps minimum entre les sons de notification</string>
+    <string name="app_notification_sound_timeout_summary_template">Ne pas permettre plus d\'un son ou une vibration toutes les <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Aucune restriction</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 secondes</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 secondes</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minute</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minutes</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minutes</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minutes</string>
+    <string name="proximity_wake_title">Empêcher un réveil accidentel</string>
+    <string name="proximity_wake_summary">Vérifier le capteur de proximité avant d\'allumer l\'écran</string>
+    <string name="min_refresh_rate_title">Taux de rafraîchissement minimum</string>
     <string name="show_navbar_hint_title">Indice de navigation</string>
     <string name="show_navbar_hint_summary">Afficher l\'indice de navigation en bas de l\'écran</string>
+    <string name="connected_tws_device_saved_title">Écouteurs sans fil enregistrés</string>
+    <string name="touchscreen_hovering_title">Survol de l\'écran tactile</string>
+    <string name="touchscreen_hovering_summary">Permet de survoler l\'écran comme avec une souris dans les navigateurs web, les bureaux à distance, etc.</string>
+    <string name="peak_refresh_rate_summary_custom">Augmente automatiquement le taux de rafraîchissement de 60 à %1$d Hz pour certains contenus. Accroît l\'utilisation de la batterie.</string>
+    <string name="touchscreen_gesture_settings_title">Gestes tactiles</string>
+    <string name="touchscreen_gesture_settings_summary">Effectuer différents gestes tactiles pour des actions rapides</string>
+    <string name="wake_when_plugged_or_unplugged_title">Réveiller au branchement</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Allumer l\'écran lors du branchement ou du débranchement d\'une source d\'alimentation</string>
+    <string name="fast_charging_title">Charge rapide</string>
+    <string name="fast_charging_summary">Désactiver pour réduire la chaleur produite par l\'appareil pendant la charge ou pour prolonger la durée de vie de la batterie</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,16 +15,32 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Olete <xliff:g id="step_count">%1$d</xliff:g> sammu kaugusel arendussätete lubamisest.</item>
+        <item quantity="other">Olete <xliff:g id="step_count">%1$d</xliff:g> sammu kaugusel arendussätete lubamisest.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Arendussätted aktiveeritud!</string>
+    <string name="show_dev_already_cm">Ei ole vaja, arendussätted juba aktiveeritud.</string>
+    <string name="keyboard_extras_title">Lisad</string>
+    <string name="advanced_keyboard_settings_title">Täpsemad seaded</string>
     <string name="adb_enable_root">Juurkasutajaga silumine</string>
     <string name="adb_enable_summary_root">Luba Androidi silumist juurkasutajaga</string>
     <string name="backup_transport_setting_label">Muuda varunduste pakkujat</string>
     <string name="backup_transport_title">Vali varunduste pakkuja</string>
     <string name="lineagelicense_title">LineageOS juriidiline info</string>
+    <string name="status_bar_double_tap_to_sleep_title">Koputa unerežiimiks</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Topeltkoputa olekuriba või lukustuskuva ekraani väljalülitamiseks</string>
+    <string name="increasing_ring_volume_option_title">Kasvav helisemistugevus</string>
+    <string name="increasing_ring_min_volume_title">Lähtevaljusus</string>
+    <string name="increasing_ring_ramp_up_time_title">Käivitamisetapi aeg</string>
     <string name="volume_link_notification_title">Ühenda helina ja teadete helitugevus</string>
     <string name="unlock_scramble_pin_layout_title">Segatud paigutus</string>
     <string name="unlock_scramble_pin_layout_summary">Sega PIN paigutust seadme lahtilukustamisel</string>
-    <string name="lockpattern_settings_enable_error_path_title">Näita mustri vigu</string>
     <string name="lockpattern_settings_enable_dots_title">Näita mustri punkte</string>
+    <string name="lockscreen_media_art_title">Näita meedia kaanepilti</string>
+    <string name="lockscreen_visualizer_title">Näita muusika visualiseerijat</string>
+    <string name="high_touch_sensitivity_title">Kõrge puutetundlikus</string>
+    <string name="high_touch_sensitivity_summary">Suurenda puuteekraani tundlikust, et saaksid seda kasutada kindaid kandes</string>
     <string name="tethering_allow_vpn_upstreams_title">Luba klientidel kasutada VPN-e</string>
     <string name="tethering_allow_vpn_upstreams_summary">Luba kuumkoha klientidel kasutada selle seadme VPN-ühendusi ülesvoolu ühenduvuseks</string>
     <string name="data_usage_app_restrict_all">Luba võrgujuurdepääs</string>
@@ -35,6 +51,18 @@
     <string name="data_usage_app_restrict_vpn_summary">Lubage VPNi andmeside kasutus</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi andmeside</string>
     <string name="data_usage_app_restrict_wifi_summary">Luba Wi\u2011Fi andmeside kasutus</string>
+    <string name="proximity_wake_title">Väldi juhuslikku ärkamist</string>
+    <string name="proximity_wake_summary">Kontrolli lähedussensorit enne ekraani äratamist</string>
+    <string name="min_refresh_rate_title">Minimaalne värskendussagedus</string>
     <string name="show_navbar_hint_title">Navigeerimise vihje</string>
     <string name="show_navbar_hint_summary">Kuva navigeerimise vihjeriba ekraani allosas</string>
+    <string name="connected_tws_device_saved_title">Salvestatud nööpkuularid</string>
+    <string name="touchscreen_hovering_title">Puuteekraani hõljumine</string>
+    <string name="touchscreen_hovering_summary">Lubab hõljuda ekraani kohal nagu hiirega veebilehitsejas, kaugtöölaual jne</string>
+    <string name="peak_refresh_rate_summary_custom">Suurendab teatud sisu puhul värskendamissagedust 60 hertsilt %1$d hertsini. Akukasutus suureneb.</string>
+    <string name="touchscreen_gesture_settings_title">Puuteekraani žestid</string>
+    <string name="touchscreen_gesture_settings_summary">Soorita mitmeid puuteekraani žeste kiirtoimingute teostamiseks</string>
+    <string name="wake_when_plugged_or_unplugged_title">Ärka laadija ühendamisel</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Lülita ekraan sisse kui ühendatakse või eemaldatakse toite allikas</string>
+    <string name="fast_charging_title">Kiirlaadimine</string>
 </resources>

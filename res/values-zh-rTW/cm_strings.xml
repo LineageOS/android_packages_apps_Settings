@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,33 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="other">您僅需完成剩餘的 <xliff:g id="step_count">%1$d</xliff:g> 個步驟啟用開發人員選項。</item>
+    </plurals>
+    <string name="show_dev_on_cm">您已啟用開發人員選項。</string>
+    <string name="show_dev_already_cm">不需要，您已經啟用開發人員選項。</string>
+    <string name="keyboard_extras_title">附加功能</string>
+    <string name="advanced_keyboard_settings_title">進階設定</string>
     <string name="adb_enable_root">Root 偵錯</string>
     <string name="adb_enable_summary_root">允許以 root 身份進行 Android 偵錯</string>
     <string name="backup_transport_setting_label">變更備份服務提供者</string>
     <string name="backup_transport_title">選擇備份服務提供者</string>
     <string name="lineagelicense_title">LineageOS 法律條款</string>
+    <string name="status_bar_double_tap_to_sleep_title">輕觸即可休眠</string>
+    <string name="status_bar_double_tap_to_sleep_summary">輕觸兩下狀態列或鎖定來關閉螢幕</string>
+    <string name="increasing_ring_volume_option_title">漸強鈴聲音量</string>
+    <string name="increasing_ring_min_volume_title">開始音量</string>
+    <string name="increasing_ring_ramp_up_time_title">漸強時間</string>
     <string name="volume_link_notification_title">連結鈴聲與通知音量</string>
     <string name="unlock_scramble_pin_layout_title">亂序佈局</string>
     <string name="unlock_scramble_pin_layout_summary">解鎖裝置時使用亂序 PIN 碼佈局</string>
     <string name="lock_settings_picker_pattern_size_message">選擇解鎖圖案大小</string>
     <string name="lockpattern_settings_enable_error_path_title">顯示解鎖圖案錯誤</string>
     <string name="lockpattern_settings_enable_dots_title">顯示解鎖圖案節點</string>
+    <string name="lockscreen_media_art_title">顯示媒體封面藝術</string>
+    <string name="lockscreen_visualizer_title">顯示音樂視覺效果</string>
+    <string name="high_touch_sensitivity_title">高觸控靈敏度</string>
+    <string name="high_touch_sensitivity_summary">增加觸控螢幕的靈敏度，因此戴著手套也可以使用手機</string>
     <string name="tethering_allow_vpn_upstreams_title">允許客戶端使用 VPN</string>
     <string name="tethering_allow_vpn_upstreams_summary">允許熱點客戶端使用此裝置的 VPN 連線進行上游連線</string>
     <string name="data_usage_app_restrict_all">允許網路存取</string>
@@ -36,6 +52,28 @@
     <string name="data_usage_app_restrict_vpn_summary">啟用 VPN 數據用量</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi 數據</string>
     <string name="data_usage_app_restrict_wifi_summary">啟用 Wi\u2011Fi 數據</string>
+    <string name="app_notification_sound_timeout_title">通知音效之間的最短時間</string>
+    <string name="app_notification_sound_timeout_summary_template">允許音效或震動每一次不超過 <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">無限制</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 秒</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 秒</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 分鐘</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 分鐘</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 分鐘</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 分鐘</string>
+    <string name="proximity_wake_title">防止意外喚醒</string>
+    <string name="proximity_wake_summary">喚醒螢幕前檢查接近感應器</string>
+    <string name="min_refresh_rate_title">最低更新率</string>
     <string name="show_navbar_hint_title">導覽列提示</string>
     <string name="show_navbar_hint_summary">在螢幕底部顯示導航列提示欄</string>
+    <string name="connected_tws_device_saved_title">已儲存的耳機</string>
+    <string name="touchscreen_hovering_title">懸浮操作</string>
+    <string name="touchscreen_hovering_summary">允許您把手指懸停在螢幕上作為瀏覽器、遠程桌面等的滑鼠</string>
+    <string name="peak_refresh_rate_summary_custom">自動將某些內容的重新整理頻率從 60 調高到 %1$d 赫茲 (Hz)。請注意，開啟這項設定會增加電池用量。</string>
+    <string name="touchscreen_gesture_settings_title">觸控螢幕手勢</string>
+    <string name="touchscreen_gesture_settings_summary">執行各種觸控螢幕手勢以進行快速動作</string>
+    <string name="wake_when_plugged_or_unplugged_title">接上或拔除電源時喚醒</string>
+    <string name="wake_when_plugged_or_unplugged_summary">接上或拔除電源時開啟螢幕</string>
+    <string name="fast_charging_title">快速充電</string>
+    <string name="fast_charging_summary">停用以減少裝置在充電時產生的熱量或延長電池的使用壽命</string>
 </resources>

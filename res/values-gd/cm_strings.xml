@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,36 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Tha thu <xliff:g id="step_count">%1$d</xliff:g> cheum air falbh o bhith a’ cur an comas roghainnean an luchd-leasachaidh.</item>
+        <item quantity="two">Tha thu <xliff:g id="step_count">%1$d</xliff:g> cheum air falbh o bhith a’ cur an comas roghainnean an luchd-leasachaidh.</item>
+        <item quantity="few">Tha thu <xliff:g id="step_count">%1$d</xliff:g> ceuman air falbh o bhith a’ cur an comas roghainnean an luchd-leasachaidh.</item>
+        <item quantity="other">Tha thu <xliff:g id="step_count">%1$d</xliff:g> ceum air falbh o bhith a’ cur an comas roghainnean an luchd-leasachaidh.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Chuir thu roghainnean an luchd-leasachaidh an comas!</string>
+    <string name="show_dev_already_cm">Cha leig thu leas, chuir thu roghainnean an luchd-leasachaidh an comas mu thràth.</string>
+    <string name="keyboard_extras_title">Rudan a bharrachd</string>
+    <string name="advanced_keyboard_settings_title">Roghainnean adhartach</string>
     <string name="adb_enable_root">Dì-bhugachadh root</string>
     <string name="adb_enable_summary_root">Ceadaich gun dèid dì-bhugachadh Android a ruith ’na root</string>
     <string name="backup_transport_setting_label">Atharraich solaraiche nan lethbhreacan-glèidhidh</string>
     <string name="backup_transport_title">Tagh solaraiche nan lethbhreacan-glèidhidh</string>
     <string name="lineagelicense_title">Sgrìobhainnean laghail LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Thoir gnogag airson cadal</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Thoir gnogag dhùbailte air bàr na staid no air an sgrìn-ghlasaidh gus an uidheam-taisbeanaidh a chur dheth</string>
+    <string name="increasing_ring_volume_option_title">Cur an àirde fuaim na seirme</string>
+    <string name="increasing_ring_min_volume_title">Àirde na fuaime thòiseachail</string>
+    <string name="increasing_ring_ramp_up_time_title">Àm ramp-up</string>
     <string name="volume_link_notification_title">Co-cheangail àirde na seirme ⁊ nam brathan</string>
     <string name="unlock_scramble_pin_layout_title">Cuir a’ cho-dhealbhachd tro chèile</string>
     <string name="unlock_scramble_pin_layout_summary">Cuir co-dhealbhachd a’ PIN tro chèile nuair a bheirear a’ ghlas far an uidheim</string>
     <string name="lock_settings_picker_pattern_size_message">Tagh meud a’ phàtrain</string>
     <string name="lockpattern_settings_enable_error_path_title">Seall mearachd a’ phàtrain</string>
     <string name="lockpattern_settings_enable_dots_title">Seall dotagan a’ phàtrain</string>
+    <string name="lockscreen_media_art_title">Seall obair-ealain còmhdachaidh nam meadhanan</string>
+    <string name="lockscreen_visualizer_title">Seall fir-chlis a’ chiùil</string>
+    <string name="high_touch_sensitivity_title">Mothalachd àrd air an t-suathadh</string>
+    <string name="high_touch_sensitivity_summary">Meudaich mothalachd na sgrìn-shuathaidh ach an gabh a cleachdadh le miotagan</string>
     <string name="tethering_allow_vpn_upstreams_title">Leig le cliantan VPN a chleachdadh</string>
     <string name="tethering_allow_vpn_upstreams_summary">Thoir cead do chliantan hotspot gun cleachd iad ceanglaichean VPN an uidheim seo airson ceangal upstream a dhèanamh</string>
     <string name="data_usage_app_restrict_all">Ceadaich inntrigeadh dhan lìonra</string>
@@ -36,6 +55,29 @@
     <string name="data_usage_app_restrict_vpn_summary">Cuir an comas cleachdadh dàta VPN</string>
     <string name="data_usage_app_restrict_wifi">Dàta WiFi</string>
     <string name="data_usage_app_restrict_wifi_summary">Cuir an comas cleachdadh dàta WiFi</string>
+    <string name="app_notification_sound_timeout_title">An ùine as lugha eadar fuaimean bhrathan</string>
+    <string name="app_notification_sound_timeout_summary_template">Na ceadaich fuaim no brath nas trice na gach <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Gun chuingeachadh</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 diogan</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 diog</string>
+    <string name="app_notification_sound_timeout_value_1_minute">Mionaid</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 mionaidean</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 mionaidean</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">Leth-uair a thìde</string>
+    <string name="proximity_wake_title">Caisg dùsgadh air mhearachd</string>
+    <string name="proximity_wake_summary">Dearbh le mothaichear na fagasachd mus dèid an sgrìn a dhùsgadh</string>
+    <string name="max_refresh_rate_title">Bàrr tricead an ath-nuadhachaidh</string>
+    <string name="min_refresh_rate_title">Reat as lugha an ath-nuadhachaidh</string>
     <string name="show_navbar_hint_title">Oidheam na seòladaireachd</string>
     <string name="show_navbar_hint_summary">Seall bàr oidheam na seòladaireachd aig bonn na sgrìn</string>
+    <string name="connected_tws_device_saved_title">Cnapan-cluaise air an sàbhaladh</string>
+    <string name="touchscreen_hovering_title">Fantainn os cionn na sgrìn</string>
+    <string name="touchscreen_hovering_summary">Bheir seo comas dhut fantainn os cionn na sgrìn, mar luchag ann am brabhsairean-lìn, desktops cèin is msaa</string>
+    <string name="peak_refresh_rate_summary_custom">Àrdaichidh seo reat an ath-nuadhachaidh o 60 gu %1$d Hz do chuid a shusbaint gu fèin-obrachail. Caithidh seo barrachd dhen bhataraidh.</string>
+    <string name="touchscreen_gesture_settings_title">Gluasadan na sgrìn-shuathaidh</string>
+    <string name="touchscreen_gesture_settings_summary">Cleachd gluasadan sgrìn-shuathaidh airson gnìomhan luatha</string>
+    <string name="wake_when_plugged_or_unplugged_title">Dùisg nuair a cheanglar ri bun-dealain</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Cuir an sgrìn air nuair a thèid tùs cumhachd a cheangal ris no a dhì-cheangal</string>
+    <string name="fast_charging_title">Teàirrdseadh luath</string>
+    <string name="fast_charging_summary">Cuir à comas e ach nach adhbharaich an t-uidheam uiread de theas nuair a bhios e ’ga theàirrdseadh no ach am mair am bataraidh nas fhaide</string>
 </resources>

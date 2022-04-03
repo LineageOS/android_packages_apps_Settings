@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,13 +15,48 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">אתם נמצאים רק עוד צעד <xliff:g id="step_count">%1$d</xliff:g> מהפעלת אפשרויות מפתח.</item>
+        <item quantity="two">אתם נמצאים רק עוד <xliff:g id="step_count">%1$d</xliff:g> צעדים מהפעלת אפשרויות מפתח.</item>
+        <item quantity="many">אתם נמצאים רק עוד <xliff:g id="step_count">%1$d</xliff:g> צעדים מהפעלת אפשרויות מפתח.</item>
+        <item quantity="other">אתם נמצאים רק עוד <xliff:g id="step_count">%1$d</xliff:g> צעדים מהפעלת אפשרויות מפתח.</item>
+    </plurals>
+    <string name="show_dev_on_cm">אפשרויות מפתח פעילות!</string>
+    <string name="show_dev_already_cm">אין צורך. כבר הפעלת את אפשרויות המפתח.</string>
     <string name="lineagelicense_title">LineageOS משפטי</string>
+    <string name="status_bar_double_tap_to_sleep_title">הקש בכדי לכבות מסך</string>
+    <string name="status_bar_double_tap_to_sleep_summary">הקש פעמיים על שורת המצב או על מסך נעילה בכדי לכבות את המסך</string>
+    <string name="increasing_ring_volume_option_title">עוצמת צלצול מתגברת</string>
+    <string name="increasing_ring_min_volume_title">עוצמה התחלתית</string>
+    <string name="increasing_ring_ramp_up_time_title">אורך זמן ההגברה</string>
     <string name="volume_link_notification_title">קשר את עוצמות הצלצול וההתראות</string>
     <string name="unlock_scramble_pin_layout_title">ערבב פריסה</string>
     <string name="unlock_scramble_pin_layout_summary">ערבב פריסת PIN בעת פתיחת המכשיר</string>
     <string name="lock_settings_picker_pattern_size_message">בחר גודל תבנית</string>
     <string name="lockpattern_settings_enable_error_path_title">הצג שגיאות דפוס</string>
     <string name="lockpattern_settings_enable_dots_title">הצג נקודות דפוס</string>
+    <string name="lockscreen_media_art_title">הצג תמונת אלבום/מדיה</string>
+    <string name="lockscreen_visualizer_title">הצג אפקטים בעת השמעת מוזיקה</string>
+    <string name="high_touch_sensitivity_title">רגישות גבוהה למגע</string>
+    <string name="high_touch_sensitivity_summary">הגבר את רגישות מסך המגע, כך שניתן יהיה להשתמש בו בעת לבישת כפפות</string>
     <string name="data_usage_app_restrict_wifi">‏נתוני Wi‑Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">אפשר שימוש בנתוני Wi‑Fi</string>
+    <string name="app_notification_sound_timeout_title">זמן מינימלי בין צלילי התראות</string>
+    <string name="app_notification_sound_timeout_summary_template">אפשר צלילים או רטט לא יותר מפעם אחת בכל <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">ללא מגבלה</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 שניות</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 שניות</string>
+    <string name="app_notification_sound_timeout_value_1_minute">דקה 1</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 דקות</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 דקות</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 דקות</string>
+    <string name="proximity_wake_title">מנע התעוררות מקרית</string>
+    <string name="proximity_wake_summary">בדוק את חיישן הקירבה לפני הפעלת המסך</string>
+    <string name="touchscreen_hovering_title">מגע בריחוף</string>
+    <string name="touchscreen_hovering_summary">מאפשר להעביר את האצבע מעל המסך כמו עכבר של מחשב בדפדפנים, בעמדות שליטה מרחוק וכד\'</string>
+    <string name="peak_refresh_rate_summary_custom">‏קצב הרענון עולה באופן אוטומטי מ-60 ל-Hz‏%1$d לחלק מהתוכן. פעולה זו מגבירה את השימוש בסוללה.</string>
+    <string name="touchscreen_gesture_settings_title">מחוות מגע</string>
+    <string name="touchscreen_gesture_settings_summary">השתמש במחוות מגע שונות לפעולות מהירות</string>
+    <string name="wake_when_plugged_or_unplugged_title">הער מסך בעת חיבור</string>
+    <string name="wake_when_plugged_or_unplugged_summary">הפעל את המסך כאשר מקור חשמל מתחבר או מתנתק מהמכשיר</string>
 </resources>

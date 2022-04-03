@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,21 +15,55 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Ahora estás a <xliff:g id="step_count">%1$d</xliff:g> paso de habilitar las opciones de desarrollo.</item>
+        <item quantity="other">Ahora estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de habilitar las opciones de desarrollo.</item>
+    </plurals>
+    <string name="show_dev_on_cm">¡Has activado los ajustes de desarrollo!</string>
+    <string name="show_dev_already_cm">No es necesario. Las opciones de desarrollo ya están activadas.</string>
     <string name="adb_enable_root">Depuración como Superusuario</string>
     <string name="adb_enable_summary_root">Permitir ejecutar la depuración de Android como Superusuario</string>
     <string name="backup_transport_setting_label">Cambiar proveedor de la copia de seguridad</string>
     <string name="backup_transport_title">Seleccionar el proveedor de la copia de seguridad</string>
     <string name="lineagelicense_title">Licencia de LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Pulsar para suspender</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Doble toque en la barra de estado o pantalla de bloqueo para apagar la pantalla</string>
+    <string name="increasing_ring_volume_option_title">Volumen de timbre ascendente</string>
+    <string name="increasing_ring_min_volume_title">Volumen inicial</string>
+    <string name="increasing_ring_ramp_up_time_title">Tiempo de incremento</string>
     <string name="volume_link_notification_title">Vincular tono y volumen de notificaciones</string>
     <string name="unlock_scramble_pin_layout_title">Disposición aleatoria</string>
     <string name="unlock_scramble_pin_layout_summary">Cambiar la disposición de los números del PIN para desbloquear el dispositivo</string>
     <string name="lock_settings_picker_pattern_size_message">Elije un tamaño de patrón</string>
     <string name="lockpattern_settings_enable_error_path_title">Mostrar patrón erróneo</string>
     <string name="lockpattern_settings_enable_dots_title">Mostrar puntos de patrón</string>
+    <string name="lockscreen_media_art_title">Mostrar portada del álbum</string>
+    <string name="lockscreen_visualizer_title">Mostrar visualizador musical</string>
+    <string name="high_touch_sensitivity_title">Alta sensibilidad táctil</string>
+    <string name="high_touch_sensitivity_summary">Incrementar la sensibilidad del panel táctil para que pueda usarse llevando guantes</string>
     <string name="tethering_allow_vpn_upstreams_title">Permitir a los clientes usar VPNs</string>
     <string name="tethering_allow_vpn_upstreams_summary">Permitir a los clientes de hotspot usar las conexiones VPN de este dispositivo\u2019 como conectividad principal</string>
     <string name="data_usage_app_restrict_all">Permitir acceso a la red</string>
     <string name="data_usage_app_restrict_all_summary">Habilitar uso de red</string>
+    <string name="app_notification_sound_timeout_title">Tiempo mínimo entre sonidos de notificaciones</string>
+    <string name="app_notification_sound_timeout_summary_template">Permite sonidos o vibraciones no más de una vez cada <xliff:g id="duration">%1$s </xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Sin restricción</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 segundos</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 segundos</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minuto</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minutos</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
+    <string name="proximity_wake_title">Prevenir encendido accidental</string>
+    <string name="proximity_wake_summary">Comprobar el sensor de proximidad antes de encender la pantalla</string>
     <string name="show_navbar_hint_title">Sugerencia de navegación</string>
     <string name="show_navbar_hint_summary">Mostrar barra de sugerencias de navegación en la parte inferior de la pantalla</string>
+    <string name="connected_tws_device_saved_title">Auriculares guardados</string>
+    <string name="touchscreen_hovering_title">Pantalla táctil deslizante</string>
+    <string name="touchscreen_hovering_summary">Te permitirá deslizar por la pantalla como un ratón en navegadores, escritorios remotos, etc.</string>
+    <string name="peak_refresh_rate_summary_custom">Aumenta automáticamente la frecuencia de actualización de 60 a %1$d Hz en determinados tipos de contenido. Se usará más batería.</string>
+    <string name="touchscreen_gesture_settings_title">Gestos en pantalla táctil</string>
+    <string name="touchscreen_gesture_settings_summary">Realizar varios gestos en la pantalla para acciones rápidas</string>
+    <string name="wake_when_plugged_or_unplugged_title">Encender al conectar el cargador</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Encender la pantalla al conectar o desconectar el cargador</string>
 </resources>

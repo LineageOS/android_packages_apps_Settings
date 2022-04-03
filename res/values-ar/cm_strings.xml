@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,38 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="zero">أنت الآن على بُعد <xliff:g id="step_count">%1$d</xliff:g> خطوة من تمكين خيارات المطور.</item>
+        <item quantity="one">أنت الآن على بُعد خطوة واحدة من تمكين خيارات المطور.</item>
+        <item quantity="two">أنت الآن على بُعد خطوتين من تمكين خيارات المطور.</item>
+        <item quantity="few">أنت الآن على بُعد <xliff:g id="step_count">%1$d</xliff:g> خطوات من تمكين خيارات المطور.</item>
+        <item quantity="many">أنت الآن على بُعد <xliff:g id="step_count">%1$d</xliff:g> خطوة من تمكين خيارات المطور.</item>
+        <item quantity="other">أنت الآن على بُعد <xliff:g id="step_count">%1$d</xliff:g> خطوة من تمكين خيارات المطور.</item>
+    </plurals>
+    <string name="show_dev_on_cm">مكّنتَ خيارات المطور!</string>
+    <string name="show_dev_already_cm">لا داعي، فخيارات المطور مفعّلة.</string>
+    <string name="keyboard_extras_title">الإضافات</string>
+    <string name="advanced_keyboard_settings_title">الإعدادات المتقدمة</string>
     <string name="adb_enable_root">تصحيح بالروت</string>
     <string name="adb_enable_summary_root">السماح بتشغيل مصحح أخطاء أندرويد بصلاحية روت</string>
     <string name="backup_transport_setting_label">تغيير موفر النسخ الاحتياطي</string>
     <string name="backup_transport_title">حدد موفر النسخ الاحتياطي</string>
     <string name="lineagelicense_title">قانون LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">اضغط للنوم</string>
+    <string name="status_bar_double_tap_to_sleep_summary">الضغط مرتين فوق شريط الحالة لإطفاء الشاشة</string>
+    <string name="increasing_ring_volume_option_title">حجم الصوت متزايد</string>
+    <string name="increasing_ring_min_volume_title">حجم الصوت البدئيّ</string>
+    <string name="increasing_ring_ramp_up_time_title">زمن التدرج</string>
     <string name="volume_link_notification_title">ربط حجم صوت النغمة وصوت الإشعارات</string>
     <string name="unlock_scramble_pin_layout_title">تخطيط الترميز</string>
     <string name="unlock_scramble_pin_layout_summary">تخطيط رقم PIN المرمز عند إلغاء تأمين الجهاز</string>
     <string name="lock_settings_picker_pattern_size_message">اختر حجم النمط</string>
     <string name="lockpattern_settings_enable_error_path_title">إظهار خطأ النمط</string>
     <string name="lockpattern_settings_enable_dots_title">إظهار نقاط النمط</string>
+    <string name="lockscreen_media_art_title">عرض الغلاف الفني للوسائط</string>
+    <string name="lockscreen_visualizer_title">عرض صورة الغلاف للموسيقى</string>
+    <string name="high_touch_sensitivity_title">حساسية ذات لمس عالي</string>
+    <string name="high_touch_sensitivity_summary">زيادة حساسية شاشة اللمس حتى يمكن استخدامها أثناء ارتداء القفازات</string>
     <string name="tethering_allow_vpn_upstreams_title">السماح للعملاء باستخدام الـ VPN</string>
     <string name="tethering_allow_vpn_upstreams_summary">السماح لعملاء نقطة الاتصال باستخدام اتصالات الـVPN لهذا الجهاز\u2019</string>
     <string name="data_usage_app_restrict_all">السماح بالوصول إلى الشبكة</string>
@@ -36,6 +57,28 @@
     <string name="data_usage_app_restrict_vpn_summary">تمكين استخدام بيانات الـ VPN</string>
     <string name="data_usage_app_restrict_wifi">بيانات WiFi</string>
     <string name="data_usage_app_restrict_wifi_summary">تمكين استخدام بيانات WiFi</string>
+    <string name="app_notification_sound_timeout_title">الحد الأدنى من الوقت بين أصوات الإشعار</string>
+    <string name="app_notification_sound_timeout_summary_template">السماح بالصوت أو الاهتزاز ليس لأكثر من مرة واحدة كل <xliff:g id="duration">%1$s </xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">لا توجد قيود</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 ثوان</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 ثانية</string>
+    <string name="app_notification_sound_timeout_value_1_minute">دقيقة واحدة</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 دقائق</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 دقائق</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 دقيقة</string>
+    <string name="proximity_wake_title">منع الاستيقاظ العشوائي</string>
+    <string name="proximity_wake_summary">التحقق من مستشعر القرب قبل إيقاظ الشاشة</string>
+    <string name="min_refresh_rate_title">معدل تحديث الشاشة الأدنى</string>
     <string name="show_navbar_hint_title">تلميح عن التنقل</string>
     <string name="show_navbar_hint_summary">إظهار شريط تنقل التلميح أسفل الشاشة</string>
+    <string name="connected_tws_device_saved_title">سماعات الأذن المحفوظة</string>
+    <string name="touchscreen_hovering_title">المرور فوق الشاشة اللمسية</string>
+    <string name="touchscreen_hovering_summary">يسمح لك بالمرور فوق الشاشة مثل الماوس في مستعرضات الويب، أو سطح المكتب عن بُعد، إلخ</string>
+    <string name="peak_refresh_rate_summary_custom">تعمل هذه الميزة على رفع معدل إعادة التحميل تلقائيًا من 60 إلى %1$d هرتز لبعض أنواع المحتوى، ما يؤدي إلى زيادة استخدام البطارية.</string>
+    <string name="touchscreen_gesture_settings_title">الإيماءات اللمسية</string>
+    <string name="touchscreen_gesture_settings_summary">عمل إيماءات لمسية متعددة لأعمال سريعة</string>
+    <string name="wake_when_plugged_or_unplugged_title">الإيقاظ عند التوصيل</string>
+    <string name="wake_when_plugged_or_unplugged_summary">تشغيل الشاشة عند الاتصال أو قطع الاتصال بمصدر الطاقة</string>
+    <string name="fast_charging_title">الشحن السريع</string>
+    <string name="fast_charging_summary">قم بتعطيله لتقليل الحرارة التي ينتجها الجهاز أثناء الشحن أو لتمديد عمر البطارية</string>
 </resources>

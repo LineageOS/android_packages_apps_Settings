@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,34 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Ön <xliff:g id="step_count">%1$d</xliff:g> lépésre van attól, hogy engedélyezze a fejlesztői beállításokat.</item>
+        <item quantity="other">Ön <xliff:g id="step_count">%1$d</xliff:g> lépésre van attól, hogy engedélyezze a fejlesztői beállításokat.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Sikeresen engedélyezte a fejlesztői beállításokat!</string>
+    <string name="show_dev_already_cm">Már korábban engedélyezte a fejlesztői beállításokat.</string>
+    <string name="keyboard_extras_title">Extrák</string>
+    <string name="advanced_keyboard_settings_title">Haladó beállítások</string>
     <string name="adb_enable_root">Rootolt hibakeresés</string>
     <string name="adb_enable_summary_root">Rootolva engedélyezi az Android hibakeresését</string>
     <string name="backup_transport_setting_label">Mentési-szolgáltatás megváltoztatása</string>
     <string name="backup_transport_title">Mentési-szolgáltatás kiválasztása</string>
     <string name="lineagelicense_title">LineageOS jogi nyilatkozat</string>
+    <string name="status_bar_double_tap_to_sleep_title">Dupla érintésre alvómód</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Az állapotsor vagy a záróképernyő dupla érintésére kikapcsol a képernyő</string>
+    <string name="increasing_ring_volume_option_title">Emelkedő csengőhang</string>
+    <string name="increasing_ring_min_volume_title">Kezdeti hangerő</string>
+    <string name="increasing_ring_ramp_up_time_title">Felfutási idő</string>
     <string name="volume_link_notification_title">Értesítési és csengőhangok összekapcsolása</string>
     <string name="unlock_scramble_pin_layout_title">Szoros elrendezés</string>
     <string name="unlock_scramble_pin_layout_summary">PIN szoros elrendezése az eszköz feloldásakor</string>
     <string name="lock_settings_picker_pattern_size_message">Válassza ki a minta méretét</string>
     <string name="lockpattern_settings_enable_error_path_title">Hibás minta megjelenítése</string>
     <string name="lockpattern_settings_enable_dots_title">Feloldási pontok megjelenítése</string>
+    <string name="lockscreen_media_art_title">Média borítójának megjelenítése</string>
+    <string name="lockscreen_visualizer_title">Zenei vizualítás megjelenítése</string>
+    <string name="high_touch_sensitivity_title">Magas érintési érzékenység</string>
+    <string name="high_touch_sensitivity_summary">Érintőképernyő érzékenységének növelése, így kesztyű viselése esetén is használható</string>
     <string name="tethering_allow_vpn_upstreams_title">Kliensek VPN-használatának engedélyezése</string>
     <string name="tethering_allow_vpn_upstreams_summary">Engedélyezze a hotspot-klienseknek, hogy a készülék VPN-kapcsolatait felfelé csatlakoztathassák</string>
     <string name="data_usage_app_restrict_all">Hálózat-hozzáférés engedélyezése</string>
@@ -36,6 +53,29 @@
     <string name="data_usage_app_restrict_vpn_summary">A VPN-adathasználat engedélyezése</string>
     <string name="data_usage_app_restrict_wifi">Wi-Fi-kapcsolat</string>
     <string name="data_usage_app_restrict_wifi_summary">Wi\u2011Fi-adathasználat engedélyezése</string>
+    <string name="app_notification_sound_timeout_title">Értesítési hangok közötti minimum időtartam</string>
+    <string name="app_notification_sound_timeout_summary_template">Hang vagy rezgés ismétlődésének engedélyezése: <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Nincs korlátozás</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 másodperc</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 másodperc</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 perc</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 perc</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 perc</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 perc</string>
+    <string name="proximity_wake_title">Véletlen ébresztés megakadályozása</string>
+    <string name="proximity_wake_summary">Közelségérzékelő ellenőrzése a képernyő felébresztése előtt</string>
+    <string name="max_refresh_rate_title">Képernyőfrissítés-emelés</string>
+    <string name="min_refresh_rate_title">Minimális képernyőfrissítés</string>
     <string name="show_navbar_hint_title">Navigációs tipp</string>
     <string name="show_navbar_hint_summary">A navigáció ajánlásait a képernyő alján jeleníti meg</string>
+    <string name="connected_tws_device_saved_title">Mentett Earbuds fülhallgatók</string>
+    <string name="touchscreen_hovering_title">Lebegő érintés</string>
+    <string name="touchscreen_hovering_summary">Engedélyezi a lebegéssel való vezérlést, mint egy egérrel a böngészőknél, távoli asztaloknál, stb.</string>
+    <string name="peak_refresh_rate_summary_custom">Néhány tartalomnál automatikusan megemeli a frissítés gyakoriságát 60-ról %1$d Hz-re. Növeli az akkumulátorhasználatot.</string>
+    <string name="touchscreen_gesture_settings_title">Érintőképernyő-mozdulatvezérlés</string>
+    <string name="touchscreen_gesture_settings_summary">Különböző képernyő-mozdulatvezérlések végrehajtása a gyorsműveletekhez</string>
+    <string name="wake_when_plugged_or_unplugged_title">Felébredés töltő csatlakoztatásakor</string>
+    <string name="wake_when_plugged_or_unplugged_summary">A képernyő bekapcsolása a töltő csatlakoztatása/eltávolítása után</string>
+    <string name="fast_charging_title">Gyorstöltés</string>
+    <string name="fast_charging_summary">Ne engedélyezze, ha csökkentené a készülék töltés közbeni melegedését, vagy meghosszabbítaná az akkumulátor élettartamát</string>
 </resources>

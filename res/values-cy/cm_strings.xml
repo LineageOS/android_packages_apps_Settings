@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,25 +15,71 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="zero">Rwyt nawr <xliff:g id="step_count">%1$d</xliff:g> camau i ffwrdd o alluogi gosodiadau datblygu.</item>
+        <item quantity="one">Rwyt nawr <xliff:g id="step_count">%1$d</xliff:g> cam i ffwrdd o alluogi gosodiadau datblygu.</item>
+        <item quantity="two">Rwyt nawr <xliff:g id="step_count">%1$d</xliff:g> gam i ffwrdd o alluogi gosodiadau datblygu.</item>
+        <item quantity="few">Rwyt nawr <xliff:g id="step_count">%1$d</xliff:g> cam i ffwrdd o alluogi gosodiadau datblygu.</item>
+        <item quantity="many">Rwyt nawr <xliff:g id="step_count">%1$d</xliff:g> cham i ffwrdd o alluogi gosodiadau datblygu.</item>
+        <item quantity="other">Rwyt nawr <xliff:g id="step_count">%1$d</xliff:g> cam i ffwrdd o alluogi gosodiadau datblygu.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Rwyt wedi galluogi gosodiadau datblygu!</string>
+    <string name="show_dev_already_cm">Dim angen; rwyt eisoes wedi galluogi gosodiadau datblygu.</string>
+    <string name="keyboard_extras_title">Ychwanegion</string>
+    <string name="advanced_keyboard_settings_title">Gosodiadau uwch</string>
     <string name="adb_enable_root">Dadfygio wedi gwreiddio</string>
     <string name="adb_enable_summary_root">Caniatáu rhedeg dadfygio Android fel gwraidd</string>
     <string name="backup_transport_setting_label">Newid darparwr wrth gefn</string>
     <string name="backup_transport_title">Dewis darparwr wrth gefn</string>
     <string name="lineagelicense_title">Cyfreithiol LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Tapio i gysgu</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Tapio dwywaith ar y bar statws neu\'r sgrin cloi i droi\'r sgrin i ffwrdd</string>
+    <string name="increasing_ring_volume_option_title">Uchder sain yn cynyddu</string>
+    <string name="increasing_ring_min_volume_title">Uchder sain i ddechrau</string>
+    <string name="increasing_ring_ramp_up_time_title">Amser i gynyddu</string>
     <string name="volume_link_notification_title">Cysylltu uchder sain caniad ffôn a hysbysiadau</string>
     <string name="unlock_scramble_pin_layout_title">Cymysgu\'r cynllun</string>
     <string name="unlock_scramble_pin_layout_summary">Cymysgu cynllun y PIN wrth ddatgloi\'r ddyfais</string>
     <string name="lock_settings_picker_pattern_size_message">Dewisa faint patrwm</string>
     <string name="lockpattern_settings_enable_error_path_title">Dangos gwall patrwm</string>
     <string name="lockpattern_settings_enable_dots_title">Dangos dotiau patrwm</string>
+    <string name="lockscreen_media_art_title">Dangos llun clawr cyfryngau</string>
+    <string name="lockscreen_visualizer_title">Dangos patrymau cerddoriaeth</string>
+    <string name="high_touch_sensitivity_title">Sensitifrwydd cyffwrdd uchel</string>
+    <string name="high_touch_sensitivity_summary">Cynyddu sensitifrwydd y sgrin gyffwrdd fel y gellir ei defnyddio wrth wisgo menig</string>
     <string name="tethering_allow_vpn_upstreams_title">Caniatáu cleientiaid i ddefnyddio VPNau</string>
     <string name="tethering_allow_vpn_upstreams_summary">Caniatáu cleientiaid llecynnau Wi-Fi i ddefnyddio cysylltiadau VPN y ddyfais hon</string>
     <string name="data_usage_app_restrict_all">Caniatáu mynediad i rwydwaith</string>
     <string name="data_usage_app_restrict_all_summary">Caniatáu defnydd o rwydwaith</string>
+    <string name="data_usage_app_restrict_mobile">Data symudol</string>
+    <string name="data_usage_app_restrict_mobile_summary">Galluogi\'r defnydd o ddata symudol</string>
     <string name="data_usage_app_restrict_vpn">VPN data</string>
     <string name="data_usage_app_restrict_vpn_summary">Galluogi defnyddio VPN data</string>
     <string name="data_usage_app_restrict_wifi">Data Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">Galluogi defnydd data Wi\u2011Fi</string>
+    <string name="app_notification_sound_timeout_title">Y cyfnod lleiaf o amser rhwng seiniau hysbysiadau</string>
+    <string name="app_notification_sound_timeout_summary_template">Peidio â chaniatáu synau na dirgrynu yn amlach nag unwaith pob <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Dim cyfyngiad</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 eiliad</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 eiliad</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 munud</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 munud</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 munud</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 munud</string>
+    <string name="proximity_wake_title">Rhwystro deffro ar gam</string>
+    <string name="proximity_wake_summary">Gwirio\'r synhwyrydd agosrwydd cyn deffro\'r sgrin</string>
+    <string name="max_refresh_rate_title">Cyfradd adnewyddu uchaf</string>
+    <string name="min_refresh_rate_title">Cyfradd adnewyddu leiaf</string>
     <string name="show_navbar_hint_title">Awgrymiad llywio</string>
     <string name="show_navbar_hint_summary">Dangos bar awgrymiadau llywio ar waelod y sgrin</string>
+    <string name="connected_tws_device_saved_title">Clystseinydd wedi\'u cadw</string>
+    <string name="touchscreen_hovering_title">Hofran sgrin gyffwrdd</string>
+    <string name="touchscreen_hovering_summary">Mae\'n dy ganiatáu i hofran ar y sgrin fel defnyddio llygoden mewn porwyr, byrddau gwaith pell, ayyb</string>
+    <string name="peak_refresh_rate_summary_custom">Mae\'n codi\'r gyfradd adnewyddu yn awtomatig o 60 i %1$d Hz ar gyfer rhai cynnwys. Mae\'n defnyddio mwy o fatri.</string>
+    <string name="touchscreen_gesture_settings_title">Ystumiau sgrin gyffwrdd</string>
+    <string name="touchscreen_gesture_settings_summary">Perfformio ystumiau amrywiol ar y sgrin gyffwrdd am weithredoedd cyflym</string>
+    <string name="wake_when_plugged_or_unplugged_title">Deffro wrth gysylltu â phŵer</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Troi\'r sgrin ymlaen wrth gysylltu neu ddatgysylltu â phŵer</string>
+    <string name="fast_charging_title">Gwefru cyflym</string>
+    <string name="fast_charging_summary">Analluoga i leihau\'r gwres sy\'n cael ei gynhyrchu gan y ddyfais wrth wefru neu i ymestyn oes y batri</string>
 </resources>

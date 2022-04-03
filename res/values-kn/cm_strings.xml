@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,12 +15,37 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">ನೀವು ಡೆವಲಪ್‍ಮೆಂಟ್ ಸೆಟ್ಟಿಂಗ್ಸ್ ಸಕ್ರಿಯಗೊಳಿಸಲು <xliff:g id="step_count">%1$d</xliff:g> ಹಂತದಷ್ತು ದೂರವಿದ್ದೀರಿ.</item>
+        <item quantity="other">ನೀವು ಡೆವಲಪ್‍ಮೆಂಟ್ ಸೆಟ್ಟಿಂಗ್ಸ್ ಸಕ್ರಿಯಗೊಳಿಸಲು <xliff:g id="step_count">%1$d</xliff:g> ಹಂತಗಳಷ್ಟು ದೂರವಿದ್ದೀರಿ.</item>
+    </plurals>
+    <string name="show_dev_on_cm">ನೀವು ಡೆವಲಪ್‍ಮೆಂಟ್ ಸೆಟ್ಘಿಂಗ್ಸನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದ್ದೀರಿ!</string>
+    <string name="show_dev_already_cm">ಅಗತ್ಯವಿಲ್ಲ, ನೀವು ಈಗಾಗಲೇ ಡೆವಲಪ್‍ಮೆಂಟ್ ಸೆಟ್ಟಿಂಗ್ಸನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದ್ದೀರಿ.</string>
     <string name="lineagelicense_title">LineageOS ಕಾನೂನು</string>
+    <string name="status_bar_double_tap_to_sleep_title">ನಿದ್ರಿಸಲು ಮುಟ್ಟು</string>
+    <string name="status_bar_double_tap_to_sleep_summary">ಪರದೆಯನ್ನು ನಂದಿಸಲು ಸ್ಥಿತಿಪಟ್ಟಿಕೆ ಅಥವಾ ಬಿಗಿದ ಪರದೆಯನ್ನು ಜೋಡಿವತ್ತ್ತಿ</string>
+    <string name="increasing_ring_volume_option_title">ವೃದ್ಧಿಯಾಗುವ ಗಂಟೆನಾದ</string>
+    <string name="increasing_ring_min_volume_title">ಆರಂಭ ವಾಲ್ಯೂಂ</string>
+    <string name="increasing_ring_ramp_up_time_title">ಚಲನಶೀಲ ಅವಧಿ</string>
     <string name="volume_link_notification_title">ಗಂಟೆನಾದ &amp; ಸೂಚನೆ ಶಬ್ದಮಟ್ಟ ತಳಕಿಸು</string>
     <string name="unlock_scramble_pin_layout_title">ವಿನ್ಯಾಸವನ್ನು ಅಸ್ತವ್ಯಸ್ತಗೊಳಿಸು</string>
     <string name="unlock_scramble_pin_layout_summary">ಸಾಧನವನ್ನು ಅನ್‍ಲಾಕ್ ಮಾಡುವಾಗ ಪಿನ್ ವಿನ್ಯಾಸವನ್ನು ಅಸ್ತವ್ಯಸ್ತಗೊಳಿಸು</string>
+    <string name="lock_settings_picker_pattern_size_message">ರೂಪಿಕೆಯ ಗಾತ್ರವನ್ನು ಆರಿಸು</string>
     <string name="lockpattern_settings_enable_error_path_title">ನಮೂನೆ ದೋಷವನ್ನು ಪ್ರದರ್ಶಿಸು</string>
     <string name="lockpattern_settings_enable_dots_title">ನಮೂನೆ ಚುಕ್ಕಿಗಳನ್ನು ಪ್ರದರ್ಶಿಸು</string>
+    <string name="lockscreen_media_art_title">ಮಾಧ್ಯಮದ ಕವಚ ಕಲೆ ಪ್ರದರ್ಶಿಸು</string>
+    <string name="lockscreen_visualizer_title">ಸಂಗೀತ ದೃಶ್ಯೀಕರಣ ಪ್ರದರ್ಶಿಸು</string>
+    <string name="high_touch_sensitivity_title">ಅಧಿಕ ಸ್ಪರ್ಶ ಸಂವೇದನೆ</string>
+    <string name="high_touch_sensitivity_summary">ಸ್ಪರ್ಶಪರದೆ ಸಂವೇದನೆ ವೃದ್ಧಿಸಿದರೆ ಕೈಗವಸ ಧರಿಸಿಯೂ ಬಳಸಬಹುದು</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi ದತ್ತಾಂಶ</string>
     <string name="data_usage_app_restrict_wifi_summary">Wi\u2011Fi ದತ್ತಾಂಶದ ಬಳಕೆ ಸಶಕ್ತಿಸು</string>
+    <string name="proximity_wake_title">ಆಕಸ್ಮಿಕವಾಗಿ ಎಚ್ಚರವಾಗುವಿಕೆಯನ್ನು ತಡೆ</string>
+    <string name="proximity_wake_summary">ಪರದೆಯನ್ನು ಎಚ್ಚರಿಸುವ ಮೊದಲು ಸಾಮೀಪ್ಯ ಸಂವೇದಕವನ್ನು ಪರಿಶೀಲಿಸು</string>
+    <string name="touchscreen_hovering_title">ಸ್ಪರ್ಶಪರದೆ ಹರಿದಾಡುವಿಕೆ</string>
+    <string name="touchscreen_hovering_summary">ಜಾಲ ಬ್ರೌಸರ್, ದೂರ ಮೇಲ್ತೆರೆ, ಇತರೆಗಳಲ್ಲಿ ಇಲಿಯ ಹಾಗೆ ಪರದೆ ಮೇಲೆ ಹರಿದಾಡಲು ಅನುಮತಿಸುತ್ತದೆ</string>
+    <string name="peak_refresh_rate_summary_custom">ಕೆಲವು ವಿಷಯಗಳಿಗೆ ರಿಫ್ರೆಶ್ ರೇಟ್ ಅನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ 60 ರಿಂದ %1$d ಕ್ಕೆ ಏರಿಸುತ್ತದೆ. ಬ್ಯಾಟರಿ ಬಳಕೆಯನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.</string>
+    <string name="touchscreen_gesture_settings_title">ಸ್ಪರ್ಷಪರದೆಯ ಸನ್ನೆಗಳು</string>
+    <string name="touchscreen_gesture_settings_summary">ತ್ವರಿತ ಪ್ರತಿಕ್ರಿಯೆಗಾಗಿ ಸ್ಪರ್ಶಪರದೆ ಮೇಲೆ ವಿವಿಧ ಸನ್ನೆಗಳನ್ನು ಮಾಡು</string>
+    <string name="wake_when_plugged_or_unplugged_title">ಪ್ಲಗ್‍ಮಾಡಿದಾಗ ಎಬ್ಬಿಸು</string>
+    <string name="wake_when_plugged_or_unplugged_summary">ವಿದ್ಯುತ್ ಮೂಲವನ್ನು ಸಂಪರ್ಕಿಸಿದಾಗ ಅಥವಾ ಅಸಂಪರ್ಕಿಸಿದಾಗ ಪರದೆಯನ್ನು ಆನ್ ಮಾಡು</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,15 +15,48 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Garatzaileen aukerak gaitzeko urrats <xliff:g id="step_count">%1$d</xliff:g>era zaude.</item>
+        <item quantity="other">Garatzaileen aukerak gaitzeko <xliff:g id="step_count">%1$d</xliff:g> urratsera zaude.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Garatzaileen aukerak gaitu dituzu!</string>
+    <string name="show_dev_already_cm">Ez da behar, aurretik gaitu dituzu garatzaileek aukerak.</string>
     <string name="lineagelicense_title">LineageOS lizentzia</string>
+    <string name="status_bar_double_tap_to_sleep_title">Sakatu lokartzeko</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Sakatu birritan egoera-barra edo blokeo-pantaila pantaila itzaltzeko</string>
+    <string name="increasing_ring_volume_option_title">Dei doinu gorakorra</string>
+    <string name="increasing_ring_min_volume_title">Hasierako bolumena</string>
+    <string name="increasing_ring_ramp_up_time_title">Maldaren iraupena</string>
     <string name="volume_link_notification_title">Lotu dei doinuaren eta jakinarazpenen bolumenak</string>
     <string name="unlock_scramble_pin_layout_title">Zorizko diseinua</string>
     <string name="unlock_scramble_pin_layout_summary">PIN zenbakiaren antolaketa nahastu gailua desblokeatzean</string>
     <string name="lock_settings_picker_pattern_size_message">Aukeratu ereduaren tamaina</string>
     <string name="lockpattern_settings_enable_error_path_title">Erakutsi eredu errorea</string>
     <string name="lockpattern_settings_enable_dots_title">Erakutsi ereduaren puntuak</string>
+    <string name="lockscreen_media_art_title">Bistaratu azalaren irudia</string>
+    <string name="lockscreen_visualizer_title">Bistaratu musika irudikatzea</string>
+    <string name="high_touch_sensitivity_title">Ukipen sentsibilitate altua</string>
+    <string name="high_touch_sensitivity_summary">Areagotu pantailaren sentsibilitatea, eskularruekin erabilgarria izan dadin</string>
     <string name="data_usage_app_restrict_vpn">VPN datuak</string>
     <string name="data_usage_app_restrict_vpn_summary">Gaitu VPN datuen erabilera</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi datuak</string>
     <string name="data_usage_app_restrict_wifi_summary">Gaitu of Wi\u2011Fi datuen erabilera</string>
+    <string name="app_notification_sound_timeout_title">Gutxieneko denbora jakinarazpen soinuen artean</string>
+    <string name="app_notification_sound_timeout_summary_template">Ez baimendu soinua edo bibrazioa aurrekotik denbora bat pasatu arte: <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Mugarik gabe</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 segundo</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 segundo</string>
+    <string name="app_notification_sound_timeout_value_1_minute">minutu bat</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minutu</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minutu</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minutu</string>
+    <string name="proximity_wake_title">Eragotzi ustekabeko esnatzea</string>
+    <string name="proximity_wake_summary">Kontsultatu gertutasun sentsorea pantaila piztu baino lehen</string>
+    <string name="touchscreen_hovering_title">Pantailaren gainetik pasatu</string>
+    <string name="touchscreen_hovering_summary">Sagua bailitzan pantailaren gainetik pasatzea ahalbidetzen dizu, nabigatzaileetan, urruneko mahaigainetan, eta abar</string>
+    <string name="peak_refresh_rate_summary_custom">Automatikoki igotzen du freskatze-abiadura 60 Hz-tik %1$d Hz-ra zenbait edukitarako. Bateria-erabilera luzatzen du.</string>
+    <string name="touchscreen_gesture_settings_title">Ukitze-pantailaren keinuak</string>
+    <string name="touchscreen_gesture_settings_summary">Egin ukimen-pantailako keinuak ekintza azkarretarako</string>
+    <string name="wake_when_plugged_or_unplugged_title">Esnatu kargadorearekin</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Piztu pantaila kargadorea konektatu edo deskonektatzean</string>
 </resources>

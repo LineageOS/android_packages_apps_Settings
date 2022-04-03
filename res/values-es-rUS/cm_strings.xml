@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,13 +15,46 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Estás a <xliff:g id="step_count">%1$d</xliff:g> paso de activar los ajustes de desarrollo.</item>
+        <item quantity="other">Estás a <xliff:g id="step_count">%1$d</xliff:g> pasos de activar los ajustes de desarrollo.</item>
+    </plurals>
+    <string name="show_dev_on_cm">¡Has activado los ajustes de desarrollo!</string>
+    <string name="show_dev_already_cm">No es necesario. Los ajustes de desarrollo ya están activos.</string>
     <string name="lineagelicense_title">Licencia de LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Pulsar para suspender</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Pulsa dos veces en la barra de estado o en la pantalla de bloqueo para apagar la pantalla</string>
+    <string name="increasing_ring_volume_option_title">Volumen de tono ascendente</string>
+    <string name="increasing_ring_min_volume_title">Volumen de inicio</string>
+    <string name="increasing_ring_ramp_up_time_title">Tiempo de incremento</string>
     <string name="volume_link_notification_title">Vincular tonos y volumen de notificaciones</string>
     <string name="unlock_scramble_pin_layout_title">Disposición aleatoria</string>
     <string name="unlock_scramble_pin_layout_summary">Cambiar la disposición de los números del PIN para desbloquear el dispositivo</string>
     <string name="lock_settings_picker_pattern_size_message">Elija un tamaño de patrón</string>
     <string name="lockpattern_settings_enable_error_path_title">Mostrar patrón erróneo</string>
     <string name="lockpattern_settings_enable_dots_title">Mostrar puntos de patrón</string>
+    <string name="lockscreen_media_art_title">Mostrar portada del álbum</string>
+    <string name="lockscreen_visualizer_title">Mostrar visualizador musical</string>
+    <string name="high_touch_sensitivity_title">Alta sensibilidad táctil</string>
+    <string name="high_touch_sensitivity_summary">Aumentar la sensibilidad del panel táctil para que pueda usarse con guantes</string>
     <string name="data_usage_app_restrict_wifi">Datos Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">Activar el uso de datos Wi\u2011Fi</string>
+    <string name="app_notification_sound_timeout_title">Tiempo mínimo entre los sonidos de notificación</string>
+    <string name="app_notification_sound_timeout_summary_template">Permitir sonidos o vibraciones no más de una vez cada <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Sin restricción</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 segundos</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 segundos</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minuto</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minutos</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
+    <string name="proximity_wake_title">Prevenir encendido accidental</string>
+    <string name="proximity_wake_summary">Comprobar el sensor de proximidad antes de encender la pantalla</string>
+    <string name="touchscreen_hovering_title">Pantalla táctil deslizante</string>
+    <string name="touchscreen_hovering_summary">Permite deslizarse por la pantalla como un ratón en navegadores, escritorios remotos, etc</string>
+    <string name="peak_refresh_rate_summary_custom">Aumentar automáticamente la frecuencia de actualización de 60 Hz a %1$d Hz para cierto contenido. Incrementa el uso de batería</string>
+    <string name="touchscreen_gesture_settings_title">Gestos de pantalla táctil</string>
+    <string name="touchscreen_gesture_settings_summary">Realizar varios gestos en la pantalla para acciones rápidas</string>
+    <string name="wake_when_plugged_or_unplugged_title">Encender al conectar el cargador</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Encender la pantalla al conectar o desconectar el cargador</string>
 </resources>

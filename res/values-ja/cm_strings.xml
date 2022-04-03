@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,33 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="other">開発者向けオプションが有効になるまであと<xliff:g id="step_count">%1$d</xliff:g>ステップです。</item>
+    </plurals>
+    <string name="show_dev_on_cm">開発者向けオプションが有効になりました。</string>
+    <string name="show_dev_already_cm">必要ありません、開発者向けオプションは既に有効になっています。</string>
+    <string name="keyboard_extras_title">その他</string>
+    <string name="advanced_keyboard_settings_title">高度な設定</string>
     <string name="adb_enable_root">ルート状態でのデバッグ</string>
     <string name="adb_enable_summary_root">ルート状態でも Android デバッグを許可する</string>
     <string name="backup_transport_setting_label">バックアップ プロバイダの変更</string>
     <string name="backup_transport_title">バックアップ プロバイダの選択</string>
     <string name="lineagelicense_title">LineageOS 利用規約</string>
+    <string name="status_bar_double_tap_to_sleep_title">ロック画面をタップしてスリープ状態にする</string>
+    <string name="status_bar_double_tap_to_sleep_summary">ステータスバーかロックスクリーンをダブルタップしてディスプレイを消灯します</string>
+    <string name="increasing_ring_volume_option_title">着信音量の増幅</string>
+    <string name="increasing_ring_min_volume_title">開始音量</string>
+    <string name="increasing_ring_ramp_up_time_title">増幅時間</string>
     <string name="volume_link_notification_title">着信と通知の音量をリンク</string>
     <string name="unlock_scramble_pin_layout_title">スクランブルレイアウト</string>
     <string name="unlock_scramble_pin_layout_summary">端末のロック解除時にPINレイアウトをランダムにする</string>
     <string name="lock_settings_picker_pattern_size_message">パターンサイズを選択してください</string>
     <string name="lockpattern_settings_enable_error_path_title">間違えたパターンを表示</string>
     <string name="lockpattern_settings_enable_dots_title">パターンのドットを表示</string>
+    <string name="lockscreen_media_art_title">メディアのカバーアートを表示</string>
+    <string name="lockscreen_visualizer_title">音楽ビジュアライザを表示</string>
+    <string name="high_touch_sensitivity_title">高感度タッチ</string>
+    <string name="high_touch_sensitivity_summary">手袋を着けたまま使用できるようにタッチ画面の感度を向上させる</string>
     <string name="tethering_allow_vpn_upstreams_title">クライアントの VPN 使用を許可</string>
     <string name="tethering_allow_vpn_upstreams_summary">この端末の VPN 接続をホットスポットのクライアントが送信接続に使うことを許可する</string>
     <string name="data_usage_app_restrict_all">ネットワークアクセスを許可する</string>
@@ -36,6 +52,29 @@
     <string name="data_usage_app_restrict_vpn_summary">VPN データ使用量を有効化する</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi データ使用量</string>
     <string name="data_usage_app_restrict_wifi_summary">Wi\u2011Fi データ使用量を有効化します</string>
+    <string name="app_notification_sound_timeout_title">通知音の最小間隔</string>
+    <string name="app_notification_sound_timeout_summary_template"><xliff:g id="duration">%1$s</xliff:g>間に1回以上の通知音またはバイブレーションを許可しない</string>
+    <string name="app_notification_sound_timeout_value_none">無制限</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10秒</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30秒</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1分</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5分</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10分</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30分</string>
+    <string name="proximity_wake_title">誤作動を防止</string>
+    <string name="proximity_wake_summary">スリープ解除する前に接近センサーで確認する</string>
+    <string name="max_refresh_rate_title">最高リフレッシュレート</string>
+    <string name="min_refresh_rate_title">最小リフレッシュレート</string>
     <string name="show_navbar_hint_title">ナビゲーションバーのヒント</string>
     <string name="show_navbar_hint_summary">画面下部にナビゲーションバーのヒントを表示します</string>
+    <string name="connected_tws_device_saved_title">保存されたイヤホン</string>
+    <string name="touchscreen_hovering_title">タッチ画面のホバリング</string>
+    <string name="touchscreen_hovering_summary">ウェブブラウザやリモードデスクトップなどでマウスのようにホバリングできるようにする</string>
+    <string name="peak_refresh_rate_summary_custom">コンテンツに応じて、リフレッシュ レートを自動的に 60 Hz から %1$d Hz に変更します。電池使用量が増えます。</string>
+    <string name="touchscreen_gesture_settings_title">タッチスクリーンジェスチャー</string>
+    <string name="touchscreen_gesture_settings_summary">様々なタッチスクリーンジェスチャーですばやくアクションを実行します</string>
+    <string name="wake_when_plugged_or_unplugged_title">接続時にスリープ解除</string>
+    <string name="wake_when_plugged_or_unplugged_summary">電源を接続または切断したときに画面を点灯します</string>
+    <string name="fast_charging_title">急速充電</string>
+    <string name="fast_charging_summary">充電中の端末の発熱を減らしバッテリー寿命を伸ばすためには無効にしてください</string>
 </resources>

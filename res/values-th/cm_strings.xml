@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,15 +15,31 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="other">คุณเหลืออีก <xliff:g id="step_count">%1$d</xliff:g> ขั้นก่อนจะสามารถเปิดใช้งานการตั้งค่าการพัฒนา</item>
+    </plurals>
+    <string name="show_dev_on_cm">คุณเปิดใช้งานการตั้งค่าการพัฒนาแล้ว!</string>
+    <string name="show_dev_already_cm">ไม่จำเป็น คุณได้เปิดใช้งานการตั้งค่าการพัฒนาแล้ว</string>
+    <string name="keyboard_extras_title">เพิ่มเติม</string>
+    <string name="advanced_keyboard_settings_title">การตั้งค่าขั้นสูง</string>
     <string name="adb_enable_root">การดีบักแบบรูท</string>
     <string name="adb_enable_summary_root">อนุญาตการดีบัก Android ในฐานะรูท</string>
     <string name="lineagelicense_title">เกี่ยวกับกฎหมาย LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">แตะเพื่อหลับ</string>
+    <string name="status_bar_double_tap_to_sleep_summary">แตะสองครั้งที่แถบสถานะเพื่อพักหน้าจอ</string>
+    <string name="increasing_ring_volume_option_title">การเพิ่มเสียงเรียกเข้า</string>
+    <string name="increasing_ring_min_volume_title">ระดับเสียงเริ่มต้น</string>
+    <string name="increasing_ring_ramp_up_time_title">ระยะเวลาที่ดังเพิ่มขึ้น</string>
     <string name="volume_link_notification_title">เชื่อมต่อความดังเสียงเรียกเข้า&amp; เสียงแจ้งเตือน</string>
     <string name="unlock_scramble_pin_layout_title">แบบสุ่มสลับ</string>
     <string name="unlock_scramble_pin_layout_summary">สุ่มสลับรหัสเมื่อปลดล็อคอุปกรณ์</string>
     <string name="lock_settings_picker_pattern_size_message">เลือกขนาดรูปแบบ</string>
     <string name="lockpattern_settings_enable_error_path_title">แสดงลายเส้นที่ผิดพลาด</string>
     <string name="lockpattern_settings_enable_dots_title">แสดงจุดที่ลากผ่าน</string>
+    <string name="lockscreen_media_art_title">แสดงหน้าปกสื่อ</string>
+    <string name="lockscreen_visualizer_title">แสดงเส้นจังหวะเพลง</string>
+    <string name="high_touch_sensitivity_title">ความไวต่อสัมผัสสูง</string>
+    <string name="high_touch_sensitivity_summary">เพิ่มความไวของหน้าจอสัมผัสเพื่อสามารถใช้ขณะสวมถุงมือ</string>
     <string name="tethering_allow_vpn_upstreams_title">อนุญาตให้ไคลเอ็นต์ใช้ VPN</string>
     <string name="tethering_allow_vpn_upstreams_summary">อนุญาตให้ไคลเอ็นต์ฮอตสปอตเชื่อมต่อ VPN ของอุปกรณ์นี้ สำหรับการเชื่อมต่ออัปสตรีม</string>
     <string name="data_usage_app_restrict_mobile">ข้อมูลมือถือ</string>
@@ -32,4 +48,26 @@
     <string name="data_usage_app_restrict_vpn_summary">เปิดใช้งานการใช้ข้อมูล VPN</string>
     <string name="data_usage_app_restrict_wifi">ข้อมูล Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">เปิดการใช้งานของข้อมูล Wi\u2011Fi</string>
+    <string name="app_notification_sound_timeout_title">ระยะเวลาขั้นต่ำระหว่างเสียงการแจ้งเตือน</string>
+    <string name="app_notification_sound_timeout_summary_template">อนุญาตให้มีเสียงหรือการสั่นไม่เกินหนึ่งครั้งทุก <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">ไม่จำกัด</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 วินาที</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 วินาที</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 นาที</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 นาที</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 นาที</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 นาที</string>
+    <string name="proximity_wake_title">ป้องกันการเปิดหน้าจอโดยไม่เจตนา</string>
+    <string name="proximity_wake_summary">ตรวจสอบด้วยเซ็นเซอร์ก่อนปลุกหน้าจอ</string>
+    <string name="min_refresh_rate_title">อัตรารีเฟรชต่ำสุด</string>
+    <string name="connected_tws_device_saved_title">หูฟังที่บันทึกไว้</string>
+    <string name="touchscreen_hovering_title">วางนิ้วเหนือจอ</string>
+    <string name="touchscreen_hovering_summary">อนุญาตให้คุณสามารถวางนิ้วเหนือจอเหมือนการวางเม้าส์เหนือปุ่มในคอมพิวเตอร์</string>
+    <string name="peak_refresh_rate_summary_custom">เพิ่มอัตราการรีเฟรชจาก 60 เป็น %1$d Hz โดยอัตโนมัติสำหรับเนื้อหาบางรายการ เพิ่มการใช้งานแบตเตอรี่</string>
+    <string name="touchscreen_gesture_settings_title">ท่าทางสัมผัสบนหน้าจอ</string>
+    <string name="touchscreen_gesture_settings_summary">ใช้ท่าทางสัมผัสรูปแบบต่าง ๆ เพื่อการทำงานที่รวดเร็วขึ้น</string>
+    <string name="wake_when_plugged_or_unplugged_title">ตื่นเมื่อเสียบปลั๊ก</string>
+    <string name="wake_when_plugged_or_unplugged_summary">เปิดหน้าจอเมื่อเชื่อมต่อหรือตัดการเชื่อมต่อกับแหล่งจ่ายไฟ</string>
+    <string name="fast_charging_title">ชาร์จเร็ว</string>
+    <string name="fast_charging_summary">ปิดใช้งานเพื่อลดความร้อนที่เกิดจากอุปกรณ์ขณะชาร์จ หรือเพื่อยืดอายุการใช้งานของแบตเตอรี่</string>
 </resources>

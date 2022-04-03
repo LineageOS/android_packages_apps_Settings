@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,10 +15,38 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Jy is nou <xliff:g id="step_count">%1$d</xliff:g> stap weg van bemagtigende ontwikkelaar opsies.</item>
+        <item quantity="other">Jy is nou <xliff:g id="step_count">%1$d</xliff:g> stappe weg van bemagtigende ontwikkelaar opsies.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Jy het die ontwikkeling opsies geaktiveer!</string>
+    <string name="show_dev_already_cm">Nie nodig, het jy reeds die ontwikkeling opsies geaktiveer.</string>
     <string name="lineagelicense_title">LineageOS Regs</string>
+    <string name="increasing_ring_volume_option_title">Toenemende luitoon volume</string>
+    <string name="increasing_ring_min_volume_title">Begin volume</string>
+    <string name="increasing_ring_ramp_up_time_title">Tydsduur</string>
     <string name="unlock_scramble_pin_layout_title">Skommel uitleg</string>
     <string name="unlock_scramble_pin_layout_summary">Skommel PIN uitleg wanneer die toestel ontsluit word</string>
     <string name="lock_settings_picker_pattern_size_message">Kies \'n patroongrootte</string>
     <string name="lockpattern_settings_enable_error_path_title">Wys patroon fout</string>
     <string name="lockpattern_settings_enable_dots_title">Wys patroon kolle</string>
+    <string name="lockscreen_media_art_title">Wys media kuns</string>
+    <string name="lockscreen_visualizer_title">Vertoon musiek visualiseerder</string>
+    <string name="high_touch_sensitivity_title">Hoë raak sensitiwiteit</string>
+    <string name="high_touch_sensitivity_summary">Verhoog skerm sensitiwiteit, sodat dit kan gebruik word met die dra van handskoene</string>
+    <string name="app_notification_sound_timeout_title">Minimum tyd tussen kennisgewingklanke</string>
+    <string name="app_notification_sound_timeout_summary_template">Laat geluide of vibrasie nie meer as een keer elke <xliff:g id="duration">%1$s </xliff:g> toe</string>
+    <string name="app_notification_sound_timeout_value_none">Geen beperkings</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 sekondes</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 sekondes</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minuut</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minute</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minute</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minute</string>
+    <string name="proximity_wake_title">Voorkom toevallige wakker word</string>
+    <string name="touchscreen_hovering_title">Raakskerm swewing</string>
+    <string name="touchscreen_hovering_summary">Laat toe om bo die skerm te sweef soos \'n muis in web blaaiers, \"remote desktops\", ens</string>
+    <string name="peak_refresh_rate_summary_custom">Verhoog die herlaaikoers vir sommige inhoud outomaties van 60 na %1$d Hz. Verhoog batterygebruik.</string>
+    <string name="wake_when_plugged_or_unplugged_title">Word wakker op in/uit prop</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Skakel die skerm aan met die koppeling of ontkoppeling van \'n kragbron</string>
 </resources>

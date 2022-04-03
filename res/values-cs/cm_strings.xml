@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,36 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> krok od povolení vývojářských nastavení.</item>
+        <item quantity="few">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> kroky od povolení vývojářských nastavení.</item>
+        <item quantity="many">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> kroků od povolení vývojářských nastavení.</item>
+        <item quantity="other">Už jste jen <xliff:g id="step_count">%1$d</xliff:g> kroků od povolení vývojářských nastavení.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Vývojářské nastavení je povoleno!</string>
+    <string name="show_dev_already_cm">Vývojářské nastavení je již povoleno.</string>
+    <string name="keyboard_extras_title">Doplňky</string>
+    <string name="advanced_keyboard_settings_title">Pokročilá nastavení</string>
     <string name="adb_enable_root">Ladění s\u00a0právy root</string>
     <string name="adb_enable_summary_root">Povolit spuštění ladění Androidu s\u00a0právy root</string>
     <string name="backup_transport_setting_label">Změnit poskytovatele zálohování</string>
     <string name="backup_transport_title">Vyberte poskytovatele zálohování</string>
     <string name="lineagelicense_title">Právní ujednání LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Klepnutím uspat</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Dvojitým poklepáním na stavovou lištu nebo zamykací obrazovku vypnout obrazovku</string>
+    <string name="increasing_ring_volume_option_title">Zvyšující se hlasitost vyzvánění</string>
+    <string name="increasing_ring_min_volume_title">Počáteční hlasitost</string>
+    <string name="increasing_ring_ramp_up_time_title">Doba zesilování</string>
     <string name="volume_link_notification_title">Spojit hlasitost vyzvánění a oznámení</string>
     <string name="unlock_scramble_pin_layout_title">Přeházet rozložení</string>
     <string name="unlock_scramble_pin_layout_summary">Přeházet rozložení pro zadání PIN při odemykání zařízení</string>
     <string name="lock_settings_picker_pattern_size_message">Zvolit velikost vzoru</string>
     <string name="lockpattern_settings_enable_error_path_title">Zobrazit cestu chybného gesta</string>
     <string name="lockpattern_settings_enable_dots_title">Zobrazit body gesta</string>
+    <string name="lockscreen_media_art_title">Zobrazit obal médií</string>
+    <string name="lockscreen_visualizer_title">Zobrazit hudební vizualizaci</string>
+    <string name="high_touch_sensitivity_title">Vysoká citlivost dotyku</string>
+    <string name="high_touch_sensitivity_summary">Zvýšení citlivosti dotykové vrstvy, což umožňuje použít rukavice</string>
     <string name="tethering_allow_vpn_upstreams_title">Umožnit klientům používat VPN</string>
     <string name="tethering_allow_vpn_upstreams_summary">Povolit klientům hotspotu používat připojení VPN tohoto zařízení pro upstream konektivitu</string>
     <string name="data_usage_app_restrict_all">Povolit přístup k síti</string>
@@ -36,6 +55,28 @@
     <string name="data_usage_app_restrict_vpn_summary">Povolit používání VPN dat</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi data</string>
     <string name="data_usage_app_restrict_wifi_summary">Povolit používání Wi\u2011Fi dat</string>
+    <string name="app_notification_sound_timeout_title">Minimální doba mezi zvuky oznámení</string>
+    <string name="app_notification_sound_timeout_summary_template">Povolit zvuky nebo vibrace ne více než jednou každých <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Bez omezení</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 sekund</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 sekund</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 minuta</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 minut</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 minut</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 minut</string>
+    <string name="proximity_wake_title">Zabránit nechtěnému probuzení</string>
+    <string name="proximity_wake_summary">Kontrolovat senzor přiblížení pro zabránění nechtěného probuzení</string>
+    <string name="min_refresh_rate_title">Minimální obnovovací frekvence</string>
     <string name="show_navbar_hint_title">Navigační nápověda</string>
     <string name="show_navbar_hint_summary">Zobrazit navigační nápovědu ve spodní části obrazovky (tenký proužek)</string>
+    <string name="connected_tws_device_saved_title">Uložená sluchátka</string>
+    <string name="touchscreen_hovering_title">Detekce nad obrazovkou</string>
+    <string name="touchscreen_hovering_summary">Umožňuje pohybovat se jakoby nad obsahem obrazovky podobně, jako když myší najedete na nějaký ovládací prvek</string>
+    <string name="peak_refresh_rate_summary_custom">U některého obsahu automaticky zvýší obnovovací frekvenci z 60 na %1$d Hz. Zvyšuje využití baterie.</string>
+    <string name="touchscreen_gesture_settings_title">Gesta na obrazovce</string>
+    <string name="touchscreen_gesture_settings_summary">Možnost spustit rychlou akci pomocí různých gest na obrazovce</string>
+    <string name="wake_when_plugged_or_unplugged_title">Probudit při nabíjení</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Zapnout obrazovku při připojení nebo odpojení nabíječky</string>
+    <string name="fast_charging_title">Rychlé nabíjení</string>
+    <string name="fast_charging_summary">Vypnutím snížíte teplo produkované zařízením během nabíjení nebo prodloužíte životnost baterie</string>
 </resources>

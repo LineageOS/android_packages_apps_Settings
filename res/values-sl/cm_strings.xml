@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,36 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Zdaj ste <xliff:g id="step_count">%1$d</xliff:g> korak pred omogočenjem nastavitev za razvijalce.</item>
+        <item quantity="two">Zdaj ste <xliff:g id="step_count">%1$d</xliff:g> koraka pred omogočenjem nastavitev za razvijalce.</item>
+        <item quantity="few">Zdaj ste <xliff:g id="step_count">%1$d</xliff:g> korake pred omogočenjem nastavitev za razvijalce.</item>
+        <item quantity="other">Zdaj ste <xliff:g id="step_count">%1$d</xliff:g> korakov pred omogočenjem nastavitev za razvijalce.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Omogočili ste nastavitve za razvijalce!</string>
+    <string name="show_dev_already_cm">Ni treba, ste že omogočili nastavitve za razvijalce.</string>
+    <string name="keyboard_extras_title">Dodatki</string>
+    <string name="advanced_keyboard_settings_title">Napredne nastavitve</string>
     <string name="adb_enable_root">Skrbniško razhroščevanje</string>
     <string name="adb_enable_summary_root">Dovoli izvajanje Android razhroščevanja kot skrbnik</string>
     <string name="backup_transport_setting_label">Spremeni ponudnika varnostnih kopij</string>
     <string name="backup_transport_title">Izberite ponudnika varnostnih kopij</string>
     <string name="lineagelicense_title">Pravna obvestila LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Tap za spanje</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Dvakrat tapnite na vrstico stanja ali zaklenjen zaslon, da izklopite zaslon</string>
+    <string name="increasing_ring_volume_option_title">Naraščajoča glasnost zvonjenja</string>
+    <string name="increasing_ring_min_volume_title">Začetna glasnost</string>
+    <string name="increasing_ring_ramp_up_time_title">Čas povečanja</string>
     <string name="volume_link_notification_title">Poveži glasnosti zvonjenja in obvestil</string>
     <string name="unlock_scramble_pin_layout_title">Premešaj razporeditev</string>
     <string name="unlock_scramble_pin_layout_summary">Premešaj razporeditev PIN ob odklepanju naprave</string>
     <string name="lock_settings_picker_pattern_size_message">Izberite velikost vzorca</string>
     <string name="lockpattern_settings_enable_error_path_title">Prikaži napako vzorca</string>
     <string name="lockpattern_settings_enable_dots_title">Prikaži pike vzorca</string>
+    <string name="lockscreen_media_art_title">Prikaži naslovnico večpredstavnosti</string>
+    <string name="lockscreen_visualizer_title">Prikaži vizualizatorja glasbe</string>
+    <string name="high_touch_sensitivity_title">Visoka občutljivost dotika</string>
+    <string name="high_touch_sensitivity_summary">Povečaj občutljivost dotika, tako da ga lahko uporabite, ko nosite rokavice</string>
     <string name="tethering_allow_vpn_upstreams_title">Dovoli odjemalcem uporabo VPN-jev</string>
     <string name="tethering_allow_vpn_upstreams_summary">Dovoli odjemalcem dostopne točke uporabo VPN povezav te naprave za povezovanje</string>
     <string name="data_usage_app_restrict_all">Dovoli dostop do omrežja</string>
@@ -36,6 +55,29 @@
     <string name="data_usage_app_restrict_vpn_summary">Omogoči uporabo VPN podatkov</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi podatki</string>
     <string name="data_usage_app_restrict_wifi_summary">Omogoči uporabo Wi\u2011Fi podatkov</string>
+    <string name="app_notification_sound_timeout_title">Najmanjši čas med zvoki obvestil</string>
+    <string name="app_notification_sound_timeout_summary_template">Najmanjši čas med zvoki ali vibriranji: <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Brez omejitev</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 s</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 s</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 min.</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 min.</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 min.</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 min.</string>
+    <string name="proximity_wake_title">Prepreči nenamerno bujenje</string>
+    <string name="proximity_wake_summary">Pred bujenjem zaslona preveri tipalo bližine</string>
+    <string name="max_refresh_rate_title">Najvišja hitrost osveževanja</string>
+    <string name="min_refresh_rate_title">Najmanjša hitrost osveževanja</string>
     <string name="show_navbar_hint_title">Namig krmarjenja</string>
     <string name="show_navbar_hint_summary">Pokaži namig krmarjenja na dnu zaslona</string>
+    <string name="connected_tws_device_saved_title">Shranjene brezž. slušalke</string>
+    <string name="touchscreen_hovering_title">Prehod zaslona na dotik</string>
+    <string name="touchscreen_hovering_summary">Dovoli vam prehod nad zaslonom, kot miška v spletnih brskalnikih, oddaljenih namizjih itd.</string>
+    <string name="peak_refresh_rate_summary_custom">Samodejno poveča hitrost osveževanja s 60 na %1$d Hz za nekatere vsebine. Poveča porabo baterije.</string>
+    <string name="touchscreen_gesture_settings_title">Poteze na zaslonu na dotik</string>
+    <string name="touchscreen_gesture_settings_summary">Za hitra dejanja na zaslonu na dotik izvedite različne poteze</string>
+    <string name="wake_when_plugged_or_unplugged_title">Zbudi ob priključitvi napajalnika</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Vklopi zaslon ob priključitvi/izključitvi napajanja</string>
+    <string name="fast_charging_title">Hitro polnjenje</string>
+    <string name="fast_charging_summary">Onemogočite za zmanjšanje vročine, povzročene iz naprave med polnjenjem ali za podaljšanje življenjske dobe baterije</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,17 +15,34 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Tərtibatçı tənzimləmələrinin fəallaşdırılmasına <xliff:g id="step_count">%1$d</xliff:g> addım qaldı.</item>
+        <item quantity="other">Tərtibatçı tənzimləmələrinin fəallaşdırılmasına <xliff:g id="step_count">%1$d</xliff:g> addım qaldı.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Tərtibatçı tənzimləmələrini fəallaşdırdınız!</string>
+    <string name="show_dev_already_cm">Artıq tərtibatçı tənzimləmələrini fəallaşdırmısınız.</string>
+    <string name="keyboard_extras_title">Əlavələr</string>
+    <string name="advanced_keyboard_settings_title">Qabaqcıl tənzimləmələr</string>
     <string name="adb_enable_root">Rootlu sazlama</string>
     <string name="adb_enable_summary_root">Android sazlamanın rootlu olaraq işləməsinə icazə ver</string>
     <string name="backup_transport_setting_label">Nüsxələmə təchizatçısını dəyişdir</string>
     <string name="backup_transport_title">Nüsxələmə təchizatçısını seç</string>
     <string name="lineagelicense_title">LineageOS qanuni</string>
+    <string name="status_bar_double_tap_to_sleep_title">Yuxlatmaq üçün toxun</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Ekranı söndürmək üçün vəziyyət sətrinə və ya kilid ekranına cüt toxunun</string>
+    <string name="increasing_ring_volume_option_title">Artan zəng səsi</string>
+    <string name="increasing_ring_min_volume_title">Başlanğıc səsi</string>
+    <string name="increasing_ring_ramp_up_time_title">Artma vaxtı</string>
     <string name="volume_link_notification_title">Zəng səsi və bildiriş səs səviyyələrini birləşdir</string>
     <string name="unlock_scramble_pin_layout_title">Düzümü qarışdır</string>
     <string name="unlock_scramble_pin_layout_summary">Cihaz kilidini açarkən PIN düzümünü qarışdır</string>
     <string name="lock_settings_picker_pattern_size_message">Forma ölçüsünü seçin</string>
     <string name="lockpattern_settings_enable_error_path_title">Forma xətalarını göstər</string>
     <string name="lockpattern_settings_enable_dots_title">Forma nöqtələrini göstər</string>
+    <string name="lockscreen_media_art_title">Medianın qapaq üzünü göstər</string>
+    <string name="lockscreen_visualizer_title">Musiqi vizuallaşdırıcını görüntülə</string>
+    <string name="high_touch_sensitivity_title">Yüksək toxunuş həssaslığı</string>
+    <string name="high_touch_sensitivity_summary">Toxunuş həssaslığını artıraraq əlcəklə istifadəni mümkün edər</string>
     <string name="tethering_allow_vpn_upstreams_title">Müştərilərin VPN istifadəsinə icazə ver</string>
     <string name="tethering_allow_vpn_upstreams_summary">Hotspot istifadəçilərinin bağlantıları arasında bu cihazın VPN bağlantısını istifadə etməsinə icazə ver</string>
     <string name="data_usage_app_restrict_all">Şəbəkə müraciətinə icazə ver</string>
@@ -36,6 +53,29 @@
     <string name="data_usage_app_restrict_vpn_summary">VPN verilənlər istifadəsini fəallaşdır</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi verilənləri</string>
     <string name="data_usage_app_restrict_wifi_summary">Wi\u2011Fi verilənlərinin istifadəsini fəallaşdır</string>
+    <string name="app_notification_sound_timeout_title">Bildiriş səsləri arası ən az vaxt</string>
+    <string name="app_notification_sound_timeout_summary_template">Bir dəfədən çox olmayaraq hər <xliff:g id="duration">%1$s</xliff:g> də bir titrəmə və ya səsə icazə ver</string>
+    <string name="app_notification_sound_timeout_value_none">Məhdudiyyət yoxdur</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 saniyə</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 saniyə</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 dəqiqə</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 dəqiqə</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 dəqiqə</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 dəqiqə</string>
+    <string name="proximity_wake_title">Təsadüfi oyanmaların qarşısını al</string>
+    <string name="proximity_wake_summary">Ekranı oyandırmamışdan qabaq yaxınlıq sensorunu yoxlayın</string>
+    <string name="max_refresh_rate_title">Ən yüksək təzələnmə sürəti</string>
+    <string name="min_refresh_rate_title">Minimum təzələmə əmsalı</string>
     <string name="show_navbar_hint_title">Hərəkət məsləhəti</string>
     <string name="show_navbar_hint_summary">Ekranın altında hərəkət məsləhət sətrini göstər</string>
+    <string name="connected_tws_device_saved_title">Saxlanılmış Qulaqcıqlar</string>
+    <string name="touchscreen_hovering_title">Toxunuşlu ekranda toxunmadan hərəkət</string>
+    <string name="touchscreen_hovering_summary">Ekrana toxunmadan barmağınızı yaxınlaşdıraraq siçan (maus) kimi veb səyyahlarda, uzaq masaüstlərində və s. hərəkətinizi təmin edər</string>
+    <string name="peak_refresh_rate_summary_custom">Bəzi məzmun üçün yeniləmə dərəcəsini 60 Hs-dən %1$d Hs-ə avtomatik yüksəldir. Batareya istifadəsini artırır.</string>
+    <string name="touchscreen_gesture_settings_title">Ekran toxunuş jestləri</string>
+    <string name="touchscreen_gesture_settings_summary">Cəld hərəkətlər üçün cürbəcür toxunaqlı ekran jestlərini həyata keçirin</string>
+    <string name="wake_when_plugged_or_unplugged_title">Taxıb çıxaranda oyan</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Cərəyan mənbəyinə taxarkən və ya çıxararkən bir səs oynat</string>
+    <string name="fast_charging_title">Sürətli enerji yığma</string>
+    <string name="fast_charging_summary">Cihazın enerji yığarkən istehsal etdiyi istiliyi azaltmaq və ya batereyanın ömrünü uzatmaq üçün sıradan çıxardın</string>
 </resources>

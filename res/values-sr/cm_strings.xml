@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,15 +15,49 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Додирните још <xliff:g id="step_count">%1$d</xliff:g> пут да бисте омогућили опције за програмера.</item>
+        <item quantity="few">Додирните још <xliff:g id="step_count">%1$d</xliff:g> пута да бисте омогућили опције за програмера.</item>
+        <item quantity="other">Додирните још <xliff:g id="step_count">%1$d</xliff:g> пута да бисте омогућили опције за програмера.</item>
+    </plurals>
+    <string name="show_dev_on_cm">Омогућили сте опције за програмера.</string>
+    <string name="show_dev_already_cm">Нема потебе, опције за програмера су већ омогућене.</string>
     <string name="adb_enable_root">Откл. грешака с root приступом</string>
     <string name="adb_enable_summary_root">Дозволи покретање Android отклањања грешака као root</string>
     <string name="lineagelicense_title">Политика приватности LineageOS-а</string>
+    <string name="status_bar_double_tap_to_sleep_title">Додир за спавање</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Додирните двапут на статусну траку или на закључани екран да бисте искључили екран</string>
+    <string name="increasing_ring_volume_option_title">Појачавање јачине звука звона</string>
+    <string name="increasing_ring_min_volume_title">Почетна јачина звука</string>
+    <string name="increasing_ring_ramp_up_time_title">Време појачавања</string>
     <string name="volume_link_notification_title">Повежи јачину звука звона &amp; обавештења</string>
     <string name="unlock_scramble_pin_layout_title">Насумични распоред</string>
     <string name="unlock_scramble_pin_layout_summary">Приказује дугмад за унос PIN кода у насумичном реду.</string>
     <string name="lock_settings_picker_pattern_size_message">Изаберите величину шаблона</string>
-    <string name="lockpattern_settings_enable_error_path_title">Прикажи грешку шаблона</string>
-    <string name="lockpattern_settings_enable_dots_title">Прикажи тачкице шаблона</string>
+    <string name="lockpattern_settings_enable_error_path_title">Прикажи неисправан унос</string>
+    <string name="lockpattern_settings_enable_dots_title">Прикажи тачке</string>
+    <string name="lockscreen_media_art_title">Прикажи омот медија</string>
+    <string name="lockscreen_visualizer_title">Визуелизација спектра музике</string>
+    <string name="high_touch_sensitivity_title">Велика осетљивост на додир</string>
+    <string name="high_touch_sensitivity_summary">Повећава осетљивост екрана ради коришћења уређаја у рукавицама.</string>
     <string name="data_usage_app_restrict_wifi">Wi\u2011Fi подаци</string>
     <string name="data_usage_app_restrict_wifi_summary">Укључи употребу Wi\u2011Fi података</string>
+    <string name="app_notification_sound_timeout_title">Учесталост звучних обавештења</string>
+    <string name="app_notification_sound_timeout_summary_template">Звуци и вибрација не чешће од једном сваких <xliff:g id="duration">%1$s</xliff:g>.</string>
+    <string name="app_notification_sound_timeout_value_none">Без ограничења</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 секунди</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 секунди</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 минут</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 минута</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 минута</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 минута</string>
+    <string name="proximity_wake_title">Спречи случајно буђење</string>
+    <string name="proximity_wake_summary">Провери сензор близине пре буђења екрана</string>
+    <string name="touchscreen_hovering_title">Задржавање прста</string>
+    <string name="touchscreen_hovering_summary">Омогућава радње при задржавању прста изнад елемената интерфејса у веб-прегледачима или другим апликацијама.</string>
+    <string name="peak_refresh_rate_summary_custom">Аутоматски подиже учесталост освежавања са 60 на %1$d Hz за одређени садржај. Повећава потрошњу батерије.</string>
+    <string name="touchscreen_gesture_settings_title">Гестови по екрану</string>
+    <string name="touchscreen_gesture_settings_summary">Подеси разне гестове по екрану за брзе акције</string>
+    <string name="wake_when_plugged_or_unplugged_title">Буђење при пуњењу</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Укључује екран при повезивању или прекиду везе са извором напајања.</string>
 </resources>
