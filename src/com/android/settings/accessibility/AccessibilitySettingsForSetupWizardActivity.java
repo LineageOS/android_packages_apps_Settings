@@ -107,7 +107,6 @@ public class AccessibilitySettingsForSetupWizardActivity extends SettingsActivit
         super.onCreate(savedState);
         applyTheme();
         tryLaunchFontSizeSettings();
-        mCollapsingToolbarLayout.setVisibility(View.GONE);
         findViewById(R.id.content_parent).setFitsSystemWindows(false);
     }
 
