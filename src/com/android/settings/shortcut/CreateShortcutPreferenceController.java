@@ -149,7 +149,7 @@ public class CreateShortcutPreferenceController extends BasePreferenceController
             intent = new Intent();
         }
         intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-                Intent.ShortcutIconResource.fromContext(mContext, R.mipmap.ic_launcher_settings))
+                Intent.ShortcutIconResource.fromContext(mContext, R.drawable.ic_launcher_settings))
                 .putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent)
                 .putExtra(Intent.EXTRA_SHORTCUT_NAME, label);
 
