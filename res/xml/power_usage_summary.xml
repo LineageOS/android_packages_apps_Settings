@@ -76,6 +76,12 @@
         android:summary="@string/fast_charging_summary"
         settings:controller="com.android.settings.fuelgauge.FastChargingPreferenceController"/>
 
+    <SwitchPreference
+        android:key="super_fast_charging"
+        android:title="@string/super_fast_charging_title"
+        android:summary="@string/super_fast_charging_summary"
+        settings:controller="com.android.settings.fuelgauge.SuperFastChargingPreferenceController"/>
+
     <com.android.settingslib.widget.FooterPreference
         android:key="power_usage_footer"
         android:title="@string/battery_footer_summary"
