@@ -31,13 +31,17 @@ import android.content.om.OverlayInfo;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.accessibility.AccessibilityManager;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import androidx.preference.CheckBoxPreference;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.Preference;
 
 import com.android.settings.R;
 import com.android.settings.accessibility.AccessibilityGestureNavigationTutorial;
@@ -45,7 +49,6 @@ import com.android.settings.dashboard.suggestions.SuggestionFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.support.actionbar.HelpResourceProvider;
-import com.android.settings.Utils;
 import com.android.settings.utils.CandidateInfoExtra;
 import com.android.settings.widget.RadioButtonPickerFragment;
 import com.android.settingslib.search.SearchIndexable;
@@ -55,6 +58,9 @@ import com.android.settingslib.widget.RadioButtonPreference;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import lineageos.hardware.LineageHardwareManager;
+import lineageos.providers.LineageSettings;
 
 @SearchIndexable
 public class SystemNavigationGestureSettings extends RadioButtonPickerFragment implements
@@ -66,6 +72,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
     static final String KEY_SYSTEM_NAV_2BUTTONS = "system_nav_2buttons";
     @VisibleForTesting
     static final String KEY_SYSTEM_NAV_GESTURAL = "system_nav_gestural";
+    static final String KEY_SYSTEM_NAV_HW_KEYS = "system_nav_hw_keys";
 
     public static final String PREF_KEY_SUGGESTION_COMPLETE =
             "pref_system_navigation_suggestion_complete";
@@ -78,9 +85,14 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
 
     private IllustrationPreference mVideoPreference;
 
+    private LineageHardwareManager mHardware;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mHardware = LineageHardwareManager.getInstance(getContext());
+
         if (savedInstanceState != null) {
             mA11yTutorialDialogShown =
                     savedInstanceState.getBoolean(KEY_SHOW_A11Y_TUTORIAL_DIALOG, false);
@@ -133,8 +145,26 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
             return;
         }
         for (CandidateInfo info : candidateList) {
-            RadioButtonPreference pref =
-                    new RadioButtonPreference(getPrefContext());
+            if (info.getKey().equals(KEY_SYSTEM_NAV_HW_KEYS) &&
+                    getContext().getResources().getBoolean(R.bool.gestures_and_keys)) {
+                CheckBoxPreference pref = new CheckBoxPreference(getPrefContext());
+                pref.setTitle(info.loadLabel());
+                pref.setSummary(((CandidateInfoExtra) info).loadSummary());
+                pref.setKey(info.getKey());
+                pref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        boolean checked = Boolean.valueOf(newValue.toString());
+                        writeDisableNavkeysOption(getContext(), !checked);
+                        return true;
+                    }
+                });
+                screen.addPreference(pref);
+                continue;
+            }
+
+            RadioButtonPreference pref = new RadioButtonPreference(getPrefContext());
+
             bindPreference(pref, info.getKey(), info, defaultKey);
             bindPreferenceExtra(pref, info.getKey(), info, defaultKey, systemDefaultKey);
             screen.addPreference(pref);
@@ -174,26 +204,26 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                     c.getText(R.string.edge_to_edge_navigation_summary),
                     KEY_SYSTEM_NAV_GESTURAL, true /* enabled */));
         }
-        if (Utils.hasNavigationBar(c)) {
-            if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
-                    NAV_BAR_MODE_2BUTTON_OVERLAY)) {
-                candidates.add(new CandidateInfoExtra(
-                        c.getText(R.string.swipe_up_to_switch_apps_title),
-                        c.getText(R.string.swipe_up_to_switch_apps_summary),
-                        KEY_SYSTEM_NAV_2BUTTONS, true /* enabled */));
-            }
-            if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
-                    NAV_BAR_MODE_3BUTTON_OVERLAY)) {
-                candidates.add(new CandidateInfoExtra(
-                        c.getText(R.string.legacy_navigation_title),
-                        c.getText(R.string.legacy_navigation_summary),
-                        KEY_SYSTEM_NAV_3BUTTONS, true /* enabled */));
-            }
-        } else {
+        if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
+                NAV_BAR_MODE_2BUTTON_OVERLAY)) {
             candidates.add(new CandidateInfoExtra(
-                    c.getText(R.string.disable_navigation_title),
-                    c.getText(R.string.disable_navigation_summary),
+                    c.getText(R.string.swipe_up_to_switch_apps_title),
+                    c.getText(R.string.swipe_up_to_switch_apps_summary),
+                    KEY_SYSTEM_NAV_2BUTTONS, true /* enabled */));
+        }
+        if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
+                NAV_BAR_MODE_3BUTTON_OVERLAY)) {
+            candidates.add(new CandidateInfoExtra(
+                    c.getText(R.string.legacy_navigation_title),
+                    c.getText(R.string.legacy_navigation_summary),
                     KEY_SYSTEM_NAV_3BUTTONS, true /* enabled */));
+        }
+
+        if (isKeyDisablerSupported(getContext())) {
+            candidates.add(new CandidateInfoExtra(
+                    c.getText(R.string.hardware_keys_navigation),
+                    c.getText(R.string.hardware_keys_navigation_summary),
+                    KEY_SYSTEM_NAV_HW_KEYS, true /* enabled */));
         }
 
         return candidates;
@@ -206,7 +236,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
 
     @Override
     protected boolean setDefaultKey(String key) {
-        setCurrentSystemNavigationMode(mOverlayManager, key);
+        setCurrentSystemNavigationMode(mOverlayManager, key, getContext());
         setIllustrationVideo(mVideoPreference, key);
         setGestureNavigationTutorialDialog(key);
         return true;
@@ -225,7 +255,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
         if (info != null && !info.isEnabled()) {
             // Enable the default gesture nav overlay. Back sensitivity for left and right are
             // stored as separate settings values, and other gesture nav overlays are deprecated.
-            setCurrentSystemNavigationMode(overlayManager, KEY_SYSTEM_NAV_GESTURAL);
+            setCurrentSystemNavigationMode(overlayManager, KEY_SYSTEM_NAV_GESTURAL, context);
             Settings.Secure.putFloat(context.getContentResolver(),
                     Settings.Secure.BACK_GESTURE_INSET_SCALE_LEFT, 1.0f);
             Settings.Secure.putFloat(context.getContentResolver(),
@@ -245,16 +275,24 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
     }
 
     @VisibleForTesting
-    static void setCurrentSystemNavigationMode(IOverlayManager overlayManager, String key) {
+    static void setCurrentSystemNavigationMode(IOverlayManager overlayManager, String key,
+                Context context) {
         String overlayPackage = NAV_BAR_MODE_GESTURAL_OVERLAY;
         switch (key) {
             case KEY_SYSTEM_NAV_GESTURAL:
                 overlayPackage = NAV_BAR_MODE_GESTURAL_OVERLAY;
+                writeDisableNavkeysOption(context, true);
                 break;
             case KEY_SYSTEM_NAV_2BUTTONS:
                 overlayPackage = NAV_BAR_MODE_2BUTTON_OVERLAY;
+                writeDisableNavkeysOption(context, true);
                 break;
             case KEY_SYSTEM_NAV_3BUTTONS:
+                overlayPackage = NAV_BAR_MODE_3BUTTON_OVERLAY;
+                writeDisableNavkeysOption(context, true);
+                break;
+            case KEY_SYSTEM_NAV_HW_KEYS:
+                writeDisableNavkeysOption(context, false);
                 overlayPackage = NAV_BAR_MODE_3BUTTON_OVERLAY;
                 break;
         }
@@ -319,6 +357,16 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                     return SystemNavigationPreferenceController.isGestureAvailable(context);
                 }
             };
+
+    private static void writeDisableNavkeysOption(Context context, boolean enabled) {
+        LineageSettings.System.putIntForUser(context.getContentResolver(),
+                LineageSettings.System.FORCE_SHOW_NAVBAR, enabled ? 1 : 0, UserHandle.USER_CURRENT);
+    }
+
+    private static boolean isKeyDisablerSupported(Context context) {
+        final LineageHardwareManager hardware = LineageHardwareManager.getInstance(context);
+        return hardware.isSupported(LineageHardwareManager.FEATURE_KEY_DISABLE);
+    }
 
     // From HelpResourceProvider
     @Override
