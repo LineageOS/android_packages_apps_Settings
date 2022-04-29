@@ -52,6 +52,10 @@ import com.android.settingslib.widget.CandidateInfo;
 import com.android.settingslib.widget.IllustrationPreference;
 import com.android.settingslib.widget.RadioButtonPreference;
 
+import static com.android.systemui.shared.recents.utilities.Utilities.isTablet;
+
+import lineageos.providers.LineageSettings;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -166,6 +170,9 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
         final Context c = getContext();
         List<CandidateInfoExtra> candidates = new ArrayList<>();
 
+        boolean isTaskbarEnabled = LineageSettings.System.getInt(getContext().getContentResolver(),
+                LineageSettings.System.ENABLE_TASKBAR, isTablet(getContext()) ? 1 : 0) == 1;
+
         if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
                 NAV_BAR_MODE_GESTURAL_OVERLAY)) {
             candidates.add(new CandidateInfoExtra(
@@ -173,7 +180,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                     c.getText(R.string.edge_to_edge_navigation_summary),
                     KEY_SYSTEM_NAV_GESTURAL, true /* enabled */));
         }
-        if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
+        if (!isTaskbarEnabled && SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
                 NAV_BAR_MODE_2BUTTON_OVERLAY)) {
             candidates.add(new CandidateInfoExtra(
                     c.getText(R.string.swipe_up_to_switch_apps_title),
