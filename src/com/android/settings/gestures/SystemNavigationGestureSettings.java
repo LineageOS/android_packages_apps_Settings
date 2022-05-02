@@ -39,7 +39,10 @@ import android.view.accessibility.AccessibilityManager;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import androidx.preference.CheckBoxPreference;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.Preference;
 
 import com.android.settings.R;
 import com.android.settings.accessibility.AccessibilityGestureNavigationTutorial;
@@ -78,6 +81,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
     private static final String KEY_SHOW_A11Y_TUTORIAL_DIALOG = "show_a11y_tutorial_dialog_bool";
 
     private static boolean sEnablingHwKeys = false;
+    private static boolean sHwAndSwKeys = false;
 
     private boolean mA11yTutorialDialogShown = false;
 
@@ -96,6 +100,8 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
                         getContext(), dialog -> mA11yTutorialDialogShown = false);
             }
         }
+
+        sHwAndSwKeys = getContext().getResources().getBoolean(R.bool.gestures_and_keys);
     }
 
     @Override
@@ -140,8 +146,28 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
             return;
         }
         for (CandidateInfo info : candidateList) {
+            if (info.getKey().equals(KEY_SYSTEM_NAV_HW_KEYS) &&
+                    getContext().getResources().getBoolean(R.bool.gestures_and_keys)) {
+                CheckBoxPreference pref = new CheckBoxPreference(getPrefContext());
+                pref.setTitle(info.loadLabel());
+                pref.setSummary(((CandidateInfoExtra) info).loadSummary());
+                pref.setKey(info.getKey());
+                pref.setChecked(!getForceSwNavKeysOption(getContext()));
+                pref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        boolean checked = Boolean.valueOf(newValue.toString());
+                        writeForceSwNavKeysOption(getContext(), !checked);
+                        return true;
+                    }
+                });
+                screen.addPreference(pref);
+                continue;
+            }
+
             RadioButtonPreference pref =
                     new RadioButtonPreference(getPrefContext());
+
             bindPreference(pref, info.getKey(), info, defaultKey);
             bindPreferenceExtra(pref, info.getKey(), info, defaultKey, systemDefaultKey);
             screen.addPreference(pref);
@@ -250,7 +276,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
             if (!isKeyDisablerSupported(context)) {
                 return KEY_SYSTEM_NAV_3BUTTONS;
             } else {
-                if (sEnablingHwKeys || !getForceSwNavKeysOption(context)) {
+                if ((sEnablingHwKeys || !getForceSwNavKeysOption(context)) && !sHwAndSwKeys) {
                     return KEY_SYSTEM_NAV_HW_KEYS;
                 } else {
                     return KEY_SYSTEM_NAV_3BUTTONS;
@@ -280,7 +306,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
 
         try {
             overlayManager.setEnabledExclusiveInCategory(overlayPackage, USER_CURRENT);
-            if (isKeyDisablerSupported(context)) {
+            if (isKeyDisablerSupported(context) && !sHwAndSwKeys) {
                 boolean enableHwKeys = key == KEY_SYSTEM_NAV_HW_KEYS;
                 sEnablingHwKeys = enableHwKeys;
 
