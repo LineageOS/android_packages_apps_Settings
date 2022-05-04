@@ -88,7 +88,14 @@ public class SetupWizardUtils {
                 }
             }
         }
-        return R.style.SudDynamicColorThemeSettings_SetupWizard_DayNight;
+        if (WizardManagerHelper.isAnySetupWizard(intent)) {
+            if (ThemeHelper.isSetupWizardDayNightEnabled(context)) {
+                return R.style.SudDynamicColorThemeSettings_SetupWizard_DayNight;
+            } else {
+                return R.style.SudDynamicColorThemeSettings_SetupWizard;
+            }
+        }
+        return R.style.GlifV3Theme;
     }
 
     public static int getTransparentTheme(Context context, Intent intent) {
