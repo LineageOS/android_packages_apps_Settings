@@ -44,6 +44,7 @@ public class ConnectedDeviceDashboardFragment extends DashboardFragment {
     private static final String SETTINGS_PACKAGE_NAME = "com.android.settings";
     private static final String SYSTEMUI_PACKAGE_NAME = "com.android.systemui";
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
+    private static final String SLICE_ACTION = "com.android.settings.SEARCH_RESULT_TRAMPOLINE";
 
     @VisibleForTesting
     static final String KEY_CONNECTED_DEVICES = "connected_device_list";
@@ -94,15 +95,23 @@ public class ConnectedDeviceDashboardFragment extends DashboardFragment {
         super.onAttach(context);
 
         String callingAppPackageName = getCallingAppPackageName(getActivity().getActivityToken());
+        String action = getIntent() != null ? getIntent().getAction() : "";
         if (DEBUG) {
-            Log.d(TAG, "onAttach() calling package name is : " + callingAppPackageName);
+            Log.d(TAG, "onAttach() calling package name is : " + callingAppPackageName
+                    + ", action : " + action);
         }
         use(AvailableMediaDeviceGroupController.class).init(this);
         use(ConnectedDeviceGroupController.class).init(this);
         use(PreviouslyConnectedDevicePreferenceController.class).init(this);
         use(DiscoverableFooterPreferenceController.class).init(this,
-                TextUtils.equals(SETTINGS_PACKAGE_NAME, callingAppPackageName)
-                        || TextUtils.equals(SYSTEMUI_PACKAGE_NAME, callingAppPackageName));
+                isAlwaysDiscoverable(callingAppPackageName, action));
+    }
+
+    @VisibleForTesting
+    boolean isAlwaysDiscoverable(String callingAppPackageName, String action) {
+        return TextUtils.equals(SLICE_ACTION, action) ? false
+                : TextUtils.equals(SETTINGS_PACKAGE_NAME, callingAppPackageName)
+                || TextUtils.equals(SYSTEMUI_PACKAGE_NAME, callingAppPackageName);
     }
 
     private String getCallingAppPackageName(IBinder activityToken) {
