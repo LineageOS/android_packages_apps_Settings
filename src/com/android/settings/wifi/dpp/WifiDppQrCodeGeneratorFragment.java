@@ -17,7 +17,9 @@
 package com.android.settings.wifi.dpp;
 
 import android.app.settings.SettingsEnums;
+import android.content.ClipboardManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -37,6 +39,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -140,6 +143,18 @@ public class WifiDppQrCodeGeneratorFragment extends WifiDppQrCodeBaseFragment {
             } else {
                 passwordView.setText(getString(R.string.wifi_dpp_wifi_password, password));
             }
+
+            passwordView.setOnClickListener(v -> {
+                Toast.makeText(getContext(), R.string.longpress_to_clipboard, Toast.LENGTH_SHORT).show();
+            });
+
+            passwordView.setOnLongClickListener(v -> {
+                ClipboardManager cm = (ClipboardManager) getContext()
+                        .getSystemService(Context.CLIPBOARD_SERVICE);
+                cm.setText(password);
+                Toast.makeText(getContext(), R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show();
+                return true;
+            });
         }
 
         final Intent intent = new Intent().setComponent(getNearbySharingComponent());
