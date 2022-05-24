@@ -426,6 +426,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         if (mIsInSetupWizard) {
             mConfigureWifiSettingsPreference.setVisible(false);
             mDataUsagePreference.setVisible(false);
+            mNetworkMobileProviderController.hidePreference(true, true);
         } else {
             setHasOptionsMenu(true);
         }
