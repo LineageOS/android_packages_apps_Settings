@@ -14,11 +14,15 @@
 package com.android.settings.location;
 
 import android.content.Context;
+import android.os.UserHandle;
+import android.os.UserManager;
 import android.provider.Settings;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.RestrictedSwitchPreference;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 public class WifiScanningPreferenceController extends AbstractPreferenceController
@@ -45,6 +49,12 @@ public class WifiScanningPreferenceController extends AbstractPreferenceControll
         ((SwitchPreference) preference).setChecked(
                 Settings.Global.getInt(mContext.getContentResolver(),
                         Settings.Global.WIFI_SCAN_ALWAYS_AVAILABLE, 0) == 1);
+        final RestrictedLockUtils.EnforcedAdmin admin =
+            RestrictedLockUtils.checkIfRestrictionEnforced(
+                mContext, UserManager.DISALLOW_CONFIG_LOCATION, UserHandle.myUserId());
+        if (admin != null) {
+          ((RestrictedSwitchPreference) preference).setDisabledByAdmin(admin);
+        }
     }
 
     @Override
