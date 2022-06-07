@@ -36,9 +36,11 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.os.UserManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.EventLog;
 import android.util.FeatureFlagUtils;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -214,6 +216,8 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
      * by the Test DPC tool in AFW mode.
      */
     protected boolean mIsRestricted;
+    @VisibleForTesting
+    boolean mIsAdmin = true;
 
     @VisibleForTesting
     AirplaneModeEnabler mAirplaneModeEnabler;
@@ -308,6 +312,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         addPreferences();
 
         mIsRestricted = isUiRestricted();
+        mIsAdmin = isAdminUser();
 
         final Intent intent = this.getIntent();
         mIsInSetupWizard = WizardManagerHelper.isAnySetupWizard(intent);
@@ -322,6 +327,12 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         } else {
             return super.onCreateRecyclerView(inflater, parent, savedInstanceState);
         }
+    }
+
+    private boolean isAdminUser() {
+        final UserManager userManager = getSystemService(UserManager.class);
+        if (userManager == null) return true;
+        return userManager.isAdminUser();
     }
 
     private void addPreferences() {
@@ -592,7 +603,9 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         }
 
         if (mSelectedWifiEntry.canDisconnect()) {
-            menu.add(Menu.NONE, MENU_ID_SHARE, 0 /* order */, R.string.share);
+            if (mSelectedWifiEntry.canShare()) {
+                addShareMenuIfSuitable(menu);
+            }
             menu.add(Menu.NONE, MENU_ID_DISCONNECT, 1 /* order */,
                     R.string.wifi_disconnect_button_text);
         }
@@ -600,7 +613,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         // "forget" for normal saved network. And "disconnect" for ephemeral network because it
         // could only be disconnected and be put in blocklists so it won't be used again.
         if (canForgetNetwork()) {
-            menu.add(Menu.NONE, MENU_ID_FORGET, 0 /* order */, R.string.forget);
+            addForgetMenuIfSuitable(menu);
         }
 
         WifiConfiguration config = mSelectedWifiEntry.getWifiConfiguration();
@@ -612,6 +625,23 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         if (mSelectedWifiEntry.isSaved() && mSelectedWifiEntry.getConnectedState()
                 != WifiEntry.CONNECTED_STATE_CONNECTED) {
             menu.add(Menu.NONE, MENU_ID_MODIFY, 0 /* order */, R.string.wifi_modify);
+        }
+    }
+
+    @VisibleForTesting
+    void addShareMenuIfSuitable(ContextMenu menu) {
+        if (mIsAdmin) {
+            menu.add(Menu.NONE, MENU_ID_SHARE, 0 /* order */, R.string.share);
+            return;
+        }
+        Log.w(TAG, "Don't add the Wi-Fi share menu because the user is not an admin.");
+        EventLog.writeEvent(0x534e4554, "206986392", -1 /* UID */, "User is not an admin");
+    }
+
+    @VisibleForTesting
+    void addForgetMenuIfSuitable(ContextMenu menu) {
+        if (mIsAdmin) {
+            menu.add(Menu.NONE, MENU_ID_FORGET, 0 /* order */, R.string.forget);
         }
     }
 
