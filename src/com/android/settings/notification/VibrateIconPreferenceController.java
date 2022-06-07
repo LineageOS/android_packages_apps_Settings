@@ -40,6 +40,6 @@ public class VibrateIconPreferenceController extends SettingPrefController {
 
     @Override
     public boolean isAvailable() {
-        return mHasVibrator;
+        return false;
     }
 }
