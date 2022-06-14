@@ -111,7 +111,7 @@ public class NetworkSelectSettings extends DashboardFragment {
         mSelectedPreference = null;
         mTelephonyManager = getTelephonyManager(getContext(), mSubId);
         mNetworkScanHelper = new NetworkScanHelper(
-                mTelephonyManager, mCallback, mNetworkScanExecutor);
+                getContext(), mTelephonyManager, mCallback, mNetworkScanExecutor);
         PersistableBundle bundle = getCarrierConfigManager(getContext())
                 .getConfigForSubId(mSubId);
         if (bundle != null) {
