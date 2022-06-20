@@ -23,12 +23,35 @@
     <string name="show_dev_already_cm">Behøves ikke.; du har allerede aktiveret udvikler-indstillinger.</string>
     <string name="keyboard_extras_title">Ekstra</string>
     <string name="advanced_keyboard_settings_title">Avancerede indstillinger</string>
+    <string name="adb_enable_root">Fejlfinding med \'root\'</string>
+    <string name="adb_enable_summary_root">Tillad kørsel af Android fejlretning som \'root\'</string>
+    <string name="backup_transport_setting_label">Skift backup udbyder</string>
+    <string name="backup_transport_title">Vælg backup udbyder</string>
     <string name="lineagelicense_title">LineageOS-juridisk</string>
     <string name="status_bar_double_tap_to_sleep_title">Tryk for at slumre</string>
     <string name="status_bar_double_tap_to_sleep_summary">Dobbelt-tryk på statusbjælken eller låseskærmen, for at slukke for skærmen</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="tablet">Find fingeraftrykssensoren på tablet\'ens forside.</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="device">Find fingeraftrykssensoren på enhedens forside.</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="default">Find fingeraftrykssensoren på forsiden af ​​telefonen.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="tablet">Find fingeraftrykssensoren på tablet\'ens bagside.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="device">Find fingeraftrykslæseren på enhedens bagside.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="default">Find fingeraftrykssensoren på bagsiden af ​​telefonen.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="tablet">Find fingeraftrykslæseren på tablet\'ens side.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="device">Find fingeraftrykslæseren på enhedens side.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="default">Find fingeraftrykssensoren på mobilens side.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="tablet">Tryk på fingeraftrykslæseren på tablet\'ens forside.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="device">Tryk på fingeraftrykssensoren på enhedens forside.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="default">Tryk på fingeraftrykssensoren på mobilens forside.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="tablet">Tryk på fingeraftrykssensoren på tablet\'ens bagside.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="device">Tryk på fingeraftrykssensoren på enhedens bagside.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="default">Tryk på fingeraftrykssensoren på mobilens bagside.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="tablet">Tryk på fingeraftrykssensoren på tablet\'ens side.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="device">Tryk på fingeraftrykssensoren på enhedens side.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Tryk på fingeraftrykssensoren på mobilens side.</string>
     <string name="increasing_ring_volume_option_title">Stigende ringe-lydstyrke</string>
     <string name="increasing_ring_min_volume_title">Start-lydstyrke</string>
     <string name="increasing_ring_ramp_up_time_title">Opvarmningstid</string>
+    <string name="volume_link_notification_title">Sammenkæd ring &amp; notifikations volume</string>
     <string name="unlock_scramble_pin_layout_title">Omvælt opsætning</string>
     <string name="unlock_scramble_pin_layout_summary">Omvælt PIN-opsætning, ved oplåsning af enhed</string>
     <string name="lock_settings_picker_pattern_size_message">Vælg en mønsterstørrelse</string>
@@ -36,15 +59,22 @@
     <string name="lockpattern_settings_enable_dots_title">Vis mønster-prikker</string>
     <string name="lockscreen_media_art_title">Vis medie-albumbilleder</string>
     <string name="lockscreen_visualizer_title">Vis musik-visualisering</string>
+    <string name="high_touch_polling_rate_title">Høj berøringsmåling rate</string>
+    <string name="high_touch_polling_rate_summary">Forøg berøringsskærm afstemningshastigheden</string>
     <string name="high_touch_sensitivity_title">Høj berøringsfølsomhed</string>
     <string name="high_touch_sensitivity_summary">Forøg berøringsfølsom skærms følsomhed, så den kan bruges med handsker på</string>
     <string name="tethering_allow_vpn_upstreams_title">Tillad klienter at bruge VPN\'er</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Tillad hotspot-klienter at bruge denne enhed\u2019s VPN-forbindelser til upstream-forbindelse</string>
     <string name="auto_brightness_one_shot_title">Etskuds automatisk lysstyrke</string>
     <string name="auto_brightness_one_shot_summary">Lysstyrkejustering vil kun forekomme i det øjeblik, skærmen tændes</string>
+    <string name="data_usage_app_restrict_all">Tillad netværksadgang</string>
+    <string name="data_usage_app_restrict_all_summary">Aktiver netværksforbrug</string>
     <string name="data_usage_app_restrict_mobile">Mobildata</string>
     <string name="data_usage_app_restrict_mobile_summary">Aktiver brug af mobildata</string>
     <string name="data_usage_app_restrict_vpn">VPN data</string>
     <string name="data_usage_app_restrict_vpn_summary">Aktivér brug af VPN-data</string>
+    <string name="data_usage_app_restrict_wifi">Wi\u2011Fi data</string>
+    <string name="data_usage_app_restrict_wifi_summary">Aktiver brug af Wi\u2011Fi data</string>
     <string name="app_notification_sound_timeout_title">Minimumstid imellem notifikationslyde</string>
     <string name="app_notification_sound_timeout_summary_template">Tillad ikke lyde, eller vibration, mere end én gang hver <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Ingen restriktion</string>
@@ -55,10 +85,17 @@
     <string name="app_notification_sound_timeout_value_15_minutes">10 minutter</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutter</string>
     <string name="proximity_wake_title">Forhindr utilsigtet vækning</string>
+    <string name="proximity_wake_summary">Tjek nærheds sensoren før skærmen vækkes</string>
+    <string name="max_refresh_rate_title">Maksimal opdateringshastighed</string>
     <string name="min_refresh_rate_title">Minimum skærm forfriskningstid</string>
+    <string name="show_navbar_hint_title">Navigations hint</string>
+    <string name="show_navbar_hint_summary">Vis navigationsbjælke nederst på skærmen</string>
+    <string name="connected_tws_device_saved_title">Gemte høretelefoner</string>
     <string name="touchscreen_hovering_title">Berøringsfølsom skærm-svævning</string>
     <string name="touchscreen_hovering_summary">Tillader dig at holde fingeren over skærmen, som en mus i netlæsere, på fjernskriveborde, osv.</string>
     <string name="peak_refresh_rate_summary_custom">Øger automatisk opdateringshastigheden fra 60 til %1$d Hz for noget indhold. Medfører højere batteriforbrug.</string>
+    <string name="theme_customization_font_title">Font</string>
+    <string name="theme_customization_icon_shape_title">Ikonform</string>
     <string name="touchscreen_gesture_settings_title">Bevægelser på berøringsfølsom skærm</string>
     <string name="touchscreen_gesture_settings_summary">Udfør forskellige bevægelser på berøringsfølsom skærm, for hurtig-handlinger</string>
     <string name="wake_when_plugged_or_unplugged_title">Vågn ved tilslutning</string>
