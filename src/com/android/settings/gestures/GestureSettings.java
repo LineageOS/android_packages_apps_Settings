@@ -55,6 +55,7 @@ public class GestureSettings extends DashboardFragment {
         super.onAttach(context);
         use(PickupGesturePreferenceController.class).setConfig(getConfig(context));
         use(DoubleTapScreenPreferenceController.class).setConfig(getConfig(context));
+        use(ScreenOffUdfpsPreferenceController.class).setConfig(getConfig(context));
     }
 
     private AmbientDisplayConfiguration getConfig(Context context) {
