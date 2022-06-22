@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2022 The Android Open Source Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/ambient_display_screen_off_udfps_title">
+
+    <SwitchPreference
+        android:key="gesture_screen_off_udfps"
+        android:title="@string/ambient_display_screen_off_udfps_title"
+        android:summary="@string/ambient_display_screen_off_udfps_summary"
+        app:keywords="@string/keywords_gesture"
+        app:controller="com.android.settings.gestures.ScreenOffUdfpsPreferenceController"
+        app:allowDividerAbove="true" />
+
+</PreferenceScreen>
