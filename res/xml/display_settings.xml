@@ -89,6 +89,13 @@
         <ListPreference
             android:key="android.theme.customization.adaptive_icon_shape"
             android:title="@string/theme_customization_icon_shape_title"/>
+
+        <!-- Wallpaper Zoom Effects -->
+        <lineageos.preference.LineageSystemSettingSwitchPreference
+            android:key="display_settings_wallpaper_zoom"
+            android:title="@string/wallpaper_zoom_effect_title"
+            android:summary="@string/wallpaper_zoom_effect_summary"
+            android:defaultValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
