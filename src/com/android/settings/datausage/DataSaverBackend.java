@@ -14,6 +14,7 @@
 
 package com.android.settings.datausage;
 
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ALL;
 import static android.net.NetworkPolicyManager.POLICY_ALLOW_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
@@ -31,6 +32,7 @@ import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DataSaverBackend {
 
@@ -43,7 +45,10 @@ public class DataSaverBackend {
     private final ArrayList<Listener> mListeners = new ArrayList<>();
     private SparseIntArray mUidPolicies = new SparseIntArray();
     private boolean mWhitelistInitialized;
+    private int[] mRestrictWhiteList;
     private boolean mBlacklistInitialized;
+    private int[] mRestrictAllBlackList;
+    private int[] mRestrictBackgroundBlackList;
 
     // TODO: Staticize into only one.
     public DataSaverBackend(Context context) {
@@ -78,6 +83,7 @@ public class DataSaverBackend {
     }
 
     public void refreshWhitelist() {
+        mWhitelistInitialized = false;
         loadWhitelist();
     }
 
@@ -103,14 +109,19 @@ public class DataSaverBackend {
         if (mWhitelistInitialized) {
             return;
         }
-
-        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND)) {
-            mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
+        int[] whiteList = mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND);
+        Arrays.sort(whiteList);
+        if (mRestrictWhiteList == null || !Arrays.equals(mRestrictWhiteList, whiteList)) {
+            mRestrictWhiteList = whiteList;
+            for (int uid : whiteList) {
+                mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
+            }
         }
         mWhitelistInitialized = true;
     }
 
     public void refreshBlacklist() {
+        mBlacklistInitialized = false;
         loadBlacklist();
     }
 
@@ -136,8 +147,31 @@ public class DataSaverBackend {
         if (mBlacklistInitialized) {
             return;
         }
-        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND)) {
-            mUidPolicies.put(uid, POLICY_REJECT_METERED_BACKGROUND);
+        int[] allBlackList = mPolicyManager.getUidsWithPolicy(POLICY_REJECT_ALL);
+        Arrays.sort(allBlackList);
+        if (mRestrictAllBlackList == null || !Arrays.equals(mRestrictAllBlackList, allBlackList)) {
+            mRestrictAllBlackList = allBlackList;
+            for (int uid : allBlackList) {
+                final String[] packages = mContext.getPackageManager().getPackagesForUid(uid);
+                if (packages != null) {
+                    for (String packageName : packages) {
+                        setIsBlacklisted(uid, packageName, true);
+                    }
+                }
+            }
+        }
+        int[] backgroundBlackList = mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND);
+        Arrays.sort(backgroundBlackList);
+        if (mRestrictBackgroundBlackList == null || !Arrays.equals(mRestrictBackgroundBlackList, backgroundBlackList) || !Arrays.equals(backgroundBlackList, allBlackList)) {
+            mRestrictBackgroundBlackList = backgroundBlackList;
+            for (int uid : backgroundBlackList) {
+                final String[] packages = mContext.getPackageManager().getPackagesForUid(uid);
+                if (packages != null) {
+                    for (String packageName : packages) {
+                        setIsBlacklisted(uid, packageName, true);
+                    }
+                }
+            }
         }
         mBlacklistInitialized = true;
     }
