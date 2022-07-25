@@ -263,28 +263,51 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mRestrictBackground) {
-            mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
+        if (preference == mRestrictAll) {
+            setAppRestrictAll(!(Boolean) newValue);
+            // Disable "Allow network access" will restrict all other network type
+            if (!(Boolean) newValue) {
+                setAppRestrictWifi(!(Boolean) newValue);
+                mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
+                setAppRestrictCellular(!(Boolean) newValue);
+                setAppRestrictVpn(!(Boolean) newValue);
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
-        } else if (preference == mRestrictAll) {
-            setAppRestrictAll(!(Boolean) newValue);
+        } else if (preference == mRestrictBackground) {
+            mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
+            if (!(Boolean) newValue) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictCellular) {
             setAppRestrictCellular(!(Boolean) newValue);
+            // Restrict "Background data" if restrict "Mobile data"
+            if (!(Boolean) newValue) {
+                mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictVpn) {
             setAppRestrictVpn(!(Boolean) newValue);
+            if (!(Boolean) newValue) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictWifi) {
             setAppRestrictWifi(!(Boolean) newValue);
+            if (!(Boolean) newValue) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mUnrestrictedData) {
             mDataSaverBackend.setIsWhitelisted(mAppItem.key, mPackageName, (Boolean) newValue);
+            updatePrefs();
             return true;
         }
         return false;
@@ -309,6 +332,23 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    private void refreshPrefs() {
+        boolean isRestrictWifi = getAppRestrictWifi();
+        setAppRestrictWifi(isRestrictWifi);
+        mDataSaverBackend.refreshBlacklist();
+        boolean isRestrictCellular = getAppRestrictCellular();
+        setAppRestrictCellular(isRestrictCellular);
+        boolean isRestrictVpn = getAppRestrictVpn();
+        setAppRestrictVpn(isRestrictVpn);
+        boolean isRestrictAll = getAppRestrictAll();
+        // Set "Allow network access" to disabled if all other network type are restricted
+        if(isRestrictWifi && isRestrictCellular && isRestrictVpn && !isRestrictAll) {
+            isRestrictAll = true;
+        }
+        setAppRestrictAll(isRestrictAll);
+        updatePrefs();
     }
 
     @VisibleForTesting
