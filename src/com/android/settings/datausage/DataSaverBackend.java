@@ -14,6 +14,7 @@
 
 package com.android.settings.datausage;
 
+import static android.net.NetworkPolicyManager.POLICY_REJECT_ALL;
 import static android.net.NetworkPolicyManager.POLICY_ALLOW_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
@@ -111,6 +112,7 @@ public class DataSaverBackend {
     }
 
     public void refreshBlacklist() {
+        mBlacklistInitialized = false;
         loadBlacklist();
     }
 
@@ -136,8 +138,23 @@ public class DataSaverBackend {
         if (mBlacklistInitialized) {
             return;
         }
-        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND)) {
-            mUidPolicies.put(uid, POLICY_REJECT_METERED_BACKGROUND);
+        int[] blackList = mPolicyManager.getUidsWithPolicy(POLICY_REJECT_ALL);
+        for (int uid : blackList) {
+            final String[] packages = mContext.getPackageManager().getPackagesForUid(uid);
+            if (packages != null) {
+                for (String packageName : packages) {
+                    setIsBlacklisted(uid, packageName, true);
+                }
+            }
+        }
+        blackList = mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND);
+        for (int uid : blackList) {
+            final String[] packages = mContext.getPackageManager().getPackagesForUid(uid);
+            if (packages != null) {
+                for (String packageName : packages) {
+                    setIsBlacklisted(uid, packageName, true);
+                }
+            }
         }
         mBlacklistInitialized = true;
     }
