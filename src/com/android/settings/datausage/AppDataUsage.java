@@ -250,7 +250,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         }
         LoaderManager.getInstance(this).restartLoader(LOADER_APP_USAGE_DATA, null /* args */,
                 mUidDataCallbacks);
-        updatePrefs();
+        reloadPrefs();
     }
 
     @Override
@@ -263,6 +263,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+<<<<<<< Updated upstream
         if (preference == mRestrictBackground) {
             mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
             updatePrefs();
@@ -270,18 +271,31 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         } else if (preference == mRestrictAll) {
             setAppRestrictAll(!(Boolean) newValue);
             updatePrefs();
+=======
+        if (preference == mRestrictAll) {
+            setAppRestrictWifi(!(Boolean) newValue);
+            mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
+            setAppRestrictCellular(!(Boolean) newValue);
+            setAppRestrictVpn(!(Boolean) newValue);
+            setAppRestrictAll(!(Boolean) newValue);
+            reloadPrefs();
+            return true;
+        } else if (preference == mRestrictBackground) {
+            mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
+            reloadPrefs();
+>>>>>>> Stashed changes
             return true;
         } else if (preference == mRestrictCellular) {
             setAppRestrictCellular(!(Boolean) newValue);
-            updatePrefs();
+            reloadPrefs();
             return true;
         } else if (preference == mRestrictVpn) {
             setAppRestrictVpn(!(Boolean) newValue);
-            updatePrefs();
+            reloadPrefs();
             return true;
         } else if (preference == mRestrictWifi) {
             setAppRestrictWifi(!(Boolean) newValue);
-            updatePrefs();
+            reloadPrefs();
             return true;
         } else if (preference == mUnrestrictedData) {
             mDataSaverBackend.setIsWhitelisted(mAppItem.key, mPackageName, (Boolean) newValue);
@@ -309,6 +323,22 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    private void reloadPrefs() {
+        boolean isRestrictWifi = getAppRestrictWifi();
+        setAppRestrictWifi(isRestrictWifi);
+        mDataSaverBackend.refreshBlacklist();
+        boolean isRestrictCellular = getAppRestrictCellular();
+        setAppRestrictCellular(isRestrictCellular);
+        boolean isRestrictVpn = getAppRestrictVpn();
+        setAppRestrictVpn(isRestrictVpn);
+        boolean isRestrictAll = getAppRestrictAll();
+        if(isRestrictWifi && isRestrictCellular && isRestrictVpn && !isRestrictAll) {
+            isRestrictAll = true;
+        }
+        setAppRestrictAll(isRestrictAll);
+        updatePrefs();
     }
 
     @VisibleForTesting
