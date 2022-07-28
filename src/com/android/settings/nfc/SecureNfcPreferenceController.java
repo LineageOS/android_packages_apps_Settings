@@ -104,7 +104,7 @@ public class SecureNfcPreferenceController extends TogglePreferenceController
     }
 
     private boolean isToggleable() {
-        if (mUserManager.isGuestUser()) {
+        if (!mUserManager.isPrimaryUser()) {
             return false;
         }
         return true;
