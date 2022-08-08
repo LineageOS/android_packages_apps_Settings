@@ -29,6 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -144,6 +145,7 @@ public class ChooseLockPattern extends SettingsActivity {
                 : R.string.lockpassword_choose_your_pattern_header);
         LinearLayout layout = (LinearLayout) findViewById(R.id.content_parent);
         layout.setFitsSystemWindows(false);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
