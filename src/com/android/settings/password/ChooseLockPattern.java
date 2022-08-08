@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -164,6 +165,7 @@ public class ChooseLockPattern extends SettingsActivity {
 
         setTitle(msg);
         findViewById(R.id.content_parent).setFitsSystemWindows(false);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     @Override
