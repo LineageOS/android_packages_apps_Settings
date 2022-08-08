@@ -26,6 +26,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -112,6 +113,8 @@ public class ChooseLockPattern extends SettingsActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+        getWindow().addPrivateFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         CharSequence msg = getText(R.string.lockpassword_choose_your_pattern_header);
         setTitle(msg);
         LinearLayout layout = (LinearLayout) findViewById(R.id.content_parent);

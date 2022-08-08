@@ -40,6 +40,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -149,6 +150,8 @@ public class ChooseLockPassword extends SettingsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addPrivateFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         CharSequence msg = getText(R.string.lockpassword_choose_your_password_header);
         setTitle(msg);
         LinearLayout layout = (LinearLayout) findViewById(R.id.content_parent);
