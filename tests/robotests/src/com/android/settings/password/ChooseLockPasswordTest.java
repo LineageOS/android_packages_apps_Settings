@@ -16,6 +16,8 @@
 
 package com.android.settings.password;
 
+import static android.view.WindowManager.LayoutParams.FLAG_SECURE;
+
 import static com.google.common.truth.Truth.assertThat;
 import static org.robolectric.RuntimeEnvironment.application;
 
@@ -121,6 +123,22 @@ public class ChooseLockPasswordTest {
     }
 
     @Test
+
+    @Test
+    public void activity_shouldHaveSecureFlag() {
+        PasswordPolicy policy = new PasswordPolicy();
+        policy.quality = PASSWORD_QUALITY_ALPHABETIC;
+        policy.length = 10;
+
+        Intent intent = createIntentForPasswordValidation(
+                /* minMetrics */ policy.getMinMetrics(),
+                /* minComplexity= */ PASSWORD_COMPLEXITY_NONE,
+                /* passwordType= */ PASSWORD_QUALITY_ALPHABETIC);
+        ChooseLockPassword activity = buildChooseLockPasswordActivity(intent);
+        final int flags = activity.getWindow().getAttributes().flags;
+        assertThat(flags & FLAG_SECURE).isEqualTo(FLAG_SECURE);
+    }
+
     public void assertThat_chooseLockIconChanged_WhenFingerprintExtraSet() {
         ShadowDrawable drawable = setActivityAndGetIconDrawable(true);
         assertThat(drawable.getCreatedFromResId()).isEqualTo(R.drawable.ic_fingerprint_header);
