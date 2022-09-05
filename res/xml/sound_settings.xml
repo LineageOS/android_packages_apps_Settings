@@ -168,6 +168,13 @@
         android:ringtoneType="alarm"
         android:order="-60"/>
 
+    <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+        android:key="show_app_volume"
+        android:title="@string/app_volume_title"
+        android:summary="@string/app_volume_summary"
+        android:defaultValue="false"
+        android:order="-5"/>
+
     <!-- Dial pad tones -->
     <SwitchPreferenceCompat
         android:key="dial_pad_tones"
