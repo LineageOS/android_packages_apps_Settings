@@ -36,7 +36,7 @@
                 android:layout_width="144dp"
                 android:layout_height="144dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_storage_wizard_internal" />
+                android:src="@drawable/ic_storage_wizard_external" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -48,20 +48,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sud_description_margin_bottom"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Subhead"
-                    android:text="@string/storage_wizard_init_v2_internal_title" />
+                    android:text="@string/storage_wizard_init_v2_external_title" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sud_description_margin_bottom"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:text="@string/storage_wizard_init_v2_internal_summary" />
+                    android:text="@string/storage_wizard_init_v2_external_summary" />
                 <Button
-                    android:id="@+id/storage_wizard_init_internal"
+                    android:id="@+id/storage_wizard_init_external"
                     style="@style/SudGlifButton.Primary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/storage_wizard_init_v2_internal_action"
-                    android:onClick="onNavigateInternal" />
+                    android:text="@string/storage_wizard_init_v2_external_action"
+                    android:onClick="onNavigateExternal" />
             </LinearLayout>
         </LinearLayout>
 
@@ -103,7 +103,7 @@
                 android:layout_width="144dp"
                 android:layout_height="144dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_storage_wizard_external" />
+                android:src="@drawable/ic_storage_wizard_internal" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -115,20 +115,26 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sud_description_margin_bottom"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Subhead"
-                    android:text="@string/storage_wizard_init_v2_external_title" />
+                    android:text="@string/storage_wizard_init_v2_internal_title" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sud_description_margin_bottom"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:text="@string/storage_wizard_init_v2_external_summary" />
+                    android:text="@string/storage_wizard_init_v2_internal_summary" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/sud_description_margin_bottom"
+                    android:textColor="?android:attr/colorError"
+                    android:text="@string/storage_warning_internal" />
                 <Button
-                    android:id="@+id/storage_wizard_init_external"
+                    android:id="@+id/storage_wizard_init_internal"
                     style="@style/SudGlifButton.Primary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/storage_wizard_init_v2_external_action"
-                    android:onClick="onNavigateExternal" />
+                    android:text="@string/storage_wizard_init_v2_internal_action"
+                    android:onClick="onNavigateInternal" />
             </LinearLayout>
         </LinearLayout>
 
