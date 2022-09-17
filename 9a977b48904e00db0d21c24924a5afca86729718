@@ -16,6 +16,23 @@
       "message": "Instead using getSummary() would be cleaner",
       "revId": "9a977b48904e00db0d21c24924a5afca86729718",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7832ed_15662b46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 18796
+      },
+      "writtenOn": "2022-09-17T13:42:39Z",
+      "side": 1,
+      "message": "    @Override\n    public CharSequence getSummary() {\n        return mContext.getString(R.string.peak_refresh_rate_summary_custom, (int)mPeakRefreshRate);\n    }",
+      "revId": "9a977b48904e00db0d21c24924a5afca86729718",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
