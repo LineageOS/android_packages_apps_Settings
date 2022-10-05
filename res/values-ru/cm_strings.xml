@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2021 The LineageOS Project
+     Copyright (C) 2017-2022 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,10 +15,14 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="keyboard_extras_title">Дополнительно</string>
+    <string name="advanced_keyboard_settings_title">Расширенные настройки</string>
     <string name="adb_enable_root">Отладка суперпользователем</string>
     <string name="adb_enable_summary_root">Разрешить запуск отладки Android с правами суперпользователя</string>
     <string name="backup_transport_setting_label">Сменить поставщика резервного копирования</string>
     <string name="backup_transport_title">Выберите поставщика резервного копирования</string>
+    <string name="berry_black_theme_title">Натурально черный</string>
+    <string name="berry_black_theme_summary">Натурально черный фон для темной темы</string>
     <string name="lineagelicense_title">Политика конфиденциальности LineageOS</string>
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Нажмите еще <xliff:g id="step_count">%1$d</xliff:g> раз, чтобы включить настройки для разработчиков.</item>
@@ -28,8 +32,82 @@
     </plurals>
     <string name="show_dev_on_cm">Настройки для разработчиков включены!</string>
     <string name="show_dev_already_cm">Нет необходимости, вы уже включили параметры разработки.</string>
+    <string name="theme_customization_font_title">Шрифт</string>
+    <string name="theme_customization_icon_shape_title">Форма значка</string>
+    <string name="peak_refresh_rate_summary_custom">Автоматически увеличивать частоту обновления экрана с 60 до %1$d Гц для некоторых типов контента. Увеличивает расход заряда батареи.</string>
+    <string name="status_bar_double_tap_to_sleep_title">Коснитесь для сна</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Дважды коснитесь строки состояния или экрана блокировки, чтобы перевести устройство в спящий режим</string>
+    <string name="fingerprint_wake_unlock_press">Прослушивать события только после включения экрана</string>
+    <string name="high_touch_polling_rate_title">Высокая частота опроса прикосновений</string>
+    <string name="high_touch_polling_rate_summary">Увеличить скорость опроса сенсорного экрана</string>
+    <string name="high_touch_sensitivity_title">Режим перчаток</string>
+    <string name="high_touch_sensitivity_summary">Увеличить чувствительность экрана для возможности работы в перчатках</string>
+    <string name="tethering_allow_vpn_upstreams_title">Разрешить клиентам использовать VPN</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Разрешить клиентам точки доступа при подключении использовать VPN-соединения этого устройства</string>
     <string name="increasing_ring_volume_option_title">Возрастающая громкость звонка</string>
     <string name="increasing_ring_min_volume_title">Начальная громкость</string>
     <string name="increasing_ring_ramp_up_time_title">Время увеличения</string>
+    <string name="lockscreen_media_art_title">Отображать обложку мультимедиа</string>
+    <string name="lock_settings_picker_pattern_size_message">Выберите размер граф. ключа</string>
+    <string name="lockpattern_settings_enable_error_path_title">Показывать неверный ввод</string>
+    <string name="lockpattern_settings_enable_dots_title">Показывать точки</string>
+    <string name="max_refresh_rate_title">Максимальная частота обновления</string>
+    <string name="min_refresh_rate_title">Минимальная частота обновления</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="tablet">Найдите сканер отпечатков пальцев на вашем планшете.</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="device">Найдите сканер отпечатков пальцев на вашем устройстве.</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="default">Найдите сканер отпечатков пальцев на вашем телефоне.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="tablet">Найдите сканер отпечатков пальцев на вашем планшете.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="device">Найдите сканер отпечатков пальцев на вашем устройстве.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="default">Найдите сканер отпечатков пальцев на вашем телефоне.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="tablet">Найдите сканер отпечатков пальцев на вашем планшете.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="device">Найдите сканер отпечатков пальцев на вашем устройстве.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="default">Найдите сканер отпечатков пальцев на вашем телефоне.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="tablet">Коснитесь сенсора на вашем планшете.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="device">Коснитесь сенсора на вашем устройстве.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="default">Коснитесь сенсора на вашем телефоне.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="tablet">Коснитесь сенсора на вашем планшете.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="device">Коснитесь сенсора на вашем устройстве.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="default">Коснитесь сенсора на вашем телефоне.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="tablet">Коснитесь сенсора на вашем планшете.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="device">Коснитесь сенсора на вашем устройстве.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Коснитесь сенсора на вашем телефоне.</string>
+    <string name="show_navbar_hint_title">Подсказки по навигации</string>
+    <string name="show_navbar_hint_summary">Показать подсказку по навигации в нижней части экрана</string>
+    <string name="app_notification_sound_timeout_title">Частота звуковых уведомлений</string>
+    <string name="app_notification_sound_timeout_summary_template">Звуки и вибрация не чаще, чем раз в <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">Без ограничений</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 секунд</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 секунд</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 минуту</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 минут</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 минут</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 минут</string>
+    <string name="auto_brightness_one_shot_title">Однократная автоматическая яркость</string>
+    <string name="auto_brightness_one_shot_summary">Регулировка яркости будет происходить только в момент включения экрана</string>
+    <string name="data_usage_app_restrict_all">Разрешить доступ к сети</string>
+    <string name="data_usage_app_restrict_all_summary">Отслеживание использование сети</string>
+    <string name="data_usage_app_restrict_mobile">Мобильные данные</string>
+    <string name="data_usage_app_restrict_mobile_summary">Включить использование мобильных данных</string>
+    <string name="data_usage_app_restrict_vpn">Данные VPN</string>
+    <string name="data_usage_app_restrict_vpn_summary">Включить использование данных VPN</string>
+    <string name="data_usage_app_restrict_wifi">Данные Wi\u2011Fi</string>
+    <string name="data_usage_app_restrict_wifi_summary">Включить использование данных Wi\u2011Fi</string>
+    <string name="unlock_scramble_pin_layout_title">Перемешивать кнопки</string>
+    <string name="unlock_scramble_pin_layout_summary">Переставлять кнопки ввода PIN-кода в случайном порядке</string>
+    <string name="proximity_wake_title">Предотвращать случайное включение</string>
+    <string name="proximity_wake_summary">Проверка датчика приближения перед включением экрана</string>
+    <string name="touchscreen_gesture_settings_title">Жесты сенсорного экрана</string>
+    <string name="touchscreen_gesture_settings_summary">Настройка жестов сенсорного экрана для выполнения действий</string>
+    <string name="touchscreen_hovering_title">Наведение пальца</string>
+    <string name="touchscreen_hovering_summary">Распознавать приближение пальца к экрану для событий наведения курсора в браузере или других приложениях</string>
     <string name="volume_link_notification_title">Связать громкость рингтона и уведомлений</string>
+    <string name="wake_when_plugged_or_unplugged_title">Включение при зарядке</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Включать экран при подключении или отключении источника питания</string>
+    <string name="fast_charging_title">Быстрая зарядка</string>
+    <string name="fast_charging_summary">Отключите, чтобы уменьшить нагрев устройства во время зарядки или продлить срок службы аккумулятора</string>
+    <string name="ambient_display_screen_off_udfps_title" product="default">Длительное нажатие на датчик отпечатка пальца для разблокировки телефона</string>
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">Длительное нажатие на датчик отпечатка пальца для разблокировки планшета</string>
+    <string name="ambient_display_screen_off_udfps_title" product="device">Длительное нажатие на датчик отпечатка пальца для разблокировки устройства</string>
+    <string name="ambient_display_screen_off_udfps_summary">Для пробуждения экрана и разблокировки удерживайте датчик отпечатков пальцев под дисплеем.</string>
+    <string name="storage_warning_internal">Предупреждение: эта опция может работать неправильно или привести к потере данных, поэтому не рекомендуется!</string>
 </resources>
