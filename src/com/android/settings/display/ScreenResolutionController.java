@@ -25,19 +25,23 @@ import androidx.annotation.VisibleForTesting;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
+import static com.android.settings.display.ScreenResolutionFragment.LOW_RES_INDEX;
+import static com.android.settings.display.ScreenResolutionFragment.HIGH_RES_INDEX;
+
 /** Controller that switch the screen resolution. */
 public class ScreenResolutionController extends BasePreferenceController {
 
-    static final int FHD_WIDTH = 1080;
-    static final int QHD_WIDTH = 1440;
-
     private Display mDisplay;
+
+    private int[] mScreenWidthOptions;
 
     public ScreenResolutionController(Context context, String key) {
         super(context, key);
 
         mDisplay =
                 mContext.getSystemService(DisplayManager.class).getDisplay(Display.DEFAULT_DISPLAY);
+
+        mScreenWidthOptions = context.getResources().getIntArray(R.array.config_screen_resolution_widths);
     }
 
     /** Check if the width is supported by the display. */
@@ -50,7 +54,7 @@ public class ScreenResolutionController extends BasePreferenceController {
 
     /** Return true if the device contains two (or more) resolutions. */
     protected boolean checkSupportedResolutions() {
-        return isSupportedMode(FHD_WIDTH) && isSupportedMode(QHD_WIDTH);
+        return isSupportedMode(mScreenWidthOptions[LOW_RES_INDEX]) && isSupportedMode(mScreenWidthOptions[HIGH_RES_INDEX]);
     }
 
     @Override
@@ -61,15 +65,13 @@ public class ScreenResolutionController extends BasePreferenceController {
     @Override
     public CharSequence getSummary() {
         String summary = null;
-        switch (getDisplayWidth()) {
-            case FHD_WIDTH:
-                summary = mContext.getString(R.string.screen_resolution_summary_high);
-                break;
-            case QHD_WIDTH:
-                summary = mContext.getString(R.string.screen_resolution_summary_highest);
-                break;
-            default:
-                summary = mContext.getString(R.string.screen_resolution_title);
+        int disp_width = getDisplayWidth();
+        if (disp_width == mScreenWidthOptions[LOW_RES_INDEX]) {
+            summary = mContext.getString(R.string.screen_resolution_summary_high);
+        } else if (disp_width == mScreenWidthOptions[HIGH_RES_INDEX]) {
+            summary = mContext.getString(R.string.screen_resolution_summary_highest);
+        } else {
+            summary = mContext.getString(R.string.screen_resolution_title);
         }
 
         return summary;
