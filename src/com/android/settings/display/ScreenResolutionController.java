@@ -28,16 +28,24 @@ import com.android.settings.core.BasePreferenceController;
 /** Controller that switch the screen resolution. */
 public class ScreenResolutionController extends BasePreferenceController {
 
-    static final int FHD_WIDTH = 1080;
-    static final int QHD_WIDTH = 1440;
-
     private Display mDisplay;
+
+    private int[] mScreenWidthOptions;
+
+    private String[] mScreenResolutionSummaries;
 
     public ScreenResolutionController(Context context, String key) {
         super(context, key);
 
         mDisplay =
                 mContext.getSystemService(DisplayManager.class).getDisplay(Display.DEFAULT_DISPLAY);
+
+        mScreenResolutionSummaries =
+                context.getResources().getStringArray(
+                        R.array.config_screen_resolution_summaries_strings);
+
+        mScreenWidthOptions = context.getResources().getIntArray(
+                R.array.config_screen_resolution_widths);
     }
 
     /** Check if the width is supported by the display. */
@@ -50,7 +58,17 @@ public class ScreenResolutionController extends BasePreferenceController {
 
     /** Return true if the device contains two (or more) resolutions. */
     protected boolean checkSupportedResolutions() {
-        return isSupportedMode(FHD_WIDTH) && isSupportedMode(QHD_WIDTH);
+        boolean resolution_supported = mScreenWidthOptions != null && mScreenWidthOptions.length > 1;
+
+        if (!resolution_supported)
+            return false;
+
+        // All modes defined in config_screen_resolution_widths should be supported by system
+        for (int screenWidthOption : mScreenWidthOptions) {
+            resolution_supported = resolution_supported && isSupportedMode(screenWidthOption);
+        }
+
+        return resolution_supported;
     }
 
     @Override
@@ -61,15 +79,12 @@ public class ScreenResolutionController extends BasePreferenceController {
     @Override
     public CharSequence getSummary() {
         String summary = null;
-        switch (getDisplayWidth()) {
-            case FHD_WIDTH:
-                summary = mContext.getString(R.string.screen_resolution_summary_high);
-                break;
-            case QHD_WIDTH:
-                summary = mContext.getString(R.string.screen_resolution_summary_highest);
-                break;
-            default:
-                summary = mContext.getString(R.string.screen_resolution_title);
+        int disp_width = getDisplayWidth();
+
+        for (int i = 0; i < mScreenWidthOptions.length; i ++) {
+            if (disp_width == mScreenWidthOptions[i]) {
+                summary = mScreenResolutionSummaries[i];
+            }
         }
 
         return summary;

@@ -16,9 +16,6 @@
 
 package com.android.settings.display;
 
-import static com.android.settings.display.ScreenResolutionController.FHD_WIDTH;
-import static com.android.settings.display.ScreenResolutionController.QHD_WIDTH;
-
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.res.Resources;
@@ -52,12 +49,11 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
     private static final String TAG = "ScreenResolution";
 
     private Resources mResources;
-    private static final int FHD_INDEX = 0;
-    private static final int QHD_INDEX = 1;
     private Display mDefaultDisplay;
     private String[] mScreenResolutionOptions;
     private Set<Point> mResolutions;
     private String[] mScreenResolutionSummaries;
+    private int[] mScreenWidthOptions;
 
     private IllustrationPreference mImagePreference;
 
@@ -70,6 +66,8 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
         mResources = context.getResources();
         mScreenResolutionOptions =
                 mResources.getStringArray(R.array.config_screen_resolution_options_strings);
+        mScreenWidthOptions =
+                mResources.getIntArray(R.array.config_screen_resolution_widths);
         mScreenResolutionSummaries =
                 mResources.getStringArray(R.array.config_screen_resolution_summaries_strings);
         mResolutions = getAllSupportedResolution();
@@ -158,9 +156,12 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
     /** Get the key corresponding to the resolution. */
     @VisibleForTesting
     String getKeyForResolution(int width) {
-        return width == FHD_WIDTH ? mScreenResolutionOptions[FHD_INDEX]
-                : width == QHD_WIDTH ? mScreenResolutionOptions[QHD_INDEX]
-                : null;
+        for (int i = 0; i < mScreenWidthOptions.length; i ++) {
+            if (width == mScreenWidthOptions[i]) {
+                return mScreenResolutionOptions[i];
+            }
+        }
+        return null;
     }
 
     @Override
@@ -172,11 +173,10 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
 
     @Override
     protected boolean setDefaultKey(String key) {
-        if (mScreenResolutionOptions[FHD_INDEX].equals(key)) {
-            setDisplayMode(FHD_WIDTH);
-
-        } else if (mScreenResolutionOptions[QHD_INDEX].equals(key)) {
-            setDisplayMode(QHD_WIDTH);
+        for (int i = 0; i < mScreenResolutionOptions.length; i ++) {
+            if (mScreenResolutionOptions[i].equals(key)) {
+                setDisplayMode(mScreenWidthOptions[i]);
+            }
         }
 
         updateIllustrationImage(mImagePreference);
@@ -187,11 +187,8 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
     private void updateIllustrationImage(IllustrationPreference preference) {
         String key = getDefaultKey();
 
-        if (TextUtils.equals(mScreenResolutionOptions[FHD_INDEX], key)) {
-            preference.setLottieAnimationResId(R.drawable.screen_resolution_1080p);
-        } else if (TextUtils.equals(mScreenResolutionOptions[QHD_INDEX], key)) {
-            preference.setLottieAnimationResId(R.drawable.screen_resolution_1440p);
-        }
+        // FIXME: Do we really need this illustration image? Different devices will have different
+        //        number of resolution options, we can't have them all
     }
 
     @Override
@@ -236,10 +233,6 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.screen_resolution_settings) {
-
-                boolean mIsFHDSupport = false;
-                boolean mIsQHDSupport = false;
-
                 @Override
                 protected boolean isPageSearchEnabled(Context context) {
                     ScreenResolutionController mController =
