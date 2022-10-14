@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6421e3_36f54a75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-10-14T19:12:28Z",
+      "side": 1,
+      "message": "The patch is now a work-in-progress, and I would like to write down my ideas here:\n1. I think there is still a need to add a new xml value to show the available resolutions, and here is my reasons: Different devices might have different number of resolutions, and for each resolution, the current implementation uses \"config_screen_resolution_options_strings\" and \"config_screen_resolution_summaries_strings\" to display the information about the resolution. Those 2 configs and the resolution is highly coupled, meaning that one entry in the options string corresponds to one summary string, and corresponds to one specific resolution. So adding a xml value for available resolutions will force the ordering of the resolution array.\n2. Don\u0027t know if updateIllustrationImage is really needed, because we have no images for different resolutions...",
+      "revId": "c7484da3c88a872decbc2ff7bde79dea503d03e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
