@@ -16,6 +16,23 @@
       "message": "The patch is now a work-in-progress, and I would like to write down my ideas here:\n1. I think there is still a need to add a new xml value to show the available resolutions, and here is my reasons: Different devices might have different number of resolutions, and for each resolution, the current implementation uses \"config_screen_resolution_options_strings\" and \"config_screen_resolution_summaries_strings\" to display the information about the resolution. Those 2 configs and the resolution is highly coupled, meaning that one entry in the options string corresponds to one summary string, and corresponds to one specific resolution. So adding a xml value for available resolutions will force the ordering of the resolution array.\n2. Don\u0027t know if updateIllustrationImage is really needed, because we have no images for different resolutions...",
       "revId": "c7484da3c88a872decbc2ff7bde79dea503d03e5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b28fb53d_4a9a3a41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31578
+      },
+      "writtenOn": "2022-10-14T20:48:13Z",
+      "side": 1,
+      "message": "\u003e Patch Set 3:\n\u003e \n\u003e I still think it\u0027d be better to just rewrite it to show all resolutions supported by the device.\n\nIt should be able to show all resolutions returned by mDisolay.getSupportedModes now. And for each resolution, there is a tile and a summary. And the reason why I add a value to xml is to bound the title and summary to the specific resolution.\n\ndo you mean that we should rewrite that and simply show all resolution options in the format like \"1920x1080\", maybe in a dialog, instead of using the xml value to decide the title for each resolution?",
+      "revId": "c7484da3c88a872decbc2ff7bde79dea503d03e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
