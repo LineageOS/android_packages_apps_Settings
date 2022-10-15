@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Eman gailuari inguruko Bluetooth bidezko gailuekin komunikatzeko baimena"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Baimendu telefonoari inguruko Bluetooth bidezko gailuekin komunikatzea"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Desgaitu Bluetooth A2DP-ren hardwarearen deskarga"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Desgaitu Bluetooth LE AUDIO-ren hardwarearen deskarga"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Desgaitu Bluetooth LE audio darabilten hardwareen deskarga"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Gailua berrabiarazi nahi duzu?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Ezarpen hau aldatzeko, gailua berrabiarazi behar duzu."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Berrabiarazi"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Utzi"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Gaitu Bluetooth LE audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"LE audio darabilten hardwareak gailuarekin bateragarriak badira, Bluetooth LE audioa eginbidea gaitzen du"</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Multimedia-gailuak"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Deiak jaso eta egiteko gailuak"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Beste gailu batzuk"</string>
@@ -343,7 +345,7 @@
     <string name="safety_center_summary" msgid="3554867379951053869">"Aplikazioen segurtasuna, gailuaren blokeoa, baimenak"</string>
     <string name="security_settings_face_preference_summary" msgid="6675126437396914838">"Gehitu da aurpegia"</string>
     <string name="security_settings_face_preference_summary_none" msgid="5952752252122581846">"Sakatu aurpegi bidez desblokeatzeko eginbidea konfiguratzeko"</string>
-    <string name="security_settings_face_preference_title" msgid="2126625155005348417">"Aurpegi bidez desblokeatzeko eginbidea"</string>
+    <string name="security_settings_face_preference_title" msgid="2126625155005348417">"Aurpegi bidez desblokeatzea"</string>
     <string name="security_settings_face_profile_preference_title" msgid="7519527436266375005">"Aurpegi bidez desblokeatzeko eginbidea lanerako"</string>
     <string name="security_settings_face_enroll_education_title" msgid="6448806884597691208">"Aurpegi bidez desblokeatzeko eginbidea konfiguratzeko argibideak"</string>
     <string name="security_settings_face_enroll_education_title_accessibility" msgid="3701874093226957891">"Konfiguratu aurpegi bidez desblokeatzeko eginbidea"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Eman aurpegi bidez desblokeatzeko baimena"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Erabili aurpegia autentifikatzeko"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Erabili aurpegia telefonoa desblokeatzeko, erosketak baimentzeko edo aplikazioetan saioa hasteko."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Eman haurrari aurpegia erabilita telefonoa desblokeatzeko edo hura dela egiaztatzeko baimena. Aplikazioetan saioa hastean, erosketak onartzean eta beste kasu batzuetan gertatzen da hori."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Eman haurrari aurpegia erabilita telefonoa desblokeatzeko baimena"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Eman haurrari aurpegia erabilita tableta desblokeatzeko baimena"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Eman haurrari aurpegia erabilita gailua desblokeatzeko baimena"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Baliteke haurraren telefonoa haren aurpegiaren bidez desblokeatzea ez izatea eredu edo PIN konplexu bat erabiltzea bezain segurua."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Baliteke haurraren tableta haren aurpegiaren bidez desblokeatzea ez izatea eredu edo PIN konplexu bat erabiltzea bezain segurua."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Baliteke haurraren gailua haren aurpegiaren bidez desblokeatzea ez izatea eredu edo PIN konplexu bat erabiltzea bezain segurua."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Erabili aurpegia telefonoa desblokeatzeko eta erosketak onartzeko.\n\nOharra: ezin duzu aurpegia erabili gailu hau desblokeatzeko. Informazio gehiago lortzeko, jarri zure erakundearen administratzailearekin harremanetan."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Erabili aurpegia telefonoa desblokeatzeko, erosketak baimentzeko edo aplikazioetan saioa hasteko"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -471,7 +479,7 @@
     <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Erabili hatz-marka tableta desblokeatzeko edo zeu zarela egiaztatzeko, hala nola aplikazioetan saioa hastean"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="device" msgid="2503218139575057099">"Erabili hatz-marka gailua blokeatzeko edo zeu zarela egiaztatzeko, hala nola aplikazioetan saioa hastean"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="default" msgid="481286891358925579">"Erabili hatz-marka telefonoa desblokeatzeko edo zeu zarela egiaztatzeko, hala nola aplikazioetan saioa hastean"</string>
-    <string name="security_settings_biometric_preference_title" msgid="298146483579539448">"Aurpegi eta hatz-marka bidez desblokeatzeko eginbidea"</string>
+    <string name="security_settings_biometric_preference_title" msgid="298146483579539448">"Aurpegi eta hatz-marka bidez desblokeatzea"</string>
     <string name="security_settings_biometric_preference_summary_none_enrolled" msgid="6941188982863819389">"Sakatu konfiguratzeko"</string>
     <string name="security_settings_biometric_preference_summary_both_fp_multiple" msgid="4821859306609955966">"Aurpegia eta hatz-markak gehitu dira"</string>
     <string name="security_settings_biometric_preference_summary_both_fp_single" msgid="684409535278676426">"Aurpegia eta hatz-marka gehitu dira"</string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Aurpegiaren bidez"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Hatz-markaren bidez"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Aurpegiaren edo hatz-markaren bidez"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Eman telefonoa guraso bati"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Eman tableta guraso bati"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Eman gailua guraso bati"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Eman telefonoa guraso bati"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"Ados"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Pantailaren blokeoa saltatu?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Ez dira aktibatuko gailua babesteko eginbideak. Tableta galtzen baduzu, lapurtzen badizute edo berrezarri egiten bada, ezin izango duzu ekidin beste pertsona batzuek erabiltzea."</string>
@@ -728,7 +738,7 @@
     <string name="unlock_change_lock_pattern_title" msgid="8234523589333929193">"Aldatu desblokeatzeko eredua"</string>
     <string name="unlock_change_lock_pin_title" msgid="2324077520816477479">"Aldatu desblokeo PINa"</string>
     <string name="unlock_change_lock_password_title" msgid="873517913969091074">"Aldatu desblokeatzeko pasahitza"</string>
-    <string name="unlock_footer_high_complexity_requested" msgid="4471274783909915352">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak PIN edo pasahitz seguru bat erabiltzea gomendatzen du, eta baliteke ez funtzionatzea behar bezala halakorik gabe"</string>
+    <string name="unlock_footer_high_complexity_requested" msgid="4471274783909915352">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak PIN edo pasahitz konplexu bat erabiltzea gomendatzen du, eta baliteke ez funtzionatzea behar bezala halakorik gabe"</string>
     <string name="unlock_footer_medium_complexity_requested" msgid="5515870066751600640">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak beste PIN edo pasahitz bat erabiltzea gomendatzen du, eta baliteke ez funtzionatzea behar bezala halakorik gabe"</string>
     <string name="unlock_footer_low_complexity_requested" msgid="2517656037576567971">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak beste eredu, PIN edo pasahitz bat erabiltzea gomendatzen du, eta baliteke ez funtzionatzea behar bezala halakorik gabe"</string>
     <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak pantailaren beste blokeo bat erabiltzea gomendatzen du"</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Telefonoaren pantailaren orientazioa bertikaletik horizontalera, eta alderantziz, aldatzen duzunean"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Pantailaren bereizmena"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Bereizmen handia"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Bereizmen handiena"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Bereizmen osoa"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Bereizmena aldatuz gero, baliteke abian diren aplikazio batzuk ixtea."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Bereizmen osoarekin bateria gehiago kontsumitzen da. Bereizmena aldatuz gero, baliteke aplikazio batzuk berrabiaraztea."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Koloreak"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Naturalak"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Nabarmenduak"</string>
@@ -1445,7 +1455,7 @@
     <string name="screensaver_settings_summary_dock" msgid="6997766385189369733">"Oinarrian dagoenean"</string>
     <string name="screensaver_settings_summary_never" msgid="4988141393040918450">"Inoiz ez"</string>
     <string name="screensaver_settings_summary_off" msgid="8720357504939106923">"Desaktibatuta"</string>
-    <string name="screensaver_settings_disabled_prompt" msgid="1166343194760238835">"Telefonoa oinarrian edo inaktibo dagoenean zer gertatzen den kontrolatzeko, aktibatu pantaila-babeslea."</string>
+    <string name="screensaver_settings_disabled_prompt" msgid="1166343194760238835">"Telefonoa oinarrian eta/edo inaktibo dagoenean zer gertatzen den kontrolatzeko, aktibatu pantaila-babeslea."</string>
     <string name="screensaver_settings_when_to_dream" msgid="8145025742428940520">"Noiz abiarazi"</string>
     <string name="screensaver_settings_current" msgid="390472865895976891">"Oraingo pantaila-babeslea"</string>
     <string name="screensaver_settings_button" msgid="6159236558934930238">"Ezarpenak"</string>
@@ -2037,9 +2047,9 @@
     </plurals>
     <string name="forgot_password_title" msgid="3967873480875239885">"Galdetu IKT saileko administratzaileari"</string>
     <string name="forgot_password_text" msgid="2583194470767613163">"PINa, eredua edo pasahitza berrezartzen lagunduko dizu"</string>
-    <string name="install_all_warning" product="tablet" msgid="7010749217925069520">"Tabletak eta datu pertsonalek aplikazio ezezagunen erasoak jaso ditzakete. Iturburu honetako aplikazioak instalatzen badituzu, onartu egingo duzu haiek erabiltzeagatik tabletari gerta dakizkiokeen kalteen edo datu-galeren erantzulea zeu zarela."</string>
+    <string name="install_all_warning" product="tablet" msgid="7010749217925069520">"Baliteke tabletak eta datu pertsonalek aplikazio ezezagunen erasoak jasatea. Iturburu honetako aplikazioak instalatzen badituzu, onartu egingo duzu haiek erabiltzeagatik tabletari agian gertatuko zaizkion kalteen edo datu-galeren erantzulea zeu zarela."</string>
     <string name="install_all_warning" product="default" msgid="652516435709047343">"Baliteke telefonoak eta datu pertsonalek aplikazio ezezagunen erasoak jasatea. Iturburu honetako aplikazioak instalatzen badituzu, onartu egingo duzu zeu zarela haiek erabiltzeagatik telefonoari agian gertatuko zaizkion kalteen edo datu-galeren erantzulea."</string>
-    <string name="install_all_warning" product="device" msgid="2348262609815354500">"Gailuak eta datu pertsonalek aplikazio ezezagunen erasoak jaso ditzakete. Iturburu honetako aplikazioak instalatzen badituzu, onartu egingo duzu haiek erabiltzeagatik gailuari agian gertatuko zaizkion kalteen edo datu-galeren erantzulea zeu izango zarela."</string>
+    <string name="install_all_warning" product="device" msgid="2348262609815354500">"Baliteke gailuak eta datu pertsonalek aplikazio ezezagunen erasoak jasatea. Iturburu honetako aplikazioak instalatzen badituzu, onartu egingo duzu haiek erabiltzeagatik gailuari agian gertatuko zaizkion kalteen edo datu-galeren erantzulea zeu izango zarela."</string>
     <string name="advanced_settings" msgid="2368905204839169094">"Ezarpen aurreratuak"</string>
     <string name="advanced_settings_summary" msgid="1823765348195530035">"Gaitu ezarpenen aukera gehiago"</string>
     <string name="application_info_label" msgid="1015706497694165866">"Aplikazioen informazioa"</string>
@@ -2874,7 +2884,7 @@
     <string name="battery_desc_flashlight" msgid="6694895513133361404">"Linternak erabilitako bateria"</string>
     <string name="battery_desc_camera" msgid="6152712271731518018">"Kamerak erabilitako bateria"</string>
     <string name="battery_desc_display" msgid="7175017688954602685">"Pantailak eta hondoko argiak erabilitako bateria"</string>
-    <string name="battery_sugg_display" msgid="3102137296547788111">"Murriztu pantailaren distira edota pantailaren denbora-muga"</string>
+    <string name="battery_sugg_display" msgid="3102137296547788111">"Murriztu pantailaren distira eta/edo pantailaren denbora-muga"</string>
     <string name="battery_desc_wifi" msgid="5276669172548928768">"Wi-Fiak erabilitako energia"</string>
     <string name="battery_sugg_wifi" msgid="359757575108350109">"Desaktibatu Wi‑Fi konexioa erabiltzen ari ez denean edo erabilgarri ez dagoenean."</string>
     <string name="battery_desc_bluetooth" msgid="2237947137783306282">"Bluetooth bidezko konexioak erabilitako bateria"</string>
@@ -3985,7 +3995,7 @@
     <string name="notification_silence_title" msgid="4085829874452944989">"Isila"</string>
     <string name="notification_alert_title" msgid="1632401211722199217">"Lehenetsia"</string>
     <string name="allow_interruption" msgid="5237201780159482716">"Baimendu etenaldiak"</string>
-    <string name="allow_interruption_summary" msgid="9044131663518112543">"Utzi aplikazioari soinuak edo dardara egiten, edota pantailan jakinarazpenak erakusten"</string>
+    <string name="allow_interruption_summary" msgid="9044131663518112543">"Utzi aplikazioari soinuak edo dardara egiten, eta/edo pantailan jakinarazpenak erakusten"</string>
     <string name="notification_priority_title" msgid="5554834239080425229">"Lehentasunezkoa"</string>
     <string name="notification_channel_summary_priority" msgid="7225362351439076913">"Burbuila gisa agertzen da elkarrizketen atalaren goialdean, eta profileko argazkia bistaratzen du pantaila blokeatuta dagoenean"</string>
     <string name="convo_not_supported_summary" msgid="4285471045268268048">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak ez ditu onartzen elkarrizketetarako eginbide gehienak. Ezin dituzu ezarri elkarrizketak lehentasunezko gisa, eta ez dira agertuko burbuila gainerakor gisa elkarrizketen atalaren goialdean."</string>

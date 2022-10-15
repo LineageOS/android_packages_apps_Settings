@@ -150,11 +150,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Разрешить устройству обмениваться данными с другими устройствами Bluetooth."</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Разрешить телефону обмениваться данными с другими устройствами Bluetooth."</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Отключить аппаратную разгрузку профиля Bluetooth A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Отключить аппаратную разгрузку профиля Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Отключить аппаратную разгрузку Bluetooth LE Audio"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Перезапустить устройство?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Чтобы изменить эту настройку, перезапустите устройство."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Перезапустить"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Отмена"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Включить Bluetooth LE Audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Включить функцию Bluetooth LE Audio, если устройство ее поддерживает"</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Медиаустройства"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Устройства для совершения звонков"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Другие устройства"</string>
@@ -372,7 +374,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Разрешите фейсконтроль"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Разблокируйте устройство при помощи распознавания лица"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Используйте фейсконтроль для разблокировки телефона, подтверждения покупок и входа в приложения."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Разрешите ребенку использовать фейсконтроль, чтобы разблокировать телефон и подтверждать личность, например для входа в приложения, одобрения покупок и не только."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Разрешите ребенку разблокировать его телефон с помощью фейсконтроля."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Разрешите ребенку разблокировать его планшет с помощью фейсконтроля."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Разрешите ребенку разблокировать его устройство с помощью фейсконтроля."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Распознавание лица на телефоне вашего ребенка может обеспечивать менее надежную защиту, чем графический ключ или PIN-код."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Распознавание лица на планшете вашего ребенка может обеспечивать менее надежную защиту, чем графический ключ или PIN-код."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Распознавание лица на устройстве вашего ребенка может обеспечивать менее надежную защиту, чем графический ключ или PIN-код."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Разблокируйте телефон и подтверждайте покупки с помощью фейсконтроля.\n\nВнимание! Для разблокировки этого устройства фейсконтроль использовать нельзя. За подробной информацией обратитесь к администратору."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Используйте фейсконтроль для разблокировки телефона, подтверждения покупок и входа в приложения."</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -380,6 +387,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -490,7 +498,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"С помощью фейсконтроля"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"С помощью отпечатка пальца"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"С помощью фейсконтроля или отпечатка пальца"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Верни телефон родителю."</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Верни планшет родителю"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Верни устройство родителю"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Верни телефон родителю."</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"ОК"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Не настраивать блокировку?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Защита устройства не будет активирована. В случае потери или кражи планшета либо сброса его настроек им смогут воспользоваться посторонние."</string>
@@ -1356,10 +1366,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Переключать ориентацию при изменении положения телефона"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Разрешение экрана"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Высокое разрешение"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Самое высокое разрешение"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Исходное"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"При изменении разрешения некоторые запущенные приложения могут закрыться."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Исходное разрешение расходует больше заряда. При смене разрешения некоторые приложения могут перезапуститься."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Цвета"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Натуральные"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Яркие"</string>
@@ -1907,10 +1917,10 @@
     <string name="location_app_level_permissions" msgid="907206607664629759">"Доступ приложений к геоданным"</string>
     <string name="location_app_permission_summary_location_off" msgid="2711822936853500335">"Доступ к геоданным отключен"</string>
     <plurals name="location_app_permission_summary_location_on" formatted="false" msgid="8286873148858526214">
-      <item quantity="one"> Приложения с доступом к данным о местоположении: <xliff:g id="PERMITTED_LOCATION_APP_COUNT_2">%1$d</xliff:g> из <xliff:g id="TOTAL_LOCATION_APP_COUNT_3">%2$d</xliff:g></item>
-      <item quantity="few"> Приложения с доступом к данным о местоположении: <xliff:g id="PERMITTED_LOCATION_APP_COUNT_2">%1$d</xliff:g> из <xliff:g id="TOTAL_LOCATION_APP_COUNT_3">%2$d</xliff:g></item>
-      <item quantity="many"> Приложения с доступом к данным о местоположении: <xliff:g id="PERMITTED_LOCATION_APP_COUNT_2">%1$d</xliff:g> из <xliff:g id="TOTAL_LOCATION_APP_COUNT_3">%2$d</xliff:g></item>
-      <item quantity="other"> Приложения с доступом к данным о местоположении: <xliff:g id="PERMITTED_LOCATION_APP_COUNT_2">%1$d</xliff:g> из <xliff:g id="TOTAL_LOCATION_APP_COUNT_3">%2$d</xliff:g></item>
+      <item quantity="one"> Доступ к геоданным есть у <xliff:g id="PERMITTED_LOCATION_APP_COUNT_2">%1$d</xliff:g> приложения из <xliff:g id="TOTAL_LOCATION_APP_COUNT_3">%2$d</xliff:g></item>
+      <item quantity="few"> Доступ к геоданным есть у <xliff:g id="PERMITTED_LOCATION_APP_COUNT_2">%1$d</xliff:g> приложений из <xliff:g id="TOTAL_LOCATION_APP_COUNT_3">%2$d</xliff:g></item>
+      <item quantity="many"> Доступ к геоданным есть у <xliff:g id="PERMITTED_LOCATION_APP_COUNT_2">%1$d</xliff:g> приложений из <xliff:g id="TOTAL_LOCATION_APP_COUNT_3">%2$d</xliff:g></item>
+      <item quantity="other"> Доступ к геоданным есть у <xliff:g id="PERMITTED_LOCATION_APP_COUNT_2">%1$d</xliff:g> приложения из <xliff:g id="TOTAL_LOCATION_APP_COUNT_3">%2$d</xliff:g></item>
     </plurals>
     <string name="location_category_recent_location_access" msgid="2558063524482178146">"Доступ за последнее время"</string>
     <string name="location_recent_location_access_see_all" msgid="4203102419355323325">"Показать все"</string>
@@ -4801,7 +4811,7 @@
     <string name="users_summary" msgid="8473589474976307510">"Вы вошли как <xliff:g id="USER_NAME">%1$s</xliff:g>"</string>
     <string name="payment_summary" msgid="5513009140568552693">"По умолчанию: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
     <string name="backup_disabled" msgid="4503062265560959320">"Резервное копирование отключено"</string>
-    <string name="android_version_summary" msgid="7818952662015042768">"Обновлено до Android <xliff:g id="VERSION">%1$s</xliff:g>"</string>
+    <string name="android_version_summary" msgid="7818952662015042768">"Система обновлена до Android <xliff:g id="VERSION">%1$s</xliff:g>"</string>
     <string name="android_version_pending_update_summary" msgid="5404532347171027730">"Доступно обновление"</string>
     <string name="disabled_by_policy_title" msgid="3635622338687810583">"Заблокировано вашим администратором"</string>
     <string name="disabled_by_policy_title_adjust_volume" msgid="1669689058213728099">"Невозможно изменить громкость"</string>

@@ -150,11 +150,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Omogočite napravi, da komunicira z napravami Bluetooth v bližini"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Omogočite telefonu, da komunicira z napravami Bluetooth v bližini"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Onemogoči prelaganje s strojne opreme za A2DP za Bluetooth"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Onemogoči prelaganje na strojno opremo za Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Onemogoči prelaganje na strojno opremo za Bluetooth LE Audio"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Vnovični zagon?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Če želite spremeniti to nastavitev, znova zaženite napravo."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Zaženi znova"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Prekliči"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Omogoči funkcijo Bluetooth LE Audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Omogoči funkcijo Bluetooth LE Audio, če naprava podpira strojne zmogljivosti za zvok z majhno porabo energije."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Predstavnostne naprave"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Klicne naprave"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Druge naprave"</string>
@@ -372,7 +374,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Omogočanje odklepanja z obrazom"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Preverjanje pristnosti z obrazom"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Uporabljajte obraz za odklepanje telefona, odobritev nakupov ali prijavo v aplikacije."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Otroku dovolite, da bo z obrazom odklepal telefon ali potrjeval svojo identiteto. To se zgodi, ko se prijavi v aplikacije, odobri nakup in drugo."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Otroku dovolite odklepanje telefona z obrazom."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Otroku dovolite odklepanje tabličnega računalnika z obrazom."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Otroku dovolite odklepanje naprave z obrazom."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Če otrok odklepa telefon z obrazom, je to morda manj varno od zapletenega vzorca ali kode PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Če otrok odklepa tablični računalnik z obrazom, je to morda manj varno od zapletenega vzorca ali kode PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Če otrok odklepa napravo z obrazom, je to morda manj varno od zapletenega vzorca ali kode PIN."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Z obrazom odklenite telefon ali odobrite nakupe.\n\nOpomba: obraza ne morete uporabiti za odklepanje te naprave. Za več informacij se obrnite na skrbnika v organizaciji."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Uporabljajte obraz za odklepanje telefona, odobritev nakupov ali prijavo v aplikacije"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -380,6 +387,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -490,7 +498,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Uporaba obraza"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Uporaba prstnega odtisa"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Uporaba obraza ali prstnega odtisa"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Telefon vrni staršu"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Tablični računalnik vrni staršu"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Napravo vrni staršu"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Telefon vrni staršu"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"V redu"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Preskok zaklepanja zaslona?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Funkcije za zaščito naprave ne bodo vklopljene. Če tablični računalnik izgubite, vam ga ukradejo ali ponastavijo na tovarniške nastavitve, drugim osebam ne boste mogli preprečiti njegove uporabe."</string>
@@ -741,7 +751,7 @@
     <string name="unlock_footer_high_complexity_requested" msgid="4471274783909915352">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> priporoča močno kodo PIN ali geslo, sicer morda ne bo delovala, kot je pričakovano"</string>
     <string name="unlock_footer_medium_complexity_requested" msgid="5515870066751600640">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> priporoča novo kodo PIN ali geslo, sicer morda ne bo delovala, kot je pričakovano"</string>
     <string name="unlock_footer_low_complexity_requested" msgid="2517656037576567971">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> priporoča nov vzorec, kodo PIN ali geslo, sicer morda ne bo delovala, kot je pričakovano"</string>
-    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> priporoča novo zaklepanje zaslona"</string>
+    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> priporoča novo zaklepanje zaslona."</string>
     <string name="lock_failed_attempts_before_wipe" msgid="6874652886647631418">"Poskusite znova. Poskus <xliff:g id="CURRENT_ATTEMPTS">%1$d</xliff:g> od <xliff:g id="TOTAL_ATTEMPTS">%2$d</xliff:g>."</string>
     <string name="lock_last_attempt_before_wipe_warning_title" msgid="7450322567217745999">"Vaši podatki bodo izbrisani"</string>
     <string name="lock_last_pattern_attempt_before_wipe_device" msgid="5816668400104558952">"Če pri naslednjem poskusu vnesete napačen vzorec, bodo podatki v napravi izbrisani."</string>
@@ -1358,10 +1368,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Ko telefon obrnete iz navpičnega v vodoravni položaj ali obratno."</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Ločljivost zaslona"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Visoka ločljivost"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Najvišja ločljivost"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Polna ločljivost"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Če preklopite ločljivost, se bodo nekatere aplikacije, ki se trenutno izvajajo, morda zaprle."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Za polno ločljivost se porablja več energije baterije. Ob spremembi ločljivosti se bodo morda nekatere aplikacije znova zagnale."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Barve"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Naravne"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Poudarjene"</string>

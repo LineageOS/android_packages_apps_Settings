@@ -150,11 +150,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Дазволіць прыладзе абменьвацца данымі з іншымі прыладамі праз Bluetooth"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Дазволіць тэлефону абменьвацца данымі з іншымі прыладамі праз Bluetooth"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Адключыць выгрузку Bluetooth A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Адключыць апаратную разгрузку для Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Адключыць апаратную разгрузку для Bluetooth LE audio"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Перазапусціць прыладу?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Каб змяніць гэту наладу, трэба перазапусціць прыладу."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Перазапусціць"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Скасаваць"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Уключыць Bluetooth LE audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Уключае функцыю Bluetooth LE audio, калі прылада падтрымлівае апаратнае забеспячэнне LE audio."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Носьбіты даных"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Выклікаць прылады"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Іншыя прылады"</string>
@@ -372,7 +374,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Дазволіць распазнаванне твару"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Выкарыстоўвайце твар для аўтэнтыфікацыі"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Выкарыстоўвайце функцыю распазнавання твару для разблакіроўкі тэлефона, аўтарызацыі купляў і ўваходу ў праграмы."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Дазвольце дзіцяці выкарыстоўваць твар для разблакіроўкі тэлефона ці спраўджання сваёй асобы. Гэта функцыя можа быць карыснай падчас уваходу ў праграмы, ухвалення куплі і іншых дзеянняў."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Дазвольце свайму дзіцяці выкарыстоўваць твар для разблакіроўкі тэлефона"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Дазвольце свайму дзіцяці выкарыстоўваць твар для разблакіроўкі планшэта"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Дазвольце свайму дзіцяці выкарыстоўваць твар для разблакіроўкі прылады"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Разблакіроўка тэлефона вашага дзіцяці з дапамогай твару можа быць менш бяспечнай, чым выкарыстанне надзейнага ўзору разблакіроўкі ці PIN-кода."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Разблакіроўка планшэта вашага дзіцяці з дапамогай твару можа быць менш бяспечнай, чым выкарыстанне надзейнага ўзору разблакіроўкі ці PIN-кода."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Разблакіроўка прылады вашага дзіцяці з дапамогай твару можа быць менш бяспечнай, чым выкарыстанне надзейнага ўзору разблакіроўкі ці PIN-кода."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Для ўхвалення куплі ці разблакіроўкі тэлефона можна карыстацца функцыяй распазнавання твару.\n\nЗаўвага. Вы не можаце выкарыстоўваць твар для разблакіроўкі гэтай прылады. Для атрымання дадатковай інфармацыі звяжыцеся з адміністратарам арганізацыі."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Выкарыстоўвайце функцыю распазнавання твару для разблакіроўкі тэлефона, аўтарызацыі купляў і ўваходу ў праграмы"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -380,6 +387,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -490,7 +498,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Выкарыстанне твару"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Выкарыстанне адбітка пальца"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Выкарыстанне твару ці адбітка пальца"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Дай тэлефон аднаму з бацькоў"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Дай планшэт аднаму з бацькоў"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Дай прыладу аднаму з бацькоў"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Дай тэлефон аднаму з бацькоў"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"ОК"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Прапусціць наладжванне блакіроўкі экрана?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Функцыі абароны прылады не будуць уключаны. Вы не зможаце забараніць іншым карыстацца гэтым планшэтам у выпадку згубы, крадзяжу ці скіду налад."</string>
@@ -1358,10 +1368,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Калі вы паварочваеце тэлефон для змянення арыентацыі экрана"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Раздзяляльнасць экрана"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Высокая раздзяляльнасць"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Самая высокая раздзяляльнасць"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Поўная раздзяляльнасць"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Змяненне раздзяляльнасці можа прывесці да закрыцця некаторых запушчаных праграм."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Пры поўнай раздзяляльнасці хутчэй разраджаецца акумулятар. Пераключэнне на вашу раздзяляльнасць можа прывесці да перазапуску некаторых праграм."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Колеры"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Натуральныя"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Яркія"</string>

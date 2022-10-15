@@ -32,7 +32,6 @@ import android.hardware.biometrics.BiometricAuthenticator;
 import android.hardware.biometrics.BiometricManager;
 import android.hardware.biometrics.BiometricManager.Authenticators;
 import android.hardware.biometrics.BiometricManager.BiometricError;
-import android.hardware.biometrics.SensorProperties;
 import android.hardware.face.FaceManager;
 import android.hardware.face.FaceSensorPropertiesInternal;
 import android.hardware.fingerprint.FingerprintManager;
@@ -211,12 +210,6 @@ public class BiometricEnrollActivity extends InstrumentedActivity {
                 // required check if setup has completed instead.
                 final boolean isSettingUp = isSetupWizard || (mParentalOptionsRequired
                         && !WizardManagerHelper.isUserSetupComplete(this));
-                if (isSettingUp && isMultiSensor && mIsFaceEnrollable) {
-                    if (props.sensorStrength == SensorProperties.STRENGTH_CONVENIENCE) {
-                        Log.i(TAG, "Excluding face from SuW enrollment (STRENGTH_CONVENIENCE)");
-                        mIsFaceEnrollable = false;
-                    }
-                }
             }
         }
         if (mHasFeatureFingerprint) {
@@ -340,6 +333,8 @@ public class BiometricEnrollActivity extends InstrumentedActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.d(TAG,
+                "onActivityResult(requestCode=" + requestCode + ", resultCode=" + resultCode + ")");
         // single enrollment is handled entirely by the launched activity
         // this handles multi enroll or if parental consent is required
         if (mParentalConsentHelper != null) {

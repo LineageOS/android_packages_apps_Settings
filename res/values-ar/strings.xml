@@ -152,11 +152,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"السماح لجهازك بالاتصال بأجهزة بلوتوث المجاورة"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"السماح لهاتفك بالاتصال بأجهزة بلوتوث المجاورة"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"‏إيقاف نقل بيانات أجهزة بلوتوث A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"‏إيقاف نقل بيانات جهاز Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"‏إيقاف نقل بيانات جهاز Bluetooth LE audio"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"هل تريد إعادة تشغيل الجهاز؟"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"يجب إعادة تشغيل جهازك لتغيير هذه الإعدادات."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"إعادة التشغيل"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"إلغاء"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"‏تفعيل ميزة Bluetooth LE audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"‏تفعيل ميزة Bluetooth LE audio في حال دعم الجهاز لإمكانات جهاز الصوت المنخفض الطاقة."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"أجهزة الوسائط"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"أجهزة الاتصال"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"أجهزة أخرى"</string>
@@ -378,7 +380,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"السماح بـ \"فتح الجهاز بالتعرف على الوجه\""</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"استخدام وجهك للمصادقة"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"استخدِم وجهك لفتح هاتفك أو للسماح بعمليات الشراء أو تسجيل الدخول إلى التطبيقات."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"يتم السماح لطفلك باستخدام وجهه لفتح قفل هاتفه أو إثبات هويته. يتم استخدام هذه الميزة عند تسجيل الدخول إلى التطبيقات والموافقة على عملية شراء والمزيد."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"السماح لطفلك باستخدام وجهه لفتح قفل هاتفه"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"السماح لطفلك باستخدام وجهه لفتح قفل جهازه اللوحي"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"السماح لطفلك باستخدام وجهه لفتح قفل جهازه"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"قد يكون استخدام وجه طفلك لفتح قفل هاتفه أقل أمانًا من استخدام نقش أو رقم تعريف شخصي قوي."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"قد يكون استخدام وجه طفلك لفتح قفل جهازه اللوحي أقل أمانًا من استخدام نقش أو رقم تعريف شخصي قوي."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"قد يكون استخدام وجه طفلك لفتح قفل جهازه أقل أمانًا من استخدام نقش أو رقم تعريف شخصي قوي."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"يمكنك استخدام وجهك لفتح الهاتف أو الموافقة على عمليات الشراء.\n\nملاحظة: لا يمكنك استخدام وجهك لفتح هذا الجهاز. للحصول على المزيد من المعلومات، اتصل بمشرف المؤسسة."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"استخدِم وجهك لفتح هاتفك أو السماح بعمليات الشراء أو تسجيل الدخول إلى التطبيقات."</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -386,6 +393,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -401,7 +409,7 @@
     <string name="face_add_max" msgid="4578405795494514876">"يمكنك إضافة ما يصل إلى <xliff:g id="COUNT">%d</xliff:g> وجه."</string>
     <string name="face_intro_error_max" msgid="2474735057709291626">"لقد أضفت الحد الأقصى لعدد الأوجه"</string>
     <string name="face_intro_error_unknown" msgid="1626057493054989995">"لا يمكن إضافة مزيد من الأوجه"</string>
-    <string name="security_settings_face_enroll_error_dialog_title" msgid="2460820099922775936">"لم يكتمل المسح"</string>
+    <string name="security_settings_face_enroll_error_dialog_title" msgid="2460820099922775936">"لم يكتمل التسجيل"</string>
     <string name="security_settings_face_enroll_dialog_ok" msgid="1674650455786434426">"حسنًا"</string>
     <string name="security_settings_face_enroll_error_timeout_dialog_message" msgid="7768349698547951750">"تم بلوغ الحد الأقصى لزمن مسح الوجه. يُرجى إعادة المحاولة."</string>
     <string name="security_settings_face_enroll_error_generic_dialog_message" msgid="3186810411630091490">"تعذّر مسح الوجه."</string>
@@ -498,7 +506,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"استخدام ميزة \"فتح الجهاز بالتعرف على الوجه\""</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"استخدام ميزة \"فتح الجهاز ببصمة الإصبع\""</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"استخدام الوجه أو بصمة الإصبع"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"عليك إعادة الهاتف إلى أحد الوالدين."</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"عليك إعادة الجهاز اللوحي إلى أحد الوالدَين."</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"عليك إعادة الجهاز إلى أحد الوالدَين."</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"عليك إعادة الهاتف إلى أحد الوالدين."</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"حسنًا"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"هل تريد تخطّي قفل الشاشة؟"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"لن يتم تفعيل ميزات حماية الجهاز. ولن تتمكن من منع الآخرين من استخدام هذا الجهاز اللوحي في حالة فقدانه أو سرقته أو إعادة ضبطه."</string>
@@ -597,7 +607,7 @@
     <string name="security_settings_fingerprint_enroll_done" msgid="9198775984215057337">"تم"</string>
     <string name="security_settings_fingerprint_enroll_touch_dialog_title" msgid="5742429501012827526">"عفوًا، هذا ليس جهاز الاستشعار"</string>
     <string name="security_settings_fingerprint_enroll_touch_dialog_message" msgid="7172969336386036998">"المس زر الاستشعار في الجزء الخلفي لهاتفك. استخدم إصبع السبابة."</string>
-    <string name="security_settings_fingerprint_enroll_error_dialog_title" msgid="132085362209418770">"لم يكتمل المسح"</string>
+    <string name="security_settings_fingerprint_enroll_error_dialog_title" msgid="132085362209418770">"لم يكتمل التسجيل"</string>
     <string name="security_settings_fingerprint_enroll_error_timeout_dialog_message" msgid="5479647886550695766">"تم بلوغ الحد الأقصى لزمن تسجيل بصمة الإصبع. يُرجى إعادة المحاولة."</string>
     <string name="security_settings_fingerprint_enroll_error_generic_dialog_message" msgid="6068935528640241271">"تعذّر تسجيل بصمة الإصبع. يُرجى إعادة المحاولة أو استخدام إصبع آخر."</string>
     <string name="fingerprint_enroll_button_add" msgid="6652490687672815760">"إضافة بصمة إصبع أخرى"</string>
@@ -1396,10 +1406,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"عند تغيير اتّجاه شاشة هاتفك بين العمودي والأفقي"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"دقة الشاشة"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"دقة عالية"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"أعلى دقة"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"دقة كاملة"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+‎"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+‎"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"قد يؤدي تبديل الدقة إلى إغلاق بعض التطبيقات التي يجري تشغيلها حاليًا."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"تستخدِم الدقة الكاملة قدرًا أكبر من طاقة بطاريتك. وقد يؤدي تبديل الدقة إلى إعادة تشغيل بعض التطبيقات."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"الألوان"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"طبيعية"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"مُحسنة"</string>

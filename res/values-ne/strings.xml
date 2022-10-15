@@ -106,7 +106,7 @@
     <string name="bluetooth_show_received_files" msgid="685424727760622632">"प्राप्त गरिएका फाइलहरू"</string>
     <string name="bluetooth_devices_card_off_title" msgid="1320149821945129127">"ब्लुटुथ निष्क्रिय छ"</string>
     <string name="bluetooth_devices_card_off_summary" msgid="2276527382891105858">"यसलाई सक्रिय गर्न ट्याप गर्नुहोस्"</string>
-    <string name="device_picker" msgid="2427027896389445414">"ब्लुटुथ उपकरण छान्नुहोस्"</string>
+    <string name="device_picker" msgid="2427027896389445414">"ब्लुटुथ डिभाइस छान्नुहोस्"</string>
     <string name="bluetooth_ask_enablement" msgid="1529030199895339199">"<xliff:g id="APP_NAME">%1$s</xliff:g> ब्लुटुथ सक्रिय गर्न चाहन्छ"</string>
     <string name="bluetooth_ask_disablement" msgid="1879788777942714761">"<xliff:g id="APP_NAME">%1$s</xliff:g> ब्लुटुथ निष्क्रिय पार्न चाहन्छ"</string>
     <string name="bluetooth_ask_enablement_no_name" msgid="5091401961637405417">"एउटा एप ब्लुटुथ सक्रिय गर्न चाहन्छ"</string>
@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"आफ्नो यन्त्रलाई वरपरका ब्लुटुथ यन्त्रहरूसँग सञ्चार गर्न दिनुहोस्"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"आफ्नो फोनलाई वरपरका ब्लुटुथ यन्त्रहरूसँग सञ्चार गर्न दिनुहोस्"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"ब्लुटुथ A2DP हार्डवेयरको अफलोड असक्षम पारियोस्"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"ब्लुटुथ LE AUDIO हार्डवेयरको अफलोड असक्षम पारियोस्"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"ब्लुटुथ LE अडियो हार्डवेयर अफलोड गर्ने सुविधा अफ गर्नुहोस्"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"डिभाइस रिस्टार्ट गर्ने हो?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"यो सेटिङ बदल्न तपाईंले आफ्नो डिभाइस रिस्टार्ट गर्नु पर्ने हुन्छ।"</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"रिस्टार्ट गर्नुहोस्"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"रद्द गर्नुहोस्"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"ब्लुटुथ LE अडियो अन गर्नुहोस्"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"डिभाइसमा LE अडियो हार्डवेयर चलाउन मिल्छ भने ब्लुटुथ LE अडियो सुविधा अन गर्छ।"</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"मिडियासम्बन्धी यन्त्रहरू"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"कल गर्ने सुविधा भएका यन्त्रहरू"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"अन्य डिभाइसहरू"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"फेस अनलक प्रयोग गर्न दिनुहोस्"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"प्रमाणीकरण गर्न आफ्नो अनुहार प्रयोग गर्नु…"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"आफ्नो फोन अनलक गर्न, खरिद अधिकार दिन वा एपहरूमा साइन इन गर्न आफ्नो अनुहार प्रयोग गर्नुहोस्।"</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"तपाईंका बच्चालाई उनको अनुहार प्रयोग गरी उनको फोन अनलक गर्न वा उनको पहिचान पुष्टि गर्न दिनुहोस्। तपाईंका बच्चा एपमा साइन इन गर्न, खरिद स्वीकृत गर्न र अन्य कुराहरू गर्न उनको अनुहार प्रयोग गर्न सक्छन्।"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"तपाईंका बच्चालाई उनको अनुहार प्रयोग गरी उनको फोन अनलक गर्न दिनुहोस्"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"तपाईंका बच्चालाई उनको अनुहार प्रयोग गरी उनको ट्याब्लेट अनलक गर्न दिनुहोस्"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"तपाईंका बच्चालाई उनको अनुहार प्रयोग गरी उनको डिभाइस अनलक गर्न दिनुहोस्"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"तपाईंका बच्चाको अनुहार प्रयोग गरी उनको फोन अनलक गर्ने कार्य भरपर्दो प्याटर्न वा PIN प्रयोग गरी अनलक गरे जत्तिको सुरक्षित नहुन सक्छ।"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"तपाईंका बच्चाको अनुहार प्रयोग गरी उनको ट्याब्लेट अनलक गर्ने कार्य भरपर्दो प्याटर्न वा PIN प्रयोग गरी अनलक गरे जत्तिको सुरक्षित नहुन सक्छ।"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"तपाईंका बच्चाको अनुहार प्रयोग गरी उनको डिभाइस अनलक गर्ने कार्य भरपर्दो प्याटर्न वा PIN प्रयोग गरी अनलक गरे जत्तिको सुरक्षित नहुन सक्छ।"</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"तपाईंको फोन अनलक वा खरिदहरूको अनुमोदन गर्न आफ्ना अनुहारको प्रयोग गर्नुहोस्।\n\nटिपोट: तपाईं यो डिभाइस अनलक गर्न आफ्नो अनुहारको प्रयोग गर्न सक्नुहुन्न। थप जानकारीका लागि आफ्नो सङ्गठनको प्रशासकसँग सम्पर्क गर्नुहोस्।"</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"आफ्नो फोन अनलक गर्न, खरिद अधिकार दिन वा एपहरूमा साइन इन गर्न आफ्नो अनुहार प्रयोग गर्नुहोस्"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"अनुहार प्रयोग गरेर"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"फिंगरप्रिन्ट प्रयोग गरेर"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"अनुहार वा फिङ्गरप्रिन्ट प्रयोग गरेर"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"यो फोन आफ्नो अभिभावकलाई देऊ"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"यो ट्याब्लेट आफ्नो अभिभावकलाई दिनुहोस्"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"यो डिभाइस आफ्नो अभिभावकलाई दिनुहोस्"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"यो फोन आफ्नो अभिभावकलाई देऊ"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"ठिक छ"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"स्क्रिन लक सेटअप छाड्ने हो?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"डिभाइसको सुरक्षासम्बन्धी सुविधाहरू सक्रिय गरिने छैनन्। तपाईं यो ट्याब्लेट हराएको वा चोरी भएको वा रिसेट भएको अवस्थामा अरूलाई यो चलाउनबाट रोक्न सक्नुहुने छैन।"</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"तपाईंले आफ्नो फोन पोर्ट्रेट र ल्यान्डस्केपबिच अदलबदल गर्दा"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"स्क्रिन रिजोल्युसन"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"उच्च रिजोल्युसन"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"अधिकतम रिजोल्युसन"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"फुल रिजोल्युसन"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"१०८० पिक्सेल FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"१४४० पिक्सेल QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"तपाईंले स्क्रिन रिजोल्युसन बदल्नुभयो भने हाल चलिरहेका केही एपहरू बन्द हुन सक्छन्।"</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"फुल रिजोल्युसन प्रयोग गर्दा तपाईंको डिभाइसको ब्याट्री बढी खपत हुन्छ। तपाईंले रोजेको रिजोल्युसन प्रयोग गर्नुभयो भने केही एपहरू रिस्टार्ट हुन सक्छन्।"</string>
     <string name="color_mode_title" msgid="8666690832113906028">"रङ्गहरू"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"प्राकृतिक"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"बुस्ट गरिएको"</string>
@@ -3372,8 +3382,8 @@
       <item quantity="one">प्रमाणपत्रलाई जाँच गर्नुहोस्</item>
     </plurals>
     <string name="user_settings_title" msgid="6550866465409807877">"बहु प्रयोगकर्ताहरू"</string>
-    <string name="user_settings_footer_text" product="device" msgid="7523914344521302179">"नयाँ प्रयोगकर्ताहरू थपेर आफ्नो यन्त्र सेयर गर्नुहोस्। प्रत्येक प्रयोगकर्तासँग आफू अनुकूल गृह स्क्रिन, खाता, एप, सेटिङ र थप कुराहरूका लागि तपाईंको डिभाइसमा व्यक्तिगत स्थान हुन्छ।"</string>
-    <string name="user_settings_footer_text" product="tablet" msgid="3730074318510244552">"नयाँ प्रयोगकर्ताहरू थपेर आफ्नो ट्याब्लेट सेयर गर्नुहोस्। प्रत्येक प्रयोगकर्तासँग आफू अनुकूल गृह स्क्रिन, खाता, एप, सेटिङ र थप कुराहरूका लागि तपाईंको ट्याब्लेटमा व्यक्तिगत स्थान हुन्छ।"</string>
+    <string name="user_settings_footer_text" product="device" msgid="7523914344521302179">"नयाँ प्रयोगकर्ताहरू थपेर आफ्नो यन्त्र सेयर गर्नुहोस्। प्रत्येक प्रयोगकर्तासँग आफू अनुकूल होम स्क्रिन, खाता, एप, सेटिङ र थप कुराहरूका लागि तपाईंको डिभाइसमा व्यक्तिगत स्थान हुन्छ।"</string>
+    <string name="user_settings_footer_text" product="tablet" msgid="3730074318510244552">"नयाँ प्रयोगकर्ताहरू थपेर आफ्नो ट्याब्लेट सेयर गर्नुहोस्। प्रत्येक प्रयोगकर्तासँग आफू अनुकूल होम स्क्रिन, खाता, एप, सेटिङ र थप कुराहरूका लागि तपाईंको ट्याब्लेटमा व्यक्तिगत स्थान हुन्छ।"</string>
     <string name="user_settings_footer_text" product="default" msgid="4420915712050349125">"नयाँ प्रयोगकर्ताहरू थपेर आफ्नो फोन सेयर गर्नुहोस्। तपाईंको फोनमा प्रत्येक प्रयोगकर्ताका लागि कस्टम होम स्क्रिन, खाता, एप, सेटिङ र थप कुराहरूका लागि व्यक्तिगत स्थान उपलब्ध हुन्छ।"</string>
     <string name="user_list_title" msgid="1387379079186123404">"प्रयोगकर्ता र प्रोफाइलहरू"</string>
     <string name="user_add_user_or_profile_menu" msgid="305851380425838287">"प्रयोगकर्ता वा प्रोफाइल थप गर्नुहोस्"</string>

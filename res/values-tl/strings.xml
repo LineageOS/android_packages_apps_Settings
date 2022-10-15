@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Pinapayagan ang iyong device na makipag-ugnayan sa mga kalapit na Bluetooth device"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Pinapayagan ang iyong teleponong makipag-ugnayan sa mga kalapit na Bluetooth device"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"I-disable ang Bluetooth A2DP hardware offload"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"I-disable ang Bluetooth LE AUDIO hardware offload"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"I-disable ang Bluetooth LE audio hardware offload"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"I-restart ang Device?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Kailangan mong i-restart ang iyong device para mabago ang setting na ito."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"I-restart"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Kanselahin"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"I-enable ang Bluetooth LE audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Ine-enable ang feature na Bluetooth LE audio kung sinusuportahan ng device ang mga kakayahan ng LE audio hardware."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Mga media device"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Mga device sa pagtawag"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Iba pang device"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Payagan ang pag-unlock gamit ang mukha"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Gamitin ang mukha mo sa pag-authenticate"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Gamitin ang iyong mukha para i-unlock ang telepono mo, awtorisahan ang mga pagbili, o mag-sign in sa mga app."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Payagan ang iyong anak na gamitin ang kanyang mukha para i-unlock ang kanyang telepono o i-verify na siya ito. Nangyayari ito kapag nagsa-sign in siya sa mga app, nag-aapruba ng pagbili, at iba pa."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Payagan ang iyong anak na gamitin ang kanyang mukha para i-unlock ang telepono niya"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Payagan ang iyong anak na gamitin ang kanyang mukha para i-unlock ang tablet niya"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Payagan ang iyong anak na gamitin ang kanyang mukha para i-unlock ang device niya"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Posibleng hindi kasing-secure ng mahirap hulaang pattern o PIN ang paggamit ng mukha ng iyong anak para i-unlock ang kanyang telepono."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Posibleng hindi kasing-secure ng mahirap hulaang pattern o PIN ang paggamit ng mukha ng iyong anak para i-unlock ang kanyang tablet."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Posibleng hindi kasing-secure ng mahirap hulaang pattern o PIN ang paggamit ng mukha ng iyong anak para i-unlock ang kanyang device."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Gamitin ang iyong mukha para i-unlock ang telepono mo o aprubahan ang mga pagbili.\n\nTandaan: Hindi mo maaaring gamitin ang iyong mukha para i-unlock ang device na ito. Para sa higit pang impormasyon, makipag-ugnayan sa admin ng iyong organisasyon."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Gamitin ang iyong mukha para i-unlock ang telepono mo, awtorisahan ang mga pagbili, o mag-sign in sa mga app"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Gamit ang mukha"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Gamit ang fingerprint"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Gamit ang mukha o fingerprint"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Ibigay ulit ang iyong telepono sa magulang mo"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Ibigay ulit ang iyong tablet sa magulang mo"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Ibigay ulit ang iyong device sa magulang mo"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Ibigay ulit ang iyong telepono sa magulang mo"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Laktawan ang lock ng screen?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Hindi mao-on ang mga feature sa pagprotekta ng device. Hindi mo mapipigilan ang ibang tao na gamitin ang tablet na ito kung mawala, manakaw, o ma-reset ito."</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Kapag pinalipat-lipat ang telepono sa portrait at landscape"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Resolusyon ng screen"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Mataas na resolution"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Pinakamataas na resolution"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Buong resolution"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Kapag nagpalit ng iyong resolution, posible itong magdulot sa pagsasara ng ilang app na kasalukuyang tumatakbo."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Mas malakas gumamit ng iyong baterya ang buong resolution. Kapag pinalitan mo ang iyong resolution, posible itong maging sanhi ng pag-restart ng ilang app."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Mga Kulay"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Natural"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Naka-boost"</string>

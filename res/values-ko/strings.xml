@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"기기가 주변 블루투스 기기와 통신하도록 허용"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"휴대전화가 주변 블루투스 기기와 통신하도록 허용"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"블루투스 A2DP 하드웨어 오프로드 사용 중지"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"블루투스 LE AUDIO 하드웨어 오프로드 사용 중지"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"블루투스 LE 오디오 하드웨어 오프로드 사용 중지"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"기기를 다시 시작하시겠습니까?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"설정을 변경하려면 기기를 다시 시작해야 합니다."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"다시 시작"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"취소"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"블루투스 LE 오디오 사용 설정"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"기기가 LE 오디오 하드웨어 기능을 지원하는 경우 블루투스 LE 오디오 기능을 사용 설정합니다."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"미디어 기기"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"통화 기기"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"다른 기기"</string>
@@ -351,7 +353,7 @@
     <string name="security_settings_face_enroll_education_message" msgid="4308030157487176799"></string>
     <string name="security_settings_face_enroll_education_message_accessibility" msgid="1986648712195281391"></string>
     <string name="security_settings_face_enroll_education_start" msgid="8830924400907195590">"시작"</string>
-    <string name="security_settings_face_enroll_education_accessibility_dialog_message" msgid="2965952386172202665">"접근성 얼굴 인식 잠금 해제가 사용 중지되면 음성 안내 지원 사용 시 일부 설정 단계가 제대로 작동하지 않을 수 있습니다."</string>
+    <string name="security_settings_face_enroll_education_accessibility_dialog_message" msgid="2965952386172202665">"접근성 얼굴 인식 잠금 해제가 사용 중지되면 TalkBack 사용 시 일부 설정 단계가 제대로 작동하지 않을 수 있습니다."</string>
     <string name="security_settings_face_enroll_education_accessibility_dialog_negative" msgid="7872647360361245461">"뒤로"</string>
     <string name="security_settings_face_enroll_education_accessibility_dialog_positive" msgid="3148077647572203458">"설정 계속"</string>
     <string name="security_settings_face_enroll_introduction_accessibility" msgid="5748221179069430975">"접근성 설정 사용"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"얼굴 인식 잠금 해제 허용"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"얼굴로 인증"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"얼굴로 휴대전화를 잠금 해제하거나 구매를 승인하거나 앱에 로그인하세요."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"자녀가 얼굴 인식을 사용하여 휴대전화를 잠금 해제하거나 본인을 인증할 수 있도록 허용합니다. 본인 인증은 앱에 로그인하거나 구매를 승인하는 등의 경우에 이뤄집니다."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"자녀가 얼굴 인식을 사용하여 휴대전화를 잠금 해제할 수 있도록 허용합니다."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"자녀가 얼굴 인식을 사용하여 태블릿을 잠금 해제할 수 있도록 허용합니다."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"자녀가 얼굴 인식을 사용하여 기기를 잠금 해제할 수 있도록 허용합니다."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"자녀의 얼굴로 휴대전화를 잠금 해제하는 것은 강력한 패턴 또는 PIN에 비해 보안 강도가 낮을 수 있습니다."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"자녀의 얼굴로 태블릿을 잠금 해제하는 것은 강력한 패턴 또는 PIN에 비해 보안 강도가 낮을 수 있습니다."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"자녀의 얼굴로 기기를 잠금 해제하는 것은 강력한 패턴 또는 PIN에 비해 보안 강도가 낮을 수 있습니다."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"얼굴로 휴대전화를 잠금 해제하거나 구매를 승인하세요.\n\n참고: 이 기기는 얼굴로 잠금 해제할 수 없습니다. 자세한 내용은 조직의 관리자에게 문의하세요."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"얼굴로 휴대전화를 잠금 해제하거나 구매를 승인하거나 앱에 로그인하세요."</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"얼굴 사용"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"지문 사용"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"얼굴 또는 지문 사용"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"휴대전화를 부모님께 건네주세요."</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"태블릿을 부모님께 건네주세요."</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"기기를 부모님께 건네주세요."</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"휴대전화를 부모님께 건네주세요."</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"확인"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"화면 잠금 설정을 건너뛰시겠습니까?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"기기 보호 기능이 사용 설정되지 않습니다. 분실, 도난 또는 재설정되었을 때 다른 사람이 이 태블릿을 사용하는 것을 방지할 수 없습니다."</string>
@@ -733,7 +743,7 @@
     <string name="unlock_footer_high_complexity_requested" msgid="4471274783909915352">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 안전한 PIN 또는 비밀번호를 사용할 것을 제안합니다. 제안을 무시하면 앱이 제대로 작동하지 않을 수 있습니다."</string>
     <string name="unlock_footer_medium_complexity_requested" msgid="5515870066751600640">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 새 PIN 또는 비밀번호를 사용할 것을 제안합니다. 제안을 무시하면 앱이 제대로 작동하지 않을 수 있습니다."</string>
     <string name="unlock_footer_low_complexity_requested" msgid="2517656037576567971">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 새 패턴, PIN 또는 비밀번호를 사용할 것을 제안합니다. 제안을 무시하면 앱이 제대로 작동하지 않을 수 있습니다."</string>
-    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 새 잠금 화면을 사용할 것을 제안합니다."</string>
+    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 새 화면 잠금을 사용할 것을 제안합니다."</string>
     <string name="lock_failed_attempts_before_wipe" msgid="6874652886647631418">"다시 시도하세요. 입력 횟수: <xliff:g id="CURRENT_ATTEMPTS">%1$d</xliff:g>/<xliff:g id="TOTAL_ATTEMPTS">%2$d</xliff:g>회"</string>
     <string name="lock_last_attempt_before_wipe_warning_title" msgid="7450322567217745999">"데이터 삭제 위험"</string>
     <string name="lock_last_pattern_attempt_before_wipe_device" msgid="5816668400104558952">"다음번 시도에서 잘못된 패턴을 입력하면 이 기기의 데이터가 삭제됩니다."</string>
@@ -1318,10 +1328,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"휴대전화를 가로 또는 세로로 움직이면 자동으로 방향 전환"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"화면 해상도"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"고해상도"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"최대 해상도"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"전체 해상도"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"해상도를 변경하면 현재 실행 중인 앱 일부가 종료될 수 있습니다."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"전체 해상도 사용 시 배터리 사용량이 증가합니다. 해상도를 전환하면 일부 앱이 다시 시작될 수 있습니다."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"색상"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"자연스럽게"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"생생하게"</string>
@@ -2303,7 +2313,7 @@
     <string name="user_installed_services_category_title" msgid="2639470729311439731">"다운로드한 앱"</string>
     <string name="experimental_category_title" msgid="898904396646344152">"실험"</string>
     <string name="feature_flags_dashboard_title" msgid="348990373716658289">"기능 플래그"</string>
-    <string name="talkback_title" msgid="8756080454514251327">"음성 안내 지원"</string>
+    <string name="talkback_title" msgid="8756080454514251327">"TalkBack"</string>
     <string name="talkback_summary" msgid="5820927220378864281">"주로 시각 장애가 있는 사용자를 위한 스크린 리더"</string>
     <string name="select_to_speak_summary" msgid="1995285446766920925">"화면에서 항목을 탭하여 읽는 소리 듣기"</string>
     <string name="accessibility_captioning_title" msgid="4561871958958925225">"자막 환경설정"</string>
@@ -3918,7 +3928,7 @@
     <string name="notification_pulse_title" msgid="8013178454646671529">"표시등 깜박임"</string>
     <string name="lock_screen_notifications_title" msgid="2876323153692406203">"개인 정보 보호"</string>
     <string name="lockscreen_bypass_title" msgid="6519964196744088573">"잠금 화면 건너뛰기"</string>
-    <string name="lockscreen_bypass_summary" msgid="464277506200346748">"잠금 해제 후 최근 사용한 화면으로 바로 이동"</string>
+    <string name="lockscreen_bypass_summary" msgid="464277506200346748">"잠금 해제 후 최근 사용한 화면으로 바로 이동합니다."</string>
     <string name="keywords_lockscreen_bypass" msgid="41035425468915498">"잠금 화면, 잠금화면, 건너뛰기, 우회"</string>
     <string name="locked_work_profile_notification_title" msgid="279367321791301499">"직장 프로필이 잠긴 경우"</string>
     <string name="lock_screen_notifs_title" msgid="3412042692317304449">"잠금 화면에 표시할 알림"</string>

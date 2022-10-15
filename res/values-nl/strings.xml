@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Je apparaat toestaan om te communiceren met Bluetooth-apparaten in de nabije omgeving"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Je telefoon toestaan om te communiceren met Bluetooth-apparaten in de nabije omgeving"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Bluetooth A2DP-hardware-offload uitzetten"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Bluetooth LE AUDIO-hardware-offload uitzetten"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Bluetooth LE Audio-hardware-offload uitzetten"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Apparaat opnieuw opstarten?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Start het apparaat opnieuw op om de instelling te wijzigen."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Opnieuw opstarten"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Annuleren"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Bluetooth LE Audio aanzetten"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Hiermee zet je de functie voor Bluetooth LE Audio aan als het apparaat hardwaremogelijkheden voor LE Audio ondersteunt."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Media-apparaten"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Apparaten voor gesprekken"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Andere apparaten"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Ontgrendelen via gezichtsherkenning toestaan"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Gebruik je gezicht voor verificatie"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Gebruik je gezicht om je telefoon te ontgrendelen, aankopen te autoriseren of in te loggen bij apps."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Toestaan dat je kind het gezicht gebruikt om de telefoon te ontgrendelen of voor verificatie. Dit gebeurt onder meer als je kind inlogt bij apps of een aankoop goedkeurt."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Toestaan dat je kind het gezicht gebruikt om de telefoon te ontgrendelen"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Toestaan dat je kind het gezicht gebruikt om de tablet te ontgrendelen"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Toestaan dat je kind het gezicht gebruikt om het apparaat te ontgrendelen"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Het gezicht van je kind gebruiken om de telefoon te ontgrendelen zorgt misschien voor minder goede beveiliging dan een sterk patroon of een sterke pincode."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Het gezicht van je kind gebruiken om de tablet te ontgrendelen zorgt misschien voor minder goede beveiliging dan een sterk patroon of een sterke pincode."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Het gezicht van je kind gebruiken om het apparaat te ontgrendelen zorgt misschien voor minder goede beveiliging dan een sterk patroon of een sterke pincode."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Gebruik je gezicht om je telefoon te ontgrendelen of aankopen goed te keuren.\n\nOpmerking: Je kunt je gezicht niet gebruiken om dit apparaat te ontgrendelen. Neem contact op met de beheerder van je organisatie voor meer informatie."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Gebruik je gezicht om je telefoon te ontgrendelen, aankopen te autoriseren of in te loggen bij apps"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -468,7 +476,7 @@
     <string name="security_settings_fingerprint_v2_enroll_acquire_too_fast" msgid="5891227328100822018">"Til je vinger op zodra je een trilling voelt"</string>
     <string name="security_settings_fingerprint_v2_enroll_acquire_too_bright" msgid="769646735950329315">"Ga naar een plek met zachter licht en probeer het opnieuw"</string>
     <string name="security_settings_fingerprint_v2_enroll_error_max_attempts" msgid="1464972470750764128">"Je hebt het maximale aantal pogingen bereikt"</string>
-    <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Gebruik je vingerafdruk om je tablet te ontgrendelen of te bevestigen dat jij het bent als je inlogt bij apps"</string>
+    <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Gebruik je vingerafdruk om je tablet te ontgrendelen of te bevestigen dat jij het bent als je bijvoorbeeld inlogt bij apps"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="device" msgid="2503218139575057099">"Gebruik je vingerafdruk om je apparaat te ontgrendelen of te bevestigen dat jij het bent als je inlogt bij apps"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="default" msgid="481286891358925579">"Gebruik je vingerafdruk om je telefoon te ontgrendelen of te bevestigen dat jij het bent als je inlogt bij apps"</string>
     <string name="security_settings_biometric_preference_title" msgid="298146483579539448">"Ontgrendelen via gezichtsherkenning en vingerafdruk"</string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Gezicht gebruiken"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Vingerafdruk gebruiken"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Gezicht of vingerafdruk gebruiken"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Geef de telefoon terug aan je ouder"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Geef de tablet terug aan je ouder"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Geef het apparaat terug aan je ouder"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Geef de telefoon terug aan je ouder"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Schermvergrendeling overslaan?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"De apparaatbeschermingsfuncties worden niet aangezet. Je kunt niet voorkomen dat anderen deze tablet gebruiken als je deze verliest, als de tablet wordt gestolen of als deze wordt gereset."</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Als je wisselt tussen de staande en liggende telefoonstand"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Schermresolutie"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Hoge resolutie"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Hoogste resolutie"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Volledige resolutie"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Als je van resolutie wisselt, worden sommige actieve apps misschien afgesloten."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Volledige resolutie gebruikt meer batterijlading. Als je de resolutie wijzigt, worden sommige apps misschien opnieuw opgestart."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Kleuren"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Natuurlijk"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Versterkt"</string>
@@ -1571,7 +1581,7 @@
     <string name="memory_dcim_usage" msgid="3568913845973164352">"Foto\'s, video\'s"</string>
     <string name="memory_music_usage" msgid="8100634000114206429">"Audio (muziek, ringtones, podcasts, enzovoort)"</string>
     <string name="memory_media_misc_usage" msgid="7066851245178533269">"Andere bestanden"</string>
-    <string name="memory_media_cache_usage" msgid="780808666853685824">"Gegevens in het cachegeheugen"</string>
+    <string name="memory_media_cache_usage" msgid="780808666853685824">"Gecachete gegevens"</string>
     <string name="sd_eject" product="nosdcard" msgid="6136102589751843304">"Gedeelde opslag ontkoppelen"</string>
     <string name="sd_eject" product="default" msgid="8062832622096296251">"SD-kaart ontkoppelen"</string>
     <string name="sd_eject_summary" product="nosdcard" msgid="6859940774161708871">"Interne USB-opslag ontkoppelen"</string>
@@ -2882,7 +2892,7 @@
     <string name="battery_sugg_bluetooth_headset" msgid="6495519793211758353">"Probeer verbinding te maken met een ander Bluetooth-apparaat"</string>
     <string name="battery_desc_apps" msgid="4187483940383266017">"Batterij gebruikt door app"</string>
     <string name="battery_sugg_apps_info" msgid="4796917242296658454">"De app stoppen of verwijderen"</string>
-    <string name="battery_sugg_apps_gps" msgid="7221335088647925110">"Accubesparingsmodus selecteren"</string>
+    <string name="battery_sugg_apps_gps" msgid="7221335088647925110">"Batterijbesparingsmodus selecteren"</string>
     <string name="battery_sugg_apps_settings" msgid="6527223370162382166">"De app kan instellingen aanbieden om het accugebruik te beperken"</string>
     <string name="battery_desc_users" msgid="1959428568888686847">"Batterij gebruikt door gebruiker"</string>
     <string name="battery_desc_unaccounted" msgid="1649497860893660763">"Divers stroomgebruik"</string>
@@ -2995,7 +3005,7 @@
     <string name="menu_duration_6h" msgid="2843895006519153126">"6 uur"</string>
     <string name="menu_duration_12h" msgid="9206922888181602565">"12 uur"</string>
     <string name="menu_duration_1d" msgid="8538390358158862330">"1 dag"</string>
-    <string name="menu_show_system" msgid="3780310384799907818">"Systeem tonen"</string>
+    <string name="menu_show_system" msgid="3780310384799907818">"Systeem-apps tonen"</string>
     <string name="menu_hide_system" msgid="5197937451381420622">"Systeem verbergen"</string>
     <string name="menu_show_percentage" msgid="6143205879027928330">"Percentages tonen"</string>
     <string name="menu_use_uss" msgid="1663914348353623749">"USS gebruiken"</string>
@@ -5090,8 +5100,8 @@
     <string name="financed_privacy_notifications" msgid="5932303271274089968">"Meldingen en sms-berichten bekijken"</string>
     <string name="financed_privacy_allowlisted_apps" msgid="8333040812194879963">"Toegang krijgen tot apps die zijn toegestaan door de kredietverstrekker"</string>
     <string name="financed_privacy_fully_paid_category" msgid="9221763928564246923">"Nadat je het volledige bedrag hebt betaald:"</string>
-    <string name="financed_privacy_restrictions_removed" msgid="3182636815294595072">"Alle beperkingen voor het apparaat worden ingetrokken"</string>
-    <string name="financed_privacy_uninstall_creditor_app" msgid="6339004120497310705">"Je kunt de app van de kredietverstrekker verwijderen"</string>
+    <string name="financed_privacy_restrictions_removed" msgid="3182636815294595072">"worden alle beperkingen voor het apparaat ingetrokken."</string>
+    <string name="financed_privacy_uninstall_creditor_app" msgid="6339004120497310705">"kun je de app van de kredietverstrekker verwijderen."</string>
     <plurals name="default_camera_app_title" formatted="false" msgid="8112432929729136399">
       <item quantity="other">Camera-apps</item>
       <item quantity="one">Camera-app</item>

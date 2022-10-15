@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Memungkinkan perangkat Anda berkomunikasi dengan perangkat Bluetooth di sekitar"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Memungkinkan ponsel Anda berkomunikasi dengan perangkat Bluetooth di sekitar"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Nonaktifkan offload hardware Bluetooth A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Nonaktifkan offload hardware Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Nonaktifkan offload hardware Bluetooth LE audio"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Mulai Ulang Perangkat?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Anda perlu memulai ulang perangkat untuk mengubah setelan ini."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Mulai ulang"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Batal"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Aktifkan Bluetooth LE audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Mengaktifkan fitur Bluetooth LE audio jika perangkat mendukung kemampuan hardware LE audio."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Perangkat Media"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Perangkat panggilan telepon"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Perangkat lain"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Izinkan buka kunci dengan wajah"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Gunakan wajah Anda untuk mengautentikasi"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Gunakan wajah Anda untuk membuka kunci ponsel, mengizinkan pembelian, atau login ke aplikasi."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Izinkan anak Anda menggunakan wajah untuk membuka kunci ponsel atau memverifikasi dirinya. Hal ini dilakukan saat dia login ke aplikasi, menyetujui pembelian, dan lainnya."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Izinkan anak Anda menggunakan wajah untuk membuka kunci ponselnya"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Izinkan anak Anda menggunakan wajah untuk membuka kunci tabletnya"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Izinkan anak Anda menggunakan wajah untuk membuka kunci perangkatnya"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Menggunakan wajah anak Anda untuk membuka kunci ponselnya mungkin kurang aman dibandingkan dengan pola atau PIN yang kuat."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Menggunakan wajah anak Anda untuk membuka kunci tabletnya mungkin kurang aman dibandingkan dengan pola atau PIN yang kuat."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Menggunakan wajah anak Anda untuk membuka kunci perangkatnya mungkin kurang aman dibandingkan dengan pola atau PIN yang kuat."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Gunakan sidik jari untuk membuka ponsel atau menyetujui pembelian.\n\nCatatan: Anda tidak dapat menggunakan sidik jari untuk membuka perangkat ini. Untuk informasi selengkapnya, hubungi admin organisasi Anda."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Gunakan wajah Anda untuk membuka kunci ponsel, mengizinkan pembelian, atau login ke aplikasi"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -430,7 +438,7 @@
     <string name="security_settings_fingerprint_enroll_introduction_title" msgid="7931650601996313070">"Siapkan sidik jari Anda"</string>
     <string name="security_settings_fingerprint_enroll_consent_introduction_title" msgid="2278592030102282364">"Izinkan buka kunci dengan sidik jari"</string>
     <string name="security_settings_fingerprint_enroll_introduction_title_unlock_disabled" msgid="1911710308293783998">"Menggunakan sidik jari"</string>
-    <string name="security_settings_fingerprint_enroll_introduction_v2_message" product="tablet" msgid="1533352560544756928">"Gunakan sidik jari untuk membuka kunci tablet atau memverifikasi diri Anda, seperti saat login ke aplikasi atau menyetujui pembelian."</string>
+    <string name="security_settings_fingerprint_enroll_introduction_v2_message" product="tablet" msgid="1533352560544756928">"Gunakan sidik jari untuk membuka kunci tablet atau memverifikasi diri Anda, misalnya saat login ke aplikasi atau menyetujui pembelian."</string>
     <string name="security_settings_fingerprint_enroll_introduction_v2_message" product="device" msgid="3570866595300511932">"Gunakan sidik jari untuk membuka kunci perangkat atau memverifikasi diri Anda, seperti saat login ke aplikasi atau menyetujui pembelian."</string>
     <string name="security_settings_fingerprint_enroll_introduction_v2_message" product="default" msgid="8539442240212670385">"Gunakan sidik jari untuk membuka kunci ponsel atau memverifikasi diri Anda, seperti saat login ke aplikasi atau menyetujui pembelian."</string>
     <string name="security_settings_fingerprint_enroll_introduction_consent_message" msgid="1833139688278350628">"Izinkan anak Anda menggunakan sidik jari untuk membuka kunci ponsel atau memverifikasi dirinya. Hal ini dilakukan saat dia login ke aplikasi, menyetujui pembelian, dan lainnya."</string>
@@ -468,7 +476,7 @@
     <string name="security_settings_fingerprint_v2_enroll_acquire_too_fast" msgid="5891227328100822018">"Angkat jari Anda setelah merasakan getaran"</string>
     <string name="security_settings_fingerprint_v2_enroll_acquire_too_bright" msgid="769646735950329315">"Pindahlah ke tempat dengan cahaya yang lebih lembut, lalu coba lagi"</string>
     <string name="security_settings_fingerprint_v2_enroll_error_max_attempts" msgid="1464972470750764128">"Anda telah mencapai jumlah maksimum percobaan"</string>
-    <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Gunakan sidik jari untuk membuka kunci tablet atau memverifikasi diri Anda, seperti saat login ke aplikasi"</string>
+    <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Gunakan sidik jari untuk membuka kunci tablet atau memverifikasi diri Anda, misalnya saat login ke aplikasi"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="device" msgid="2503218139575057099">"Gunakan sidik jari untuk membuka kunci perangkat atau memverifikasi diri Anda, seperti saat login ke aplikasi"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="default" msgid="481286891358925579">"Gunakan sidik jari untuk membuka kunci ponsel atau memverifikasi diri Anda, seperti saat login ke aplikasi"</string>
     <string name="security_settings_biometric_preference_title" msgid="298146483579539448">"Face Unlock &amp; Fingerprint Unlock"</string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Menggunakan wajah"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Menggunakan sidik jari"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Menggunakan wajah atau sidik jari"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Serahkan kembali ponsel ke orang tua"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Kembalikan tablet ke orang tua"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Kembalikan perangkat ke orang tua"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Serahkan kembali ponsel ke orang tua"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"Oke"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Lewati kunci layar?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Fitur perlindungan perangkat tidak akan diaktifkan. Anda tidak akan dapat mencegah orang lain menggunakan tablet ini jika hilang, dicuri, atau direset."</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Saat Anda berganti mode ponsel antara potret dan lanskap"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Resolusi layar"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Resolusi tinggi"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Resolusi tertinggi"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Resolusi penuh"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Mengubah resolusi dapat menyebabkan beberapa aplikasi yang sedang berjalan ditutup."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Resolusi penuh menggunakan lebih banyak daya baterai. Mengganti resolusi dapat menyebabkan beberapa aplikasi dimulai ulang."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Warna"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Alami"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Dipertajam"</string>

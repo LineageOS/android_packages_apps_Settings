@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Laat jou toestel toe om met Bluetooth-toestelle in die omtrek te kommunikeer"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Laat jou foon toe om met Bluetooth-toestelle in die omtrek te kommunikeer"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Deaktiveer Bluetooth-A2DP-hardeware-aflaai"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Deaktiveer Bluetooth LE AUDIO-hardewareoordrag"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Deaktiveer Bluetooth LE Audio-hardewareoordrag"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Herbegin toestel?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Jy moet jou toestel herbegin om hierdie instelling te verander."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Herbegin"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Kanselleer"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Aktiveer Bluetooth LE Audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Aktiveer Bluetooth LE Audio-kenmerk as die toestel LE Audio-hardewarevermoëns ondersteun."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Mediatoestelle"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Oproeptoestelle"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Ander toestelle"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Laat Gesigslot toe"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Gebruik jou gesig om te staaf"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Gebruik jou gesig om jou foon te ontsluit, aankope te magtig, of by programme aan te meld."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Laat jou kind toe om sy of haar gesig te gebruik om hul foon te ontsluit of te verifieer dis hy of sy. Dit gebeur wanneer jou kind by programme aanmeld, \'n aankoop goedkeur, en meer"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Laat jou kind toe om hul gesig te gebruik om hul foon te ontsluit"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Laat jou kind toe om hul gesig te gebruik om hul tablet te ontsluit"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Laat jou kind toe om hul gesig te gebruik om hul toestel te ontsluit"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Om jou kind se gesig te gebruik om hul foon te ontsluit, kan minder veilig wees as ’n sterk patroon of PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Om jou kind se gesig te gebruik om hul tablet te ontsluit, kan minder veilig wees as ’n sterk patroon of PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Om jou kind se gesig te gebruik om hul toestel te ontsluit, kan minder veilig wees as ’n sterk patroon of PIN."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Gebruik jou gesig om jou foon te ontsluit of aankope goed te keur.\n\nLet wel: Jy kan nie jou gesig gebruik om hierdie toestel te ontsluit nie. Kontak jou organisasie se administrateur vir meer inligting."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Gebruik jou gesig om jou foon te ontsluit, aankope te magtig, of by programme aan te meld"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -410,7 +418,7 @@
     <string name="security_settings_face_settings_require_confirmation_details" msgid="3498729789625461914">"Vereis altyd bevestigingstap as Gesigslot in programme gebruik word"</string>
     <string name="security_settings_face_settings_remove_face_model" msgid="812920481303980846">"Vee gesigmodel uit"</string>
     <string name="security_settings_face_settings_enroll" msgid="3726313826693825029">"Stel Gesigslot op"</string>
-    <string name="security_settings_face_settings_footer" msgid="625696606490947189">"Gebruik jou gesig om jou foon te ontsluit of vir stawing in programme, soos wanneer jy aanmeld of \'n aankoop goedkeur.\n\nHou in gedagte:\nJy kan slegs een gesig op \'n slag gestel hê. Om nog \'n gesig by te voeg, moet jy die huidige een uitvee.\n\nAs jy na die foon kyk, kan dit ontsluit word wanneer jy nie bedoel om dit te doen nie.\n\nIemand anders kan jou foon ontsluit as dit voor jou gesig gehou word.\n\nIemand ander wat baie soos jy lyk, soos \'n identiese broer of suster, kan jou foon ontsluit."</string>
+    <string name="security_settings_face_settings_footer" msgid="625696606490947189">"Gebruik jou gesig om jou foon te ontsluit of vir stawing in programme, soos wanneer jy aanmeld of \'n aankoop goedkeur.\n\nHou in gedagte:\nJy kan slegs een gesig op \'n slag gestel hê. Om nog \'n gesig by te voeg, moet jy die huidige een uitvee.\n\nAs jy na die foon kyk, kan dit ontsluit word wanneer jy nie bedoel om dit te doen nie.\n\nIemand anders kan jou foon ontsluit as dit voor jou gesig gehou word.\n\nIemand anders wat baie soos jy lyk, soos \'n identiese broer of suster, kan jou foon ontsluit."</string>
     <string name="security_settings_face_settings_footer_attention_not_supported" msgid="2071065435536235622">"Gebruik jou gesig om jou foon te ontsluit of vir stawing in programme, soos wanneer jy aanmeld of \'n aankoop goedkeur.\n\nHou in gedagte:\nJy kan slegs een gesig op \'n slag gestel hê. Om nog \'n gesig by te voeg, moet jy die huidige een uitvee.\n\nAs jy na die foon kyk, kan dit ontsluit word wanneer jy nie bedoel om dit te doen nie.\n\nIemand anders kan jou foon ontsluit as dit voor jou gesig gehou word, selfs as jou oë toe is.\n\nIemand ander wat baie soos jy lyk, soos \'n identiese broer of suster, kan jou foon ontsluit."</string>
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Vee gesigmodel uit?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Jou gesigmodel sal permanent en veilig uitgevee word. \n\nNadat dit uitgevee is, sal jy jou PIN, patroon of wagwoord nodig hê om jou foon te ontsluit of vir stawing in programme."</string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Gebruik gesig"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Gebruik vingerafdruk"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Gebruik gesig of vingerafdruk"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Gee die foon terug vir jou ouer"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Gee die tablet terug vir jou ouer"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Gee die toestel terug vir jou ouer"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Gee die foon terug vir jou ouer"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Slaan skermslot oor?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Toestelbeskermingkenmerke sal nie aangeskakel word nie. Jy sal nie ander mense kan keer om hierdie tablet te gebruik as dit verloor, gesteel of teruggestel word nie."</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Wanneer jy jou foon tussen portret en landskap beweeg"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Skermresolusie"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Hoë resolusie"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Hoogste resolusie"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Volle resolusie"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080 p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440 p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"As jy jou resolusie verstel, kan dit veroorsaak dat sommige van die programme wat tans loop, toemaak."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Volle resolusie gebruik meer van jou battery. As jy jou resolusie oorskakel, sal sommige programme dalk herbegin."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Kleure"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Natuurlik"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Gemaksimeer"</string>

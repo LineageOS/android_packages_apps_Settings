@@ -342,8 +342,8 @@
 
     <!-- UI debug setting: Disable Bluetooth A2DP hardware offload [CHAR LIMIT=none] -->
     <string name="bluetooth_disable_a2dp_hw_offload">Disable Bluetooth A2DP hardware offload</string>
-    <!-- UI debug setting: Disable Bluetooth LE AUDIO hardware offload [CHAR LIMIT=none] -->
-    <string name="bluetooth_disable_le_audio_hw_offload">Disable Bluetooth LE AUDIO hardware offload</string>
+    <!-- UI debug setting: Disable Bluetooth LE audio hardware offload [CHAR LIMIT=none] -->
+    <string name="bluetooth_disable_le_audio_hw_offload">Disable Bluetooth LE audio hardware offload</string>
     <!-- UI debug setting: Disable Bluetooth hardware offload [CHAR LIMIT=none] -->
     <string name="bluetooth_disable_hw_offload_dialog_title">Restart Device?</string>
     <!-- UI debug setting: Disable Bluetooth hardware offload [CHAR LIMIT=none] -->
@@ -352,6 +352,11 @@
     <string name="bluetooth_disable_hw_offload_dialog_confirm">Restart</string>
     <!-- UI debug setting: Disable Bluetooth hardware offload [CHAR LIMIT=none] -->
     <string name="bluetooth_disable_hw_offload_dialog_cancel">Cancel</string>
+
+    <!-- Setting Checkbox title for enabling Bluetooth LE Audio feature. [CHAR LIMIT=40] -->
+    <string name="bluetooth_enable_leaudio">Enable Bluetooth LE audio</string>
+    <!-- Summary of checkbox for enabling Bluetooth LE audio [CHAR LIMIT=none]-->
+    <string name="bluetooth_enable_leaudio_summary">Enables Bluetooth LE audio feature if the device supports LE audio hardware capabilities.</string>
 
     <!-- Title for Bluetooth device group with media capability group [CHAR LIMIT=none]-->
     <string name="connected_device_media_device_title">Media devices</string>
@@ -833,7 +838,17 @@
     <!-- Introduction detail message shown in face enrollment dialog [CHAR LIMIT=NONE]-->
     <string name="security_settings_face_enroll_introduction_message">Use your face to unlock your phone, authorize purchases, or sign in to apps.</string>
     <!-- Introduction detail message shown in face enrollment dialog when asking for parental consent [CHAR LIMIT=NONE]-->
-    <string name="security_settings_face_enroll_introduction_consent_message">Allow your child to use their face to unlock their phone or verify it\u2019s them. This happens when they sign in to apps, approve a purchase, and more.</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default">Allow your child to use their face to unlock their phone</string>
+    <!-- Introduction detail message shown in face enrollment dialog when asking for parental consent [CHAR LIMIT=NONE]-->
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet">Allow your child to use their face to unlock their tablet</string>
+    <!-- Introduction detail message shown in face enrollment dialog when asking for parental consent [CHAR LIMIT=NONE]-->
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device">Allow your child to use their face to unlock their device</string>
+    <!-- Introduction detail message shown in face enrollment dialog when asking for parental consent [CHAR LIMIT=NONE]-->
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default">Using your child\u2019s face to unlock their phone may be less secure than a strong pattern or PIN.</string>
+    <!-- Introduction detail message shown in face enrollment dialog when asking for parental consent [CHAR LIMIT=NONE]-->
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet">Using your child\u2019s face to unlock their tablet may be less secure than a strong pattern or PIN.</string>
+    <!-- Introduction detail message shown in face enrollment dialog when asking for parental consent [CHAR LIMIT=NONE]-->
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device">Using your child\u2019s face to unlock their device may be less secure than a strong pattern or PIN.</string>
     <!-- Introduction detail message shown in face enrollment dialog, when face unlock is disabled by device admin [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled">Use your face to unlock your phone or approve purchases.\n\nNote: You can\u2019t use your face to unlock this device. For more information, contact your organization\u2019s admin.</string>
     <!-- Introduction detail message shown in face enrollment screen in setup wizard. [CHAR LIMIT=NONE] -->
@@ -849,6 +864,8 @@
     <!-- Message on the face enrollment introduction page that provides information about what could cause the phone to unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_introduction_info_consent_looking"></string>
     <!-- Message on the face enrollment introduction page that provides information about the relative security of face for unlocking the phone. [CHAR LIMIT=NONE] -->
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure"></string>
+    <!-- Message on the face enrollment introduction page that provides information about the relative security of face for unlocking the phone for parental consent. [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_introduction_info_less_secure"></string>
     <!-- Message on the face enrollment introduction page that provides information about how to require eyes to be open for Face Unlock. [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_introduction_info_gaze"></string>
@@ -1073,7 +1090,11 @@
     <!-- Message for a biometric preference toggle, indicating that an action can be performed by using either Face Unlock or Fingerprint Unlock. [CHAR LIMIT=50] -->
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary">Using face or fingerprint</string>
     <!-- Message shown during enrollment to prompt a child to give the device to a parent or guardian. [CHAR LIMIT=NONE]-->
-    <string name="biometric_settings_hand_back_to_guardian">Hand the phone back to your parent</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet">Hand the tablet back to your parent</string>
+    <!-- Message shown during enrollment to prompt a child to give the device to a parent or guardian. [CHAR LIMIT=NONE]-->
+    <string name="biometric_settings_hand_back_to_guardian" product="device">Hand the device back to your parent</string>
+    <!-- Message shown during enrollment to prompt a child to give the device to a parent or guardian. [CHAR LIMIT=NONE]-->
+    <string name="biometric_settings_hand_back_to_guardian" product="default">Hand the phone back to your parent</string>
     <!-- Button text shown during enrollment to proceed after a child user has handed the device to a parent or guardian. [CHAR LIMIT=22] -->
     <string name="biometric_settings_hand_back_to_guardian_ok">OK</string>
 
@@ -2955,13 +2976,13 @@
     <!-- Display settings screen, screen resolution option for "FHD+" [CHAR LIMIT=45] -->
     <string name="screen_resolution_option_high">High resolution</string>
     <!-- Display settings screen, screen resolution option for "QHD+" [CHAR LIMIT=45] -->
-    <string name="screen_resolution_option_highest">Highest resolution</string>
+    <string name="screen_resolution_option_highest">Full resolution</string>
     <!-- Display settings screen, "FHD+" screen resolution summary [CHAR LIMIT=NONE] -->
     <string name="screen_resolution_summary_high">1080p FHD+</string>
     <!-- Display settings screen, "QHD+" screen resolution summary [CHAR LIMIT=NONE] -->
     <string name="screen_resolution_summary_highest">1440p QHD+</string>
     <!-- The footer message for switch screen resolution [CHAR LIMIT=NONE] -->
-    <string name="screen_resolution_footer">Switching your resolution might cause some apps currently running to close.</string>
+    <string name="screen_resolution_footer">Full resolution uses more of your battery. Switching your resolution may cause some apps to restart.</string>
 
     <!-- Display settings screen, Color mode settings title [CHAR LIMIT=30] -->
     <string name="color_mode_title">Colors</string>

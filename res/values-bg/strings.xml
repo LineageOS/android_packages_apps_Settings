@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Разрешете на устройството си да се свързва с устройства с Bluetooth в близост"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Разрешаване на телефона да се свързва с устройства с Bluetooth в близост"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Деактивиране на разтоварването чрез хардуер на Bluetooth с код A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Деактивиране на разтоварването чрез хардуер на Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Деактивиране на разтоварването чрез хардуер на Bluetooth LE Audio"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Да се рестартира ли устройството?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"За да промените настройката, трябва да рестартирате устройството си."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Рестартиране"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Отказ"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Активиране на Bluetooth LE Audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Активира функцията Bluetooth LE, ако устройството поддържа хардуер с възможност за LE Audio."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Мултимедийни устройства"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Устройства за обаждания"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Други устройства"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Разрешаване на отключването с лице"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Използване на лицето ви за удостов."</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Използвайте лицето си за отключване на телефона си, оторизиране на покупки или влизане в приложения."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Разрешете на детето си да използва своето лице, за да отключва телефона или да потвърждава самоличността си, например при влизане в приложения, одобряване на покупки и др."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Разрешете на детето си да използва лицето си, за да отключва телефона си"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Разрешете на детето си да използва лицето си, за да отключва таблета си"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Разрешете на детето си да използва лицето си, за да отключва устройството си"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Отключването на телефона на детето ви с лице може да е по-малко сигурно в сравнение с надеждни фигура или PIN код."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Отключването на таблета на детето ви с лице може да е по-малко сигурно в сравнение с надеждни фигура или PIN код."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Отключването на устройството на детето ви с лице може да е по-малко сигурно в сравнение с надеждни фигура или PIN код."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Използвайте лицето си, за да отключвате телефона си или да одобрявате покупки.\n\nЗабележка: Не можете да отключвате това устройство с лицето си. За повече информация се свържете с администратора на организацията си."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Използвайте лицето си за отключване на телефона си, оторизиране на покупки или влизане в приложения."</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Използване на лице"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Използване на отпечатък"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Използване на лице/отпечатък"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Дайте отново телефона на родителя си"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Дайте отново таблета на родителя си"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Дайте отново устройството на родителя си"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Дайте отново телефона на родителя си"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Пропуск. на опцията за закл.?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Функциите за защита на таблета няма да бъдат включени. Няма да можете да предотвратите използването му от други хора, ако бъде загубен, откраднат или нулиран."</string>
@@ -934,15 +944,15 @@
     <string name="nfc_quick_toggle_summary" product="tablet" msgid="3622326550467939809">"Разрешаване на обмен на данни, когато таблетът се докосва до устройство с NFC"</string>
     <string name="nfc_quick_toggle_summary" product="default" msgid="1460871052409162980">"Разрешаване на обмен на данни, когато телефонът се докосва до устройство с NFC"</string>
     <string name="nfc_disclaimer_title" msgid="3696580694485048039">"Включване на NFC"</string>
-    <string name="nfc_disclaimer_content" msgid="8256675597551036207">"Чрез КБП се обменят данни между това устройство и други в близост или целеви такива, като например терминали за плащане, четци за достъп и интерактивни реклами или маркери."</string>
+    <string name="nfc_disclaimer_content" msgid="8256675597551036207">"Чрез NFC се обменят данни между това устройство и други в близост или целеви такива, като например терминали за плащане, четци за достъп и интерактивни реклами или маркери."</string>
     <string name="nfc_secure_settings_title" msgid="4906958426927741485">"Изискване за отключване на устройството за NFC"</string>
     <string name="nfc_secure_toggle_summary" product="default" msgid="407654335737959071">"Разрешаване на използването на NFC само при отключен екран"</string>
     <string name="android_beam_settings_title" msgid="2797963824490671295">"Android Beam"</string>
-    <string name="android_beam_on_summary" msgid="6067720758437490896">"В готовност за предаване на съдържание на приложения чрез КБП"</string>
+    <string name="android_beam_on_summary" msgid="6067720758437490896">"В готовност за предаване на съдържание на приложения чрез NFC"</string>
     <string name="android_beam_off_summary" msgid="5693961375631325042">"Изключено"</string>
     <string name="nfc_disabled_summary" msgid="8737797364522502351">"Не е налице, защото функцията за NFC е изключена"</string>
     <string name="android_beam_label" msgid="7168565080321110094">"Android Beam"</string>
-    <string name="android_beam_explained" msgid="5684416131846701256">"Когато тази функция е включена, можете да излъчвате съдържание от приложенията до друго устройство с поддръжка за КБП, като държите устройствата близо едно до друго. Например можете да излъчвате уеб страници, видеоклипове от YouTube, контакти и др.\n\nТрябва само да поставите устройствата едно до друго (обикновено задните им страни), след което да докоснете екрана си. Приложението определя какво се излъчва."</string>
+    <string name="android_beam_explained" msgid="5684416131846701256">"Когато тази функция е включена, можете да излъчвате съдържание от приложенията до друго устройство с поддръжка за NFC, като държите устройствата близо едно до друго. Например можете да излъчвате уеб страници, видеоклипове от YouTube, контакти и др.\n\nТрябва само да поставите устройствата едно до друго (обикновено задните им страни), след което да докоснете екрана си. Приложението определя какво се излъчва."</string>
     <string name="wifi_quick_toggle_title" msgid="2737097538432862807">"Wi‑Fi"</string>
     <string name="wifi_quick_toggle_summary" msgid="4957267477820468553">"Включване на Wi‑Fi"</string>
     <string name="wifi_settings" msgid="8313301946393559700">"Wi‑Fi"</string>
@@ -1318,10 +1328,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Когато завъртите телефона си вертикално или хоризонтално"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Разделит. способност на екрана"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Висока разделителна способност"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Най-високата разделителна способност"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Пълна разделителна способност"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p (FHD+)"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p (QHD+)"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Превключването на разделителната способност може да доведе до затваряне на някои приложения, които се изпълняват в момента."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Пълната разделителна способност изразходва батерията ви в по-голяма степен. Превключването на разделителната способност може да доведе до рестартирането на някои приложения."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Цветове"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Естествени"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Подсилени"</string>
@@ -3511,7 +3521,7 @@
     <string name="restriction_bluetooth_config_title" msgid="220586273589093821">"Bluetooth"</string>
     <string name="restriction_bluetooth_config_summary" msgid="7558879931011271603">"Разрешаване на промяна на сдвояванията и настройките на Bluetooth"</string>
     <string name="restriction_nfc_enable_title" msgid="525512312298242911">"NFC"</string>
-    <string name="restriction_nfc_enable_summary_config" msgid="8065688740509581028">"Разрешаване на обмен на данни, когато <xliff:g id="DEVICE_NAME">%1$s</xliff:g> докосне друго устройство с КБП"</string>
+    <string name="restriction_nfc_enable_summary_config" msgid="8065688740509581028">"Разрешаване на обмен на данни, когато <xliff:g id="DEVICE_NAME">%1$s</xliff:g> докосне друго устройство с NFC"</string>
     <string name="restriction_nfc_enable_summary" product="tablet" msgid="6397567147629410131">"Разрешаване на обмен на данни, когато таблетът докосва друго устройство"</string>
     <string name="restriction_nfc_enable_summary" product="default" msgid="3331800894734678808">"Разрешаване на обмен на данни, когато телефонът докосва друго устройство"</string>
     <string name="restriction_location_enable_title" msgid="4872281754836538066">"Местоположение"</string>
@@ -3572,9 +3582,9 @@
     <string name="network_dashboard_summary_no_mobile" msgid="4022575916334910790">"Wi‑Fi, точка за достъп"</string>
     <string name="connected_devices_dashboard_title" msgid="19868275519754895">"Свързани устройства"</string>
     <string name="connected_devices_dashboard_default_summary" msgid="7211769956193710397">"Bluetooth, сдвояване"</string>
-    <string name="connected_devices_dashboard_summary" msgid="6927727617078296491">"Bluetooth, режим за шофиране, КБП"</string>
+    <string name="connected_devices_dashboard_summary" msgid="6927727617078296491">"Bluetooth, режим за шофиране, NFC"</string>
     <string name="connected_devices_dashboard_no_nfc_summary" msgid="8424794257586524040">"Bluetooth, режим за шофиране"</string>
-    <string name="connected_devices_dashboard_no_driving_mode_summary" msgid="7155882619333726331">"Bluetooth, КБП"</string>
+    <string name="connected_devices_dashboard_no_driving_mode_summary" msgid="7155882619333726331">"Bluetooth, NFC"</string>
     <string name="connected_devices_dashboard_no_driving_mode_no_nfc_summary" msgid="1175254057213044560">"Bluetooth"</string>
     <string name="connected_devices_dashboard_android_auto_summary" msgid="8179090809275818804">"Bluetooth, Android Auto, режим за шофиране, NFC"</string>
     <string name="connected_devices_dashboard_android_auto_no_nfc_summary" msgid="2532811870469405527">"Bluetooth, Android Auto, режим за шофиране"</string>
