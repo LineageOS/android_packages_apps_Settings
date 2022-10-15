@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2022 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,72 +16,143 @@
 
 package com.android.settings.display;
 
+import static java.lang.Thread.sleep;
+
+import android.util.Log;
 import android.content.Context;
 import android.hardware.display.DisplayManager;
 import android.view.Display;
 
-import androidx.annotation.VisibleForTesting;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
-import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
+import com.android.settingslib.display.DisplayDensityUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 /** Controller that switch the screen resolution. */
-public class ScreenResolutionController extends BasePreferenceController {
+public class ScreenResolutionController extends BasePreferenceController implements
+        Preference.OnPreferenceChangeListener {
 
-    static final int FHD_WIDTH = 1080;
-    static final int QHD_WIDTH = 1440;
+    private static final String KEY_RESOLUTION_SWITCH = "screen_resolution";
 
-    private Display mDisplay;
+    private static final String TAG = "screenResolution";
 
-    public ScreenResolutionController(Context context, String key) {
-        super(context, key);
+    private ListPreference mListPreference;
 
-        mDisplay =
-                mContext.getSystemService(DisplayManager.class).getDisplay(Display.DEFAULT_DISPLAY);
-    }
+    private final List<String> mEntries = new ArrayList<>();
+    private final List<String> mValues = new ArrayList<>();
 
-    /** Check if the width is supported by the display. */
-    private boolean isSupportedMode(int width) {
-        for (Display.Mode mode : getSupportedModes()) {
-            if (mode.getPhysicalWidth() == width) return true;
+    private final Display mDisplay;
+
+    private final DisplayDensityUtils mDisplayDensityUtils;
+
+    public ScreenResolutionController(Context context) {
+        super(context, KEY_RESOLUTION_SWITCH);
+
+        mDisplay = Objects.requireNonNull(
+                context.getSystemService(DisplayManager.class)).getDisplay(
+                Display.DEFAULT_DISPLAY);
+        mDisplayDensityUtils = new DisplayDensityUtils(context);
+
+        // Find related display resolutions
+        Display.Mode mode = mDisplay.getMode();
+        Display.Mode[] avail_modes = mDisplay.getSupportedModes();
+
+        for (Display.Mode m : avail_modes) {
+            if (m.getRefreshRate() == mode.getRefreshRate()) {
+                mEntries.add(String.format("%d x %d", m.getPhysicalWidth(), m.getPhysicalHeight()));
+                mValues.add(String.format(Locale.US, "%d %d", m.getPhysicalWidth(),
+                        m.getPhysicalHeight()));
+            }
         }
-        return false;
-    }
-
-    /** Return true if the device contains two (or more) resolutions. */
-    protected boolean checkSupportedResolutions() {
-        return isSupportedMode(FHD_WIDTH) && isSupportedMode(QHD_WIDTH);
     }
 
     @Override
     public int getAvailabilityStatus() {
-        return (checkSupportedResolutions()) ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        return mEntries.size() > 1 ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 
     @Override
-    public CharSequence getSummary() {
-        String summary = null;
-        switch (getDisplayWidth()) {
-            case FHD_WIDTH:
-                summary = mContext.getString(R.string.screen_resolution_summary_high);
-                break;
-            case QHD_WIDTH:
-                summary = mContext.getString(R.string.screen_resolution_summary_highest);
-                break;
-            default:
-                summary = mContext.getString(R.string.screen_resolution_title);
+    public String getPreferenceKey() {
+        return KEY_RESOLUTION_SWITCH;
+    }
+
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        mListPreference = screen.findPreference(getPreferenceKey());
+        assert mListPreference != null;
+        mListPreference.setEntries(mEntries.toArray(new String[0]));
+        mListPreference.setEntryValues(mValues.toArray(new String[0]));
+
+        super.displayPreference(screen);
+    }
+
+    @Override
+    public void updateState(Preference preference) {
+        Display.Mode mode = mDisplay.getMode();
+
+        int index = mListPreference.findIndexOfValue(
+                String.format(Locale.US, "%d %d", mode.getPhysicalWidth(),
+                        mode.getPhysicalHeight()));
+        if (index < 0) {
+            index = 0;
+        }
+        mListPreference.setValueIndex(index);
+        mListPreference.setSummary(mListPreference.getEntries()[index]);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        String[] valueString = newValue.toString().split(" ");
+        assert valueString.length == 2;
+        int resolutionWidth = Integer.parseInt(valueString[0]);
+        int resolutionHeight = Integer.parseInt(valueString[1]);
+        int originalWidth = mDisplay.getMode().getPhysicalWidth();
+        int originalDpi = mDisplayDensityUtils.getValues()[mDisplayDensityUtils.getCurrentIndex()];
+        Display.Mode switchMode = new Display.Mode(resolutionWidth, resolutionHeight,
+                mDisplay.getMode().getRefreshRate());
+        mDisplay.setUserPreferredDisplayMode(switchMode);
+
+        // FIXME: Dirty hack, wait some time for the new width to be updated
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
 
-        return summary;
+        // Scale the DPI based on the following formula:
+        //   px = C1 * (dpi / C2) ==> px_new / px_old = dpi_new / dpi_old
+        // So we have:
+        //   dpi_new = dpi_old * px_new / px_old
+        int[] densityValues = mDisplayDensityUtils.getValues();
+        int newWidth = mDisplay.getMode().getPhysicalWidth();
+        int newDensity = (int) ((double) originalDpi * newWidth / originalWidth);
+
+        // Find the closet DPI setting
+        int minDistance = Math.abs(densityValues[0] - newDensity);
+        int idx = 0;
+        for (int i = 1; i < densityValues.length; i++) {
+            int dist = Math.abs(densityValues[i] - newDensity);
+            if (dist < minDistance) {
+                minDistance = dist;
+                idx = i;
+            }
+        }
+
+        Log.d(TAG, "Current width " + newWidth + ", old width " + originalWidth);
+        Log.d(TAG,
+                "Original dpi: " + originalDpi + ", would like to change to " + newDensity
+                        + " actually set to " + densityValues[idx]);
+        DisplayDensityUtils.setForcedDisplayDensity(Display.DEFAULT_DISPLAY,
+                densityValues[idx]);
+
+        return true;
     }
 
-    @VisibleForTesting
-    public int getDisplayWidth() {
-        return mDisplay.getMode().getPhysicalWidth();
-    }
-
-    @VisibleForTesting
-    public Display.Mode[] getSupportedModes() {
-        return mDisplay.getSupportedModes();
-    }
 }
