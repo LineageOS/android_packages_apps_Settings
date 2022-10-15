@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Permita que seu dispositivo se comunique com dispositivos Bluetooth nas proximidades"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Permite que seu smartphone se comunique com dispositivos Bluetooth nas proximidades"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Desativar descarga de hardware Bluetooth A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Desativar descarga de hardware Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Desativar descarga de hardware de áudio por Bluetooth LE"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Reiniciar dispositivo?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Reinicie o dispositivo para mudar essa configuração."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Reiniciar"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Cancelar"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Ativar áudio por Bluetooth LE"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Ativa o recurso de áudio por Bluetooth LE caso o dispositivo tenha suporte para esse tipo de recurso de hardware."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Dispositivos portáteis de mídia"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Dispositivos de chamada"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Outros dispositivos"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Permitir Desbloqueio facial"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Usar seu rosto para autenticar"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Use seu rosto para desbloquear o smartphone, autorizar compras ou fazer login em apps."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Permita que a criança use o rosto para desbloquear o smartphone ou confirmar a identidade dela. Isso acontece quando ela faz login em apps, aprova uma compra, entre outras ocasiões."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Permita que a criança use o rosto para desbloquear o smartphone"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Permita que a criança use o rosto para desbloquear o tablet"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Permita que a criança use o rosto para desbloquear o dispositivo"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Usar o rosto da criança para desbloquear o smartphone pode ser menos seguro do que um padrão ou PIN forte."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Usar o rosto da criança para desbloquear o tablet pode ser menos seguro do que um padrão ou PIN forte."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Usar o rosto da criança para desbloquear o dispositivo pode ser menos seguro do que um padrão ou PIN forte."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Use seu rosto para desbloquear o smartphone ou aprovar compras.\n\nObservação: não é possível usar seu rosto para desbloquear este dispositivo. Para mais informações, entre em contato com o administrador da organização."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Use seu rosto para desbloquear o smartphone, autorizar compras ou fazer login em apps"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Usando seu rosto"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Usando sua impressão digital"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Usando seu rosto ou sua impressão digital"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Entregue o smartphone ao seu pai/mãe"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Entregue o tablet ao seu familiar responsável"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Entregue o dispositivo ao seu familiar responsável"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Entregue o smartphone ao seu pai/mãe"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Pular bloqueio de tela?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Os recursos de proteção do dispositivo não serão ativados. Você não poderá impedir que outras pessoas usem este tablet se ele for perdido, roubado ou redefinido."</string>
@@ -888,7 +898,7 @@
     <string name="bluetooth_device_advanced_online_mode_summary" msgid="271856759516576615">"Conecta ao dispositivo Bluetooth"</string>
     <string name="bluetooth_device_advanced_profile_header_title" msgid="7892879890208207223">"Usar para"</string>
     <string name="bluetooth_device_advanced_rename_device" msgid="4798081898389041132">"Renomear"</string>
-    <string name="bluetooth_device_advanced_enable_opp_title" msgid="7604726126703453984">"Permitir transfer. de arquivo"</string>
+    <string name="bluetooth_device_advanced_enable_opp_title" msgid="7604726126703453984">"Permitir transferência de arquivo"</string>
     <string name="bluetooth_pan_user_profile_summary_connected" msgid="7851033200857999275">"Conectado ao dispositivo para acesso à Internet"</string>
     <string name="bluetooth_pan_nap_profile_summary_connected" msgid="5563892893331988809">"Compartilhamento de conexão local de Internet c/ disposit."</string>
     <string name="bluetooth_dock_settings" msgid="1709536202189755022">"Configurações de base"</string>
@@ -1318,10 +1328,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Ao virar o smartphone para as posições vertical e horizontal"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Resolução da tela"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Alta resolução"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Resolução máxima"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Resolução máxima"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"A mudança de resolução pode fazer com que alguns apps em execução sejam fechados."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"A resolução máxima consome mais bateria. A troca de resolução pode fazer com que alguns apps sejam reiniciados."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Cores"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Naturais"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Realçadas"</string>
@@ -4430,7 +4440,7 @@
     <string name="advanced_apps" msgid="7643010673326578815">"Avançado"</string>
     <string name="configure_apps" msgid="5468359087126598115">"Configurar apps"</string>
     <string name="unknown_app" msgid="2027248925719898714">"App desconhecido"</string>
-    <string name="app_permissions" msgid="8666537659217653626">"Gerenciador de permissões"</string>
+    <string name="app_permissions" msgid="8666537659217653626">"Gestão de permissões"</string>
     <string name="app_permissions_summary" msgid="2709819220672938860">"Apps usando <xliff:g id="APPS">%1$s</xliff:g>"</string>
     <string name="app_permissions_summary_more" msgid="6247952473615352350">"Apps usando <xliff:g id="APPS">%1$s</xliff:g> e mais"</string>
     <string name="tap_to_wake" msgid="3313433536261440068">"Tocar para ativar"</string>
@@ -4861,7 +4871,7 @@
     <string name="special_access_more" msgid="132919514147475846">"Ver mais"</string>
     <string name="reset_shortcut_manager_throttling" msgid="2183940254903144298">"Redefinir limite de taxa do ShortcutManager"</string>
     <string name="reset_shortcut_manager_throttling_complete" msgid="8949943009096885470">"O limite de taxa do ShortcutManager foi redefinido"</string>
-    <string name="notification_suggestion_title" msgid="6309263655965785411">"Controlar informações na tela de bloqueio"</string>
+    <string name="notification_suggestion_title" msgid="6309263655965785411">"Informações na tela de bloqueio"</string>
     <string name="notification_suggestion_summary" msgid="7615611244249276113">"Mostrar ou ocultar o conteúdo da notificação"</string>
     <string name="page_tab_title_summary" msgid="7188875610123234454">"Todas as opções"</string>
     <string name="page_tab_title_support" msgid="3235725053332345773">"Dicas e suporte"</string>

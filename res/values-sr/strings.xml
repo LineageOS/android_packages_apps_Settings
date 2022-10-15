@@ -149,11 +149,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Омогућите уређају да комуницира са Bluetooth уређајима у близини"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Омогућите телефону да комуницира са Bluetooth уређајима у близини"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Онемогући Bluetooth A2DP хардверско растерећење"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Онемогући Bluetooth LE AUDIO хардверско растерећење"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Онемогући Bluetooth LE audio хардверско растерећење"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Желите да рестартујете уређај?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Рестартујте уређај да бисте променили ово подешавање."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Рестартуј"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Откажи"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Омогући Bluetooth LE audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Омогућава функцију Bluetooth LE audio ако уређај подржава могућности LE audio хардвера."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Медијски уређаји"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Уређаји за позивање"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Други уређаји"</string>
@@ -369,7 +371,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Дозволите откључавање лицем"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Потврдите идентитет лицем"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Откључавајте телефон, одобравајте куповине или се пријављујте у апликације помоћу лица."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Дозволите детету да користи откључавање лицем на телефону ради верификовања идентитета. Ово се дешава када се пријављује у апликације, одобрава куповину и у другим ситуацијама."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Дозволите детету да користи откључавање телефона лицем"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Дозволите детету да користи откључавање таблета лицем"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Дозволите детету да користи откључавање уређаја лицем"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Коришћење лица детета за откључавање телефона може да буде мање безбедно од јаког шаблона или PIN-а."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Коришћење лица детета за откључавање таблета може да буде мање безбедно од јаког шаблона или PIN-а."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Коришћење лица детета за откључавање уређаја може да буде мање безбедно од јаког шаблона или PIN-а."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Откључавајте телефон или одобравајте куповине помоћу лица.\n\nНапомена: Не можете да откључавате овај уређај помоћу лица. Више информација затражите од администратора организације."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Откључавајте телефон, одобравајте куповине или се пријављујте у апликације помоћу лица"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -377,6 +384,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -486,7 +494,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Коришћење лица"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Коришћење отиска прста"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Коришћење лица или отиска прста"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Врати телефон родитељу"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Врати таблет родитељу"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Врати уређај родитељу"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Врати телефон родитељу"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"Важи"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Прескачете закључавање екрана?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Функције заштите уређаја неће бити укључене. Нећете моћи да спречите друге људе да користе овај таблет ако буде изгубљен, украден или ресетован."</string>
@@ -1336,10 +1346,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Када окрећете телефон у усправни или водоравни режим"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Резолуција екрана"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Висока резолуција"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Највиша резолуција"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Пуна резолуција"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080 пиксела FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440 пиксела QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Променом резолуције неке апликације које су тренутно покренуте могу да се затворе."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Пуна резолуција користи више батерије. Ако пређете на ову резолуцију, неке апликације ће се можда рестартовати."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Боје"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Природне"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Појачане"</string>

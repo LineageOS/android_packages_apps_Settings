@@ -150,11 +150,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Povolte zařízení komunikovat se zařízeními Bluetooth v okolí"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Povolte telefonu komunikovat se zařízeními Bluetooth v okolí"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Zakázat hardwarové snížení zátěže Bluetooth (A2DP)"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Zakázat snižování zatížení hardwaru Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Vypnout snižování zatížení zvukového hardwaru Bluetooth LE"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Restartovat zařízení?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Ke změně nastavení je nutné restartovat zařízení."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Restartovat"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Zrušit"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Zapnout zvuk přes Bluetooth LE"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Zapne funkci zvuku přes Bluetooth LE, pokud zařízení podporuje hardwarové zvukové funkce LE."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Mediální zařízení"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Volání na zařízení"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Ostatní zařízení"</string>
@@ -372,7 +374,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Povolit odemknutí obličejem"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Ověření pomocí obličeje"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Odemykejte telefon, autorizujte nákupy a přihlašujte se do aplikací."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Povolte dítěti používat obličej k odemykání telefonu a ověřování totožnosti. K ověřování dochází při přihlašování do aplikací, schvalování nákupů apod."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Povolte dítěti používat obličej k odemykání telefonu"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Povolte dítěti používat obličej k odemykání tabletu"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Povolte dítěti používat obličej k odemykání zařízení"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Odemykání telefonu dítěte obličejem může být méně bezpečné než silné gesto nebo PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Odemykání tabletu dítěte obličejem může být méně bezpečné než silné gesto nebo PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Odemykání zařízení dítěte obličejem může být méně bezpečné než silné gesto nebo PIN."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Odemykejte telefon a schvalujte nákupy pomocí obličeje.\n\nPoznámka: Obličej nelze použít k odemykání tohoto zařízení. Další informace vám poskytne administrátor vaší organizace."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Odemykejte telefon, autorizujte nákupy a přihlašujte se do aplikací."</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -380,6 +387,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -490,7 +498,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Pomocí obličeje"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Pomocí otisku prstu"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Pomocí obličeje nebo otisku prstu"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Dejte telefon znovu rodiči"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Dej tablet znovu rodiči"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Dej telefon znovu rodiči"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Dejte telefon znovu rodiči"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Přeskočit zámek obrazovky?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Nebudou zapnuty funkce ochrany zařízení. V případě ztráty, odcizení nebo resetování tabletu nebudete moci ostatním zabránit v jeho používání."</string>
@@ -1356,10 +1366,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Když telefon otočíte z režimu na výšku do režimu na šířku"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Rozlišení obrazovky"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Vysoké rozlišení"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Nejvyšší rozlišení"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Plné rozlišení"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Přepnutí rozlišení může způsobit, že některé spuštěné aplikace budou ukončeny."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Plné rozlišení využívá víc baterie. Po přepnutí rozlišení se některé aplikace mohou restartovat."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Barvy"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Přirozené"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Zesílené"</string>
@@ -2009,7 +2019,7 @@
     <string name="lockpassword_forgot_password" msgid="5730587692489737223">"Zapomněli jste heslo?"</string>
     <string name="lockpassword_forgot_pattern" msgid="1196116549051927516">"Zapomněli jste gesto?"</string>
     <string name="lockpassword_forgot_pin" msgid="7164232234705747672">"Zapomněli jste PIN?"</string>
-    <string name="lockpassword_confirm_your_pattern_generic" msgid="7692794426682501482">"Chcete-li pokračovat, zadejte gesto zařízení."</string>
+    <string name="lockpassword_confirm_your_pattern_generic" msgid="7692794426682501482">"Jestliže chcete pokračovat, zadejte gesto zařízení"</string>
     <string name="lockpassword_confirm_your_pin_generic" msgid="9206928587904701094">"Chcete-li pokračovat, zadejte PIN zařízení."</string>
     <string name="lockpassword_confirm_your_password_generic" msgid="2616127423884477152">"Chcete-li pokračovat, zadejte heslo zařízení."</string>
     <string name="lockpassword_confirm_your_pattern_generic_profile" msgid="9110305410672321714">"Chcete-li pokračovat, zadejte pracovní gesto."</string>
@@ -3353,7 +3363,7 @@
     <string name="vpn_mppe" msgid="7366657055055114239">"Šifrování PPP (MPPE)"</string>
     <string name="vpn_l2tp_secret" msgid="2356744369959140121">"Tajný klíč L2TP"</string>
     <string name="vpn_ipsec_identifier" msgid="8511842694369254801">"Identifikátor protokolu IPSec"</string>
-    <string name="vpn_ipsec_secret" msgid="532007567355505963">"Předsdílený klíč IPSec"</string>
+    <string name="vpn_ipsec_secret" msgid="532007567355505963">"Předem sdílený klíč IPSec"</string>
     <string name="vpn_ipsec_user_cert" msgid="2714372103705048405">"Uživatelský certifikát IPSec"</string>
     <string name="vpn_ipsec_ca_cert" msgid="5558498943577474987">"Certifikát CA protokolu IPSec"</string>
     <string name="vpn_ipsec_server_cert" msgid="1411390470454731396">"Certifikát serveru IPSec"</string>

@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"თქვენი მოწყობილობის მიერ ახლომდებარე Bluetooth მოწყობილობებთან კომუნიკაციის დაშვება"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"თქვენი ტელეფონის მიერ ახლომდებარე Bluetooth მოწყობილობებთან კომუნიკაციის დაშვება"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Bluetooth A2DP-ის აპარატული განტვირთვის გათიშვა"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Bluetooth LE AUDIO-ს აპარატურული განტვირთვის გათიშვა"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Bluetooth LE AUDIO-ს აპარატურული განტვირთვის გათიშვა"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"გსურთ მოწყობილობის გადატვირთვა?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"ამ პარამეტრის შესაცვლელად საჭიროა მოწყობილობის გადატვირთვა."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"გადატვირთვა"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"გაუქმება"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Bluetooth LE AUDIO-ს ჩართვა"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Bluetooth LE AUDIO-ს ფუნქცია ირთვება, თუ მოწყობილობას აქვს LE AUDIO-ს აპარატურული გარჩევადობები."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"მედია მოწყობილობები"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"მოწყობილობებზე დარეკვა"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"სხვა მოწყობილობები"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"სახით განბლოკვის დაშვება"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"გამოიყენეთ თქვენი სახე ავტორიზაციისთვის"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"გამოიყენეთ თქვენი სახე ტელეფონის განსაბლოკად, შენაძენების ავტორიზაციისთვის თუ აპებში შესასვლელად."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"მიეცით უფლება თქვენს ბავშვს, სახის მეშვეობით განბლოკოს ტელეფონი ან დაადასტუროს ვინაობა. ეს ხდება იმ შემთხვევაში, როცა ბავშვი შედის აპებში ან ადასტურებს შენაძენს და ა.შ."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"მიეცით უფლება თქვენს ბავშვს, სახის მეშვეობით განბლოკოს თავისი ტელეფონი"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"მიეცით უფლება თქვენს ბავშვს, სახის მეშვეობით განბლოკოს თავისი ტაბლეტი"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"მიეცით უფლება თქვენს ბავშვს, სახის მეშვეობით განბლოკოს თავისი მოწყობილობა"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"თქვენი ბავშვის სახის გამოყენება მისი მოწყობილობის განსაბლოკად შეიძლება ნაკლებად უსაფრთხო იყოს, ვიდრე სანდო ნიმუში ან PIN-კოდი."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"თქვენი ბავშვის სახის გამოყენება მისი ტაბლეტის განსაბლოკად შეიძლება ნაკლებად უსაფრთხო იყოს, ვიდრე სანდო ნიმუში ან PIN-კოდი."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"თქვენი ბავშვის სახის გამოყენება მისი მოწყობილობის განსაბლოკად შეიძლება ნაკლებად უსაფრთხო იყოს, ვიდრე სანდო ნიმუში ან PIN-კოდი."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"გამოიყენეთ თქვენი სახე ტელეფონის განსაბლოკად ან შენაძენების დასადასტურებლად.\n\nგაითვალისწინეთ: ამ მოწყობილობას სახით ვერ განბლოკავთ. დამატებითი ინფორმაციისთვის დაუკავშირდით თქვენი ორგანიზაციის ადმინისტრატორს."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"გამოიყენეთ თქვენი სახე ტელეფონის განსაბლოკად, შენაძენების ავტორიზაციისთვის თუ აპებში შესასვლელად"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -480,9 +488,11 @@
     <string name="biometric_settings_use_biometric_unlock_phone" msgid="8180914579885804358">"თქვენი ტელეფონის განსაბლოკად"</string>
     <string name="biometric_settings_use_biometric_for_apps" msgid="6201168728906364189">"აპებში ვინაობის დასადასტურებლად"</string>
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"სახის მეშვეობით"</string>
-    <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"თთის ანაბეჭდის მეშვეობით"</string>
+    <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"თითის ანაბეჭდის მეშვეობით"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"სახის ან თითის ანაბეჭდის მეშვეობით"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"დაუბრუნეთ ტელეფონი მშობელს"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"დაუბრუნეთ ტაბლეტი მშობელს"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"დაუბრუნეთ მოწყობილობა მშობელს"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"დაუბრუნეთ ტელეფონი მშობელს"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"კარგი"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"ეკრანის დაბლოკვის გამოტოვება გსურთ?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"მოწყობილობის დაცვის ფუნქციები არ ჩაირთვება. ამ ტაბლეტის დაკარგვის, მოპარვის ან მისი ქარხნული პარამეტრების დაბრუნების შემთხვევაში, თქვენ ვერ შეძლებთ ხელი შეუშალოთ სხვას მის გამოყენებაში."</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"როცა ტელეფონი პორტრეტის რეჟიმიდან პეიზაჟის რეჟიმზე გადაგყავთ"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"ეკრანის გარჩევადობა"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"მაღალი გარჩევადობა"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"მაქსიმალური გარჩევადობა"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"სრული გარჩევადობა"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"გარჩევადობის გადართვამ შეიძლება გამოიწვიოს გარკვეული აპების დახურვა."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"სრული გარჩევადობა მეტად მოიხმარს ბატარეას. თქვენი გარჩევადობის გადართვამ შეიძლება გამოიწვიოს ზოგიერთი აპის გადატვირთვა."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"ფერები"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"ბუნებრივი"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"გაძლიერებული"</string>

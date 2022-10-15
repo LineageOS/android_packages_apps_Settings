@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Permite que o dispositivo se comunique cos dispositivos Bluetooth próximos"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Permite que o teléfono se comunique cos dispositivos Bluetooth próximos"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Desactivar alixeiramento de hardware de Bluetooth A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Desactivar alixeiramento de hardware de audio por Bluetooth de baixo consumo"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Desactivar descarga de hardware de audio por Bluetooth de baixo consumo"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Queres reiniciar o dispositivo?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Debes reiniciar o dispositivo para cambiar esta opción."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Reiniciar"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Cancelar"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Activar audio Bluetooth de baixo consumo"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Activa a función de audio por Bluetooth de baixo consumo se o dispositivo é compatible coas funcións do hardware de audio de baixo consumo."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Dispositivos multimedia"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Dispositivos de chamada"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Outros dispositivos"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Permitir desbloqueo facial"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Utiliza a autenticación facial"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Utiliza a túa cara para desbloquear o teléfono, autorizar compras e iniciar sesión en aplicacións."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Permite que o teu fillo ou filla utilice a autenticación facial para desbloquear o teléfono ou verificar a súa identidade. Poderá usala cando queira iniciar sesión nunha aplicación, aprobar unha compra etc."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Permite que o teu fillo ou filla utilice a cara para desbloquear o seu teléfono"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Permite que o teu fillo ou filla utilice a cara para desbloquear a súa tableta"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Permite que o teu fillo ou filla utilice a cara para desbloquear o seu dispositivo"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"O desbloqueo facial do teléfono coa cara da túa filla ou fillo pode ser menos fiable que o uso dun padrón ou PIN seguro."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"O desbloqueo facial da tableta coa cara da túa filla ou fillo pode ser menos fiable que o uso dun padrón ou PIN seguro."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"O desbloqueo facial do dispositivo coa cara da túa filla ou fillo pode ser menos fiable que o uso dun padrón ou PIN seguro."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Utiliza a cara para desbloquear o teléfono ou autorizar as compras.\n\nNota: Non podes utilizar a cara para desbloquear este dispositivo. Para obter máis información, ponte en contacto co administrador da túa organización."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Utiliza a túa cara para desbloquear o teléfono, autorizar compras e iniciar sesión en aplicacións"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Coa cara"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Coa impresión dixital"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Coa cara ou coa impresión dixital"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Devólvelle o teléfono a teu pai ou túa nai"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Devólvelle a tableta a teu pai ou túa nai"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Devólvelle o dispositivo a teu pai ou túa nai"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Devólvelle o teléfono a teu pai ou túa nai"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"Aceptar"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Omitir o bloqueo de pantalla?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"As funcións de protección do dispositivo non se activarán. Non poderás evitar que outros usuarios utilicen a tableta en caso de perda, roubo ou restablecemento"</string>
@@ -1194,7 +1204,7 @@
     <string name="wifi_hotspot_name_summary_connected" msgid="6935457127884928249">"Outros dispositivos poden conectarse á zona wifi <xliff:g id="WIFI_HOTSPOT_NAME">%1$s</xliff:g>"</string>
     <string name="wifi_hotspot_password_title" msgid="9096340919454296786">"Contrasinal da zona wifi"</string>
     <string name="wifi_hotspot_ap_band_title" msgid="560262446129195042">"Banda do punto de acceso"</string>
-    <string name="wifi_hotspot_footer_info_regular" msgid="6620216295510397461">"Utiliza a zona wifi para crear unha rede wifi para os teus outros dispositivos. A zona wifi ofrece acceso a Internet a través da túa conexión de datos móbiles. É posible que se apliquen cargos de datos móbiles adicionais."</string>
+    <string name="wifi_hotspot_footer_info_regular" msgid="6620216295510397461">"Utiliza a zona wifi para crear unha rede wifi para os teus outros dispositivos. A zona wifi ofrece acceso a Internet a través da túa conexión de datos móbiles. É posible que se apliquen cargos adicionais polo uso de datos móbiles."</string>
     <string name="wifi_hotspot_footer_info_local_only" msgid="3813311942370920903">"As aplicacións poden crear unha zona wifi para compartir contido cos dispositivos que están cerca."</string>
     <string name="wifi_hotspot_auto_off_title" msgid="8855711787485504882">"Desactivar a zona wifi automaticamente"</string>
     <string name="wifi_hotspot_auto_off_summary" msgid="8283656069997871354">"Se non hai ningún dispositivo conectado"</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Cando cambias o teléfono do modo vertical ao horizontal"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Resolución da pantalla"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Alta resolución"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Máxima resolución"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Máxima resolución"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Se cambias de resolución, é posible que se pechen algunhas aplicacións en execución."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"A máxima resolución consome máis batería. Se cambias a resolución, pode que se reinicien algunhas aplicacións."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Cores"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Naturais"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Realzadas"</string>
@@ -1491,7 +1501,7 @@
     <string name="sim_multi_sims_summary" msgid="1711012455679332238">"Selecciona a SIM que prefiras usar para os datos móbiles."</string>
     <string name="sim_change_data_title" msgid="4663239438584588847">"Usar <xliff:g id="CARRIER">%1$s</xliff:g> para os datos móbiles?"</string>
     <string name="sim_change_data_message" msgid="3046178883369645132">"Estás utilizando <xliff:g id="CARRIER2_0">%2$s</xliff:g> para os datos móbiles. Se cambias a <xliff:g id="CARRIER1">%1$s</xliff:g>, deixarase de utilizar <xliff:g id="CARRIER2_1">%2$s</xliff:g> para os datos móbiles."</string>
-    <string name="sim_change_data_ok" msgid="4922114750417276560">"Utilizar <xliff:g id="CARRIER">%1$s</xliff:g>"</string>
+    <string name="sim_change_data_ok" msgid="4922114750417276560">"Usar <xliff:g id="CARRIER">%1$s</xliff:g>"</string>
     <string name="sim_preferred_title" msgid="7182406911552216373">"Actualizar a SIM preferida?"</string>
     <string name="sim_preferred_message" msgid="6004009449266648351">"A única SIM do dispositivo é: <xliff:g id="NEW_SIM">%1$s</xliff:g>. Queres usar esta SIM para os datos móbiles, as chamadas e as mensaxes SMS?"</string>
     <string name="wrong_pin_code_pukked" msgid="3414172752791445033">"Código PIN da SIM incorrecto. Agora debes contactar co operador para desbloquear o dispositivo."</string>
@@ -2475,7 +2485,7 @@
     <string name="accessibility_ring_vibration_title" msgid="4689811297654320885">"Vibración do ton"</string>
     <string name="accessibility_notification_vibration_title" msgid="6205679908785776478">"Vibración das notificacións"</string>
     <string name="accessibility_touch_vibration_title" msgid="533931451319110741">"Reacción aos toques"</string>
-    <string name="accessibility_service_primary_switch_title" msgid="437610853412159406">"Utilizar <xliff:g id="ACCESSIBILITY_APP_NAME">%1$s</xliff:g>"</string>
+    <string name="accessibility_service_primary_switch_title" msgid="437610853412159406">"Usar <xliff:g id="ACCESSIBILITY_APP_NAME">%1$s</xliff:g>"</string>
     <string name="accessibility_service_primary_open_title" msgid="8655108684769091154">"Abrir <xliff:g id="ACCESSIBILITY_APP_NAME">%1$s</xliff:g>"</string>
     <string name="accessibility_service_auto_added_qs_tooltip_content" msgid="2941824314912928072">"Engadiuse <xliff:g id="ACCESSIBILITY_APP_NAME">%1$s</xliff:g> ao menú Configuración rápida. Pasa o dedo cara abaixo para activar ou desactivar a función cando queiras."</string>
     <string name="accessibility_service_qs_tooltip_content" msgid="6002493441414967868">"Tamén podes engadir <xliff:g id="ACCESSIBILITY_APP_NAME">%1$s</xliff:g> ao menú Configuración rápida desde a parte superior da pantalla"</string>

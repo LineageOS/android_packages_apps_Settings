@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Cho phép thiết bị kết nối với các thiết bị Bluetooth ở gần"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Cho phép điện thoại kết nối với các thiết bị Bluetooth ở gần"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Tắt giảm tải cho phần cứng Bluetooth A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Tắt chế độ giảm tải phần cứng Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Tắt tính năng giảm tải phần cứng của âm thanh Bluetooth LE"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Khởi động lại thiết bị?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Bạn cần khởi động lại thiết bị để thay đổi chế độ cài đặt này."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Bắt đầu lại"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Huỷ"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Bật âm thanh Bluetooth LE"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Bật tính năng âm thanh Bluetooth LE nếu thiết bị hỗ trợ chức năng phần cứng của âm thanh LE."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Thiết bị truyền thông"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Thiết bị gọi điện"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Thiết bị khác"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Cho phép mở khóa bằng khuôn mặt"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Sử dụng khuôn mặt của bạn để xác thực"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Sử dụng khuôn mặt của bạn để mở khóa điện thoại, ủy quyền các giao dịch mua hoặc đăng nhập vào các ứng dụng."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Cho phép con bạn dùng khuôn mặt để mở khóa điện thoại hoặc xác minh danh tính. Con có thể dùng khuôn mặt khi đăng nhập vào các ứng dụng, phê duyệt một giao dịch mua và làm nhiều việc khác nữa."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Cho phép con bạn dùng khuôn mặt để mở khóa điện thoại"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Cho phép con bạn dùng khuôn mặt để mở khóa máy tính bảng"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Cho phép con bạn dùng khuôn mặt để mở khóa thiết bị"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Sử dụng khuôn mặt của con bạn để mở khóa điện thoại của chúng có thể kém an toàn hơn so với hình mở khóa hoặc mã PIN mạnh."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Sử dụng khuôn mặt của con bạn để mở khóa máy tính bảng của chúng có thể kém an toàn hơn so với hình mở khóa hoặc mã PIN mạnh."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Sử dụng khuôn mặt của con bạn để mở khóa thiết bị của chúng có thể kém an toàn hơn so với hình mở khóa hoặc mã PIN mạnh."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Sử dụng khuôn mặt của bạn để mở khóa điện thoại hoặc phê duyệt các giao dịch mua.\n\nLưu ý: Bạn không thể sử dụng khuôn mặt của mình để mở khóa thiết bị này. Để biết thêm thông tin, hãy liên hệ với quản trị viên của tổ chức bạn."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Sử dụng khuôn mặt của bạn để mở khóa điện thoại, ủy quyền các giao dịch mua hoặc đăng nhập vào các ứng dụng"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Dùng khuôn mặt"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Dùng vân tay"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Dùng khuôn mặt hoặc vân tay"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Đưa lại điện thoại cho cha mẹ bạn"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Đưa lại máy tính bảng cho cha mẹ bạn"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Đưa lại thiết bị cho cha mẹ bạn"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Đưa lại điện thoại cho cha mẹ bạn"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Bạn muốn bỏ qua phương thức khóa màn hình?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Các tính năng bảo vệ thiết bị sẽ không được bật. Bạn sẽ không thể ngăn người khác sử dụng máy tính bảng này nếu máy tính bảng bị mất, bị đánh cắp hoặc bị đặt lại."</string>
@@ -733,7 +743,7 @@
     <string name="unlock_footer_high_complexity_requested" msgid="4471274783909915352">"<xliff:g id="APP_NAME">%1$s</xliff:g> đề xuất một mã PIN hoặc mật khẩu mạnh. Nếu không, ứng dụng này có thể không hoạt động như mong đợi"</string>
     <string name="unlock_footer_medium_complexity_requested" msgid="5515870066751600640">"<xliff:g id="APP_NAME">%1$s</xliff:g> đề xuất một mã PIN hoặc mật khẩu mới. Nếu không, ứng dụng này có thể không hoạt động như mong đợi"</string>
     <string name="unlock_footer_low_complexity_requested" msgid="2517656037576567971">"<xliff:g id="APP_NAME">%1$s</xliff:g> đề xuất một hình mở khóa, mã PIN hoặc mật khẩu mới. Nếu không, ứng dụng này có thể không hoạt động như mong đợi"</string>
-    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"<xliff:g id="APP_NAME">%1$s</xliff:g> đề xuất khóa màn hình mới"</string>
+    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"<xliff:g id="APP_NAME">%1$s</xliff:g> đề xuất phương thức khóa màn hình mới"</string>
     <string name="lock_failed_attempts_before_wipe" msgid="6874652886647631418">"Thử lại. Lần thử <xliff:g id="CURRENT_ATTEMPTS">%1$d</xliff:g>/<xliff:g id="TOTAL_ATTEMPTS">%2$d</xliff:g>."</string>
     <string name="lock_last_attempt_before_wipe_warning_title" msgid="7450322567217745999">"Dữ liệu của bạn sẽ bị xóa"</string>
     <string name="lock_last_pattern_attempt_before_wipe_device" msgid="5816668400104558952">"Nếu bạn nhập hình mở khóa không chính xác vào lần thử tiếp theo, dữ liệu trên thiết bị này sẽ bị xóa"</string>
@@ -1318,10 +1328,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Khi bạn chuyển điện thoại giữa chế độ dọc và chế độ ngang"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Độ phân giải màn hình"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Độ phân giải cao"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Độ phân giải cao nhất"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Độ phân giải đầy đủ"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"FHD+ 1080p"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"QHD+ 1440p"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Khi thay đổi độ phân giải, một số ứng dụng đang chạy có thể bị đóng."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Chế độ độ phân giải cao sử dụng nhiều pin hơn. Việc chuyển đổi độ phân giải của bạn có thể khiến một số ứng dụng khởi động lại."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Màu"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Tự nhiên"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Tăng độ nét"</string>
@@ -2749,7 +2759,7 @@
     <string name="battery_tip_high_usage_title" msgid="9110720762506146697">"Mức sử dụng pin cao"</string>
     <string name="battery_tip_high_usage_summary" msgid="3938999581403084551">"Xem các ứng dụng có mức sử dụng pin cao nhất"</string>
     <string name="battery_tip_limited_temporarily_title" msgid="5231061779363606924">"Chức năng sạc tạm thời bị hạn chế"</string>
-    <string name="battery_tip_limited_temporarily_summary" msgid="8504402301403419444">"Để kéo dài tuổi thọ pin. Tìm hiểu thêm."</string>
+    <string name="battery_tip_limited_temporarily_summary" msgid="8504402301403419444">"Để kéo dài thời lượng pin. Tìm hiểu thêm."</string>
     <string name="battery_tip_limited_temporarily_dialog_resume_charge" msgid="2302295458913832342">"Tiếp tục sạc"</string>
     <string name="battery_tip_limited_temporarily_dialog_msg" product="default" msgid="8125639486214812735">"Trong một số điều kiện, chẳng hạn như nhiệt độ cao và thời gian sạc lâu, mức sạc có thể bị hạn chế ở <xliff:g id="PERCENT">%1$s</xliff:g> để duy trì độ bền của pin.\n\nKhi các điều kiện đó chấm dứt, điện thoại của bạn sẽ tự động sạc như bình thường."</string>
     <string name="battery_tip_limited_temporarily_dialog_msg" product="tablet" msgid="3890877885222574553">"Trong một số điều kiện, chẳng hạn như nhiệt độ cao và thời gian sạc lâu, mức sạc có thể bị hạn chế ở <xliff:g id="PERCENT">%1$s</xliff:g> để duy trì độ bền của pin.\n\nKhi các điều kiện đó chấm dứt, điện thoại của bạn sẽ tự động sạc như bình thường."</string>
@@ -3144,7 +3154,7 @@
     <string name="background_data" msgid="321903213000101158">"Dữ liệu nền"</string>
     <string name="background_data_summary" msgid="6572245922513522466">"Ứng dụng có thể đ.bộ hóa, gửi &amp; nhận dữ liệu bất kỳ lúc nào"</string>
     <string name="background_data_dialog_title" msgid="1692005302993229867">"Tắt dữ liệu nền?"</string>
-    <string name="background_data_dialog_message" msgid="7760280837612824670">"Tắt dữ liệu nền sẽ kéo dài tuổi thọ pin và giảm mức sử dụng dữ liệu. Một số ứng dụng vẫn có thể sử dụng kết nối dữ liệu nền."</string>
+    <string name="background_data_dialog_message" msgid="7760280837612824670">"Tắt dữ liệu nền sẽ kéo dài thời lượng pin và giảm mức sử dụng dữ liệu. Một số ứng dụng vẫn có thể sử dụng kết nối dữ liệu nền."</string>
     <string name="sync_automatically" msgid="4874122892765430304">"Tự động đồng bộ hóa dữ liệu ứng dụng"</string>
     <string name="sync_enabled" msgid="5794103781356455043">"Tính năng đồng bộ hóa đang BẬT"</string>
     <string name="sync_disabled" msgid="1636223106968593391">"Tính năng đồng bộ hóa đang TẮT"</string>
@@ -5092,7 +5102,7 @@
     <string name="financed_privacy_notifications" msgid="5932303271274089968">"Xem thông báo và tin nhắn văn bản"</string>
     <string name="financed_privacy_allowlisted_apps" msgid="8333040812194879963">"Truy cập các ứng dụng được tổ chức tín dụng cho phép"</string>
     <string name="financed_privacy_fully_paid_category" msgid="9221763928564246923">"Sau khi bạn trả toàn bộ phí:"</string>
-    <string name="financed_privacy_restrictions_removed" msgid="3182636815294595072">"Tất cả các hạn chế đều bị xoá khỏi thiết bị"</string>
+    <string name="financed_privacy_restrictions_removed" msgid="3182636815294595072">"Tất cả các hạn chế đều được dỡ bỏ khỏi thiết bị"</string>
     <string name="financed_privacy_uninstall_creditor_app" msgid="6339004120497310705">"Bạn có thể gỡ cài đặt ứng dụng của tổ chức tín dụng"</string>
     <plurals name="default_camera_app_title" formatted="false" msgid="8112432929729136399">
       <item quantity="other">Ứng dụng Máy ảnh</item>
@@ -5235,9 +5245,9 @@
     <string name="media_output_switching" msgid="7488216595474868546">"Đang chuyển đổi…"</string>
     <string name="take_call_on_title" msgid="1159417893879946757">"Thực hiện cuộc gọi trên"</string>
     <string name="cannot_change_apn_toast" msgid="296540724089240405">"Không thể thay đổi APN (Tên điểm truy cập) này."</string>
-    <string name="battery_suggestion_title" product="tablet" msgid="1525940496459255289">"Tăng tuổi thọ pin của máy tính bảng"</string>
-    <string name="battery_suggestion_title" product="device" msgid="2280773774080720377">"Tăng tuổi thọ pin của thiết bị"</string>
-    <string name="battery_suggestion_title" product="default" msgid="4811554469047272537">"Tăng tuổi thọ pin của điện thoại"</string>
+    <string name="battery_suggestion_title" product="tablet" msgid="1525940496459255289">"Tăng thời lượng pin của máy tính bảng"</string>
+    <string name="battery_suggestion_title" product="device" msgid="2280773774080720377">"Tăng thời lượng pin của thiết bị"</string>
+    <string name="battery_suggestion_title" product="default" msgid="4811554469047272537">"Tăng thời lượng pin của điện thoại"</string>
     <string name="battery_suggestion_summary" msgid="8186720080540016197"></string>
     <string name="gesture_prevent_ringing_screen_title" msgid="8293094715267769349">"Ngăn đổ chuông"</string>
     <string name="gesture_prevent_ringing_title" msgid="5978577898997523581">"Nhấn đồng thời nút Nguồn và nút Tăng âm lượng để"</string>

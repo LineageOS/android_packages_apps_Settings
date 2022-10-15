@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Дозволете уредот да комуницира со уредите со Bluetooth во близина"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Дозволете телефонот да комуницира со уредите со Bluetooth во близина"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Оневоз. хард. ослоб. за Bluetooth A2DP"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Оневозможете хардверско ослободување за Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Оневозможи хардверско ослободување за Bluetooth LE-аудио"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Да се рестартира уредот?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Треба да го рестартирате уредот за да ја смените поставкава."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Рестартирај"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Откажи"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Овозможи Bluetooth LE-аудио"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Ја овозможува функцијата Bluetooth LE-аудио ако уредот поддржува хардверски способности за LE-аудио."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Преносливи уреди"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Уреди за повикување"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Други уреди"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Дозволете отклучување со лик"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Користење на лицето за проверка"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Користете го ликот за отклучување на телефонот, за одобрување купувања или за најавување на апликации."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Дозволете му на вашето дете да го користи своето лице за да го отклучи својот телефон или да потврди дека е тоа. Ова се случува кога се најавува во апликации, одобрува купување и друго."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Дозволете му на вашето дете да го користи своето лице за да го отклучи својот телефон"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Дозволете му на вашето дете да го користи своето лице за да го отклучи својот таблет"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Дозволете му на вашето дете да го користи своето лице за да го отклучи својот уред"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Користењето на лицето на детето за отклучување на телефонот може да е понесигурно од силна шема или PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Користењето на лицето на детето за отклучување на таблетот може да е понесигурно од силна шема или PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Користењето на лицето на детето за отклучување на уредот може да е понесигурно од силна шема или PIN."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Користете го вашиот лик за да го отклучите телефонот или да ги одобрите купувањата.\n\nЗабелешка: не може да го користите ликот за да го отклучите уредов. За повеќе информации, контактирајте со администраторот на вашата организација."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Користете го ликот за отклучување на телефонот, за одобрување купувања или за најавување на апликации"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -408,7 +416,7 @@
     <string name="security_settings_face_settings_require_attention_details" msgid="2546230511769544074">"За да го отклучите телефонот, очите мора да ви бидат отворени"</string>
     <string name="security_settings_face_settings_require_confirmation" msgid="6603039421004198334">"Секогаш барај потврда"</string>
     <string name="security_settings_face_settings_require_confirmation_details" msgid="3498729789625461914">"При користење „Отклучување со лик“ во апликации, секогаш барај потврда"</string>
-    <string name="security_settings_face_settings_remove_face_model" msgid="812920481303980846">"Избриши го моделот на лице"</string>
+    <string name="security_settings_face_settings_remove_face_model" msgid="812920481303980846">"Избриши го моделот на лик"</string>
     <string name="security_settings_face_settings_enroll" msgid="3726313826693825029">"Поставете „Отклучување со лик“"</string>
     <string name="security_settings_face_settings_footer" msgid="625696606490947189">"Користете го вашето лице за да го отклучувате телефонот или за проверка во апликации, како на пр., кога се најавувате или одобрувате купување.\n\nИмајте предвид:\nможе да имате поставено само еден лик. За да додадете друг лик, избришете го моменталниот.\n\nПоглед кон телефонот може да го отклучи и кога немате таква намера.\n\nНекој друг може да го отклучи вашиот телефон ако го подигне до вашиот лик.\n\nТелефонот може да го отклучи некој што многу наликува на вас, на пример, идентичен близнак."</string>
     <string name="security_settings_face_settings_footer_attention_not_supported" msgid="2071065435536235622">"Користете го вашето лице за да го отклучувате телефонот или за проверка во апликации, како на пр., кога се најавувате или одобрувате купување.\n\nИмајте предвид:\nможе да имате поставено само еден лик. За да додадете друг лик, избришете го моменталниот.\n\nПоглед кон телефонот може да го отклучи и кога немате таква намера.\n\nНекој друг може да го отклучи вашиот телефон ако го подигне до вашиот лик, дури и ако очите ви се затворени.\n\nТелефонот може да го отклучи некој што многу наликува на вас, на пример, идентичен близнак."</string>
@@ -478,11 +486,13 @@
     <string name="biometric_settings_intro" msgid="4263069383955676756">"Кога ќе поставите „Отклучување со лик“ и „Отклучување со отпечаток на прст“, телефонот ќе го побара вашиот отпечаток кога носите маска или сте на темно место"</string>
     <string name="biometric_settings_category_ways_to_unlock" msgid="3384767901580915266">"Начини на отклучување"</string>
     <string name="biometric_settings_use_biometric_unlock_phone" msgid="8180914579885804358">"Отклучувајте го телефонот"</string>
-    <string name="biometric_settings_use_biometric_for_apps" msgid="6201168728906364189">"Потврдете дека сте вие во апликации"</string>
+    <string name="biometric_settings_use_biometric_for_apps" msgid="6201168728906364189">"Потврдувајте дека сте вие во апликациите"</string>
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"со користење лик"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"со користење отпечаток"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"со користење лик или отпечаток"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Дај му го телефонот на родителот"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Дај му го таблетот на родителот"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Дај му го уредот на родителот"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Дај му го телефонот на родителот"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"Во ред"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Прескокни заклучување екран?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Функциите за заштита на уредот нема да се вклучат. Нема да може да ги спречите другите да го користат таблетов ако го изгубите, ви го украдат или се ресетира."</string>
@@ -1318,10 +1328,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Менувајте помеѓу портрет и пејзаж кога го движите телефонот"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Резолуција на екран"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Висока резолуција"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Највисока резолуција"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Полна резолуција"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Ако ја промените резолуцијата, можно е да се затворат некои апликации што се вклучени во моментов."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Полната резолуција повеќе ја троши батеријата. Префрлањето на резолуцијата може да предизвика рестартирање кај некои апликации."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Бои"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Природни"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Нагласени"</string>
@@ -1967,7 +1977,7 @@
     <string name="lockpassword_forgot_password" msgid="5730587692489737223">"Ја заборавивте лозинката?"</string>
     <string name="lockpassword_forgot_pattern" msgid="1196116549051927516">"Ја заборавивте шемата?"</string>
     <string name="lockpassword_forgot_pin" msgid="7164232234705747672">"Го заборавивте PIN-кодот?"</string>
-    <string name="lockpassword_confirm_your_pattern_generic" msgid="7692794426682501482">"Користете ја шемата на уредот за да продолжите"</string>
+    <string name="lockpassword_confirm_your_pattern_generic" msgid="7692794426682501482">"Внесете ја шемата на уредот за да продолжите"</string>
     <string name="lockpassword_confirm_your_pin_generic" msgid="9206928587904701094">"Внесете го PIN-кодот на уредот за да продолжите"</string>
     <string name="lockpassword_confirm_your_password_generic" msgid="2616127423884477152">"Внесете ја лозинката на уредот за да продолжите"</string>
     <string name="lockpassword_confirm_your_pattern_generic_profile" msgid="9110305410672321714">"Користете ја шемата на работниот профил за да продолжите"</string>

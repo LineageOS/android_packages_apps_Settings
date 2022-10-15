@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"तुमच्या डिव्हाइसला जवळपासच्या ब्लूटूथ डिव्हाइससह संवाद साधण्याची अनुमती द्या"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"तुमच्या फोनला जवळपासच्या ब्लूटूथ डिव्हाइसशी संवाद साधण्याची अनुमती द्या"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"ब्लूटूथ A2DP हार्डवेअर ऑफलोड बंद करा"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Bluetooth LE AUDIO हार्डवेअर ऑफलोड बंद करा"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"ब्लूटूथ LE ऑडिओ हार्डवेअर ऑफलोड बंद करा"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"डिव्हाइस रीस्टार्ट करायचे आहे का?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"हे सेटिंग बदलण्यासाठी तुम्ही तुमचे डिव्हाइस रीस्टार्ट करणे आवश्यक आहे."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"रीस्टार्ट करा"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"रद्द करा"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"ब्लूटूथ LE ऑडिओ सुरू करा"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"डिव्हाइसमध्ये LE ऑडिओ हार्डवेअरसंबंधित क्षमतांना सपोर्ट असल्यास, ब्लूटूथ LE ऑडिओ हे वैशिष्‍ट्य सुरू करते."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"मीडिया डिव्हाइस"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"कॉल डिव्हाइस"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"इतर डिव्हाइस"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"फेस अनलॉकला अनुमती देणे"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"ऑथेंटिकेट करण्यासाठी तुमचा चेहरा वापरा"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"तुमचा फोन अनलॉक करण्यासाठी, खरेदी मान्यता देण्यासाठी किंवा ॲप्समध्ये साइन इन करण्यासाठी तुमचा चेहरा वापरा."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"तुमच्या लहान मुलाला त्यांचा फोन अनलॉक करण्यासाठी किंवा ते तेच आहेत याची पडताळणी करण्यासाठी त्यांचा चेहरा वापरण्याची अनुमती द्या. ते अ‍ॅप्समध्ये साइन इन करतात, खरेदीला मान्यता देतात आणि बरेच काही करतात तेव्हा हे होते."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"तुमच्या लहान मुलाला त्यांचा फोन अनलॉक करण्यासाठी त्यांचा चेहरा वापरण्याची अनुमती द्या"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"तुमच्या लहान मुलाला त्यांचा टॅबलेट अनलॉक करण्यासाठी त्यांचा चेहरा वापरण्याची अनुमती द्या"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"तुमच्या लहान मुलाला त्यांचे डिव्हाइस अनलॉक करण्यासाठी त्यांचा चेहरा वापरण्याची अनुमती द्या"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"तुमच्‍या लहान मुलाचा फोन अनलॉक करण्‍यासाठी त्याचा चेहरा वापरणे हे क्लिष्ट पॅटर्न किंवा पिनपेक्षा कमी सुरक्षित असू शकते."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"तुमच्‍या लहान मुलाचा टॅबलेट अनलॉक करण्‍यासाठी त्याचा चेहरा वापरणे हे क्लिष्ट पॅटर्न किंवा पिनपेक्षा कमी सुरक्षित असू शकते."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"तुमच्‍या लहान मुलाचे डिव्‍हाइस अनलॉक करण्‍यासाठी त्याचा चेहरा वापरणे हे क्लिष्ट पॅटर्न किंवा पिनपेक्षा कमी सुरक्षित असू शकते."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"फोन अनलॉक करण्यासाठी किंवा खरेदींना मंजूरी देण्यासाठी तुमचा चेहरा वापरा.\n\nटीप: तुम्ही हे डिव्हाइस अनलॉक करण्यासाठी तुमचा चेहरा वापरू शकत नाही. अधिक माहितीसाठी, तुमच्या संस्थेच्या प्रशासकाशी संपर्क साधा."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"तुमचा फोन अनलॉक करण्यासाठी, खरेदी परवानगी देण्यासाठी किंवा ॲप्सवर साइन इन करण्यासाठी तुमचा चेहरा वापरा"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"चेहरा वापरत आहे"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"फिंगरप्रिंट वापरत आहे"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"चेहरा किंवा फिंगरप्रिंट वापरत आहे"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"तुमच्या पालकाला फोन परत द्या"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"तुमच्या पालकांना टॅबलेट परत द्या"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"तुमच्या पालकांना डिव्हाइस परत द्या"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"तुमच्या पालकाला फोन परत द्या"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"ओके"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"स्क्रीन लॉक वगळायचे?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"डिव्हाइस संरक्षण वैशिष्ट्ये सुरू होणार नाहीत. हा टॅब्लेट हरवल्यास, चोरी झाल्यास किंवा रीसेट केल्यास तुम्ही इतरांना तो वापरण्यापासून रोखू शकणार नाही."</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"तुम्ही फोन हा पोर्ट्रेट व लॅंडस्केप मोडदरम्यान हलवता तेव्हा"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"स्क्रीन रेझोल्यूशन"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"उच्च रेझोल्यूशन"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"सर्वोच्च रेझोल्यूशन"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"पूर्ण रेझाेल्यूशन"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"तुमचे रेझोल्यूशन स्विच केल्याने सध्या रन होत असलेली काही ॲप्स बंद होऊ शकतात."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"पूर्ण रेझोल्यूशन तुमची बॅटरी जास्त वापरते. तुमचे रेझोल्यूशन स्विच केल्याने काही ॲप्स रीस्टार्ट होऊ शकतात."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"रंग"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"नैसर्गिक"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"बूस्ट केलेला"</string>
@@ -1945,7 +1955,7 @@
     <string name="lockpassword_confirm_your_password_header" msgid="6132312814563023990">"तुमचा पासवर्ड पुन्‍हा टाका"</string>
     <string name="lockpassword_reenter_your_profile_password_header" msgid="3812040127714827685">"तुमचा कार्य पासवर्ड पुन्हा एंटर करा"</string>
     <string name="lockpassword_confirm_your_work_password_header" msgid="4647071231702288305">"तुमच्या ऑफिसचा पासवर्ड एंटर करा"</string>
-    <string name="lockpassword_confirm_your_pattern_header" msgid="4037701363240138651">"आपल्या नमुन्याची पुष्टी करा"</string>
+    <string name="lockpassword_confirm_your_pattern_header" msgid="4037701363240138651">"तुमचा पॅटर्न कंफर्म करा"</string>
     <string name="lockpassword_confirm_your_work_pattern_header" msgid="2668883108969165844">"तुमच्या ऑफिसचा पॅटर्न एंटर करा"</string>
     <string name="lockpassword_confirm_your_pin_header" msgid="2241722970567131308">"तुमचा पिन पुन्हा टाका"</string>
     <string name="lockpassword_reenter_your_profile_pin_header" msgid="2890233614560435538">"तुमचा कार्य पिन पुन्हा एंटर करा"</string>
@@ -3461,11 +3471,11 @@
     <string name="user_account_title" msgid="6389636876210834864">"सामग्रीसाठी खाते"</string>
     <string name="user_picture_title" msgid="7176437495107563321">"फोटो आयडी"</string>
     <string name="extreme_threats_title" msgid="1098958631519213856">"अत्याधिक धोके"</string>
-    <string name="extreme_threats_summary" msgid="3560742429496902008">"जीवन आणि मालमत्तेस असलेल्या अत्याधिक धोक्यांसाठी सूचना प्राप्त करा"</string>
+    <string name="extreme_threats_summary" msgid="3560742429496902008">"जीवन आणि मालमत्तेस असलेल्या अत्याधिक धोक्यांसाठी सूचना मिळवा"</string>
     <string name="severe_threats_title" msgid="8962959394373974324">"गंभीर धोके"</string>
-    <string name="severe_threats_summary" msgid="4982256198071601484">"जीवन आणि मालमत्तेस असलेल्या गंभीर धोक्यांसाठी सूचना प्राप्त करा"</string>
+    <string name="severe_threats_summary" msgid="4982256198071601484">"जीवन आणि मालमत्तेस असलेल्या गंभीर धोक्यांसाठी सूचना मिळवा"</string>
     <string name="amber_alerts_title" msgid="5238275758191804575">"अँबर सूचना"</string>
-    <string name="amber_alerts_summary" msgid="5755221775246075883">"बाल अपहरणाविषयी बुलेटिन प्राप्त करा"</string>
+    <string name="amber_alerts_summary" msgid="5755221775246075883">"बाल अपहरणाविषयी बुलेटिन मिळवा"</string>
     <string name="repeat_title" msgid="8676570486899483606">"पुनरावृत्ती"</string>
     <string name="call_manager_enable_title" msgid="1214301265395158720">"कॉल व्यवस्थापक सुरू करा"</string>
     <string name="call_manager_enable_summary" msgid="7362506369604163030">"तुमचे कॉल कसे केले जातात हे व्यवस्थापित करण्यासाठी या सेवेस अनुमती द्या."</string>

@@ -150,11 +150,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Povoľte zariadeniu komunikovať so zariadeniami Bluetooth nablízku"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Povoľte telefónu komunikovať so zariadeniami Bluetooth nablízku"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Zakázať hardvérové zníženie záťaže Bluetooth (A2DP)"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Zakázať hardvérové zníženie záťaže Bluetooth (LE AUDIO)"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Zakázať hardvérové zníženie záťaže Bluetooth LE"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Chcete zariadenie reštartovať?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Ak chcete zmeniť toto nastavenie, musíte reštartovať zariadenie."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Reštartovať"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Zrušiť"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Povoliť zvuk Bluetooth LE"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Povolí zvukovú funkciu Bluetooth LE, ak zariadenie podporuje možnosti zvukového hardvéru LE."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Mediálne zariadenia"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Zariadenia na telefonovanie"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Iné zariadenia"</string>
@@ -372,7 +374,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Povoľte odomknutie tvárou"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Overenie totožnosti pomocou tváre"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Používajte tvár na odomykanie telefónu, schvaľovanie nákupov a prihlasovanie sa do aplikácií."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Povoľte svojmu dieťaťu odomykať telefón a overovať jeho totožnosť tvárou. Bude k tomu dochádzať pri prihlasovaní do aplikácií, schvaľovaní nákupov a ďalších činnostiach."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Povoľte svojmu dieťaťu odomykať telefón tvárou"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Povoľte svojmu dieťaťu odomykať tablet tvárou"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Povoľte svojmu dieťaťu odomykať zariadenie tvárou"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Odomykanie telefónu dieťaťa pomocou jeho tváre môže byť menej bezpečné ako odomykanie pomocou silného vzoru či kódu PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Odomykanie tabletu dieťaťa pomocou jeho tváre môže byť menej bezpečné ako odomykanie pomocou silného vzoru či kódu PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Odomykanie zariadenia dieťaťa pomocou jeho tváre môže byť menej bezpečné ako odomykanie pomocou silného vzoru či kódu PIN."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Odomykajte telefón a schvaľujte nákupy tvárou.\n\nUpozornenie: Toto zariadenie nemôžete odomykať tvárou. Ďalšie informácie vám poskytne správca organizácie."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Používajte tvár na odomykanie telefónu, schvaľovanie nákupov a prihlasovanie sa do aplikácií"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -380,6 +387,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -476,7 +484,7 @@
     <string name="security_settings_fingerprint_v2_enroll_acquire_too_fast" msgid="5891227328100822018">"Keď zacítite vibráciu, zdvihnite prst"</string>
     <string name="security_settings_fingerprint_v2_enroll_acquire_too_bright" msgid="769646735950329315">"Prejdite na miesto s jemnejším osvetlením a skúste to znova"</string>
     <string name="security_settings_fingerprint_v2_enroll_error_max_attempts" msgid="1464972470750764128">"Dosiahli ste maximálny počet pokusov"</string>
-    <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Odomykajte tablet alebo overujte svoju totožnosť odtlačkom prsta, napríklad pri prihlasovaní do aplikácií"</string>
+    <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Odtlačkom prsta môžete odomknúť tablet alebo overiť svoju totožnosť, napríklad pri prihlasovaní do nejakej aplikácie"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="device" msgid="2503218139575057099">"Odomykajte zariadenie alebo overujte svoju totožnosť odtlačkom prsta, napríklad pri prihlasovaní do aplikácií"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="default" msgid="481286891358925579">"Odomykajte telefón alebo overujte svoju totožnosť odtlačkom prsta, napríklad pri prihlasovaní do aplikácií"</string>
     <string name="security_settings_biometric_preference_title" msgid="298146483579539448">"Odomknutie tvárou a odtlačkom prsta"</string>
@@ -490,7 +498,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Pomocou tváre"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Pomocou odtlačku prsta"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Pomocou tváre alebo odtlačku prsta"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Odovzdaj telefón späť rodičovi"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Odovzdaj tablet späť rodičovi"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Odovzdaj telefón späť rodičovi"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Odovzdaj telefón späť rodičovi"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Preskočiť zámku obrazovky?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Funkcie ochrany zariadenia sa nezapnú. V prípade straty, krádeže alebo obnovenia nebudete môcť cudzím osobám zabrániť v používaní tohto tabletu."</string>
@@ -741,7 +751,7 @@
     <string name="unlock_footer_high_complexity_requested" msgid="4471274783909915352">"<xliff:g id="APP_NAME">%1$s</xliff:g> odporúča silný kód PIN alebo heslo, bez ktorého nemusí fungovať podľa očakávaní"</string>
     <string name="unlock_footer_medium_complexity_requested" msgid="5515870066751600640">"<xliff:g id="APP_NAME">%1$s</xliff:g> odporúča nový kód PIN alebo heslo, bez ktorého nemusí fungovať podľa očakávaní"</string>
     <string name="unlock_footer_low_complexity_requested" msgid="2517656037576567971">"<xliff:g id="APP_NAME">%1$s</xliff:g> odporúča nový vzor, PIN alebo heslo, bez ktorého nemusí fungovať podľa očakávaní"</string>
-    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"<xliff:g id="APP_NAME">%1$s</xliff:g> odporúča nová zámku obrazovky"</string>
+    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"Aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g> odporúča novú zámku obrazovky"</string>
     <string name="lock_failed_attempts_before_wipe" msgid="6874652886647631418">"Skúste to znova. <xliff:g id="CURRENT_ATTEMPTS">%1$d</xliff:g>. z <xliff:g id="TOTAL_ATTEMPTS">%2$d</xliff:g> pokusov."</string>
     <string name="lock_last_attempt_before_wipe_warning_title" msgid="7450322567217745999">"Vaše dáta budú odstránené"</string>
     <string name="lock_last_pattern_attempt_before_wipe_device" msgid="5816668400104558952">"Ak pri ďalšom pokuse zadáte nesprávny vzor, dáta tohto zariadenia budú odstránené"</string>
@@ -1358,10 +1368,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Keď telefón otočíte z režimu na výšku do režimu na šírku"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Rozlíšenie obrazovky"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Vysoké rozlíšenie"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Najvyššie rozlíšenie"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Plné rozlíšenie"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Po prepnutí rozlíšenia sa môžu niektoré aktuálne spustené aplikácie zavrieť."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Plné rozlíšenie využíva vo väčšej miere batériu. Ak rozlíšenie prepnete, niektoré aplikácie sa môžu reštartovať."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Farby"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Prirodzené"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Zosilnené"</string>

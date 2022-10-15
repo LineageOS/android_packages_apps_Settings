@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Tillåt att enheten kommunicerar med Bluetooth-enheter i närheten"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Tillåt att mobilen kommunicerar med Bluetooth-enheter i närheten"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Inaktivera maskinvaruavlastning för Bluetooth (A2DP)"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Inaktivera avlastning av maskinvara för Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Inaktivera maskinvaruavlastning för Bluetooth LE-ljud"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Vill du starta om enheten?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Du måste starta om enheten för att ändra den här inställningen."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Starta om"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Avbryt"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Aktivera Bluetooth LE-ljud"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Aktiverar funktionen för Bluetooth LE-ljud om enheten har stöd för funktioner för LE-ljudmaskinvara."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Medieenheter"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Telefonenheter"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Andra enheter"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Tillåt ansiktslås"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Autentisera med hjälp av ditt ansikte"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Lås upp mobilen, godkänn köp eller logga in i appar med ditt ansikte."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Tillåt att ditt barn använder sitt ansikte för att låsa upp telefonen och verifiera sin identitet. Detta sker när barnet loggar in i appar, godkänner ett köp med mera."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Tillåt att ditt barn använder sitt ansikte för att låsa upp telefonen"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Tillåt att ditt barn använder sitt ansikte för att låsa upp surfplattan"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Tillåt att ditt barn använder sitt ansikte för att låsa upp enheten"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Det kan vara mindre säkert att använda ditt barns ansikte för att låsa upp hans eller hennes telefon än att ha ett starkt mönster eller en stark pinkod."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Det kan vara mindre säkert att använda ditt barns ansikte för att låsa upp hans eller hennes surfplatta än att ha ett starkt mönster eller en stark pinkod."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Det kan vara mindre säkert att använda ditt barns ansikte för att låsa upp hans eller hennes enhet än att ha ett starkt mönster eller en stark pinkod."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Lås upp mobilen eller godkänn köp med hjälp av ansiktet.\n\nObs! Du kan inte låsa upp den här enheten med hjälp av ansiktet. Kontakta organisationens administratör om du vill veta mer."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Lås upp mobilen, godkänn köp eller logga in i appar med ditt ansikte"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Med ansikte"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Med fingeravtryck"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Med ansikte eller fingeravtryck"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Ge tillbaka telefonen till din förälder"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Ge tillbaka surfplattan till din förälder"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Ge tillbaka telefonen till din förälder"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Ge tillbaka telefonen till din förälder"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Vill du hoppa över skärmlås?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Enhetens skyddsfunktioner aktiveras inte. Du kan inte hindra andra från att använda surfplattan om den blir stulen, tappas bort eller återställs."</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"När du vänder telefonen mellan stående och liggande läge"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Skärmupplösning"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Hög upplösning"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Högsta möjliga upplösning"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Full upplösning"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"När du byter upplösning kan vissa appar som körs komma att stängas."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Full upplösning drar mer batteri. Om du byter upplösning kan vissa appar startas om."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Färger"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Naturliga"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Förstärkta"</string>
@@ -2548,7 +2558,7 @@
     <string name="reduce_bright_colors_preference_summary" product="default" msgid="7878756844769221647">"Gör skärmen mer dimmad än telefonens lägsta ljusstyrka"</string>
     <string name="reduce_bright_colors_preference_summary" product="tablet" msgid="8959794720356934888">"Gör skärmen mer dimmad än surfplattans lägsta ljusstyrka"</string>
     <string name="reduce_bright_colors_preference_intro_text" msgid="3502290826747650566">"Dämpa skärmens ljusstyrka ytterligare så att det blir behagligare för ögonen att läsa"</string>
-    <string name="reduce_bright_colors_preference_subtitle" product="default" msgid="8573408446901659333">"Extradimmat kan vara användbart när &lt;ol&gt; &lt;li&gt; telefonens lägsta ljusstyrka fortfarande är för ljus&lt;/li&gt; &lt;li&gt; du använder telefonen i mörker, t.ex. på natten eller i ett mörkt rum innan du ska sova.&lt;/li&gt; &lt;/ol&gt;"</string>
+    <string name="reduce_bright_colors_preference_subtitle" product="default" msgid="8573408446901659333">"Extradimmat kan vara användbart när &lt;ol&gt; &lt;li&gt; telefonens lägsta ljusstyrka fortfarande är för ljus&lt;/li&gt; &lt;li&gt; du använder telefonen i mörker, t.ex. på natten eller i ett mörkt rum innan du ska sova.&lt;/li&gt; &lt;/ol&gt;"</string>
     <string name="reduce_bright_colors_preference_subtitle" product="tablet" msgid="5158211121482010799">"Extradimmat kan vara användbart när &lt;ol&gt; &lt;li&gt; surfplattans lägsta ljusstyrka fortfarande är för ljus&lt;/li&gt; &lt;li&gt; du använder surfplattan i mörker, t.ex. på natten eller i ett mörkt rum innan du ska sova.&lt;/li&gt; &lt;/ol&gt;"</string>
     <string name="reduce_bright_colors_intensity_preference_title" msgid="7455443033955118267">"Intensitet"</string>
     <string name="reduce_bright_colors_intensity_start_label" msgid="930387498396426039">"Svagare"</string>

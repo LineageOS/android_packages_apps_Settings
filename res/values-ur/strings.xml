@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"اپنے آلہ کو قریبی بلوٹوتھ آلات سے مواصلت کرنے کی اجازت دیں"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"اپنے فون کو قریبی بلوٹوتھ آلات سے مواصلت کرنے کی اجازت دیں"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"‏Bluetooth A2DP ہارڈ ویئر آف لوڈ بند کریں"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"‏بلوٹوتھ LE AUDIO ہارڈویئر آف لوڈ کو غیر فعال کریں"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"‏بلوٹوتھ LE آڈیو ہارڈویئر آف لوڈ کو غیر فعال کریں"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"آلہ ری سٹارٹ کریں؟"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"یہ ترتیب تبدیل کرنے کیلئے آپ کو اپنا آلہ ری سٹارٹ کرنا ہوگا۔"</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"ری سٹارٹ کریں"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"منسوخ کریں"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"‏بلوٹوتھ LE آڈیو کو فعال کریں"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"‏اگر آلہ LE آڈیو ہارڈویئر کی صلاحیتوں کو سپورٹ کرتا ہے تو یہ بلوٹوتھ LE آڈیو خصوصیت کو فعال کر دے گا۔"</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"میڈیا آلات"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"کال آلات"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"دیگر آلات"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"فیس اَنلاک کی اجازت دیں"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"تصدیق کرنے کیلئے اپنا چہرہ استعمال کریں"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"اپنے فون کو غیر مقفل کرنے، خریداریوں کی اجازت دینے یا ایپس میں سائن ان کرنے کیلئے اپنے چہرے کا استعمال کریں۔"</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"اپنے بچے کو اس کے فون کو غیر مقفل کرنے یا یہ توثیق کرنے کے لیے کہ یہ وہی بچہ ہے، اس کے چہرے کا استعمال کرنے کی اجازت دیں۔ ایسا اس وقت ہوتا ہے جب وہ ایپس میں سائن ان کرتا ہے اور خریداری وغیرہ کی منظوری دیتا ہے۔"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"اپنے بچے کو اس بات کی اجازت دیں کہ وہ اپنا فون غیر مقفل کرنے کے لیے اپنے چہرے کا استعمال کریں"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"اپنے بچے کو اس بات کی اجازت دیں کہ وہ اپنا ٹیبلیٹ غیر مقفل کرنے کے لیے اپنے چہرے کا استعمال کریں"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"اپنے بچے کو اس بات کی اجازت دیں کہ وہ اپنا آلہ غیر مقفل کرنے کے لیے اپنے چہرے کا استعمال کریں"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"‏اپنے بچے کے فون کو غیر مقفل کرنے کے لیے اس کا چہرہ استعمال کرنا ایک مضبوط پیٹرن یا PIN کی بنسبت کم محفوظ ہو سکتا ہے۔"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"‏اپنے بچے کے ٹیبلیٹ کو غیر مقفل کرنے کے لیے اس کا چہرہ استعمال کرنا ایک مضبوط پیٹرن یا PIN کی بنسبت کم محفوظ ہو سکتا ہے۔"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"‏اپنے بچے کے آلے کو غیر مقفل کرنے کے لیے اس کا چہرہ استعمال کرنا ایک مضبوط پیٹرن یا PIN کی بنسبت کم محفوظ ہو سکتا ہے۔"</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"اپنا فون غیرمقفل کرنے یا خریداریاں منظور کرنے کے لیے اپنے چہرے کا استعمال کریں۔\n\nنوٹ: آپ اس آلہ کو غیرمقفل کرنے کے لیے اپنا چہرا استعمال نہیں کر سکتے۔ مزید معلومات کے لیے، اپنی تنظیم کے منتظم سے رابطہ کریں۔"</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"اپنے فون کو غیر مقفل کرنے، خریداریوں کی اجازت دینے یا ایپس میں سائن ان کرنے کیلئے اپنے چہرے کا استعمال کریں"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"چہرہ استعمال کر کے"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"فنگر پرنٹ استعمال کر کے"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"چہرہ یا فنگر پرنٹ کا استعمال کر کے"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"فون کو واپس اپنے والدین کے حوالے کر دیں"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"ٹیبلیٹ کو واپس اپنے والد/والدہ کے حوالے کر دیں"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"آلہ کو واپس اپنے والد/والدہ کے حوالے کر دیں"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"فون کو واپس اپنے والدین کے حوالے کر دیں"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"ٹھیک ہے"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"اسکرین لاک کو نظر انداز کریں؟"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"آلہ کے تحفظ کی خصوصیات آن نہیں ہوں گی۔ اس کے ضائع، چوری یا دوبارہ ترتیب دئے جانے پر آپ دوسروں کو اس ٹیبلیٹ کے استعمال سے نہیں روک پائیں گے۔"</string>
@@ -731,7 +741,7 @@
     <string name="unlock_footer_high_complexity_requested" msgid="4471274783909915352">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> مضبوط PIN یا پاس ورڈ کی تجویز کرتی ہے اور ہو سکتا ہے کہ ان میں سے کسی ایک کے بغیر توقع کے مطابق کام نہ کرے"</string>
     <string name="unlock_footer_medium_complexity_requested" msgid="5515870066751600640">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> نئے PIN یا پاس ورڈ کی تجویز کرتی ہے اور ہو سکتا ہے کہ ان میں سے کسی ایک کے بغیر توقع کے مطابق کام نہ کرے"</string>
     <string name="unlock_footer_low_complexity_requested" msgid="2517656037576567971">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> ایک نئے پیٹرن، PIN یا پاس ورڈ کی تجویز کرتی ہے اور ہو سکتا ہے کہ ان میں سے کسی ایک کے بغیر توقع کے مطابق کام نہ کرے"</string>
-    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"<xliff:g id="APP_NAME">%1$s</xliff:g> نئے اسکرین لاک کی تجویز کرتی ہے"</string>
+    <string name="unlock_footer_none_complexity_requested" msgid="8534900170428140529">"‫<xliff:g id="APP_NAME">%1$s</xliff:g> نئے اسکرین لاک کی تجویز کرتی ہے"</string>
     <string name="lock_failed_attempts_before_wipe" msgid="6874652886647631418">"دوبارہ کوشش کریں۔ کوشش <xliff:g id="CURRENT_ATTEMPTS">%1$d</xliff:g> از <xliff:g id="TOTAL_ATTEMPTS">%2$d</xliff:g>۔"</string>
     <string name="lock_last_attempt_before_wipe_warning_title" msgid="7450322567217745999">"آپ کا ڈیٹا حذف کر دیا جائے گا"</string>
     <string name="lock_last_pattern_attempt_before_wipe_device" msgid="5816668400104558952">"اگر آپ نے اگلی کوشش میں غلط پیٹرن درج کیا، تو اس آلے کا ڈیٹا حذف کر دیا جائے گا"</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"جب آپ اپنا فون پورٹریٹ اور لینڈ اسکیپ کے درمیان گھماتے ہیں"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"اسکرین ریزولیوشن"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"اعلی ریزولیوشن"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"اعلی ترین ریزولیوشن"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"مکمل ریزولیوشن"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+‎"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+‎"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"آپ کے ریزولیوشن کو تبدیل کرنے سے فی الحال چل رہی کچھ ایپس بند ہو سکتی ہیں۔"</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"مکمل ریزولیوشن آپ کی زیادہ بیٹری کا استعمال کرتا ہے۔ آپ کی ریزولیوشن پر سوئچ کرنے سے کچھ ایپس ری سٹارٹ ہو سکتی ہیں۔"</string>
     <string name="color_mode_title" msgid="8666690832113906028">"رنگ"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"قدرتی"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"بڑھایا گیا"</string>

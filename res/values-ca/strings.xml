@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Permet que el dispositiu es comuniqui amb dispositius Bluetooth que estiguin a prop"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Permet que el telèfon es comuniqui amb dispositius Bluetooth que estiguin a prop"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Desactiva baixada de maquinari (BT A2DP)"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Desactiva la baixada de maquinari Bluetooth LE AUDIO"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Desactiva la baixada de maquinari per Bluetooth LE Audio"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Vols reiniciar-lo?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Has de reiniciar el dispositiu per canviar aquesta opció."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Reinicia"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Cancel·la"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Activa Bluetooth LE Audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Activa la funció Bluetooth LE Audio si el dispositiu admet les funcions de maquinari d\'LE Audio."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Dispositius multimèdia"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Dispositius de trucada"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Altres dispositius"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Permet el desbloqueig facial"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Utilitza l\'autenticació facial"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Fes servir la cara per desbloquejar el telèfon, autoritzar compres o iniciar la sessió a les aplicacions."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Permet que el teu fill utilitzi la cara per desbloquejar el telèfon o verificar la seva identitat. Ho podrà fer quan iniciï la sessió en aplicacions, aprovi una compra, etc."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Permet que el teu fill o filla utilitzi la cara per desbloquejar el telèfon"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Permet que el teu fill o filla utilitzi la cara per desbloquejar la tauleta"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Permet que el teu fill o filla utilitzi la cara per desbloquejar el dispositiu"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Utilitzar la cara del teu fill o filla per desbloquejar el telèfon pot ser menys segur que un bon patró o PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Utilitzar la cara del teu fill o filla per desbloquejar la tauleta pot ser menys segur que un bon patró o PIN."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Utilitzar la cara del teu fill o filla per desbloquejar el dispositiu pot ser menys segur que un bon patró o PIN."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Utilitza la cara per desbloquejar el telèfon o aprovar compres.\n\nNota: no pots fer servir la cara per desbloquejar aquest dispositiu. Per obtenir més informació, contacta amb l\'administrador de la teva organització."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Fes servir la cara per desbloquejar el telèfon, autoritzar compres o iniciar la sessió a les aplicacions"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -430,7 +438,7 @@
     <string name="security_settings_fingerprint_enroll_introduction_title" msgid="7931650601996313070">"Configura l\'empremta digital"</string>
     <string name="security_settings_fingerprint_enroll_consent_introduction_title" msgid="2278592030102282364">"Permet desbloqueig amb empremta"</string>
     <string name="security_settings_fingerprint_enroll_introduction_title_unlock_disabled" msgid="1911710308293783998">"Utilitzar l\'empremta digital"</string>
-    <string name="security_settings_fingerprint_enroll_introduction_v2_message" product="tablet" msgid="1533352560544756928">"Utilitza l\'empremta digital per desbloquejar la tauleta o verificar la teva identitat, com ara quan inicies la sessió en aplicacions o aproves una compra."</string>
+    <string name="security_settings_fingerprint_enroll_introduction_v2_message" product="tablet" msgid="1533352560544756928">"Utilitza l\'empremta digital per desbloquejar la tauleta o verificar que ets tu, com ara quan inicies la sessió en aplicacions o aproves una compra."</string>
     <string name="security_settings_fingerprint_enroll_introduction_v2_message" product="device" msgid="3570866595300511932">"Utilitza l\'empremta digital per desbloquejar el dispositiu o verificar la teva identitat, com ara quan inicies la sessió en aplicacions o aproves una compra."</string>
     <string name="security_settings_fingerprint_enroll_introduction_v2_message" product="default" msgid="8539442240212670385">"Utilitza l\'empremta digital per desbloquejar el telèfon o verificar la teva identitat, com ara quan inicies la sessió en aplicacions o aproves una compra."</string>
     <string name="security_settings_fingerprint_enroll_introduction_consent_message" msgid="1833139688278350628">"Permet que el teu fill utilitzi l\'empremta digital per desbloquejar el telèfon o verificar la seva identitat. Ho podrà fer quan iniciï la sessió en aplicacions, aprovi una compra, etc."</string>
@@ -468,7 +476,7 @@
     <string name="security_settings_fingerprint_v2_enroll_acquire_too_fast" msgid="5891227328100822018">"Aixeca el dit quan notis una vibració"</string>
     <string name="security_settings_fingerprint_v2_enroll_acquire_too_bright" msgid="769646735950329315">"Ves a un lloc menys il·luminat i torna-ho a provar"</string>
     <string name="security_settings_fingerprint_v2_enroll_error_max_attempts" msgid="1464972470750764128">"Has arribat al nombre màxim d\'intents"</string>
-    <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Utilitza l\'empremta digital per desbloquejar la tauleta o verificar la teva identitat, com quan inicies la sessió en aplicacions"</string>
+    <string name="security_settings_fingerprint_v2_home_screen_text" product="tablet" msgid="179325591887291180">"Utilitza l\'empremta digital per desbloquejar la tauleta o verificar que ets tu, com quan inicies la sessió en aplicacions"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="device" msgid="2503218139575057099">"Utilitza l\'empremta digital per desbloquejar el dispositiu o verificar la teva identitat, com quan inicies la sessió en aplicacions"</string>
     <string name="security_settings_fingerprint_v2_home_screen_text" product="default" msgid="481286891358925579">"Utilitza l\'empremta digital per desbloquejar el telèfon o verificar la teva identitat, com quan inicies la sessió en aplicacions"</string>
     <string name="security_settings_biometric_preference_title" msgid="298146483579539448">"Desbloqueig facial i amb empremta digital"</string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Amb la cara"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Amb l\'empremta digital"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Amb la cara o l\'empremta digital"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Torna el telèfon als pares"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Torna la tauleta al teu pare o mare"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Torna el dispositiu al teu pare o mare"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Torna el telèfon als pares"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"D\'acord"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Ometre bloqueig de pantalla?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Les funcions de protecció del dispositiu no s\'activaran. Si perds la tauleta, te la roben o se\'n restableixen les dades de fàbrica, no podràs evitar que altres persones la utilitzin."</string>
@@ -521,7 +531,7 @@
     <string name="security_settings_udfps_enroll_repeat_a11y_message" msgid="2785464357615568197">"Això ajuda a capturar millor l\'empremta digital"</string>
     <string name="security_settings_udfps_enroll_progress_a11y_message" msgid="6183535114682369699">"Registre de l\'empremta digital <xliff:g id="PERCENTAGE">%d</xliff:g> per cent"</string>
     <string name="security_settings_fingerprint_enroll_finish_title" msgid="3606325177406951457">"S\'ha afegit l\'empremta digital"</string>
-    <string name="security_settings_fingerprint_enroll_finish_v2_message" product="tablet" msgid="5918110416185820480">"La funció Desbloqueig amb empremta digital millora com més la utilitzes per desbloquejar la tauleta o verificar la teva identitat en aplicacions"</string>
+    <string name="security_settings_fingerprint_enroll_finish_v2_message" product="tablet" msgid="5918110416185820480">"La funció Desbloqueig amb empremta digital millora com més la utilitzes per desbloquejar la tauleta o verificar que ets tu en aplicacions"</string>
     <string name="security_settings_fingerprint_enroll_finish_v2_message" product="device" msgid="2989276789236025675">"La funció Desbloqueig amb empremta digital millora com més la utilitzes per desbloquejar el dispositiu o verificar la teva identitat en aplicacions"</string>
     <string name="security_settings_fingerprint_enroll_finish_v2_message" product="default" msgid="6506437402392739879">"La funció Desbloqueig amb empremta digital millora com més la utilitzes per desbloquejar el telèfon o verificar la teva identitat en aplicacions"</string>
     <string name="security_settings_fingerprint_enroll_enrolling_skip" msgid="3004786457919122854">"Fes-ho més tard"</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Quan canvies entre el mode vertical i horitzontal al telèfon"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Resolució de pantalla"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Alta resolució"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Resolució més alta"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Resolució completa"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Canviar la teva resolució pot provocar que algunes aplicacions que s\'estan executant es tanquin."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"La resolució completa consumeix més bateria. Si canvies la resolució, és possible que algunes aplicacions es reiniciïn."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Colors"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Naturals"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Millorats"</string>
@@ -3365,7 +3375,7 @@
       <item quantity="one">Confia en el certificat o suprimeix-lo</item>
     </plurals>
     <string name="ssl_ca_cert_info_message_device_owner" msgid="7528581447864707873">"{numberOfCertificates,plural, =1{{orgName} ha instal·lat una autoritat de certificació al teu dispositiu, que pot permetre-li supervisar l\'activitat a la xarxa del dispositiu, inclosos els correus electrònics, les aplicacions i els llocs web segurs.\n\nPer obtenir més informació sobre aquest certificat, contacta amb el teu administrador.}other{{orgName} ha instal·lat unes autoritats de certificació al teu dispositiu, que pot permetre-li supervisar l\'activitat a la xarxa del dispositiu, inclosos els correus electrònics, les aplicacions i els llocs web segurs.\n\nPer obtenir més informació sobre aquests certificats, contacta amb el teu administrador.}}"</string>
-    <string name="ssl_ca_cert_info_message" msgid="3111724430981667845">"{numberOfCertificates,plural, =1{{orgName} ha instal·lat una autoritat de certificació per al teu perfil de treball, que pot permetre-li supervisar l\'activitat a la xarxa del perfil de treball, inclosos els correus electrònics, les aplicacions i els llocs web segurs.\n\nPer obtenir més informació sobre aquest certificat, contacta amb el teu administrador.}other{{orgName} ha instal·lat unes autoritats de certificació per al teu perfil de treball, de manera que podrà supervisar l\'activitat a la xarxa del perfil de treball, inclosos els correus electrònics, les aplicacions i els llocs web segurs.\n\nPer obtenir més informació sobre aquests certificats, contacta amb el teu administrador.}}"</string>
+    <string name="ssl_ca_cert_info_message" msgid="3111724430981667845">"{numberOfCertificates,plural, =1{{orgName} ha instal·lat una autoritat de certificació per al teu perfil de treball, que pot permetre-li supervisar l\'activitat a la xarxa del perfil de treball, inclosos els correus electrònics, les aplicacions i els llocs web segurs.\n\nPer obtenir més informació sobre aquest certificat, contacta amb el teu administrador.}other{{orgName} ha instal·lat unes autoritats de certificació per al teu perfil de treball, que pot permetre-li supervisar l\'activitat a la xarxa del perfil de treball, inclosos els correus electrònics, les aplicacions i els llocs web segurs.\n\nPer obtenir més informació sobre aquests certificats, contacta amb el teu administrador.}}"</string>
     <string name="ssl_ca_cert_warning_message" msgid="4374052724815563051">"Un tercer pot supervisar la teva activitat de xarxa, inclosos els correus electrònics, les aplicacions i els llocs web segurs.\n\nHi ha una credencial de confiança instal·lada al teu dispositiu que ho fa possible."</string>
     <plurals name="ssl_ca_cert_settings_button" formatted="false" msgid="125941406175485894">
       <item quantity="other">Comprova els certificats</item>
@@ -5145,7 +5155,7 @@
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> contrasenya</item>
     </plurals>
     <string name="autofill_keywords" msgid="8598763328489346438">"automàtic, emplenament, emplenament automàtic, contrasenya"</string>
-    <string name="autofill_confirmation_message" msgid="4888767934273494272">"&lt;b&gt;Assegura\'t que confies en aquesta aplicació&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; &lt;xliff:g id=app_name example=Emplenament automàtic de Google&gt;%1$s&lt;/xliff:g&gt; utilitza el contingut que es mostra a la pantalla per determinar què es pot emplenar automàticament."</string>
+    <string name="autofill_confirmation_message" msgid="4888767934273494272">"&lt;b&gt;Assegura\'t que confies en aquesta aplicació&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; &lt;xliff:g id=app_name example=Emplenament automàtic amb Google&gt;%1$s&lt;/xliff:g&gt; utilitza el contingut que es mostra a la pantalla per determinar què es pot emplenar automàticament."</string>
     <string name="debug_autofill_category" msgid="5998163555428196185">"Emplenament automàtic"</string>
     <string name="autofill_logging_level_title" msgid="3733958845861098307">"Nivell de registre"</string>
     <string name="autofill_max_partitions" msgid="7342195529574406366">"Màxim de sol·licituds per sessió"</string>

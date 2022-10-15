@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Lubage oma seadmel lähedalasuvate Bluetoothi seadmetega suhelda"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Lubage telefonil suhelda lähedalasuvate Bluetoothi seadmetega"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Keela Bluetoothi A2DP riistvara mahalaadimine"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Keela Bluetooth LE AUDIO riistvara mahalaadimine"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Keela Bluetooth LE Audio riistvara mahalaadimine"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Kas taaskäivitada seade?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Selle seade muutmiseks peate seadme taaskäivitama."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Taaskäivita"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"Tühista"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Luba Bluetooth LE Audio"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Lubab funktsiooni Bluetooth LE Audio, kui seade toetab LE Audio riistvara võimalusi."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Meediaseadmed"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Helistamisseadmed"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Muud seadmed"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Lubage näoga avamine"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Kasutage autentimiseks oma nägu"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Kasutage oma nägu telefoni avamiseks, ostude volitamiseks või rakendustesse sisselogimiseks."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Lubage lapsel näo abil telefoni avada või oma isikut kinnitada. See toimub siis, kui ta üritab rakendustesse sisse logida, ostu kinnitada või teha muud."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Lubage lapsel telefon näo abil avada"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Lubage lapsel tahvelarvuti näo abil avada"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Lubage lapsel seade näo abil avada"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Lapse telefoni avamiseks tema näo kasutamine võib olla vähem turvaline kui tugev muster või PIN-kood."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Lapse tahvelarvuti avamiseks tema näo kasutamine võib olla vähem turvaline kui tugev muster või PIN-kood."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Lapse seadme avamiseks tema näo kasutamine võib olla vähem turvaline kui tugev muster või PIN-kood."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Kasutage telefoni avamiseks või ostude kinnitamiseks oma nägu.\n\nMärkus: te ei saa kasutada oma nägu selle seadme avamiseks. Lisateabe saamiseks võtke ühendust oma organisatsiooni administraatoriga."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Kasutage oma nägu telefoni avamiseks, ostude volitamiseks või rakendustesse sisselogimiseks"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Näo kasutamine"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Sõrmejälje kasutamine"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Näo või sõrmejälje kasutamine"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Anna telefon vanema kätte tagasi"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Anna tahvelarvuti vanema kätte tagasi"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Anna seade vanema kätte tagasi"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Anna telefon vanema kätte tagasi"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"OK"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Kas jätta ekraanilukk vahele?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Seadme kaitsefunktsioone ei lülitata sisse. Te ei saa tahvelarvuti kaotsimineku, varguse või lähtestamise puhul teistel selle kasutamist takistada."</string>
@@ -1318,10 +1328,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Liigutades telefoni vertikaal- ja horisontaalrežiimi vahel"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Ekraani eraldusvõime"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Kõrge eraldusvõime"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"Kõrgeim eraldusvõime"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Täiseraldusvõime"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Eraldusvõime muutmine võib põhjustada mõne praegu töötava rakenduse sulgumise."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Täiseraldusvõime kasutab rohkem akut. Teie eraldusvõimele lülitumine võib mõne rakenduse taaskäivitada."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Värvid"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Loomulikud"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Võimendatud"</string>

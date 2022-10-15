@@ -148,11 +148,13 @@
     <string name="bluetooth_pref_summary" product="device" msgid="2192027516577675587">"Cihazınızın yakındaki Bluetooth cihazlarıyla iletişim kurmasına izin verin"</string>
     <string name="bluetooth_pref_summary" product="default" msgid="768958961865499804">"Telefonunuzun yakındaki Bluetooth cihazlarıyla iletişim kurmasına izin verin"</string>
     <string name="bluetooth_disable_a2dp_hw_offload" msgid="5942913792817797541">"Bluetooth A2DP donanım yükünü devre dışı bırak"</string>
-    <string name="bluetooth_disable_le_audio_hw_offload" msgid="3966022676505972908">"Bluetooth LE AUDIO donanım yükünü devre dışı bırakın"</string>
+    <string name="bluetooth_disable_le_audio_hw_offload" msgid="4656853795514691257">"Bluetooth LE ses donanım yükünü devre dışı bırakın"</string>
     <string name="bluetooth_disable_hw_offload_dialog_title" msgid="6001142380445276918">"Cihaz Yeniden Başlatılsın mı?"</string>
     <string name="bluetooth_disable_hw_offload_dialog_message" msgid="1524373895333698779">"Bu ayarı değiştirmek için cihazınızı yeniden başlatın."</string>
     <string name="bluetooth_disable_hw_offload_dialog_confirm" msgid="5594859658551707592">"Yeniden başlat"</string>
     <string name="bluetooth_disable_hw_offload_dialog_cancel" msgid="3663690305043973720">"İptal"</string>
+    <string name="bluetooth_enable_leaudio" msgid="1245004820628723136">"Bluetooth LE sesini etkinleştirme"</string>
+    <string name="bluetooth_enable_leaudio_summary" msgid="8066117764037123479">"Cihaz, LE ses donanımı özelliklerini destekliyorsa Bluetooth LE ses özelliğini etkinleştirir."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Medya cihazları"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Cihazları ara"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Diğer cihazlar"</string>
@@ -366,7 +368,12 @@
     <string name="security_settings_face_enroll_consent_introduction_title" msgid="3942331854413767814">"Yüz tanıma kilidine izin verin"</string>
     <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Kimlik doğrulama için yüzünüzü kullanın"</string>
     <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Telefonunuzun kilidini açmak, satın alma işlemlerini yetkilendirmek veya uygulamalarda oturum açmak için yüzünüzü kullanın."</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" msgid="866117500419055444">"Çocuğunuzun telefonunun kilidini açmak veya kimliğini doğrulamak için yüzünü kullanmasına izin verin. Bu özellik, çocuğunuz uygulamalarda oturum açarken, satın alma işlemlerini onaylarken ve başka işlemler gerçekleştirirken kullanılır."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="3708441779746110890">"Çocuğunuzun, telefonunu açmak için yüzünü kullanmasına izin verin"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="tablet" msgid="8406386084543310653">"Çocuğunuzun, tabletini açmak için yüzünü kullanmasına izin verin"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message_0" product="device" msgid="5001499879151444125">"Çocuğunuzun, cihazını açmak için yüzünü kullanmasına izin verin"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="5164079708894687560">"Çocuğunuzun telefon kilidini açmak için yüzünü kullanmak, güçlü bir desen veya PIN\'den daha az güvenli olabilir."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="4155504156661531649">"Çocuğunuzun tablet kilidini açmak için yüzünü kullanmak, güçlü bir desen veya PIN\'den daha az güvenli olabilir."</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="7233598320061107964">"Çocuğunuzun cihaz kilidini açmak için yüzünü kullanmak, güçlü bir desen veya PIN\'den daha az güvenli olabilir."</string>
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Telefonunuzun kilidini açmak veya bir satın alma işlemini onaylamak için yüzünüzü kullanın.\n\nNot: Bu cihazın kilidini açmak için yüzünüzü kullanamazsınız. Daha fazla bilgi için kuruluşunuzun yöneticisine başvurun."</string>
     <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Telefonunuzun kilidini açmak, satın alma işlemlerini yetkilendirmek veya uygulamalarda oturum açmak için yüzünüzü kullanın"</string>
     <string name="security_settings_face_enroll_introduction_info_title" msgid="7120796118179406944"></string>
@@ -374,6 +381,7 @@
     <string name="security_settings_face_enroll_introduction_info_consent_glasses" msgid="6303917184145586880"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" msgid="6502109133251718131"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_looking" msgid="1911530177804950718"></string>
+    <string name="security_settings_face_enroll_introduction_info_consent_less_secure" msgid="1803349736039164986"></string>
     <string name="security_settings_face_enroll_introduction_info_less_secure" msgid="6496505354480525745"></string>
     <string name="security_settings_face_enroll_introduction_info_gaze" msgid="143556725395884850"></string>
     <string name="security_settings_face_enroll_introduction_info_consent_gaze" msgid="6301647369911879888"></string>
@@ -482,7 +490,9 @@
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Yüz tanıma kullanarak"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Parmak izi kullanarak"</string>
     <string name="biometric_settings_use_face_or_fingerprint_preference_summary" msgid="3029102492674234728">"Yüz tanıma veya parmak izi kullanarak"</string>
-    <string name="biometric_settings_hand_back_to_guardian" msgid="3747619291972376153">"Telefonu tekrar annenize veya babanıza verin"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="tablet" msgid="1498542470242509989">"Tableti tekrar annenize veya babanıza verin"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="device" msgid="3837001353226852511">"Cihazı tekrar annenize veya babanıza verin"</string>
+    <string name="biometric_settings_hand_back_to_guardian" product="default" msgid="3747619291972376153">"Telefonu tekrar annenize veya babanıza verin"</string>
     <string name="biometric_settings_hand_back_to_guardian_ok" msgid="1763788801883247426">"Tamam"</string>
     <string name="lock_screen_intro_skip_title" msgid="342553937472568925">"Ekran kilidi atlansın mı?"</string>
     <string name="lock_screen_intro_skip_dialog_text_frp" product="tablet" msgid="1570832293693405757">"Cihaz koruma özellikleri etkinleştirilmeyecek. Dolayısıyla tablet kaybolduğunda, çalındığında veya sıfırlandığında başkalarının bu tableti kullanmasını önleyemeyeceksiniz."</string>
@@ -1316,10 +1326,10 @@
     <string name="auto_rotate_summary_a11y" msgid="1505094100328581685">"Telefonunuzu dikey/yatay mod arasında hareket ettirdiğinizde"</string>
     <string name="screen_resolution_title" msgid="2690518693139811486">"Ekran çözünürlüğü"</string>
     <string name="screen_resolution_option_high" msgid="2617496842852992853">"Yüksek çözünürlük"</string>
-    <string name="screen_resolution_option_highest" msgid="7892101083236381555">"En yüksek çözünürlük"</string>
+    <string name="screen_resolution_option_highest" msgid="9134161136319625840">"Tam çözünürlük"</string>
     <string name="screen_resolution_summary_high" msgid="5611896959631297437">"1080p FHD+"</string>
     <string name="screen_resolution_summary_highest" msgid="2609112310453953756">"1440p QHD+"</string>
-    <string name="screen_resolution_footer" msgid="2563830074752340045">"Çözünürlüğünüzü değiştirmek şu anda çalışan bazı uygulamaların kapanmasına neden olabilir."</string>
+    <string name="screen_resolution_footer" msgid="6772341522952795647">"Tam çözünürlük daha fazla pil kullanır. Çözünürlük değiştirildiğinde bazı uygulamalar yeniden başlatılabilir."</string>
     <string name="color_mode_title" msgid="8666690832113906028">"Renkler"</string>
     <string name="color_mode_option_natural" msgid="6192875655101283303">"Doğal"</string>
     <string name="color_mode_option_boosted" msgid="4698797857766774289">"Zenginleştirilmiş"</string>
