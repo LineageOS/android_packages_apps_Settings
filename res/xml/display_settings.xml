@@ -124,10 +124,10 @@
             settings:replacesKey="auto_rotate"
             settings:requiresFeature="android.hardware.sensor.accelerometer" />
 
-        <Preference
+        <ListPreference
             android:key="screen_resolution"
             android:title="@string/screen_resolution_title"
-            android:fragment="com.android.settings.display.ScreenResolutionFragment"
+            android:summary="@string/summary_placeholder"
             settings:keywords="@string/keywords_screen_resolution"
             settings:controller="com.android.settings.display.ScreenResolutionController"/>
 
