@@ -4573,6 +4573,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Face enroll -->
+        <activity android:theme="@style/SudThemeGlif.Light"
+                  android:name="com.android.settings.biometrics.face.FaceEnrollActivityDirector"
+                  android:exported="true"
+                  android:screenOrientation="portrait"/>
+
         <!-- This is the longest AndroidManifest.xml ever. -->
     </application>
 </manifest>

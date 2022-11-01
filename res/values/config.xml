@@ -562,6 +562,15 @@
     <!-- Media Uri to view documents & other storage category. -->
     <string name="config_documents_and_other_storage_category_uri" translatable="false">content://com.android.providers.media.documents/root/documents_root</string>
 
+    <!-- ComponentName to launch a vendor-specific enrollment activity if available -->
+    <string name="config_face_enroll">com.android.settings/com.android.settings.biometrics.face.FaceEnrollActivityDirector</string>
+
+    <!-- Whether or not to use traffic light enroll -->
+    <bool name="config_face_enroll_use_traffic_light">false</bool>
+
+    <!-- Traffic light package to use -->
+    <string name="config_face_enroll_traffic_light_package"></string>
+    
     <!-- Whether to show Smart Storage toggle -->
     <bool name="config_show_smart_storage_toggle">true</bool>
 
