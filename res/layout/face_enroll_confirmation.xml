@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.setupdesign.GlifLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/face_enroll_confirmation" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/FaceLayoutTheme">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/SudContentFrame">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/face_enrolled_anim" android:background="@drawable/face_enroll_icon_large" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                <ImageView android:id="@+id/face_check" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/face_enroll_check"/>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.setupdesign.GlifLayout>
+
