@@ -18,24 +18,28 @@ package com.android.settings.biometrics.fingerprint;
 
 import android.app.settings.SettingsEnums;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintSensorPropertiesInternal;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.OrientationEventListener;
+import android.view.Surface;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.accessibility.AccessibilityManager;
 
 import androidx.annotation.Nullable;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.biometrics.BiometricEnrollBase;
 import com.android.settings.biometrics.BiometricEnrollSidecar;
 import com.android.settings.biometrics.BiometricUtils;
 import com.android.settings.password.ChooseLockSettingsHelper;
+import com.android.settingslib.widget.LottieColorUtils;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.setupcompat.template.FooterBarMixin;
 import com.google.android.setupcompat.template.FooterButton;
 
@@ -47,26 +51,32 @@ import java.util.List;
 public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
         BiometricEnrollSidecar.Listener {
 
-
     private static final String TAG = "FingerprintEnrollFindSensor";
+    private static final String SAVED_STATE_IS_NEXT_CLICKED = "is_next_clicked";
 
     @Nullable
     private FingerprintFindSensorAnimation mAnimation;
 
+    @Nullable
+    private LottieAnimationView mIllustrationLottie;
+
     private FingerprintEnrollSidecar mSidecar;
     private boolean mNextClicked;
     private boolean mCanAssumeUdfps;
-    private boolean mCanAssumeSidefps;
+    private boolean mCanAssumeSfps;
+
+    private OrientationEventListener mOrientationEventListener;
+    private int mPreviousRotation = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final FingerprintManager fingerprintManager = getSystemService(FingerprintManager.class);
+        final FingerprintManager fingerprintManager = Utils.getFingerprintManagerOrNull(this);
         final List<FingerprintSensorPropertiesInternal> props =
                 fingerprintManager.getSensorPropertiesInternal();
         mCanAssumeUdfps = props != null && props.size() == 1 && props.get(0).isAnyUdfpsType();
-        mCanAssumeSidefps = props != null && props.size() == 1 && props.get(0).isAnySidefpsType();
+        mCanAssumeSfps = props != null && props.size() == 1 && props.get(0).isAnySidefpsType();
         setContentView(getContentView());
         mFooterBarMixin = getLayout().getMixin(FooterBarMixin.class);
         mFooterBarMixin.setSecondaryButton(
@@ -77,6 +87,8 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
                         .setTheme(R.style.SudGlifButton_Secondary)
                         .build()
         );
+
+        listenOrientationEvent();
 
         if (mCanAssumeUdfps) {
             setHeaderText(R.string.security_settings_udfps_enroll_find_sensor_title);
@@ -90,12 +102,14 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
                     .build()
             );
 
-            LottieAnimationView lottieAnimationView = findViewById(R.id.illustration_lottie);
+            mIllustrationLottie = findViewById(R.id.illustration_lottie);
             AccessibilityManager am = getSystemService(AccessibilityManager.class);
             if (am.isEnabled()) {
-                lottieAnimationView.setAnimation(R.raw.udfps_edu_a11y_lottie);
+                mIllustrationLottie.setAnimation(R.raw.udfps_edu_a11y_lottie);
             }
-
+        } else if (mCanAssumeSfps) {
+            setHeaderText(R.string.security_settings_sfps_enroll_find_sensor_title);
+            setDescriptionText(R.string.security_settings_sfps_enroll_find_sensor_message);
         } else {
             final boolean isFrontFacingFps = getResources().getBoolean(
                     R.bool.config_is_front_facing_fps);
@@ -111,12 +125,14 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
                         .setVisibility(View.VISIBLE);
             }
         }
+        if (savedInstanceState != null) {
+            mNextClicked = savedInstanceState.getBoolean(SAVED_STATE_IS_NEXT_CLICKED, mNextClicked);
+        }
 
         // This is an entry point for SetNewPasswordController, e.g.
         // adb shell am start -a android.app.action.SET_NEW_PASSWORD
         if (mToken == null && BiometricUtils.containsGatekeeperPasswordHandle(getIntent())) {
-            final FingerprintManager fpm = getSystemService(FingerprintManager.class);
-            fpm.generateChallenge(mUserId, (sensorId, userId, challenge) -> {
+            fingerprintManager.generateChallenge(mUserId, (sensorId, userId, challenge) -> {
                 mChallenge = challenge;
                 mSensorId = sensorId;
                 mToken = BiometricUtils.requestGatekeeperHat(this, getIntent(), mUserId, challenge);
@@ -126,11 +142,19 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
                 // it passed in.
                 getIntent().putExtra(ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN, mToken);
 
-                startLookingForFingerprint();
+                // Do not start looking for fingerprint if this activity is re-created because it is
+                // waiting for activity result from enrolling activity.
+                if (!mNextClicked) {
+                    startLookingForFingerprint();
+                }
             });
         } else if (mToken != null) {
-            // HAT passed in from somewhere else, such as FingerprintEnrollIntroduction
-            startLookingForFingerprint();
+            // Do not start looking for fingerprint if this activity is re-created because it is
+            // waiting for activity result from enrolling activity.
+            if (!mNextClicked) {
+                // HAT passed in from somewhere else, such as FingerprintEnrollIntroduction
+                startLookingForFingerprint();
+            }
         } else {
             // There's something wrong with the enrollment flow, this should never happen.
             throw new IllegalStateException("HAT and GkPwHandle both missing...");
@@ -138,19 +162,60 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
 
         mAnimation = null;
         if (mCanAssumeUdfps) {
-            LottieAnimationView lottieAnimationView = findViewById(R.id.illustration_lottie);
-            lottieAnimationView.setOnClickListener(new OnClickListener() {
+            mIllustrationLottie.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onStartButtonClick(v);
                 }
             });
-        } else {
+        } else if (!mCanAssumeSfps) {
             View animationView = findViewById(R.id.fingerprint_sensor_location_animation);
             if (animationView instanceof FingerprintFindSensorAnimation) {
                 mAnimation = (FingerprintFindSensorAnimation) animationView;
             }
         }
+    }
+
+    private void updateSfpsFindSensorAnimationAsset() {
+        mIllustrationLottie = findViewById(R.id.illustration_lottie);
+        final int rotation = getApplicationContext().getDisplay().getRotation();
+
+        switch (rotation) {
+            case Surface.ROTATION_90:
+                mIllustrationLottie.setAnimation(
+                        R.raw.fingerprint_edu_lottie_portrait_top_left);
+                break;
+            case Surface.ROTATION_180:
+                mIllustrationLottie.setAnimation(
+                        R.raw.fingerprint_edu_lottie_landscape_bottom_left);
+                break;
+            case Surface.ROTATION_270:
+                mIllustrationLottie.setAnimation(
+                        R.raw.fingerprint_edu_lottie_portrait_bottom_right);
+                break;
+            default:
+                mIllustrationLottie.setAnimation(
+                        R.raw.fingerprint_edu_lottie_landscape_top_right);
+                break;
+        }
+
+        LottieColorUtils.applyDynamicColors(getApplicationContext(), mIllustrationLottie);
+        mIllustrationLottie.setVisibility(View.VISIBLE);
+        mIllustrationLottie.playAnimation();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mCanAssumeSfps) {
+            updateSfpsFindSensorAnimationAsset();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(SAVED_STATE_IS_NEXT_CLICKED, mNextClicked);
     }
 
     @Override
@@ -159,9 +224,17 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
         super.onBackPressed();
     }
 
+    @Override
+    protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
+        theme.applyStyle(R.style.SetupWizardPartnerResource, true);
+        super.onApplyThemeResource(theme, resid, first);
+    }
+
     protected int getContentView() {
         if (mCanAssumeUdfps) {
             return R.layout.udfps_enroll_find_sensor_layout;
+        } else if (mCanAssumeSfps) {
+            return R.layout.sfps_enroll_find_sensor_layout;
         }
         return R.layout.fingerprint_enroll_find_sensor;
     }
@@ -215,7 +288,6 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
     @Override
     public void onEnrollmentError(int errMsgId, CharSequence errString) {
         if (mNextClicked && errMsgId == FingerprintManager.FINGERPRINT_ERROR_CANCELED) {
-            mNextClicked = false;
             proceedToEnrolling(false /* cancelEnrollment */);
         } else {
             FingerprintErrorDialog.showErrorDialog(this, errMsgId);
@@ -237,6 +309,7 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
 
     @Override
     protected void onDestroy() {
+        stopListenOrientationEvent();
         super.onDestroy();
         if (mAnimation != null) {
             mAnimation.stopAnimation();
@@ -244,6 +317,7 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
     }
 
     private void onStartButtonClick(View view) {
+        mNextClicked = true;
         startActivityForResult(getFingerprintEnrollingIntent(), ENROLL_REQUEST);
     }
 
@@ -263,6 +337,7 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
                     return;
                 }
             }
+            mSidecar.setListener(null);
             getSupportFragmentManager().beginTransaction().remove(mSidecar).
                     commitAllowingStateLoss();
             mSidecar = null;
@@ -315,6 +390,7 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
                         finish();
                     } else {
                         // We came back from enrolling but it wasn't completed, start again.
+                        mNextClicked = false;
                         startLookingForFingerprint();
                     }
                     break;
@@ -327,5 +403,35 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
     @Override
     public int getMetricsCategory() {
         return SettingsEnums.FINGERPRINT_FIND_SENSOR;
+    }
+
+    private void listenOrientationEvent() {
+        if (!mCanAssumeSfps) {
+            // Do nothing if the device doesn't support SideFPS.
+            return;
+        }
+        mOrientationEventListener = new OrientationEventListener(this) {
+            @Override
+            public void onOrientationChanged(int orientation) {
+                final int currentRotation = getDisplay().getRotation();
+                if ((currentRotation + 2) % 4 == mPreviousRotation) {
+                    mPreviousRotation = currentRotation;
+                    recreate();
+                }
+            }
+        };
+        mOrientationEventListener.enable();
+        mPreviousRotation = getDisplay().getRotation();
+    }
+
+    private void stopListenOrientationEvent() {
+        if (!mCanAssumeSfps) {
+            // Do nothing if the device doesn't support SideFPS.
+            return;
+        }
+        if (mOrientationEventListener != null) {
+            mOrientationEventListener.disable();
+        }
+        mOrientationEventListener = null;
     }
 }

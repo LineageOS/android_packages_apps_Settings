@@ -26,10 +26,13 @@ import android.hardware.biometrics.BiometricAuthenticator;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintSensorPropertiesInternal;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -62,6 +65,7 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
     @Nullable private FooterButton mSecondaryFooterButton;
 
     private DevicePolicyManager mDevicePolicyManager;
+    private boolean mCanAssumeUdfps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +77,10 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
         }
 
         super.onCreate(savedInstanceState);
+        final FingerprintManager fingerprintManager = getSystemService(FingerprintManager.class);
+        final List<FingerprintSensorPropertiesInternal> props =
+                fingerprintManager.getSensorPropertiesInternal();
+        mCanAssumeUdfps = props != null && props.size() == 1 && props.get(0).isAnyUdfpsType();
 
         mDevicePolicyManager = getSystemService(DevicePolicyManager.class);
 
@@ -80,11 +88,13 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
         final ImageView iconDeviceLocked = findViewById(R.id.icon_device_locked);
         final ImageView iconTrashCan = findViewById(R.id.icon_trash_can);
         final ImageView iconInfo = findViewById(R.id.icon_info);
+        final ImageView iconShield = findViewById(R.id.icon_shield);
         final ImageView iconLink = findViewById(R.id.icon_link);
         iconFingerprint.getDrawable().setColorFilter(getIconColorFilter());
         iconDeviceLocked.getDrawable().setColorFilter(getIconColorFilter());
         iconTrashCan.getDrawable().setColorFilter(getIconColorFilter());
         iconInfo.getDrawable().setColorFilter(getIconColorFilter());
+        iconShield.getDrawable().setColorFilter(getIconColorFilter());
         iconLink.getDrawable().setColorFilter(getIconColorFilter());
 
         final TextView footerMessage2 = findViewById(R.id.footer_message_2);
@@ -92,19 +102,34 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
         final TextView footerMessage4 = findViewById(R.id.footer_message_4);
         final TextView footerMessage5 = findViewById(R.id.footer_message_5);
         final TextView footerMessage6 = findViewById(R.id.footer_message_6);
-        final TextView footerMessageLearnMore = findViewById(R.id.footer_message_learn_more);
         footerMessage2.setText(getFooterMessage2());
         footerMessage3.setText(getFooterMessage3());
         footerMessage4.setText(getFooterMessage4());
         footerMessage5.setText(getFooterMessage5());
         footerMessage6.setText(getFooterMessage6());
 
+        final TextView footerLink = findViewById(R.id.footer_learn_more);
+        footerLink.setMovementMethod(LinkMovementMethod.getInstance());
+        footerLink.setText(Html.fromHtml(getString(getFooterLearnMore()),
+                Html.FROM_HTML_MODE_LEGACY));
+
+        if (mCanAssumeUdfps) {
+            footerMessage6.setVisibility(View.VISIBLE);
+            iconShield.setVisibility(View.VISIBLE);
+        } else {
+            footerMessage6.setVisibility(View.GONE);
+            iconShield.setVisibility(View.GONE);
+        }
+
         final TextView footerTitle1 = findViewById(R.id.footer_title_1);
         final TextView footerTitle2 = findViewById(R.id.footer_title_2);
         footerTitle1.setText(getFooterTitle1());
         footerTitle2.setText(getFooterTitle2());
 
-        if (TextUtils.isEmpty(footerMessageLearnMore.getText())) {
+        final ScrollView scrollView = findViewById(R.id.sud_scroll_view);
+        scrollView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_YES);
+
+        if (TextUtils.isEmpty(footerLink.getText())) {
             findViewById(R.id.layout_footer_learn_more).setVisibility(View.GONE);
         }
     }
@@ -178,6 +203,11 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
         return R.string.security_settings_fingerprint_v2_enroll_introduction_footer_message_6;
     }
 
+    @StringRes
+    protected int getFooterLearnMore() {
+        return R.string.security_settings_fingerprint_v2_enroll_introduction_message_learn_more;
+    }
+
     @Override
     protected boolean isDisabledByAdmin() {
         return RestrictedLockUtilsInternal.checkIfKeyguardFeaturesDisabled(
@@ -227,11 +257,19 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
         return findViewById(R.id.error_text);
     }
 
+    private boolean isFromSetupWizardSuggestAction(@Nullable Intent intent) {
+        return intent != null && intent.getBooleanExtra(
+                WizardManagerHelper.EXTRA_IS_SUW_SUGGESTED_ACTION_FLOW, false);
+    }
+
     @Override
     protected int checkMaxEnrolled() {
         final boolean isSetupWizard = WizardManagerHelper.isAnySetupWizard(getIntent());
         final boolean isDeferredSetupWizard =
                 WizardManagerHelper.isDeferredSetupWizard(getIntent());
+        final boolean isPortalSetupWizard =
+                WizardManagerHelper.isPortalSetupWizard(getIntent());
+        final boolean isFromSetupWizardSuggestAction = isFromSetupWizardSuggestAction(getIntent());
         if (mFingerprintManager != null) {
             final List<FingerprintSensorPropertiesInternal> props =
                     mFingerprintManager.getSensorPropertiesInternal();
@@ -243,7 +281,8 @@ public class FingerprintEnrollIntroduction extends BiometricEnrollIntroduction {
                     getApplicationContext()
                             .getResources()
                             .getInteger(R.integer.suw_max_fingerprints_enrollable);
-            if (isSetupWizard && !isDeferredSetupWizard) {
+            if (isSetupWizard && !isDeferredSetupWizard && !isPortalSetupWizard
+                    && !isFromSetupWizardSuggestAction) {
                 if (numEnrolledFingerprints >= maxFingerprintsEnrollableIfSUW) {
                     return R.string.fingerprint_intro_error_max;
                 } else {
