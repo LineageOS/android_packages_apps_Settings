@@ -154,6 +154,7 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
     private FingerprintManager mFingerprintManager;
     private boolean mCanAssumeUdfps;
     private boolean mCanAssumeSfps;
+    private static boolean sCanAssumeSfps;
     @Nullable private ProgressBar mProgressBar;
     private ObjectAnimator mProgressAnim;
     private TextView mErrorText;
@@ -231,6 +232,7 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
                 mFingerprintManager.getSensorPropertiesInternal();
         mCanAssumeUdfps = props != null && props.size() == 1 && props.get(0).isAnyUdfpsType();
         mCanAssumeSfps = props != null && props.size() == 1 && props.get(0).isAnySidefpsType();
+        sCanAssumeSfps = mCanAssumeSfps;
 
         mAccessibilityManager = getSystemService(AccessibilityManager.class);
         mIsAccessibilityEnabled = mAccessibilityManager.isEnabled();
@@ -1058,7 +1060,7 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final boolean isFrontFacingFps = getResources().getBoolean(
                     R.bool.config_is_front_facing_fps);
-            final String fpsLocation = getString(sCanAssumeSidefps
+            final String fpsLocation = getString(sCanAssumeSfps
                     ? R.string.fingerprint_enroll_touch_dialog_message_side : isFrontFacingFps
                             ? R.string.fingerprint_enroll_touch_dialog_message_front
                             : R.string.fingerprint_enroll_touch_dialog_message_rear);
