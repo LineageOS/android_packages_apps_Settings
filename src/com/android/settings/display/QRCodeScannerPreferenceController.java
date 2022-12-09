@@ -64,7 +64,7 @@ public class QRCodeScannerPreferenceController extends TogglePreferenceControlle
     @OnLifecycleEvent(ON_START)
     public void onStart() {
         mContentResolver.registerContentObserver(
-                Settings.Global.getUriFor(SHOW_QR_CODE_SCANNER_SETTING), false,
+                Settings.Secure.getUriFor(SHOW_QR_CODE_SCANNER_SETTING), false,
                 mSettingsObserver);
     }
 
