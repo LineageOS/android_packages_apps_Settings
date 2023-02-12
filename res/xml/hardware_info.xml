@@ -30,13 +30,13 @@
         settings:controller="com.android.settings.deviceinfo.hardwareinfo.DeviceModelPreferenceController"
         settings:enableCopying="true"/>
 
-    <!-- Platform -->
+    <!-- SoC Model -->
     <Preference
-        android:key="hardware_info_platform"
-        android:title="@string/platform_revision"
+        android:key="hardware_info_soc_model"
+        android:title="@string/soc_model"
         android:summary="@string/summary_placeholder"
         android:selectable="false"
-        settings:controller="com.android.settings.deviceinfo.hardwareinfo.PlatformRevisionPreferenceController"
+        settings:controller="com.android.settings.deviceinfo.hardwareinfo.SoCModelPreferenceController"
         settings:enableCopying="true"/>
 
     <!-- Total RAM -->

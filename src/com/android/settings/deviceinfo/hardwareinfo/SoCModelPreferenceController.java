@@ -17,15 +17,16 @@
 package com.android.settings.deviceinfo.hardwareinfo;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.SystemProperties;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.slices.Sliceable;
 
-public class PlatformRevisionPreferenceController extends BasePreferenceController {
+public class SoCModelPreferenceController extends BasePreferenceController {
 
-    public PlatformRevisionPreferenceController(Context context, String preferenceKey) {
+    public SoCModelPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
     }
 
@@ -47,6 +48,12 @@ public class PlatformRevisionPreferenceController extends BasePreferenceControll
 
     @Override
     public CharSequence getSummary() {
+        if (!Build.SOC_MODEL.equals(Build.UNKNOWN)) {
+            if (!Build.SOC_MANUFACTURER.equals(Build.UNKNOWN)) {
+                return Build.SOC_MANUFACTURER + " " + Build.SOC_MODEL;
+            }
+            return Build.SOC_MODEL;
+        }
         return SystemProperties.get("ro.board.platform");
     }
 }
