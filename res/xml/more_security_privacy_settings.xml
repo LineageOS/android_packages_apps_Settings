@@ -97,6 +97,15 @@
             settings:controller=
                 "com.android.settings.sound.MediaControlsLockScreenPreferenceController" />
 
+        <!-- Grant the Sensors (OTHER_SENSORS) permission to apps by default -->
+        <SwitchPreferenceCompat
+            android:key="privacy_auto_grant_OTHER_SENSORS_permission"
+            android:title="@string/auto_grant_OTHER_SENSORS_permission_title"
+            android:summaryOn="@string/auto_grant_OTHER_SENSORS_permission_summary_on"
+            android:summaryOff="@string/auto_grant_OTHER_SENSORS_permission_summary_off"
+            settings:controller=
+                "com.android.settings.privacy.AutoGrantOtherSensorsPermissionPreferenceController" />
+
         <!-- Allow software fallback for camera extensions -->
         <SwitchPreferenceCompat
             android:key="privacy_camera_extensions_fallback"
