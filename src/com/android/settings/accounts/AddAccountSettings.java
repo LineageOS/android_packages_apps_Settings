@@ -102,7 +102,8 @@ public class AddAccountSettings extends Activity {
                     addAccountOptions.putParcelable(EXTRA_USER, mUserHandle);
                     intent.putExtras(addAccountOptions);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivityForResultAsUser(intent, ADD_ACCOUNT_REQUEST, mUserHandle);
+                    startActivityForResultAsUser(
+                            new Intent(intent), ADD_ACCOUNT_REQUEST, mUserHandle);
                 } else {
                     setResult(RESULT_OK);
                     if (mPendingIntent != null) {
