@@ -67,35 +67,27 @@
     <!-- Ring volume -->
     <com.android.settings.notification.VolumeSeekBarPreference
         android:key="ring_volume"
-        android:icon="@drawable/ic_audio_ring"
+        android:icon="@drawable/ic_notifications"
         android:title="@string/ring_volume_option_title"
         android:order="-160"
         settings:controller="com.android.settings.notification.RingVolumePreferenceController"/>
-
-
-    <!-- Alarm volume -->
-    <com.android.settings.notification.VolumeSeekBarPreference
-        android:key="alarm_volume"
-        android:icon="@*android:drawable/ic_audio_alarm"
-        android:title="@string/alarm_volume_option_title"
-        android:order="-150"
-        settings:controller="com.android.settings.notification.AlarmVolumePreferenceController"/>
 
     <!-- Notification volume -->
     <com.android.settings.notification.VolumeSeekBarPreference
         android:key="notification_volume"
         android:icon="@drawable/ic_notifications"
         android:title="@string/notification_volume_option_title"
-        android:order="-140"
-        settings:controller="com.android.settings.notification.NotificationVolumePreferenceController"/>
+        android:order="-150"
+        settings:controller=
+            "com.android.settings.notification.NotificationVolumePreferenceController"/>
 
-    <!-- Link ringtone and notification volumes -->
-    <lineageos.preference.SecureSettingSwitchPreference
-        android:key="volume_link_notification"
-        android:title="@string/volume_link_notification_title"
-        android:defaultValue="true"
-        android:order="-138"
-        settings:controller="com.android.settings.notification.LinkedVolumesPreferenceController"/>
+    <!-- Alarm volume -->
+    <com.android.settings.notification.VolumeSeekBarPreference
+        android:key="alarm_volume"
+        android:icon="@*android:drawable/ic_audio_alarm"
+        android:title="@string/alarm_volume_option_title"
+        android:order="-140"
+        settings:controller="com.android.settings.notification.AlarmVolumePreferenceController"/>
 
     <!-- Increasing ring -->
     <lineageos.preference.LineageSystemSettingSwitchPreference

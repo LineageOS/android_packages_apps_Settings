@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,24 @@
  * limitations under the License.
  */
 
-package com.android.settings.notification;
+package com.android.settings.communal;
 
 import android.content.Context;
 
-import com.android.settings.Utils;
+import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class LinkedVolumesPreferenceController extends BasePreferenceController {
-    public LinkedVolumesPreferenceController(Context context, String key) {
-        super(context, key);
+/**
+ * Controls the top-level Communal settings preference.
+ */
+public class CommunalPreferenceController extends BasePreferenceController {
+    public CommunalPreferenceController(Context context, String preferenceKey) {
+        super(context, preferenceKey);
     }
 
     @Override
     public int getAvailabilityStatus() {
-        return Utils.isVoiceCapable(mContext) ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        return mContext.getResources().getBoolean(R.bool.config_show_communal_settings)
+                ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 }
