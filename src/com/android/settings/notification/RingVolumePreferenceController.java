@@ -52,12 +52,12 @@ public class RingVolumePreferenceController extends VolumeSeekBarPreferenceContr
     private static final String KEY_RING_VOLUME = "ring_volume";
 
     private Vibrator mVibrator;
-    protected int mRingerMode = AudioManager.RINGER_MODE_NORMAL;
+    private int mRingerMode = AudioManager.RINGER_MODE_NORMAL;
     private ComponentName mSuppressor;
     private final RingReceiver mReceiver = new RingReceiver();
     private final H mHandler = new H();
 
-    protected int mMuteIcon;
+    private int mMuteIcon;
 
     /*
      * Whether ring and notification streams are aliased together by AudioManager.
@@ -217,7 +217,7 @@ public class RingVolumePreferenceController extends VolumeSeekBarPreferenceContr
         mVibrator = vibrator;
     }
 
-    protected void updatePreferenceIcon() {
+    private void updatePreferenceIcon() {
         if (mPreference != null) {
             if (mRingerMode == AudioManager.RINGER_MODE_NORMAL) {
                 mPreference.showIcon(mNormalIconId);
