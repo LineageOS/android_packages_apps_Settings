@@ -58,7 +58,7 @@ public class FingerprintSettingsRequireScreenOnToAuthPreferenceController
                 getUserHandle());
         if (toReturn == -1) {
             toReturn = mContext.getResources().getBoolean(
-                    com.android.internal.R.bool.config_performantAuthDefault) ? 1 : 0;
+                    org.lineageos.platform.internal.R.bool.config_fingerprintWakeAndUnlock) ? 1 : 0;
             Settings.Secure.putIntForUser(mContext.getContentResolver(),
                     Settings.Secure.SFPS_PERFORMANT_AUTH_ENABLED, toReturn, getUserHandle());
         }
