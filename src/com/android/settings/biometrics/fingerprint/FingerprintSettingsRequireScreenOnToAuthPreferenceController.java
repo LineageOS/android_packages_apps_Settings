@@ -87,7 +87,9 @@ public class FingerprintSettingsRequireScreenOnToAuthPreferenceController
     public int getAvailabilityStatus() {
         if (mFingerprintManager != null
                 && mFingerprintManager.isHardwareDetected()
-                && mFingerprintManager.isPowerbuttonFps()) {
+                && mFingerprintManager.isPowerbuttonFps()
+                && mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_requireScreenOnToAuthEnabled) != 1) {
             return mFingerprintManager.hasEnrolledTemplates(getUserId())
                     ? AVAILABLE : DISABLED_DEPENDENT_SETTING;
         } else {
