@@ -204,6 +204,7 @@ public class FingerprintSettings extends SubSettings {
         private PreferenceCategory mFingerprintsEnrolledCategory;
         private PreferenceCategory mFingerprintUnlockCategory;
         private PreferenceCategory mFingerprintUnlockFooter;
+        private boolean mFingerprintWakeAndUnlock;
 
         private FingerprintManager mFingerprintManager;
         private FingerprintUpdater mFingerprintUpdater;
@@ -285,7 +286,7 @@ public class FingerprintSettings extends SubSettings {
                     case MSG_REFRESH_FINGERPRINT_TEMPLATES:
                         removeFingerprintPreference(msg.arg1);
                         updateAddPreference();
-                        if (isSfps()) {
+                        if (isSfps() && mFingerprintWakeAndUnlock) {
                             updateFingerprintUnlockCategoryVisibility();
                         }
                         updatePreferences();
@@ -375,6 +376,8 @@ public class FingerprintSettings extends SubSettings {
             mFingerprintManager = Utils.getFingerprintManagerOrNull(activity);
             mFingerprintUpdater = new FingerprintUpdater(activity, mFingerprintManager);
             mSensorProperties = mFingerprintManager.getSensorPropertiesInternal();
+            mFingerprintWakeAndUnlock = getContext().getResources().getBoolean(
+                    org.lineageos.platform.internal.R.bool.config_fingerprintWakeAndUnlock);
 
             mToken = getIntent().getByteArrayExtra(
                     ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN);
@@ -468,7 +471,7 @@ public class FingerprintSettings extends SubSettings {
                 column2.mTitle = getText(
                         R.string.security_fingerprint_disclaimer_lockscreen_disabled_2
                 );
-                if (isSfps()) {
+                if (isSfps() && mFingerprintWakeAndUnlock) {
                     column2.mLearnMoreOverrideText = getText(
                             R.string.security_settings_fingerprint_settings_footer_learn_more);
                 }
@@ -546,7 +549,7 @@ public class FingerprintSettings extends SubSettings {
             // This needs to be after setting ids, otherwise
             // |mRequireScreenOnToAuthPreferenceController.isChecked| is always checking the primary
             // user instead of the user with |mUserId|.
-            if (isSfps()) {
+            if (isSfps() && mFingerprintWakeAndUnlock) {
                 scrollToPreference(fpPrefKey);
                 addFingerprintUnlockCategory();
             }
@@ -848,7 +851,8 @@ public class FingerprintSettings extends SubSettings {
 
         private List<AbstractPreferenceController> buildPreferenceControllers(Context context) {
             final List<AbstractPreferenceController> controllers = new ArrayList<>();
-            if (isSfps()) {
+            if (isSfps() && context.getResources().getBoolean(
+                    org.lineageos.platform.internal.R.bool.config_fingerprintWakeAndUnlock)) {
                 mFingerprintUnlockCategoryPreferenceController =
                     new FingerprintUnlockCategoryController(
                         context,
