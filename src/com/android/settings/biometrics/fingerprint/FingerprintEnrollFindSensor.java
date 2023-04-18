@@ -124,9 +124,14 @@ public class FingerprintEnrollFindSensor extends BiometricEnrollBase implements
             mIsReverseDefaultRotation = getApplicationContext().getResources().getBoolean(
                     com.android.internal.R.bool.config_reverseDefaultRotation);
         } else {
+            // Remaining usecases can be either front facing fps or dedicated
+            // side mounted fps (not embedded in the power button)
             final boolean isFrontFacingFps = getResources().getBoolean(
                     R.bool.config_is_front_facing_fps);
-            final String fpsLocation = getString(isFrontFacingFps
+            final boolean isSideMountedFps = getResources().getBoolean(
+                    R.bool.config_is_side_fps);
+            final String fpsLocation = getString(isSideMountedFps
+                    ? R.string.fingerprint_enroll_find_sensor_message_side : isFrontFacingFps
                             ? R.string.fingerprint_enroll_find_sensor_message_front
                             : R.string.fingerprint_enroll_find_sensor_message_rear);
 
