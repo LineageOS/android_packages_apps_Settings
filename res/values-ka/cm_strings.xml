@@ -16,14 +16,86 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="mobile_data_settings_summary_unavailable">SIM-ბარათი არაა ხელმისაწვდომი</string>
-    <string name="advanced_reboot_summary">ეკრანი როცა არაა ჩაკეტილი, კვების მენიუში დაემატება აღმდგენ გარსში ან ჩამტვირთავში გადასვლის შესაძლებლობა</string>
+    <string name="mobile_data_settings_summary_unavailable">SIM-ბარათი მიუწვდომელია</string>
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">დარჩა <xliff:g id="step_count">%1$d</xliff:g> მცდელობა შემმუშავებლის პარამეტრების ჩართვამდე.</item>
+        <item quantity="other">დარჩა <xliff:g id="step_count">%1$d</xliff:g> მცდელობა შემმუშავებლის პარამეტრების ჩართვამდე.</item>
+    </plurals>
+    <string name="show_dev_on_cm">შემმუშავებლის პარამეტრები ჩართულია!</string>
+    <string name="show_dev_already_cm">საჭირო აღარაა, შემმუშავებლის პარამეტრები უკვე ამოქმედებულია.</string>
+    <string name="keyboard_extras_title">დამატებითი</string>
+    <string name="advanced_keyboard_settings_title">დამატებითი პარამეტრები</string>
+    <string name="advanced_reboot_title">გადატვირთვის ასარჩევი</string>
+    <string name="advanced_reboot_summary">ეკრანი როცა არაა ჩაკეტილი, ჩართვის მენიუში დაემატება აღმდგენ გარსში ან ჩამტვირთავში გადასვლის შესაძლებლობა</string>
+    <string name="adb_enable_root">ძირეული უფლებით გამართვა</string>
+    <string name="adb_enable_summary_root">ნებართვა, ძირეული უფლებით Android-გამართვისთვის</string>
+    <string name="berry_black_theme_title">სადა შავი</string>
+    <string name="berry_black_theme_summary">სადა შავი ფონი მუქი იერსახისთვის</string>
+    <string name="lineagelicense_title">LineageOS – სამართლებრივი</string>
+    <string name="status_bar_double_tap_to_sleep_title">შეხებით დაძინება</string>
+    <string name="status_bar_double_tap_to_sleep_summary">მდგომარეობის ზოლზე ან ჩაკეტილზე ორმაგი შეხებით ეკრანის ჩაქრობა</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">მონახეთ თითის ანაბეჭდის აღმქმელი პლანშეტის <xliff:g id="sensor_location">%1$s</xliff:g>.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">მონახეთ თითის ანაბეჭდის აღმქმელი მოწყობილობის <xliff:g id="sensor_location">%1$s</xliff:g>.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">მონახეთ თითის ანაბეჭდის აღმქმელი ტელეფონის <xliff:g id="sensor_location">%1$s</xliff:g>.</string>
+    <string name="security_settings_fingerprint_sensor_location_back">უკან</string>
+    <string name="security_settings_fingerprint_sensor_location_front">წინ</string>
+    <string name="security_settings_fingerprint_sensor_location_left">მარცხნივ</string>
+    <string name="security_settings_fingerprint_sensor_location_right">მარჯვნივ</string>
+    <string name="heads_up_notifications_enabled_title">ამომხტომი</string>
+    <string name="heads_up_notifications_enabled_summary">მნიშვნელოვანი შეტყობინებების ჩვენება პატარა ამომხტომ ფანჯარაში</string>
+    <string name="high_touch_sensitivity_title">შეხების მაღალი მგრძნობელობა</string>
+    <string name="high_touch_sensitivity_summary">ეკრანის მგრძნობელობის გაზრდა, ხელთათმანით გამოსაყენებლად</string>
+    <string name="increasing_ring_volume_option_title">ზარის ხმის მომატება</string>
+    <string name="increasing_ring_min_volume_title">საწყისი დონე</string>
+    <string name="increasing_ring_ramp_up_time_title">მომატების დრო</string>
+    <string name="tethering_allow_vpn_upstreams_title">ნებართვა, გამოიყენონ VPN</string>
+    <string name="tethering_allow_vpn_upstreams_summary">ნების მიცემა წვდომის წერტილთან მიერთებული კლიენტებისთვის, რომ შეძლონ ამ მოწყობილობის VPN-კავშირების გამოყენება აღმავალი მიმართულებით.</string>
+    <string name="lock_settings_picker_pattern_size_message">მოსახაზის ზომის არჩევა</string>
+    <string name="lockpattern_settings_enable_error_path_title">მონახაზის შეცდომის ჩვენება</string>
+    <string name="lockpattern_settings_enable_dots_title">წერტილების ჩვენება მონახაზისთვის</string>
+    <string name="lockscreen_media_art_title">ფაილის გარეკანის ჩვენება</string>
+    <string name="lockscreen_visualizer_title">მუსიკის გამოსახვა</string>
     <string name="min_refresh_rate_title">განახლების უმცირესი სიჩქარე</string>
+    <string name="max_refresh_rate_title">განახლების უკიდურესი სიხშირე</string>
+    <string name="show_navbar_hint_title">სამოძრაო მანიშნებელი</string>
+    <string name="show_navbar_hint_summary">სამოძრაო მანიშნებლის ზოლის გამოჩენა ეკრანის ქვემოთ</string>
+    <string name="app_notification_sound_timeout_title">უმცირესი დრო ხმოვან სიგნალებს შორის</string>
+    <string name="app_notification_sound_timeout_summary_template">მხოლოდ ერთი ხმოვანი სიგნალის ან ვიბრაციის შესაძლებლობა, ყოველ <xliff:g id="duration">%1$s</xliff:g></string>
+    <string name="app_notification_sound_timeout_value_none">შეზღუდვის გარეშე</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 წამში</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 წამში</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 წუთში</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 წუთში</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 წუთში</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 წუთში</string>
+    <string name="auto_brightness_one_shot_title">სიკაშკაშის ერთჯერადი თვითგასწორება</string>
+    <string name="auto_brightness_one_shot_summary">სიკაშკაშე გასწორდება, მხოლოდ ეკრანის ჩართვისას</string>
+    <string name="data_usage_app_restrict_all">ქსელთან წვდომის ნებართვა</string>
+    <string name="data_usage_app_restrict_all_summary">ქსელის გამოყენების შესაძლებლობა</string>
+    <string name="data_usage_app_restrict_mobile">მობილური ინტერნეტი</string>
+    <string name="data_usage_app_restrict_mobile_summary">მობილური ინტერნეტის გამოყენების შესაძლებლობა</string>
+    <string name="data_usage_app_restrict_vpn">VPN-კავშირი</string>
+    <string name="data_usage_app_restrict_vpn_summary">VPN-კავშირის გამოყენების შესაძლებლობა</string>
+    <string name="data_usage_app_restrict_wifi">Wi\u2011Fi ინტერნეტი</string>
+    <string name="data_usage_app_restrict_wifi_summary">WiFi-კავშირის გამოყენების შესაძლებლობა</string>
+    <string name="unlock_scramble_pin_layout_title">ღილაკების არევა</string>
+    <string name="unlock_scramble_pin_layout_summary">ღილაკების არეულად გამოჩენა PIN-კოდით გახსნისას</string>
     <string name="proximity_wake_title">შემთხვევით გამოღვიძების არიდება</string>
     <string name="proximity_wake_summary">სიახლოვის აღმქმელის შემოწმება, ეკრანის გამოღვიძებამდე</string>
+    <string name="touchscreen_hovering_title">ეკრანზე შეხებით გადაფარვა</string>
+    <string name="touchscreen_hovering_summary">მსგავსად მაუსის მაჩვენებლით გადაფარვისა ბრაუზერებში, დაშორებულ კომპიუტერზე და ა.შ.</string>
+    <string name="touchscreen_gesture_settings_title">ეკრანზე შეხების ჟესტები</string>
+    <string name="touchscreen_gesture_settings_summary">ეკრანზე სხვადასხვაგვარი შეხება, სწრაფი მოქმედებებისთვის</string>
+    <string name="volume_link_notification_title">ზარისა და შეტყობინებების ხმის დონეების დაკავშირება</string>
     <string name="wake_when_plugged_or_unplugged_title">გამოღვიძება შეერთებისას</string>
     <string name="wake_when_plugged_or_unplugged_summary">ეკრანის ჩართვა კვების შეერთებისას ან გამოერთებისას</string>
+    <string name="backup_transport_setting_label">შეცვალეთ მარქაფის მომსახურება</string>
+    <string name="backup_transport_title">აირჩიეთ მარქაფის მომსახურება</string>
+    <string name="connected_tws_device_saved_title">დამახსოვრებული ყურსასმენები</string>
     <string name="fast_charging_title">სწრაფი დამუხტვა</string>
     <string name="fast_charging_summary">გამორთეთ გამოყოფილი სითბოს შესამცირებლად მოწყობილობის დამუხტვისას ან ბატარეის სიცოცხლის გასახანგრძლივებლად.</string>
+    <string name="wifi_setup_wizard_title">აირჩიეთ WiFi-ქსელი</string>
+    <string name="advanced_notifications_title">შეტყობინების გაფართოებული პარამეტრები</string>
     <string name="peak_refresh_rate_summary_custom">ავტომატურად ზრდის განახლების სიხშირეს 60-დან და %1$d ჰც-მდე გარკვეული კონტენტისთვის. გაზრდის ბატარეის მოხმარებას.</string>
+    <string name="storage_warning_internal">გაფრთხილება: ამ პარამეტრმა შეიძლება ვერ იმუშაოს სათანადოდ ან მონაცემთა დაკარგვა გამოიწვიოს, შესაბამისად არასასურველია!</string>
 </resources>
