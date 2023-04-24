@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017-2022 The LineageOS Project
+     Copyright (C) 2017-2023 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@
     <string name="berry_black_theme_title">Đen tuyền</string>
     <string name="berry_black_theme_summary">Nền đen tuyền cho chủ đề tối</string>
     <string name="lineagelicense_title">Bộ phận pháp chế của LineageOS</string>
+    <string name="device_info_protected_single_press">Chạm để hiển thị thông tin</string>
     <plurals name="show_dev_countdown_cm">
         <item quantity="other">Hiện tại bạn còn <xliff:g id="step_count">%1$d</xliff:g> bước nữa để bật cài đặt nhà phát triển.</item>
     </plurals>
@@ -32,6 +33,8 @@
     <string name="peak_refresh_rate_summary_custom">Tự động tăng tốc độ làm mới từ 60 lên %1$d Hz đối với một số nội dung. Làm tăng mức sử dụng pin.</string>
     <string name="status_bar_double_tap_to_sleep_title">Chạm để tắt màn hình</string>
     <string name="status_bar_double_tap_to_sleep_summary">Chạm hai lần vào thanh trạng thái hoặc màn hình khoá để tắt màn hình</string>
+    <string name="high_touch_polling_rate_title">Tỷ lệ làm mới cảm ứng cao</string>
+    <string name="high_touch_polling_rate_summary">Tăng tỷ lệ làm mới trên màn hình cảm ứng</string>
     <string name="heads_up_notifications_enabled_title">Thông báo nổi</string>
     <string name="heads_up_notifications_enabled_summary">Hiển thị các thông báo ưu tiên trong một cửa sổ nổi nhỏ</string>
     <string name="high_touch_sensitivity_title">Độ nhạy cảm ứng cao</string>
@@ -47,6 +50,24 @@
     <string name="lockpattern_settings_enable_dots_title">Hiện dấu chấm mẫu hình</string>
     <string name="max_refresh_rate_title">Tốc độ làm mới cao nhất</string>
     <string name="min_refresh_rate_title">Tốc độ làm mới tối thiểu</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="tablet">Xác định vị trí của cảm biến vân tay ở mặt trước máy tính bảng của bạn.</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="device">Xác định vị trí của cảm biến vân tay ở mặt trước thiết bị của bạn.</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="default">Xác định vị trí của cảm biến vân tay ở mặt trước điện thoại của bạn.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="tablet">Xác định cảm biến vân tay ở mặt sau máy tính bảng của bạn.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="device">Xác định cảm biến vân tay ở mặt sau thiết bị của bạn.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="default">Xác định cảm biến vân tay ở mặt sau điện thoại của bạn.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="tablet">Xác định vị trí của cảm biến vân tay ở bên cạnh máy tính bảng của bạn.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="device">Xác định cảm biến vân tay ở bên cạnh thiết bị của bạn.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="default">Xác định vị trí của cảm biến vân tay ở bên cạnh điện thoại của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="tablet">Chạm vào cảm biến ở mặt trước máy tính bảng của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="device">Chạm vào cảm biến ở mặt trước thiết bị của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="default">Chạm vào cảm biến ở mặt trước điện thoại của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="tablet">Chạm vào cảm biến ở mặt sau máy tính bảng của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="device">Chạm vào cảm biến ở mặt sau thiết bị của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="default">Chạm vào cảm biến ở mặt sau điện thoại của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="tablet">Chạm vào cảm biến ở mặt bên máy tính bảng của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="device">Chạm vào cảm biến ở bên cạnh thiết bị của bạn.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Chạm vào cảm biến ở mặt bên điện thoại của bạn.</string>
     <string name="show_navbar_hint_title">Gợi ý điều hướng</string>
     <string name="show_navbar_hint_summary">Hiển thị thanh gợi ý điều hướng ở cuối màn hình</string>
     <string name="app_notification_sound_timeout_title">Thời gian tối thiểu giữa các âm thanh thông báo</string>
@@ -80,4 +101,9 @@
     <string name="wake_when_plugged_or_unplugged_summary">Bật màn hình khi kết nối hoặc ngắt kết nối nguồn điện</string>
     <string name="fast_charging_title">Đang sạc nhanh</string>
     <string name="fast_charging_summary">Tắt để giảm nhiệt do thiết bị tạo ra trong khi sạc hoặc để kéo dài tuổi thọ của pin</string>
+    <string name="ambient_display_screen_off_udfps_title" product="default">Giữ cảm biến vân tay để mở khóa điện thoại</string>
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">Giữ cảm biến vân tay để mở khóa máy tính bảng</string>
+    <string name="ambient_display_screen_off_udfps_title" product="device">Giữ cảm biến vân tay để mở khóa thiết bị</string>
+    <string name="ambient_display_screen_off_udfps_summary">Để đánh thức màn hình và mở khóa, đặt ngón tay vào cảm biến vân tay dưới màn hình của bạn</string>
+    <string name="storage_warning_internal">Cảnh báo: Tùy chọn này có thể không hoạt động bình thường hoặc dẫn đến mất dữ liệu và do đó không được khuyến khích</string>
 </resources>
