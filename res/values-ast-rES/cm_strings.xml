@@ -17,19 +17,43 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="mobile_data_settings_summary_unavailable">Nun hai nenguna tarxeta SIM disponible</string>
-    <string name="keyboard_extras_title">Axustes adicionales</string>
-    <string name="advanced_keyboard_settings_title">Axustes avanzaos</string>
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Quédate <xliff:g id="step_count">%1$d</xliff:g> toque p\'activar la configuración de desendolcu.</item>
+        <item quantity="other">Quédente <xliff:g id="step_count">%1$d</xliff:g> toques p\'activar la configuración de desendolcu.</item>
+    </plurals>
+    <string name="show_dev_on_cm">¡Activesti les opciones de desendolcu!</string>
+    <string name="show_dev_already_cm">Nun fai falta, la configuración de desendolcu yá tán activaos.</string>
+    <string name="keyboard_extras_title">Configuración adicional</string>
+    <string name="advanced_keyboard_settings_title">Configuración avanzada</string>
     <string name="advanced_reboot_title">Reaniciu avanzáu</string>
+    <string name="advanced_reboot_summary">Al desbloquiar, inclúi les opciones pa reaniciar al mou de recuperación o al cargador d\'arrinque nel menú d\'apagáu</string>
     <string name="adb_enable_root">Depuración como root</string>
     <string name="adb_enable_summary_root">Permite la execución de la depuración d\'Android como root</string>
     <string name="berry_black_theme_title">Prietu puro</string>
     <string name="berry_black_theme_summary">Un fondu en prieto puro pal estilu «Escuridá»</string>
-    <string name="security_settings_fingerprint_sensor_location_left">llau esquierdu</string>
-    <string name="security_settings_fingerprint_sensor_location_right">llau derechu</string>
+    <string name="lineagelicense_title">Información llegal de LineageOS</string>
+    <string name="status_bar_double_tap_to_sleep_title">Tocar pa dormir</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Toca dos vegaes na barra d\'estáu o na pantalla de bloquéu p\'apagar la pantalla</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Atopa\'l sensor de buelgues <xliff:g id="sensor_location">%1$s</xliff:g> de la tableta.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Atopa\'l sensor de buelgues <xliff:g id="sensor_location">%1$s</xliff:g> del preséu.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Atopa\'l sensor de buelgues <xliff:g id="sensor_location">%1$s</xliff:g> del teléfonu.</string>
+    <string name="security_settings_fingerprint_sensor_location_back">na parte d\'atrás</string>
+    <string name="security_settings_fingerprint_sensor_location_front">na parte d\'alantre</string>
+    <string name="security_settings_fingerprint_sensor_location_left">nel llau esquierdu</string>
+    <string name="security_settings_fingerprint_sensor_location_right">nel llau derechu</string>
+    <string name="heads_up_notifications_enabled_title">Avisos emerxentes</string>
+    <string name="high_touch_sensitivity_title">Sensibilidá alta al tactu</string>
+    <string name="high_touch_sensitivity_summary">Aumenta la sensibilidá de la pantalla táctil pa que puedas usala mentanto lleves guantes</string>
+    <string name="increasing_ring_volume_option_title">Volume creciente del timbre</string>
+    <string name="increasing_ring_min_volume_title">Volume inicial</string>
     <string name="tethering_allow_vpn_upstreams_title">Permitir que los veceros usen les VPNs</string>
     <string name="tethering_allow_vpn_upstreams_summary">Permite que los veceros del puntu Wi-Fi usen les conexones VPN d\u2019esti preséu pa la conectividá</string>
-    <string name="min_refresh_rate_title">Tasa de refrescu mínima</string>
-    <string name="max_refresh_rate_title">Tasa de refrescu máxima</string>
+    <string name="lockpattern_settings_enable_error_path_title">Amosar los patrones incorreutos</string>
+    <string name="lockpattern_settings_enable_dots_title">Amosar los puntos del patrón</string>
+    <string name="lockscreen_media_art_title">Amosar les portaes de los álbumes</string>
+    <string name="lockscreen_visualizer_title">Amosar el visualizador de música</string>
+    <string name="min_refresh_rate_title">Tasa d\'anovamientu mínima</string>
+    <string name="max_refresh_rate_title">Tasa d\'anovamientu máxima</string>
     <string name="show_navbar_hint_title">Indicador de navegación</string>
     <string name="show_navbar_hint_summary">Amuesa una barra indicadora de navegación no baxero de la pantalla</string>
     <string name="app_notification_sound_timeout_value_10_seconds">10 segundos</string>
@@ -46,9 +70,22 @@
     <string name="data_usage_app_restrict_mobile_summary">Activa l\'usu de los datos móviles</string>
     <string name="data_usage_app_restrict_vpn">Datos per VPN</string>
     <string name="data_usage_app_restrict_vpn_summary">Activa l\'usu de los datos per VPN</string>
+    <string name="data_usage_app_restrict_wifi">Datos Wi\u2011Fi</string>
+    <string name="data_usage_app_restrict_wifi_summary">Activa l\'usu de los datos Wi\u2011Fi</string>
+    <string name="unlock_scramble_pin_layout_title">Distribución al debalu</string>
+    <string name="unlock_scramble_pin_layout_summary">Alteria la distribución del tecláu del PIN al desbloquiar el preséu</string>
+    <string name="proximity_wake_title">Evitar l\'esconsueñu accidental</string>
+    <string name="proximity_wake_summary">Revisa\'l sensor de proximidá enantes de prender la pantalla</string>
+    <string name="touchscreen_gesture_settings_title">Xestos de la pantalla táctil</string>
+    <string name="touchscreen_gesture_settings_summary">Permítete facer dellos xestos na pantalla táctil pa executar aiciones rápides</string>
+    <string name="volume_link_notification_title">Enllaciar el volume de los avisos col del timbre</string>
+    <string name="wake_when_plugged_or_unplugged_title">Esconsoñar al espatar</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Priende la pantalla al des/espatar el preséu d\'una fonte llétrica</string>
+    <string name="connected_tws_device_saved_title">Earbuds guardaos</string>
     <string name="fast_charging_title">Carga rápida</string>
     <string name="fast_charging_summary">Desactiva esta opción p\'amenorgar la calor producida pol preséu mentanto carga y aumentar la vida útil de la batería</string>
-    <string name="wifi_setup_wizard_title">Esbilla una rede Wi\u2011Fi</string>
-    <string name="advanced_notifications_title">Axustes avanzaos de los avisos</string>
+    <string name="wifi_setup_wizard_title">Seleiciona una rede Wi\u2011Fi</string>
+    <string name="advanced_notifications_title">Configuración avanzada de los avisos</string>
     <string name="peak_refresh_rate_summary_custom">Incrementa automáticamente la frecuencia d\'anovamientu de 60 a %1$d Hz en dalgún tipu de conteníu. Esta opción aumenta l\'usu de la batería.</string>
+    <string name="storage_warning_internal">Alvertencia: ¡ye posible qu\'esta opción nun funcione afayadizamente o provoque la perda de datos, y polo tanto, nun s\'aconseya!</string>
 </resources>
