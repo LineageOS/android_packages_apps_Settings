@@ -47,6 +47,8 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.widget.LayoutPreference;
 
+import lineageos.health.HealthInterface;
+
 import java.util.List;
 
 /**
@@ -63,6 +65,8 @@ public class PowerUsageSummary extends PowerUsageBase implements
     static final String KEY_BATTERY_ERROR = "battery_help_message";
     @VisibleForTesting
     static final String KEY_BATTERY_USAGE = "battery_usage_summary";
+
+    private static final String KEY_CHARGING_CONTROL = "charging_control";
 
     @VisibleForTesting
     PowerUsageFeatureProvider mPowerFeatureProvider;
@@ -298,5 +302,14 @@ public class PowerUsageSummary extends PowerUsageBase implements
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.power_usage_summary);
+            new BaseSearchIndexProvider(R.xml.power_usage_summary) {
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    final List<String> keys = super.getNonIndexableKeys(context);
+                    if (!HealthInterface.getInstance(context).isChargingControlSupported()) {
+                        keys.add(KEY_CHARGING_CONTROL);
+                    }
+                    return keys;
+                }
+            };
 }
