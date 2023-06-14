@@ -56,7 +56,7 @@ import com.android.settingslib.widget.CandidateInfo;
 import com.android.settingslib.widget.IllustrationPreference;
 import com.android.settingslib.widget.SelectorWithWidgetPreference;
 
-import static com.android.systemui.shared.recents.utilities.Utilities.isTablet;
+import static com.android.systemui.shared.recents.utilities.Utilities.isLargeScreen;
 
 import lineageos.providers.LineageSettings;
 
@@ -191,7 +191,7 @@ public class SystemNavigationGestureSettings extends RadioButtonPickerFragment i
         List<CandidateInfoExtra> candidates = new ArrayList<>();
 
         boolean isTaskbarEnabled = LineageSettings.System.getInt(getContext().getContentResolver(),
-                LineageSettings.System.ENABLE_TASKBAR, isTablet(getContext()) ? 1 : 0) == 1;
+                LineageSettings.System.ENABLE_TASKBAR, isLargeScreen(getContext()) ? 1 : 0) == 1;
 
         if (SystemNavigationPreferenceController.isOverlayPackageAvailable(c,
                 NAV_BAR_MODE_GESTURAL_OVERLAY)) {
