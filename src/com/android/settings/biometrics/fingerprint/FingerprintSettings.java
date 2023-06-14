@@ -354,7 +354,7 @@ public class FingerprintSettings extends SubSettings {
             mFingerprintUpdater = new FingerprintUpdater(activity, mFingerprintManager);
             mSensorProperties = mFingerprintManager.getSensorPropertiesInternal();
             mRequireScreenOnToAuth = getContext().getResources().getBoolean(
-                    com.android.internal.R.bool.config_requireScreenOnToAuthEnabled);
+                    com.android.internal.R.bool.config_performantAuthDefault);
 
             mToken = getIntent().getByteArrayExtra(
                     ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN);
