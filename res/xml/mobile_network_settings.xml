@@ -127,6 +127,14 @@
             settings:controller="com.android.settings.network.telephony.Enhanced4gAdvancedCallingPreferenceController"/>
 
         <SwitchPreference
+            android:key="nr_advanced_calling"
+            android:title="@string/nr_advanced_calling_title"
+            android:persistent="false"
+            android:summary="@string/nr_advanced_calling_summary"
+            settings:keywords="@string/keywords_nr_advanced_calling"
+            settings:controller="com.android.settings.network.telephony.NrAdvancedCallingPreferenceController"/>
+
+        <SwitchPreference
             android:key="contact_discovery_opt_in"
             android:title="@string/contact_discovery_opt_in_title"
             android:persistent="false"
@@ -248,14 +256,6 @@
             android:summary="@string/require_cellular_encryption_summary"
             settings:controller=
                 "com.android.settings.network.telephony.NullAlgorithmsPreferenceController" />
-
-        <SwitchPreference
-            android:key="nr_advanced_calling"
-            android:title="@string/nr_advanced_calling_title"
-            android:persistent="false"
-            android:summary="@string/nr_advanced_calling_summary"
-            settings:keywords="@string/keywords_nr_advanced_calling"
-            settings:controller="com.android.settings.network.telephony.NrAdvancedCallingPreferenceController"/>
     </PreferenceCategory>
 
     <Preference
