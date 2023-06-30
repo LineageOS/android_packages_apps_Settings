@@ -18,10 +18,13 @@ package com.android.settings.biometrics.fingerprint;
 
 import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
+import android.hardware.fingerprint.FingerprintSensorPropertiesInternal;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.Utils;
 import com.android.settings.core.BasePreferenceController;
+
+import java.util.List;
 
 /**
  * Preference controller that controls the fingerprint unlock features to be shown / be hidden.
@@ -32,17 +35,21 @@ public class FingerprintUnlockCategoryController extends BasePreferenceControlle
     private int mUserId;
     @VisibleForTesting
     protected FingerprintManager mFingerprintManager;
+    private List<FingerprintSensorPropertiesInternal> mSensorProperties;
 
     public FingerprintUnlockCategoryController(Context context, String key) {
         super(context, key);
         mFingerprintManager = Utils.getFingerprintManagerOrNull(context);
+        if (mFingerprintManager != null) {
+            mSensorProperties = mFingerprintManager.getSensorPropertiesInternal();
+        }
     }
 
     @Override
     public int getAvailabilityStatus() {
         if (mFingerprintManager != null
                 && mFingerprintManager.isHardwareDetected()
-                && mFingerprintManager.isPowerbuttonFps()) {
+                && !isUdfps()) {
             return mFingerprintManager.hasEnrolledTemplates(getUserId())
                     ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
         } else {
@@ -56,5 +63,16 @@ public class FingerprintUnlockCategoryController extends BasePreferenceControlle
 
     protected int getUserId() {
         return mUserId;
+    }
+
+    private boolean isUdfps() {
+        if (mFingerprintManager != null) {
+            for (FingerprintSensorPropertiesInternal prop : mSensorProperties) {
+                if (prop.isAnyUdfpsType()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

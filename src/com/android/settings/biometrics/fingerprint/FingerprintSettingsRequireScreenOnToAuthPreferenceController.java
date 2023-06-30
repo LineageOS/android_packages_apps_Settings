@@ -18,6 +18,7 @@ package com.android.settings.biometrics.fingerprint;
 
 import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
+import android.hardware.fingerprint.FingerprintSensorPropertiesInternal;
 import android.os.UserHandle;
 import android.provider.Settings;
 
@@ -25,6 +26,8 @@ import androidx.preference.Preference;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.Utils;
+
+import java.util.List;
 
 /**
  * Preference controller that controls whether a SFPS device is required to be interactive for
@@ -37,11 +40,15 @@ public class FingerprintSettingsRequireScreenOnToAuthPreferenceController
 
     @VisibleForTesting
     protected FingerprintManager mFingerprintManager;
+    private List<FingerprintSensorPropertiesInternal> mSensorProperties;
 
     public FingerprintSettingsRequireScreenOnToAuthPreferenceController(
             Context context, String prefKey) {
         super(context, prefKey);
         mFingerprintManager = Utils.getFingerprintManagerOrNull(context);
+        if (mFingerprintManager != null) {
+            mSensorProperties = mFingerprintManager.getSensorPropertiesInternal();
+        }
     }
 
     @Override
@@ -92,7 +99,7 @@ public class FingerprintSettingsRequireScreenOnToAuthPreferenceController
     public int getAvailabilityStatus() {
         if (mFingerprintManager != null
                 && mFingerprintManager.isHardwareDetected()
-                && mFingerprintManager.isPowerbuttonFps()) {
+                && !isUdfps()) {
             return mFingerprintManager.hasEnrolledTemplates(getUserId())
                     ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
         } else {
@@ -104,4 +111,14 @@ public class FingerprintSettingsRequireScreenOnToAuthPreferenceController
         return UserHandle.of(getUserId()).getIdentifier();
     }
 
+    private boolean isUdfps() {
+        if (mFingerprintManager != null) {
+            for (FingerprintSensorPropertiesInternal prop : mSensorProperties) {
+                if (prop.isAnyUdfpsType()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
