@@ -91,8 +91,7 @@ public class FingerprintSettingsRequireScreenOnToAuthPreferenceController
     @Override
     public int getAvailabilityStatus() {
         if (mFingerprintManager != null
-                && mFingerprintManager.isHardwareDetected()
-                && mFingerprintManager.isPowerbuttonFps()) {
+                && mFingerprintManager.isHardwareDetected()) {
             return mFingerprintManager.hasEnrolledTemplates(getUserId())
                     ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
         } else {
