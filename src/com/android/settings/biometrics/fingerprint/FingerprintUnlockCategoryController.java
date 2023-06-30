@@ -41,8 +41,7 @@ public class FingerprintUnlockCategoryController extends BasePreferenceControlle
     @Override
     public int getAvailabilityStatus() {
         if (mFingerprintManager != null
-                && mFingerprintManager.isHardwareDetected()
-                && mFingerprintManager.isPowerbuttonFps()) {
+                && mFingerprintManager.isHardwareDetected()) {
             return mFingerprintManager.hasEnrolledTemplates(getUserId())
                     ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
         } else {
