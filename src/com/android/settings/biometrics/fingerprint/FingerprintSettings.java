@@ -285,7 +285,7 @@ public class FingerprintSettings extends SubSettings {
                     case MSG_REFRESH_FINGERPRINT_TEMPLATES:
                         removeFingerprintPreference(msg.arg1);
                         updateAddPreference();
-                        if (isSfps() && mFingerprintWakeAndUnlock) {
+                        if (!isUdfps() && mFingerprintWakeAndUnlock) {
                             updateFingerprintUnlockCategoryVisibility();
                         }
                         updatePreferences();
@@ -539,7 +539,7 @@ public class FingerprintSettings extends SubSettings {
 
         private void addFingerprintPreferences(PreferenceGroup root) {
             final String fpPrefKey = addFingerprintItemPreferences(root);
-            if (isSfps() && mFingerprintWakeAndUnlock) {
+            if (!isUdfps() && mFingerprintWakeAndUnlock) {
                 scrollToPreference(fpPrefKey);
                 addFingerprintUnlockCategory();
             }
