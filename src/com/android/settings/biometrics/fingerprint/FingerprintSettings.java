@@ -248,7 +248,7 @@ public class FingerprintSettings extends SubSettings {
                     }
 
                     private void updateDialog() {
-                        if (isSfps() && mPerformantAuth) {
+                        if (isSfps() || mPerformantAuth) {
                             setRequireScreenOnToAuthVisibility();
                         }
                         RenameDialog renameDialog = (RenameDialog) getFragmentManager().
@@ -524,7 +524,7 @@ public class FingerprintSettings extends SubSettings {
                         return true;
                     });
             mFingerprintUnlockCategory.setVisible(false);
-            if (isSfps() && mPerformantAuth) {
+            if (isSfps() || mPerformantAuth) {
                 setRequireScreenOnToAuthVisibility();
             }
             setPreferenceScreen(root);
