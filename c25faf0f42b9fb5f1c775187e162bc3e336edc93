@@ -16,6 +16,24 @@
       "message": "Hi Michael, I made a change that\u0027s dependent upon this because it changes the intention entirely, and didn\u0027t want to just suggest modifications that turn the purpose of your change on its head. But making the modifications (if you agree to it) as a new patchset of this change would be great; either way.\n\nI have an enchilada (Oneplus 6) with non-power-button-mounted capacitive FP sensor on the back, and it always used to be able to wake up from screen off and unlock with a single touch (assuming successful FP auth).\n\nAfter the QPR3 merge, it isn\u0027t able to do that any longer. Huge regression.\n\nI don\u0027t claim to know why Google thought it was so important, but even setting `config_performantAuthDefault` to true in overlay, it still doesn\u0027t work because the `isSfps()` test is now part of the equation, and it\u0027s not a \"side-mounted\" (i.e. power-button mounted) FP sensor. Maybe whoever it was at Google didn\u0027t realize that any non-UDFPS FP sensor users might want to be able to still wake \u0026 unlock with a single touch.\n\nRegardless, hiding the toggle setting in the first place means it\u0027s impossible to set it back to working the way it always used to.\n\nSince it seems like you prefer staying close to AOSP and I assume you don\u0027t want to just remove the `isSfps()` entirely (although it doesn\u0027t need to exist here afaict), can we change the logic tests for building \u0026 determining visibility for the setting in lines 251 and 527 to `||` instead of `\u0026\u0026`, so that any device that sets performantAuth sensor overlay to true will be able to see the setting to enable one-touch wake \u0026 unlock, regardless of whether their performant FP sensor is on the power button or not? Thanks!\n\nTested on enchilada; with just the config overlay, the setting is invisible. With this change to bypass requirement for side-mounted FP sensor, setting is available, and works as expected to enable single-touch wake \u0026 unlock or require power button press first before FP auth is recognized. In both cases, failed FP auth still fails (important!).",
       "revId": "c25faf0f42b9fb5f1c775187e162bc3e336edc93",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dfa7012_8b0b2ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27212
+      },
+      "writtenOn": "2023-07-01T22:49:16Z",
+      "side": 1,
+      "message": "Looks resolved, thanks!",
+      "parentUuid": "dfb80a9b_e3dae7bd",
+      "revId": "c25faf0f42b9fb5f1c775187e162bc3e336edc93",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
