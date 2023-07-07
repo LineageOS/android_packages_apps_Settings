@@ -32,6 +32,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.UserManager;
 import android.support.v14.preference.MultiSelectListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.EditTextPreference;
@@ -97,6 +98,8 @@ public class ApnEditorTest {
 
     private ApnEditor mApnEditorUT;
     private Activity mActivity;
+    @Mock
+    private UserManager mUserManager;
     private Resources mResources;
 
     @Before
@@ -110,6 +113,11 @@ public class ApnEditorTest {
         doReturn(mResources).when(mApnEditorUT).getResources();
         doNothing().when(mApnEditorUT).finish();
         doNothing().when(mApnEditorUT).showError();
+
+        doReturn(mUserManager).when(mContext).getSystemService(UserManager.class);
+        doReturn(true).when(mUserManager).isAdminUser();
+        doReturn(false).when(mUserManager)
+                .hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
 
         setMockPreference(mActivity);
         mApnEditorUT.mApnData = new FakeApnData(APN_DATA);
@@ -445,6 +453,27 @@ public class ApnEditorTest {
     @Test
     public void formatInteger_shouldIgnoreNonIntegers() {
         assertThat(ApnEditor.formatInteger("not an int")).isEqualTo("not an int");
+    }
+
+    @Test
+    @Config(shadows = ShadowFragment.class)
+    public void onCreate_notAdminUser_shouldFinish() {
+        doReturn(false).when(mUserManager).isAdminUser();
+
+        mApnEditorUT.onCreate(null);
+
+        verify(mApnEditorUT).finish();
+    }
+
+    @Test
+    @Config(shadows = ShadowFragment.class)
+    public void onCreate_hasUserRestriction_shouldFinish() {
+        doReturn(true).when(mUserManager)
+                .hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
+
+        mApnEditorUT.onCreate(null);
+
+        verify(mApnEditorUT).finish();
     }
 
     private void initCursor() {
