@@ -33,6 +33,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.UserManager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -96,6 +97,9 @@ public class ApnEditorTest {
     @Mock
     private Cursor mCursor;
 
+    @Mock
+    private UserManager mUserManager;
+
     @Captor
     private ArgumentCaptor<Uri> mUriCaptor;
 
@@ -115,6 +119,11 @@ public class ApnEditorTest {
         doNothing().when(mApnEditorUT).finish();
         doNothing().when(mApnEditorUT).showError();
         when(mApnEditorUT.getContext()).thenReturn(RuntimeEnvironment.application);
+
+        doReturn(mUserManager).when(mContext).getSystemService(UserManager.class);
+        doReturn(true).when(mUserManager).isAdminUser();
+        doReturn(false).when(mUserManager)
+                .hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
 
         setMockPreference(mActivity);
         mApnEditorUT.mApnData = new FakeApnData(APN_DATA);
@@ -452,6 +461,27 @@ public class ApnEditorTest {
     @Test
     public void formatInteger_shouldIgnoreNonIntegers() {
         assertThat(ApnEditor.formatInteger("not an int")).isEqualTo("not an int");
+    }
+
+    @Test
+    @Config(shadows = ShadowFragment.class)
+    public void onCreate_notAdminUser_shouldFinish() {
+        doReturn(false).when(mUserManager).isAdminUser();
+
+        mApnEditorUT.onCreate(null);
+
+        verify(mApnEditorUT).finish();
+    }
+
+    @Test
+    @Config(shadows = ShadowFragment.class)
+    public void onCreate_hasUserRestriction_shouldFinish() {
+        doReturn(true).when(mUserManager)
+                .hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
+
+        mApnEditorUT.onCreate(null);
+
+        verify(mApnEditorUT).finish();
     }
 
     @Test
