@@ -97,8 +97,7 @@ public class StorageAsyncLoader
             documentsAndOtherQueryArgs.putString(ContentResolver.QUERY_ARG_SQL_SELECTION,
                     FileColumns.MEDIA_TYPE + "!=" + FileColumns.MEDIA_TYPE_IMAGE
                     + " AND " + FileColumns.MEDIA_TYPE + "!=" + FileColumns.MEDIA_TYPE_VIDEO
-                    + " AND " + FileColumns.MEDIA_TYPE + "!=" + FileColumns.MEDIA_TYPE_AUDIO
-                    + " AND " + FileColumns.MIME_TYPE + " IS NOT NULL");
+                    + " AND " + FileColumns.MEDIA_TYPE + "!=" + FileColumns.MEDIA_TYPE_AUDIO);
             result.documentsAndOtherSize = getFilesSize(info.id,
                     MediaStore.Files.getContentUri(MediaStore.VOLUME_EXTERNAL),
                     documentsAndOtherQueryArgs);
