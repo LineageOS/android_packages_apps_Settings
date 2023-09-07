@@ -72,16 +72,13 @@ public class SecondaryUserController extends AbstractPreferenceController implem
             Context context, UserManager userManager, boolean isWorkProfileOnly) {
 
         List<AbstractPreferenceController> controllers = new ArrayList<>();
-        UserInfo primaryUser = userManager.getPrimaryUser();
+        int currentUserId = Utils.getCurrentUserId(userManager, isWorkProfileOnly);
+        UserInfo currentUser = userManager.getUserInfo(currentUserId);
         boolean addedUser = false;
         List<UserInfo> infos = userManager.getUsers();
         for (int i = 0, size = infos.size(); i < size; i++) {
             UserInfo info = infos.get(i);
-            if (info.isPrimary()) {
-                continue;
-            }
-
-            if (Utils.isProfileOf(primaryUser, info)) {
+            if (Utils.isProfileOf(currentUser, info)) {
                 continue;
             }
 
