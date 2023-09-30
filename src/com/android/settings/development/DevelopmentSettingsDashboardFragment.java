@@ -29,6 +29,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.os.UserManager;
@@ -544,10 +545,12 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new LogdSizePreferenceController(context));
         controllers.add(new LogPersistPreferenceController(context, fragment, lifecycle));
         controllers.add(new CameraLaserSensorPreferenceController(context));
-        controllers.add(new WifiDisplayCertificationPreferenceController(context));
-        controllers.add(new WifiVerboseLoggingPreferenceController(context));
-        controllers.add(new WifiScanThrottlingPreferenceController(context));
-        controllers.add(new WifiNonPersistentMacRandomizationPreferenceController(context));
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI)) {
+            controllers.add(new WifiDisplayCertificationPreferenceController(context));
+            controllers.add(new WifiVerboseLoggingPreferenceController(context));
+            controllers.add(new WifiScanThrottlingPreferenceController(context));
+            controllers.add(new WifiNonPersistentMacRandomizationPreferenceController(context));
+        }
         controllers.add(new MobileDataAlwaysOnPreferenceController(context));
         controllers.add(new TetheringHardwareAccelPreferenceController(context));
         controllers.add(new BluetoothDeviceNoNamePreferenceController(context));
