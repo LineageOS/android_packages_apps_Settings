@@ -189,7 +189,8 @@
             android:key="double_tap_sleep_gesture"
             android:title="@string/status_bar_double_tap_to_sleep_title"
             android:summary="@string/status_bar_double_tap_to_sleep_summary"
-            android:defaultValue="true" />
+            android:defaultValue="@*lineageos.platform:bool/config_dt2sGestureEnabledByDefault"
+            settings:requiresConfig="@*lineageos.platform:bool/config_dt2sGestureAvailable" />
 
         <lineageos.preference.LineageGlobalSettingSwitchPreference
             android:key="wake_when_plugged_or_unplugged"
