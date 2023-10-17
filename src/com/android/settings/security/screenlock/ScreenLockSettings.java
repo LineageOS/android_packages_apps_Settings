@@ -82,10 +82,6 @@ public class ScreenLockSettings extends DashboardFragment
                 context, MY_USER_ID, lockPatternUtils));
         controllers.add(new PinPrivacyPreferenceController(
                 context, MY_USER_ID, lockPatternUtils));
-        controllers.add(new PatternErrorVisiblePreferenceController(
-                context, MY_USER_ID, lockPatternUtils));
-        controllers.add(new PatternDotsVisiblePreferenceController(
-                context, MY_USER_ID, lockPatternUtils));
         controllers.add(new PowerButtonInstantLockPreferenceController(
                 context, MY_USER_ID, lockPatternUtils));
         controllers.add(new LockAfterTimeoutPreferenceController(
