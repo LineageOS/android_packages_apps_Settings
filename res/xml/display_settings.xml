@@ -197,7 +197,7 @@
             android:title="@string/wake_when_plugged_or_unplugged_title"
             android:summary="@string/wake_when_plugged_or_unplugged_summary"
             android:defaultValue="@*android:bool/config_unplugTurnsOnScreen"
-            settings:requiresConfig="@*com.android.settings:bool/config_show_top_level_battery" />
+            settings:requiresConfig="@bool/config_show_top_level_battery" />
 
         <lineageos.preference.LineageSystemSettingSwitchPreference
             android:key="high_touch_polling_rate_enable"
