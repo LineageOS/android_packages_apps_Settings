@@ -345,6 +345,9 @@
     <bool name="config_show_manual">false</bool>
     <!-- Whether to show a preference item for regulatory information in About phone -->
     <bool name="config_show_regulatory_info">false</bool>
+    <!-- Package name of regulatory information overlay which provides mapping and contents.
+         Fetch resource from overlay package directly if this is set. -->
+    <string name="config_regulatory_info_overlay_package_name" translatable="false" />
 
     <!-- Whether to show a preference item for mobile plan -->
     <bool name="config_show_mobile_plan">true</bool>
@@ -364,7 +367,7 @@
     <bool name="config_show_wifi_hotspot_settings">true</bool>
 
     <!-- Whether Wi-Fi hotspot speed should be shown or not. -->
-    <bool name="config_show_wifi_hotspot_speed">false</bool>
+    <bool name="config_show_wifi_hotspot_speed">true</bool>
 
     <!-- Whether toggle_airplane is available or not. -->
     <bool name="config_show_toggle_airplane">true</bool>
