@@ -1103,13 +1103,8 @@ public class ChooseLockPassword extends SettingsActivity {
 
         @Override
         protected Pair<Boolean, Intent> saveAndVerifyInBackground() {
-            boolean success;
-            try {
-                success = mUtils.setLockCredential(mChosenPassword, mCurrentCredential, mUserId);
-            } catch (RuntimeException e) {
-                Log.e(TAG, "Failed to set lockscreen credential", e);
-                success = false;
-            }
+            final boolean success = mUtils.setLockCredential(
+                    mChosenPassword, mCurrentCredential, mUserId);
             if (success) {
                 unifyProfileCredentialIfRequested();
             }
