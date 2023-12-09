@@ -681,11 +681,18 @@ public class FingerprintSettings extends SubSettings {
                                 DevicePolicyManager.KEYGUARD_DISABLE_FINGERPRINT, mUserId) != null;
             }
 
-            final Intent helpIntent = HelpUtils.getHelpIntent(
-                    activity, getString(getHelpResource()), activity.getClass().getName());
-            final View.OnClickListener learnMoreClickListener = (v) -> {
-                activity.startActivityForResult(helpIntent, 0);
-            };
+            final Intent helpIntent;
+            final View.OnClickListener learnMoreClickListener;
+            if (getHelpResource() != 0) {
+                helpIntent = HelpUtils.getHelpIntent(
+                        activity, getString(getHelpResource()), activity.getClass().getName());
+                learnMoreClickListener = (v) -> {
+                    activity.startActivityForResult(helpIntent, 0);
+                };
+            } else {
+                helpIntent = null;
+                learnMoreClickListener = null;
+            }
 
             mFooterColumns.clear();
             if (isFingerprintDisabledByAdmin) {
@@ -725,11 +732,13 @@ public class FingerprintSettings extends SubSettings {
                 column2.mTitle = getText(
                         R.string.security_fingerprint_disclaimer_lockscreen_disabled_2
                 );
-                if (!isUdfps() && isScreenOffUnlcokSupported()) {
-                    column2.mLearnMoreOverrideText = getText(
-                            R.string.security_settings_fingerprint_settings_footer_learn_more);
+                if (helpIntent != null) {
+                    if (!isUdfps() && isScreenOffUnlcokSupported()) {
+                        column2.mLearnMoreOverrideText = getText(
+                                R.string.security_settings_fingerprint_settings_footer_learn_more);
+                    }
+                    column2.mLearnMoreClickListener = learnMoreClickListener;
                 }
-                column2.mLearnMoreClickListener = learnMoreClickListener;
                 mFooterColumns.add(column2);
             } else {
                 final FooterColumn column = new FooterColumn();
@@ -740,9 +749,11 @@ public class FingerprintSettings extends SubSettings {
                         ? R.string.private_space_fingerprint_enroll_introduction_message
                         : R.string.security_settings_fingerprint_enroll_introduction_v3_message,
                         DeviceHelper.getDeviceName(getActivity()));
-                column.mLearnMoreClickListener = learnMoreClickListener;
-                column.mLearnMoreOverrideText = getText(
-                        featureProvider.getSettingPageFooterLearnMoreDescription());
+                if (helpIntent != null) {
+                    column.mLearnMoreClickListener = learnMoreClickListener;
+                    column.mLearnMoreOverrideText = getText(
+                            featureProvider.getSettingPageFooterLearnMoreDescription());
+                }
                 mFooterColumns.add(column);
             }
         }
