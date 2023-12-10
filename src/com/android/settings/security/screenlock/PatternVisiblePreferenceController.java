@@ -18,23 +18,52 @@ package com.android.settings.security.screenlock;
 
 import android.content.Context;
 
-import com.android.internal.widget.LockPatternUtils;
+import androidx.preference.Preference;
+import androidx.preference.TwoStatePreference;
 
-public class PatternVisiblePreferenceController extends AbstractPatternSwitchPreferenceController {
+import com.android.internal.widget.LockPatternUtils;
+import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settingslib.core.AbstractPreferenceController;
+
+public class PatternVisiblePreferenceController extends AbstractPreferenceController
+        implements PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
+
     private static final String PREF_KEY = "visiblepattern";
+
+    private final int mUserId;
+    private final LockPatternUtils mLockPatternUtils;
 
     public PatternVisiblePreferenceController(Context context, int userId,
             LockPatternUtils lockPatternUtils) {
-        super(context, PREF_KEY, userId, lockPatternUtils);
+        super(context);
+        mUserId = userId;
+        mLockPatternUtils = lockPatternUtils;
     }
 
     @Override
-    protected boolean isEnabled(LockPatternUtils utils, int userId) {
-        return utils.isVisiblePatternEnabled(userId);
+    public boolean isAvailable() {
+        return isPatternLock();
     }
 
     @Override
-    protected void setEnabled(LockPatternUtils utils, int userId, boolean enabled) {
-        utils.setVisiblePatternEnabled(enabled, userId);
+    public String getPreferenceKey() {
+        return PREF_KEY;
+    }
+
+    @Override
+    public void updateState(Preference preference) {
+        ((TwoStatePreference) preference).setChecked(
+                mLockPatternUtils.isVisiblePatternEnabled(mUserId));
+    }
+
+    private boolean isPatternLock() {
+        return mLockPatternUtils.getCredentialTypeForUser(mUserId)
+                == LockPatternUtils.CREDENTIAL_TYPE_PATTERN;
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        mLockPatternUtils.setVisiblePatternEnabled((Boolean) newValue, mUserId);
+        return true;
     }
 }
