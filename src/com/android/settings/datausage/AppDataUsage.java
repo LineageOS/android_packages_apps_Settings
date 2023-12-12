@@ -107,10 +107,6 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private long mSelectedCycle;
     private boolean mIsLoading;
 
-    public boolean isSimHardwareVisible(Context context) {
-        return SubscriptionUtil.isSimHardwareVisible(context);
-    }
-
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -153,7 +149,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         final UidDetailProvider uidDetailProvider = getUidDetailProvider();
 
         if (mAppItem.key > 0) {
-            if ((!isSimHardwareVisible(mContext)) || !UserHandle.isApp(mAppItem.key)) {
+            if (!UserHandle.isApp(mAppItem.key)) {
                 final UidDetail uidDetail = uidDetailProvider.getUidDetail(mAppItem.key, true);
                 mIcon = uidDetail.icon;
                 mLabel = uidDetail.label;
@@ -334,9 +330,6 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private void updatePrefs(boolean restrictBackground, boolean unrestrictData,
             boolean restrictAll, boolean restrictCellular, boolean restrictVpn,
             boolean restrictWifi, boolean hasInternetPermission) {
-        if (!isSimHardwareVisible(mContext)) {
-            return;
-        }
         setBackPreferenceListAnimatorIfLoaded();
         final EnforcedAdmin admin = RestrictedLockUtilsInternal
                 .checkIfMeteredDataUsageUserControlDisabled(mContext, mPackageName,
