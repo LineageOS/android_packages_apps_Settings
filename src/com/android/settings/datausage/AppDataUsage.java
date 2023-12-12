@@ -110,10 +110,6 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private long mSelectedCycle;
     private boolean mIsLoading;
 
-    public boolean isSimHardwareVisible(Context context) {
-        return SubscriptionUtil.isSimHardwareVisible(context);
-    }
-
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -166,7 +162,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         final UidDetailProvider uidDetailProvider = getUidDetailProvider();
 
         if (mAppItem.key > 0) {
-            if ((!isSimHardwareVisible(mContext)) || !UserHandle.isApp(mAppItem.key)) {
+            if (!UserHandle.isApp(mAppItem.key)) {
                 final UidDetail uidDetail = uidDetailProvider.getUidDetail(mAppItem.key, true);
                 mIcon = uidDetail.icon;
                 mLabel = uidDetail.label;
@@ -332,10 +328,16 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         }
     }
 
+<<<<<<< HEAD   (2452c6 Merge tag 'android-14.0.0_r17' into staging/lineage-21.0_mer)
     private void updatePrefs(boolean restrictBackground, boolean unrestrictData) {
         if (!isSimHardwareVisible(mContext)) {
             return;
         }
+=======
+    private void updatePrefs(boolean restrictBackground, boolean unrestrictData,
+            boolean restrictAll, boolean restrictCellular, boolean restrictVpn,
+            boolean restrictWifi, boolean hasInternetPermission) {
+>>>>>>> CHANGE (9e2147 Settings: Move SIM restrictions currently applied to per-app)
         setBackPreferenceListAnimatorIfLoaded();
         final EnforcedAdmin admin = RestrictedLockUtilsInternal.checkIfMeteredDataRestricted(
                 mContext, mPackageName, UserHandle.getUserId(mAppItem.key));
