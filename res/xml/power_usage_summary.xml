@@ -59,6 +59,11 @@
         settings:controller="com.android.settings.fuelgauge.batterytip.BatteryManagerPreferenceController"
         settings:keywords="@string/keywords_battery_adaptive_preferences" />
 
+    <!-- Charging control -->
+    <org.lineageos.internal.lineageparts.LineagePartsPreference
+        android:key="charging_control"
+        lineage:requiresService="lineagehealth" />
+
     <!-- Battery light -->
     <org.lineageos.internal.lineageparts.LineagePartsPreference
         android:key="battery_lights"
