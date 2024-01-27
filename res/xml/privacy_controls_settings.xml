@@ -34,6 +34,13 @@
         android:summary="@string/mic_toggle_description"
         settings:controller="com.android.settings.privacy.MicToggleController"/>
 
+    <!-- Show clipboard overlay -->
+    <lineageos.preference.LineageSecureSettingSwitchPreference
+        android:key="clipboard_show_overlay"
+        android:title="@string/clipboard_show_overlay_title"
+        android:summary="@string/clipboard_show_overlay_summary"
+        android:defaultValue="true"/>
+
     <!-- Clipboard access notifications -->
     <SwitchPreference
         android:key="show_clip_access_notification"
