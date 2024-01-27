@@ -213,6 +213,12 @@
             android:defaultValue="false"
             settings:requiresFeature="lineagehardware:FEATURE_HIGH_TOUCH_SENSITIVITY" />
 
+        <lineageos.preference.LineageSecureSettingSwitchPreference
+            android:key="clipboard_show_overlay"
+            android:title="@string/clipboard_show_overlay_title"
+            android:summary="@string/clipboard_show_overlay_summary"
+            android:defaultValue="true"/>
+
         <ListPreference
             android:key="theme"
             android:title="@string/device_theme"
