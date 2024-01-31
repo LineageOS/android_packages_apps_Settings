@@ -17,9 +17,10 @@
 
 package com.android.settings.search;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.text.TextUtils;
+
+import android.annotation.NonNull;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.overlay.FeatureFactory;
@@ -32,24 +33,21 @@ import java.util.Locale;
  */
 public class SearchFeatureProviderImpl implements SearchFeatureProvider {
 
-    private static final String TAG = "SearchFeatureProvider";
-
     private static final String METRICS_ACTION_SETTINGS_INDEX = "search_synchronous_indexing";
     private DatabaseIndexingManager mDatabaseIndexingManager;
     private SearchIndexableResources mSearchIndexableResources;
 
     @Override
-    public void verifyLaunchSearchResultPageCaller(Context context, ComponentName caller) {
-        if (caller == null) {
+    public void verifyLaunchSearchResultPageCaller(@NonNull Context context,
+            @NonNull String callerPackage) {
+        if (TextUtils.isEmpty(callerPackage)) {
             throw new IllegalArgumentException("ExternalSettingsTrampoline intents "
                     + "must be called with startActivityForResult");
         }
-        final String packageName = caller.getPackageName();
-        final boolean isSettingsPackage = TextUtils.equals(packageName, context.getPackageName())
-                || TextUtils.equals(getSettingsIntelligencePkgName(), packageName);
-        final boolean isWhitelistedPackage =
-                isSignatureWhitelisted(context, caller.getPackageName());
-        if (isSettingsPackage || isWhitelistedPackage) {
+        final boolean isSettingsPackage = TextUtils.equals(callerPackage, context.getPackageName())
+                || TextUtils.equals(getSettingsIntelligencePkgName(), callerPackage);
+        final boolean isAllowlistedPackage = isSignatureWhitelisted(context, callerPackage);
+        if (isSettingsPackage || isAllowlistedPackage) {
             return;
         }
         throw new SecurityException("Search result intents must be called with from a "

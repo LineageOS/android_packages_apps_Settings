@@ -21,7 +21,6 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.spy;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.widget.Toolbar;
 
@@ -70,21 +69,23 @@ public class SearchFeatureProviderImplTest {
 
     @Test(expected = SecurityException.class)
     public void verifyLaunchSearchResultPageCaller_badCaller_shouldCrash() {
-        final ComponentName cn = new ComponentName("pkg", "class");
-        mProvider.verifyLaunchSearchResultPageCaller(mActivity, cn);
+        final String packageName = "pkg";
+
+        mProvider.verifyLaunchSearchResultPageCaller(mActivity, packageName);
     }
 
     @Test
     public void verifyLaunchSearchResultPageCaller_settingsCaller_shouldNotCrash() {
-        final ComponentName cn = new ComponentName(mActivity.getPackageName(), "class");
-        mProvider.verifyLaunchSearchResultPageCaller(mActivity, cn);
+        final String packageName = mActivity.getPackageName();
+
+        mProvider.verifyLaunchSearchResultPageCaller(mActivity, packageName);
     }
 
     @Test
     public void verifyLaunchSearchResultPageCaller_settingsIntelligenceCaller_shouldNotCrash() {
         final String packageName = mProvider.getSettingsIntelligencePkgName();
-        final ComponentName cn = new ComponentName(packageName, "class");
-        mProvider.verifyLaunchSearchResultPageCaller(mActivity, cn);
+
+        mProvider.verifyLaunchSearchResultPageCaller(mActivity, packageName);
     }
 
     @Test
