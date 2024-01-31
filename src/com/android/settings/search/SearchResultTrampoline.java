@@ -19,8 +19,10 @@ package com.android.settings.search;
 import static com.android.settings.SettingsActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS;
 
 import android.app.Activity;
+import android.app.ActivityTaskManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.RemoteException;
 
 import com.android.settings.SettingsActivity;
 import com.android.settings.SubSettings;
@@ -35,10 +37,17 @@ public class SearchResultTrampoline extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        String callerPackage;
+        try {
+            callerPackage = ActivityTaskManager.getService().getLaunchedFromPackage(getActivityToken());
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+
         // First make sure caller has privilege to launch a search result page.
         FeatureFactory.getFactory(this)
                 .getSearchFeatureProvider()
-                .verifyLaunchSearchResultPageCaller(this, getCallingActivity());
+                .verifyLaunchSearchResultPageCaller(this, callerPackage);
         // Didn't crash, proceed and launch the result as a subsetting.
         final Intent intent = getIntent();
 

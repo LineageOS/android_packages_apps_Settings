@@ -17,12 +17,13 @@
 
 package com.android.settings.search;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
 import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
 
 import com.android.settingslib.search.SearchIndexableResources;
 import com.android.settingslib.search.SearchIndexableResourcesMobile;
@@ -32,26 +33,23 @@ import com.android.settingslib.search.SearchIndexableResourcesMobile;
  */
 public class SearchFeatureProviderImpl implements SearchFeatureProvider {
 
-    private static final String TAG = "SearchFeatureProvider";
-
     private SearchIndexableResources mSearchIndexableResources;
 
     @Override
-    public void verifyLaunchSearchResultPageCaller(Context context, ComponentName caller) {
-        if (caller == null) {
+    public void verifyLaunchSearchResultPageCaller(@NonNull Context context,
+            @NonNull String callerPackage) {
+        if (TextUtils.isEmpty(callerPackage)) {
             throw new IllegalArgumentException("ExternalSettingsTrampoline intents "
                     + "must be called with startActivityForResult");
         }
-        final String packageName = caller.getPackageName();
-        final boolean isSettingsPackage = TextUtils.equals(packageName, context.getPackageName())
-                || TextUtils.equals(getSettingsIntelligencePkgName(context), packageName);
-        final boolean isWhitelistedPackage =
-                isSignatureWhitelisted(context, caller.getPackageName());
-        if (isSettingsPackage || isWhitelistedPackage) {
+        final boolean isSettingsPackage = TextUtils.equals(callerPackage, context.getPackageName())
+                || TextUtils.equals(getSettingsIntelligencePkgName(context), callerPackage);
+        final boolean isAllowlistedPackage = isSignatureAllowlisted(context, callerPackage);
+        if (isSettingsPackage || isAllowlistedPackage) {
             return;
         }
-        throw new SecurityException("Search result intents must be called with from a "
-                + "whitelisted package.");
+        throw new SecurityException("Search result intents must be called with from an "
+                + "allowlisted package.");
     }
 
     @Override
@@ -69,7 +67,7 @@ public class SearchFeatureProviderImpl implements SearchFeatureProvider {
                 .putExtra(Intent.EXTRA_REFERRER, buildReferrer(context, pageId));
     }
 
-    protected boolean isSignatureWhitelisted(Context context, String callerPackage) {
+    protected boolean isSignatureAllowlisted(Context context, String callerPackage) {
         return false;
     }
 
