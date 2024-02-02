@@ -37,6 +37,7 @@ import android.os.PowerManager;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.EventLog;
@@ -69,6 +70,7 @@ import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.datausage.DataUsagePreference;
 import com.android.settings.datausage.DataUsageUtils;
 import com.android.settings.location.WifiScanningFragment;
+import com.android.settings.network.MobileDataEnabledListener;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.wifi.AddNetworkFragment;
 import com.android.settings.wifi.AddWifiNetworkPreference;
@@ -113,7 +115,8 @@ import java.util.Optional;
 public class NetworkProviderSettings extends RestrictedSettingsFragment
         implements Indexable, WifiPickerTracker.WifiPickerTrackerCallback,
         WifiDialog2.WifiDialog2Listener, DialogInterface.OnDismissListener,
-        AirplaneModeEnabler.OnAirplaneModeChangedListener, InternetUpdater.InternetChangeListener {
+        AirplaneModeEnabler.OnAirplaneModeChangedListener, InternetUpdater.InternetChangeListener,
+        MobileDataEnabledListener.Client {
 
     public static final String ACTION_NETWORK_PROVIDER_SETTINGS =
             "android.settings.NETWORK_PROVIDER_SETTINGS";
@@ -211,6 +214,9 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
     private WifiManager.ActionListener mSaveListener;
     private WifiManager.ActionListener mForgetListener;
 
+    int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+    MobileDataEnabledListener mDataStateListener;
+
     protected InternetResetHelper mInternetResetHelper;
 
     /**
@@ -272,6 +278,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
     public NetworkProviderSettings() {
         super(DISALLOW_CONFIG_WIFI);
+        mSubId = SubscriptionManager.getActiveDataSubscriptionId();
     }
 
     @Override
@@ -317,6 +324,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         mAirplaneModeEnabler = new AirplaneModeEnabler(getContext(), this);
+        mDataStateListener = new MobileDataEnabledListener(getContext(), this);
 
         // TODO(b/37429702): Add animations and preference comparator back after initial screen is
         // loaded (ODR).
@@ -519,6 +527,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
             return;
         }
         mAirplaneModeEnabler.start();
+        mDataStateListener.start(mSubId);
     }
 
     private void restrictUi() {
@@ -547,7 +556,8 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         }
 
         changeNextButtonState(mWifiPickerTracker != null
-                && mWifiPickerTracker.getConnectedWifiEntry() != null);
+                && mWifiPickerTracker.getConnectedWifiEntry() != null
+                || getDataEnabled());
     }
 
     @Override
@@ -557,6 +567,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         getView().removeCallbacks(mUpdateWifiEntryPreferencesRunnable);
         getView().removeCallbacks(mHideProgressBarRunnable);
         mAirplaneModeEnabler.stop();
+        mDataStateListener.stop();
         super.onStop();
     }
 
@@ -931,7 +942,8 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
             updateWifiEntryPreferencesDelayed();
         }
         changeNextButtonState(mWifiPickerTracker != null
-                && mWifiPickerTracker.getConnectedWifiEntry() != null);
+                && mWifiPickerTracker.getConnectedWifiEntry() != null
+                || getDataEnabled());
 
         // Edit the Wi-Fi network of specified SSID.
         if (mOpenSsid != null && mWifiPickerTracker != null) {
@@ -1244,7 +1256,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
      * Renames/replaces "Next" button when appropriate. "Next" button usually exists in
      * Wi-Fi setup screens, not in usual wifi settings screen.
      *
-     * @param enabled true when the device is connected to a wifi network.
+     * @param enabled true when the device is connected to a mobile or wifi network.
      */
     @VisibleForTesting
     void changeNextButtonState(boolean enabled) {
@@ -1527,6 +1539,17 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
     @Override
     public void onAirplaneModeChanged(boolean isAirplaneModeOn) {
         updateAirplaneModeMsgPreference(isAirplaneModeOn /* visible */);
+    }
+
+    /**
+     * Implementation of {@code MobileDataEnabledListener.Client}
+     */
+    public void onMobileDataEnabledChange() {
+        changeNextButtonState(getDataEnabled());
+    }
+
+    boolean getDataEnabled() {
+        return getContext().getSystemService(TelephonyManager.class).getDataEnabled(mSubId);
     }
 
     /**
