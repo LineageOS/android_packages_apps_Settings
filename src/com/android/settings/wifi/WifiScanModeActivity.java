@@ -18,35 +18,41 @@ package com.android.settings.wifi;
 
 import android.app.Dialog;
 import android.app.settings.SettingsEnums;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.UserManager;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 
-/**
- * This activity requests users permission to allow scanning even when Wi-Fi is turned off
- */
+/** This activity requests users permission to allow scanning even when Wi-Fi is turned off */
 public class WifiScanModeActivity extends FragmentActivity {
+    private static final String TAG = "WifiScanModeActivity";
     private DialogFragment mDialog;
+
+    @VisibleForTesting
     private String mApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addSystemFlags(
-                WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+        getWindow()
+                .addSystemFlags(
+                        WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         Intent intent = getIntent();
         if (savedInstanceState == null) {
             if (intent != null && intent.getAction()
@@ -69,6 +75,12 @@ public class WifiScanModeActivity extends FragmentActivity {
     }
 
     private void createDialog() {
+        if (!isWifiScanModeConfigAllowed(getApplicationContext())) {
+            Log.e(TAG, "This user is not allowed to configure Wi-Fi Scan Mode!");
+            finish();
+            return;
+        }
+
         if (mDialog == null) {
             mDialog = AlertDialogFragment.newInstance(mApp);
             mDialog.show(getSupportFragmentManager(), "dialog");
@@ -118,6 +130,7 @@ public class WifiScanModeActivity extends FragmentActivity {
         }
 
         private final String mApp;
+
         public AlertDialogFragment(String app) {
             super();
             mApp = app;
@@ -136,28 +149,36 @@ public class WifiScanModeActivity extends FragmentActivity {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return new AlertDialog.Builder(getActivity())
-                    .setMessage(TextUtils.isEmpty(mApp) ?
-                        getString(R.string.wifi_scan_always_turn_on_message_unknown) :
-                        getString(R.string.wifi_scan_always_turnon_message, mApp))
-                    .setPositiveButton(R.string.wifi_scan_always_confirm_allow,
+                    .setMessage(
+                            TextUtils.isEmpty(mApp)
+                                    ? getString(R.string.wifi_scan_always_turn_on_message_unknown)
+                                    : getString(R.string.wifi_scan_always_turnon_message, mApp))
+                    .setPositiveButton(
+                            R.string.wifi_scan_always_confirm_allow,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     ((WifiScanModeActivity) getActivity()).doPositiveClick();
                                 }
-                            }
-                    )
-                    .setNegativeButton(R.string.wifi_scan_always_confirm_deny,
+                            })
+                    .setNegativeButton(
+                            R.string.wifi_scan_always_confirm_deny,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     ((WifiScanModeActivity) getActivity()).doNegativeClick();
                                 }
-                            }
-                    )
+                            })
                     .create();
         }
+
         @Override
         public void onCancel(DialogInterface dialog) {
             ((WifiScanModeActivity) getActivity()).doNegativeClick();
         }
+    }
+
+    private static boolean isWifiScanModeConfigAllowed(Context context) {
+        final UserManager userManager = context.getSystemService(UserManager.class);
+        if (userManager == null) return true;
+        return !userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_LOCATION);
     }
 }
