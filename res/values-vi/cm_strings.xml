@@ -21,10 +21,13 @@
     </plurals>
     <string name="show_dev_on_cm">Bạn đã bật cài đặt nhà phát triển!</string>
     <string name="show_dev_already_cm">Không cần thiết, bạn đã bật cài đặt nhà phát triển.</string>
+    <string name="suggestion_button_close">Đóng</string>
     <string name="advanced_reboot_title">Khởi động lại nâng cao</string>
     <string name="advanced_reboot_summary">Khi mở khóa, bao gồm các tùy chọn trong trình đơn nguồn để khởi động lại vào phục hồi hoặc trình nạp khởi động</string>
     <string name="adb_enable">Gỡ lỗi Android</string>
     <string name="adb_enable_summary">Bật giao diện Android Debug Bridge (ADB)</string>
+    <string name="adb_enable_root">Gỡ lỗi với quyền root</string>
+    <string name="adb_enable_summary_root">Cho phép chạy gỡ lỗi Android với quyền root</string>
     <string name="adb_notify">Thông báo gỡ lỗi</string>
     <string name="adb_notify_summary">Hiển thị thông báo khi tính năng gỡ lỗi qua USB hoặc mạng được bật</string>
     <string name="adb_over_network">ADB qua mạng</string>
@@ -34,6 +37,8 @@
     <string name="kill_app_longpress_back">Tắt ứng dụng bằng phím back</string>
     <string name="kill_app_longpress_back_summary">Nhấn giữ phím back để tắt ứng dụng chạy nổi</string>
     <string name="device_hostname">Tên máy chủ của thiết bị</string>
+    <string name="tethering_allow_vpn_upstreams_title">Cho phép máy khách sử dụng VPN</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Cho phép hotspot các máy khách sử dụng các kết nối VPN của thiết bị\u2019 này để kết nối đến máy chủ</string>
     <string name="increasing_ring_volume_option_title">Tăng âm lượng chuông</string>
     <string name="increasing_ring_min_volume_title">Âm lượng khởi động</string>
     <string name="increasing_ring_ramp_up_time_title">Thời gian tăng</string>
@@ -42,6 +47,7 @@
     <string name="lock_settings_picker_pattern_size_message">Chọn một kích cỡ mẫu hình</string>
     <string name="lockpattern_settings_enable_error_path_title">Hiện lỗi mẫu hình</string>
     <string name="lockpattern_settings_enable_dots_title">Hiện dấu chấm mẫu hình</string>
+    <string name="translucent_lockscreen_notifications_bg_title">Làm mờ nền thông báo ở màn hình khóa</string>
     <string name="app_notification_sound_timeout_title">Thời gian tối thiểu giữa các âm thanh thông báo</string>
     <string name="app_notification_sound_timeout_summary_template">Cho phép âm thanh hoặc rung không nhiều hơn một lần mỗi <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Không giới hạn</string>
@@ -56,6 +62,8 @@
     <string name="volume_link_notification_title">Liên kết âm lượng nhạc chuông &amp; thông báo</string>
     <string name="directly_show_lock">Mở trực tiếp</string>
     <string name="directly_show_lock_summary">Bỏ qua chế độ trượt để mở khóa và bắt đầu nhập mã Pin ngay lập tức</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="tablet">Định vị cảm biến vân tay trên <xliff:g id="sensor_location">%1$s</xliff:g> của máy tính bảng của bạn.</string>
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="device">Định vị cảm biến vân tay trên <xliff:g id="sensor_location">%1$s</xliff:g> của thiết bị của bạn.</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Xác định vị trí cảm biến vân tay trên <xliff:g id="sensor_location">%1$s</xliff:g> điện thoại của bạn.</string>
     <string name="security_settings_fingerprint_sensor_location_back">quay lại</string>
     <string name="security_settings_fingerprint_sensor_location_front">trước</string>
@@ -65,8 +73,12 @@
     <string name="status_bar_double_tap_to_sleep_summary">Chạm hai lần vào thanh trạng thái hoặc màn hình khoá để tắt màn hình</string>
     <string name="touchscreen_gesture_settings_title">Cử chỉ màn hình cảm ứng</string>
     <string name="touchscreen_gesture_settings_summary">Thực hiện các cử chỉ màn hình cảm ứng khác nhau cho các thao tác nhanh</string>
+    <string name="data_usage_app_restrict_all">Cho phép truy cập mạng</string>
+    <string name="data_usage_app_restrict_all_summary">Bật chế độ theo dõi dung lượng kết nối.</string>
     <string name="data_usage_app_restrict_data">Dữ liệu di động</string>
     <string name="data_usage_app_restrict_data_summary">Bật sử dụng dữ liệu di động</string>
+    <string name="data_usage_app_restrict_vpn">Dữ liệu VPN</string>
+    <string name="data_usage_app_restrict_vpn_summary">Cho phép sử dụng dữ liệu VPN</string>
     <string name="data_usage_app_restrict_wifi">Dữ liệu Wi\u2011Fi</string>
     <string name="data_usage_app_restrict_wifi_summary">Bật sử dụng dữ liệu Wi\u2011Fi</string>
     <string name="proximity_wake_title">Ngăn ngừa tình cờ mở màn hình</string>
@@ -81,6 +93,22 @@
     <string name="update_recovery_summary">Cập nhật được recovery tích hợp sẵn với các cập nhật hệ thống</string>
     <string name="update_recovery_on_warning">THÔNG BÁO: Khi tính năng này được bật, bản recovery đã được cài đặt của bạn sẽ được thay thế bằng bản đi kèm với phiên bản hệ điều hành hiện tại.\n\nBản recovery của bạn sẽ được cập nhật cùng với các bản nâng cấp cho hệ thống của bạn, giúp đảm bảo tính tương thích với những phiên bản sau này.\n\nBạn có muốn bật tính năng này?</string>
     <string name="update_recovery_off_warning">Cảnh báo: Khi tắt tính năng này, recovery đã cài đặt của bạn sẽ không được cập nhật cùng với các bản nâng cấp của hệ điều hành.\n\nCác bản cập nhật hệ điều hành trong tương lai có thể không cài đặt với phiên bản recovery lỗi thời hoặc tuỳ chỉnh.\n\nBạn thực sự muốn tắt tính năng này?</string>
+    <string name="berry_black_theme_title">Đen tuyền</string>
+    <string name="berry_black_theme_summary">Nền đen tuyền cho chủ đề tối</string>
+    <string name="back_sensitivity_title">Độ nhạy cử chỉ quay lại</string>
+    <string name="back_sensitivity_message">Độ nhạy cao hơn có thể xung đột với mọi cử chỉ trong ứng dụng dọc theo các cạnh màn hình.</string>
+    <string name="back_exclusion_title">Vô hiệu cử chỉ quay lại ở phần trên cùng</string>
+    <string name="back_exclusion_summary">Vô hiệu hoá cử chỉ quay lại ở phần trên cùng màn hình</string>
+    <string name="min_label">Tối thiểu</string>
+    <string name="max_label">Tối đa</string>
+    <string name="show_navbar_hint_title">Gợi ý điều hướng</string>
+    <string name="show_navbar_hint_summary">Hiển thị thanh gợi ý điều hướng ở cuối màn hình</string>
+    <string name="keywords_notification_log">thông báo, nhật ký thông báo</string>
+    <string name="connected_tws_device_saved_title">Tai nghe đã lưu</string>
     <string name="heads_up_notifications_enabled_title">Thông báo nổi</string>
     <string name="heads_up_notifications_enabled_summary">Hiển thị các thông báo ưu tiên trong một cửa sổ nổi nhỏ</string>
+    <string name="backup_transport_setting_label">Thay đổi nơi lưu trữ dữ liệu sao lưu của bạn</string>
+    <string name="backup_transport_title">Chọn nơi lưu trữ dữ liệu sao lưu</string>
+    <string name="fast_charging_title">Đang sạc nhanh</string>
+    <string name="fast_charging_summary">Tắt để giảm nhiệt do thiết bị tạo ra trong khi sạc hoặc để kéo dài tuổi thọ của pin</string>
 </resources>

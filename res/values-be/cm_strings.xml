@@ -16,35 +16,51 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="show_dev_on_cm">Налады для распрацоўнікаў улучаны!</string>
-    <string name="show_dev_already_cm">Не патрэбна, налады для распрацоўнікаў ужо ўлучаны.</string>
-    <string name="advanced_reboot_title">Варыянты перазагрузкі</string>
-    <string name="adb_enable">Рэжым адладкі</string>
-    <string name="adb_notify">Паведамленьні наладжваньня</string>
-    <string name="adb_notify_summary">Паказваць паведамленьне аб тым, што задзейнічана наладка па USB ці сетцы</string>
-    <string name="adb_over_network">Адладка па сетцы</string>
-    <string name="adb_over_network_summary">Уключыць рэжым адладкі праз сеткавыя інтэрфейсы (Wi-Fi і USB-сеткі). Адладка адключаецца пры перазагрузцы прылады</string>
-    <string name="adb_over_network_warning">УВАГА: калі ўключана адладка па сетцы, прылада адкрыта для некантралюемага доступу з усіх падлучаных сетак!\n\nСкарыстайце гэту функцыю толькі тады, калі вы падлучаны да давераных сетак.\n\nВы сапраўды хочаце ўключыць гэту функцыю?</string>
-    <string name="lineagelicense_title">Палітыка прыватнасці LineageOS</string>
-    <string name="kill_app_longpress_back">Зачыненне дадатку</string>
-    <string name="kill_app_longpress_back_summary">Завяршаць працу бягучага дадатку ўтрымліваннем кнопкі \"Назад\"</string>
+    <plurals name="show_dev_countdown_cm">
+        <item quantity="one">Застаўся <xliff:g id="step_count">%1$d</xliff:g> крок, каб уключыць налады для распрацоўшчыка.</item>
+        <item quantity="few">Засталося <xliff:g id="step_count">%1$d</xliff:g> крокі, каб уключыць налады для распрацоўшчыка.</item>
+        <item quantity="many">Засталося <xliff:g id="step_count">%1$d</xliff:g> крокаў, каб уключыць налады для распрацоўшчыка.</item>
+        <item quantity="other">Засталося <xliff:g id="step_count">%1$d</xliff:g> крокаў, каб уключыць налады для распрацоўшчыка.</item>
+    </plurals>
+    <string name="suggestion_button_close">Закрыць</string>
+    <string name="advanced_reboot_title">Пашыраная перазагрузка</string>
+    <string name="adb_notify">Апавяшчэнне аб адладцы</string>
+    <string name="adb_notify_summary">Паказваць апавяшчэнне, калі ўключана адладка па USB або праз сетку</string>
+    <string name="adb_over_network_summary">Уключыць рэжым адладкі праз сеткавыя інтэрфейсы (Wi-Fi і USB). Пасля перазагрузкі прылады гэта налада перастае дзейнічаць.</string>
     <string name="device_hostname">Сеткавае імя прылады</string>
-    <string name="increasing_ring_volume_option_title">Нарастальная гучнасць званку</string>
+    <string name="tethering_allow_vpn_upstreams_title">Дазволіць кліентам выкарыстоўваць VPN</string>
     <string name="increasing_ring_min_volume_title">Пачатковая гучнасць</string>
     <string name="increasing_ring_ramp_up_time_title">Час павелічэння</string>
-    <string name="lockscreen_visualizer_title">Візуалізацыя спектра музыкі</string>
-    <string name="lock_settings_picker_pattern_size_message">Абяры памер графічнага ключа</string>
+    <string name="lockscreen_media_art_title">Паказваць вокладку мультымедыя</string>
+    <string name="lockscreen_visualizer_title">Паказваць візуалізацыю музыкі</string>
+    <string name="lock_settings_picker_pattern_size_message">Выберыце памер графічнага ключа</string>
     <string name="lockpattern_settings_enable_error_path_title">Паказваць няправільны ўвод</string>
     <string name="lockpattern_settings_enable_dots_title">Паказваць кропкі</string>
-    <string name="unlock_scramble_pin_layout_title">Змешваць кнопкі</string>
-    <string name="unlock_scramble_pin_layout_summary">Перастаўляць кнопкі ўводу PIN-кода ў выпадковым парадку</string>
-    <string name="proximity_wake_title">Прадухіляць выпадковае ўлучэнне</string>
-    <string name="wake_when_plugged_or_unplugged_title">Улучэнне пры зарадцы</string>
-    <string name="wake_when_plugged_or_unplugged_summary">Улучаць экран пры падлучэнні ці адключэнні крыніцы сілкавання</string>
-    <string name="high_touch_sensitivity_title">Рэжым пальчаткаў</string>
-    <string name="high_touch_sensitivity_summary">Павялічваць адчувальнасць экрана для магчымасці працы ў пальчатках</string>
-    <string name="touchscreen_hovering_title">Навядзенне пальца</string>
-    <string name="touchscreen_hovering_summary">Распазнаваць набліжэнне пальца да экрана для падзей навядзення курсора ў браўзары ці іншых дадатках</string>
-    <string name="update_recovery_on_warning">Калі гэта функцыя ўключана, усталяваная прашыўка рэжыму аднаўлення будзе перазапісана той, якая адпавядае бягучай версіі АС.\n\n Рэжым аднаўлення будзе абнаўляцца разам з абнаўленнямі сістэмы, забяспечваючы сумяшчальнасць з будучымі версіямі.\n\nУключыць выкарыстанне гэтай функцыі?</string>
-    <string name="update_recovery_off_warning">Калі гэта функцыя адключана, прашыўка рэжыму аднаўлення заўсёды будзе заставацца нязменнай.\n\nНекаторыя абнаўленні АС могуць не ўсталёўвацца пры выкарыстанні састарэлых ці карыстальніцкіх версій падзелу Recovery.\n\nАдключыць выкарыстанне гэтай функцыі?</string>
+    <string name="translucent_lockscreen_notifications_bg_title">Напаўпразрысты фон апавяшчэнняў</string>
+    <string name="app_notification_sound_timeout_value_none">Без абмежаванняў</string>
+    <string name="app_notification_sound_timeout_value_10_seconds">10 секунд</string>
+    <string name="app_notification_sound_timeout_value_30_seconds">30 секунд</string>
+    <string name="app_notification_sound_timeout_value_1_minute">1 хвіліна</string>
+    <string name="app_notification_sound_timeout_value_5_minutes">5 хвілін</string>
+    <string name="app_notification_sound_timeout_value_15_minutes">10 хвілін</string>
+    <string name="app_notification_sound_timeout_value_30_minutes">30 хвілін</string>
+    <string name="directly_show_lock">Прамая разблакіроўка</string>
+    <string name="security_settings_fingerprint_sensor_location_back">задняй панэлі</string>
+    <string name="security_settings_fingerprint_sensor_location_front">пярэдняй панэлі</string>
+    <string name="status_bar_double_tap_to_sleep_title">Націсніце для сну</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Двойчы націсніце на панэль стану або экран блакіроўкі, каб перавесці прыладу ў рэжым сну</string>
+    <string name="touchscreen_gesture_settings_summary">Выкананне розных сэнсарных жэстаў на экране для хуткіх дзеянняў</string>
+    <string name="data_usage_app_restrict_data">Мабільныя даныя</string>
+    <string name="data_usage_app_restrict_data_summary">Уключыць выкарыстанне мабільных даных</string>
+    <string name="wake_when_plugged_or_unplugged_title">Уключэнне пры зарадцы</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Уключаць экран пры падключэнні або адключэнні крыніцы сілкавання</string>
+    <string name="high_touch_sensitivity_title">Высокая адчувальнасць дотыку</string>
+    <string name="high_touch_sensitivity_summary">Павялічыць адчувальнасць экрана для магчымасці працы ў пальчатках</string>
+    <string name="touchscreen_hovering_summary">Дазваляе распазнаваць набліжэнне пальца да экрана для падзей навядзення курсора ў браўзеры або іншых праграмах</string>
+    <string name="back_exclusion_title">Адключыць жэст вяртання зверху</string>
+    <string name="show_navbar_hint_title">Падказкі навігацыі</string>
+    <string name="connected_tws_device_saved_title">Захаваныя навушнікі</string>
+    <string name="heads_up_notifications_enabled_summary">Паказваць прыярытэтныя апавяшчэнні з дапамогай невялікіх усплывальных вокнаў</string>
+    <string name="backup_transport_setting_label">Змяніць пастаўшчыка рэзервовага капіявання</string>
+    <string name="fast_charging_summary">Адключыць, каб паменшыць нагрэў прылады падчас зарадкі або падоўжыць тэрмін службы акумулятара</string>
 </resources>

@@ -17,11 +17,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="show_dev_on_cm">Ви увімкнули налаштування розробника!</string>
-    <string name="show_dev_already_cm">Немає необхідності, ви вже увімкнули налаштування для розробників.</string>
+    <string name="show_dev_already_cm">Це зайве, параметри розробки вже ввімкнено.</string>
     <string name="suggestion_button_close">Закрити</string>
     <string name="advanced_reboot_title">Розширене перезавантаження</string>
+    <string name="advanced_reboot_summary">Додати в меню перезапуску режим відновлення й завантажувач, коли пристрій розблоковано</string>
     <string name="adb_enable">Налагодження Android</string>
     <string name="adb_enable_summary">Увімкнути інтерфейс Android Debug Bridge (ADB)</string>
+    <string name="adb_enable_root">Налагодження суперкористувачем</string>
+    <string name="adb_enable_summary_root">Дозволити налагодження Android із правами суперкористувача</string>
     <string name="adb_notify">Сповіщення налагодження</string>
     <string name="adb_notify_summary">Відображати сповіщення, коли налагодження USB або по мережі увімкнено</string>
     <string name="adb_over_network">ADB по мережі</string>
@@ -31,11 +34,13 @@
     <string name="kill_app_longpress_back">Закрити програму</string>
     <string name="kill_app_longpress_back_summary">Довгий натиск на кнопку «Назад» закриє запущену програму</string>
     <string name="device_hostname">Ім’я пристрою</string>
+    <string name="tethering_allow_vpn_upstreams_title">Дозволити клієнтам використовувати VPN</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Пропускати трафік клієнтів точки доступу через VPN-з\'єднання цього пристрою</string>
     <string name="increasing_ring_volume_option_title">Наростаюча гучність дзвінка</string>
     <string name="increasing_ring_min_volume_title">Початкова гучність</string>
     <string name="increasing_ring_ramp_up_time_title">Час збільшення</string>
     <string name="lockscreen_media_art_title">Показувати обкладинку мультимедіа</string>
-    <string name="lockscreen_visualizer_title">Візуалізація під час програвання музики</string>
+    <string name="lockscreen_visualizer_title">Візуалізувати музику</string>
     <string name="lock_settings_picker_pattern_size_message">Оберіть розмір шаблону</string>
     <string name="lockpattern_settings_enable_error_path_title">Показувати неправильний ключ</string>
     <string name="lockpattern_settings_enable_dots_title">Показувати точки</string>
@@ -50,11 +55,23 @@
     <string name="app_notification_sound_timeout_value_30_minutes">30 хвилин</string>
     <string name="unlock_scramble_pin_layout_title">Перемішана розкладка</string>
     <string name="unlock_scramble_pin_layout_summary">Перемішувати розкладку PIN-коду під час розблокування пристрою</string>
+    <string name="volume_link_notification_title">Зв\'язати гучності дзвінка й сповіщень</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm" product="default">Сканер відбитку пальців розташовано на <xliff:g id="sensor_location">%1$s</xliff:g> вашого телефону.</string>
     <string name="security_settings_fingerprint_sensor_location_back">задній панелі</string>
     <string name="security_settings_fingerprint_sensor_location_front">передній панелі</string>
     <string name="security_settings_fingerprint_sensor_location_left">ліва сторона</string>
     <string name="security_settings_fingerprint_sensor_location_right">права сторона</string>
+    <string name="status_bar_double_tap_to_sleep_title">Торкніться для сну</string>
+    <string name="status_bar_double_tap_to_sleep_summary">Двічі торкніть рядок стану чи екран блокування, щоб приспати екран</string>
+    <string name="touchscreen_gesture_settings_title">Жести сенсорного екрану</string>
+    <string name="data_usage_app_restrict_all">Мережа</string>
+    <string name="data_usage_app_restrict_all_summary">Дозволити використання мережі</string>
+    <string name="data_usage_app_restrict_data">Мобільні дані</string>
+    <string name="data_usage_app_restrict_data_summary">Дозволити використання мобільних даних</string>
+    <string name="data_usage_app_restrict_vpn">Дані VPN</string>
+    <string name="data_usage_app_restrict_vpn_summary">Дозволити використання даних VPN</string>
+    <string name="data_usage_app_restrict_wifi">Wi\u2011Fi-дані</string>
+    <string name="data_usage_app_restrict_wifi_summary">Дозволити використання Wi\u2011Fi-даних</string>
     <string name="proximity_wake_title">Запобігання випадкового пробудження</string>
     <string name="wake_when_plugged_or_unplugged_title">Екран прокидається при підключені</string>
     <string name="wake_when_plugged_or_unplugged_summary">Екран прокидається при підключені до зарядного пристрою</string>
@@ -66,6 +83,12 @@
     <string name="update_recovery_summary">Оновити вбудований Recovery з системними оновленнями</string>
     <string name="update_recovery_on_warning">Примітка: Коли цю функцію ввімкнено, діюче Recovery буде замінено тим, що міститься у поточній версії ОС.\n\nРежим Recovery буде оновлюватись разом з оновленням вашої системи, допомагаючи забезпечити сумісність майбутніх версій.\n\nБажаєте увімкнути застосування цієї функції?</string>
     <string name="update_recovery_off_warning">ПОПЕРЕДЖЕННЯ: Якщо цю функцію вимкнено, режим Recovery залишиться без змін.\n\nІснує можливість некоректного встановлення майбутніх версій ОС, у випадку використання застарілого чи кастомного Recovery.\n\nВи бажаєте відключити цю функцію?</string>
+    <string name="min_label">Мін.</string>
+    <string name="max_label">Макс.</string>
+    <string name="show_navbar_hint_title">Панель навігації</string>
+    <string name="show_navbar_hint_summary">Показувати панель навігації внизу екрану</string>
     <string name="heads_up_notifications_enabled_title">Спливаючі сповіщення</string>
     <string name="heads_up_notifications_enabled_summary">Відображати пріоритетні сповіщення у невеликому плаваючому вікні</string>
+    <string name="backup_transport_setting_label">Змінити провайдера резервного копіювання</string>
+    <string name="backup_transport_title">Оберіть провайдера резервного копіювання</string>
 </resources>

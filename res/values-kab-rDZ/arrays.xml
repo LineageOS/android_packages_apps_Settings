@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2007 The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="timezone_filters">
+        <item>Marikan</item>
+        <item>Turuft</item>
+        <item>Tafriqt</item>
+        <item>Asya</item>
+        <item>Lustṛali</item>
+        <item>Océan Pacifique</item>
+        <item>Akk</item>
+    </string-array>
+    <string-array name="screen_timeout_entries">
+        <item>15 n tasinin</item>
+        <item>30 n tasinin</item>
+        <item>1 n tisdat</item>
+        <item>2 n tisdatin</item>
+        <item>5 n tisdatin</item>
+        <item>10 n tisdatin</item>
+        <item>30 n tisdatin</item>
+    </string-array>
+    <string-array name="dream_timeout_entries">
+        <item>Weṛǧin</item>
+        <item>15 n tasinin</item>
+        <item>30 n tasinin</item>
+        <item>1 n tisdat</item>
+        <item>2 n tisdatin</item>
+        <item>5 n tisdatin</item>
+        <item>10 n tisdatin</item>
+        <item>30 n tisdatin</item>
+    </string-array>
+    <string-array name="lock_after_timeout_entries">
+        <item>Imir imir</item>
+        <item>5 n tasinin</item>
+        <item>15 n tasinin</item>
+        <item>30 n tasinin</item>
+        <item>1 n tisdat</item>
+        <item>2 n tisdatin</item>
+        <item>5 n tisdatin</item>
+        <item>10 n tisdatin</item>
+        <item>30 n tisdatin</item>
+    </string-array>
+    <string-array name="entries_font_size">
+        <item msgid="6490061470416867723">Meẓẓi</item>
+        <item msgid="3579015730662088893">Akk-a kan</item>
+        <item msgid="1678068858001018666">Hraw</item>
+        <item msgid="490158884605093126">Ahrawan maḍi</item>
+    </string-array>
+    <string-array name="wifi_status">
+        <item/>
+        <item>Scanning\u2026</item>
+        <item>Tuqna\u2026</item>
+        <item>Authenticating\u2026</item>
+        <item>Obtaining IP address\u2026</item>
+        <item>Yeqqen</item>
+        <item>Yewḥel</item>
+        <item>Disconnecting\u2026</item>
+        <item>Ur yeqqin ara</item>
+        <item>Unsuccessful</item>
+        <item>Yettusewḥel</item>
+        <item>Temporarily avoiding poor connection</item>
+    </string-array>
+    <string-array name="wifi_status_with_ssid">
+        <item/>
+        <item>Scanning\u2026</item>
+        <item>Connecting to 
+            <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Authenticating with 
+            <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Obtaining IP address from 
+            <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Connected to 
+            <xliff:g id="network_name">%1$s</xliff:g>
+        </item>
+        <item>Yeḥbes</item>
+        <item>Disconnecting from 
+            <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <item>Ur yeqqin ara</item>
+        <item>Unsuccessful</item>
+        <item>Yettusewḥel</item>
+        <item>Temporarily avoiding poor connection</item>
+    </string-array>
+    <string-array name="wifi_p2p_status">
+        <item>Iqqen</item>
+        <item>Yettwancad</item>
+        <item>Unsuccessful</item>
+        <item>Yewjed</item>
+        <item>Out-of-range</item>
+    </string-array>
+    <string-array name="bluetooth_visibility_timeout_entries">
+        <item>2 n tisdatin</item>
+        <item>5 n tisdatin</item>
+        <item>1 asrag</item>
+        <item>Never time out</item>
+    </string-array>
+    <string-array name="wifi_signal">
+        <item>D igellil</item>
+        <item>D igellil</item>
+        <item>Iḍ yeṣfan</item>
+        <item>Igerrez</item>
+        <item>Yufrar ($1)</item>
+    </string-array>
+    <string-array name="wifi_eap_entries">
+        <item>PEAP</item>
+        <item>TLS</item>
+        <item>TTLS</item>
+        <item>PWD</item>
+    </string-array>
+    <string-array name="wifi_peap_phase2_entries">
+        <item>MSCHAPV2</item>
+        <item>GTC</item>
+    </string-array>
+    <string-array name="wifi_peap_phase2_entries_with_sim_auth">
+        <item translatable="false">MSCHAPV2</item>
+        <item translatable="false">GTC</item>
+        <item translatable="false">SIM</item>
+        <item translatable="false">AKA</item>
+        <item translatable="false">AKA\'</item>
+    </string-array>
+    <string-array name="wifi_ttls_phase2_entries">
+        <item>PAP</item>
+        <item>MSCHAP</item>
+        <item>MSCHAPV2</item>
+        <item>GTC</item>
+    </string-array>
+    <string-array name="wifi_ip_settings">
+        <item>DHCP</item>
+        <item>Static</item>
+    </string-array>
+    <string-array name="wifi_proxy_settings">
+        <item>Ulac</item>
+        <item>S ufus</item>
+        <item>Proxy Auto-Config</item>
+    </string-array>
+    <string-array name="apn_auth_entries">
+        <item>Ulac</item>
+        <item>PAP</item>
+        <item>CHAP</item>
+        <item>PAP neγ CHAP</item>
+    </string-array>
+    <string-array name="apn_protocol_entries">
+        <item>IPv4</item>
+        <item>IPv6</item>
+        <item>IPv4/IPv6</item>
+    </string-array>
+    <string-array name="bearer_entries">
+        <item>Non spécifié</item>
+        <item>LTE</item>
+        <item>HSPAP</item>
+        <item>HSPA</item>
+        <item>HSUPA</item>
+        <item>HSDPA</item>
+        <item>UMTS</item>
+        <item>EDGE</item>
+        <item>GPRS</item>
+        <item>eHRPD</item>
+        <item>EVDO_B</item>
+        <item>EVDO_A</item>
+        <item>EVDO_0</item>
+        <item>1xRTT</item>
+        <item>IS95B</item>
+        <item>IS95A</item>
+    </string-array>
+    <string-array name="mvno_type_entries">
+        <item>Ulac</item>
+        <item translatable="false">SPN</item>
+        <item translatable="false">IMSI</item>
+        <item translatable="false">GID</item>
+    </string-array>
+    <string-array name="app_ops_categories">
+        <item>Adig</item>
+        <item>Udmawan</item>
+        <item>Tamyazent</item>
+        <item>Amidya</item>
+        <item>Ibenk</item>
+    </string-array>
+    <string-array name="app_ops_summaries">
+        <item>coarse location</item>
+        <item>fine location</item>
+        <item>GPS</item>
+        <item>senhez</item>
+        <item>ɣer inermisen</item>
+        <item>snifel inermisen</item>
+        <item>ɣer aɣmis n isawalen</item>
+        <item>snifel aɣmis n isawalen</item>
+        <item>ɣer-ad tasmektit</item>
+        <item>snifel tasmektit</item>
+        <item>wi-fi scan</item>
+        <item>Tisezmal</item>
+        <item>cell scan</item>
+        <item>asiwel n tiliɣṛi</item>
+        <item>ɣer SMS</item>
+        <item>aru SMS</item>
+        <item>rmes SMS</item>
+        <item>rmes SMS uɛjil</item>
+        <item>rmes MMS</item>
+        <item>receive WAP push</item>
+        <item>azen SMS</item>
+        <item>ɣer ICC SMS</item>
+        <item>aru ICC SMS</item>
+        <item>snifel iɣewwaṛen</item>
+        <item>draw on top</item>
+        <item>kcem ar ilɣa</item>
+        <item>takamiṛat</item>
+        <item>asekles n imesla</item>
+        <item>urar ameslaw</item>
+        <item>ɣer \"ɣef ufus\"</item>
+        <item>snifel \"ɣef ufus\"</item>
+        <item>media buttons</item>
+        <item>audio focus</item>
+        <item>imesli agejdan</item>
+        <item>ableɣ n yimesli</item>
+        <item>ring volume</item>
+        <item>imesli n umidya</item>
+        <item>imesli n tsusliyin</item>
+        <item>imesli n ilɣa</item>
+        <item>imesli n bluetooth</item>
+        <item>eǧǧit irmed</item>
+        <item>ɛass asideg</item>
+        <item>monitor high power location</item>
+        <item>awi tidaddanin u seqdec</item>
+        <item>sgugem/ur sgugum ara asawaḍ</item>
+        <item>show toast</item>
+        <item>ḥrez allalen n teγwalt</item>
+        <item>rmed a VPN</item>
+        <item>aru agalis</item>
+        <item>amarag n tamṣukt</item>
+        <item>amarag n tuṭṭfa n ugdil</item>
+        <item>ɣer addad n tiliɣri</item>
+        <item>rnu izen aɣectan</item>
+        <item>use sip</item>
+        <item>process outgoing call</item>
+        <item>fingerprint</item>
+        <item>body sensors</item>
+        <item>ɣer azuzzer abniqan</item>
+        <item>ssimeɣ tizgi</item>
+        <item>read storage</item>
+        <item>write storage</item>
+        <item>turn on screen</item>
+        <item>awi imiḍanen</item>
+        <item>teddu g ugilal</item>
+        <item>accessibility volume</item>
+    </string-array>
+    <string-array name="app_ops_labels">
+        <item>Adig</item>
+        <item>Adig</item>
+        <item>Adig</item>
+        <item>Senhez</item>
+        <item>Ɣer inermisen</item>
+        <item>Snifel inermisen</item>
+        <item>Ɣer aɣmis n isawalen</item>
+        <item>Snifel aɣmis n isawalen</item>
+        <item>Ɣer-ad tasmektit</item>
+        <item>Snifel tasmektit</item>
+        <item>Adig</item>
+        <item>Post notification</item>
+        <item>Adig</item>
+        <item>Asiwel n tiliɣṛi</item>
+        <item>Read SMS/MMS</item>
+        <item>Write SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Receive SMS/MMS</item>
+        <item>Send SMS/MMS</item>
+        <item>Read SMS/MMS</item>
+        <item>Write SMS/MMS</item>
+        <item>Snifel iɣewwaṛen</item>
+        <item>Suneɣ uksawen</item>
+        <item>Kcem ar ilɣa</item>
+        <item>Takamiṛat</item>
+        <item>Sekles imesli</item>
+        <item>Urar ameslaw</item>
+        <item>Ɣer \"ɣef ufus\"</item>
+        <item>Snifel \"ɣef ufus\"</item>
+        <item>Tiqeffalin umidya</item>
+        <item>Audio focus</item>
+        <item>Imesli agejdan</item>
+        <item>Ableɣ n taɣect</item>
+        <item>Ring volume</item>
+        <item>Imesli n umidya</item>
+        <item>Imesli n tsusliyin</item>
+        <item>Imesli n ilɣa</item>
+        <item>Imesli n Bluetooth</item>
+        <item>Eǧǧit irmed</item>
+        <item>Adig</item>
+        <item>Adig</item>
+        <item>Awi tidaddanin u seqdec</item>
+        <item>Sgugem/ur sgugum ara asawaḍ</item>
+        <item>Show toast</item>
+        <item>Project media</item>
+        <item>Rmed a VPN</item>
+        <item>Aru agalis</item>
+        <item>Amarag n tamṣukt</item>
+        <item>Amarag n tuṭṭfa n ugdil</item>
+        <item>Ɣer addad n tiliɣri</item>
+        <item>Rnu izen aɣectan</item>
+        <item>Use sip</item>
+        <item>Process outgoing call</item>
+        <item>Adsil umḍin</item>
+        <item>Body sensors</item>
+        <item>Ɣer azuzzer abniqan</item>
+        <item>Ssimeɣ tizgi</item>
+        <item>Read storage</item>
+        <item>Write storage</item>
+        <item>Turn on screen</item>
+        <item>Awid imiḍanen</item>
+        <item>Teddu g ugilal</item>
+        <item>Accessibility volume</item>
+    </string-array>
+    <string-array name="long_press_timeout_selector_titles">
+        <item>Awezlan</item>
+        <item>Alemmas</item>
+        <item>Aɣezfan</item>
+    </string-array>
+    <string-array name="captioning_typeface_selector_titles">
+        <item>Akk-a kan</item>
+        <item>Sans-serif</item>
+        <item>Sans-serif condensed</item>
+        <item>Sans-serif monospace</item>
+        <item>Serif</item>
+        <item>Serif monospace</item>
+        <item>Casual</item>
+        <item>Tira n ufus</item>
+        <item>Small capitals</item>
+    </string-array>
+    <string-array name="captioning_font_size_selector_titles">
+        <item>Very small</item>
+        <item>Meẓẓi</item>
+        <item>Amagnu</item>
+        <item>Ameqran</item>
+        <item>Very large</item>
+    </string-array>
+    <string-array name="captioning_edge_type_selector_titles">
+        <item>Akk-a kan</item>
+        <item>Ulac</item>
+        <item>Aɣawas</item>
+        <item>Drop shadow</item>
+        <item>Raised</item>
+        <item>Depressed</item>
+    </string-array>
+    <string-array name="captioning_opacity_selector_titles">
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="captioning_preset_selector_titles">
+        <item>Use app defaults</item>
+        <item>White on black</item>
+        <item>Black on white</item>
+        <item>Yellow on black</item>
+        <item>Yellow on blue</item>
+        <item>Udmawan</item>
+    </string-array>
+    <string-array name="vpn_proxy_settings">
+        <item>Ula yiwen</item>
+        <item>S ufus</item>
+    </string-array>
+    <string-array name="vpn_states">
+        <item>Ur yeqqin ara</item>
+        <item>Awennez\u2026</item>
+        <item>Tuqna\u2026</item>
+        <item>Yeqqen</item>
+        <item>Amenḍar</item>
+        <item>Unsuccessful</item>
+    </string-array>
+    <string-array name="security_settings_premium_sms_values">
+        <item>Ssuter</item>
+        <item>Never allow</item>
+        <item>Always allow</item>
+    </string-array>
+    <string-array name="ram_states">
+        <item>Amagnu</item>
+        <item>Sektem</item>
+        <item>Faible</item>
+        <item>Uzɣin</item>
+        <item>\?</item>
+    </string-array>
+    <string-array name="proc_stats_memory_states">
+        <item>Amagnu</item>
+        <item>Sektem</item>
+        <item>Faible</item>
+        <item>Uzɣin</item>
+    </string-array>
+    <string-array name="proc_stats_process_states">
+        <item>Persistent</item>
+        <item>Top activity</item>
+        <item>Important (foreground)</item>
+        <item>Important (background)</item>
+        <item>Sekles</item>
+        <item>Heavy weight</item>
+        <item>Service (running)</item>
+        <item>Service (restarting)</item>
+        <item>Récepteur</item>
+        <item>Asebter agejdan</item>
+        <item>Armud aneggaru</item>
+        <item>Cached (activity)</item>
+        <item>Cached (activity client)</item>
+        <item>Cached (empty)</item>
+    </string-array>
+    <string-array name="color_picker">
+        <item>Tiwizet</item>
+        <item>Azegzaw</item>
+        <item>Indigo</item>
+        <item>Arẓaẓ</item>
+        <item>Axuxi</item>
+        <item>Azeggaγ</item>
+    </string-array>
+    <string-array name="wifi_hidden_entries">
+        <item>Uhu</item>
+        <item>Ih</item>
+    </string-array>
+    <string-array name="dark_ui_mode_entries">
+        <item>Aqesḥan</item>
+        <item>Aceɛlal</item>
+    </string-array>
+    <string-array name="autofill_logging_level_entries">
+        <item>Insa</item>
+        <item>Seɣtu</item>
+        <item>Verbose</item>
+    </string-array>
+    <string-array name="cdma_system_select_choices">
+        <item>Home only</item>
+        <item>Awurman</item>
+    </string-array>
+    <string-array name="preferred_network_mode_choices">
+        <item>GSM/WCDMA anurif</item>
+        <item>GSM kan</item>
+        <item>WCDMA kan</item>
+        <item>GSM/WCDMA awurman</item>
+        <item>CDMA/EvDo awurman</item>
+        <item>CDMA w/o EvDo</item>
+        <item>EvDo kan</item>
+        <item>CDMA/EvDo/GSM/WCDMA</item>
+        <item>CDMA + LTE/EvDo</item>
+        <item>GSM/WCDMA/LTE</item>
+        <item>LTE/CDMA/EvDo/GSM/WCDMA</item>
+        <item>LTE</item>
+        <item>LTE / WCDMA</item>
+        <item>TDSCDMA only</item>
+        <item>TDSCDMA/WCDMA</item>
+        <item>LTE/TDSCDMA</item>
+        <item>TDSCDMA/GSM</item>
+        <item>LTE/TDSCDMA/GSM</item>
+        <item>TDSCDMA/GSM/WCDMA</item>
+        <item>LTE/TDSCDMA/WCDMA</item>
+        <item>LTE/TDSCDMA/GSM/WCDMA</item>
+        <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
+        <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
+        <item>NR only</item>
+        <item>NR/LTE</item>
+        <item>NR/LTE/CDMA/EvDo</item>
+        <item>NR/LTE/GSM/WCDMA</item>
+        <item>Amatu</item>
+        <item>NR/LTE/WCDMA</item>
+        <item>NR/LTE/TDSCDMA</item>
+        <item>NR/LTE/TDSCDMA/GSM</item>
+        <item>NR/LTE/TDSCDMA/WCDMA</item>
+        <item>NR/LTE/TDSCDMA/GSM/WCDMA</item>
+        <item>NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</item>
+    </string-array>
+    <string-array name="preferred_network_mode_choices_world_mode">
+        <item>Amatu</item>
+        <item>LTE / CDMA</item>
+        <item>LTE / GSM / UMTS</item>
+    </string-array>
+</resources>
