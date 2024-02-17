@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
- * Copyright (C) 2021 The LineageOS Project
+ * Copyright (C) 2021-2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package com.android.settings.network;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Bundle;
 
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -29,7 +30,18 @@ import com.android.settings.SetupWizardUtils;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSettings2;
 
+import com.google.android.setupdesign.util.ThemeHelper;
+
 public class NetworkSetupActivity extends SettingsActivity implements ButtonBarHandler {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTheme(SetupWizardUtils.getTheme(this, getIntent()));
+        setTheme(R.style.SettingsPreferenceTheme_SetupWizard);
+        ThemeHelper.trySetDynamicColor(this);
+        findViewById(R.id.content_parent).setFitsSystemWindows(false);
+    }
 
     @Override
     public Intent getIntent() {
@@ -57,11 +69,5 @@ public class NetworkSetupActivity extends SettingsActivity implements ButtonBarH
 
     /* package */ Class<? extends PreferenceFragmentCompat> getNetworkProviderSettingsClass() {
         return NetworkProviderSettings.class;
-    }
-
-    @Override
-    protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
-        final int new_resid = SetupWizardUtils.getTheme(this, getIntent());
-        super.onApplyThemeResource(theme, new_resid, first);
     }
 }
