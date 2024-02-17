@@ -17,7 +17,6 @@
 package com.android.settings.wifi.dpp;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentManager;
@@ -45,12 +44,6 @@ public abstract class WifiDppBaseActivity extends InstrumentedActivity {
         if (savedInstanceState == null) {
             handleIntent(getIntent());
         }
-    }
-
-    @Override
-    protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
-        theme.applyStyle(R.style.SetupWizardPartnerResource, true);
-        super.onApplyThemeResource(theme, resid, first);
     }
 
     private void applyTheme() {
