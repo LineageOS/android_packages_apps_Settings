@@ -255,6 +255,7 @@ public class FingerprintSettings extends SubSettings {
         private PreferenceCategory mFingerprintUnlockCategory;
         private PreferenceCategory mFingerprintUnlockFooter;
         private boolean mFingerprintWakeAndUnlock;
+        private boolean mProximityCheckOnFingerprintUnlock;
 
         private FingerprintManager mFingerprintManager;
         private FingerprintUpdater mFingerprintUpdater;
@@ -431,6 +432,8 @@ public class FingerprintSettings extends SubSettings {
             mSensorProperties = mFingerprintManager.getSensorPropertiesInternal();
             mFingerprintWakeAndUnlock = getContext().getResources().getBoolean(
                     org.lineageos.platform.internal.R.bool.config_fingerprintWakeAndUnlock);
+            mProximityCheckOnFingerprintUnlock = getContext().getResources().getBoolean(
+                    org.lineageos.platform.internal.R.bool.config_proximityCheckOnFpsUnlock);
 
             mToken = getIntent().getByteArrayExtra(
                     ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN);
@@ -708,6 +711,10 @@ public class FingerprintSettings extends SubSettings {
                         mRequireScreenOnToAuthPreferenceController.setChecked(!isChecked);
                         return true;
                     });
+            if (mProximityCheckOnFingerprintUnlock) {
+                mRequireScreenOnToAuthPreference.setSummary(R.string.
+                        security_settings_require_screen_on_to_auth_with_proximity_description);
+            }
         }
 
         private void updateAddPreference() {
