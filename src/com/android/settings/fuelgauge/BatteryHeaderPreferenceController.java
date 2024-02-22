@@ -129,9 +129,17 @@ public class BatteryHeaderPreferenceController extends BasePreferenceController
         final int batteryLevel = Utils.getBatteryLevel(batteryBroadcast);
         final boolean discharging =
                 batteryBroadcast.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1) == 0;
+        final int chargeCounterUah =
+                batteryBroadcast.getIntExtra(BatteryManager.EXTRA_CHARGE_COUNTER, -1);
 
         mBatteryUsageProgressBarPref.setUsageSummary(formatBatteryPercentageText(batteryLevel));
         mBatteryUsageProgressBarPref.setPercent(batteryLevel, BATTERY_MAX_LEVEL);
+
+        if (chargeCounterUah != -1) {
+            int chargeCounter = chargeCounterUah / 1_000;
+            mBatteryUsageProgressBarPref.setTotalSummary(
+                    formatBatteryChargeCounterText(chargeCounter));
+        }
     }
 
     /** Update summary when battery tips changed. */
@@ -147,5 +155,9 @@ public class BatteryHeaderPreferenceController extends BasePreferenceController
         return TextUtils.expandTemplate(
                 mContext.getText(R.string.battery_header_title_alternate),
                 NumberFormat.getIntegerInstance().format(batteryLevel));
+    }
+
+    private CharSequence formatBatteryChargeCounterText(int chargeCounter) {
+        return mContext.getString(R.string.battery_charge_counter_summary, chargeCounter);
     }
 }
