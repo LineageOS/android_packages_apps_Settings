@@ -22,6 +22,48 @@
     settings:keywords="@string/keywords_battery_info">
 
     <Preference
+        android:key="battery_info_technology"
+        android:title="@string/battery_technology"
+        android:summary="@string/summary_placeholder"
+        settings:controller="com.android.settings.deviceinfo.batteryinfo.BatteryTechnologyPreferenceController"
+        settings:enableCopying="true"/>
+
+    <Preference
+        android:key="battery_info_health"
+        android:title="@string/battery_health"
+        android:summary="@string/summary_placeholder"
+        settings:controller="com.android.settings.deviceinfo.batteryinfo.BatteryHealthPreferenceController"
+        settings:enableCopying="true"/>
+
+    <Preference
+        android:key="battery_info_temperature"
+        android:title="@string/battery_temperature"
+        android:summary="@string/summary_placeholder"
+        settings:controller="com.android.settings.deviceinfo.batteryinfo.BatteryTemperaturePreferenceController"
+        settings:enableCopying="true"/>
+
+    <Preference
+        android:key="battery_info_voltage"
+        android:title="@string/battery_voltage"
+        android:summary="@string/summary_placeholder"
+        settings:controller="com.android.settings.deviceinfo.batteryinfo.BatteryVoltagePreferenceController"
+        settings:enableCopying="true"/>
+
+    <Preference
+        android:key="battery_info_design_capacity"
+        android:title="@string/battery_design_capacity"
+        android:summary="@string/summary_placeholder"
+        settings:controller="com.android.settings.deviceinfo.batteryinfo.BatteryDesignCapacityPreferenceController"
+        settings:enableCopying="true"/>
+
+    <Preference
+        android:key="battery_info_maximum_capacity"
+        android:title="@string/battery_maximum_capacity"
+        android:summary="@string/summary_placeholder"
+        settings:controller="com.android.settings.deviceinfo.batteryinfo.BatteryMaximumCapacityPreferenceController"
+        settings:enableCopying="true"/>
+
+    <Preference
         android:key="battery_info_manufacture_date"
         android:title="@string/battery_manufacture_date"
         android:summary="@string/summary_placeholder"
