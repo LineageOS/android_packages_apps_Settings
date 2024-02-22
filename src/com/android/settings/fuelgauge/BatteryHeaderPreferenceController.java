@@ -20,6 +20,7 @@ import static com.android.settings.fuelgauge.BatteryBroadcastReceiver.BatteryUpd
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.BatteryManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.R;
 import com.android.settingslib.Utils;
 import com.android.settingslib.widget.UsageProgressBarPreference;
 
@@ -104,14 +106,28 @@ public class BatteryHeaderPreferenceController extends BasePreferenceController
         Intent batteryBroadcast =
                 com.android.settingslib.fuelgauge.BatteryUtils.getBatteryIntent(mContext);
         final int batteryLevel = Utils.getBatteryLevel(batteryBroadcast);
+        final boolean discharging =
+                batteryBroadcast.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1) == 0;
+        final int chargeCounterUah =
+                batteryBroadcast.getIntExtra(BatteryManager.EXTRA_CHARGE_COUNTER, -1);
 
         mBatteryUsageProgressBarPreference.setUsageSummary(
                 formatBatteryPercentageText(batteryLevel));
         mBatteryUsageProgressBarPreference.setPercent(batteryLevel, BATTERY_MAX_LEVEL);
+
+        if (chargeCounterUah != -1) {
+            int chargeCounter = chargeCounterUah / 1_000;
+            mBatteryUsageProgressBarPreference.setTotalSummary(
+                    formatBatteryChargeCounterText(chargeCounter));
+        }
     }
 
     private CharSequence formatBatteryPercentageText(int batteryLevel) {
         return com.android.settings.Utils.formatPercentage(batteryLevel);
+    }
+
+    private CharSequence formatBatteryChargeCounterText(int chargeCounter) {
+        return mContext.getString(R.string.battery_charge_counter_summary, chargeCounter);
     }
 }
 // LINT.ThenChange(BatteryHeaderPreference.kt)
