@@ -212,6 +212,14 @@
             android:defaultValue="@*lineageos.platform:bool/config_dt2sGestureEnabledByDefault"
             settings:requiresConfig="@*lineageos.platform:bool/config_dt2sGestureAvailable" />
 
+        <!-- Lid event wake/sleep -->
+        <lineageos.preference.LineageSystemSettingSwitchPreference
+            android:key="lid_control_sleep"
+            android:title="@string/lid_control_sleep_title"
+            android:summary="@string/lid_control_sleep_summary"
+            android:defaultValue="true"
+            settings:requiresConfig="@*lineageos.platform:bool/config_enableLidControls" />
+
         <lineageos.preference.LineageGlobalSettingSwitchPreference
             android:key="wake_when_plugged_or_unplugged"
             android:title="@string/wake_when_plugged_or_unplugged_title"
