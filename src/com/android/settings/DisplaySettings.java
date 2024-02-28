@@ -45,6 +45,7 @@ public class DisplaySettings extends DashboardFragment {
     private static final String KEY_HIGH_TOUCH_POLLING_RATE = "high_touch_polling_rate_enable";
     private static final String KEY_HIGH_TOUCH_SENSITIVITY = "high_touch_sensitivity_enable";
     private static final String KEY_PROXIMITY_ON_WAKE = "proximity_on_wake";
+    private static final String KEY_LID_CONTROL_SLEEP = "lid_control_sleep";
 
     @Override
     public int getMetricsCategory() {
@@ -108,6 +109,10 @@ public class DisplaySettings extends DashboardFragment {
                             org.lineageos.platform.internal.R.bool.config_proximityCheckOnWake)) {
                         keys.add(KEY_PROXIMITY_ON_WAKE);
                     }
+                    if (!context.getResources().getBoolean(
+                        org.lineageos.platform.internal.R.bool.config_enableLidControls)) {
+                    keys.add(KEY_LID_CONTROL_SLEEP);
+                }
                     return keys;
                 }
 
