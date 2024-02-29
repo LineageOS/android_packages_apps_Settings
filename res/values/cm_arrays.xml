@@ -36,4 +36,17 @@
         <item>900000</item>
         <item>1800000</item>
     </string-array>
+
+    <!-- Lid event behavior -->
+    <string-array name="lid_behavior_entries" translatable="false">
+        <item>@string/lid_behavior_none</item>
+        <item>@string/lid_behavior_lock</item>
+        <item>@string/lid_behavior_sleep</item>
+    </string-array>
+    <!-- 0,2,1 to match WindowManagerPolicy.java -->
+    <string-array name="lid_behavior_values" translatable="false">
+        <item>0</item>
+        <item>2</item>
+        <item>1</item>
+    </string-array>
 </resources>
