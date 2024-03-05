@@ -20,14 +20,14 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.provider.Settings;
 
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
 public class AgpsPreferenceController extends LocationBasePreferenceController {
     private static final String KEY_ASSISTED_GPS = "assisted_gps";
 
-    private SwitchPreference mAgpsPreference;
+    private SwitchPreferenceCompat mAgpsPreference;
 
     public AgpsPreferenceController(Context context, String key) {
         super(context, key);
@@ -46,7 +46,7 @@ public class AgpsPreferenceController extends LocationBasePreferenceController {
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
-        mAgpsPreference = (SwitchPreference) screen.findPreference(KEY_ASSISTED_GPS);
+        mAgpsPreference = (SwitchPreferenceCompat) screen.findPreference(KEY_ASSISTED_GPS);
     }
 
     @Override
