@@ -44,7 +44,7 @@ public class ScreenOffUdfpsSettings extends DashboardFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         SuggestionFeatureProvider suggestionFeatureProvider =
-                FeatureFactory.getFactory(context).getSuggestionFeatureProvider();
+                FeatureFactory.Companion.getFeatureFactory().getSuggestionFeatureProvider();
         SharedPreferences prefs = suggestionFeatureProvider.getSharedPrefs(context);
         prefs.edit().putBoolean(PREF_KEY_SUGGESTION_COMPLETE, true).apply();
 
