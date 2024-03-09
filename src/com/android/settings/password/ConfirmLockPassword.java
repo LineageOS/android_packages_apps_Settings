@@ -667,6 +667,7 @@ public class ConfirmLockPassword extends ConfirmDeviceCredentialBaseActivity {
         }
 
         private void handleAttemptLockout(long elapsedRealtimeDeadline) {
+            clearResetErrorRunnable();
             mCountdownTimer = new CountDownTimer(
                     elapsedRealtimeDeadline - SystemClock.elapsedRealtime(),
                     LockPatternUtils.FAILED_ATTEMPT_COUNTDOWN_INTERVAL_MS) {

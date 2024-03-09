@@ -23,7 +23,7 @@ import android.os.SystemProperties;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
-import androidx.preference.SwitchPreference;
+import androidx.preference.TwoStatePreference;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
@@ -66,10 +66,10 @@ public class BluetoothA2dpHwOffloadPreferenceController extends DeveloperOptions
         if (offloadSupported) {
             final boolean offloadDisabled =
                     SystemProperties.getBoolean(A2DP_OFFLOAD_DISABLED_PROPERTY, false);
-            ((SwitchPreference) mPreference).setChecked(offloadDisabled);
+            ((TwoStatePreference) mPreference).setChecked(offloadDisabled);
         } else {
             mPreference.setEnabled(false);
-            ((SwitchPreference) mPreference).setChecked(true);
+            ((TwoStatePreference) mPreference).setChecked(true);
         }
     }
 

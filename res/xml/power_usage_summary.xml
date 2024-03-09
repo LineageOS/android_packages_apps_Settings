@@ -62,7 +62,7 @@
         settings:requiresConfig="@*lineageos.platform:integer/config_deviceLightCapabilities"
         settings:requiresConfigMask="64" />
 
-    <SwitchPreference
+    <SwitchPreferenceCompat
         android:key="battery_percentage"
         android:title="@string/battery_percentage"
         android:summary="@string/battery_percentage_description"

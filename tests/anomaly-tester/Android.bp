@@ -17,8 +17,8 @@ android_test {
     static_libs: [
         "androidx.test.rules",
         "mockito-target",
-        "ub-uiautomator",
-        "truth-prebuilt",
+        "androidx.test.uiautomator_uiautomator",
+        "truth",
     ],
 
     srcs: ["**/*.java"],

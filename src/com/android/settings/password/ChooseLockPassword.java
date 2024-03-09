@@ -497,7 +497,8 @@ public class ChooseLockPassword extends SettingsActivity {
                             .setText(R.string.lockpassword_clear_label)
                             .setListener(this::onSkipOrClearButtonClick)
                             .setButtonType(FooterButton.ButtonType.SKIP)
-                            .setTheme(R.style.SudGlifButton_Secondary)
+                            .setTheme(
+                                    com.google.android.setupdesign.R.style.SudGlifButton_Secondary)
                             .build()
             );
             mixin.setPrimaryButton(
@@ -505,7 +506,7 @@ public class ChooseLockPassword extends SettingsActivity {
                             .setText(R.string.next_label)
                             .setListener(this::onNextButtonClick)
                             .setButtonType(FooterButton.ButtonType.NEXT)
-                            .setTheme(R.style.SudGlifButton_Primary)
+                            .setTheme(com.google.android.setupdesign.R.style.SudGlifButton_Primary)
                             .build()
             );
             mSkipOrClearButton = mixin.getSecondaryButton();
@@ -519,7 +520,7 @@ public class ChooseLockPassword extends SettingsActivity {
                     || DevicePolicyManager.PASSWORD_QUALITY_COMPLEX == mPasswordType;
 
             final LinearLayout headerLayout = view.findViewById(
-                    R.id.sud_layout_header);
+                    com.google.android.setupdesign.R.id.sud_layout_header);
             setupPasswordRequirementsView(headerLayout);
 
             mPasswordRestrictionView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -733,18 +734,17 @@ public class ChooseLockPassword extends SettingsActivity {
 
         /**
          * Validates PIN/Password and returns the validation result and updates mValidationErrors
-         * and mPasswordReused to reflect validation results.
+         * to reflect validation results.
          *
          * @param credential credential the user typed in.
          * @return whether password satisfies all the requirements.
          */
         @VisibleForTesting
         boolean validatePassword(LockscreenCredential credential) {
-            final byte[] password = credential.getCredential();
-            mValidationErrors = PasswordMetrics.validatePassword(
-                    mMinMetrics, mMinComplexity, !mIsAlphaMode, password);
-            if (mValidationErrors.isEmpty() &&  mLockPatternUtils.checkPasswordHistory(
-                        password, getPasswordHistoryHashFactor(), mUserId)) {
+            mValidationErrors = PasswordMetrics.validateCredential(mMinMetrics, mMinComplexity,
+                    credential);
+            if (mValidationErrors.isEmpty() && mLockPatternUtils.checkPasswordHistory(
+                        credential.getCredential(), getPasswordHistoryHashFactor(), mUserId)) {
                 mValidationErrors =
                         Collections.singletonList(new PasswordValidationError(RECENTLY_USED));
             }
@@ -921,8 +921,8 @@ public class ChooseLockPassword extends SettingsActivity {
             final boolean canInput = mSaveAndFinishWorker == null;
 
             LockscreenCredential password = mIsAlphaMode
-                    ? LockscreenCredential.createPasswordOrNone(mPasswordEntry.getText())
-                    : LockscreenCredential.createPinOrNone(mPasswordEntry.getText());
+                    ? LockscreenCredential.createPassword(mPasswordEntry.getText())
+                    : LockscreenCredential.createPin(mPasswordEntry.getText());
             final int length = password.size();
             if (mUiStage == Stage.Introduction) {
                 mPasswordRestrictionView.setVisibility(View.VISIBLE);
