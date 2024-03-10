@@ -21,7 +21,7 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import androidx.preference.Preference;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.settings.core.BasePreferenceController;
 
@@ -65,7 +65,7 @@ public class FastChargingPreferenceController extends BasePreferenceController
             Log.e(TAG, "isEnabled failed", e);
         }
 
-        ((SwitchPreference) preference).setChecked(fastChargingEnabled);
+        ((SwitchPreferenceCompat) preference).setChecked(fastChargingEnabled);
     }
 
     @Override
