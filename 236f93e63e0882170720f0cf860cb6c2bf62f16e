@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3288d5c4_e8c08189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2644
+      },
+      "writtenOn": "2024-03-19T19:46:11Z",
+      "side": 1,
+      "message": "Tested working again on gts4lvwifi and marlin.\nI looked into reverting and found that it wasn\u0027t clean. \nI added in the reversion of a later commit: 2ebb0dd1d6c416561005a05a124605ad123b763c which removes the\nLocalTerminalPreferenceController files, and one line in the DashboardFragment.\nI will try to split this into 2 separate reversion commits and submit them to AOSP.",
+      "revId": "236f93e63e0882170720f0cf860cb6c2bf62f16e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
