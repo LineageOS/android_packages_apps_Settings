@@ -39,7 +39,6 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.android.settings.R;
 import com.android.settings.fuelgauge.BatteryOptimizeUtils;
-import com.android.settings.fuelgauge.datasaver.DynamicDenylistManager;
 
 import java.util.Arrays;
 import java.util.List;
@@ -156,8 +155,6 @@ public class ResetAppsHelper implements DialogInterface.OnClickListener,
             }
             mAom.resetAllModes();
             BatteryOptimizeUtils.resetAppOptimizationMode(mContext, mIPm, mAom);
-            DynamicDenylistManager.getInstance(mContext)
-                    .resetDenylistIfNeeded(/* packageName= */ null, /* force= */ true);
             final int[] restrictedUids = mNpm.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND);
             final int currentUserId = ActivityManager.getCurrentUser();
             for (int uid : restrictedUids) {

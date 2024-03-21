@@ -51,7 +51,6 @@ import com.android.settings.Utils;
 import com.android.settings.applications.AppInfoBase;
 import com.android.settings.datausage.lib.AppDataUsageDetailsRepository;
 import com.android.settings.datausage.lib.NetworkTemplates;
-import com.android.settings.fuelgauge.datasaver.DynamicDenylistManager;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.AppItem;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
