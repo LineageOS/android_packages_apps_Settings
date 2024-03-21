@@ -16,6 +16,7 @@ package com.android.settings.datausage;
 
 import static android.net.NetworkPolicyManager.POLICY_ALLOW_METERED_BACKGROUND;
 import static android.net.NetworkPolicyManager.POLICY_NONE;
+import static android.net.NetworkPolicyManager.POLICY_NETWORK_ISOLATED;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
 
 import android.app.settings.SettingsEnums;
@@ -31,6 +32,7 @@ import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DataSaverBackend {
 
@@ -43,7 +45,10 @@ public class DataSaverBackend {
     private final ArrayList<Listener> mListeners = new ArrayList<>();
     private SparseIntArray mUidPolicies = new SparseIntArray();
     private boolean mWhitelistInitialized;
+    private int[] mRestrictWhiteList;
     private boolean mBlacklistInitialized;
+    private int[] mRestrictAllBlackList;
+    private int[] mRestrictBackgroundBlackList;
 
     // TODO: Staticize into only one.
     public DataSaverBackend(Context context) {
@@ -62,7 +67,7 @@ public class DataSaverBackend {
 
     public void remListener(Listener listener) {
         mListeners.remove(listener);
-        if (mListeners.size() == 0) {
+        if (mListeners.isEmpty()) {
             mPolicyManager.unregisterListener(mPolicyListener);
         }
     }
@@ -78,6 +83,7 @@ public class DataSaverBackend {
     }
 
     public void refreshWhitelist() {
+        mWhitelistInitialized = false;
         loadWhitelist();
     }
 
@@ -104,13 +110,20 @@ public class DataSaverBackend {
             return;
         }
 
-        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND)) {
-            mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
+        final int[] whiteList
+                = mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND);
+        if (mRestrictWhiteList == null ||
+                !Arrays.equals(mRestrictWhiteList, whiteList)) {
+            mRestrictWhiteList = whiteList;
+            for (int uid : whiteList) {
+                mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
+            }
         }
         mWhitelistInitialized = true;
     }
 
     public void refreshBlacklist() {
+        mBlacklistInitialized = false;
         loadBlacklist();
     }
 
@@ -136,8 +149,35 @@ public class DataSaverBackend {
         if (mBlacklistInitialized) {
             return;
         }
-        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND)) {
-            mUidPolicies.put(uid, POLICY_REJECT_METERED_BACKGROUND);
+
+        final int[] allBlackList = mPolicyManager.getUidsWithPolicy(POLICY_NETWORK_ISOLATED);
+        if (mRestrictAllBlackList == null ||
+                !Arrays.equals(mRestrictAllBlackList, allBlackList)) {
+            mRestrictAllBlackList = allBlackList;
+            for (int uid : allBlackList) {
+                final String[] packages = mContext.getPackageManager().getPackagesForUid(uid);
+                if (packages != null) {
+                    for (String packageName : packages) {
+                        setIsBlacklisted(uid, packageName, true);
+                    }
+                }
+            }
+        }
+
+        final int[] backgroundBlackList
+                = mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND);
+        if (mRestrictBackgroundBlackList == null ||
+                !Arrays.equals(mRestrictBackgroundBlackList, backgroundBlackList) ||
+                !Arrays.equals(backgroundBlackList, allBlackList)) {
+            mRestrictBackgroundBlackList = backgroundBlackList;
+            for (int uid : backgroundBlackList) {
+                final String[] packages = mContext.getPackageManager().getPackagesForUid(uid);
+                if (packages != null) {
+                    for (String packageName : packages) {
+                        setIsBlacklisted(uid, packageName, true);
+                    }
+                }
+            }
         }
         mBlacklistInitialized = true;
     }
