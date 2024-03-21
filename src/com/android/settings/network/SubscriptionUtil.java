@@ -103,7 +103,68 @@ public class SubscriptionUtil {
                 }
             }
         }
+<<<<<<< HEAD   (af73dd Automatic translation import)
         return subscriptions;
+=======
+
+        // find any physical SIM which is currently inserted within logical slot
+        // and which is our target subscription
+        if (slotsInfo != null && !physicalSubInfoList.isEmpty()) {
+            final SubscriptionInfo subInfo = searchForSubscriptionId(physicalSubInfoList, subId);
+            if (subInfo == null) {
+                return false;
+            }
+            // verify if subscription is inserted within slot
+            for (UiccSlotInfo slotInfo : slotsInfo) {
+                if ((slotInfo != null) && (!slotInfo.getIsEuicc())
+                        && (slotInfo.getLogicalSlotIdx() == subInfo.getSimSlotIndex())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // When all of the eSIM profiles are opprtunistic and no physical SIM,
+        // first opportunistic subscriptions with same group UUID can be primary.
+        if (nonOpportunisticSubInfoList.isEmpty()) {
+            if (!physicalSubInfoList.isEmpty()) {
+                return false;
+            }
+            if (!activeSlotSubInfoList.isEmpty()) {
+                return (activeSlotSubInfoList.get(0).getSubscriptionId() == subId);
+            }
+            return (inactiveSlotSubInfoList.get(0).getSubscriptionId() == subId);
+        }
+
+        // Allow non-opportunistic + active eSIM subscription as primary
+        int numberOfActiveNonOpportunisticSubs = 0;
+        boolean isTargetNonOpportunistic = false;
+        for (SubscriptionInfo subInfo : nonOpportunisticSubInfoList) {
+            final boolean isTargetSubInfo = (subInfo.getSubscriptionId() == subId);
+            if (subInfo.getSimSlotIndex() != SubscriptionManager.INVALID_SIM_SLOT_INDEX) {
+                if (isTargetSubInfo) {
+                    return true;
+                }
+                numberOfActiveNonOpportunisticSubs++;
+            } else {
+                isTargetNonOpportunistic |= isTargetSubInfo;
+            }
+        }
+        if (numberOfActiveNonOpportunisticSubs > 0) {
+            return false;
+        }
+        return isTargetNonOpportunistic;
+    }
+
+    private static SubscriptionInfo searchForSubscriptionId(List<SubscriptionInfo> subInfoList,
+            int subscriptionId) {
+        for (SubscriptionInfo subInfo : subInfoList) {
+            if (subInfo.getSubscriptionId() == subscriptionId) {
+                return subInfo;
+            }
+        }
+        return null;
+>>>>>>> CHANGE (402bd7 Optimize code and change network restriction preferences)
     }
 
     public static String getDisplayName(SubscriptionInfo info) {
