@@ -83,6 +83,7 @@ public class SubscriptionUtil {
         return new ArrayList<>(emptyIfNull(getSelectableSubscriptionInfoList(context)));
     }
 
+<<<<<<< HEAD   (09f79c Automatic translation import)
     /**
      * Get subscription which is available to be displayed to the user
      * per subscription id.
@@ -99,6 +100,26 @@ public class SubscriptionUtil {
         final SubscriptionInfo subInfo = subscriptionManager.getAccessibleSubscriptionInfo(subId);
         if (subInfo == null) {
             return null;
+=======
+        List<SubscriptionInfo> subscriptions =
+                new ArrayList<>(emptyIfNull(subMgr.getSelectableSubscriptionInfoList()));
+
+        // Look for inactive but present physical SIMs that are missing from the selectable list.
+        final List<UiccSlotInfo> missing = new ArrayList<>();
+        UiccSlotInfo[] slotsInfo =  telMgr.getUiccSlotsInfo();
+        if (slotsInfo != null) {
+            for (UiccSlotInfo slotInfo : slotsInfo) {
+                if (isInactiveInsertedPSim(slotInfo)) {
+                    final int index = slotInfo.getLogicalSlotIdx();
+                    final String cardId = slotInfo.getCardId();
+                    final boolean found = subscriptions.stream().anyMatch(info ->
+                            index == info.getSimSlotIndex() && cardId.equals(info.getCardString()));
+                    if (!found) {
+                        missing.add(slotInfo);
+                    }
+                }
+            }
+>>>>>>> CHANGE (f315d9 Fix typo and optimize network restriction preferences change)
         }
 
         final ParcelUuid groupUuid = subInfo.getGroupUuid();
