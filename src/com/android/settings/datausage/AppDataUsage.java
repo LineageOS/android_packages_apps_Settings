@@ -35,6 +35,7 @@ import android.telephony.SubscriptionManager;
 import android.util.ArraySet;
 import android.util.IconDrawableFactory;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -74,8 +75,8 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private static final String KEY_FOREGROUND_USAGE = "foreground_usage";
     private static final String KEY_BACKGROUND_USAGE = "background_usage";
     private static final String KEY_APP_SETTINGS = "app_settings";
-    private static final String KEY_RESTRICT_BACKGROUND = "restrict_background";
     private static final String KEY_RESTRICT_ALL = "restrict_all";
+    private static final String KEY_RESTRICT_BACKGROUND = "restrict_background";
     private static final String KEY_RESTRICT_DATA = "restrict_data";
     private static final String KEY_RESTRICT_VPN = "restrict_vpn";
     private static final String KEY_RESTRICT_WLAN = "restrict_wlan";
@@ -92,8 +93,8 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private Preference mForegroundUsage;
     private Preference mBackgroundUsage;
     private Preference mAppSettings;
-    private RestrictedSwitchPreference mRestrictBackground;
     private RestrictedSwitchPreference mRestrictAll;
+    private RestrictedSwitchPreference mRestrictBackground;
     private RestrictedSwitchPreference mRestrictData;
     private RestrictedSwitchPreference mRestrictVpn;
     private RestrictedSwitchPreference mRestrictWlan;
@@ -141,7 +142,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         if (mAppItem == null) {
             int uid = (args != null) ? args.getInt(AppInfoBase.ARG_PACKAGE_UID, -1)
                     : getActivity().getIntent().getIntExtra(AppInfoBase.ARG_PACKAGE_UID, -1);
-            if (uid == -1) {
+            if (uid < 0) {
                 // TODO: Log error.
                 getActivity().finish();
             } else {
@@ -150,8 +151,9 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                 mAppItem.addUid(uid);
             }
         } else {
-            for (int i = 0; i < mAppItem.uids.size(); i++) {
-                addUid(mAppItem.uids.keyAt(i));
+            final SparseBooleanArray uids = mAppItem.uids;
+            for (int i = 0; i < uids.size(); i++) {
+                addUid(uids.keyAt(i));
             }
         }
 
@@ -170,13 +172,13 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                 mIcon = uidDetail.icon;
                 mLabel = uidDetail.label;
                 removePreference(KEY_UNRESTRICTED_DATA);
-                removePreference(KEY_RESTRICT_BACKGROUND);
                 removePreference(KEY_RESTRICT_ALL);
+                removePreference(KEY_RESTRICT_BACKGROUND);
                 removePreference(KEY_RESTRICT_DATA);
                 removePreference(KEY_RESTRICT_VPN);
                 removePreference(KEY_RESTRICT_WLAN);
             } else {
-                if (mPackages.size() != 0) {
+                if (mPackages.isEmpty()) {
                     try {
                         final ApplicationInfo info = mPackageManager.getApplicationInfoAsUser(
                             mPackages.valueAt(0), 0, UserHandle.getUserId(mAppItem.key));
@@ -186,10 +188,10 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                     } catch (PackageManager.NameNotFoundException e) {
                     }
                 }
-                mRestrictBackground = findPreference(KEY_RESTRICT_BACKGROUND);
-                mRestrictBackground.setOnPreferenceChangeListener(this);
                 mRestrictAll = findPreference(KEY_RESTRICT_ALL);
                 mRestrictAll.setOnPreferenceChangeListener(this);
+                mRestrictBackground = findPreference(KEY_RESTRICT_BACKGROUND);
+                mRestrictBackground.setOnPreferenceChangeListener(this);
                 mRestrictData = findPreference(KEY_RESTRICT_DATA);
                 mRestrictData.setOnPreferenceChangeListener(this);
                 mRestrictVpn = findPreference(KEY_RESTRICT_VPN);
@@ -235,8 +237,8 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
 
             removePreference(KEY_UNRESTRICTED_DATA);
             removePreference(KEY_APP_SETTINGS);
-            removePreference(KEY_RESTRICT_BACKGROUND);
             removePreference(KEY_RESTRICT_ALL);
+            removePreference(KEY_RESTRICT_BACKGROUND);
             removePreference(KEY_RESTRICT_DATA);
             removePreference(KEY_RESTRICT_VPN);
             removePreference(KEY_RESTRICT_WLAN);
@@ -265,28 +267,50 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mRestrictBackground) {
-            mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !(Boolean) newValue);
+        final boolean restrict = (Boolean) newValue;
+        if (preference == mRestrictAll) {
+            setAppRestrictAll(!restrict);
+            // Disable "Allow network access" will restrict all other network type
+            if (!restrict) {
+                setAppRestrictWlan(!restrict);
+                mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !restrict);
+                setAppRestrictData(!restrict);
+                setAppRestrictVpn(!restrict);
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
-        } else if (preference == mRestrictAll) {
-            setAppRestrictAll(!(Boolean) newValue);
+        } else if (preference == mRestrictBackground) {
+            mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !restrict);
+            if (!restrict) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictData) {
-            setAppRestrictData(!(Boolean) newValue);
+            setAppRestrictData(!restrict);
+            if (!restrict) {
+                mDataSaverBackend.setIsBlacklisted(mAppItem.key, mPackageName, !restrict);
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictVpn) {
-            setAppRestrictVpn(!(Boolean) newValue);
+            setAppRestrictVpn(!restrict);
+            if (!restrict) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictWlan) {
-            setAppRestrictWlan(!(Boolean) newValue);
+            setAppRestrictWlan(!restrict);
+            if (!restrict) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mUnrestrictedData) {
-            mDataSaverBackend.setIsWhitelisted(mAppItem.key, mPackageName, (Boolean) newValue);
+            mDataSaverBackend.setIsWhitelisted(mAppItem.key, mPackageName, restrict);
             return true;
         }
         return false;
@@ -311,6 +335,21 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    private void refreshPrefs() {
+        final boolean isRestrictWifi = getAppRestrictWlan();
+        setAppRestrictWlan(isRestrictWifi);
+        mDataSaverBackend.refreshBlacklist();
+        final boolean isRestrictCellular = getAppRestrictData();
+        setAppRestrictData(isRestrictCellular);
+        final boolean isRestrictVpn = getAppRestrictVpn();
+        setAppRestrictVpn(isRestrictVpn);
+        // Set "Allow network access" to disabled if all other network type are restricted
+        final boolean isRestrictAll = isRestrictWifi && isRestrictCellular && isRestrictVpn ||
+                                    getAppRestrictAll();
+        setAppRestrictAll(isRestrictAll);
+        updatePrefs();
     }
 
     @VisibleForTesting
@@ -384,8 +423,8 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private void addUid(int uid) {
         String[] packages = mPackageManager.getPackagesForUid(uid);
         if (packages != null) {
-            for (int i = 0; i < packages.length; i++) {
-                mPackages.add(packages[i]);
+            for (String packageName : packages) {
+                mPackages.add(packageName);
             }
         }
     }
@@ -437,8 +476,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     }
 
     private boolean getAppRestriction(int policy) {
-        final int uid = mAppItem.key;
-        final int uidPolicy = services.mPolicyManager.getUidPolicy(uid);
+        final int uidPolicy = services.mPolicyManager.getUidPolicy(mAppItem.key);
         return (uidPolicy & policy) != 0;
     }
 
@@ -459,11 +497,10 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     }
 
     private void setAppRestriction(int policy, boolean restrict) {
-        final int uid = mAppItem.key;
         if (restrict) {
-            mPolicyManager.addUidPolicy(uid, policy);
+            mPolicyManager.addUidPolicy(mAppItem.key, policy);
         } else {
-            mPolicyManager.removeUidPolicy(uid, policy);
+            mPolicyManager.removeUidPolicy(mAppItem.key, policy);
         }
     }
 
@@ -471,7 +508,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String pkg = mPackages.size() != 0 ? mPackages.valueAt(0) : null;
+        String pkg = !mPackages.isEmpty() ? mPackages.valueAt(0) : null;
         int uid = 0;
         if (pkg != null) {
             try {
@@ -527,8 +564,9 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                 builder.setRetrieveDetail(true)
                     .setNetworkTemplate(mTemplate);
                 if (mAppItem.category == AppItem.CATEGORY_USER) {
-                    for (int i = 0; i < mAppItem.uids.size(); i++) {
-                        builder.addUid(mAppItem.uids.keyAt(i));
+                    final SparseBooleanArray uids = mAppItem.uids;
+                    for (int i = 0; i < uids.size(); i++) {
+                        builder.addUid(uids.keyAt(i));
                     }
                 } else {
                     builder.addUid(mAppItem.key);
