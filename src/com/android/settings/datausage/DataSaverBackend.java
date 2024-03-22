@@ -27,6 +27,7 @@ import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.utils.ThreadUtils;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 
 public class DataSaverBackend {
@@ -40,7 +41,9 @@ public class DataSaverBackend {
     private final ArrayList<Listener> mListeners = new ArrayList<>();
     private SparseIntArray mUidPolicies = new SparseIntArray();
     private boolean mAllowlistInitialized;
+    private int[] mRestrictAllowList;
     private boolean mDenylistInitialized;
+    private int[] mRestrictBackgroundDenyList;
 
     // TODO: Staticize into only one.
     public DataSaverBackend(Context context) {
@@ -59,7 +62,7 @@ public class DataSaverBackend {
 
     public void remListener(Listener listener) {
         mListeners.remove(listener);
-        if (mListeners.size() == 0) {
+        if (mListeners.isEmpty()) {
             mPolicyManager.unregisterListener(mPolicyListener);
         }
     }
@@ -75,6 +78,7 @@ public class DataSaverBackend {
     }
 
     public void refreshAllowlist() {
+        mAllowlistInitialized = false;
         loadAllowlist();
     }
 
@@ -101,13 +105,20 @@ public class DataSaverBackend {
             return;
         }
 
-        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND)) {
-            mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
+        final int[] allowList
+                = mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND);
+        if (mRestrictAllowList == null ||
+                !Arrays.equals(mRestrictAllowList, allowList)) {
+            mRestrictAllowList = allowList;
+            for (int uid : allowList) {
+                mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
+            }
         }
         mAllowlistInitialized = true;
     }
 
     public void refreshDenylist() {
+        mDenylistInitialized = false;
         loadDenylist();
     }
 
@@ -133,8 +144,20 @@ public class DataSaverBackend {
         if (mDenylistInitialized) {
             return;
         }
-        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND)) {
-            mUidPolicies.put(uid, POLICY_REJECT_METERED_BACKGROUND);
+
+        final int[] backgroundDenyList
+                = mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND);
+        if (mRestrictBackgroundDenyList == null ||
+                !Arrays.equals(mRestrictBackgroundDenyList, backgroundDenyList)) {
+            mRestrictBackgroundDenyList = backgroundDenyList;
+            for (int uid : backgroundDenyList) {
+                final String[] packages = mContext.getPackageManager().getPackagesForUid(uid);
+                if (packages != null) {
+                    for (String packageName : packages) {
+                        setIsDenylisted(uid, packageName, true);
+                    }
+                }
+            }
         }
         mDenylistInitialized = true;
     }
