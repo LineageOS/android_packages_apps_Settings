@@ -37,6 +37,7 @@ import android.os.UserHandle;
 import android.util.ArraySet;
 import android.util.IconDrawableFactory;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
@@ -136,7 +137,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         if (mAppItem == null) {
             int uid = (args != null) ? args.getInt(AppInfoBase.ARG_PACKAGE_UID, -1)
                     : getActivity().getIntent().getIntExtra(AppInfoBase.ARG_PACKAGE_UID, -1);
-            if (uid == -1) {
+            if (uid < 0) {
                 // TODO: Log error.
                 activity.finish();
             } else {
@@ -145,8 +146,9 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                 mAppItem.addUid(uid);
             }
         } else {
-            for (int i = 0; i < mAppItem.uids.size(); i++) {
-                addUid(mAppItem.uids.keyAt(i));
+            final SparseBooleanArray uids = mAppItem.uids;
+            for (int i = 0; i < uids.size(); i++) {
+                addUid(uids.keyAt(i));
             }
         }
 
@@ -171,7 +173,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                 removePreference(KEY_RESTRICT_VPN);
                 removePreference(KEY_RESTRICT_WIFI);
             } else {
-                if (mPackages.size() != 0) {
+                if (!mPackages.isEmpty()) {
                     int userId = UserHandle.getUserId(mAppItem.key);
                     try {
                         final ApplicationInfo info = mPackageManager.getApplicationInfoAsUser(
@@ -249,28 +251,51 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
 
     @Override
     public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
-        if (preference == mRestrictBackground) {
-            mDataSaverBackend.setIsDenylisted(mAppItem.key, mPackageName, !(Boolean) newValue);
+        final boolean restrict = (Boolean) newValue;
+        if (preference == mRestrictAll) {
+            setAppRestrictAll(!restrict);
+            // Disable "Allow network access" will restrict all other network type
+            if (!restrict) {
+                setAppRestrictWifi(!restrict);
+                mDataSaverBackend.setIsDenylisted(mAppItem.key, mPackageName, !restrict);
+                setAppRestrictCellular(!restrict);
+                setAppRestrictVpn(!restrict);
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
-        } else if (preference == mRestrictAll) {
-            setAppRestrictAll(!(Boolean) newValue);
+        } else if (preference == mRestrictBackground) {
+            mDataSaverBackend.setIsDenylisted(mAppItem.key, mPackageName, !restrict);
+            if (!restrict) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictCellular) {
-            setAppRestrictCellular(!(Boolean) newValue);
+            setAppRestrictCellular(!restrict);
+            // Restrict "Background data" if restrict "Mobile data"
+            if (!restrict) {
+                mDataSaverBackend.setIsDenylisted(mAppItem.key, mPackageName, !restrict);
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictVpn) {
-            setAppRestrictVpn(!(Boolean) newValue);
+            setAppRestrictVpn(!restrict);
+            if (!restrict) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mRestrictWifi) {
-            setAppRestrictWifi(!(Boolean) newValue);
+            setAppRestrictWifi(!restrict);
+            if (!restrict) {
+                refreshPrefs();
+            }
             updatePrefs();
             return true;
         } else if (preference == mUnrestrictedData) {
-            mDataSaverBackend.setIsAllowlisted(mAppItem.key, mPackageName, (Boolean) newValue);
+            mDataSaverBackend.setIsAllowlisted(mAppItem.key, mPackageName, restrict);
             return true;
         }
         return false;
@@ -284,6 +309,21 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    private void refreshPrefs() {
+        final boolean isRestrictWifi = getAppRestrictWifi();
+        setAppRestrictWifi(isRestrictWifi);
+        mDataSaverBackend.refreshDenylist();
+        final boolean isRestrictCellular = getAppRestrictCellular();
+        setAppRestrictCellular(isRestrictCellular);
+        final boolean isRestrictVpn = getAppRestrictVpn();
+        setAppRestrictVpn(isRestrictVpn);
+        // Set "Allow network access" to disabled if all other network type are restricted
+        final boolean isRestrictAll = isRestrictWifi && isRestrictCellular && isRestrictVpn ||
+                                    getAppRestrictAll();
+        setAppRestrictAll(isRestrictAll);
+        updatePrefs();
     }
 
     @VisibleForTesting
@@ -442,17 +482,16 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     }
 
     private void setAppRestriction(int policy, boolean restrict) {
-        final int uid = mAppItem.key;
         if (restrict) {
-            services.mPolicyManager.addUidPolicy(uid, policy);
+            services.mPolicyManager.addUidPolicy(mAppItem.key, policy);
         } else {
-            services.mPolicyManager.removeUidPolicy(uid, policy);
+            services.mPolicyManager.removeUidPolicy(mAppItem.key, policy);
         }
     }
 
     @VisibleForTesting
     void addEntityHeader() {
-        String pkg = mPackages.size() != 0 ? mPackages.valueAt(0) : null;
+        String pkg = !mPackages.isEmpty() ? mPackages.valueAt(0) : null;
         int uid = 0;
         if (pkg != null) {
             try {

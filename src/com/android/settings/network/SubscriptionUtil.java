@@ -212,7 +212,7 @@ public class SubscriptionUtil {
 
         // find any physical SIM which is currently inserted within logical slot
         // and which is our target subscription
-        if ((slotsInfo != null) && (physicalSubInfoList.size() > 0)) {
+        if (slotsInfo != null && !physicalSubInfoList.isEmpty()) {
             final SubscriptionInfo subInfo = searchForSubscriptionId(physicalSubInfoList, subId);
             if (subInfo == null) {
                 return false;
@@ -230,11 +230,11 @@ public class SubscriptionUtil {
 
         // When all of the eSIM profiles are opprtunistic and no physical SIM,
         // first opportunistic subscriptions with same group UUID can be primary.
-        if (nonOpportunisticSubInfoList.size() <= 0) {
-            if (physicalSubInfoList.size() > 0) {
+        if (nonOpportunisticSubInfoList.isEmpty()) {
+            if (!physicalSubInfoList.isEmpty()) {
                 return false;
             }
-            if (activeSlotSubInfoList.size() > 0) {
+            if (!activeSlotSubInfoList.isEmpty()) {
                 return (activeSlotSubInfoList.get(0).getSubscriptionId() == subId);
             }
             return (inactiveSlotSubInfoList.get(0).getSubscriptionId() == subId);
