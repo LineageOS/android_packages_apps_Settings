@@ -48,7 +48,7 @@ public class BatteryVoltagePreferenceController extends BasePreferenceController
         final Intent batteryIntent = BatteryUtils.getBatteryIntent(mContext);
         final int voltageMillivolts = batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, -1);
 
-        if (voltageMillivolts != -1) {
+        if (voltageMillivolts > 0) {
             float voltage = voltageMillivolts / 1_000f;
 
             return MeasureFormat.getInstance(Locale.getDefault(), MeasureFormat.FormatWidth.SHORT)

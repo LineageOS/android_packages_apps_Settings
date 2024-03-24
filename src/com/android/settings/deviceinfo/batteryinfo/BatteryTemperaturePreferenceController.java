@@ -49,7 +49,7 @@ public class BatteryTemperaturePreferenceController extends BasePreferenceContro
         final int temperatureTenths =
                 batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, -1);
 
-        if (temperatureTenths != -1) {
+        if (temperatureTenths > 0) {
             float temperature = temperatureTenths / 10f;
 
             return MeasureFormat.getInstance(Locale.getDefault(), MeasureFormat.FormatWidth.SHORT)

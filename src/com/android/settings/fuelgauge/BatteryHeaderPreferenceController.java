@@ -115,7 +115,7 @@ public class BatteryHeaderPreferenceController extends BasePreferenceController
                 formatBatteryPercentageText(batteryLevel));
         mBatteryUsageProgressBarPreference.setPercent(batteryLevel, BATTERY_MAX_LEVEL);
 
-        if (chargeCounterUah != -1) {
+        if (chargeCounterUah > 0) {
             int chargeCounter = chargeCounterUah / 1_000;
             mBatteryUsageProgressBarPreference.setTotalSummary(
                     formatBatteryChargeCounterText(chargeCounter));

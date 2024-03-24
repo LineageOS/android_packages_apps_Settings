@@ -44,7 +44,7 @@ public class BatteryCycleCountPreferenceController extends BasePreferenceControl
         final Intent batteryIntent = BatteryUtils.getBatteryIntent(mContext);
         final int cycleCount = batteryIntent.getIntExtra(BatteryManager.EXTRA_CYCLE_COUNT, -1);
 
-        return cycleCount == -1
+        return cycleCount <= 0
                 ? mContext.getText(R.string.battery_cycle_count_not_available)
                 : Integer.toString(cycleCount);
     }

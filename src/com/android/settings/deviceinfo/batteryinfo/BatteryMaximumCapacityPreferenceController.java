@@ -46,7 +46,7 @@ public class BatteryMaximumCapacityPreferenceController extends BasePreferenceCo
         final int designCapacityUah =
                 batteryIntent.getIntExtra(BatteryManager.EXTRA_DESIGN_CAPACITY, -1);
 
-        if (maxCapacityUah != -1 && designCapacityUah != -1) {
+        if (maxCapacityUah > 0 && designCapacityUah > 0) {
             int maxCapacity = maxCapacityUah / 1_000;
             int designCapacity = designCapacityUah / 1_000;
             int percentage = (maxCapacity * 100) / designCapacity;
