@@ -173,7 +173,8 @@ public class FingerprintSettings extends SubSettings {
             if (manager == null || !manager.isHardwareDetected()) {
                 return null;
             }
-            if (manager.isPowerbuttonFps()) {
+            if (manager.isPowerbuttonFps() && context.getResources().getBoolean(
+                    org.lineageos.platform.internal.R.bool.config_fingerprintWakeAndUnlock)) {
                 controllers.add(
                         new FingerprintUnlockCategoryController(
                                 context,
@@ -655,8 +656,12 @@ public class FingerprintSettings extends SubSettings {
 
         private void addFingerprintUnlockCategory() {
             mFingerprintUnlockCategory = findPreference(KEY_FINGERPRINT_UNLOCK_CATEGORY);
-            setupFingerprintUnlockCategoryPreferences();
-            updateFingerprintUnlockCategoryVisibility();
+            if (mRequireScreenOnToAuthPreferenceController != null) {
+                setupFingerprintUnlockCategoryPreferences();
+            }
+            if (mFingerprintUnlockCategoryPreferenceController != null) {
+                updateFingerprintUnlockCategoryVisibility();
+            }
         }
 
         private void updateFingerprintUnlockCategoryVisibility() {
