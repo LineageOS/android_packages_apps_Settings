@@ -173,7 +173,7 @@ public class FingerprintSettings extends SubSettings {
             if (manager == null || !manager.isHardwareDetected()) {
                 return null;
             }
-            if (manager.isPowerbuttonFps()) {
+            if (true) {
                 controllers.add(
                         new FingerprintUnlockCategoryController(
                                 context,
