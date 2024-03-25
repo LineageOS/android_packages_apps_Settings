@@ -173,7 +173,16 @@ public class FingerprintSettings extends SubSettings {
             if (manager == null || !manager.isHardwareDetected()) {
                 return null;
             }
-            if (manager.isPowerbuttonFps() && context.getResources().getBoolean(
+            List<FingerprintSensorPropertiesInternal> sensorProperties =
+                    manager.getSensorPropertiesInternal();
+            boolean isUdfps = false;
+            for (FingerprintSensorPropertiesInternal prop : sensorProperties) {
+                if (prop.isAnyUdfpsType()) {
+                    isUdfps = true;
+                    break;
+                }
+            }
+            if (!isUdfps && context.getResources().getBoolean(
                     org.lineageos.platform.internal.R.bool.config_fingerprintWakeAndUnlock)) {
                 controllers.add(
                         new FingerprintUnlockCategoryController(
