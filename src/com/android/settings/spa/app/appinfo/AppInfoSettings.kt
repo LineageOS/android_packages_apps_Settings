@@ -172,6 +172,5 @@ private fun AppInfoSettings(packageInfoPresenter: PackageInfoPresenter) {
             AppInstallerInfoPreference(app)
         }
         appInfoProvider.FooterAppVersion()
-        appInfoProvider.FooterAppPackageName()
     }
 }
