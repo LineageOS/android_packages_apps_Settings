@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018-2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,14 @@ public class AdbRootPreferenceController extends DeveloperOptionsPreferenceContr
         final boolean rootEnabled = (Boolean) newValue;
         mADBRootService.setEnabled(rootEnabled);
         return true;
+    }
+
+    @Override
+    protected void onDeveloperOptionsSwitchDisabled() {
+        super.onDeveloperOptionsSwitchDisabled();
+
+        mADBRootService.setEnabled(false);
+        ((SwitchPreferenceCompat) mPreference).setChecked(false);
     }
 
     @Override
