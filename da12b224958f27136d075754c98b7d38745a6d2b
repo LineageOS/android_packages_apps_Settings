@@ -51,6 +51,24 @@
       "message": "Could temperature be negative?",
       "revId": "da12b224958f27136d075754c98b7d38745a6d2b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5b98c9_ff1689c5",
+        "filename": "src/com/android/settings/deviceinfo/batteryinfo/BatteryTemperaturePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2024-04-01T15:41:44Z",
+      "side": 1,
+      "message": "I guess we can ignore negative temperature for now:\nhttps://android.googlesource.com/platform/frameworks/base/+/29ddfe55fbea04685f1a6d6aff0f74269703c775",
+      "parentUuid": "0b82c932_7f18abca",
+      "revId": "da12b224958f27136d075754c98b7d38745a6d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
