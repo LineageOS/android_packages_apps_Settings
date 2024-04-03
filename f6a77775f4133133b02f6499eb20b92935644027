@@ -22,6 +22,30 @@
       },
       "revId": "f6a77775f4133133b02f6499eb20b92935644027",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b21db8c_05914414",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 29350
+      },
+      "writtenOn": "2024-04-03T18:31:19Z",
+      "side": 1,
+      "message": "1. Code optimization:\n- Replace List.isEmpty() to check for emptiness instead of using List.size(): This makes the code more readable, according to the PMD documentation: \"The isEmpty() method on java.util.Collection is provided to determine if a collection has any elements. Comparing the value of size() to 0 does not convey intent as well as the isEmpty() method.\" [https://docs.pmd-code.org/latest/pmd_rules_java_bestpractices.html#usecollectionisempty]\n- As for performance, personally, after building and using the ROM with these patches applied, I did not feel a clear change in performance. This change is like a micro-optimization, in most cases, it might get better performance but not significantly. This mainly helps increase readability and maintainability rather than helping deliver better performance.\n2. \"Change network restriction preferences\" is actually \"Optimize change network restriction preferences\":\n- When turning off \"Allow network access\" (the toggle button is turned off), it will also show that the toggle buttons of other options (Wi-Fi data, Mobile data,...) are turned off, but in reality, these options are not included in the restriction list at the same time. My change is that when the \"Allow network access\" option is turned off, other/secondary options will definitely be turned off as well and it will also be put on the restricted list (instead of just visible).\n- The same thing happens when turning off \"Mobile data\", the \"Background data\" option will also be disabled, the toggle button is turned off but it is not included in the background restrictions list.\n- Or when turning off all other/secondary options (Wi-Fi data, Mobile data and VPN data), this is equivalent to the application not being allowed to access the network, but the \"Allow network access\" option is still displayed as on (toggle button is on). My change will check the other/secondary options, if they are all disabled, the \"Allow network access\" option and its toggle will also automatically turn off.\n- Also, putting `(Boolean) newValue` in a local variable, then using that local variable instead of calling `(Boolean) newValue` everywhere, personally when testing (on LG V20 devices) feels a bit smoother, especially when toggling the \"Allow network access\" option is a bit different than when using `(Boolean) newValue` everywhere. However, this difference is not very significant and will no longer be apparent when toggling this option repeatedly (it appears that DVM then optimized the `(Boolean) newValue` calls, but the performance is now a bit slower than when using local variables).\n\u003d\u003e Summary: My changes are mainly optimized for readability and maintainability. It may have a performance optimization but it\u0027s more like a micro performance optimization so it won\u0027t be too obvious.",
+      "parentUuid": "0b23db27_36a5b0aa",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "f6a77775f4133133b02f6499eb20b92935644027",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
