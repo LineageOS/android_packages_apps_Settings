@@ -108,14 +108,6 @@
             android:key="pointer_speed"
             android:title="@string/pointer_speed"
             android:dialogTitle="@string/pointer_speed" />
-
-        <lineageos.preference.LineageSecureSettingSwitchPreference
-            android:key="feature_touch_hovering"
-            android:title="@string/touchscreen_hovering_title"
-            android:summary="@string/touchscreen_hovering_summary"
-            android:defaultValue="false"
-            settings:requiresFeature="lineagehardware:FEATURE_TOUCH_HOVERING" />
-
     </PreferenceCategory>
 
     <SwitchPreferenceCompat
