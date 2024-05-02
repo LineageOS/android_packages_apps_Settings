@@ -19,6 +19,7 @@ package com.android.settings.system
 import android.content.Context
 import android.content.Intent
 import android.telephony.CarrierConfigManager
+import android.telephony.TelephonyManager
 import android.util.Log
 import com.android.settings.network.telephony.safeGetConfig
 
@@ -29,6 +30,8 @@ class ClientInitiatedActionRepository(private val context: Context) {
      * Trigger client initiated action (send intent) on system update
      */
     fun onSystemUpdate() {
+        val telephonyManager = context.getSystemService(TelephonyManager::class.java) ?: return
+        if (telephonyManager.phoneType == TelephonyManager.PHONE_TYPE_NONE) return
         val bundle =
             configManager.safeGetConfig(
                 keys = listOf(
