@@ -30,6 +30,7 @@ import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -49,6 +50,8 @@ public class MinRefreshRatePreferenceController extends BasePreferenceController
         if (mContext.getResources().getBoolean(R.bool.config_show_min_refresh_rate_switch)) {
             Display.Mode mode = mContext.getDisplay().getMode();
             Display.Mode[] modes = mContext.getDisplay().getSupportedModes();
+            Arrays.sort(modes, (mode1, mode2) ->
+                Float.compare(mode2.getRefreshRate(), mode1.getRefreshRate()));
             for (Display.Mode m : modes) {
                 if (m.getPhysicalWidth() == mode.getPhysicalWidth() &&
                         m.getPhysicalHeight() == mode.getPhysicalHeight()) {
