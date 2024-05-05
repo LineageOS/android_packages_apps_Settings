@@ -36,6 +36,7 @@ import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.core.lifecycle.events.OnStop;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.Executor;
 import java.util.List;
 import java.util.Locale;
@@ -79,6 +80,8 @@ public class PeakRefreshRateListPreferenceController extends BasePreferenceContr
         } else {
             Display.Mode mode = display.getMode();
             Display.Mode[] modes = display.getSupportedModes();
+            Arrays.sort(modes, (mode1, mode2) ->
+                Float.compare(mode2.getRefreshRate(), mode1.getRefreshRate()));
             for (Display.Mode m : modes) {
                 if (m.getPhysicalWidth() == mode.getPhysicalWidth() &&
                         m.getPhysicalHeight() == mode.getPhysicalHeight()) {
