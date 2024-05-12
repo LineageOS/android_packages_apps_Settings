@@ -90,6 +90,11 @@
                 "com.android.settings.connecteddevice.fastpair.FastPairDeviceDashboardFragment"/>
     </PreferenceCategory>
 
+    <!-- Lineage Accessories -->
+    <lineageos.preference.LineagePartsPreference
+        android:key="accessories"
+        settings:requiresService="lineageaccessories" />
+
     <Preference
         android:key="connection_preferences"
         android:title="@string/connected_device_connections_title"
