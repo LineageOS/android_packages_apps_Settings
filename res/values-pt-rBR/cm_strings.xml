@@ -24,6 +24,7 @@
     <string name="berry_black_theme_title">Preto puro</string>
     <string name="berry_black_theme_summary">Preto puro como cor de fundo para tema escuro</string>
     <string name="lineagelicense_title">Licença LineageOS</string>
+    <string name="device_info_protected_single_press">Toque para mostrar informações</string>
     <plurals name="show_dev_countdown_cm">
         <item quantity="one">Você agora está a <xliff:g id="step_count">%1$d </xliff:g> passo de ativar as configurações de desenvolvimento.</item>
         <item quantity="other">Você agora está a <xliff:g id="step_count">%1$d </xliff:g> passos de ativar as configurações de desenvolvimento.</item>
@@ -31,8 +32,10 @@
     <string name="show_dev_on_cm">Você ativou as configurações de desenvolvedor!</string>
     <string name="show_dev_already_cm">Não é preciso, você já ativou as configurações de desenvolvedor.</string>
     <string name="peak_refresh_rate_summary_custom">Aumenta automaticamente a taxa de atualização de 60 para %1$d Hz para alguns conteúdos. Maior uso da bateria</string>
-    <string name="status_bar_double_tap_to_sleep_title">Toque duplo para suspender</string>
+    <string name="status_bar_double_tap_to_sleep_title">Toque duplo para desligar a tela</string>
     <string name="status_bar_double_tap_to_sleep_summary">Toque duas vezes na barra de status ou na tela de bloqueio para desligar a tela</string>
+    <string name="high_touch_polling_rate_title">Melhor resposta ao toque</string>
+    <string name="high_touch_polling_rate_summary">Aumentar a velocidade de resposta ao tocar na tela</string>
     <string name="heads_up_notifications_enabled_title">Notificações pop-up</string>
     <string name="heads_up_notifications_enabled_summary">Mostrar notificações prioritárias numa pequena janela flutuante</string>
     <string name="high_touch_sensitivity_title">Toque de alta sensibilidade</string>
@@ -46,6 +49,7 @@
     <string name="lock_settings_picker_pattern_size_message">Escolha um tamanho para o padrão</string>
     <string name="lockpattern_settings_enable_error_path_title">Exibir erro de padrão</string>
     <string name="lockpattern_settings_enable_dots_title">Exibir pontos no padrão</string>
+    <string name="max_refresh_rate_title">Taxa de atualização máxima</string>
     <string name="min_refresh_rate_title">Taxa de atualização mínima</string>
     <string name="fingerprint_enroll_find_sensor_message_front" product="tablet">Localize o sensor de impressão digital na parte frontal do seu tablet.</string>
     <string name="fingerprint_enroll_find_sensor_message_front" product="device">Localize o sensor de impressão digital na parte frontal do seu dispositivo.</string>
@@ -56,6 +60,7 @@
     <string name="fingerprint_enroll_find_sensor_message_side" product="tablet">Localize o sensor de impressão digital na lateral do seu tablet.</string>
     <string name="fingerprint_enroll_find_sensor_message_side" product="device">Localize o sensor de impressão digital na lateral do seu dispositivo.</string>
     <string name="fingerprint_enroll_find_sensor_message_side" product="default">Localize o sensor de impressão digital na parte lateral do seu telefone.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="tablet">Toque no sensor na parte frontal do seu tablet.</string>
     <string name="fingerprint_enroll_touch_dialog_message_front" product="device">Toque no sensor na parte frontal do seu dispositivo.</string>
     <string name="fingerprint_enroll_touch_dialog_message_front" product="default">Toque no sensor na parte frontal do seu telefone.</string>
     <string name="fingerprint_enroll_touch_dialog_message_rear" product="tablet">Toque no sensor na parte traseira do seu tablet.</string>
@@ -64,6 +69,8 @@
     <string name="fingerprint_enroll_touch_dialog_message_side" product="tablet">Toque no sensor na lateral do seu tablet.</string>
     <string name="fingerprint_enroll_touch_dialog_message_side" product="device">Toque no sensor na lateral do seu dispositivo.</string>
     <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Toque no sensor na lateral do seu telefone.</string>
+    <string name="show_navbar_hint_title">Dica de navegação</string>
+    <string name="show_navbar_hint_summary">Mostrar barra de dicas de navegação na parte inferior da tela</string>
     <string name="app_notification_sound_timeout_title">Tempo mínimo entre sons de notificação</string>
     <string name="app_notification_sound_timeout_summary_template">Permitir sons ou vibrações apenas uma vez a cada <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Sem restrição</string>
@@ -73,6 +80,8 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 minutos</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
+    <string name="auto_brightness_one_shot_title">Brilho automático de captura única</string>
+    <string name="auto_brightness_one_shot_summary">O ajuste de brilho ocorrerá somente no momento em que a tela for ligada</string>
     <string name="data_usage_app_restrict_all">Permitir acesso à rede</string>
     <string name="data_usage_app_restrict_all_summary">Permitir o uso da rede</string>
     <string name="data_usage_app_restrict_mobile">Dados móveis</string>
@@ -89,7 +98,14 @@
     <string name="touchscreen_gesture_settings_summary">Faça vários gestos na tela para ações rápidas</string>
     <string name="touchscreen_hovering_title">Flutuar o dedo na tela</string>
     <string name="touchscreen_hovering_summary">Permite que você flutue o dedo na tela como um mouse em navegadores web, desktops remotos, etc</string>
-    <string name="wake_when_plugged_or_unplugged_title">Acordar ao plugar</string>
+    <string name="wake_when_plugged_or_unplugged_title">Acordar ao conectar</string>
     <string name="wake_when_plugged_or_unplugged_summary">Ativar a tela ao ligar ou desligar do carregador</string>
     <string name="fast_charging_title">Carregamento rápido</string>
+    <string name="fast_charging_summary">Desative para reduzir o calor produzido pelo dispositivo durante o carregamento ou para estender a vida útil da bateria</string>
+    <string name="ambient_display_screen_off_udfps_title" product="default">Pressione e segure o sensor de impressão digital para desbloquear o telefone</string>
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">Pressione e segure o sensor de impressão digital para desbloquear o tablet</string>
+    <string name="ambient_display_screen_off_udfps_title" product="device">Pressione e segure o sensor de impressão digital para desbloquear o dispositivo</string>
+    <string name="ambient_display_screen_off_udfps_summary">Para ligar sua tela e desbloquear, pressione e segure o sensor de impressão digital sob a tela.</string>
+    <string name="storage_warning_internal">Aviso: Esta opção pode não funcionar corretamente ou levar à perda de dados, portanto, não é recomendada!</string>
+    <string name="assisted_gps_summary">Baixar dados de assistência para satélite através da internet, o que pode melhorar consideravelmente o desempenho da inicialização do GPS. Para chamadas de emergência, o GPS assistido é sempre permitido.</string>
 </resources>
