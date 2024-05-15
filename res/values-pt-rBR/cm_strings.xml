@@ -24,10 +24,16 @@
     <string name="berry_black_theme_title">Preto puro</string>
     <string name="berry_black_theme_summary">Preto puro como cor de fundo para tema escuro</string>
     <string name="lineagelicense_title">Licença LineageOS</string>
+    <string name="show_dev_countdown_cm">{count, plural,
+      =1      {Agora você está a # passo de ativar as configurações de desenvolvimento.}
+      other   {Agora você está a # passos de ativar as configurações de desenvolvimento.}
+    }</string>
     <string name="show_dev_on_cm">Você ativou as configurações de desenvolvedor!</string>
     <string name="show_dev_already_cm">Não é preciso, você já ativou as configurações de desenvolvedor.</string>
-    <string name="status_bar_double_tap_to_sleep_title">Toque duplo para suspender</string>
+    <string name="status_bar_double_tap_to_sleep_title">Toque duplo para desligar a tela</string>
     <string name="status_bar_double_tap_to_sleep_summary">Toque duas vezes na barra de status ou na tela de bloqueio para desligar a tela</string>
+    <string name="high_touch_polling_rate_title">Melhor resposta ao toque</string>
+    <string name="high_touch_polling_rate_summary">Aumentar a velocidade de resposta ao tocar na tela</string>
     <string name="heads_up_notifications_enabled_title">Notificações pop-up</string>
     <string name="heads_up_notifications_enabled_summary">Mostrar notificações prioritárias numa pequena janela flutuante</string>
     <string name="high_touch_sensitivity_title">Toque de alta sensibilidade</string>
@@ -37,6 +43,7 @@
     <string name="lock_settings_picker_pattern_size_message">Escolha um tamanho para o padrão</string>
     <string name="lockpattern_settings_enable_error_path_title">Exibir erro de padrão</string>
     <string name="lockpattern_settings_enable_dots_title">Exibir pontos no padrão</string>
+    <string name="max_refresh_rate_title">Taxa de atualização máxima</string>
     <string name="min_refresh_rate_title">Taxa de atualização mínima</string>
     <string name="fingerprint_enroll_find_sensor_message_front" product="tablet">Localize o sensor de impressão digital na parte frontal do seu tablet.</string>
     <string name="fingerprint_enroll_find_sensor_message_front" product="device">Localize o sensor de impressão digital na parte frontal do seu dispositivo.</string>
@@ -47,6 +54,7 @@
     <string name="fingerprint_enroll_find_sensor_message_side" product="tablet">Localize o sensor de impressão digital na lateral do seu tablet.</string>
     <string name="fingerprint_enroll_find_sensor_message_side" product="device">Localize o sensor de impressão digital na lateral do seu dispositivo.</string>
     <string name="fingerprint_enroll_find_sensor_message_side" product="default">Localize o sensor de impressão digital na parte lateral do seu telefone.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="tablet">Toque no sensor na parte frontal do seu tablet.</string>
     <string name="fingerprint_enroll_touch_dialog_message_front" product="device">Toque no sensor na parte frontal do seu dispositivo.</string>
     <string name="fingerprint_enroll_touch_dialog_message_front" product="default">Toque no sensor na parte frontal do seu telefone.</string>
     <string name="fingerprint_enroll_touch_dialog_message_rear" product="tablet">Toque no sensor na parte traseira do seu tablet.</string>
@@ -55,6 +63,9 @@
     <string name="fingerprint_enroll_touch_dialog_message_side" product="tablet">Toque no sensor na lateral do seu tablet.</string>
     <string name="fingerprint_enroll_touch_dialog_message_side" product="device">Toque no sensor na lateral do seu dispositivo.</string>
     <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Toque no sensor na lateral do seu telefone.</string>
+    <string name="security_settings_require_screen_on_to_auth_with_proximity_description">Toque no sensor para desbloquear, mesmo quando a tela estiver desligada. O sensor de proximidade impede o desbloqueio acidental.</string>
+    <string name="show_navbar_hint_title">Dica de navegação</string>
+    <string name="show_navbar_hint_summary">Mostrar barra de dicas de navegação na parte inferior da tela</string>
     <string name="app_notification_sound_timeout_title">Tempo mínimo entre sons de notificação</string>
     <string name="app_notification_sound_timeout_summary_template">Permitir sons ou vibrações apenas uma vez a cada <xliff:g id="duration">%1$s</xliff:g></string>
     <string name="app_notification_sound_timeout_value_none">Sem restrição</string>
@@ -64,6 +75,8 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
     <string name="app_notification_sound_timeout_value_15_minutes">10 minutos</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
+    <string name="auto_brightness_one_shot_title">Brilho automático de captura única</string>
+    <string name="auto_brightness_one_shot_summary">O ajuste de brilho ocorrerá somente no momento em que a tela for ligada</string>
     <string name="data_usage_app_restrict_all">Permitir acesso à rede</string>
     <string name="data_usage_app_restrict_all_summary">Permitir o uso da rede</string>
     <string name="data_usage_app_restrict_mobile">Dados móveis</string>
@@ -80,7 +93,31 @@
     <string name="touchscreen_gesture_settings_summary">Faça vários gestos na tela para ações rápidas</string>
     <string name="touchscreen_hovering_title">Flutuar o dedo na tela</string>
     <string name="touchscreen_hovering_summary">Permite que você flutue o dedo na tela como um mouse em navegadores web, desktops remotos, etc</string>
-    <string name="wake_when_plugged_or_unplugged_title">Acordar ao plugar</string>
+    <string name="wake_when_plugged_or_unplugged_title">Acordar ao conectar</string>
     <string name="wake_when_plugged_or_unplugged_summary">Ativar a tela ao ligar ou desligar do carregador</string>
     <string name="fast_charging_title">Carregamento rápido</string>
+    <string name="fast_charging_summary">Desative para reduzir o calor produzido pelo dispositivo durante o carregamento ou para estender a vida útil da bateria</string>
+    <string name="ambient_display_screen_off_udfps_title" product="default">Pressione e segure o sensor de impressão digital para desbloquear o telefone</string>
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">Pressione e segure o sensor de impressão digital para desbloquear o tablet</string>
+    <string name="ambient_display_screen_off_udfps_title" product="device">Pressione e segure o sensor de impressão digital para desbloquear o dispositivo</string>
+    <string name="ambient_display_screen_off_udfps_summary">Para ligar sua tela e desbloquear, pressione e segure o sensor de impressão digital sob a tela.</string>
+    <string name="storage_warning_internal">Aviso: Esta opção pode não funcionar corretamente ou levar à perda de dados, portanto, não é recomendada!</string>
+    <string name="assisted_gps">Utilizar GPS assistido</string>
+    <string name="assisted_gps_summary">Baixar dados de assistência para satélite através da internet, o que pode melhorar consideravelmente o desempenho da inicialização do GPS. Para chamadas de emergência, o GPS assistido é sempre permitido.</string>
+    <string name="battery_technology">Tecnologia</string>
+    <string name="battery_health">Saúde</string>
+    <string name="battery_health_good">Boa</string>
+    <string name="battery_health_overheat">Superaquecida</string>
+    <string name="battery_health_dead">Esgotada</string>
+    <string name="battery_health_over_voltage">Sobretensão</string>
+    <string name="battery_health_unspecified_failure">Falha não especificada</string>
+    <string name="battery_health_cold">Fria</string>
+    <string name="battery_health_unknown">Desconhecida</string>
+    <string name="battery_temperature">Temperatura</string>
+    <string name="battery_voltage">Tensão</string>
+    <string name="battery_charge_counter_summary">%1$d mAh</string>
+    <string name="battery_design_capacity">Capacidade projetada</string>
+    <string name="battery_design_capacity_summary">%1$d mAh</string>
+    <string name="battery_maximum_capacity">Capacidade máxima</string>
+    <string name="battery_maximum_capacity_summary">%1$d mAh (%2$d%%)</string>
 </resources>
