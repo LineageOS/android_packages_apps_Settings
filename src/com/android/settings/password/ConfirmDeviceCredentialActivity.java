@@ -311,6 +311,7 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
             mForceVerifyPath = userProperties.isCredentialShareableWithParent();
             if (android.multiuser.Flags.enableBiometricsToUnlockPrivateSpace()
                     && isBiometricAllowed(effectiveUserId, mUserId)) {
+                promptInfo.setUseParentProfileForDeviceCredential(true);
                 showBiometricPrompt(promptInfo, effectiveUserId);
                 launchedBiometric = true;
             } else {
@@ -417,7 +418,7 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
             // the profile user using verifyTiedProfileChallenge. Biometrics can still be used if
             // the user is stopped with delayed locking (i.e., with storage unlocked), so the user
             // state (whether the user is in the RUNNING_UNLOCKED state) should not be relied upon.
-            return !StorageManager.isUserKeyUnlocked(userId);
+            return !StorageManager.isCeStorageUnlocked(userId);
         }
         return !mUserManager.isUserUnlocked(userId);
     }

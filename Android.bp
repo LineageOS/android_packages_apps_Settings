@@ -1,4 +1,5 @@
 package {
+    default_team: "trendy_team_android_settings_app",
     default_applicable_licenses: ["packages_apps_Settings_license"],
 }
 
@@ -23,8 +24,8 @@ java_library {
 genrule {
     name: "statslog-settings-java-gen",
     tools: ["stats-log-api-gen"],
-    cmd: "$(location stats-log-api-gen) --java $(out) --module settings"
-        + " --javaPackage com.android.settings.core.instrumentation --javaClass SettingsStatsLog",
+    cmd: "$(location stats-log-api-gen) --java $(out) --module settings" +
+        " --javaPackage com.android.settings.core.instrumentation --javaClass SettingsStatsLog",
     out: ["com/android/settings/core/instrumentation/SettingsStatsLog.java"],
 }
 
@@ -45,15 +46,18 @@ java_library {
 
 android_library {
     name: "Settings-core",
-    platform_apis: true,
     defaults: [
         "SettingsLib-search-defaults",
+        "SettingsLintDefaults",
         "SpaPrivilegedLib-defaults",
     ],
 
-    srcs: ["src/**/*.java", "src/**/*.kt"],
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt",
+    ],
     exclude_srcs: [
-        "src/com/android/settings/biometrics/fingerprint2/shared/**/*.kt",
+        "src/com/android/settings/biometrics/fingerprint2/lib/**/*.kt",
     ],
     use_resource_processor: true,
     resource_dirs: [
@@ -87,6 +91,7 @@ android_library {
         "MediaDrmSettingsFlagsLib",
         "Settings-change-ids",
         "SettingsLib",
+        "SettingsLibDataStore",
         "SettingsLibActivityEmbedding",
         "aconfig_settings_flags_lib",
         "accessibility_settings_flags_lib",
@@ -104,6 +109,9 @@ android_library {
         "settings-logtags",
         "settings-telephony-protos-lite",
         "statslog-settings",
+        "androidx.test.rules",
+        "telephony_flags_core_java_lib",
+        "setupdesign-lottie-loading-layout",
 
         // Lineage dependencies
         "org.lineageos.platform.internal",

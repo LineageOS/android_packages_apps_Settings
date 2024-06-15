@@ -332,8 +332,9 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
             boolean restrictAll, boolean restrictCellular, boolean restrictVpn,
             boolean restrictWifi, boolean hasInternetPermission) {
         setBackPreferenceListAnimatorIfLoaded();
-        final EnforcedAdmin admin = RestrictedLockUtilsInternal.checkIfMeteredDataRestricted(
-                mContext, mPackageName, UserHandle.getUserId(mAppItem.key));
+        final EnforcedAdmin admin = RestrictedLockUtilsInternal
+                .checkIfMeteredDataUsageUserControlDisabled(mContext, mPackageName,
+                        UserHandle.getUserId(mAppItem.key));
         if (mRestrictAll != null) {
             mRestrictAll.setEnabled(hasInternetPermission);
             mRestrictAll.setChecked(!restrictAll);

@@ -467,19 +467,25 @@ public class ChooseLockPattern extends SettingsActivity {
 
         private void updateActivityTitle() {
             final String msg;
-            if (mForFingerprint) {
+            if (mForFingerprint && !shouldShowGenericTitle()) {
                 msg = getString(R.string.lockpassword_choose_your_pattern_header_for_fingerprint);
-            } else if (mForFace) {
+            } else if (mForFace && !shouldShowGenericTitle()) {
                 msg = getString(R.string.lockpassword_choose_your_pattern_header_for_face);
             } else if (mIsManagedProfile) {
                 msg = getContext().getSystemService(DevicePolicyManager.class).getResources()
                         .getString(SET_WORK_PROFILE_PATTERN_HEADER,
                                 () -> getString(
                                         R.string.lockpassword_choose_your_profile_pattern_header));
+            } else if (android.os.Flags.allowPrivateProfile() && isPrivateProfile()) {
+                msg = getString(R.string.private_space_choose_your_pattern_header);
             } else {
                 msg = getString(R.string.lockpassword_choose_your_pattern_header);
             }
             getActivity().setTitle(msg);
+        }
+
+        protected boolean shouldShowGenericTitle() {
+            return false;
         }
 
         @SuppressLint("ClickableViewAccessibility")
@@ -884,7 +890,19 @@ public class ChooseLockPattern extends SettingsActivity {
                     startActivity(intent);
                 }
             }
+
+            if (mSudContent != null) {
+                mSudContent.announceForAccessibility(
+                        getString(R.string.accessibility_setup_password_complete));
+            }
+
             getActivity().finish();
+        }
+
+        private boolean isPrivateProfile() {
+            UserManager userManager = getContext().createContextAsUser(UserHandle.of(mUserId),
+                    /*flags=*/0).getSystemService(UserManager.class);
+            return userManager.isPrivateProfile();
         }
     }
 }

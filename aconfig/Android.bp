@@ -1,10 +1,12 @@
 package {
+    default_team: "trendy_team_android_settings_app",
     default_applicable_licenses: ["packages_apps_Settings_license"],
 }
 
 aconfig_declarations {
     name: "aconfig_settings_flags",
     package: "com.android.settings.flags",
+    container: "system",
     srcs: [
         "*.aconfig",
     ],
@@ -18,6 +20,7 @@ java_aconfig_library {
 aconfig_declarations {
     name: "factory_reset_flags",
     package: "com.android.settings.factory_reset",
+    container: "system",
     srcs: ["factory_reset/*.aconfig"],
 }
 
@@ -29,6 +32,7 @@ java_aconfig_library {
 aconfig_declarations {
     name: "media_drm_flags",
     package: "com.android.settings.media_drm",
+    container: "system",
     srcs: ["media_drm/*.aconfig"],
 }
 
@@ -40,6 +44,7 @@ java_aconfig_library {
 aconfig_declarations {
     name: "accessibility_flags",
     package: "com.android.settings.accessibility",
+    container: "system",
     srcs: ["accessibility/*.aconfig"],
 }
 
@@ -51,8 +56,9 @@ java_aconfig_library {
 aconfig_declarations {
     name: "development_settings_flags",
     package: "com.android.settings.development",
+    container: "system",
     srcs: [
-        "development/**/*.aconfig"
+        "development/**/*.aconfig",
     ],
 }
 

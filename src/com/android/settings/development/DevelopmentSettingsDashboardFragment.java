@@ -234,7 +234,14 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
             return;
         }
         Context context = requireContext();
-        if (!DevelopmentSettingsEnabler.isDevelopmentSettingsEnabled(context)) {
+        UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
+
+        if (!um.isAdminUser()) {
+            Toast.makeText(context, R.string.dev_settings_available_to_admin_only_warning,
+                            Toast.LENGTH_SHORT)
+                    .show();
+            finish();
+        } else if (!DevelopmentSettingsEnabler.isDevelopmentSettingsEnabled(context)) {
             Toast.makeText(context, R.string.dev_settings_disabled_warning, Toast.LENGTH_SHORT)
                     .show();
             finish();
@@ -448,6 +455,11 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
                 getDevelopmentOptionsController(
                         BluetoothLeAudioPreferenceController.class);
         leAudioFeatureController.onRebootDialogConfirmed();
+
+        final BluetoothLeAudioModePreferenceController leAudioModeController =
+                getDevelopmentOptionsController(
+                        BluetoothLeAudioModePreferenceController.class);
+        leAudioModeController.onRebootDialogConfirmed();
     }
 
     @Override
@@ -465,6 +477,11 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
                 getDevelopmentOptionsController(
                         BluetoothLeAudioPreferenceController.class);
         leAudioFeatureController.onRebootDialogCanceled();
+
+        final BluetoothLeAudioModePreferenceController leAudioModeController =
+                getDevelopmentOptionsController(
+                        BluetoothLeAudioModePreferenceController.class);
+        leAudioModeController.onRebootDialogCanceled();
     }
 
     @Override
@@ -626,6 +643,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new BluetoothSnoopLogFilterProfilePbapPreferenceController(context));
         controllers.add(new BluetoothSnoopLogFilterProfileMapPreferenceController(context));
         controllers.add(new OemUnlockPreferenceController(context, activity, fragment));
+        controllers.add(new Enable16kPagesPreferenceController(context, fragment));
         controllers.add(new PictureColorModePreferenceController(context, lifecycle));
         controllers.add(new WebViewAppPreferenceController(context));
         controllers.add(new CoolColorTemperaturePreferenceController(context));
@@ -666,12 +684,12 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new BluetoothAvrcpVersionPreferenceController(context));
         controllers.add(new BluetoothMapVersionPreferenceController(context));
         controllers.add(new BluetoothLeAudioPreferenceController(context, fragment));
+        controllers.add(new BluetoothLeAudioModePreferenceController(context, fragment));
         controllers.add(new BluetoothLeAudioDeviceDetailsPreferenceController(context));
         controllers.add(new BluetoothLeAudioAllowListPreferenceController(context, fragment));
         controllers.add(new BluetoothA2dpHwOffloadPreferenceController(context, fragment));
         controllers.add(new BluetoothLeAudioHwOffloadPreferenceController(context, fragment));
         controllers.add(new BluetoothMaxConnectedAudioDevicesPreferenceController(context));
-        controllers.add(new NfcStackDebugLogPreferenceController(context));
         controllers.add(new NfcSnoopLogPreferenceController(context, fragment));
         controllers.add(new NfcVerboseVendorLogPreferenceController(context, fragment));
         controllers.add(new ShowTapsPreferenceController(context));
@@ -692,6 +710,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new HardwareLayersUpdatesPreferenceController(context));
         controllers.add(new DebugGpuOverdrawPreferenceController(context));
         controllers.add(new DebugNonRectClipOperationsPreferenceController(context));
+        controllers.add(new GameDefaultFrameRatePreferenceController(context));
         controllers.add(new ForceDarkPreferenceController(context));
         controllers.add(new EnableBlursPreferenceController(context));
         controllers.add(new ForceMSAAPreferenceController(context));
@@ -747,6 +766,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
                 context, context.getSystemService(UiModeManager.class)));
         controllers.add(new ForceEnableNotesRolePreferenceController(context));
         controllers.add(new GrammaticalGenderPreferenceController(context));
+        controllers.add(new SensitiveContentProtectionPreferenceController(context));
 
         return controllers;
     }

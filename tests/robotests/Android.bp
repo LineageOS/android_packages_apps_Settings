@@ -1,4 +1,5 @@
 package {
+    default_team: "trendy_team_android_settings_app",
     // See: http://go/android-license-faq
     // A large-scale-change added 'default_applicable_licenses' to import
     // all of the 'license_kinds' from "packages_apps_Settings_license"
@@ -57,6 +58,7 @@ android_robolectric_test {
         "Settings_robolectric_meta_service_file",
         "SettingsLib-robo-testutils",
         "Settings-robo-testutils",
+        "android.webkit.flags-aconfig-java",
         "androidx.test.core",
         "androidx.test.espresso.core",
         "androidx.test.ext.junit",
@@ -69,10 +71,12 @@ android_robolectric_test {
         "Settings-testutils2",
         "notification_flags_lib",
         "com_android_server_accessibility_flags_lib",
+        "testables",
     ],
 
     libs: [
         "ims-common",
+        "android.test.mock",
     ],
 
     java_resource_dirs: [

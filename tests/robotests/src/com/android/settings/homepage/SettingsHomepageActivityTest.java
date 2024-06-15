@@ -44,29 +44,30 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import androidx.fragment.app.Fragment;
+import androidx.test.core.app.ApplicationProvider;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.suggestions.SuggestionFeatureProviderImpl;
 import com.android.settings.testutils.shadow.ShadowActivityEmbeddingUtils;
-import com.android.settings.testutils.shadow.ShadowActivityManager;
 import com.android.settings.testutils.shadow.ShadowPasswordUtils;
 import com.android.settings.testutils.shadow.ShadowUserManager;
 import com.android.settingslib.core.lifecycle.HideNonSystemOverlayMixin;
 
 import org.junit.After;
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
 import org.robolectric.shadow.api.Shadow;
+import org.robolectric.shadows.ShadowActivityManager;
 import org.robolectric.util.ReflectionHelpers;
 
 @RunWith(RobolectricTestRunner.class)
@@ -76,11 +77,8 @@ import org.robolectric.util.ReflectionHelpers;
         ShadowActivityManager.class,
 })
 public class SettingsHomepageActivityTest {
-
-    @Before
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
+    @Rule
+    public final MockitoRule mMockitoRule = MockitoJUnit.rule();
 
     @After
     public void tearDown() {
@@ -119,7 +117,8 @@ public class SettingsHomepageActivityTest {
     @Config(qualifiers = "mcc999")
     public void launch_LowRamDevice_shouldHideAvatar() {
         final ShadowActivityManager activityManager = Shadow.extract(
-                RuntimeEnvironment.application.getSystemService(ActivityManager.class));
+                ApplicationProvider.getApplicationContext().getSystemService(
+                        ActivityManager.class));
         activityManager.setIsLowRamDevice(true);
 
         final SettingsHomepageActivity activity = Robolectric.buildActivity(
@@ -163,6 +162,19 @@ public class SettingsHomepageActivityTest {
 
         activity.showHomepageWithSuggestion(false);
         activity.showHomepageWithSuggestion(true);
+
+        assertThat(suggestionTile.getVisibility()).isEqualTo(View.GONE);
+    }
+
+    @Test
+    public void showHomepageWithSuggestion_callAfterOnStop_shouldUpdateVisibility() {
+        final SettingsHomepageActivity activity = Robolectric.buildActivity(
+                SettingsHomepageActivity.class).create().get();
+        final View suggestionTile = activity.findViewById(R.id.suggestion_content);
+
+        activity.showHomepageWithSuggestion(true);
+        activity.onStop();
+        activity.showHomepageWithSuggestion(false);
 
         assertThat(suggestionTile.getVisibility()).isEqualTo(View.GONE);
     }

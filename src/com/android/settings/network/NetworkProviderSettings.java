@@ -93,6 +93,7 @@ import com.android.settingslib.widget.FooterPreference;
 import com.android.settingslib.widget.LayoutPreference;
 import com.android.settingslib.wifi.WifiEnterpriseRestrictionUtils;
 import com.android.settingslib.wifi.WifiSavedConfigUtils;
+import com.android.wifi.flags.Flags;
 import com.android.wifitrackerlib.WifiEntry;
 import com.android.wifitrackerlib.WifiEntry.ConnectCallback;
 import com.android.wifitrackerlib.WifiPickerTracker;
@@ -1313,8 +1314,20 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
         // If it's an unsaved secure WifiEntry, it will callback
         // ConnectCallback#onConnectResult with ConnectCallback#CONNECT_STATUS_FAILURE_NO_CONFIG
-        wifiEntry.connect(new WifiEntryConnectCallback(wifiEntry, editIfNoConfig,
-                fullScreenEdit));
+        WifiEntryConnectCallback callback =
+                new WifiEntryConnectCallback(wifiEntry, editIfNoConfig, fullScreenEdit);
+
+        if (Flags.androidVWifiApi() && wifiEntry.getSecurityTypes()
+                .contains(WifiEntry.SECURITY_WEP)) {
+            WifiUtils.checkWepAllowed(
+                    getContext(), getViewLifecycleOwner(), wifiEntry.getSsid(), () -> {
+                        wifiEntry.connect(callback);
+                        return null;
+                    });
+            return;
+        }
+
+        wifiEntry.connect(callback);
     }
 
     private class WifiConnectActionListener implements WifiManager.ActionListener {

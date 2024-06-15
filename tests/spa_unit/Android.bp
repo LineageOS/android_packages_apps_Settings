@@ -15,6 +15,7 @@
 //
 
 package {
+    default_team: "trendy_team_android_settings_app",
     default_applicable_licenses: ["packages_apps_Settings_license"],
 }
 
@@ -34,6 +35,7 @@ android_test {
         "androidx.compose.runtime_runtime",
         "androidx.test.ext.junit",
         "androidx.test.runner",
+        "androidx.fragment_fragment-testing",
         "flag-junit",
         "mockito-target-extended-minus-junit4",
     ],

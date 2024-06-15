@@ -50,9 +50,11 @@ public class AllowBackgroundPreferenceController extends AbstractPreferenceContr
     }
 
     private void setEnabled(Preference preference, boolean enabled) {
-        preference.setEnabled(enabled);
         if (preference instanceof PrimarySwitchPreference) {
+            ((PrimarySwitchPreference) preference).setEnabled(enabled);
             ((PrimarySwitchPreference) preference).setSwitchEnabled(enabled);
+        } else if (preference instanceof MainSwitchPreference) {
+            ((MainSwitchPreference) preference).setEnabled(enabled);
         }
     }
 

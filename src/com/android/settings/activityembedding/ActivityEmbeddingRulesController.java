@@ -34,6 +34,7 @@ import androidx.window.embedding.SplitPairRule;
 import androidx.window.embedding.SplitPlaceholderRule;
 import androidx.window.embedding.SplitRule;
 
+import com.android.settings.R;
 import com.android.settings.Settings;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SubSettings;
@@ -112,8 +113,9 @@ public class ActivityEmbeddingRulesController {
                 .setFinishPrimaryWithSecondary(finishPrimaryWithSecondary)
                 .setFinishSecondaryWithPrimary(finishSecondaryWithPrimary)
                 .setClearTop(clearTop)
-                .setMinWidthDp(ActivityEmbeddingUtils.getMinCurrentScreenSplitWidthDp())
-                .setMinSmallestWidthDp(ActivityEmbeddingUtils.getMinSmallestScreenSplitWidthDp())
+                .setMinWidthDp(ActivityEmbeddingUtils.getMinCurrentScreenSplitWidthDp(context))
+                .setMinSmallestWidthDp(
+                        ActivityEmbeddingUtils.getMinSmallestScreenSplitWidthDp(context))
                 .setMaxAspectRatioInPortrait(EmbeddingAspectRatio.ALWAYS_ALLOW)
                 .setDefaultSplitAttributes(attributes)
                 .build();
@@ -233,8 +235,9 @@ public class ActivityEmbeddingRulesController {
                 .build();
         final SplitPlaceholderRule placeholderRule = new SplitPlaceholderRule.Builder(
                 activityFilters, intent)
-                .setMinWidthDp(ActivityEmbeddingUtils.getMinCurrentScreenSplitWidthDp())
-                .setMinSmallestWidthDp(ActivityEmbeddingUtils.getMinSmallestScreenSplitWidthDp())
+                .setMinWidthDp(ActivityEmbeddingUtils.getMinCurrentScreenSplitWidthDp(mContext))
+                .setMinSmallestWidthDp(
+                        ActivityEmbeddingUtils.getMinSmallestScreenSplitWidthDp(mContext))
                 .setMaxAspectRatioInPortrait(EmbeddingAspectRatio.ALWAYS_ALLOW)
                 .setSticky(false)
                 .setFinishPrimaryWithPlaceholder(SplitRule.FinishBehavior.ADJACENT)
@@ -261,8 +264,13 @@ public class ActivityEmbeddingRulesController {
         addActivityFilter(activityFilters, FaceEnrollIntroduction.class);
         addActivityFilter(activityFilters, RemoteAuthActivity.class);
         addActivityFilter(activityFilters, RemoteAuthActivityInternal.class);
-        addActivityFilter(activityFilters, AvatarPickerActivity.class);
         addActivityFilter(activityFilters, ChooseLockPattern.class);
+        if (android.multiuser.Flags.avatarSync()) {
+            String action = mContext.getString(R.string.config_avatar_picker_action);
+            addActivityFilter(activityFilters, new Intent(action));
+        } else {
+            addActivityFilter(activityFilters, AvatarPickerActivity.class);
+        }
         ActivityRule activityRule = new ActivityRule.Builder(activityFilters).setAlwaysExpand(true)
                 .build();
         mRuleController.addRule(activityRule);
