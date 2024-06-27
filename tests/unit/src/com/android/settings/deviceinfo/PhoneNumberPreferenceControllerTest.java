@@ -37,6 +37,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.android.settings.core.BasePreferenceController;
 import com.android.settings.testutils.ResourcesUtils;
 
 import org.junit.Before;
@@ -88,7 +89,24 @@ public class PhoneNumberPreferenceControllerTest {
         mCategory.setKey(categoryKey);
         mScreen.addPreference(mCategory);
 
+        doReturn(mSubscriptionInfo).when(mController).getSubscriptionInfo(anyInt());
         doReturn(mSecondPreference).when(mController).createNewPreference(mContext);
+    }
+
+    @Test
+    public void getAvailabilityStatus_isVoiceCapable_shouldBeAVAILABLE() {
+        when(mTelephonyManager.isVoiceCapable()).thenReturn(true);
+
+        assertThat(mController.getAvailabilityStatus()).isEqualTo(
+                BasePreferenceController.AVAILABLE);
+    }
+
+    @Test
+    public void getAvailabilityStatus_isNotVoiceCapable_shouldBeUNSUPPORTED_ON_DEVICE() {
+        when(mTelephonyManager.isVoiceCapable()).thenReturn(false);
+
+        assertThat(mController.getAvailabilityStatus()).isEqualTo(
+                BasePreferenceController.UNSUPPORTED_ON_DEVICE);
     }
 
     @Test
@@ -105,7 +123,6 @@ public class PhoneNumberPreferenceControllerTest {
     @Test
     public void updateState_singleSim_shouldUpdateTitleAndPhoneNumber() {
         final String phoneNumber = "1111111111";
-        doReturn(mSubscriptionInfo).when(mController).getSubscriptionInfo(anyInt());
         doReturn(phoneNumber).when(mController).getFormattedPhoneNumber(mSubscriptionInfo);
         when(mTelephonyManager.getPhoneCount()).thenReturn(1);
         mController.displayPreference(mScreen);
@@ -119,7 +136,6 @@ public class PhoneNumberPreferenceControllerTest {
     @Test
     public void updateState_multiSim_shouldUpdateTitleAndPhoneNumberOfMultiplePreferences() {
         final String phoneNumber = "1111111111";
-        doReturn(mSubscriptionInfo).when(mController).getSubscriptionInfo(anyInt());
         doReturn(phoneNumber).when(mController).getFormattedPhoneNumber(mSubscriptionInfo);
         when(mTelephonyManager.getPhoneCount()).thenReturn(2);
         mController.displayPreference(mScreen);
@@ -137,11 +153,11 @@ public class PhoneNumberPreferenceControllerTest {
     @Test
     public void getSummary_cannotGetActiveSubscriptionInfo_shouldShowUnknown() {
         when(mSubscriptionManager.getActiveSubscriptionInfoList()).thenReturn(null);
-        mController.displayPreference(mScreen);
 
-        mController.updateState(mPreference);
+        CharSequence primaryNumber = mController.getSummary();
 
-        verify(mPreference).setSummary(ResourcesUtils.getResourcesString(
+        assertThat(primaryNumber).isNotNull();
+        assertThat(primaryNumber).isEqualTo(ResourcesUtils.getResourcesString(
                 mContext, "device_info_default"));
     }
 
@@ -150,10 +166,9 @@ public class PhoneNumberPreferenceControllerTest {
         List<SubscriptionInfo> infos = new ArrayList<>();
         when(mSubscriptionManager.getActiveSubscriptionInfoList()).thenReturn(infos);
 
-        mController.displayPreference(mScreen);
-        mController.updateState(mPreference);
+        CharSequence primaryNumber = mController.getSummary();
 
-        verify(mPreference).setSummary(ResourcesUtils.getResourcesString(
+        assertThat(primaryNumber).isEqualTo(ResourcesUtils.getResourcesString(
                 mContext, "device_info_default"));
     }
 }
