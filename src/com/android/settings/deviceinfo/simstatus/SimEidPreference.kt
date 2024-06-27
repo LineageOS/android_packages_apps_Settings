@@ -80,7 +80,7 @@ class SimEidPreference(private val context: Context) :
     override fun storage(context: Context): KeyValueStore = createSummaryStorage(context, key)
 
     override fun getSummary(context: Context): CharSequence? =
-        eidMetadata?.let { PhoneNumberUtil.expandByTts(it.eid).toString() }
+        context.getString(R.string.device_info_protected_single_press)
 
     override fun bind(preference: Preference, metadata: PreferenceMetadata) {
         super.bind(preference, metadata)
@@ -88,8 +88,11 @@ class SimEidPreference(private val context: Context) :
     }
 
     override fun onCreate(context: PreferenceLifecycleContext) {
-        context.requirePreference<Preference>(key).onPreferenceClickListener =
+        val preference = context.requirePreference<Preference>(key)
+        preference.onPreferenceClickListener =
             Preference.OnPreferenceClickListener {
+                preference.summary =
+                    eidMetadata?.let { PhoneNumberUtil.expandByTts(it.eid).toString() }
                 SimEidDialogFragment.show(
                     context.childFragmentManager,
                     it.title.toString(),
