@@ -434,5 +434,8 @@ public class AdvancedPowerUsageDetailTest {
         mFragment.initAnomalyInfo();
 
         verify(mAnomalySummaryPreferenceController).updateAnomalySummaryPreference(mAnomalies);
+
+    public void shouldSkipForInitialSUW_returnTrue() {
+        assertThat(mFragment.shouldSkipForInitialSUW()).isTrue();
     }
 }

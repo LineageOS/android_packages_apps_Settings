@@ -234,6 +234,11 @@ public class AdvancedPowerUsageDetail extends DashboardFragment implements
         initPreference();
     }
 
+    @Override
+    protected boolean shouldSkipForInitialSUW() {
+        return true;
+    }
+
     @VisibleForTesting
     void initAnomalyInfo() {
         mAnomalies = getArguments().getParcelableArrayList(EXTRA_ANOMALY_LIST);
