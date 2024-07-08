@@ -210,6 +210,11 @@ public class AdvancedPowerUsageDetail extends DashboardFragment implements
         initPreference();
     }
 
+    @Override
+    protected boolean shouldSkipForInitialSUW() {
+        return true;
+    }
+
     @VisibleForTesting
     void initHeader() {
         final View appSnippet = mHeaderPreference.findViewById(R.id.entity_header);
