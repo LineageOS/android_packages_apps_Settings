@@ -472,4 +472,9 @@ public class AdvancedPowerUsageDetailTest {
 
         verify(mObserver).onChanged(ChangeReason.UPDATE);
     }
+
+    @Test
+    public void shouldSkipForInitialSUW_returnTrue() {
+        assertThat(mFragment.shouldSkipForInitialSUW()).isTrue();
+    }
 }
