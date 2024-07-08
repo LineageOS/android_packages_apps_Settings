@@ -25,21 +25,34 @@ import static com.android.settings.biometrics.fingerprint.FingerprintEnrollEnrol
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.hardware.biometrics.BiometricFingerprintConstants;
 import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.util.Preconditions;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.R;
+import com.android.settings.biometrics.fingerprint.FingerprintEnrollEnrolling;
+import com.google.hardware.biometrics.sidefps.IFingerprintExt;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class SfpsEnrollmentFeatureImpl implements SfpsEnrollmentFeature {
+    static final String TAG = SfpsEnrollmentFeatureImpl.class.getSimpleName();
+
     @VisibleForTesting
     public static final int HELP_ANIMATOR_DURATION = 550;
 
@@ -89,8 +102,31 @@ public class SfpsEnrollmentFeatureImpl implements SfpsEnrollmentFeature {
         };
     }
 
+    private final boolean isGoogleDevice = "google".equals(Build.BRAND);
+    private float[] mEnrollStageThresholds;
+
     @Override
     public float getEnrollStageThreshold(@NonNull Context context, int index) {
+        if (isGoogleDevice) {
+            Log.d(TAG, "getEnrollStageThreshold " + index);
+            if (mEnrollStageThresholds == null) {
+                // TODO: extract these values automatically from SettingsGoogle resource:
+                //  com.google.android.settings.R.array.config_sfps_enroll_stage_thresholds
+                mEnrollStageThresholds = new float[] {
+                        0f, 0.04f, 0.48f, 0.52f
+                };
+            }
+
+            // this logic was copied from FingerprintManager.getEnrollStageThreshold()
+
+            if (index < 0 || index > mEnrollStageThresholds.length) {
+                Log.w(TAG, "Unsupported enroll stage index: " + index);
+                return index < 0 ? 0f : 1f;
+            }
+
+            return index == mEnrollStageThresholds.length ? 1f : mEnrollStageThresholds[index];
+        }
+
         if (mFingerprintManager == null) {
             mFingerprintManager = context.getSystemService(FingerprintManager.class);
         }
@@ -112,5 +148,94 @@ public class SfpsEnrollmentFeatureImpl implements SfpsEnrollmentFeature {
     @Override
     public boolean shouldAdjustHeaderText(@NonNull Configuration conf, boolean isFolded) {
         return conf.orientation == Configuration.ORIENTATION_LANDSCAPE;
+    }
+
+    @Override
+    public void handleOnEnrollmentHelp(int helpMsgId, CharSequence helpString, Supplier<FingerprintEnrollEnrolling> enrollingSupplier) {
+        if (isGoogleDevice) {
+            Log.d(TAG, "handleOnEnrollmentHelp, helpMsgId: " + helpMsgId + ", helpString: " + helpString, new Throwable());
+            if (helpMsgId == BiometricFingerprintConstants.FINGERPRINT_ACQUIRED_VENDOR_BASE ||
+                    helpMsgId == BiometricFingerprintConstants.FINGERPRINT_ACQUIRED_IMMOBILE) {
+                Context ctx = enrollingSupplier.get();
+                Log.d(TAG, "getVendorString: " + getVendorString(ctx, 0));
+
+                if (getGoogleFingerprintExt() == null) {
+                    return;
+                }
+
+                if (mHelpDialog != null) {
+                    mHelpDialog.dismiss();
+                    mHelpDialog = null;
+                }
+
+                var d = new AlertDialog.Builder(ctx);
+                d.setMessage(getVendorString(ctx, VENDOR_STRING_FINGERPRINT_ACQUIRED_IMMOBILE));
+                d.setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    resumeEnroll();
+                });
+                mHelpDialog = d.show();
+            }
+        }
+    }
+
+    private AlertDialog mHelpDialog;
+
+    @Override
+    public CharSequence getFeaturedVendorString(Context context, int id, CharSequence msg) {
+        if (!isGoogleDevice) {
+            return msg;
+        }
+
+        Log.d(TAG, "getFeaturedVendorString, id: " + id + ", msg: " + msg, new Throwable());
+
+        if (id == BiometricFingerprintConstants.FINGERPRINT_ACQUIRED_VENDOR_BASE ||
+                id == BiometricFingerprintConstants.FINGERPRINT_ACQUIRED_IMMOBILE) {
+            return getVendorString(context, VENDOR_STRING_FINGERPRINT_ACQUIRED_IMMOBILE);
+        }
+
+       return msg;
+    }
+
+    private static final int VENDOR_STRING_FINGERPRINT_ACQUIRED_IMMOBILE = 0;
+
+    private static String getVendorString(Context ctx, int index) {
+        String[] strings = ctx.getResources().getStringArray(R.array.fingerprint_acquired_vendor);
+        Preconditions.checkArgumentInRange(index, 0, strings.length - 1, "vendor string index");
+        return strings[index];
+    }
+
+    @Nullable
+    private static IFingerprintExt getGoogleFingerprintExt() {
+        String fpServiceName = android.hardware.biometrics.fingerprint.IFingerprint.class.getName() + "/default";
+        IBinder fpService = ServiceManager.getService(fpServiceName);
+        if (fpService == null) {
+            throw new IllegalStateException(fpServiceName + " is null");
+        }
+
+        IBinder fpServiceExt;
+        try {
+            fpServiceExt = fpService.getExtension();
+        } catch (RemoteException e) {
+            throw new IllegalStateException(e);
+        }
+
+        if (fpServiceExt == null) {
+            Log.e(TAG, "no IFingerprintExt");
+            return null;
+        }
+
+        return IFingerprintExt.Stub.asInterface(fpServiceExt);
+    }
+
+    private static void resumeEnroll() {
+        IFingerprintExt fpExt = getGoogleFingerprintExt();
+        if (fpExt == null) {
+            return;
+        }
+        try {
+            fpExt.resumeEnroll();
+        } catch (RemoteException e) {
+            Log.e(TAG, "", e);
+        }
     }
 }
