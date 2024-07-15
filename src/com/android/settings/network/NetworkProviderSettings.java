@@ -27,6 +27,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.net.NetworkTemplate;
 import android.net.wifi.WifiConfiguration;
@@ -65,6 +66,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.settings.AirplaneModeEnabler;
 import com.android.settings.R;
 import com.android.settings.RestrictedSettingsFragment;
+import com.android.settings.accessibility.AccessibilitySetupWizardUtils;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.datausage.DataUsagePreference;
 import com.android.settings.datausage.DataUsageUtils;
@@ -285,10 +287,10 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
         if (mIsInSetupWizard) {
             GlifPreferenceLayout layout = (GlifPreferenceLayout) view;
-            layout.setDividerInsets(Integer.MAX_VALUE, 0);
-
-            layout.setIcon(getContext().getDrawable(R.drawable.ic_network_setup));
-            layout.setHeaderText(R.string.provider_internet_settings);
+            final Drawable icon = getContext().getDrawable(R.drawable.ic_network_setup);
+            final String title = getContext().getString(R.string.provider_internet_settings);
+            AccessibilitySetupWizardUtils.updateGlifPreferenceLayout(getContext(), layout,
+                    title, "" /* description */, icon);
             FooterButtonStyleUtils.applyPrimaryButtonPartnerResource(activity, getNextButton(),
                     true);
 
