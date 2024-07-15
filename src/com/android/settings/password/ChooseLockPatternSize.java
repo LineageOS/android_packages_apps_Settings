@@ -35,6 +35,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.utils.SettingsDividerItemDecoration;
 
 import com.google.android.setupdesign.GlifPreferenceLayout;
+import com.google.android.setupdesign.util.ThemeHelper;
 
 import org.lineageos.internal.logging.LineageMetricsLogger;
 
@@ -45,12 +46,6 @@ public class ChooseLockPatternSize extends SettingsActivity {
         Intent modIntent = new Intent(super.getIntent());
         modIntent.putExtra(EXTRA_SHOW_FRAGMENT, ChooseLockPatternSizeFragment.class.getName());
         return modIntent;
-    }
-
-    @Override
-    protected void onApplyThemeResource(Theme theme, int resid, boolean first) {
-        resid = SetupWizardUtils.getTheme(this, getIntent());
-        super.onApplyThemeResource(theme, resid, first);
     }
 
     @Override
@@ -66,6 +61,8 @@ public class ChooseLockPatternSize extends SettingsActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(SetupWizardUtils.getTheme(this, getIntent()));
+        ThemeHelper.trySetDynamicColor(this);
         super.onCreate(savedInstanceState);
         findViewById(R.id.content_parent).setFitsSystemWindows(false);
     }
