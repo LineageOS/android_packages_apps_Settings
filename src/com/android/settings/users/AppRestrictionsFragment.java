@@ -648,7 +648,7 @@ public class AppRestrictionsFragment extends SettingsPreferenceFragment implemen
                     int requestCode = generateCustomActivityRequestCode(
                             RestrictionsResultReceiver.this.preference);
                     AppRestrictionsFragment.this.startActivityForResult(
-                            restrictionsIntent, requestCode);
+                            new Intent(restrictionsIntent), requestCode);
                 }
             }
         }
