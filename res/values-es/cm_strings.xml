@@ -15,6 +15,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="keyboard_extras_title">Extras</string>
+    <string name="advanced_keyboard_settings_title">Configuración avanzada</string>
     <string name="adb_enable_root">Depuración como Superusuario</string>
     <string name="adb_enable_summary_root">Permitir ejecutar la depuración de Android como Superusuario</string>
     <string name="backup_transport_setting_label">Cambiar proveedor de la copia de seguridad</string>
@@ -22,10 +24,16 @@
     <string name="berry_black_theme_title">Negro puro</string>
     <string name="berry_black_theme_summary">Fondo negro puro para el tema oscuro</string>
     <string name="lineagelicense_title">Licencia de LineageOS</string>
+    <string name="show_dev_countdown_cm">{count, plural,
+      =1      {Ahora estás a # paso de habilitar las opciones para desarrolladores.}
+      other   {Ahora estás a # pasos de habilitar las opciones para desarrolladores.}
+    }</string>
     <string name="show_dev_on_cm">¡Has activado los ajustes de desarrollo!</string>
     <string name="show_dev_already_cm">No es necesario. Las opciones de desarrollo ya están activadas.</string>
     <string name="status_bar_double_tap_to_sleep_title">Pulsar para suspender</string>
     <string name="status_bar_double_tap_to_sleep_summary">Doble toque en la barra de estado o pantalla de bloqueo para apagar la pantalla</string>
+    <string name="high_touch_polling_rate_title">Tasa alta de muestreo táctil</string>
+    <string name="high_touch_polling_rate_summary">Aumentar la tasa de muestreo táctil</string>
     <string name="heads_up_notifications_enabled_title">Notificaciones emergentes</string>
     <string name="heads_up_notifications_enabled_summary">Mostrar las notificaciones prioritarias en una pequeña ventana flotante</string>
     <string name="high_touch_sensitivity_title">Alta sensibilidad táctil</string>
@@ -35,6 +43,27 @@
     <string name="lock_settings_picker_pattern_size_message">Elije un tamaño de patrón</string>
     <string name="lockpattern_settings_enable_error_path_title">Mostrar patrón erróneo</string>
     <string name="lockpattern_settings_enable_dots_title">Mostrar puntos de patrón</string>
+    <string name="max_refresh_rate_title">Frecuencia de actualización máxima</string>
+    <string name="min_refresh_rate_title">Tasa mínima de refresco</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="tablet">Localiza el lector de huellas en el frontal de la tableta.</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="device">Localiza el lector de huellas en el frontal del dispositivo.</string>
+    <string name="fingerprint_enroll_find_sensor_message_front" product="default">Localiza el lector de huellas en el frontal de tu teléfono.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="tablet">Localiza el lector de huellas en la parte trasera de la tableta.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="device">Localiza el lector de huellas en la parte trasera del dispositivo.</string>
+    <string name="fingerprint_enroll_find_sensor_message_rear" product="default">Localiza el lector de huellas en la parte trasera del teléfono.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="tablet">Localiza el lector de huellas en el lateral de la tableta.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="device">Localiza el lector de huellas en el lateral del dispositivo.</string>
+    <string name="fingerprint_enroll_find_sensor_message_side" product="default">Localiza el lector de huellas en el lateral del teléfono.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="tablet">Toca el sensor en el frontal de la tableta.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="device">Toca el sensor en el frontal del dispositivo.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="default">Toca el sensor en el frontal del teléfono.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="tablet">Toca el sensor en la parte trasera de la tableta.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="device">Toca el sensor de la parte trasera del dispositivo.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_rear" product="default">Toca el sensor en la parte trasera del teléfono.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="tablet">Toca el sensor en el lateral de la tableta.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="device">Toca el sensor en el lateral del dispositivo.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Toca el sensor en el lateral del teléfono.</string>
+    <string name="security_settings_require_screen_on_to_auth_with_proximity_description">Toca el sensor para desbloquear, incluso cuando la pantalla esté apagada. El sensor de proximidad evita el desbloqueo accidental.</string>
     <string name="show_navbar_hint_title">Sugerencia de navegación</string>
     <string name="show_navbar_hint_summary">Mostrar barra de sugerencias de navegación en la parte inferior de la pantalla</string>
     <string name="app_notification_sound_timeout_title">Tiempo mínimo entre sonidos de notificaciones</string>
@@ -46,8 +75,16 @@
     <string name="app_notification_sound_timeout_value_5_minutes">5 minutos</string>
     <string name="app_notification_sound_timeout_value_15_minutes">15 minutos</string>
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
+    <string name="auto_brightness_one_shot_title">Brillo automático en un toque</string>
+    <string name="auto_brightness_one_shot_summary">El brillo solo se ajustará en el momento de encender la pantalla</string>
     <string name="data_usage_app_restrict_all">Permitir acceso a la red</string>
     <string name="data_usage_app_restrict_all_summary">Habilitar uso de red</string>
+    <string name="data_usage_app_restrict_mobile">Datos móviles</string>
+    <string name="data_usage_app_restrict_mobile_summary">Habilitar el uso de datos móviles</string>
+    <string name="data_usage_app_restrict_vpn">Datos VPN</string>
+    <string name="data_usage_app_restrict_vpn_summary">Habilitar uso de datos VPN</string>
+    <string name="data_usage_app_restrict_wifi">Datos Wi\u2011Fi</string>
+    <string name="data_usage_app_restrict_wifi_summary">Habilitar el uso de datos Wi\u2011Fi</string>
     <string name="unlock_scramble_pin_layout_title">Disposición aleatoria</string>
     <string name="unlock_scramble_pin_layout_summary">Cambiar la disposición de los números del PIN para desbloquear el dispositivo</string>
     <string name="proximity_wake_title">Prevenir encendido accidental</string>
@@ -58,4 +95,29 @@
     <string name="touchscreen_hovering_summary">Te permitirá deslizar por la pantalla como un ratón en navegadores, escritorios remotos, etc.</string>
     <string name="wake_when_plugged_or_unplugged_title">Encender al conectar el cargador</string>
     <string name="wake_when_plugged_or_unplugged_summary">Encender la pantalla al conectar o desconectar el cargador</string>
+    <string name="fast_charging_title">Carga rápida</string>
+    <string name="fast_charging_summary">Desactivar para reducir el calor producido por el dispositivo durante la carga o para prolongar la vida útil de la batería.</string>
+    <string name="ambient_display_screen_off_udfps_title" product="default">Pulsación larga en el lector de huellas para desbloquear el teléfono</string>
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">Pulsación larga en el lector de huellas para desbloquear la tableta</string>
+    <string name="ambient_display_screen_off_udfps_title" product="device">Pulsación larga en el lector de huellas para desbloquear el dispositivo</string>
+    <string name="ambient_display_screen_off_udfps_summary">Para activar la pantalla y desbloquearla, mantén pulsado el lector de huellas situado en la pantalla.</string>
+    <string name="storage_warning_internal">Advertencia: esta opción puede no funcionar correctamente o provocar la pérdida de datos y por lo tanto no es recomendable.</string>
+    <string name="assisted_gps">Usar GPS asistido</string>
+    <string name="assisted_gps_summary">Descargar datos de asistencia por satélite desde Internet puede mejorar considerablemente el rendimiento de inicio del GPS. Para llamadas de emergencia, el GPS asistido siempre está permitido.</string>
+    <string name="battery_technology">Tecnología</string>
+    <string name="battery_health">Salud</string>
+    <string name="battery_health_good">Buena</string>
+    <string name="battery_health_overheat">Sobrecalentada</string>
+    <string name="battery_health_dead">Defectuosa</string>
+    <string name="battery_health_over_voltage">Sobrevoltaje</string>
+    <string name="battery_health_unspecified_failure">Fallo no especificado</string>
+    <string name="battery_health_cold">Fría</string>
+    <string name="battery_health_unknown">Desconocida</string>
+    <string name="battery_temperature">Temperatura</string>
+    <string name="battery_voltage">Voltaje</string>
+    <string name="battery_charge_counter_summary">%1$d mAh</string>
+    <string name="battery_design_capacity">Capacidad original</string>
+    <string name="battery_design_capacity_summary">%1$d mAh</string>
+    <string name="battery_maximum_capacity">Capacidad máxima</string>
+    <string name="battery_maximum_capacity_summary">%1$d mAh (%2$d%%)</string>
 </resources>
