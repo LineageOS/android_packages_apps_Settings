@@ -33,10 +33,12 @@ import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ServiceInfo;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.service.notification.NotificationListenerService;
 import android.util.Slog;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
@@ -44,6 +46,8 @@ import android.view.accessibility.AccessibilityEvent;
 import com.android.internal.app.AlertActivity;
 import com.android.internal.app.AlertController;
 import com.android.settings.R;
+
+import java.util.List;
 
 /** @hide */
 public class NotificationAccessConfirmationActivity extends Activity
@@ -67,6 +71,31 @@ public class NotificationAccessConfirmationActivity extends Activity
         mComponentName = getIntent().getParcelableExtra(EXTRA_COMPONENT_NAME);
         mUserId = getIntent().getIntExtra(EXTRA_USER_ID, UserHandle.USER_NULL);
         String pkgTitle = getIntent().getStringExtra(EXTRA_PACKAGE_TITLE);
+
+        // Check NLS service info.
+        String requiredPermission = Manifest.permission.BIND_NOTIFICATION_LISTENER_SERVICE;
+        Intent NLSIntent = new Intent(NotificationListenerService.SERVICE_INTERFACE);
+        List<ResolveInfo> matchedServiceList = getPackageManager().queryIntentServicesAsUser(
+                NLSIntent, /* flags */ 0, mUserId);
+        boolean hasNLSIntentFilter = false;
+        for (ResolveInfo service : matchedServiceList) {
+            if (service.serviceInfo.packageName.equals(mComponentName.getPackageName())) {
+                if (!requiredPermission.equals(service.serviceInfo.permission)) {
+                    Slog.e(LOG_TAG, "Service " + mComponentName + " lacks permission "
+                            + requiredPermission);
+                    finish();
+                    return;
+                }
+                hasNLSIntentFilter = true;
+                break;
+            }
+        }
+        if (!hasNLSIntentFilter) {
+            Slog.e(LOG_TAG, "Service " + mComponentName + " lacks an intent-filter action "
+                    + "for android.service.notification.NotificationListenerService.");
+            finish();
+            return;
+        }
 
         AlertController.AlertParams p = new AlertController.AlertParams(this);
         p.mTitle = getString(
@@ -99,19 +128,6 @@ public class NotificationAccessConfirmationActivity extends Activity
     }
 
     private void onAllow() {
-        String requiredPermission = Manifest.permission.BIND_NOTIFICATION_LISTENER_SERVICE;
-        try {
-            ServiceInfo serviceInfo = getPackageManager().getServiceInfo(mComponentName, 0);
-            if (!requiredPermission.equals(serviceInfo.permission)) {
-                Slog.e(LOG_TAG,
-                        "Service " + mComponentName + " lacks permission " + requiredPermission);
-                return;
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            Slog.e(LOG_TAG, "Failed to get service info for " + mComponentName, e);
-            return;
-        }
-
         mNm.setNotificationListenerAccessGranted(mComponentName, true);
 
         finish();
