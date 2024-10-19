@@ -556,12 +556,17 @@ public abstract class DashboardFragment extends SettingsPreferenceFragment
                         screen.addPreference(pref);
                     }
                 } else {
+                    Preference group = null;
                     if (tile.hasGroupKey()
                             && mDashboardTilePrefKeys.containsKey(tile.getGroupKey())) {
-                        Preference group = screen.findPreference(tile.getGroupKey());
-                        if (group instanceof PreferenceCategory) {
-                            ((PreferenceCategory) group).addPreference(pref);
-                        }
+                        group = screen.findPreference(tile.getGroupKey());
+                    } else if ("top_level_google".equals(key)) {
+                        group = screen.findPreference("top_level_account_category");
+                    } else if ("top_level_wellbeing".equals(key)) {
+                        group = screen.findPreference("top_level_security_privacy_category");
+                    }
+                    if (group instanceof PreferenceCategory) {
+                        ((PreferenceCategory) group).addPreference(pref);
                     } else {
                         screen.addPreference(pref);
                     }
