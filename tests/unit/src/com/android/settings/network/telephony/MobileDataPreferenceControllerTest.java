@@ -109,7 +109,7 @@ public class MobileDataPreferenceControllerTest {
 
         mPreference = new SwitchPreference(mContext);
         mController = new MobileDataPreferenceController(mContext, "mobile_data", mLifecycle,
-                mLifecycleOwner, SUB_ID);
+                SUB_ID, false);
         mController.init(mFragmentManager, SUB_ID, mSubInfo1, mNetworkInfo1);
         mPreference.setKey(mController.getPreferenceKey());
         mLifecycleRegistry = new LifecycleRegistry(mLifecycleOwner);

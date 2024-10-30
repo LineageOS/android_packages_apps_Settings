@@ -92,6 +92,7 @@ import com.android.settings.network.ethernet.EthernetSwitchPreferenceController;
 import com.android.settings.network.ethernet.EthernetTracker;
 import com.android.settings.network.ethernet.EthernetTrackerImpl;
 import com.android.settings.network.MobileDataEnabledListener;
+import com.android.settings.network.telephony.MobileDataPreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.troubleshooting.TroubleshootingServiceConnection;
 import com.android.settings.troubleshooting.TroubleshootingUtils;
@@ -395,6 +396,12 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
     PreferenceCategory mEthernetPreferenceCategory;
 
     /**
+     * Mobile data toggle
+     */
+    private static final String PREF_KEY_MOBILE_DATA_TOGGLE = "main_toggle_mobile_data";
+    private MobileDataPreferenceController mMobileDataPreferenceController;
+
+    /**
      * Mobile networks list for provider model
      */
     private static final String PREF_KEY_PROVIDER_MOBILE_NETWORK = "provider_model_mobile_network";
@@ -453,6 +460,7 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         final Context context = getContext();
+        final Intent intent = this.getIntent();
         if (context != null && !context.getResources().getBoolean(
                 R.bool.config_show_internet_settings)) {
             finish();
@@ -460,6 +468,7 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
         }
         mAirplaneModeEnabler = new AirplaneModeEnabler(getContext(), this);
         mDataStateListener = new MobileDataEnabledListener(getContext(), this);
+        mIsInSetupWizard = WizardManagerHelper.isAnySetupWizard(intent);
 
         // Animations and preference comparator are disabled. See b/37429702 for context.
         setAnimationAllowed(false);
@@ -513,9 +522,6 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
         resultReceivers.put(ITroubleshootingInfoProviderService.ISSUE_SUBJECT_IS_CELLULAR,
                 mMobileTroubleshootingReceiver);
         mTroubleshootingServiceConnection = new TroubleshootingServiceConnection(resultReceivers);
-
-        final Intent intent = this.getIntent();
-        mIsInSetupWizard = WizardManagerHelper.isAnySetupWizard(intent);
     }
 
     private void updateUserType() {
@@ -568,6 +574,7 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
         if (mResetInternetPreference != null) {
             mResetInternetPreference.setVisible(false);
         }
+        addMobileDataPreferenceController();
         addNetworkMobileProviderController();
         addWifiSwitchPreferenceController();
         if (com.android.settings.connectivity.Flags.ethernetSettings()) {
@@ -593,6 +600,18 @@ public class NetworkProviderSettings extends RestrictedDashboardFragment
     boolean showAnySubscriptionInfo(Context context) {
         return (context != null) && (Utils.isMobileDataCapable(context)
                 || Utils.isVoiceCapable(context));
+    }
+
+    private void addMobileDataPreferenceController() {
+        if (!showAnySubscriptionInfo(getContext())) {
+            return;
+        }
+        if (mMobileDataPreferenceController == null) {
+            mMobileDataPreferenceController = new MobileDataPreferenceController(
+                    getContext(), PREF_KEY_MOBILE_DATA_TOGGLE, getSettingsLifecycle(),
+                    mSubId, mIsInSetupWizard);
+        }
+        mMobileDataPreferenceController.displayPreference(getPreferenceScreen());
     }
 
     private void addNetworkMobileProviderController() {

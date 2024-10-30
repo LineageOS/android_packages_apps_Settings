@@ -131,7 +131,7 @@ public class MobileDataPreferenceControllerComponentTest {
                 URL url = new URL("https://www.google.net");
                 MobileDataPreferenceController controller = new MobileDataPreferenceController(
                         mInstrumentation.getTargetContext(), "mobile_data", mLifecycle,
-                        mLifecycleOwner, sSubscriptionId);
+                        sSubscriptionId, false);
                 FragmentManager manager = ((FragmentActivity) activity).getSupportFragmentManager();
                 controller.init(manager, sSubscriptionId, mock(SubscriptionInfoEntity.class), mock(
                         MobileNetworkInfoEntity.class));

@@ -204,7 +204,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
                 new SmsDefaultSubscriptionController(context, KEY_SMS_PREF, getSettingsLifecycle(),
                         this),
                 new MobileDataPreferenceController(context, KEY_MOBILE_DATA_PREF,
-                        getSettingsLifecycle(), this, mSubId),
+                        getSettingsLifecycle(), mSubId, false),
                 new ConvertToEsimPreferenceController(context, KEY_CONVERT_TO_ESIM_PREF,
                         getSettingsLifecycle(), this, mSubId), eid);
     }
