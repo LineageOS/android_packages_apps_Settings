@@ -21,6 +21,7 @@ import android.accounts.AccountManager;
 import android.accounts.AuthenticatorDescription;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SyncAdapterType;
@@ -38,6 +39,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceClickListener;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -501,11 +503,14 @@ public class ManageAccountsSettings extends AccountPreferenceBase
                                  * exploiting the fact that settings has system privileges.
                                  */
                                 if (isSafeIntent(pm, prefIntent)) {
+                                    // Explicitly set an empty ClipData to ensure that we don't offer to
+                                    // promote any Uris contained inside for granting purposes
+                                    prefIntent.setClipData(ClipData.newPlainText(null, null));
                                     getActivity().startActivityAsUser(prefIntent, mUserHandle);
                                 } else {
                                     Log.e(TAG,
-                                            "Refusing to launch authenticator intent because"
-                                                    + " it exploits Settings permissions: "
+                                            "Refusing to launch authenticator intent because "
+                                                    + "it exploits Settings permissions: "
                                                     + prefIntent);
                                 }
                                 return true;
@@ -519,11 +524,16 @@ public class ManageAccountsSettings extends AccountPreferenceBase
     }
 
     /**
-     * Determines if the supplied Intent is safe. A safe intent is one that is
-     * will launch a exported=true activity or owned by the same uid as the
+     * Determines if the supplied Intent is safe. A safe intent is one that
+     * will launch an exported=true activity or owned by the same uid as the
      * authenticator supplying the intent.
      */
     private boolean isSafeIntent(PackageManager pm, Intent intent) {
+        if (TextUtils.equals(intent.getScheme(), ContentResolver.SCHEME_CONTENT)) {
+            Log.e(TAG, "Intent with a content scheme is unsafe.");
+            return false;
+        }
+
         AuthenticatorDescription authDesc =
                 mAuthenticatorHelper.getAccountTypeDescription(mAccountType);
         ResolveInfo resolveInfo =
