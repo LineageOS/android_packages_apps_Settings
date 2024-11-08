@@ -91,25 +91,27 @@ public class BatteryDefenderTip extends BatteryTip {
         }
 
         cardPreference.setSelectable(false);
-        cardPreference.setNegativeButtonText(
-                Utils.createAccessibleSequence(
-                        context.getString(R.string.learn_more),
-                        context.getString(R.string
-                                .battery_tip_limited_temporarily_sec_button_content_description)));
-        cardPreference.setNegativeButtonOnClickListener(
-                unused -> {
-                    var helpIntent =
-                            HelpUtils.getHelpIntent(
-                                    context,
-                                    context.getString(R.string.help_url_battery_defender),
-                                    /* backupContext= */ "");
-                    ActivityCompat.startActivityForResult(
-                            (Activity) preference.getContext(),
-                            helpIntent,
-                            /* requestCode= */ 0,
-                            /* options= */ null);
-                });
-        cardPreference.setNegativeButtonVisible(true);
+        if (getHelpResource() != 0) {
+            cardPreference.setNegativeButtonText(
+                    Utils.createAccessibleSequence(
+                            context.getString(R.string.learn_more),
+                            context.getString(R.string
+                                    .battery_tip_limited_temporarily_sec_button_content_description)));
+            cardPreference.setNegativeButtonOnClickListener(
+                    unused -> {
+                        var helpIntent =
+                                HelpUtils.getHelpIntent(
+                                        context,
+                                        context.getString(getHelpResource()),
+                                        /* backupContext= */ "");
+                        ActivityCompat.startActivityForResult(
+                                (Activity) preference.getContext(),
+                                helpIntent,
+                                /* requestCode= */ 0,
+                                /* options= */ null);
+                    });
+            cardPreference.setNegativeButtonVisible(true);
+        }
 
         cardPreference.setPositiveButtonText(
                 context.getString(R.string.battery_tip_charge_to_full_button));
@@ -119,6 +121,10 @@ public class BatteryDefenderTip extends BatteryTip {
                     preference.setVisible(false);
                 });
         cardPreference.setPositiveButtonVisible(mIsPluggedIn);
+    }
+
+    private int getHelpResource() {
+        return R.string.help_url_battery_defender;
     }
 
     private void resumeCharging(Context context) {
