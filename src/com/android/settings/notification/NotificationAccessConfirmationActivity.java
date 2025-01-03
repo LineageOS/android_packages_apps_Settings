@@ -40,7 +40,6 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.service.notification.NotificationListenerService;
 import android.util.Slog;
-import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 
 import com.android.internal.app.AlertActivity;
@@ -111,20 +110,6 @@ public class NotificationAccessConfirmationActivity extends Activity
         AlertController
                 .create(this, this, getWindow())
                 .installContent(p);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        getWindow().addFlags(
-                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
-    }
-
-    @Override
-    public void onPause() {
-        getWindow().clearFlags(
-                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
-        super.onPause();
     }
 
     private void onAllow() {
