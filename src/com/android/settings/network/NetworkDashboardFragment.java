@@ -92,10 +92,6 @@ public class NetworkDashboardFragment extends DashboardFragment implements
         controllers.add(vpnPreferenceController);
         controllers.add(privateDnsPreferenceController);
 
-        // Start SettingsDumpService after the MobileNetworkRepository is created.
-        Intent intent = new Intent(context, SettingsDumpService.class);
-        intent.putExtra(SettingsDumpService.EXTRA_KEY_SHOW_NETWORK_DUMP, true);
-        context.startService(intent);
         return controllers;
     }
 
