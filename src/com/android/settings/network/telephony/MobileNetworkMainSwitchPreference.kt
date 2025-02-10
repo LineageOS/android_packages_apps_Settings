@@ -31,12 +31,14 @@ import com.android.settingslib.datastore.AbstractKeyedDataObservable
 import com.android.settingslib.datastore.HandlerExecutor
 import com.android.settingslib.datastore.KeyValueStore
 import com.android.settingslib.datastore.Permissions
+import com.android.settingslib.metadata.PreferenceAvailabilityProvider
 import com.android.settingslib.metadata.PreferenceChangeReason
 import com.android.settingslib.metadata.PreferenceLifecycleContext
 import com.android.settingslib.metadata.PreferenceLifecycleProvider
 import com.android.settingslib.metadata.PreferenceMetadata
 import com.android.settingslib.metadata.ReadWritePermit
 import com.android.settingslib.metadata.SensitivityLevel
+import com.android.settingslib.metadata.preferencesapi.preconditions.PreconditionStability
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -56,6 +58,7 @@ class MobileNetworkMainSwitchPreference(
 ) :
     MainSwitchBarMetadata,
     PreferenceLifecycleProvider,
+    PreferenceAvailabilityProvider,
     Preference.OnPreferenceChangeListener {
 
     val isActivationChangeable = MutableStateFlow(false)
@@ -75,6 +78,21 @@ class MobileNetworkMainSwitchPreference(
 
     override val disableWidgetOnCheckedChanged: Boolean
         get() = false
+
+    override val availabilityDescription = "The telephony stack must support disabling a pSIM."
+
+    override fun getAvailabilityStability() = PreconditionStability.UNSTABLE
+
+    override fun isAvailable(context: Context): Boolean {
+        val subInfo =
+            subscriptionRepository.getSelectableSubscriptionInfoList().firstOrNull {
+                it.subscriptionId == subId
+            } ?: return false
+        // For eSIM, we always want the toggle. If telephony stack support disabling a pSIM
+        // directly, we show the toggle.
+        return subInfo.isEmbedded ||
+            context.requireSubscriptionManager().canDisablePhysicalSubscription()
+    }
 
     override fun tags(context: Context) = arrayOf(KEY_MOBILE_DATA)
 
