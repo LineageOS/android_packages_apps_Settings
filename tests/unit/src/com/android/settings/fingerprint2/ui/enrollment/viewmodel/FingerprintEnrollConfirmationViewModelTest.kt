@@ -106,6 +106,7 @@ class FingerprintEnrollConfirmationViewModelTest {
             listOf<ComponentInfoInternal>(),
             FingerprintSensorProperties.TYPE_POWER_BUTTON,
             false /* halControlsIllumination */,
+            false /* halHandlesDisplayTouches */,
             true /* resetLockoutRequiresHardwareAuthToken */,
             listOf<SensorLocationInternal>(SensorLocationInternal.DEFAULT),
           )
