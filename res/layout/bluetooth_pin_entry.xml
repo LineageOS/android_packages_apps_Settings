@@ -19,6 +19,7 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
@@ -87,6 +88,30 @@
             android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Body1"
             android:textColor="?android:attr/textColorSecondary"/>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/bluetooth_pairing_padding"
+            android:layout_marginEnd="@dimen/bluetooth_pairing_padding">
+            <Button
+                android:id="@+id/negative_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@android:string/cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/ActionPrimaryButton"/>
+            <Button
+                android:id="@+id/positive_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@android:string/ok"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/ActionPrimaryButton"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-
 </ScrollView>
