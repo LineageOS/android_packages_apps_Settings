@@ -82,12 +82,13 @@ public class DataSaverBackend {
     }
 
     public void setIsAllowlisted(int uid, String packageName, boolean allowlisted) {
-        setUidPolicyFlag(uid, POLICY_ALLOW_METERED_BACKGROUND, allowlisted);
         if (allowlisted) {
+            mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
             mPolicyManager.addUidPolicy(uid, POLICY_ALLOW_METERED_BACKGROUND);
             mMetricsFeatureProvider.action(
                     mContext, SettingsEnums.ACTION_DATA_SAVER_WHITELIST, packageName);
         } else {
+            mUidPolicies.put(uid, POLICY_NONE);
             mPolicyManager.removeUidPolicy(uid, POLICY_ALLOW_METERED_BACKGROUND);
         }
         mPolicyManager.removeUidPolicy(uid, POLICY_REJECT_METERED_BACKGROUND);
@@ -95,14 +96,16 @@ public class DataSaverBackend {
 
     public boolean isAllowlisted(int uid) {
         loadAllowlist();
-        return isUidPolicyFlagSet(uid, POLICY_ALLOW_METERED_BACKGROUND);
+        return mUidPolicies.get(uid, POLICY_NONE) == POLICY_ALLOW_METERED_BACKGROUND;
     }
 
     private void loadAllowlist() {
         if (mAllowlistInitialized) {
             return;
         }
-        loadUidPolicies(POLICY_ALLOW_METERED_BACKGROUND);
+        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND)) {
+            mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
+        }
         mAllowlistInitialized = true;
     }
 
@@ -111,80 +114,30 @@ public class DataSaverBackend {
     }
 
     public void setIsDenylisted(int uid, String packageName, boolean denylisted) {
-        setUidPolicyFlag(uid, POLICY_REJECT_METERED_BACKGROUND, denylisted);
         if (denylisted) {
+            mUidPolicies.put(uid, POLICY_REJECT_METERED_BACKGROUND);
             mPolicyManager.addUidPolicy(uid, POLICY_REJECT_METERED_BACKGROUND);
             mMetricsFeatureProvider.action(
                     mContext, SettingsEnums.ACTION_DATA_SAVER_BLACKLIST, packageName);
         } else {
+            mUidPolicies.put(uid, POLICY_NONE);
             mPolicyManager.removeUidPolicy(uid, POLICY_REJECT_METERED_BACKGROUND);
         }
         mPolicyManager.removeUidPolicy(uid, POLICY_ALLOW_METERED_BACKGROUND);
     }
 
-    private void loadUidPolicies(int policy) {
-        final int[] uidsWithPolicyArray = mPolicyManager.getUidsWithPolicy(policy);
-        final ArrayList<Integer> uidsWithPolicy = new ArrayList<>(uidsWithPolicyArray.length);
-        for (final int uid : uidsWithPolicyArray) {
-            uidsWithPolicy.add(uid);
-        }
-        // Update existing cached UID policies.
-        for (int i = 0; i < mUidPolicies.size(); i++) {
-            final Integer cachedEntryUid = mUidPolicies.keyAt(i);
-            if (uidsWithPolicy.remove(cachedEntryUid)) {
-                // UID had the policy. It was removed so we don't have to process it twice.
-                setCachedUidPolicyFlagAt(i, policy, true);
-            } else {
-                // UID does not have the policy.
-                setCachedUidPolicyFlagAt(i, policy, false);
-            }
-        }
-        // Add policies for remaining UIDs, which did not have cached policies, so we're it.
-        for (final int uid : uidsWithPolicy) {
-            mUidPolicies.put(uid, policy);
-        }
-    }
-
-    private void setCachedUidPolicyFlag(int uid, int policy, boolean add) {
-        final int index = mUidPolicies.indexOfKey(uid);
-        if (index < 0) {
-            if (add) {
-                mUidPolicies.put(uid, policy);
-            }
-            return;
-        }
-        setCachedUidPolicyFlagAt(index, policy, add);
-    }
-
-    private void setCachedUidPolicyFlagAt(int index, int policy, boolean add) {
-        final int currentPolicy = mUidPolicies.valueAt(index);
-        final int newPolicy = add ? (currentPolicy | policy) : (currentPolicy & ~policy);
-        mUidPolicies.setValueAt(index, newPolicy);
-    }
-
-    private void setUidPolicyFlag(int uid, int policy, boolean add) {
-        if (add) {
-            mPolicyManager.addUidPolicy(uid, policy);
-        } else {
-            mPolicyManager.removeUidPolicy(uid, policy);
-        }
-        setCachedUidPolicyFlag(uid, policy, add);
-    }
-
-    private boolean isUidPolicyFlagSet(int uid, int policy) {
-        return (mUidPolicies.get(uid, POLICY_NONE) & policy) == policy;
-    }
-
     public boolean isDenylisted(int uid) {
         loadDenylist();
-        return isUidPolicyFlagSet(uid, POLICY_REJECT_METERED_BACKGROUND);
+        return mUidPolicies.get(uid, POLICY_NONE) == POLICY_REJECT_METERED_BACKGROUND;
     }
 
     private void loadDenylist() {
         if (mDenylistInitialized) {
             return;
         }
-        loadUidPolicies(POLICY_REJECT_METERED_BACKGROUND);
+        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_REJECT_METERED_BACKGROUND)) {
+            mUidPolicies.put(uid, POLICY_REJECT_METERED_BACKGROUND);
+        }
         mDenylistInitialized = true;
     }
 
