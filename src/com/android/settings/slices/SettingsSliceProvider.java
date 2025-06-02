@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.StrictMode;
 import android.provider.Settings;
 import android.provider.SettingsSlicesContract;
@@ -316,19 +317,31 @@ public class SettingsSliceProvider extends SliceProvider {
         if (descendants == null) {
             Log.d(TAG, "No descendants to grant permission with, skipping.");
         }
-        final String[] whitelistPackages =
+        final List<String> whitelist = new ArrayList<>();
+
+        final String[] packages =
                 context.getResources().getStringArray(R.array.slice_whitelist_package_names);
-        if (whitelistPackages == null || whitelistPackages.length == 0) {
+        if (packages != null) {
+            whitelist.addAll(Arrays.asList(packages));
+        }
+        if (Build.IS_DEBUGGABLE) {
+            final String[] devPackages = context.getResources().getStringArray(
+                    R.array.slice_whitelist_package_names_for_dev);
+            if (devPackages != null) {
+                whitelist.addAll(Arrays.asList(devPackages));
+            }
+        }
+        if (whitelist.size() == 0) {
             Log.d(TAG, "No packages to whitelist, skipping.");
             return;
         } else {
             Log.d(TAG, String.format(
                     "Whitelisting %d uris to %d pkgs.",
-                    descendants.size(), whitelistPackages.length));
+                    descendants.size(), whitelist.size()));
         }
         final SliceManager sliceManager = context.getSystemService(SliceManager.class);
         for (Uri descendant : descendants) {
-            for (String toPackage : whitelistPackages) {
+            for (String toPackage : whitelist) {
                 sliceManager.grantSlicePermission(toPackage, descendant);
             }
         }
