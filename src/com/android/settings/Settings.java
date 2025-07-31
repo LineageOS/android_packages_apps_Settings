@@ -27,6 +27,9 @@ import android.text.TextUtils;
 import android.util.FeatureFlagUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.biometrics.face.FaceSettings;
 import com.android.settings.core.FeatureFlags;
@@ -378,7 +381,8 @@ public class Settings extends SettingsActivity {
     public static class MobileNetworkListActivity extends SettingsActivity {}
     public static class PowerMenuSettingsActivity extends SettingsActivity {}
     public static class MobileNetworkActivity extends SettingsActivity {
-
+        private static final String MOBILE_NETWORK_FRAGMENT_NAME =
+                "com.android.settings.network.telephony.MobileNetworkSettings";
         public static final String TAG = "MobileNetworkActivity";
         public static final String EXTRA_MMS_MESSAGE = "mms_message";
         public static final String EXTRA_SHOW_CAPABILITY_DISCOVERY_OPT_IN =
@@ -393,7 +397,10 @@ public class Settings extends SettingsActivity {
         @Override
         protected void onNewIntent(Intent intent) {
             super.onNewIntent(intent);
-
+            if (!isTargetIsMobileNetwork(intent)) {
+                finish();
+                return;
+            }
             Log.d(TAG, "Starting onNewIntent");
 
             createUiFromIntent(null /* savedState */, convertIntent(intent));
@@ -416,6 +423,14 @@ public class Settings extends SettingsActivity {
             String intentAction = (intent != null ? intent.getAction() : null);
             return TextUtils.equals(intentAction,
                     ImsRcsManager.ACTION_SHOW_CAPABILITY_DISCOVERY_OPT_IN);
+        }
+
+        private static boolean isTargetIsMobileNetwork(@NonNull Intent intent) {
+            String fragmentName = intent.getStringExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT);
+            if (fragmentName == null && fragmentName.isEmpty()) {
+                return false;
+            }
+            return fragmentName.equals(MOBILE_NETWORK_FRAGMENT_NAME);
         }
     }
 
