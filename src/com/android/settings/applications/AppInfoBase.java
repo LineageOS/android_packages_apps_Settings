@@ -49,6 +49,7 @@ import androidx.fragment.app.Fragment;
 
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.activityembedding.ActivityEmbeddingUtils;
 import com.android.settings.applications.manageapplications.ManageApplications;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
@@ -180,6 +181,25 @@ public abstract class AppInfoBase extends SettingsPreferenceFragment
         if (!(activity instanceof SettingsActivity)) {
             return false;
         }
+        // Check the permission of the calling package if the device supports multi-pane.
+        if (ActivityEmbeddingUtils.isEmbeddingActivityEnabled(activity)) {
+            final String callingPackageName =
+                    ((SettingsActivity) activity).getInitialCallingPackage();
+
+            if (TextUtils.isEmpty(callingPackageName)) {
+                Log.w(TAG, "Not able to get calling package name for permission check");
+                return false;
+            }
+            if (mPm.checkPermission(Manifest.permission.INTERACT_ACROSS_USERS_FULL,
+                    callingPackageName)
+                    != PackageManager.PERMISSION_GRANTED) {
+                Log.w(TAG, "Package " + callingPackageName + " does not have required permission "
+                        + Manifest.permission.INTERACT_ACROSS_USERS_FULL);
+                return false;
+            }
+            return true;
+        }
+
         try {
             int callerUid = ActivityManager.getService().getLaunchedFromUid(
                     activity.getActivityToken());
