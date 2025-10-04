@@ -251,29 +251,11 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
 
             final UdfpsEnrollEnrollingView layout =
                     (UdfpsEnrollEnrollingView) getLayoutInflater().inflate(
-                            Flags.enrollLayoutTruncateImprovement()
-                                    ? R.layout.udfps_enroll_enrolling :
-                                    R.layout.udfps_enroll_enrolling_non_scroll, null, false);
+                            R.layout.udfps_enroll_enrolling_non_scroll, null, false);
             setUdfpsEnrollHelper();
             layout.initView(props.get(0), mUdfpsEnrollHelper, mAccessibilityManager);
             setContentView(layout);
             setDescriptionText(R.string.security_settings_udfps_enroll_start_message);
-
-            if (Flags.enrollLayoutTruncateImprovement() && isPortrait) {
-                final UdfpsEnrollEnrollingView layoutView = (UdfpsEnrollEnrollingView) getLayout();
-                if (layoutView != null) {
-                    final ScrollView headerScrollView = layout.findViewById(
-                            R.id.sud_header_scroll_view);
-                    if (headerScrollView != null) {
-                        final long headerScrollDuration = getResources().getInteger(
-                                R.integer.config_biometrics_header_scroll_duration);
-                        layoutView.adjustScrollableHeaderHeight(
-                                headerScrollView, mShouldShowLottie);
-                        layoutView.headerVerticalScrolling(headerScrollView, headerScrollDuration,
-                                mIsAccessibilityEnabled);
-                    }
-                }
-            }
 
         } else if (mCanAssumeSfps) {
             mSfpsEnrollmentFeature = FeatureFactory.getFeatureFactory()
@@ -1260,19 +1242,6 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
-        if (Flags.enrollLayoutTruncateImprovement()) {
-            adjustEnrollViewIfOverlappedWithFooterBar();
-        }
-    }
-
-    private void adjustEnrollViewIfOverlappedWithFooterBar() {
-        if (mCanAssumeUdfps) {
-            final UdfpsEnrollEnrollingView layoutView = (UdfpsEnrollEnrollingView) getLayout();
-            if (layoutView != null) {
-                layoutView.adjustUdfpsVieWithFooterBar();
-                layoutView.onUdfpsSensorRectUpdated();
-            }
-        }
     }
 
     public static class IconTouchDialog extends InstrumentedDialogFragment {
