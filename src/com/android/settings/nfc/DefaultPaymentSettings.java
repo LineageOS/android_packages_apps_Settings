@@ -156,7 +156,7 @@ public class DefaultPaymentSettings extends DefaultAppPickerFragment {
             CharSequence label;
             label = appInfo.label;
             candidates.add(new NfcPaymentCandidateInfo(
-                    appInfo.componentName.flattenToString(),
+                    appInfo.getKey(),
                     label,
                     appInfo.icon,
                     appInfo.userHandle.getIdentifier(),
@@ -196,7 +196,7 @@ public class DefaultPaymentSettings extends DefaultAppPickerFragment {
 
         @Override
         public String getKey() {
-            return mKey + " " + mUserId;
+            return mKey;
         }
 
         public boolean isManagedProfile() {
