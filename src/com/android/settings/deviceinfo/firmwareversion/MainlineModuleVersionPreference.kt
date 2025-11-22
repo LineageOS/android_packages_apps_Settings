@@ -109,7 +109,10 @@ class MainlineModuleVersionPreference :
     override fun bind(preference: Preference, metadata: PreferenceMetadata) {
         super.bind(preference, metadata)
         // This seems unnecessary, just follow existing behavior to pass test
-        if (preference.intent == null) preference.setSummary(R.string.summary_placeholder)
+        if (preference.intent == null) {
+            preference.setSummary(R.string.summary_placeholder)
+            preference.setVisible(false)
+        }
         preference.isCopyingEnabled = true
     }
 
