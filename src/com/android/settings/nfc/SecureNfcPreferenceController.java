@@ -60,11 +60,7 @@ public class SecureNfcPreferenceController extends TogglePreferenceController
 
     @Override
     public boolean setChecked(boolean isChecked) {
-        if (isToggleable()) {
-            return mNfcAdapter.enableSecureNfc(isChecked);
-        } else {
-            return false;
-        }
+        return mNfcAdapter.enableSecureNfc(isChecked);
     }
 
     @Override
@@ -101,12 +97,4 @@ public class SecureNfcPreferenceController extends TogglePreferenceController
             mSecureNfcEnabler.pause();
         }
     }
-
-    private boolean isToggleable() {
-        if (!mUserManager.isPrimaryUser()) {
-            return false;
-        }
-        return true;
-    }
-
 }
