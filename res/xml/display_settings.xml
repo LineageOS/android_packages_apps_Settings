@@ -137,6 +137,12 @@
             settings:controller="com.android.settings.display.ColorModePreferenceController"
             settings:keywords="@string/keywords_color_mode"/>
 
+        <lineageos.preference.LineagePartsPreference
+            android:key="live_display_color_profile"
+            settings:replacesKey="color_mode"
+            settings:requiresConfig="@*lineageos.platform:bool/config_enableLiveDisplay"
+            settings:requiresFeature="lineagehardware:FEATURE_DISPLAY_MODES" />
+
         <Preference
             android:fragment="com.android.settings.display.ColorContrastFragment"
             android:key="color_contrast"
