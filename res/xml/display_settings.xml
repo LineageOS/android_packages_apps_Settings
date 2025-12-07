@@ -73,6 +73,14 @@
             settings:controller="com.android.settings.display.AmbientDisplayAlwaysOnPreferenceScreenController"
             settings:userRestriction="no_ambient_display" />
 
+        <com.android.settingslib.PrimarySwitchPreference
+            android:key="ambient_display_external_settings"
+            android:title="@string/ambient_display_screen_title"
+            android:summary="@string/doze_summary"
+            settings:controller="com.android.settings.display.AmbientDisplaySettingsController">
+            <intent android:action="org.lineageos.settings.device.DOZE_SETTINGS" />
+        </com.android.settingslib.PrimarySwitchPreference>
+
         <com.android.settingslib.RestrictedPreference
             android:fragment="com.android.settings.display.FoldLockBehaviorSettings"
             android:key="fold_lock_behavior"

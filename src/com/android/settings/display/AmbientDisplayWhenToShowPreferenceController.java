@@ -20,6 +20,7 @@ import android.hardware.display.AmbientDisplayConfiguration;
 
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.display.AmbientDisplaySettingsController;
 
 /**
  * Only show the "When to show" Doze preferences if there's an ambient display available.
@@ -35,6 +36,11 @@ public class AmbientDisplayWhenToShowPreferenceController extends
 
     @Override
     public int getAvailabilityStatus() {
+        if (AmbientDisplaySettingsController.isExternallyManaged(mContext)) {
+            if (!mConfig.doubleTapSensorAvailable() && !mConfig.tapSensorAvailable()) {
+                return CONDITIONALLY_UNAVAILABLE;
+            }
+        }
         return mConfig.ambientDisplayAvailable() ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 }

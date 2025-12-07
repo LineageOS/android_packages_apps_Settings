@@ -27,6 +27,7 @@ import androidx.preference.Preference;
 
 import com.android.settings.R;
 import com.android.settings.core.TogglePreferenceController;
+import com.android.settings.display.AmbientDisplaySettingsController;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 
@@ -80,6 +81,9 @@ public class AmbientDisplayNotificationsPreferenceController extends
 
     @Override
     public int getAvailabilityStatus() {
+        if (AmbientDisplaySettingsController.isExternallyManaged(mContext)) {
+            return CONDITIONALLY_UNAVAILABLE;
+        }
         return getAmbientConfig().pulseOnNotificationAvailable()
                 ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
