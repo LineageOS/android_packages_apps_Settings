@@ -20,7 +20,6 @@ import static android.app.admin.DevicePolicyManager.DEVICE_OWNER_TYPE_FINANCED;
 
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.AppOpsManager;
 import android.app.Dialog;
 import android.app.admin.DeviceAdminInfo;
 import android.app.admin.DeviceAdminReceiver;
@@ -107,7 +106,6 @@ public class DeviceAdminAdd extends CollapsingToolbarBaseActivity {
     Handler mHandler;
 
     DevicePolicyManager mDPM;
-    AppOpsManager mAppOps;
     DeviceAdminInfo mDeviceAdmin;
     String mAddMsgText;
     String mProfileOwnerName;
@@ -144,7 +142,7 @@ public class DeviceAdminAdd extends CollapsingToolbarBaseActivity {
         mHandler = new Handler(getMainLooper());
 
         mDPM = getSystemService(DevicePolicyManager.class);
-        mAppOps = getSystemService(AppOpsManager.class);
+        getWindow().setHideOverlayWindows(true);
         mLayoutInflaternflater = getSystemService(LayoutInflater.class);
         PackageManager packageManager = getPackageManager();
 
@@ -578,10 +576,6 @@ public class DeviceAdminAdd extends CollapsingToolbarBaseActivity {
         if (!mAddingProfileOwner) {
             updateInterface();
         }
-        // As long as we are running, don't let anyone overlay stuff on top of the screen.
-        mAppOps.setUserRestriction(AppOpsManager.OP_SYSTEM_ALERT_WINDOW, true, mToken);
-        mAppOps.setUserRestriction(AppOpsManager.OP_TOAST_WINDOW, true, mToken);
-
     }
 
     @Override
@@ -589,8 +583,6 @@ public class DeviceAdminAdd extends CollapsingToolbarBaseActivity {
         super.onPause();
         // This just greys out the button. The actual listener is attached to R.id.restricted_action
         mActionButton.setEnabled(false);
-        mAppOps.setUserRestriction(AppOpsManager.OP_SYSTEM_ALERT_WINDOW, false, mToken);
-        mAppOps.setUserRestriction(AppOpsManager.OP_TOAST_WINDOW, false, mToken);
         try {
             ActivityManager.getService().resumeAppSwitches();
         } catch (RemoteException e) {
