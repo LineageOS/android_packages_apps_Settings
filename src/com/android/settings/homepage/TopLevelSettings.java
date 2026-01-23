@@ -31,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
@@ -226,7 +227,14 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     public void onSplitLayoutChanged(boolean isRegularLayout) {
         iteratePreferences(preference -> {
             if (preference instanceof HomepagePreferenceLayout) {
-                ((HomepagePreferenceLayout) preference).getHelper().setIconVisible(isRegularLayout);
+                Context context = getContext();
+                boolean isLargeScreen = SettingsThemeHelper.isTablet(context) ||
+                        (context != null && context.getApplicationContext()
+                                .getResources().getConfiguration().smallestScreenWidthDp >=
+                                WindowManager.LARGE_SCREEN_SMALLEST_SCREEN_WIDTH_DP);
+                boolean visible = isRegularLayout || isLargeScreen;
+
+                ((HomepagePreferenceLayout) preference).getHelper().setIconVisible(visible);
             }
         });
     }
