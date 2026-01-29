@@ -49,7 +49,7 @@ public class SecureNfcEnabler extends BaseNfcEnabler {
             case NfcAdapter.STATE_ON:
                 mPreference.setSummary(R.string.nfc_secure_toggle_summary);
                 mPreference.setChecked(mPreference.isChecked());
-                mPreference.setEnabled(true);
+                mPreference.setEnabled(isToggleable());
                 break;
             case NfcAdapter.STATE_TURNING_ON:
                 mPreference.setEnabled(false);
@@ -58,5 +58,11 @@ public class SecureNfcEnabler extends BaseNfcEnabler {
                 mPreference.setEnabled(false);
                 break;
         }
+    }
+    private boolean isToggleable() {
+        if (mUserManager.isGuestUser()) {
+            return false;
+        }
+        return true;
     }
 }
