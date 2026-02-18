@@ -17,6 +17,7 @@
 package com.android.settings.nfc;
 
 import android.app.settings.SettingsEnums;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -44,9 +45,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * DefaultPaymentSettings handles the NFC default payment app selection.
@@ -55,7 +53,7 @@ public class DefaultPaymentSettings extends DefaultAppPickerFragment {
     public static final String TAG = "DefaultPaymentSettings";
 
     private PaymentBackend mPaymentBackend;
-    private Map<String, PaymentAppInfo> mAppInfos;
+    private List<PaymentAppInfo> mAppInfos;
     private FooterPreference mFooterPreference;
 
     @Override
@@ -69,19 +67,22 @@ public class DefaultPaymentSettings extends DefaultAppPickerFragment {
     }
 
     @Override
-    @SuppressWarnings("NullAway")
     protected String getDefaultKey() {
         PaymentAppInfo defaultAppInfo = mPaymentBackend.getDefaultApp();
-        if (defaultAppInfo == null) return null;
-        return defaultAppInfo.getKey();
+        if (defaultAppInfo != null) {
+            return defaultAppInfo.componentName.flattenToString() + " "
+                    + defaultAppInfo.userHandle.getIdentifier();
+        }
+        return null;
     }
 
     @Override
     protected boolean setDefaultKey(String key) {
-        PaymentAppInfo appInfo = mAppInfos.get(key);
-        if (appInfo == null) return true;
-        mPaymentBackend.setDefaultPaymentApp(
-                appInfo.componentName, appInfo.userHandle.getIdentifier());
+        String[] keys = key.split(" ");
+        if (keys.length >= 2) {
+            mPaymentBackend.setDefaultPaymentApp(ComponentName.unflattenFromString(keys[0]),
+                    Integer.parseInt(keys[1]));
+        }
         return true;
     }
 
@@ -89,9 +90,7 @@ public class DefaultPaymentSettings extends DefaultAppPickerFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mPaymentBackend = new PaymentBackend(getActivity());
-        mAppInfos = mPaymentBackend.getPaymentAppInfos()
-                .stream()
-                .collect(Collectors.toMap(PaymentAppInfo::getKey, Function.identity()));
+        mAppInfos = mPaymentBackend.getPaymentAppInfos();
     }
 
     @Override
@@ -148,7 +147,7 @@ public class DefaultPaymentSettings extends DefaultAppPickerFragment {
     @Override
     protected List<? extends CandidateInfo> getCandidates() {
         final List<NfcPaymentCandidateInfo> candidates = new ArrayList<>();
-        for (PaymentAppInfo appInfo: mAppInfos.values()) {
+        for (PaymentAppInfo appInfo: mAppInfos) {
             UserManager um = getContext().createContextAsUser(
                     appInfo.userHandle, /*flags=*/0).getSystemService(UserManager.class);
             boolean isManagedProfile = um.isManagedProfile(appInfo.userHandle.getIdentifier());
