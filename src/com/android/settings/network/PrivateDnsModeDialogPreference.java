@@ -170,7 +170,8 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         mHostnameLayout = view.findViewById(R.id.private_dns_mode_provider_hostname_layout);
         mHostnameText = view.findViewById(R.id.private_dns_mode_provider_hostname);
         if (mHostnameText != null) {
-            mHostnameText.setText(ConnectivitySettingsManager.getPrivateDnsHostname(context));
+            String backup = context.getSharedPreferences("dns_prefs", 0).getString("last_custom_dns", "");
+            mHostnameText.setText(!backup.isEmpty() ? backup : ConnectivitySettingsManager.getPrivateDnsHostname(context));
             mHostnameText.addTextChangedListener(this);
         }
 
@@ -201,6 +202,8 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
             mMode = PRIVATE_DNS_MODE_OPPORTUNISTIC;
         } else if (checkedId == R.id.private_dns_mode_provider) {
             mMode = PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
+            String backup = getContext().getSharedPreferences("dns_prefs", 0).getString("last_custom_dns", "");
+            if (!backup.isEmpty()) mHostnameText.setText(backup);
         }
         updateDialogInfo();
     }
@@ -287,6 +290,7 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
 
             ConnectivitySettingsManager.setPrivateDnsHostname(context,
                     mHostnameText.getText().toString());
+            context.getSharedPreferences("dns_prefs", 0).edit().putString("last_custom_dns", mHostnameText.getText().toString()).apply();
         } else if (mMode == PRIVATE_DNS_MODE_CLOUDFLARE) {
             final String cloudflareHostname =
                     context.getString(R.string.private_dns_hostname_cloudflare);
