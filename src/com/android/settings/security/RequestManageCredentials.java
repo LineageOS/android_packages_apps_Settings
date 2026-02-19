@@ -16,6 +16,9 @@
 
 package com.android.settings.security;
 
+import static android.content.pm.PackageItemInfo.DEFAULT_MAX_LABEL_SIZE_PX;
+import static android.text.TextUtils.SAFE_STRING_FLAG_FIRST_LINE;
+import static android.text.TextUtils.SAFE_STRING_FLAG_TRIM;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
 import android.app.Activity;
@@ -248,7 +251,11 @@ public class RequestManageCredentials extends Activity {
             mAppIconView.setImageDrawable(getPackageManager().getApplicationIcon(applicationInfo));
             mTitleView.setText(TextUtils.expandTemplate(
                     getText(R.string.request_manage_credentials_title),
-                    applicationInfo.loadLabel(getPackageManager())));
+                    applicationInfo.loadSafeLabel(
+                            getPackageManager(),
+                            DEFAULT_MAX_LABEL_SIZE_PX,
+                            SAFE_STRING_FLAG_TRIM | SAFE_STRING_FLAG_FIRST_LINE
+                    )));
         } catch (PackageManager.NameNotFoundException e) {
             mAppIconView.setImageDrawable(null);
             mTitleView.setText(TextUtils.expandTemplate(
