@@ -145,8 +145,18 @@ class BatteryHeaderPreference :
         private fun quickUpdateHeaderPreference(preference: UsageProgressBarPreference) {
             val batteryIntent = BatteryUtils.getBatteryIntent(preference.context) ?: return
             val batteryLevel: Int = Utils.getBatteryLevel(batteryIntent)
+            val chargeCounterUah =
+                batteryIntent.getIntExtra(android.os.BatteryManager.EXTRA_CHARGE_COUNTER, -1)
             preference.apply {
                 setUsageSummary(com.android.settings.Utils.formatPercentage(batteryLevel))
+                if (chargeCounterUah > 0) {
+                    setTotalSummary(
+                        context.getString(
+                            R.string.battery_charge_counter_summary,
+                            chargeCounterUah / 1000,
+                        )
+                    )
+                }
                 setPercent(batteryLevel.toLong(), BATTERY_MAX_LEVEL)
                 setBottomSummary("")
             }
