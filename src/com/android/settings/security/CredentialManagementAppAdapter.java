@@ -16,6 +16,10 @@
 
 package com.android.settings.security;
 
+import static android.content.pm.PackageItemInfo.DEFAULT_MAX_LABEL_SIZE_PX;
+import static android.text.TextUtils.SAFE_STRING_FLAG_FIRST_LINE;
+import static android.text.TextUtils.SAFE_STRING_FLAG_TRIM;
+
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -89,7 +93,11 @@ public class CredentialManagementAppAdapter extends RecyclerView.Adapter<Recycle
                 mAppIconView.setImageDrawable(mPackageManager.getApplicationIcon(applicationInfo));
                 mTitleView.setText(TextUtils.expandTemplate(
                         mContext.getText(R.string.request_manage_credentials_title),
-                        applicationInfo.loadLabel(mPackageManager)));
+                        applicationInfo.loadSafeLabel(
+                                mPackageManager,
+                                DEFAULT_MAX_LABEL_SIZE_PX,
+                                SAFE_STRING_FLAG_TRIM | SAFE_STRING_FLAG_FIRST_LINE
+                        )));
             } catch (PackageManager.NameNotFoundException e) {
                 mAppIconView.setImageDrawable(null);
                 mTitleView.setText(TextUtils.expandTemplate(
@@ -148,7 +156,11 @@ public class CredentialManagementAppAdapter extends RecyclerView.Adapter<Recycle
             try {
                 ApplicationInfo applicationInfo = mPackageManager.getApplicationInfo(appName, 0);
                 mAppIconView.setImageDrawable(mPackageManager.getApplicationIcon(applicationInfo));
-                mAppNameView.setText(String.valueOf(applicationInfo.loadLabel(mPackageManager)));
+                mAppNameView.setText(String.valueOf(applicationInfo.loadSafeLabel(
+                        mPackageManager,
+                        DEFAULT_MAX_LABEL_SIZE_PX,
+                        SAFE_STRING_FLAG_TRIM | SAFE_STRING_FLAG_FIRST_LINE
+                )));
             } catch (PackageManager.NameNotFoundException e) {
                 mAppIconView.setImageDrawable(null);
                 mAppNameView.setText(appName);
