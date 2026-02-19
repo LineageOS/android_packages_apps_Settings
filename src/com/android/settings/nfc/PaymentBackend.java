@@ -36,6 +36,7 @@ import com.android.internal.content.PackageMonitor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PaymentBackend {
     public static final String TAG = "Settings.PaymentBackend";
@@ -52,6 +53,24 @@ public class PaymentBackend {
         public ComponentName settingsComponent;
         public UserHandle userHandle;
         public Drawable icon;
+
+        public String getKey() {
+            return Integer.toString(hashCode());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(componentName, userHandle);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == this) return true;
+            if (!(o instanceof PaymentAppInfo)) return false;
+            PaymentAppInfo appInfo = (PaymentAppInfo) o;
+            return componentName.equals(appInfo.componentName)
+                    && userHandle.equals(appInfo.userHandle);
+        }
     }
 
     /**
