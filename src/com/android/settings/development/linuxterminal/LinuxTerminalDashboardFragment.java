@@ -88,7 +88,8 @@ public class LinuxTerminalDashboardFragment extends DashboardFragment {
 
                 @Override
                 protected boolean isPageSearchEnabled(Context context) {
-                    return DevelopmentSettingsEnabler.isDevelopmentSettingsEnabled(context);
+                    return DevelopmentSettingsEnabler.isDevelopmentSettingsEnabled(context) &&
+                            new LinuxTerminalPreferenceController(context).isAvailable();
                 }
             };
 }
