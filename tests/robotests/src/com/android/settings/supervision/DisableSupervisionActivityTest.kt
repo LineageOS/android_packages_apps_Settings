@@ -126,6 +126,22 @@ class DisableSupervisionActivityTest {
     }
 
     @Test
+    fun onCreate_callerNull_doesNotDisableSupervision() {
+        shadowActivity.setCallingPackage(null)
+        mockRoleManager.stub {
+            on { getRoleHolders(RoleManager.ROLE_SYSTEM_SUPERVISION) } doReturn
+                emptyList()
+        }
+
+        mActivityController.create()
+
+        verifyNoInteractions(mockSupervisionManager) // Supervision is not disabled
+        verifyRemoveSupervisionRole(/* times= */ 0) // Role removal is not called
+        assertThat(shadowActivity.resultCode).isEqualTo(Activity.RESULT_CANCELED)
+        assertThat(mActivity.isFinishing).isTrue()
+    }
+
+    @Test
     fun onCreate_callerHasSystemSupervisionRole_disablesSupervisionAndDeletesData() {
         mockRoleManager.stub {
             on { getRoleHolders(RoleManager.ROLE_SYSTEM_SUPERVISION) } doReturn
