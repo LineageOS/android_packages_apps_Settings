@@ -38,16 +38,10 @@ class DisableSupervisionActivity : FragmentActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e(TAG, "onCreate for DisableSupervisionActivity")
+        Log.d(TAG, "onCreate for DisableSupervisionActivity")
 
         val supervisionApps = supervisionRoleHolders
-        val devicePolicyManager = getSystemService(DevicePolicyManager::class.java)
-        val isAllowedProfileOwner = isCallingPackageSupervisionProfileOwner(devicePolicyManager)
-        if (
-            callingPackage != systemSupervisionPackageName &&
-                !supervisionApps.contains(callingPackage) &&
-                !isAllowedProfileOwner
-        ) {
+        if (!isCallingPackageAllowed(supervisionApps)) {
             Log.w(TAG, "Caller does not have the proper permissions. Finishing activity.")
             setResultAndFinish(RESULT_CANCELED)
             return
@@ -84,6 +78,19 @@ class DisableSupervisionActivity : FragmentActivity() {
             // If the caller does not have the supervision role, simply finish the activity.
             setResultAndFinish(RESULT_OK)
         }
+    }
+
+    private fun isCallingPackageAllowed(supervisionApps: List<String>): Boolean {
+        if (callingPackage == null) {
+            return false
+        }
+        if (callingPackage == systemSupervisionPackageName ||
+            supervisionApps.contains(callingPackage)) {
+            return true
+        }
+
+        val devicePolicyManager = getSystemService(DevicePolicyManager::class.java)
+        return isCallingPackageSupervisionProfileOwner(devicePolicyManager)
     }
 
     private suspend fun revokeSupervisionRole(): Boolean {
