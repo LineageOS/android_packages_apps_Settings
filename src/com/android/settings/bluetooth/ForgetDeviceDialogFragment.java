@@ -26,6 +26,7 @@ import android.companion.AssociationInfo;
 import android.companion.CompanionDeviceManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.icu.text.ListFormatter;
 import android.os.Bundle;
@@ -166,8 +167,11 @@ public class ForgetDeviceDialogFragment extends InstrumentedDialogFragment {
 
     private CharSequence getAppLabel(String packageName) {
         try {
-            return mPackageManager.getApplicationLabel(
-                    mPackageManager.getApplicationInfo(packageName, 0));
+            return mPackageManager.getApplicationInfo(packageName, 0).loadSafeLabel(
+                    mPackageManager,
+                    PackageItemInfo.MAX_SAFE_LABEL_LENGTH,
+                    TextUtils.SAFE_STRING_FLAG_TRIM
+                            | TextUtils.SAFE_STRING_FLAG_FIRST_LINE);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Package Not Found", e);
             return "";
