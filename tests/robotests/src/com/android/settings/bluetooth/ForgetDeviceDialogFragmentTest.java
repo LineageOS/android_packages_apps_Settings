@@ -32,12 +32,14 @@ import android.companion.CompanionDeviceManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.net.MacAddress;
 import android.os.Bundle;
 import android.platform.test.annotations.RequiresFlagsEnabled;
 import android.platform.test.flag.junit.CheckFlagsRule;
 import android.platform.test.flag.junit.DeviceFlagsValueProvider;
+import android.text.TextUtils;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentActivity;
@@ -217,7 +219,11 @@ public class ForgetDeviceDialogFragmentTest {
         ApplicationInfo appInfo = mock(ApplicationInfo.class);
         try {
             when(mPackageManager.getApplicationInfo(packageName, 0)).thenReturn(appInfo);
-            when(mPackageManager.getApplicationLabel(appInfo)).thenReturn(appName);
+            when(appInfo.loadSafeLabel(
+                    mPackageManager,
+                    PackageItemInfo.MAX_SAFE_LABEL_LENGTH,
+                    TextUtils.SAFE_STRING_FLAG_TRIM | TextUtils.SAFE_STRING_FLAG_FIRST_LINE))
+                    .thenReturn(appName);
         } catch (PackageManager.NameNotFoundException e) {
             throw new RuntimeException(e);
         }
