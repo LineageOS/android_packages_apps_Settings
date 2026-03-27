@@ -107,6 +107,15 @@ public class ShadowLockPatternUtils {
     }
 
     @Implementation
+    protected int getCredentialTypeForUser(int userId) {
+        final boolean isSecure = sUserToIsSecureMap.getOrDefault(userId, false);
+        if (isSecure) {
+            return LockPatternUtils.CREDENTIAL_TYPE_PIN;
+        }
+        return LockPatternUtils.CREDENTIAL_TYPE_NONE;
+    }
+
+    @Implementation
     protected static boolean isDeviceEncryptionEnabled() {
         return sDeviceEncryptionEnabled;
     }
