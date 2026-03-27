@@ -74,6 +74,9 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
 
     private static final String TAG_BIOMETRIC_FRAGMENT = "fragment";
 
+    private static final String CONFIRM_REMOTE_DEVICE_CREDENTIAL_ACTIVITY_ALIAS =
+            "com.android.settings.ConfirmRemoteDeviceCredentialActivity";
+
     /** Use this extra value to provide a custom logo for the biometric prompt. **/
     public static final String CUSTOM_BIOMETRIC_PROMPT_LOGO_RES_ID_KEY = "custom_logo_res_id";
     /** Use this extra value to provide a custom logo description for the biometric prompt. **/
@@ -219,6 +222,19 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
                         .equals(intent.getAction());
         final boolean remoteValidation =
                 KeyguardManager.ACTION_CONFIRM_REMOTE_DEVICE_CREDENTIAL.equals(intent.getAction());
+
+        // Remote validation must use the alias to avoid bypassing permission checks
+        if (remoteValidation) {
+            final ComponentName componentName = intent.getComponent();
+            if (componentName == null || !CONFIRM_REMOTE_DEVICE_CREDENTIAL_ACTIVITY_ALIAS
+                    .equals(componentName.getClassName())) {
+                Log.w(TAG, "Caller bypassing alias for action: "
+                        + KeyguardManager.ACTION_CONFIRM_REMOTE_DEVICE_CREDENTIAL);
+                finish();
+                return;
+            }
+        }
+
         mTaskOverlay = isInternalActivity()
                 && intent.getBooleanExtra(KeyguardManager.EXTRA_FORCE_TASK_OVERLAY, false);
         final boolean prepareRepairMode =
