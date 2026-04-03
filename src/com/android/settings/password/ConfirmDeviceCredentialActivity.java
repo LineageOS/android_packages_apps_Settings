@@ -87,7 +87,6 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
             "biometric_prompt_negative_button_text";
     public static final String BIOMETRIC_PROMPT_HIDE_BACKGROUND =
             "biometric_prompt_hide_background";
-    public static final String EXTRA_DATA = "extra_data";
     public static final int BIOMETRIC_LOCKOUT_ERROR_RESULT = 100;
 
     public static class InternalActivity extends ConfirmDeviceCredentialActivity {
@@ -112,7 +111,6 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
     private boolean mGoingToBackground;
     private boolean mWaitingForBiometricCallback;
     private int mBiometricsAuthenticators;
-    private Intent mIntentData;
 
     private Executor mExecutor = (runnable -> {
         mHandler.post(runnable);
@@ -163,7 +161,7 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
                         ConfirmDeviceCredentialActivity.this);
             }
 
-            setResult(Activity.RESULT_OK, mIntentData);
+            setResult(Activity.RESULT_OK);
             finish();
         }
 
@@ -212,7 +210,6 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
         mBiometricsAuthenticators = intent.getIntExtra(BIOMETRIC_PROMPT_AUTHENTICATORS,
                 BiometricManager.Authenticators.DEVICE_CREDENTIAL
                         | BiometricManager.Authenticators.BIOMETRIC_WEAK);
-        mIntentData = intent.getParcelableExtra(EXTRA_DATA, Intent.class);
         final String negativeButtonText = intent.getStringExtra(
                 BIOMETRIC_PROMPT_NEGATIVE_BUTTON_TEXT);
         final boolean frp =
