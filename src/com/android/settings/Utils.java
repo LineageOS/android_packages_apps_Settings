@@ -29,7 +29,6 @@ import static android.text.format.DateUtils.FORMAT_SHOW_DATE;
 import static com.android.settings.password.ConfirmDeviceCredentialActivity.BIOMETRIC_PROMPT_AUTHENTICATORS;
 import static com.android.settings.password.ConfirmDeviceCredentialActivity.BIOMETRIC_PROMPT_HIDE_BACKGROUND;
 import static com.android.settings.password.ConfirmDeviceCredentialActivity.BIOMETRIC_PROMPT_NEGATIVE_BUTTON_TEXT;
-import static com.android.settings.password.ConfirmDeviceCredentialActivity.EXTRA_DATA;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -1649,30 +1648,10 @@ public final class Utils extends com.android.settingslib.Utils {
         final UserManager userManager = (UserManager) fragment.getContext().getSystemService(
                 UserManager.class);
         fragment.startActivityForResult(getIntentForBiometricAuthentication(fragment.getResources(),
-                getEffectiveUserId(userManager, userId), hideBackground, null /* data */),
+                getEffectiveUserId(userManager, userId), hideBackground),
                 requestCode);
     }
 
-    /**
-     * Launch biometric prompt for mandatory biometrics. Call
-     * {@link #requestBiometricAuthenticationForMandatoryBiometrics(Context, boolean, int)}
-     * to check if all requirements for mandatory biometrics is satisfied
-     * before launching biometric prompt.
-     *
-     * @param fragment       corresponding fragment of the surface
-     * @param requestCode    for starting the new activity
-     * @param userId         user id for the authentication request
-     * @param hideBackground if the background activity screen needs to be hidden
-     * @param data           additional info to returned to the activity after authentication
-     *                       has ended
-     */
-    public static void launchBiometricPromptForMandatoryBiometrics(@NonNull Fragment fragment,
-            int requestCode, int userId, boolean hideBackground, @Nullable Intent data) {
-        final UserManager userManager = (UserManager) fragment.getContext().getSystemService(
-                UserManager.class);
-        fragment.startActivityForResult(getIntentForBiometricAuthentication(fragment.getResources(),
-                getEffectiveUserId(userManager, userId), hideBackground, data), requestCode);
-    }
 
     /**
      * Launch biometric prompt for mandatory biometrics. Call
@@ -1690,7 +1669,7 @@ public final class Utils extends com.android.settingslib.Utils {
         final UserManager userManager = activity.getSystemService(UserManager.class);
         activity.startActivityForResult(getIntentForBiometricAuthentication(
                 activity.getResources(), getEffectiveUserId(userManager, userId),
-                hideBackground, null /* data */), requestCode);
+                hideBackground), requestCode);
     }
 
     /**
@@ -1772,7 +1751,7 @@ public final class Utils extends com.android.settingslib.Utils {
     }
 
     private static Intent getIntentForBiometricAuthentication(Resources resources,
-            int effectiveUserId, boolean hideBackground, @Nullable Intent data) {
+            int effectiveUserId, boolean hideBackground) {
         final Intent intent = new Intent();
         intent.putExtra(BIOMETRIC_PROMPT_AUTHENTICATORS,
                 BiometricManager.Authenticators.IDENTITY_CHECK);
@@ -1783,7 +1762,6 @@ public final class Utils extends com.android.settingslib.Utils {
         intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_ALLOW_ANY_USER, true);
         intent.putExtra(EXTRA_USER_ID, effectiveUserId);
         intent.putExtra(BIOMETRIC_PROMPT_HIDE_BACKGROUND, hideBackground);
-        intent.putExtra(EXTRA_DATA, data);
         intent.setClassName(SETTINGS_PACKAGE_NAME,
                 ConfirmDeviceCredentialActivity.InternalActivity.class.getName());
         return intent;
