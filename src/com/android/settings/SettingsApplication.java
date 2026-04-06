@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import android.app.Application;
+import android.content.pm.PackageItemInfo;
 
 import com.android.settings.activityembedding.ActivityEmbeddingRulesController;
 import com.android.settings.homepage.SettingsHomepageActivity;
@@ -32,6 +33,9 @@ public class SettingsApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Force all loadLabel() calls to sanitize package labels
+        PackageItemInfo.forceSafeLabels();
 
         final ActivityEmbeddingRulesController controller =
                 new ActivityEmbeddingRulesController(this);
