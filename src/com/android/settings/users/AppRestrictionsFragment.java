@@ -687,6 +687,12 @@ public class AppRestrictionsFragment extends SettingsPreferenceFragment implemen
             // that were used to do the vetting, since that's as much as we've verified is safe.
             vettedIntent.setComponent(activityInfo.getComponentName());
             vettedIntent.setPackage(activityInfo.packageName);
+            vettedIntent.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                    | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
+                    | Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);
+            vettedIntent.setData(null);
+            vettedIntent.setClipData(null);
             return vettedIntent;
         }
     }
