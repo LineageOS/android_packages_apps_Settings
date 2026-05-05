@@ -15,12 +15,14 @@
  */
 package com.android.settings.connecteddevice;
 
+import android.app.Activity;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.R;
@@ -88,8 +90,7 @@ public class BluetoothDashboardFragment extends DashboardFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        String callingAppPackageName = PasswordUtils.getCallingAppPackageName(
-                getActivity().getActivityToken());
+        String callingAppPackageName = resolveInitialCallingPackage();
         String action = getIntent() != null ? getIntent().getAction() : "";
         if (DEBUG) {
             Log.d(TAG, "onActivityCreated() calling package name is : " + callingAppPackageName
@@ -106,6 +107,19 @@ public class BluetoothDashboardFragment extends DashboardFragment {
         if (lifecycle != null) {
             lifecycle.addObserver(mController);
         }
+    }
+
+    @Nullable
+    private String resolveInitialCallingPackage() {
+        Activity activity = getActivity();
+        if (activity instanceof SettingsActivity) {
+            return ((SettingsActivity) activity).getInitialCallingPackage();
+        }
+
+        if (activity != null) {
+            return PasswordUtils.getCallingAppPackageName(activity.getActivityToken());
+        }
+        return null;
     }
 
     @VisibleForTesting
