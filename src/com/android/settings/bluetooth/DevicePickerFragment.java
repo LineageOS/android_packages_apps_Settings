@@ -19,6 +19,7 @@ package com.android.settings.bluetooth;
 import static android.os.UserManager.DISALLOW_CONFIG_BLUETOOTH;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.settings.SettingsEnums;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -33,10 +34,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.R;
 import com.android.settings.flags.Flags;
+import com.android.settings.SettingsActivity;
 import com.android.settings.password.PasswordUtils;
 import com.android.settingslib.bluetooth.CachedBluetoothDevice;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -98,14 +101,26 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         getActivity().setTitle(getString(R.string.device_picker));
         UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
         mScanAllowed = !um.hasUserRestriction(DISALLOW_CONFIG_BLUETOOTH);
-        mCallingAppPackageName = PasswordUtils.getCallingAppPackageName(
-                getActivity().getActivityToken());
+        mCallingAppPackageName = resolveInitialCallingPackage();
         if (!TextUtils.equals(mCallingAppPackageName, mLaunchPackage)) {
             Log.w(TAG, "sendDevicePickedIntent() launch package name is not equivalent to"
                     + " calling package name!");
         }
         mContext = getContext();
         setHasOptionsMenu(true);
+    }
+
+    @Nullable
+    private String resolveInitialCallingPackage() {
+        Activity activity = getActivity();
+        if (activity instanceof SettingsActivity) {
+            return ((SettingsActivity) activity).getInitialCallingPackage();
+        }
+
+        if (activity != null) {
+            return PasswordUtils.getCallingAppPackageName(activity.getActivityToken());
+        }
+        return null;
     }
 
     @Override
