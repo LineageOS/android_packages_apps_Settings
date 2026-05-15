@@ -46,7 +46,7 @@ class DeviceAdminListItem implements Comparable<DeviceAdminListItem> {
         final PackageManager pm = context.getPackageManager();
         mName = mInfo.loadLabel(pm);
         try {
-            mDescription = mInfo.loadDescription(pm);
+            mDescription = mInfo.loadDescriptionSafe(pm);
         } catch (Resources.NotFoundException exception) {
             Log.w(TAG, "Setting description to null because can't find resource: " + mKey);
         }
