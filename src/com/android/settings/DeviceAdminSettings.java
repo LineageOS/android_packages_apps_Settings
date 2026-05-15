@@ -287,7 +287,7 @@ public class DeviceAdminSettings extends ListFragment {
             vh.checkbox.setChecked(isActiveAdmin(item));
             final boolean enabled = isEnabled(item);
             try {
-                vh.description.setText(item.loadDescription(activity.getPackageManager()));
+                vh.description.setText(item.loadDescriptionSafe(activity.getPackageManager()));
             } catch (Resources.NotFoundException e) {
             }
             vh.checkbox.setEnabled(enabled);
