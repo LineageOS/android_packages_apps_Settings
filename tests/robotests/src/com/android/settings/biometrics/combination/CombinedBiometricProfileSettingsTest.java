@@ -36,6 +36,7 @@ import android.content.Intent;
 import android.hardware.face.FaceManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,9 +50,11 @@ import androidx.preference.PreferenceScreen;
 import androidx.test.core.app.ApplicationProvider;
 
 import com.android.settings.R;
+import com.android.settings.SettingsActivity;
 import com.android.settings.password.ChooseLockSettingsHelper;
 import com.android.settings.testutils.FakeFeatureFactory;
 import com.android.settings.testutils.shadow.ShadowFragment;
+import com.android.settings.testutils.shadow.ShadowPasswordUtils;
 import com.android.settings.testutils.shadow.ShadowSettingsPreferenceFragment;
 import com.android.settings.testutils.shadow.ShadowUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -75,7 +78,8 @@ import java.util.List;
 import java.util.Map;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(shadows = {ShadowSettingsPreferenceFragment.class, ShadowUtils.class, ShadowFragment.class})
+@Config(shadows = {ShadowSettingsPreferenceFragment.class, ShadowUtils.class, ShadowFragment.class,
+        ShadowPasswordUtils.class})
 public class CombinedBiometricProfileSettingsTest {
 
     private TestCombinedBiometricProfileSettings mFragment;
@@ -98,8 +102,9 @@ public class CombinedBiometricProfileSettingsTest {
         ShadowUtils.setFaceManager(mFaceManager);
         FakeFeatureFactory.setupForTest();
 
-        FragmentActivity activity = Robolectric.buildActivity(FragmentActivity.class,
+        SettingsActivity activity = Robolectric.buildActivity(FragmentActivity.class,
                 new Intent().putExtra(ChooseLockSettingsHelper.EXTRA_KEY_GK_PW_HANDLE, 1L)).get();
+        ShadowPasswordUtils.setCallingAppPackageName(mActivity.getPackageName());
         mContext = spy(ApplicationProvider.getApplicationContext());
         mFragment = spy(new TestCombinedBiometricProfileSettings(mContext));
         doReturn(activity).when(mFragment).getActivity();
@@ -297,6 +302,36 @@ public class CombinedBiometricProfileSettingsTest {
         List<Preference> capturedPreferences = mPreferenceCaptor.getAllValues();
         assertThat(capturedPreferences.size()).isEqualTo(1);
         assertThat(capturedPreferences.get(0).getKey()).isEqualTo(mFragment.getFacePreferenceKey());
+    }
+
+    @Test
+    public void testInternalCaller_allowsSensitiveExtras() {
+        Intent intent = new Intent(mActivity.getIntent());
+        intent.putExtra(Intent.EXTRA_USER_ID, 10);
+        intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_GK_PW_HANDLE, 12345L);
+        mActivity.setIntent(intent);
+
+        mFragment.onAttach((Context) mActivity);
+        mFragment.onCreate(Bundle.EMPTY);
+
+        assertThat(mFragment.getUserId()).isEqualTo(10);
+        assertThat(mFragment.getGkPwHandle()).isEqualTo(12345L);
+    }
+
+    @Test
+    public void testExternalCaller_ignoresSensitiveExtras() {
+        Intent intent = new Intent(mActivity.getIntent());
+        intent.putExtra(Intent.EXTRA_USER_ID, 10);
+        intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_GK_PW_HANDLE, 12345L);
+        intent.putExtra(SettingsActivity.EXTRA_INITIAL_CALLING_PACKAGE, "com.poc.app");
+        mActivity.setIntent(intent);
+
+        mFragment.onAttach((Context) mActivity);
+        mFragment.onCreate(Bundle.EMPTY);
+
+        assertThat(mFragment.getUserId()).isEqualTo(UserHandle.myUserId());
+        assertThat(mFragment.getGkPwHandle()).isEqualTo(0L);
+        verify(mFragment).launchChooseOrConfirmLock();
     }
 
     /**

@@ -19,6 +19,7 @@ import static android.app.Activity.RESULT_OK;
 
 import static com.android.settings.password.ChooseLockPattern.RESULT_FINISHED;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.biometrics.SensorProperties;
@@ -38,6 +39,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 
 import com.android.settings.R;
+import com.android.settings.SettingsActivity;
 import com.android.settings.Utils;
 import com.android.settings.biometrics.BiometricEnrollBase;
 import com.android.settings.biometrics.BiometricUtils;
@@ -65,6 +67,7 @@ public abstract class BiometricsSettingsBase extends DashboardFragment {
 
     protected int mUserId;
     protected long mGkPwHandle;
+    private boolean mAllowInternalExtras;
     private boolean mConfirmCredential;
     @Nullable private FaceManager mFaceManager;
     @Nullable private FingerprintManager mFingerprintManager;
@@ -76,8 +79,18 @@ public abstract class BiometricsSettingsBase extends DashboardFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mUserId = getActivity().getIntent().getIntExtra(Intent.EXTRA_USER_ID,
-                UserHandle.myUserId());
+        mUserId = UserHandle.myUserId();
+        mAllowInternalExtras = false;
+
+        final Activity hostActivity = getActivity();
+        if (hostActivity instanceof SettingsActivity) {
+            final SettingsActivity activity = (SettingsActivity) hostActivity;
+            final String callingPackage = activity.getInitialCallingPackage();
+            if (TextUtils.equals(callingPackage, activity.getPackageName())) {
+                mAllowInternalExtras = true;
+                mUserId = activity.getIntent().getIntExtra(Intent.EXTRA_USER_ID, mUserId);
+            }
+        }
     }
 
     @Override
@@ -86,7 +99,8 @@ public abstract class BiometricsSettingsBase extends DashboardFragment {
         mFaceManager = Utils.getFaceManagerOrNull(getActivity());
         mFingerprintManager = Utils.getFingerprintManagerOrNull(getActivity());
 
-        if (BiometricUtils.containsGatekeeperPasswordHandle(getIntent())) {
+        if (mAllowInternalExtras
+                && BiometricUtils.containsGatekeeperPasswordHandle(getIntent())) {
             mGkPwHandle = BiometricUtils.getGatekeeperPasswordHandle(getIntent());
         }
 
