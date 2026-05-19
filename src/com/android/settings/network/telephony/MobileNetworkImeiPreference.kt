@@ -59,7 +59,8 @@ class MobileNetworkImeiPreference(private val context: Context, private val subI
 
     override fun getTitle(context: Context): CharSequence? = formattedTitle
 
-    override fun getSummary(context: Context): CharSequence? = imei
+    override fun getSummary(context: Context): CharSequence? =
+        context.getString(R.string.device_info_protected_single_press)
 
     override fun isAvailable(context: Context) = isAvailable
 
@@ -70,7 +71,8 @@ class MobileNetworkImeiPreference(private val context: Context, private val subI
 
     override fun onCreate(context: PreferenceLifecycleContext) {
         context.requirePreference<Preference>(key).onPreferenceClickListener =
-            Preference.OnPreferenceClickListener {
+            Preference.OnPreferenceClickListener { p ->
+                p.summary = imei
                 getSlotIndex()
                     .takeIf { it != INVALID_SIM_SLOT_INDEX }
                     ?.run {

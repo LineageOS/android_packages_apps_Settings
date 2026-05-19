@@ -127,12 +127,13 @@ open class MobileNetworkEidPreferenceController(context: Context, key: String) :
     fun refreshUi() {
         preference.title = title
         preference.dialogTitle = title
-        preference.summary = eid
+        preference.summary = mContext.getString(R.string.device_info_protected_single_press)
     }
 
     override fun handlePreferenceTreeClick(preference: Preference): Boolean {
         if (preference.key != preferenceKey) return false
         this.preference.setOnShowListener {
+            preference.summary = eid
             coroutineScope?.launch { updateDialog() }
         }
         return true
