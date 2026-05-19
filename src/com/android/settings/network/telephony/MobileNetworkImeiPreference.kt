@@ -60,7 +60,8 @@ class MobileNetworkImeiPreference(private val data: MobileNetworkData) :
 
     override fun storage(context: Context): KeyValueStore = createSummaryStorage(context, key)
 
-    override fun getSummary(context: Context): CharSequence? = data.imeiInfoDataFlow.value.summary
+    override fun getSummary(context: Context): CharSequence? =
+        context.getString(R.string.device_info_protected_single_press)
 
     override val availabilityDescription =
         "The user must be an admin user, and the device must have mobile data or voice capability, and the subscription ID must be valid."
@@ -82,8 +83,9 @@ class MobileNetworkImeiPreference(private val data: MobileNetworkData) :
             }
         }
         context.requirePreference<Preference>(key).onPreferenceClickListener =
-            Preference.OnPreferenceClickListener {
+            Preference.OnPreferenceClickListener { p ->
                 val title = getTitle(context) ?: ""
+                p.summary = data.imeiInfoDataFlow.value.summary
                 getSlotIndex()
                     .takeIf { it != INVALID_SIM_SLOT_INDEX }
                     ?.run {

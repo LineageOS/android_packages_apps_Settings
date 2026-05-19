@@ -120,12 +120,15 @@ open class MobileNetworkEidPreferenceController(context: Context, key: String) :
     fun refreshUi() {
         preference.title = title
         preference.dialogTitle = title
-        preference.summary = PhoneNumberUtil.expandByTts(eid)
+        preference.summary = mContext.getString(R.string.device_info_protected_single_press)
     }
 
     override fun handlePreferenceTreeClick(preference: Preference): Boolean {
         if (preference.key != preferenceKey) return false
-        this.preference.setOnShowListener { coroutineScope?.launch { updateDialog() } }
+        this.preference.setOnShowListener {
+            preference.summary = PhoneNumberUtil.expandByTts(eid)
+            coroutineScope?.launch { updateDialog() }
+        }
         return true
     }
 
