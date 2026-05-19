@@ -18,6 +18,9 @@ package com.android.settings.deviceinfo;
 
 import android.content.Context;
 
+import androidx.preference.Preference;
+
+import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.deviceinfo.AbstractBluetoothAddressPreferenceController;
@@ -32,4 +35,14 @@ public class BluetoothAddressPreferenceController extends
     }
 
     // This space intentionally left blank
+
+    @Override
+    protected void setMacSummary(Preference preference, String summary) {
+        preference.setSummary(R.string.device_info_protected_single_press);
+        preference.setSelectable(true);
+        preference.setOnPreferenceClickListener(p -> {
+            super.setMacSummary(preference, summary);
+            return true;
+        });
+    }
 }
