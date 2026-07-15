@@ -16,6 +16,7 @@
 
 package com.android.settings.accounts;
 
+import static android.app.ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOW_IF_VISIBLE;
 import static android.content.Intent.EXTRA_USER;
 
 import android.accounts.AccountManager;
@@ -24,6 +25,7 @@ import android.accounts.AccountManagerFuture;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
@@ -94,6 +96,12 @@ public class AddAccountSettings extends Activity {
                 //bundle.keySet();
                 Intent intent = (Intent) bundle.get(AccountManager.KEY_INTENT);
                 if (intent != null) {
+                    if (!mIsVisible) {
+                        Log.w(TAG, "Activity is not visible, dropping AddAccount intent launch.");
+                        return;
+                    } else {
+                        Log.v(TAG, "Activity is visible, launching AddAccount intent launch.");
+                    }
                     done = false;
                     Bundle addAccountOptions = new Bundle();
                     addAccountOptions.putParcelable(KEY_CALLER_IDENTITY, mPendingIntent);
@@ -103,8 +111,13 @@ public class AddAccountSettings extends Activity {
                     intent.putExtras(addAccountOptions)
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivityForResultAsUser(
-                            new Intent(intent), ADD_ACCOUNT_REQUEST, mUserHandle);
+                    ActivityOptions options = ActivityOptions.makeBasic()
+                            .setPendingIntentCreatorBackgroundActivityStartMode(
+                                     MODE_BACKGROUND_ACTIVITY_START_ALLOW_IF_VISIBLE)
+                            .setPendingIntentBackgroundActivityStartMode(
+                                    MODE_BACKGROUND_ACTIVITY_START_ALLOW_IF_VISIBLE);
+                    startActivityForResultAsUser(new Intent(intent), ADD_ACCOUNT_REQUEST,
+                            options.toBundle(), mUserHandle);
                 } else {
                     setResult(RESULT_OK);
                     if (mPendingIntent != null) {
@@ -130,6 +143,7 @@ public class AddAccountSettings extends Activity {
 
     private boolean mAddAccountCalled = false;
     private UserHandle mUserHandle;
+    private boolean mIsVisible = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -174,6 +188,20 @@ public class AddAccountSettings extends Activity {
                 requestChooseAccount();
             }
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.v(TAG, "onStart");
+        mIsVisible = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v(TAG, "onStop");
+        mIsVisible = false;
     }
 
     @Override
