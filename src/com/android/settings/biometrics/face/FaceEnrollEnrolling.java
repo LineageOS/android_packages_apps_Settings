@@ -24,6 +24,7 @@ import static android.hardware.biometrics.BiometricFaceConstants.FEATURE_REQUIRE
 import android.app.settings.SettingsEnums;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -55,12 +56,15 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
     private TextView mErrorText;
     private Interpolator mLinearOutSlowInInterpolator;
     private FaceEnrollPreviewFragment mPreviewFragment;
+    private boolean mCompletionStarted;
+    private boolean mPromptVisible;
+    private final Handler mPromptHandler = new Handler();
 
     private ArrayList<Integer> mDisabledFeatures = new ArrayList<>();
     private ParticleCollection.Listener mListener = new ParticleCollection.Listener() {
         @Override
         public void onEnrolled() {
-            FaceEnrollEnrolling.this.launchFinish(mToken);
+            // Completion is driven by the biometric callback, not the retired particle animation.
         }
     };
 
@@ -137,6 +141,12 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
     }
 
     @Override
+    protected void onDestroy() {
+        mPromptHandler.removeCallbacksAndMessages(null);
+        super.onDestroy();
+    }
+
+    @Override
     protected boolean shouldFinishWhenBackgrounded() {
         // Prevent super.onStop() from finishing, since we handle this in our onStop().
         return false;
@@ -210,11 +220,9 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
         }
         mPreviewFragment.onEnrollmentProgressChange(steps, remaining);
 
-        // TODO: Update the actual animation
-        showError("Steps: " + steps + " Remaining: " + remaining);
-
         // TODO: Have this match any animations that UX comes up with
-        if (remaining == 0) {
+        if (remaining == 0 && !mCompletionStarted) {
+            mCompletionStarted = true;
             // Force the reload of the FaceEnroll slice in case a user has enrolled,
             // this will cause the slice to no longer appear.
             getApplicationContext().getContentResolver().notifyChange(
@@ -229,7 +237,29 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
     }
 
     private void showError(CharSequence error) {
-        mErrorText.setText(error);
+        // Keep one instruction visible for its full dwell time. Rapidly alternating HAL help
+        // messages are otherwise unreadable and make the guidance appear to flicker.
+        if (mPromptVisible) return;
+        mPromptVisible = true;
+        showPrompt(error);
+        mPromptHandler.postDelayed(() -> {
+            if (!mCompletionStarted) {
+                mErrorText.animate()
+                        .alpha(0f)
+                        .setDuration(200)
+                        .withEndAction(() -> {
+                            mErrorText.setVisibility(View.INVISIBLE);
+                            mPromptVisible = false;
+                        })
+                        .start();
+            }
+        }, 1800);
+    }
+
+    private void showPrompt(CharSequence prompt) {
+        if (mErrorText.getVisibility() == View.VISIBLE
+                && TextUtils.equals(mErrorText.getText(), prompt)) return;
+        mErrorText.setText(prompt);
         if (mErrorText.getVisibility() == View.INVISIBLE) {
             mErrorText.setVisibility(View.VISIBLE);
             mErrorText.setTranslationY(getResources().getDimensionPixelSize(
