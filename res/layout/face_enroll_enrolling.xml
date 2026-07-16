@@ -37,6 +37,18 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/error_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:accessibilityLiveRegion="polite"
+                android:textColor="?android:textColorPrimary"
+                android:visibility="invisible" />
+
             <com.android.settings.biometrics.face.FaceSquareFrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -48,22 +60,14 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@null" />
 
-                <ImageView
-                    android:id="@+id/circle_view"
+                <com.android.settings.biometrics.face.FaceEnrollProgressView
+                    android:id="@+id/progress_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:clickable="false" />
 
             </com.android.settings.biometrics.face.FaceSquareFrameLayout>
 
-            <TextView
-                style="@style/TextAppearance.ErrorText"
-                android:id="@+id/error_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|bottom"
-                android:accessibilityLiveRegion="polite"
-                android:gravity="center"
-                android:visibility="invisible"/>
 
         </LinearLayout>
 
