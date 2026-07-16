@@ -63,6 +63,9 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
     private CaptureRequest mPreviewRequest;
     private Size mPreviewSize;
     private ParticleCollection.Listener mListener;
+    private boolean mHalOwnsCamera;
+    private Surface mPreviewSurface;
+    private Runnable mSurfaceReadyListener;
 
     // View used to contain the circular cutout and enrollment animation drawable
     private FaceEnrollProgressView mProgressView;
@@ -97,6 +100,10 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
 
         @Override
         public boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) {
+            if (mPreviewSurface != null) {
+                mPreviewSurface.release();
+                mPreviewSurface = null;
+            }
             return true;
         }
 
@@ -182,6 +189,7 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mHalOwnsCamera = getResources().getBoolean(R.bool.config_face_enroll_hal_owns_camera);
         mTextureView = getActivity().findViewById(R.id.texture_view);
         mProgressView = getActivity().findViewById(R.id.progress_view);
 
@@ -229,6 +237,25 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
         mListener = listener;
     }
 
+    /** Runs the listener once the surface returned by {@link #getPreviewSurface} is ready. */
+    public void setSurfaceReadyListener(Runnable listener) {
+        mSurfaceReadyListener = listener;
+        notifySurfaceReady();
+    }
+
+    /** Returns the surface the face HAL should render its camera preview into. */
+    public Surface getPreviewSurface() {
+        return mPreviewSurface;
+    }
+
+    private void notifySurfaceReady() {
+        if (mPreviewSurface != null && mSurfaceReadyListener != null) {
+            final Runnable listener = mSurfaceReadyListener;
+            mSurfaceReadyListener = null;
+            listener.run();
+        }
+    }
+
     /**
      * Sets up member variables related to camera.
      */
@@ -262,6 +289,14 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
      * @param height The height of the texture view
      */
     private void openCamera(int width, int height) {
+        if (mHalOwnsCamera) {
+            // The face HAL opens the camera itself, only provide it a surface to render into.
+            if (mPreviewSurface == null) {
+                mPreviewSurface = new Surface(mTextureView.getSurfaceTexture());
+            }
+            notifySurfaceReady();
+            return;
+        }
         try {
             setUpCameraOutputs();
             mCameraManager.openCamera(mCameraId, mCameraStateCallback, mHandler);
