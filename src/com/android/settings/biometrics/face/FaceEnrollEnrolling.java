@@ -154,7 +154,6 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
 
     @Override
     protected void startEnrollmentInternal() {
-        super.startEnrollmentInternal();
         mPreviewFragment = (FaceEnrollPreviewFragment) getSupportFragmentManager()
                 .findFragmentByTag(TAG_FACE_PREVIEW);
         if (mPreviewFragment == null) {
@@ -163,6 +162,12 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
                     .commitAllowingStateLoss();
         }
         mPreviewFragment.setListener(mListener);
+        if (getResources().getBoolean(R.bool.config_face_enroll_hal_owns_camera)) {
+            // The face HAL renders into the preview surface, wait until it is available.
+            mPreviewFragment.setSurfaceReadyListener(super::startEnrollmentInternal);
+        } else {
+            super.startEnrollmentInternal();
+        }
     }
 
     @Override
@@ -177,7 +182,8 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
             disabledFeatures[i] = mDisabledFeatures.get(i);
         }
 
-        return new FaceEnrollSidecar(disabledFeatures, getIntent());
+        return new FaceEnrollSidecar(disabledFeatures, getIntent(),
+                mPreviewFragment.getPreviewSurface());
     }
 
     @Override
