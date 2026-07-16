@@ -36,7 +36,6 @@ import android.util.TypedValue;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.android.settings.R;
 import com.android.settings.biometrics.BiometricEnrollSidecar;
@@ -65,12 +64,14 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
     private CaptureRequest mPreviewRequest;
     private Size mPreviewSize;
     private ParticleCollection.Listener mListener;
+    private Runnable mSurfaceReadyListener;
+    private Surface mPreviewSurface;
+    private boolean mHalOwnsCamera;
 
     // View used to contain the circular cutout and enrollment animation drawable
-    private ImageView mCircleView;
+    private FaceEnrollProgressView mProgressView;
 
     // Drawable containing the circular cutout and enrollment animations
-    private FaceEnrollAnimationDrawable mAnimationDrawable;
 
     // Texture used for showing the camera preview
     private FaceSquareTextureView mTextureView;
@@ -90,7 +91,15 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
         @Override
         public void onSurfaceTextureAvailable(
                 SurfaceTexture surfaceTexture, int width, int height) {
-            openCamera(width, height);
+            // In HAL-owned mode the provider opens the camera. Settings only
+            // creates the transport surface and must not become a second
+            // camera client.
+            if (mHalOwnsCamera) {
+                ensurePreviewSurface();
+            } else {
+                openCamera(width, height);
+            }
+            notifySurfaceReady();
         }
 
         @Override
@@ -102,6 +111,12 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
 
         @Override
         public boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) {
+            // In HAL-owned mode the Surface is the enrollment transport. Drop our
+            // reference as soon as TextureView invalidates its backing buffer so a
+            // recreated view cannot accidentally reuse a stale Surface.
+            if (mHalOwnsCamera) {
+                releasePreviewSurface();
+            }
             return true;
         }
 
@@ -187,14 +202,9 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mHalOwnsCamera = getResources().getBoolean(R.bool.config_face_enroll_hal_owns_camera);
         mTextureView = getActivity().findViewById(R.id.texture_view);
-        mCircleView = getActivity().findViewById(R.id.circle_view);
-
-        // Must disable hardware acceleration for this view, otherwise transparency breaks
-        mCircleView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-
-        mAnimationDrawable = new FaceEnrollAnimationDrawable(getContext(), mAnimationListener);
-        mCircleView.setImageDrawable(mAnimationDrawable);
+        mProgressView = getActivity().findViewById(R.id.progress_view);
 
         mCameraManager = (CameraManager) getContext().getSystemService(Context.CAMERA_SERVICE);
     }
@@ -208,7 +218,12 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
         // a camera and start preview from here (otherwise, we wait until the surface is ready in
         // the SurfaceTextureListener).
         if (mTextureView.isAvailable()) {
-            openCamera(mTextureView.getWidth(), mTextureView.getHeight());
+            if (mHalOwnsCamera) {
+                ensurePreviewSurface();
+                notifySurfaceReady();
+            } else {
+                openCamera(mTextureView.getWidth(), mTextureView.getHeight());
+            }
         } else {
             mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
         }
@@ -222,21 +237,58 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
 
     @Override
     public void onEnrollmentError(int errMsgId, CharSequence errString) {
-        mAnimationDrawable.onEnrollmentError(errMsgId, errString);
+        mProgressView.setErrorState();
     }
 
     @Override
     public void onEnrollmentHelp(int helpMsgId, CharSequence helpString) {
-        mAnimationDrawable.onEnrollmentHelp(helpMsgId, helpString);
+        mProgressView.setHelpState();
     }
 
     @Override
     public void onEnrollmentProgressChange(int steps, int remaining) {
-        mAnimationDrawable.onEnrollmentProgressChange(steps, remaining);
+        mProgressView.setProgress(steps, remaining);
+        if (remaining == 0) mProgressView.setCompleteState();
     }
 
     public void setListener(ParticleCollection.Listener listener) {
         mListener = listener;
+    }
+
+    public void setSurfaceReadyListener(Runnable listener) {
+        mSurfaceReadyListener = listener;
+        if (mPreviewSurface != null) {
+            notifySurfaceReady();
+        }
+    }
+
+    /** Returns the surface the face HAL should use for its camera preview. */
+    public Surface getPreviewSurface() {
+        ensurePreviewSurface();
+        return mPreviewSurface;
+    }
+
+    private void ensurePreviewSurface() {
+        if (!mHalOwnsCamera || mTextureView == null || !mTextureView.isAvailable()) {
+            return;
+        }
+        if (mPreviewSurface == null) {
+            mPreviewSurface = new Surface(mTextureView.getSurfaceTexture());
+        }
+    }
+
+    private void notifySurfaceReady() {
+        ensurePreviewSurface();
+        if (mPreviewSurface != null && mSurfaceReadyListener != null) {
+            mSurfaceReadyListener.run();
+        }
+    }
+
+    private void releasePreviewSurface() {
+        if (mPreviewSurface != null) {
+            mPreviewSurface.release();
+            mPreviewSurface = null;
+        }
     }
 
     /**
@@ -272,6 +324,10 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
      * @param height The height of the texture view
      */
     private void openCamera(int width, int height) {
+        if (mHalOwnsCamera) {
+            ensurePreviewSurface();
+            return;
+        }
         try {
             setUpCameraOutputs();
             mCameraManager.openCamera(mCameraId, mCameraStateCallback, mHandler);
@@ -341,5 +397,6 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
             mCameraDevice.close();
             mCameraDevice = null;
         }
+        releasePreviewSurface();
     }
 }
