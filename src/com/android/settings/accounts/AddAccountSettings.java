@@ -24,6 +24,7 @@ import android.accounts.AccountManagerFuture;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
@@ -94,6 +95,12 @@ public class AddAccountSettings extends Activity {
                 //bundle.keySet();
                 Intent intent = (Intent) bundle.get(AccountManager.KEY_INTENT);
                 if (intent != null) {
+                    if (!mIsVisible) {
+                        Log.w(TAG, "Activity is not visible, dropping AddAccount intent launch.");
+                        return;
+                    } else {
+                        Log.v(TAG, "Activity is visible, launching AddAccount intent launch.");
+                    }
                     done = false;
                     Bundle addAccountOptions = new Bundle();
                     addAccountOptions.putParcelable(KEY_CALLER_IDENTITY, mPendingIntent);
@@ -130,6 +137,7 @@ public class AddAccountSettings extends Activity {
 
     private boolean mAddAccountCalled = false;
     private UserHandle mUserHandle;
+    private boolean mIsVisible = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -172,6 +180,20 @@ public class AddAccountSettings extends Activity {
                 requestChooseAccount();
             }
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.v(TAG, "onStart");
+        mIsVisible = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v(TAG, "onStop");
+        mIsVisible = false;
     }
 
     @Override
