@@ -25,20 +25,18 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import android.app.admin.DevicePolicyIdentifiers;
 import android.app.admin.DevicePolicyManager;
-import android.app.admin.PolicyEnforcementInfo;
 import android.app.admin.EnforcingAdmin;
+import android.app.admin.PolicyEnforcementInfo;
 import android.app.admin.UnknownAuthority;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.UserHandle;
 import android.platform.test.flag.junit.SetFlagsRule;
 import android.provider.Settings;
-import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceScreen;
@@ -60,6 +58,8 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+
+import java.util.List;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(shadows = {ShadowUtils.class,
@@ -520,6 +520,32 @@ public class ContentProtectionTogglePreferenceControllerTest {
         mController.onCheckedChanged(/* switchView= */ null, /* isChecked= */ false);
 
         assertThat(getContentProtectionGlobalSetting()).isEqualTo(-1);
+    }
+
+    @Test
+    public void onSwitchChanged_switchChecked_nonAdminUser_doesNotChangeSetting() {
+        Settings.Global.putInt(
+                mContext.getContentResolver(), KEY_CONTENT_PROTECTION_PREFERENCE, 0);
+        mShadowUserManager.setIsAdminUser(false);
+        int initialSetting = getContentProtectionGlobalSetting();
+
+        boolean result = mController.setChecked(true);
+
+        assertThat(result).isFalse();
+        assertThat(getContentProtectionGlobalSetting()).isEqualTo(initialSetting);
+    }
+
+    @Test
+    public void onSwitchChanged_switchUnchecked_nonAdminUser_doesNotChangeSetting() {
+        Settings.Global.putInt(
+                mContext.getContentResolver(), KEY_CONTENT_PROTECTION_PREFERENCE, 1);
+        mShadowUserManager.setIsAdminUser(false);
+        int initialSetting = getContentProtectionGlobalSetting();
+
+        boolean result = mController.setChecked(false);
+
+        assertThat(result).isFalse();
+        assertThat(getContentProtectionGlobalSetting()).isEqualTo(initialSetting);
     }
 
     private void setUpEnforcingAdmin() {
