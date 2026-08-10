@@ -103,6 +103,12 @@ public class ContentProtectionTogglePreferenceController extends TogglePreferenc
                         != DevicePolicyManager.CONTENT_PROTECTION_NOT_CONTROLLED_BY_POLICY) {
             return false;
         }
+
+        final UserManager userManager = mContext.getSystemService(UserManager.class);
+        if (userManager == null || !userManager.isAdminUser()) {
+            return false;
+        }
+
         Settings.Global.putInt(
                 mContentResolver, KEY_CONTENT_PROTECTION_PREFERENCE, isChecked ? 1 : -1);
         return true;
