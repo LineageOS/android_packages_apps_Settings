@@ -306,6 +306,8 @@ public class BluetoothDeviceDetailsFragment extends BluetoothDetailsConfigurable
             controllers.add(new BluetoothDetailsProfilesController(context, this,
                     localBluetoothManager,
                     cachedDevice, lifecycle));
+            controllers.add(new BluetoothDetailsAutoConnectController(context, this, cachedDevice,
+                    lifecycle));
             controllers.add(new BluetoothDetailsMacAddressController(context, this, cachedDevice,
                     lifecycle));
             controllers.add(new StylusDevicesController(context, mInputDevice, cachedDevice,

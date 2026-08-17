@@ -37,6 +37,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import androidx.appcompat.app.AlertDialog;
 
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
@@ -186,6 +187,13 @@ public abstract class BluetoothDevicePairingDetailBase extends DeviceListPrefere
                     removeOnMetadataChangedListener(device);
                     return;
                 }
+            }
+            // Ask for the auto-connect mode when a new device is paired from this page,
+            // otherwise keep the existing behavior and close the fragment.
+            if (cachedDevice != null && mSelectedDevice != null
+                    && mSelectedDevice.equals(cachedDevice.getDevice())) {
+                showAutoConnectModeDialog(cachedDevice);
+                return;
             }
             // If one device is connected(bonded), then close this fragment.
             finish();
@@ -422,6 +430,44 @@ public abstract class BluetoothDevicePairingDetailBase extends DeviceListPrefere
             getActivity().setResult(Activity.RESULT_OK, resultIntent);
         }
         finish();
+    }
+
+    /**
+     * Asks the user which auto-connect mode should apply to a freshly paired device, then closes
+     * the fragment. The default mode is {@link AutoConnectMode#MANUAL_ONLY}.
+     */
+    private void showAutoConnectModeDialog(CachedBluetoothDevice cachedDevice) {
+        final BluetoothDevice device = cachedDevice.getDevice();
+        final Context context = getContext();
+        if (device == null || context == null) {
+            finish();
+            return;
+        }
+        final int currentMode = AutoConnectMode.getMode(context, device);
+        final String[] entries = {
+            context.getString(R.string.bluetooth_auto_connect_mode_manual),
+            context.getString(R.string.bluetooth_auto_connect_mode_pairing),
+            context.getString(R.string.bluetooth_auto_connect_mode_range),
+            context.getString(R.string.bluetooth_auto_connect_mode_always),
+        };
+        new AlertDialog.Builder(context)
+                .setTitle(R.string.bluetooth_auto_connect_pairing_dialog_title)
+                .setMessage(R.string.bluetooth_auto_connect_pairing_dialog_message)
+                .setSingleChoiceItems(entries, currentMode, (dialog, which) -> {
+                    AutoConnectMode.setMode(context, device, which);
+                    if (which >= AutoConnectMode.AFTER_PAIRING) {
+                        cachedDevice.connect();
+                    }
+                    dialog.dismiss();
+                    finish();
+                })
+                .setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                    AutoConnectMode.setMode(context, device, AutoConnectMode.MANUAL_ONLY);
+                    dialog.dismiss();
+                    finish();
+                })
+                .setOnCancelListener(dialog -> finish())
+                .show();
     }
 
     private void showConnectingDialog(@NonNull String deviceName) {
