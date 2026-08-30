@@ -21,6 +21,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Insets;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -33,7 +34,6 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.DisplayInfo;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,11 +48,11 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
-import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.R;
+import com.android.settings.biometrics.BiometricUtils;
 import com.android.settings.flags.Flags;
 import com.android.systemui.biometrics.UdfpsUtils;
 import com.android.systemui.biometrics.shared.model.UdfpsOverlayParams;
@@ -83,6 +83,7 @@ public class UdfpsEnrollEnrollingView extends GlifLayout {
     private AccessibilityManager mAccessibilityManager;
 
     private ObjectAnimator mHeaderScrollAnimator;
+    private boolean mIsUdfpsLocationLow;
 
     public UdfpsEnrollEnrollingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -103,16 +104,6 @@ public class UdfpsEnrollEnrollingView extends GlifLayout {
         super.onFinishInflate();
         mHeaderView = findViewById(com.google.android.setupdesign.R.id.sud_landscape_header_area);
         mUdfpsEnrollView = findViewById(R.id.udfps_animation_view);
-    }
-
-    @Override
-    protected View onInflateTemplate(LayoutInflater inflater, @LayoutRes int template) {
-        final Configuration config = inflater.getContext().getResources().getConfiguration();
-        if (Flags.enrollLayoutTruncateImprovement()
-                && config.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            template = R.layout.biometrics_glif_compact;
-        }
-        return super.onInflateTemplate(inflater, template);
     }
 
     void setDecreasePadding(int decreasePadding) {
@@ -271,6 +262,7 @@ public class UdfpsEnrollEnrollingView extends GlifLayout {
             UdfpsEnrollHelper udfpsEnrollHelper,
             AccessibilityManager accessibilityManager) {
         mAccessibilityManager = accessibilityManager;
+        mIsUdfpsLocationLow = BiometricUtils.isUdfpsLocationLow(mContext, udfpsProps);
         initUdfpsEnrollView(udfpsProps, udfpsEnrollHelper);
 
         if (!mIsLandscape) {
@@ -280,6 +272,18 @@ public class UdfpsEnrollEnrollingView extends GlifLayout {
         }
         mUdfpsEnrollView.setVisibility(View.INVISIBLE);
         setOnHoverListener();
+    }
+
+    @Override
+    public int getFooterBackgroundColor() {
+        return mIsUdfpsLocationLow && !mIsLandscape
+                ? Color.TRANSPARENT : super.getFooterBackgroundColor();
+    }
+
+    @Override
+    public int getFooterBarMoreToScrollBackgroundColor() {
+        return mIsUdfpsLocationLow && !mIsLandscape
+                ? Color.TRANSPARENT : super.getFooterBarMoreToScrollBackgroundColor();
     }
 
     void setSecondaryButtonBackground(@ColorInt int color) {
