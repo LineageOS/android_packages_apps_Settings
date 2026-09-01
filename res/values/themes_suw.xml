@@ -170,6 +170,44 @@
         <item name="*android:lockPatternStyle">@style/LockPatternStyle</item>
     </style>
 
+    <style name="GlifExpressiveTheme" parent="SudThemeGlifExpressive.DayNight">
+        <!-- For all AndroidX Alert Dialogs -->
+        <item name="alertDialogTheme">@style/GlifV2ThemeAlertDialog</item>
+        <item name="android:windowBackground">@color/materialColorSurfaceContainer</item>
+        <item name="*android:preferencePanelStyle">@*android:style/PreferencePanel.Dialog</item>
+        <item name="fingerprint_layout_theme">@style/FingerprintLayoutTheme</item>
+        <item name="face_layout_theme">@style/FaceLayoutTheme</item>
+        <item name="ic_menu_moreoverflow">@*android:drawable/ic_menu_moreoverflow_material</item>
+        <item name="side_margin">0dip</item>
+        <item name="wifi_signal_color">@color/setup_wizard_wifi_color_dark</item>
+        <item name="wifi_signal">@drawable/wifi_signal</item>
+        <item name="wifi_friction">@drawable/wifi_friction</item>
+        <item name="preferenceBackgroundColor">@color/materialColorSurfaceContainer</item>
+        <item name="preferenceTheme">@style/PreferenceTheme.SetupWizard</item>
+
+        <!-- LockPatternView colors -->
+        <item name="*android:lockPatternStyle">@style/LockPatternStyle</item>
+    </style>
+
+    <style name="GlifExpressiveTheme.Light" parent="SudThemeGlifExpressive.Light">
+        <!-- For all AndroidX Alert Dialogs -->
+        <item name="alertDialogTheme">@style/GlifV2ThemeAlertDialog.Light</item>
+        <item name="android:windowBackground">@color/materialColorSurfaceContainer</item>
+        <item name="*android:preferencePanelStyle">@*android:style/PreferencePanel.Dialog</item>
+        <item name="fingerprint_layout_theme">@style/FingerprintLayoutTheme</item>
+        <item name="face_layout_theme">@style/FaceLayoutTheme</item>
+        <item name="ic_menu_moreoverflow">@*android:drawable/ic_menu_moreoverflow_material</item>
+        <item name="side_margin">0dip</item>
+        <item name="wifi_signal_color">@color/setup_wizard_wifi_color_light</item>
+        <item name="wifi_signal">@drawable/wifi_signal</item>
+        <item name="wifi_friction">@drawable/wifi_friction</item>
+        <item name="preferenceBackgroundColor">@color/materialColorSurfaceContainer</item>
+        <item name="preferenceTheme">@style/PreferenceTheme.SetupWizard</item>
+
+        <!-- LockPatternView colors -->
+        <item name="*android:lockPatternStyle">@style/LockPatternStyle</item>
+    </style>
+
     <style name="GlifV3Theme.Light.NoActionBar" parent="GlifV3Theme.Light">
         <item name="android:windowActionBar">false</item>
     </style>
@@ -287,6 +325,7 @@
     <style name="GlifV2Theme.DayNight" parent="GlifV2Theme.Light" />
     <style name="GlifV3Theme.DayNight" parent="GlifV3Theme.Light" />
     <style name="GlifV4Theme.DayNight" parent="GlifV4Theme.Light" />
+    <style name="GlifExpressiveTheme.DayNight" parent="GlifExpressiveTheme.Light" />
     <style name="GlifV3Theme.DayNight.NoActionBar" parent="GlifV3Theme.Light.NoActionBar" />
     <style name="GlifV2Theme.DayNight.Transparent" parent="GlifV2Theme.Light.Transparent" />
     <style name="GlifV3Theme.DayNight.Transparent" parent="GlifV3Theme.Light.Transparent" />
