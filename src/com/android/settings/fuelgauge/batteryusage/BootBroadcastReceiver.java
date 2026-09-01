@@ -62,9 +62,12 @@ public final class BootBroadcastReceiver extends BroadcastReceiver {
         switch (action) {
             case Intent.ACTION_BOOT_COMPLETED:
             case ACTION_SETUP_WIZARD_FINISHED:
+                Log.d(TAG, "refresh periodic job from action=" + action);
+                refreshJobs(context, true);
+                break;
             case ACTION_PERIODIC_JOB_RECHECK:
                 Log.d(TAG, "refresh periodic job from action=" + action);
-                refreshJobs(context);
+                refreshJobs(context, false);
                 break;
             case Intent.ACTION_TIME_CHANGED:
                 Log.d(TAG, "refresh job and clear data from action=" + action);
@@ -94,7 +97,7 @@ public final class BootBroadcastReceiver extends BroadcastReceiver {
         }
     }
 
-    private static void refreshJobs(Context context) {
-        PeriodicJobManager.getInstance(context).refreshJob(/* fromBoot= */ true);
+    private static void refreshJobs(Context context, boolean fromBoot) {
+        PeriodicJobManager.getInstance(context).refreshJob(fromBoot);
     }
 }
