@@ -1406,9 +1406,11 @@ public final class Utils extends com.android.settingslib.Utils {
      */
     public static boolean isProtectedPackage(
             @NonNull Context context, @NonNull String packageName) {
-        final List<String> protectedPackageNames = Arrays.asList(context.getResources()
-                .getStringArray(com.android.internal.R.array
-                        .config_biometric_protected_package_names));
-        return protectedPackageNames != null && protectedPackageNames.contains(packageName);
+        // com.android.internal.R.array.config_biometric_protected_package_names was
+        // removed upstream with no replacement found (confirmed: no similarly-named
+        // resource in the current config.xml, and this was the only reference in this
+        // app). Treating it as an empty list -- the same effective behavior as the
+        // resource existing but being unconfigured -- rather than inventing new logic.
+        return false;
     }
 }
