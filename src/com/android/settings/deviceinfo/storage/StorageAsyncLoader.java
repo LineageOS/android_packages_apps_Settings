@@ -153,10 +153,13 @@ public class StorageAsyncLoader
     }
 
     private long getSystemSize() {
+        final long dataTotal = Environment.getDataDirectory().getTotalSpace();
         try {
-            return mStatsManager.getTotalBytes(StorageManager.UUID_DEFAULT)
-                    - Environment.getDataDirectory().getTotalSpace();
-        } catch (IOException e) {
+            return Math.max(0,
+                    getContext().getSystemService(StorageManager.class)
+                            .getInternalStorageBlockDeviceSize()
+                            - dataTotal);
+        } catch (Exception e) {
             Log.e(TAG, "Exception in calculating System category size", e);
             return 0;
         }
