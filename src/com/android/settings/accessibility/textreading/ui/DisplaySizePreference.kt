@@ -18,6 +18,9 @@ package com.android.settings.accessibility.textreading.ui
 
 import android.Manifest
 import android.content.Context
+import android.hardware.display.DisplayManager
+import android.view.Display
+import android.view.DisplayInfo
 import androidx.annotation.VisibleForTesting
 import androidx.preference.Preference
 import com.android.settings.R
@@ -31,6 +34,7 @@ import com.android.settings.accessibility.shared.utils.DebounceConfigurationChan
 import com.android.settings.accessibility.textreading.data.DisplaySizeDataStore
 import com.android.settingslib.datastore.KeyValueStore
 import com.android.settingslib.datastore.Permissions
+import com.android.settingslib.display.DisplayDensityUtils
 import com.android.settingslib.metadata.IntRangeValuePreference
 import com.android.settingslib.metadata.PreferenceLifecycleContext
 import com.android.settingslib.metadata.PreferenceLifecycleProvider
@@ -71,7 +75,16 @@ internal class DisplaySizePreference(context: Context, @EntryPoint private val e
         get() = SensitivityLevel.NO_SENSITIVITY
 
     private val displaySizeDataStore by lazy {
-        DisplaySizeDataStore(context = context, entryPoint = entryPoint)
+        if (context.resources.getBoolean(R.bool.config_independent_display_dpi_setting)) {
+            DisplaySizeDataStore(
+                context = context,
+                entryPoint = entryPoint,
+                displayDensityUtils = DisplayDensityUtils(context)
+                    { info: DisplayInfo -> info.displayId == Display.DEFAULT_DISPLAY }
+            )
+        } else {
+            DisplaySizeDataStore(context = context, entryPoint = entryPoint)
+        }
     }
 
     private val displaySizes by lazy { displaySizeDataStore.displaySizeData.value.values }
@@ -145,8 +158,12 @@ internal class DisplaySizePreference(context: Context, @EntryPoint private val e
         // changed outside of Settings app while the display size slider is visible, the Slider
         // widget won't save the correct index when
         // [View#onSaveInstanceState] is called.
-        context.findPreference<SliderPreference>(KEY)?.value =
-            _displaySizePreview.value.currentIndex
+        val preference = context.findPreference<SliderPreference>(KEY)
+        if (context.resources.getBoolean(R.bool.config_independent_display_dpi_setting)) {
+            preference?.min = getMinValue(context)
+            preference?.max = getMaxValue(context)
+        }
+        preference?.value = _displaySizePreview.value.currentIndex
     }
 
     override fun getIncrementStep(context: Context): Int {
