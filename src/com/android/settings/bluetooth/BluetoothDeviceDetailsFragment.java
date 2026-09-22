@@ -330,6 +330,9 @@ public class BluetoothDeviceDetailsFragment extends BluetoothDetailsConfigurable
             controllers.add(new BluetoothDetailsAudioDeviceTypeController(context, this,
                     localBluetoothManager,
                     cachedDevice, lifecycle));
+            controllers.add(new BluetoothDetailsCodecController(context, this,
+                    localBluetoothManager,
+                    cachedDevice, lifecycle));
             controllers.add(new BluetoothDetailsSpatialAudioController(context, this, cachedDevice,
                     lifecycle));
             controllers.add(new BluetoothDetailsProfilesController(context, this,
