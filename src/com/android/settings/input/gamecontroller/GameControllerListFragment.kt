@@ -71,11 +71,19 @@ class GameControllerListFragment : DashboardFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.controllers.observe(viewLifecycleOwner) { controllers ->
-            if (controllers.isEmpty()) {
+            val hiddenDescriptors = resources
+                .getStringArray(R.array.config_hidden_game_controller_descriptors)
+                .toSet()
+
+            val visibleControllers = controllers.filter { controller ->
+                controller.inputDeviceIdentifier.descriptor !in hiddenDescriptors
+            }
+
+            if (visibleControllers.isEmpty()) {
                 // No controllers are connected, so there's nothing to show.
                 activity?.finish()
             } else {
-                updatePreferenceList(controllers)
+                updatePreferenceList(visibleControllers)
             }
         }
     }

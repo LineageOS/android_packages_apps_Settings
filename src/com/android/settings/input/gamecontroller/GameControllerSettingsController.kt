@@ -17,6 +17,7 @@
 package com.android.settings.input.gamecontroller
 
 import android.content.Context
+import com.android.settings.R
 import com.android.settings.inputmethod.InputDeviceSettingsController
 
 /** Preference controller for the entry preference for Game controller */
@@ -28,9 +29,16 @@ class GameControllerSettingsController(context: Context, key: String) :
             return UNSUPPORTED_ON_DEVICE
         }
 
-        val controllers = GameControllerUtils.getGameControllers(mContext)
+        val hiddenDescriptors = mContext.resources
+            .getStringArray(R.array.config_hidden_game_controller_descriptors)
+            .toSet()
 
-        return if (controllers.isEmpty()) {
+        val visibleControllers = GameControllerUtils.getGameControllers(mContext)
+            .filter { controller ->
+                controller.inputDeviceIdentifier.descriptor !in hiddenDescriptors
+            }
+
+        return if (visibleControllers.isEmpty()) {
             CONDITIONALLY_UNAVAILABLE
         } else {
             AVAILABLE
