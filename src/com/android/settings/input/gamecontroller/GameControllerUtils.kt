@@ -110,6 +110,11 @@ object GameControllerUtils {
         val bluetoothManager =
             context.getSystemService(BluetoothManager::class.java) ?: return emptyList()
         val bluetoothAdapter: BluetoothAdapter? = bluetoothManager.adapter
+
+        val hiddenDescriptors = context.resources
+            .getStringArray(R.array.config_hidden_game_controller_descriptors)
+            .toSet()
+
         val foundControllers = mutableListOf<ControllerDevice>()
 
         for (deviceId in inputManager.inputDeviceIds) {
@@ -117,6 +122,12 @@ object GameControllerUtils {
             if (device == null || !device.isPhysicalDevice) {
                 continue
             }
+
+            // Filter out hidden controllers by descriptor
+            if (device.identifier.descriptor in hiddenDescriptors) {
+                continue
+            }
+
             val sources = device.sources
             val isGameController =
                 ((sources and InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD) or
