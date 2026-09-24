@@ -126,10 +126,36 @@ public class PeakRefreshRateListPreferenceController extends BasePreferenceContr
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        float refreshRate = Float.valueOf((String) newValue);
         Settings.System.putFloat(mContext.getContentResolver(), Settings.System.PEAK_REFRESH_RATE,
-                Float.valueOf((String) newValue));
+                refreshRate);
+        setPreferredPhysicalRefreshRate(refreshRate);
         updateState(preference);
         return true;
+    }
+
+    private void setPreferredPhysicalRefreshRate(float refreshRate) {
+        Display display = mContext.getSystemService(DisplayManager.class)
+                .getDisplay(Display.DEFAULT_DISPLAY);
+        if (display == null) {
+            return;
+        }
+        Display.Mode currentMode = display.getMode();
+        Display.Mode[] physicalModes = Arrays.stream(display.getSupportedModes())
+                .filter(mode -> mode.getSfModeId() != Display.Mode.INVALID_MODE_ID
+                        && mode.getParentModeId() == Display.Mode.INVALID_MODE_ID
+                        && mode.getPhysicalWidth() == currentMode.getPhysicalWidth()
+                        && mode.getPhysicalHeight() == currentMode.getPhysicalHeight())
+                .toArray(Display.Mode[]::new);
+        boolean hasMultipleBases = Arrays.stream(physicalModes)
+                .mapToInt(mode -> Math.round(mode.getRefreshRate()))
+                .distinct().count() > 1;
+        boolean hasPhysicalMode = Arrays.stream(physicalModes)
+                .anyMatch(mode -> Math.round(mode.getRefreshRate()) == refreshRate);
+        Settings.System.putFloat(mContext.getContentResolver(),
+                Settings.System.USER_PREFERRED_PHYSICAL_REFRESH_RATE,
+                display.hasArrSupport() && hasMultipleBases && hasPhysicalMode
+                        ? refreshRate : 0f);
     }
 
     @Override
