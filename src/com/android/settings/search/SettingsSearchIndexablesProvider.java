@@ -50,6 +50,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.Build;
 import android.provider.SearchIndexableResource;
 import android.provider.SearchIndexablesContract;
@@ -117,6 +118,17 @@ public class SettingsSearchIndexablesProvider extends PreferenceSearchIndexables
     public boolean onCreate() {
         mSearchEnabledByCategoryKeyMap = new ArrayMap<>();
         return true;
+    }
+
+    @Override
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
+            String sortOrder) {
+        final long token = Binder.clearCallingIdentity();
+        try {
+            return super.query(uri, projection, selection, selectionArgs, sortOrder);
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
     }
 
     @Override
