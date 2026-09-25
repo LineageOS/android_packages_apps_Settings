@@ -65,7 +65,10 @@ internal constructor(private var viewModelFactory: ViewModelProvider.Factory? = 
         // createPreferenceControllers gets called here so need to create viewModel before calling
         // super.onAttach()
         super.onAttach(context)
-        activity?.title = viewModel.controllerDevice.name
+
+        // Accept a custom title when launched externally
+        activity?.title = activity?.intent?.getStringExtra(":settings:show_fragment_title")
+            ?.takeIf { it.isNotEmpty() } ?: viewModel.controllerDevice.name
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
