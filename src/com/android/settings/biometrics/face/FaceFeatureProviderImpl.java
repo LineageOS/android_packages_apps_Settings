@@ -81,7 +81,7 @@ public class FaceFeatureProviderImpl implements FaceFeatureProvider {
 
     @Override
     public boolean isAttentionSupported(Context context) {
-        return true;
+        return context.getResources().getBoolean(R.bool.config_face_attention_supported);
     }
 
     @Override
