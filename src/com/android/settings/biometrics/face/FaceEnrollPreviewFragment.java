@@ -18,6 +18,7 @@ package com.android.settings.biometrics.face;
 
 import android.app.settings.SettingsEnums;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -190,6 +191,11 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHalOwnsCamera = getResources().getBoolean(R.bool.config_face_enroll_hal_owns_camera);
+        if (mHalOwnsCamera) {
+            // The face HAL keeps rendering into the initial preview surface, which is gone once
+            // the activity is recreated. Unlike portrait, locked is respected on large screens.
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+        }
         mTextureView = getActivity().findViewById(R.id.texture_view);
         mProgressView = getActivity().findViewById(R.id.progress_view);
 
