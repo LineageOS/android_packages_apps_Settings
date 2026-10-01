@@ -31,10 +31,6 @@ import static org.mockito.Mockito.when;
 import static org.robolectric.Shadows.shadowOf;
 
 import android.app.admin.DevicePolicyManager;
-import android.app.admin.EnforcingAdmin;
-import android.app.admin.PolicyEnforcementInfo;
-import android.app.admin.UnknownAuthority;
-import android.content.ComponentName;
 import android.content.Context;
 import android.os.UserHandle;
 import android.platform.test.flag.junit.SetFlagsRule;
@@ -59,8 +55,6 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
-import java.util.List;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(shadows = {ShadowUtils.class,
@@ -402,13 +396,6 @@ public class ContentProtectionTogglePreferenceControllerTest {
 
         assertThat(result).isFalse();
         assertThat(getContentProtectionGlobalSetting()).isEqualTo(initialSetting);
-    }
-
-    private void setUpEnforcingAdmin() {
-        mShadowDevicePolicyManager.setPolicyEnforcementInfoForPolicy(
-                DevicePolicyIdentifiers.CONTENT_PROTECTION_POLICY,
-                new PolicyEnforcementInfo(List.of(mEnforcingAdmin)));
-        mController = new TestContentProtectionTogglePreferenceController();
     }
 
     private int getContentProtectionGlobalSetting() {
