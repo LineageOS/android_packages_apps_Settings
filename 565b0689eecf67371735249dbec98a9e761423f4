@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1c2eb8_da9e8e35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-10-02T14:14:06Z",
+      "side": 1,
+      "message": "Given the very lengthy commit msg I assume this was written by an LLM.\n\nfirst of all trim it down to the bare minimum, something like\n\"Register broadcast receiver onStart in NfcAndPaymentFragmentController\n\nThe correct way to balance unregistering it onClose is to use onStart,\nonResume is wrong.\"\n\nAnd if you did use an LLM, add Assisted-by: LLM",
+      "revId": "565b0689eecf67371735249dbec98a9e761423f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db164b32_c340ab8d",
+        "filename": "src/com/android/settings/connecteddevice/NfcAndPaymentFragmentController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2026-10-02T14:14:06Z",
+      "side": 1,
+      "message": "drop this, if onStop ever gets called without onStop we\u0027re in trouble.\nUsing onResume is indeed wrong, but adding the extra checks is also wrong.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "565b0689eecf67371735249dbec98a9e761423f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
