@@ -116,13 +116,22 @@ public class ChooseLockPatternSize extends SettingsActivity {
 
             if (view instanceof GlifPreferenceLayout) {
                 GlifPreferenceLayout layout = (GlifPreferenceLayout) view;
-                layout.setDividerItemDecoration(new SettingsDividerItemDecoration(getContext()));
+
+                final boolean isExpressiveStyle = ThemeHelper.shouldApplyGlifExpressiveStyle(
+                        getContext());
+                if (!isExpressiveStyle) {
+                    layout.setDividerItemDecoration(
+                            new SettingsDividerItemDecoration(getContext()));
+                    layout.setDividerInset(getContext().getResources().getDimensionPixelSize(
+                            com.google.android.setupdesign.R.dimen
+                                    .sud_items_glif_text_divider_inset));
+                }
 
                 layout.setIcon(getContext().getDrawable(R.drawable.ic_lock));
                 layout.setHeaderText(R.string.lock_settings_picker_pattern_size_message);
 
                 // Remove the padding on the start of the header text.
-                if (ThemeHelper.shouldApplyGlifExpressiveStyle(getContext())) {
+                if (isExpressiveStyle) {
                     final LinearLayout headerLayout = layout.findManagedViewById(
                             com.google.android.setupdesign.R.id.sud_layout_header);
                     if (headerLayout != null) {
