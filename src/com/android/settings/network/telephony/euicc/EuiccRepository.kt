@@ -69,6 +69,10 @@ constructor(
             Log.w(TAG, "EuiccManager is not enabled.")
             return false
         }
+        if (isOnlyRemovableEuiccPresent()) {
+            Log.i(TAG, "showEuiccSettings: only a removable eUICC is present")
+            return false
+        }
         if (isEuiccProvisioned()) {
             Log.i(TAG, "showEuiccSettings: euicc provisioned")
             return true
@@ -88,6 +92,17 @@ constructor(
             SystemProperties.getBoolean(KEY_ENABLE_ESIM_UI_BY_DEFAULT, true)
         Log.i(TAG, "showEuiccSettings: enabledEsimUiByDefault=$enabledEsimUiByDefault")
         return enabledEsimUiByDefault && isCurrentCountrySupported()
+    }
+
+    private fun isOnlyRemovableEuiccPresent(): Boolean {
+        val hasBuiltInEuicc =
+            context.resources
+                .getIntArray(com.android.internal.R.array.non_removable_euicc_slots)
+                .isNotEmpty()
+        if (!hasBuiltInEuicc) return false
+        val cards = telephonyManager?.uiccCardsInfo ?: return false
+        return cards.none { it.isEuicc && !it.isRemovable } &&
+            cards.any { it.isEuicc && it.isRemovable }
     }
 
     /**
