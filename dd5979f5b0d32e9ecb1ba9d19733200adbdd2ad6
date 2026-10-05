@@ -34,6 +34,24 @@
       "parentUuid": "8e373978_ab383553",
       "revId": "dd5979f5b0d32e9ecb1ba9d19733200adbdd2ad6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5971d19_597171ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 36192
+      },
+      "writtenOn": "2026-10-05T13:02:28Z",
+      "side": 1,
+      "message": "You\u0027re right, the platform LPA handles removable eUICCs fine in general, and I dropped that claim. What breaks here is narrower: EuiccGoogle relies on the eSIM slot the device declares through EuiccPolicy\u0027s sim-slot-mappings (e.g. https://github.com/LineageOS/android_hardware_sony/blob/lineage-23.2/packages/Euicc/res/values/strings.xml). On devices that hand that slot over to a SIM tray through a vendor mechanism, the declaration stops matching the hardware while the slot is handed over, and the system LPA ends up operating on the removable card in a slot declared as a pSIM slot. That is why it misbehaves here while removable eUICCs work fine elsewhere. The description is updated in PS3.",
+      "parentUuid": "57043fe7_80387f5d",
+      "revId": "dd5979f5b0d32e9ecb1ba9d19733200adbdd2ad6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
