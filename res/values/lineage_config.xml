@@ -41,6 +41,10 @@
     <!-- Whether Settings should open a separate camera preview during face enrollment -->
     <bool name="config_face_enroll_hal_owns_camera">false</bool>
 
+    <!-- HAL-owned face preview size, must match a supported camera size -->
+    <integer name="face_preview_width">1080</integer>
+    <integer name="face_preview_height">1080</integer>
+
     <!-- Whether the face HAL supports the require attention feature -->
     <bool name="config_face_attention_supported">true</bool>
 
