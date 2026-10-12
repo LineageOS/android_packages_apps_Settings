@@ -19,9 +19,12 @@ package com.android.settings.display
 import android.content.Context
 import android.graphics.Point
 import android.hardware.display.DisplayManager
-import android.provider.Settings
+import android.os.Handler
+import android.os.Looper
+import android.os.UserHandle
 import android.util.Log
 import android.view.Display
+import android.view.WindowManagerGlobal
 import com.android.settings.core.instrumentation.SettingsStatsLog
 
 // LINT.IfChange
@@ -29,6 +32,7 @@ private const val TAG = "ScreenResolutionExt"
 private const val SCREEN_RESOLUTION = "user_selected_resolution"
 private const val HIGHRESOLUTION_IDX = 0
 private const val FULLRESOLUTION_IDX = 1
+private var pendingDensityRestore: Runnable? = null
 
 private fun Context.getDefaultDisplay(): Display? {
     val displayManager = getSystemService(DisplayManager::class.java)
@@ -57,16 +61,20 @@ fun Context.checkSupportedResolutions(): Boolean {
 }
 
 /** Return the high resolution width of the device. */
-fun Context.getHighResolutionDisplayWidth(): Int = getSortedResolutionList()?.getOrNull(HIGHRESOLUTION_IDX)?.x ?: 0
+fun Context.getHighResolutionDisplayWidth(): Int =
+    getSortedResolutionList()?.getOrNull(HIGHRESOLUTION_IDX)?.x ?: 0
 
 /** Return the full resolution width of the device. */
-fun Context.getFullResolutionDisplayWidth(): Int = getSortedResolutionList()?.getOrNull(FULLRESOLUTION_IDX)?.x ?: 0
+fun Context.getFullResolutionDisplayWidth(): Int =
+    getSortedResolutionList()?.getOrNull(FULLRESOLUTION_IDX)?.x ?: 0
 
 /** Return the high resolution height of the device. */
-fun Context.getHighResolutionDisplayHeight(): Int = getSortedResolutionList()?.getOrNull(HIGHRESOLUTION_IDX)?.y ?: 0
+fun Context.getHighResolutionDisplayHeight(): Int =
+    getSortedResolutionList()?.getOrNull(HIGHRESOLUTION_IDX)?.y ?: 0
 
 /** Return the full resolution height of the device. */
-fun Context.getFullResolutionDisplayHeight(): Int = getSortedResolutionList()?.getOrNull(FULLRESOLUTION_IDX)?.y ?: 0
+fun Context.getFullResolutionDisplayHeight(): Int =
+    getSortedResolutionList()?.getOrNull(FULLRESOLUTION_IDX)?.y ?: 0
 
 /** Return the current display width. */
 fun Context.getDisplayWidth(): Int = getDefaultDisplay()?.mode?.physicalWidth ?: 0
@@ -91,10 +99,63 @@ fun Context.setDisplayModeByWidth(width: Int) {
     }
 
     try {
+        val windowManager = WindowManagerGlobal.getWindowManagerService()
+        val defaultDensity = windowManager.getInitialDisplayDensity(display.displayId)
+        if (defaultDensity <= 0) {
+            Log.e(TAG, "Invalid default display density: $defaultDensity")
+            return
+        }
+        val densityScale = resources.displayMetrics.densityDpi.toFloat() / defaultDensity
+        val userId = UserHandle.myUserId()
+        val displayManager = getSystemService(DisplayManager::class.java)
+        val handler = Handler(Looper.getMainLooper())
+        pendingDensityRestore?.run()
+        lateinit var cleanup: Runnable
+        val listener =
+            object : DisplayManager.DisplayListener {
+                override fun onDisplayAdded(displayId: Int) {}
+
+                override fun onDisplayRemoved(displayId: Int) {}
+
+                override fun onDisplayChanged(displayId: Int) {
+                    if (displayId != display.displayId) return
+                    val currentMode = display.mode
+                    if (
+                        currentMode.physicalWidth != mode.physicalWidth ||
+                            currentMode.physicalHeight != mode.physicalHeight
+                    )
+                        return
+                    try {
+                        val newDefaultDensity = windowManager.getInitialDisplayDensity(displayId)
+                        if (newDefaultDensity <= 0 || newDefaultDensity == defaultDensity) return
+                        if (densityScale == 1f) {
+                            windowManager.clearForcedDisplayDensityForUser(displayId, userId)
+                        } else {
+                            windowManager.setForcedDisplayDensityForUser(
+                                displayId,
+                                (newDefaultDensity * densityScale).toInt() and -2,
+                                userId,
+                            )
+                        }
+                    } catch (e: Exception) {
+                        Log.e(TAG, "Failed to restore display density", e)
+                    }
+                    cleanup.run()
+                }
+            }
+        cleanup = Runnable {
+            handler.removeCallbacks(cleanup)
+            displayManager.unregisterDisplayListener(listener)
+            pendingDensityRestore = null
+        }
+        pendingDensityRestore = cleanup
+        displayManager.registerDisplayListener(listener, handler)
+        handler.postDelayed(cleanup, 5000)
         /** Apply the resolution change. */
         Log.i(TAG, "setUserPreferredDisplayMode: $mode")
         display.setUserPreferredDisplayMode(mode)
     } catch (e: Exception) {
+        pendingDensityRestore?.run()
         Log.e(TAG, "setUserPreferredDisplayMode() failed", e)
         return
     }

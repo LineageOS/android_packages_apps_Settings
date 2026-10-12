@@ -35,7 +35,6 @@ import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.RadioButtonPickerFragment;
-import com.android.settingslib.display.DisplayDensityUtils;
 import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.widget.CandidateInfo;
 import com.android.settingslib.widget.FooterPreference;
@@ -156,7 +155,6 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
     /** Using display manager to set the display mode. */
     @VisibleForTesting
     public void setDisplayMode(final int width) {
-        mDisplayObserver.startObserve();
         ScreenResolutionExtensionsKt.setDisplayModeByWidth(getContext(), width);
     }
 
@@ -272,86 +270,12 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
                 }
             };
 
-    private static final class DisplayObserver implements DisplayManager.DisplayListener {
+    private static final class DisplayObserver {
         private final @Nullable Context mContext;
-        private int mDefaultDensity;
-        private int mCurrentIndex;
         private AtomicInteger mPreviousWidth = new AtomicInteger(-1);
 
         DisplayObserver(Context context) {
             mContext = context;
-        }
-
-        public void startObserve() {
-            if (mContext == null) {
-                return;
-            }
-
-            final DisplayDensityUtils density = new DisplayDensityUtils(mContext);
-            final int currentIndex = density.getCurrentIndex();
-            final int defaultDensity = density.getDefaultDensity();
-
-            if (density.getValues()[mCurrentIndex] == density.getDefaultDensity()) {
-                return;
-            }
-
-            mDefaultDensity = defaultDensity;
-            mCurrentIndex = currentIndex;
-            final DisplayManager dm = mContext.getSystemService(DisplayManager.class);
-            dm.registerDisplayListener(this, null);
-        }
-
-        public void stopObserve() {
-            if (mContext == null) {
-                return;
-            }
-
-            final DisplayManager dm = mContext.getSystemService(DisplayManager.class);
-            dm.unregisterDisplayListener(this);
-        }
-
-        @Override
-        public void onDisplayAdded(int displayId) {}
-
-        @Override
-        public void onDisplayRemoved(int displayId) {}
-
-        @Override
-        public void onDisplayChanged(int displayId) {
-            if (displayId != Display.DEFAULT_DISPLAY) {
-                return;
-            }
-
-            if (!isDensityChanged() || !isResolutionChangeApplied()) {
-                return;
-            }
-
-            restoreDensity();
-            stopObserve();
-        }
-
-        private void restoreDensity() {
-            final DisplayDensityUtils density = new DisplayDensityUtils(mContext);
-            /* If current density is the same as a default density of other resolutions,
-             * then mCurrentIndex may be out of boundary.
-             */
-            if (density.getValues().length <= mCurrentIndex) {
-                mCurrentIndex = density.getCurrentIndex();
-            }
-            if (density.getValues()[mCurrentIndex] != density.getDefaultDensity()) {
-                density.setForcedDisplayDensity(mCurrentIndex);
-            }
-
-            mDefaultDensity = density.getDefaultDensity();
-        }
-
-        private boolean isDensityChanged() {
-            final DisplayDensityUtils density = new DisplayDensityUtils(mContext);
-            if (density.getDefaultDensity() == mDefaultDensity) {
-                return false;
-            }
-
-            return true;
         }
 
         private int getCurrentWidth() {
