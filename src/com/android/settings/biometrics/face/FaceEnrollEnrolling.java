@@ -147,6 +147,14 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
     }
 
     @Override
+    public void onEnterAnimationComplete() {
+        super.onEnterAnimationComplete();
+        if (mPreviewFragment != null) {
+            mPreviewFragment.revealSurface();
+        }
+    }
+
+    @Override
     protected boolean shouldFinishWhenBackgrounded() {
         // Prevent super.onStop() from finishing, since we handle this in our onStop().
         return false;

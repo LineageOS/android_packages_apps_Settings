@@ -60,6 +60,13 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@null" />
 
+                <SurfaceView
+                    android:id="@+id/surface_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:contentDescription="@null" />
+
                 <com.android.settings.biometrics.face.FaceEnrollProgressView
                     android:id="@+id/progress_view"
                     android:layout_width="match_parent"
