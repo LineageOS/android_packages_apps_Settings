@@ -171,8 +171,11 @@ public class FaceEnrollEducation extends BiometricEnrollBase {
         if (mIsUsingLottie) {
             mIllustrationDefault.stop();
             mIllustrationDefault.setVisibility(View.INVISIBLE);
-            mIllustrationLottie.setAnimation(R.raw.face_education_lottie_expressive);
-            setupllIllustrationAnim(mIllustrationLottie);
+            mIllustrationLottie.setAnimation(mIsUsingExpressiveStyle
+                    ? R.raw.face_education_lottie_expressive : R.raw.face_education_lottie);
+            if (mIsUsingExpressiveStyle) {
+                setupllIllustrationAnim(mIllustrationLottie);
+            }
             mIllustrationLottie.setVisibility(View.VISIBLE);
 
             mIllustrationLottie.addAnimatorListener(mA11yUpdater);
@@ -574,8 +577,11 @@ public class FaceEnrollEducation extends BiometricEnrollBase {
 
     private void showDefaultIllustration() {
         if (mIsUsingLottie) {
-            mIllustrationLottie.setAnimation(R.raw.face_education_lottie_expressive);
-            setupllIllustrationAnim(mIllustrationLottie);
+            mIllustrationLottie.setAnimation(mIsUsingExpressiveStyle
+                    ? R.raw.face_education_lottie_expressive : R.raw.face_education_lottie);
+            if (mIsUsingExpressiveStyle) {
+                setupllIllustrationAnim(mIllustrationLottie);
+            }
             mIllustrationLottie.setVisibility(View.VISIBLE);
             forceConfigureA11yDelegate(true);
             mIllustrationLottie.setProgress(0f);
