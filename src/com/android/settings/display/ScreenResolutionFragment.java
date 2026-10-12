@@ -291,7 +291,7 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
             final int currentIndex = density.getCurrentIndex();
             final int defaultDensity = density.getDefaultDensity();
 
-            if (density.getValues()[mCurrentIndex] == density.getDefaultDensity()) {
+            if (currentIndex < 0 || density.getValues()[currentIndex] == defaultDensity) {
                 return;
             }
 
@@ -338,8 +338,12 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
             if (density.getValues().length <= mCurrentIndex) {
                 mCurrentIndex = density.getCurrentIndex();
             }
-            if (density.getValues()[mCurrentIndex] != density.getDefaultDensity()) {
-                density.setForcedDisplayDensity(mCurrentIndex);
+            if (mCurrentIndex >= 0) {
+                if (density.getValues()[mCurrentIndex] == density.getDefaultDensity()) {
+                    density.clearForcedDisplayDensity();
+                } else {
+                    density.setForcedDisplayDensity(mCurrentIndex);
+                }
             }
 
             mDefaultDensity = density.getDefaultDensity();
