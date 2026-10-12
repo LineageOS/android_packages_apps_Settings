@@ -19,7 +19,8 @@ package com.android.settings.display
 import android.content.Context
 import android.graphics.Point
 import android.hardware.display.DisplayManager
-import android.provider.Settings
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.Display
 import com.android.settings.core.instrumentation.SettingsStatsLog
@@ -57,16 +58,20 @@ fun Context.checkSupportedResolutions(): Boolean {
 }
 
 /** Return the high resolution width of the device. */
-fun Context.getHighResolutionDisplayWidth(): Int = getSortedResolutionList()?.getOrNull(HIGHRESOLUTION_IDX)?.x ?: 0
+fun Context.getHighResolutionDisplayWidth(): Int =
+    getSortedResolutionList()?.getOrNull(HIGHRESOLUTION_IDX)?.x ?: 0
 
 /** Return the full resolution width of the device. */
-fun Context.getFullResolutionDisplayWidth(): Int = getSortedResolutionList()?.getOrNull(FULLRESOLUTION_IDX)?.x ?: 0
+fun Context.getFullResolutionDisplayWidth(): Int =
+    getSortedResolutionList()?.getOrNull(FULLRESOLUTION_IDX)?.x ?: 0
 
 /** Return the high resolution height of the device. */
-fun Context.getHighResolutionDisplayHeight(): Int = getSortedResolutionList()?.getOrNull(HIGHRESOLUTION_IDX)?.y ?: 0
+fun Context.getHighResolutionDisplayHeight(): Int =
+    getSortedResolutionList()?.getOrNull(HIGHRESOLUTION_IDX)?.y ?: 0
 
 /** Return the full resolution height of the device. */
-fun Context.getFullResolutionDisplayHeight(): Int = getSortedResolutionList()?.getOrNull(FULLRESOLUTION_IDX)?.y ?: 0
+fun Context.getFullResolutionDisplayHeight(): Int =
+    getSortedResolutionList()?.getOrNull(FULLRESOLUTION_IDX)?.y ?: 0
 
 /** Return the current display width. */
 fun Context.getDisplayWidth(): Int = getDefaultDisplay()?.mode?.physicalWidth ?: 0
@@ -89,12 +94,24 @@ fun Context.setDisplayModeByWidth(width: Int) {
         Log.e(TAG, "No preferred mode found for width: $width")
         return
     }
+    if (
+        display.mode.physicalWidth == mode.physicalWidth &&
+            display.mode.physicalHeight == mode.physicalHeight
+    )
+        return
 
+    val observer = ScreenResolutionFragment.DisplayObserver(applicationContext)
+    val handler = Handler(Looper.getMainLooper())
+    val stopObserving = Runnable { observer.stopObserve() }
+    observer.startObserve()
+    handler.postDelayed(stopObserving, 5000)
     try {
         /** Apply the resolution change. */
         Log.i(TAG, "setUserPreferredDisplayMode: $mode")
         display.setUserPreferredDisplayMode(mode)
     } catch (e: Exception) {
+        handler.removeCallbacks(stopObserving)
+        observer.stopObserve()
         Log.e(TAG, "setUserPreferredDisplayMode() failed", e)
         return
     }

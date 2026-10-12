@@ -156,7 +156,6 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
     /** Using display manager to set the display mode. */
     @VisibleForTesting
     public void setDisplayMode(final int width) {
-        mDisplayObserver.startObserve();
         ScreenResolutionExtensionsKt.setDisplayModeByWidth(getContext(), width);
     }
 
@@ -272,10 +271,10 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
                 }
             };
 
-    private static final class DisplayObserver implements DisplayManager.DisplayListener {
+    static final class DisplayObserver implements DisplayManager.DisplayListener {
         private final @Nullable Context mContext;
         private int mDefaultDensity;
-        private int mCurrentIndex;
+        private float mDensityScale;
         private AtomicInteger mPreviousWidth = new AtomicInteger(-1);
 
         DisplayObserver(Context context) {
@@ -291,12 +290,13 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
             final int currentIndex = density.getCurrentIndex();
             final int defaultDensity = density.getDefaultDensity();
 
-            if (density.getValues()[mCurrentIndex] == density.getDefaultDensity()) {
+            if (currentIndex < 0 || defaultDensity <= 0 || density.getValues() == null) {
                 return;
             }
 
             mDefaultDensity = defaultDensity;
-            mCurrentIndex = currentIndex;
+            mDensityScale = density.getValues()[currentIndex] / (float) defaultDensity;
+            mPreviousWidth.set(getCurrentWidth());
             final DisplayManager dm = mContext.getSystemService(DisplayManager.class);
             dm.registerDisplayListener(this, null);
         }
@@ -332,14 +332,21 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
 
         private void restoreDensity() {
             final DisplayDensityUtils density = new DisplayDensityUtils(mContext);
-            /* If current density is the same as a default density of other resolutions,
-             * then mCurrentIndex may be out of boundary.
-             */
-            if (density.getValues().length <= mCurrentIndex) {
-                mCurrentIndex = density.getCurrentIndex();
-            }
-            if (density.getValues()[mCurrentIndex] != density.getDefaultDensity()) {
-                density.setForcedDisplayDensity(mCurrentIndex);
+            final int[] values = density.getValues();
+            if (values != null && values.length > 0) {
+                final float targetDensity = density.getDefaultDensity() * mDensityScale;
+                int closestIndex = 0;
+                for (int i = 1; i < values.length; i++) {
+                    if (Math.abs(values[i] - targetDensity)
+                            < Math.abs(values[closestIndex] - targetDensity)) {
+                        closestIndex = i;
+                    }
+                }
+                if (values[closestIndex] == density.getDefaultDensity()) {
+                    density.clearForcedDisplayDensity();
+                } else {
+                    density.setForcedDisplayDensity(closestIndex);
+                }
             }
 
             mDefaultDensity = density.getDefaultDensity();
