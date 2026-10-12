@@ -23,6 +23,7 @@ import android.provider.Settings
 import android.util.Log
 import android.view.Display
 import com.android.settings.core.instrumentation.SettingsStatsLog
+import com.android.settingslib.utils.ThreadUtils
 
 // LINT.IfChange
 private const val TAG = "ScreenResolutionExt"
@@ -83,18 +84,30 @@ private fun Context.getPreferMode(width: Int): Display.Mode? {
 
 /** Using display manager to set the display mode. */
 fun Context.setDisplayModeByWidth(width: Int) {
+    if (!ThreadUtils.isMainThread()) {
+        ThreadUtils.postOnMainThread { applicationContext.setDisplayModeByWidth(width) }
+        return
+    }
     val display = getDefaultDisplay() ?: return
     val mode = getPreferMode(width)
     if (mode == null) {
         Log.e(TAG, "No preferred mode found for width: $width")
         return
     }
+    if (
+        display.mode.physicalWidth == mode.physicalWidth &&
+            display.mode.physicalHeight == mode.physicalHeight
+    )
+        return
 
+    val observer = ScreenResolutionFragment.DisplayObserver(applicationContext)
     try {
+        if (!observer.startObserve(width)) return
         /** Apply the resolution change. */
         Log.i(TAG, "setUserPreferredDisplayMode: $mode")
         display.setUserPreferredDisplayMode(mode)
     } catch (e: Exception) {
+        observer.stopObserve()
         Log.e(TAG, "setUserPreferredDisplayMode() failed", e)
         return
     }

@@ -37,6 +37,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.RadioButtonPickerFragment;
 import com.android.settingslib.display.DisplayDensityUtils;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settingslib.utils.ThreadUtils;
 import com.android.settingslib.widget.CandidateInfo;
 import com.android.settingslib.widget.FooterPreference;
 import com.android.settingslib.widget.IllustrationPreference;
@@ -156,7 +157,6 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
     /** Using display manager to set the display mode. */
     @VisibleForTesting
     public void setDisplayMode(final int width) {
-        mDisplayObserver.startObserve();
         ScreenResolutionExtensionsKt.setDisplayModeByWidth(getContext(), width);
     }
 
@@ -272,36 +272,46 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
                 }
             };
 
-    private static final class DisplayObserver implements DisplayManager.DisplayListener {
+    static final class DisplayObserver implements DisplayManager.DisplayListener {
+        private static DisplayObserver sPendingObserver;
+        private final Runnable mTimeout = this::stopObserve;
+        private int mRequestedWidth;
         private final @Nullable Context mContext;
-        private int mDefaultDensity;
-        private int mCurrentIndex;
+        private float mDensityScale;
         private AtomicInteger mPreviousWidth = new AtomicInteger(-1);
 
         DisplayObserver(Context context) {
             mContext = context;
         }
 
-        public void startObserve() {
-            if (mContext == null) {
-                return;
+        public boolean startObserve(int requestedWidth) {
+            if (sPendingObserver != null || mContext == null) {
+                return false;
             }
 
             final DisplayDensityUtils density = new DisplayDensityUtils(mContext);
             final int currentIndex = density.getCurrentIndex();
             final int defaultDensity = density.getDefaultDensity();
 
-            if (density.getValues()[mCurrentIndex] == density.getDefaultDensity()) {
-                return;
+            if (currentIndex < 0 || defaultDensity <= 0 || density.getValues() == null
+                    || currentIndex >= density.getValues().length) {
+                return false;
             }
 
-            mDefaultDensity = defaultDensity;
-            mCurrentIndex = currentIndex;
+            mDensityScale = density.getValues()[currentIndex] / (float) defaultDensity;
+            mRequestedWidth = requestedWidth;
             final DisplayManager dm = mContext.getSystemService(DisplayManager.class);
-            dm.registerDisplayListener(this, null);
+            dm.registerDisplayListener(this, ThreadUtils.getUiThreadHandler());
+            sPendingObserver = this;
+            ThreadUtils.getUiThreadHandler().postDelayed(mTimeout, 5000);
+            return true;
         }
 
         public void stopObserve() {
+            ThreadUtils.getUiThreadHandler().removeCallbacks(mTimeout);
+            if (sPendingObserver == this) {
+                sPendingObserver = null;
+            }
             if (mContext == null) {
                 return;
             }
@@ -318,40 +328,37 @@ public class ScreenResolutionFragment extends RadioButtonPickerFragment {
 
         @Override
         public void onDisplayChanged(int displayId) {
-            if (displayId != Display.DEFAULT_DISPLAY) {
+            if (sPendingObserver != this || displayId != Display.DEFAULT_DISPLAY
+                    || getCurrentWidth() != mRequestedWidth) {
                 return;
             }
 
-            if (!isDensityChanged() || !isResolutionChangeApplied()) {
-                return;
+            try {
+                restoreDensity();
+            } finally {
+                stopObserve();
             }
-
-            restoreDensity();
-            stopObserve();
         }
 
         private void restoreDensity() {
             final DisplayDensityUtils density = new DisplayDensityUtils(mContext);
-            /* If current density is the same as a default density of other resolutions,
-             * then mCurrentIndex may be out of boundary.
-             */
-            if (density.getValues().length <= mCurrentIndex) {
-                mCurrentIndex = density.getCurrentIndex();
+            final int[] values = density.getValues();
+            if (values != null && values.length > 0) {
+                final float targetDensity = density.getDefaultDensity() * mDensityScale;
+                int closestIndex = 0;
+                for (int i = 1; i < values.length; i++) {
+                    if (Math.abs(values[i] - targetDensity)
+                            < Math.abs(values[closestIndex] - targetDensity)) {
+                        closestIndex = i;
+                    }
+                }
+                if (mDensityScale == 1f
+                        || values[closestIndex] == density.getDefaultDensity()) {
+                    density.clearForcedDisplayDensity();
+                } else {
+                    density.setForcedDisplayDensity(closestIndex);
+                }
             }
-            if (density.getValues()[mCurrentIndex] != density.getDefaultDensity()) {
-                density.setForcedDisplayDensity(mCurrentIndex);
-            }
-
-            mDefaultDensity = density.getDefaultDensity();
-        }
-
-        private boolean isDensityChanged() {
-            final DisplayDensityUtils density = new DisplayDensityUtils(mContext);
-            if (density.getDefaultDensity() == mDefaultDensity) {
-                return false;
-            }
-
-            return true;
         }
 
         private int getCurrentWidth() {
