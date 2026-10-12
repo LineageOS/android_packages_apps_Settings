@@ -95,6 +95,12 @@
             settings:searchable="false" />
     </PreferenceCategory>
 
+    <!-- Lineage Accessories -->
+    <lineageos.preference.LineagePartsPreference
+        android:key="accessories"
+        settings:allowDividerAbove="true"
+        settings:requiresService="lineageaccessories" />
+
     <com.android.settingslib.widget.UntitledPreferenceCategory>
       <Preference
           android:fragment="com.android.settings.connecteddevice.AdvancedConnectedDeviceDashboardFragment"
