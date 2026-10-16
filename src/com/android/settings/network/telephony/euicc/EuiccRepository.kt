@@ -17,6 +17,7 @@
 package com.android.settings.network.telephony.euicc
 
 import android.content.Context
+import android.content.IntentFilter
 import android.os.SystemProperties
 import android.provider.Settings
 import android.telephony.TelephonyManager
@@ -24,12 +25,16 @@ import android.telephony.euicc.EuiccManager
 import android.util.Log
 import com.android.settings.Utils
 import com.android.settingslib.development.DevelopmentSettingsEnabler
+import com.android.settingslib.spa.flow.broadcastReceiverFlow
 import com.android.settingslib.spaprivileged.settingsprovider.settingsGlobalBoolean
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.merge
 
 class EuiccRepository
 @JvmOverloads
@@ -46,6 +51,24 @@ constructor(
 
     private val euiccManager = context.getSystemService(EuiccManager::class.java)
     private val telephonyManager = context.getSystemService(TelephonyManager::class.java)
+
+    /** Whether the eUICC containing this profile is currently available. */
+    fun isAvailableFlow(cardId: Int? = null) =
+        merge(
+                flowOf(null),
+                context.broadcastReceiverFlow(
+                    IntentFilter(TelephonyManager.ACTION_SIM_SLOT_STATUS_CHANGED).apply {
+                        addAction(TelephonyManager.ACTION_SIM_CARD_STATE_CHANGED)
+                    }
+                ),
+            )
+            .map {
+                telephonyManager?.uiccCardsInfo?.any {
+                    (cardId == null || it.cardId == cardId) && it.isEuicc
+                } == true
+            }
+            .distinctUntilChanged()
+            .flowOn(Dispatchers.Default)
 
     fun showEuiccSettingsFlow() =
         flow { emit(showEuiccSettings()) }

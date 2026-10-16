@@ -75,6 +75,10 @@ private fun SimPreference(subInfo: SubscriptionInfo) {
                 SubscriptionRepository(context).isSubscriptionEnabledFlow(subInfo.subscriptionId)
             }
             .collectAsStateWithLifecycle(initialValue = false)
+    val isEuiccAvailable by
+        remember(subInfo.cardId) { EuiccRepository(context).isAvailableFlow(subInfo.cardId) }
+            .collectAsStateWithLifecycle(initialValue = false)
+    val isAvailable = !subInfo.isEmbedded || isEuiccAvailable
     val phoneNumber = phoneNumber(subInfo)
     val canDisablePhysicalSubscription by
         remember { flow { emit(SubscriptionRepository(context).canDisablePhysicalSubscription()) } }
@@ -102,7 +106,8 @@ private fun SimPreference(subInfo: SubscriptionInfo) {
                 override val changeable = {
                     (subInfo.isEmbedded || canDisablePhysicalSubscription) &&
                         isActivationChangeable &&
-                        !isConvertedPsim
+                        !isConvertedPsim &&
+                        isAvailable
                 }
                 override val checked = { checked.value }
                 override val onCheckedChange: (Boolean) -> Unit = { newChecked ->
@@ -115,7 +120,7 @@ private fun SimPreference(subInfo: SubscriptionInfo) {
                 }
             },
         restrictions = Restrictions(keys = listOf(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)),
-        primaryEnabled = { !isConvertedPsim },
+        primaryEnabled = { !isConvertedPsim && isAvailable },
     ) {
         MobileNetworkUtils.launchMobileNetworkSettings(context, subInfo)
     }
@@ -136,6 +141,9 @@ fun phoneNumber(subInfo: SubscriptionInfo): State<String?> {
 @Composable
 private fun AddSim() {
     val context = LocalContext.current
+    val isEuiccAvailable by
+        remember { EuiccRepository(context).isAvailableFlow() }
+            .collectAsStateWithLifecycle(initialValue = false)
     val isShow by
         remember { EuiccRepository(context).showEuiccSettingsFlow() }
             .collectAsStateWithLifecycle(initialValue = false)
@@ -148,6 +156,7 @@ private fun AddSim() {
             model =
                 object : PreferenceModel {
                     override val title = stringResource(id = R.string.mobile_network_list_add_more)
+                    override val enabled = { isEuiccAvailable }
                     override val icon = @Composable { SettingsIcon(Icons.Outlined.Add) }
                     override val onClick = {
                         if (isSatelliteSessionStarted) {
