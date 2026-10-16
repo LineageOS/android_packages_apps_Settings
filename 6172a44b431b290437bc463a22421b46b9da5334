@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8bf017_6bf00fe0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 38352
+      },
+      "writtenOn": "2026-10-16T04:24:12Z",
+      "side": 1,
+      "message": "Device: Redmi 10C (rain), Qualcomm modem, DSDS, Android 17, build with a legacy-query fallback. Settings logs `NetworkScanRepository: network scan unsupported, falling back to legacy query` after START_NETWORK_SCAN fails with error 6. The fallback works when only one query runs at a time: it returns the full operator list in 41 to 85 s.\n\n**Case 1 (Oct 16, 10:02), a second query starts while the first is running:**\n```\n10:02:05.300 RILJ [4443]\u003e QUERY_AVAILABLE_NETWORKS\n10:02:06.686 RILJ [4445]\u003c START_NETWORK_SCAN error 6\n10:02:06.688 RILJ [4446]\u003e QUERY_AVAILABLE_NETWORKS\n10:02:06.688 RILJ [4446]\u003c QUERY_AVAILABLE_NETWORKS error 37   (NO_MEMORY)\n10:02:22.318 RILJ [4443]\u003c QUERY_AVAILABLE_NETWORKS error 40   (MODEM_ERR)\n10:02:38.202 RILJ [4753]\u003e QUERY_AVAILABLE_NETWORKS\n10:03:19.553 RILJ [4753]\u003c QUERY_AVAILABLE_NETWORKS [OperatorInfo ...]\n```\n\n**Case 2 (Oct 16, 10:12), same pattern:**\n```\n10:12:27.937 RILJ [5511]\u003c START_NETWORK_SCAN error 6\n10:12:27.939 RILJ [5512]\u003e QUERY_AVAILABLE_NETWORKS\n10:12:27.939 RILJ [5512]\u003c QUERY_AVAILABLE_NETWORKS error 37   (NO_MEMORY)\n10:12:29.884 RILJ [5509]\u003c QUERY_AVAILABLE_NETWORKS error 40   (MODEM_ERR)\n10:12:31.796 RILJ [5568]\u003e QUERY_AVAILABLE_NETWORKS\n10:13:57.027 RILJ [5568]\u003c QUERY_AVAILABLE_NETWORKS [OperatorInfo ...]\n```\n\nCorrection: the error 37 and error 40 were about 16 s apart in case 1 and about 2 s apart in case 2, not 2 s in both as I wrote before.\n\nWhen a query finishes before the next scan starts (e.g. 10:09:22 to 10:10:06), there are no errors. So the failures follow a new query being sent while one is still in flight. I haven\u0027t verified whether leaving the screen cancels the running query, so that part is a guess.\n\nSuggestion: don\u0027t send a new QUERY_AVAILABLE_NETWORKS while one is pending, or reuse the pending one. After a failure like case 1 the next attempt worked, but earlier I also needed an airplane-mode toggle once, and I can\u0027t tell why from the logs.",
+      "revId": "6172a44b431b290437bc463a22421b46b9da5334",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
