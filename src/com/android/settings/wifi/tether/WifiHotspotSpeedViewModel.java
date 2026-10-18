@@ -94,7 +94,7 @@ public class WifiHotspotSpeedViewModel extends AndroidViewModel {
                 && Flags.enable2And6GhzHotspotSpeed();
         log("on6gAvailableChanged(), showDualBand:" + showDualBand);
         mSpeedInfo2g6g.mIsVisible = showDualBand;
-        mSpeedInfo6g.mIsVisible = !showDualBand;
+        mSpeedInfo6g.mIsVisible = !showDualBand && mWifiHotspotRepository.is6GHzBandSupported();
         updateSpeedInfoMapData();
     }
 
