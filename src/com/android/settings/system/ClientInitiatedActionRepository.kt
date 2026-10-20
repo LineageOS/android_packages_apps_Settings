@@ -24,12 +24,14 @@ import android.util.Log
 import com.android.settings.network.telephony.safeGetConfig
 
 class ClientInitiatedActionRepository(private val context: Context) {
-    private val configManager = context.getSystemService(CarrierConfigManager::class.java)!!
+    private val configManager: CarrierConfigManager? =
+        context.getSystemService(CarrierConfigManager::class.java)
 
     /**
      * Trigger client initiated action (send intent) on system update
      */
     fun onSystemUpdate() {
+        val configManager = configManager ?: return
         val telephonyManager = context.getSystemService(TelephonyManager::class.java) ?: return
         if (telephonyManager.phoneType == TelephonyManager.PHONE_TYPE_NONE) return
         val bundle =
