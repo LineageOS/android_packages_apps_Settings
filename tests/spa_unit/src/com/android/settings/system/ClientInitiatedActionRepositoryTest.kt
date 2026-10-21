@@ -18,6 +18,7 @@ package com.android.settings.system
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.telephony.CarrierConfigManager
 import androidx.core.os.persistableBundleOf
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -37,12 +38,40 @@ import org.mockito.kotlin.verify
 class ClientInitiatedActionRepositoryTest {
     private val mockCarrierConfigManager = mock<CarrierConfigManager>()
 
+    private val mockPackageManager = mock<PackageManager> {
+        on { hasSystemFeature(PackageManager.FEATURE_TELEPHONY) } doReturn true
+    }
+
     private val context = mock<Context> {
         on { applicationContext } doReturn mock
         on { getSystemService(CarrierConfigManager::class.java) } doReturn mockCarrierConfigManager
+        on { packageManager } doReturn mockPackageManager
     }
 
     private val repository = ClientInitiatedActionRepository(context)
+
+    @Test
+    fun onSystemUpdate_noCarrierConfigManager_doesNotThrowAndDoesNothing() {
+        val noTelephonyContext = mock<Context> {
+            on { applicationContext } doReturn mock
+            on { packageManager } doReturn mockPackageManager
+        }
+
+        ClientInitiatedActionRepository(noTelephonyContext).onSystemUpdate()
+
+        verify(noTelephonyContext, never()).sendBroadcast(any())
+    }
+
+    @Test
+    fun onSystemUpdate_noTelephonyFeature_doNothing() {
+        mockPackageManager.stub {
+            on { hasSystemFeature(PackageManager.FEATURE_TELEPHONY) } doReturn false
+        }
+
+        repository.onSystemUpdate()
+
+        verify(context, never()).sendBroadcast(any())
+    }
 
     @Test
     fun onSystemUpdate_runtimeException_doNothing() {
