@@ -130,6 +130,9 @@ class BluetoothDevelopmentSettingsFragment :
     }
 
     override fun onRebootDialogConfirmed() {
+        use(BluetoothA2dpHwOffloadPreferenceController::class.java)?.onRebootDialogConfirmed()
+        use(BluetoothLeAudioHwOffloadPreferenceController::class.java)?.onRebootDialogConfirmed()
+        use(BluetoothLeAudioModePreferenceController::class.java)?.onRebootDialogConfirmed()
         context?.getSystemService(PowerManager::class.java)?.reboot(null)
     }
 
