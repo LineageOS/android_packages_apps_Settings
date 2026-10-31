@@ -70,6 +70,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     private static final String TAG = "TopLevelSettings";
     private static final String SAVED_HIGHLIGHT_MIXIN = "highlight_mixin";
     private static final String PREF_KEY_SUPPORT = "top_level_support";
+    private static final String TOP_LEVEL_ACCOUNT_CATEGORY = "top_level_account_category";
 
     private boolean mIsEmbeddingActivityEnabled;
     private TopLevelHighlightMixin mHighlightMixin;
@@ -349,6 +350,19 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     @Override
     protected Preference createPreference(Tile tile) {
         return new HomepagePreference(getPrefContext());
+    }
+
+    @Override
+    protected void refreshDashboardTiles(final String tag) {
+        super.refreshDashboardTiles(tag);
+        final PreferenceScreen screen = getPreferenceScreen();
+        if (screen == null) {
+            return;
+        }
+        final Preference category = screen.findPreference(TOP_LEVEL_ACCOUNT_CATEGORY);
+        if (category instanceof PreferenceGroup) {
+            category.setVisible(((PreferenceGroup) category).getPreferenceCount() > 0);
+        }
     }
 
     void reloadHighlightMenuKey() {
