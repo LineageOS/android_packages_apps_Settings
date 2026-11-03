@@ -207,6 +207,7 @@ public class FingerprintEnrollFindSensorTest {
                 new ArrayList<ComponentInfoInternal>(),
                 TYPE_STANDALONE,
                 false /* halControlsIllumination */,
+                false /* halHandlesDisplayTouches */,
                 true /* resetLockoutRequiresHardwareAuthToken */,
                 List.of(sensorLocationInternal));
     }

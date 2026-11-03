@@ -373,7 +373,8 @@ public class ConfirmLockPatternTest {
         assertThat(clearButton.getText().toString()).isEqualTo(
                 mContext.getString(R.string.lockpattern_retry_button_text));
 
-        List<LockPatternView.Cell> pattern = List.of(LockPatternView.Cell.of(0, 0));
+        List<LockPatternView.Cell> pattern =
+                List.of(LockPatternView.Cell.of(0, 0, LockPatternUtils.PATTERN_SIZE_DEFAULT));
         lockPatternView.setPattern(LockPatternView.DisplayMode.Correct, pattern);
         clearButton.performClick();
         assertThat(lockPatternView.isEmpty()).isTrue();
@@ -443,7 +444,8 @@ public class ConfirmLockPatternTest {
     }
 
     private void triggerOnPatternDetected(LockPatternView lockPatternView) {
-        List<LockPatternView.Cell> pattern = List.of(LockPatternView.Cell.of(0, 0));
+        List<LockPatternView.Cell> pattern =
+                List.of(LockPatternView.Cell.of(0, 0, LockPatternUtils.PATTERN_SIZE_DEFAULT));
         lockPatternView.setPattern(LockPatternView.DisplayMode.Correct, pattern);
         ReflectionHelpers.callInstanceMethod(lockPatternView, "notifyPatternDetected");
     }

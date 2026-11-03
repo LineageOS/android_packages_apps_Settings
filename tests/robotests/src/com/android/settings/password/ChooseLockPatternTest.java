@@ -175,6 +175,6 @@ public class ChooseLockPatternTest {
 
     private LockscreenCredential createPattern(String patternString) {
         return LockscreenCredential.createPattern(LockPatternUtils.byteArrayToPattern(
-                patternString.getBytes()));
+                patternString.getBytes(), LockPatternUtils.PATTERN_SIZE_DEFAULT));
     }
 }
