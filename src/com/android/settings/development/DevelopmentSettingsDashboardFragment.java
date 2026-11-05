@@ -730,6 +730,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new AutomaticSystemServerHeapDumpPreferenceController(context));
         controllers.add(new MockLocationAppPreferenceController(context, fragment));
         controllers.add(new MockModemPreferenceController(context));
+        controllers.add(new SignatureSpoofingOnDebuggingPreferenceController(context));
         controllers.add(new DebugViewAttributesPreferenceController(context));
         controllers.add(new SelectDebugAppPreferenceController(context, fragment));
         controllers.add(new WaitForDebuggerPreferenceController(context));
