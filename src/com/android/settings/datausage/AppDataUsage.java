@@ -153,7 +153,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
         final UidDetailProvider uidDetailProvider = getUidDetailProvider();
 
         if (mAppItem.key > 0) {
-            if (!UserHandle.isApp(mAppItem.key)) {
+            if ((!Utils.isMobileDataCapable(mContext)) || !UserHandle.isApp(mAppItem.key)) {
                 final UidDetail uidDetail = uidDetailProvider.getUidDetail(mAppItem.key, true);
                 mIcon = uidDetail.icon;
                 mLabel = uidDetail.label;
@@ -327,6 +327,9 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private void updatePrefs(boolean restrictBackground, boolean unrestrictData,
             boolean restrictAll, boolean restrictCellular, boolean restrictVpn,
             boolean restrictWifi, boolean hasInternetPermission) {
+        if (!Utils.isMobileDataCapable(mContext)) {
+            return;
+        }
         setBackPreferenceListAnimatorIfLoaded();
         final EnforcedAdmin admin = RestrictedLockUtilsInternal
                 .checkIfMeteredDataUsageUserControlDisabled(mContext, mPackageName,

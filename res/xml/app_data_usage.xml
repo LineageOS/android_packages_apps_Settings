@@ -33,7 +33,8 @@
         settings:controller="com.android.settings.datausage.AppDataUsageSummaryController"/>
 
     <com.android.settingslib.widget.UntitledPreferenceCategory
-        android:key="app_data_usage_settings_category">
+        android:key="app_data_usage_settings_category"
+        settings:isPreferenceVisible="@bool/config_show_sim_info">
 
         <Preference
             android:key="app_settings"
@@ -53,14 +54,12 @@
         <com.android.settingslib.RestrictedSwitchPreference
             android:key="restrict_cellular"
             android:title="@string/data_usage_app_restrict_mobile"
-            android:summary="@string/data_usage_app_restrict_mobile_summary"
-            settings:isPreferenceVisible="@bool/config_show_sim_info" />
+            android:summary="@string/data_usage_app_restrict_mobile_summary" />
 
         <com.android.settingslib.RestrictedSwitchPreference
             android:key="restrict_background"
             android:title="@string/data_usage_app_restrict_background"
             android:summary="@string/data_usage_app_restrict_background_summary"
-            settings:isPreferenceVisible="@bool/config_show_sim_info"
             settings:useAdditionalSummary="true"
             settings:restrictedSwitchSummary="@string/disabled_by_admin" />
 
@@ -73,7 +72,6 @@
             android:key="unrestricted_data_saver"
             android:title="@string/unrestricted_app_title"
             android:summary="@string/unrestricted_app_summary"
-            settings:isPreferenceVisible="@bool/config_show_sim_info"
             settings:useAdditionalSummary="true"
             settings:restrictedSwitchSummary="@string/disabled_by_admin" />
 
