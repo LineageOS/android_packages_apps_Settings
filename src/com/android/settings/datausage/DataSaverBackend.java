@@ -23,6 +23,7 @@ import android.content.Context;
 import android.net.NetworkPolicyManager;
 import android.util.SparseIntArray;
 
+import com.android.settings.fuelgauge.datasaver.DynamicDenylistManager;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.utils.ThreadUtils;
@@ -39,6 +40,7 @@ public class DataSaverBackend {
     private final MetricsFeatureProvider mMetricsFeatureProvider;
 
     private final NetworkPolicyManager mPolicyManager;
+    private final DynamicDenylistManager mDynamicDenylistManager;
     private final ArrayList<Listener> mListeners = new ArrayList<>();
     private SparseIntArray mUidPolicies = new SparseIntArray();
     private boolean mAllowlistInitialized;
@@ -50,6 +52,7 @@ public class DataSaverBackend {
         mContext = context.getApplicationContext();
         mMetricsFeatureProvider = FeatureFactory.getFeatureFactory().getMetricsFeatureProvider();
         mPolicyManager = NetworkPolicyManager.from(mContext);
+        mDynamicDenylistManager = DynamicDenylistManager.getInstance(mContext);
     }
 
     public void addListener(Listener listener) {
@@ -129,7 +132,8 @@ public class DataSaverBackend {
 
     public boolean isDenylisted(int uid) {
         loadDenylist();
-        return mUidPolicies.get(uid, POLICY_NONE) == POLICY_REJECT_METERED_BACKGROUND;
+        return mUidPolicies.get(uid, POLICY_NONE) == POLICY_REJECT_METERED_BACKGROUND
+                && mDynamicDenylistManager.isInManualDenylist(uid);
     }
 
     private void loadDenylist() {
