@@ -15,7 +15,6 @@
 package com.android.settings.datausage;
 
 import static android.net.NetworkPolicyManager.POLICY_REJECT_METERED_BACKGROUND;
-import static android.net.NetworkPolicyManager.POLICY_REJECT_ALL;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_CELLULAR;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_VPN;
 import static android.net.NetworkPolicyManager.POLICY_REJECT_WIFI;
@@ -31,6 +30,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivitySettingsManager;
 import android.net.NetworkPolicyManager;
 import android.net.NetworkTemplate;
 import android.os.Bundle;
@@ -248,7 +248,14 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
             updatePrefs();
             return true;
         } else if (preference == mRestrictAll) {
-            setAppRestrictAll(!(Boolean) newValue);
+            Set<Integer> uids =
+                    ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext);
+            if (!(Boolean) newValue) {
+                uids.remove(mAppItem.key);
+            } else {
+                uids.add(mAppItem.key);
+            }
+            ConnectivitySettingsManager.setUidsAllowedOnRestrictedNetworks(mContext, uids);
             updatePrefs();
             return true;
         } else if (preference == mRestrictCellular) {
@@ -393,7 +400,8 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     }
 
     private boolean getAppRestrictAll() {
-        return getAppRestriction(POLICY_REJECT_ALL);
+        return !ConnectivitySettingsManager.getUidsAllowedOnRestrictedNetworks(mContext)
+                .contains(mAppItem.key);
     }
 
     private boolean getUnrestrictData() {
@@ -412,10 +420,6 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     private boolean hasInternetPermission() {
         return mPackageManager.checkPermission(Manifest.permission.INTERNET, mPackageName)
                 == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private void setAppRestrictAll(boolean restrict) {
-        setAppRestriction(POLICY_REJECT_ALL, restrict);
     }
 
     private void setAppRestrictCellular(boolean restrict) {
