@@ -40,12 +40,7 @@ private fun Context.getSortedResolutionList(): List<Point>? {
     val resolutions =
         display.supportedModes.mapTo(mutableSetOf()) { Point(it.physicalWidth, it.physicalHeight) }
 
-    if (resolutions.size != 2) {
-        Log.e(TAG, "No support")
-        return null
-    }
-
-    return resolutions.toList().sortedBy { it.x * it.y }
+    return resolutions.toList().sortedBy { it.x * it.y }.takeLast(2).takeIf { it.size == 2 }
 }
 
 /** Return true if the device contains exactly two resolutions. */
