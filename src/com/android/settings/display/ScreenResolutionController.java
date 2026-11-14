@@ -70,12 +70,13 @@ public class ScreenResolutionController extends BasePreferenceController {
 
         // Get the width and height for high resolution and full resolution
         List<Point> resolutionList = new ArrayList<>(resolutions);
-        if (resolutionList == null || resolutionList.size() != 2) {
+        if (resolutionList == null || resolutionList.size() < 2) {
             Log.e(TAG, "No support");
             return;
         }
 
         Collections.sort(resolutionList, (p1, p2) -> p1.x * p1.y - p2.x * p2.y);
+        resolutionList.subList(0, resolutionList.size() - 2).clear();
         mHighWidth = resolutionList.get(HIGHRESOLUTION_IDX).x;
         mHighHeight = resolutionList.get(HIGHRESOLUTION_IDX).y;
         mFullWidth = resolutionList.get(FULLRESOLUTION_IDX).x;
