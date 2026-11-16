@@ -200,6 +200,13 @@ public class SfpsEnrollmentFeatureImpl implements SfpsEnrollmentFeature {
 
     private static String getVendorString(Context ctx, int index) {
         String[] strings = ctx.getResources().getStringArray(R.array.fingerprint_acquired_vendor);
+        if (index >= strings.length) {
+            // Device trees usually provide (and translate) the vendor messages for the
+            // framework only, e.g. LineageOS rango's FrameworkResOverlay. Without this
+            // fallback the empty Settings array made the pause dialog throw.
+            strings = ctx.getResources().getStringArray(
+                    com.android.internal.R.array.fingerprint_acquired_vendor);
+        }
         Preconditions.checkArgumentInRange(index, 0, strings.length - 1, "vendor string index");
         return strings[index];
     }
